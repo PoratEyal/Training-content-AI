@@ -1,0 +1,93 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    width: auto;
+}
+
+.darkOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.subjects_div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.subject_btn{
+    width: 250px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Fredoka', sans-serif;
+    margin-bottom: 15px;
+    font-size: 18px;
+    height: 50px;
+}
+
+.down_buttons_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.add_your_subject_btn{
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Fredoka', sans-serif;
+    margin-bottom: 15px;
+    font-size: 15px;
+    height: 40px;
+    width: 100px;
+}
+
+.generate_btn{
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Fredoka', sans-serif;
+    margin-bottom: 15px;
+    font-size: 15px;
+    height: 40px;
+    width: 140px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading_icon{
+    animation: spin 1s infinite linear;
+}
+    
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.submit_btn{
+    border: none;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 20px;
+    font-family: 'Fredoka', sans-serif;
+    background-color: rgb(255, 151, 47);
+}
+
