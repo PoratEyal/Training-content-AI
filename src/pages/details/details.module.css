@@ -5,6 +5,12 @@
     width: auto;
 }
 
+.container h3{
+    color: rgb(231, 150, 0);
+    margin-right: 10px;
+    font-size: 22px;
+}
+
 .input_div{
     margin-bottom: 20px;
     display: flex;
@@ -16,12 +22,13 @@
 
 .input_div select{
     border: 1px solid rgb(102, 102, 102);
-    padding: 12px;
+    padding: 13px;
     font-size: 16px;
-    border-radius: 15px;
-    width: 250px;
+    border-radius: 30px;
+    width: 280px;
     font-family: 'Fredoka', sans-serif;
     direction: rtl;
+    border: 1px solid orange;
 }
 
 .btn_div{
@@ -31,19 +38,18 @@
     align-items: center;
 }
 .submit_btn{
-    width: 250px;
-    font-family: 'Fredoka', sans-serif;
     border: none;
-    border-radius: 25px;
-    padding: 15px;
+    padding: 14px;
     font-size: 20px;
-    background-color: rgb(133, 133, 133);
+    font-weight: 600;
+    border-radius: 30px;
+    font-family: 'Fredoka', sans-serif;
+    background-color: rgb(255, 151, 47);
+    transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 30px;
+    width: 280px;
     color: white;
-    font-weight: 500;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 45px;
 }
 
 .loading_icon{

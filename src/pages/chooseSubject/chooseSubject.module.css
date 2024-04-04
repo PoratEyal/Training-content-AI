@@ -15,6 +15,23 @@
     z-index: 10;
 }
 
+.back_icon{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    border: none;
+    padding: 4px;
+    border-radius: 30px;
+    color: white;
+    background-color: orange;
+}
+
+.h3{
+    color: rgb(68, 68, 68);
+    margin-right: 15px;
+}
+
 .subjects_div{
     display: flex;
     flex-direction: column;
@@ -26,15 +43,16 @@
     width: 280px;
     padding: 10px;
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     font-family: 'Fredoka', sans-serif;
     margin-bottom: 15px;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 500;
-    height: 60px;
+    height: 50px;
     transition: background-color 0.3s ease, border 0.3s ease;
     background-color: white;
     border: 1px solid orange;
+    color: rgb(68, 68, 68);
 }
 
 .down_buttons_div{
@@ -49,7 +67,7 @@
 .add_your_subject_btn{
     padding: 10px;
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     font-family: 'Fredoka', sans-serif;
     margin-bottom: 15px;
     font-size: 15px;
@@ -57,12 +75,13 @@
     width: 110px;
     background-color: white;
     border: 1px solid orange;
+    color: rgb(68, 68, 68);
 }
 
 .generate_btn{
     padding: 10px;
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     font-family: 'Fredoka', sans-serif;
     margin-bottom: 15px;
     font-size: 15px;
@@ -75,6 +94,7 @@
     align-items: center;
     background-color: white;
     border: 1px solid orange;
+    color: rgb(68, 68, 68);
 }
 
 .loading_icon{
@@ -93,16 +113,32 @@
 .submit_btn{
     border: none;
     padding: 14px;
-    font-size: 18px;
-    font-weight: 500;
-    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 30px;
     font-family: 'Fredoka', sans-serif;
     background-color: rgb(255, 151, 47);
     transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 30px;
+    width: 280px;
+    color: white;
 }
 
 .subject_btn.selected {
     background-color: rgb(245, 206, 132);
     border: 1px solid orange;
+    border: none;
+}
+
+.submit_btn_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.submit_btn_loading_icon{
+    animation: spin 1s infinite linear;
 }
 

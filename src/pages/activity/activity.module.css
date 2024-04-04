@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.container h2{
+    font-size: 22px;
+    color: orange;
+    margin-right: 20px;
+}
+
+.activity_div{
+    padding: 20px;
+}
+
+.again_icon{
+    padding: 20px;
+    font-size: 22px;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
