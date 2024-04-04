@@ -23,17 +23,22 @@
 }
 
 .subject_btn{
-    width: 250px;
+    width: 280px;
     padding: 10px;
     border: none;
     border-radius: 20px;
     font-family: 'Fredoka', sans-serif;
     margin-bottom: 15px;
-    font-size: 18px;
-    height: 50px;
+    font-size: 19px;
+    font-weight: 500;
+    height: 60px;
+    transition: background-color 0.3s ease, border 0.3s ease;
+    background-color: white;
+    border: 1px solid orange;
 }
 
 .down_buttons_div{
+    margin-top: 30px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -49,7 +54,9 @@
     margin-bottom: 15px;
     font-size: 15px;
     height: 40px;
-    width: 100px;
+    width: 110px;
+    background-color: white;
+    border: 1px solid orange;
 }
 
 .generate_btn{
@@ -60,12 +67,14 @@
     margin-bottom: 15px;
     font-size: 15px;
     height: 40px;
-    width: 140px;
+    width: 150px;
     display: flex;
     flex-direction: row;
     gap: 10px;
     justify-content: center;
     align-items: center;
+    background-color: white;
+    border: 1px solid orange;
 }
 
 .loading_icon{
@@ -89,5 +98,11 @@
     border-radius: 20px;
     font-family: 'Fredoka', sans-serif;
     background-color: rgb(255, 151, 47);
+    transition: background-color 0.3s ease;
+}
+
+.subject_btn.selected {
+    background-color: rgb(245, 206, 132);
+    border: 1px solid orange;
 }
 

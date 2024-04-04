@@ -14,7 +14,7 @@ const subjectsPrompt = {
     messages: [
         {
             role: "user",
-            content: "give me 6 diverse topics.",
+            content: "give me 4 diverse topics in hebrew",
         },
     ],
     temperature: 0.7,
@@ -55,33 +55,32 @@ export async function getSubjects() {
     }
 }
 
-
 // - - - - - - activity prompt section - - - - - - - - - - - -
 
-const activityPrompt = (time, amount, age, place) => {
+const activityPrompt = (subjet, time, amount, age, place) => {
     return {
       model: "gpt-4",
       messages: [
         {
           role: "user",
-          content: `You are a Eagle Scout and i want you to create activity for the your gruop. The grade of the group is: ${age}, the number of the children in the activiy is: ${amount}, the time of the activiy is: ${time}, the place is ${place}. in the begining of the activity add the title of the activity, the number of the children, the time of the activity. return me the answer in hebrew languge.`,
+          content: `You are a Eagle Scout and i want you to create activity for the your gruop. Your subject for the activity is: ${subjet}, The grade of the group is: ${age}, the number of the children in the activiy is: ${amount}, the time of the activiy is: ${time}, the place is ${place}. in the begining of the activity add the title of the activity, the number of the children, the time of the activity. return me the answer in hebrew languge.`,
         },
       ],
       temperature: 0.7,
     };
 };
 
-export const requestOptions2 = {
-    method: "post",
-    url: OpenAIUrl,
-    data: activityPrompt,
-    headers: openAiheaders,
-};
+export async function getActivity (subject, time, amount, age, place) {
+    const requestOptions2 = {
+        method: "post",
+        url: OpenAIUrl,
+        data: activityPrompt(subject, time, amount, age, place),
+        headers: openAiheaders,
+    };
 
-export async function getActivity (time, amount, age, place) {
     try {
         const response = await axios(requestOptions2);
-        const responseData = response.data;
+        const responseData = response.data.choices?.[0].message.content;
         return responseData;
     } catch (error) {
         console.error(error);

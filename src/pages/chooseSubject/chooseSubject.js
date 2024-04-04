@@ -3,22 +3,37 @@ import { useContentContext } from '../../context/ContentContext';
 import styles from './chooseSubject.module.css';
 import { FaWandMagicSparkles } from "react-icons/fa6";
 import { VscLoading } from "react-icons/vsc";
-import { getSubjects } from '../../service/openAiPrompts';
+import { getSubjects, getActivity } from '../../service/openAiPrompts';
 import AddSubject from '../../components/popups/addSubject/addSubject';
+import { useNavigate } from 'react-router-dom';
 
 function ChooseSubject() {
 
-    const { updateSubjects, data } = useContentContext();
+    const { updateSubjects, data, updateMainSubject, updateActivity } = useContentContext();
     const [generateClicked, setGenerateClicked] = useState(false);
-    const [popupOpen, setPopupOpen] = useState(false)
+    const [popupOpen, setPopupOpen] = useState(false);
+    const [selectedSubjectIndex, setSelectedSubjectIndex] = useState(null);
+
+    const navigate = useNavigate();
 
     const generateAgain = async () => {
-        setGenerateClicked(true)
+        setGenerateClicked(true);
         const ans = await getSubjects();
         console.log(ans);
         updateSubjects(ans.subjectList);
-        setGenerateClicked(false)
+        setGenerateClicked(false);
     };
+
+    const submitHandler = async () => {
+        const ans =  await getActivity(data.mainSubject, data.time, data.amount, data.grade, data.place)
+        updateActivity(ans)
+        navigate('/activity')
+    }
+
+    const selectedSubjectHandler = (index, subject) => {
+        setSelectedSubjectIndex(index)
+        updateMainSubject(subject)
+    }
 
     useEffect(() => {
         const closePopup = (e) => {
@@ -38,7 +53,11 @@ function ChooseSubject() {
 
             <div className={styles.subjects_div}>
                 {data.subjects.length > 0 && data.subjects.map((subject, index) => (
-                    <button className={styles.subject_btn} key={index}>
+                    <button
+                        className={`${styles.subject_btn} ${selectedSubjectIndex === index ? styles.selected : ''}`}
+                        key={index}
+                        onClick={() => selectedSubjectHandler(index, subject)}
+                    >
                         <label>{subject}</label>
                     </button>
                 ))}
@@ -57,7 +76,7 @@ function ChooseSubject() {
                 <button onClick={() => setPopupOpen(true)} className={styles.add_your_subject_btn}>נושא משלך</button>
             </div>
 
-            <button className={styles.submit_btn}>המשך</button>
+            <button onClick={submitHandler} className={styles.submit_btn}>המשך</button>
 
             {popupOpen && (
                 <>
@@ -67,7 +86,6 @@ function ChooseSubject() {
             )}
 
         </div>
-
     );
 }
 

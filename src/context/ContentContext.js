@@ -37,8 +37,15 @@ export const ContentProvider = ({ children }) => {
         }));
     };
 
+    const updateActivity = (activity) => {
+        setData((prevData) => ({
+            ...prevData,
+            activity: activity,
+        }));
+    };
+
     return (
-        <ContentContext.Provider value={{ data, setData, updateMainSubject, updateSubjects, updateDetails }}>
+        <ContentContext.Provider value={{ data, setData, updateMainSubject, updateSubjects, updateDetails, updateActivity }}>
             {children}
         </ContentContext.Provider>
     );
