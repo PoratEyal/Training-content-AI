@@ -7,6 +7,7 @@ import { getSubjects, getActivity } from '../../service/openAiPrompts';
 import AddSubject from '../../components/popups/addSubject/addSubject';
 import { useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
+import { useCallback } from 'react';
 
 function ChooseSubject() {
 
@@ -38,23 +39,23 @@ function ChooseSubject() {
         updateMainSubject(subject)
     }
 
-    const closePopup = (newSubject = null) => {
+    const closePopup = useCallback((newSubject = null) => {
         setPopupOpen(false);
         if (newSubject) {
             updateMainSubject(newSubject);
         }
-    };
-
+    }, [updateMainSubject]);
+    
     useEffect(() => {
         const handleOutsideClick = (e) => {
             if (popupOpen && e.target.classList.contains('darkOverlay')) {
                 closePopup();
             }
         };
-
+    
         window.addEventListener('click', handleOutsideClick);
         return () => window.removeEventListener('click', handleOutsideClick);
-    }, [popupOpen]);
+    }, [popupOpen, closePopup]);
     
 
     return (
