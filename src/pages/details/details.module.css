@@ -20,16 +20,31 @@
     gap: 10px;
 }
 
-.input_div select{
-    border: 1px solid rgb(102, 102, 102);
-    padding: 13px;
+.input_div select {
+    -webkit-appearance: none;
+    border: 1px solid orange;
+    padding: 13px 13px 13px 13px;
     font-size: 16px;
     border-radius: 30px;
     width: 280px;
     font-family: 'Fredoka', sans-serif;
     direction: rtl;
-    border: 1px solid orange;
+    background-color: white;
 }
+.input_div::after {
+    content: '▼';
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: orange;
+}
+.input_div {
+    position: relative;
+}
+
+
 
 .btn_div{
     margin-top: 30px;
