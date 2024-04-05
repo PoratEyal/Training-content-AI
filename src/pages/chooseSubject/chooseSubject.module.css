@@ -11,7 +11,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.492);
     z-index: 10;
 }
 
@@ -28,8 +28,10 @@
 }
 
 .h3{
-    color: rgb(68, 68, 68);
+    color: orange;
     margin-right: 15px;
+    font-size: 22px;
+    margin-top: 40px;
 }
 
 .subjects_div{
@@ -47,12 +49,18 @@
     font-family: 'Fredoka', sans-serif;
     margin-bottom: 15px;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     height: 50px;
     transition: background-color 0.3s ease, border 0.3s ease;
     background-color: white;
     border: 1px solid orange;
-    color: rgb(68, 68, 68);
+    color: orange;
+}
+
+.subject_btn.selected {
+    border: 1px solid orange;
+    background-color: rgb(255, 204, 109);
+    color: white;
 }
 
 .down_buttons_div{
@@ -75,7 +83,7 @@
     width: 110px;
     background-color: white;
     border: 1px solid orange;
-    color: rgb(68, 68, 68);
+    color: orange;
 }
 
 .generate_btn{
@@ -94,7 +102,7 @@
     align-items: center;
     background-color: white;
     border: 1px solid orange;
-    color: rgb(68, 68, 68);
+    color: orange;
 }
 
 .loading_icon{
@@ -123,12 +131,6 @@
     bottom: 30px;
     width: 280px;
     color: white;
-}
-
-.subject_btn.selected {
-    background-color: rgb(245, 206, 132);
-    border: 1px solid orange;
-    border: none;
 }
 
 .submit_btn_div{

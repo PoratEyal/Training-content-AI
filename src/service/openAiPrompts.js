@@ -14,7 +14,7 @@ const subjectsPrompt = {
     messages: [
         {
             role: "user",
-            content: "give me 4 diverse topics in hebrew",
+            content: "give me 5 diverse topics in hebrew About cool and intersting topics that can be passed on to children",
         },
     ],
     temperature: 0.7,
@@ -63,7 +63,7 @@ const activityPrompt = (subjet, time, amount, age, place) => {
       messages: [
         {
           role: "user",
-          content: `You are a Eagle Scout and i want you to create activity for the your gruop. Your subject for the activity is: ${subjet}, The grade of the group is: ${age}, the number of the children in the activiy is: ${amount}, the time of the activiy is: ${time}, the place is ${place}. in the begining of the activity add the title of the activity, the number of the children, the time of the activity. return me the answer in hebrew languge.`,
+          content: `You are a Eagle Scout and i want you to create activity for the your gruop. Your subject for the activity is: ${subjet}, The grade of the group is: ${age}, the number of the children in the activiy is: ${amount}, the time of the activiy is: ${time}. the place of the activity is: ${place}. In the begining of the activity add the title of the activity, the number of the children, the time of the activity. Add in the activity tools or things that need to be used to use them for the activity. When creating the activity, consider that the equipment for preparing the activity should be light and simple. Do not omit any information from the activity that would be unclear to the reader of the activity. return me the answer in hebrew languge.`,
         },
       ],
       temperature: 0.7,
@@ -87,3 +87,30 @@ export async function getActivity (subject, time, amount, age, place) {
         throw error;
     }
 };
+
+
+// - - - - - - activity image prompt section - - - - - - - - - - - -
+
+export async function getImg(activity) {
+
+    const requestOptions = {
+        method: "POST",
+        url: "https://api.openai.com/v1/images/generations",
+        headers: openAiheaders,
+        data: {
+            model: "dall-e-3",
+            prompt: `Create me fully realistic!!! image of Scouting activity about this text: ${activity}`,
+            n: 1,
+            size: "1024x1024",
+        },
+    };
+
+    try {
+        const response = await axios(requestOptions);
+        const responseData = response.data;
+        return responseData;
+    } catch (error) {
+        console.error("Error fetching image:", error);
+        throw error;
+    }
+}

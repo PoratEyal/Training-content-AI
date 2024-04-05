@@ -10,7 +10,8 @@ export const ContentProvider = ({ children }) => {
         grade: '',
         time: '',
         amount: 0,
-        place: ''
+        place: '',
+        img: ''
     });
 
     const updateDetails = (grade, time, amount, place) => {
@@ -44,8 +45,15 @@ export const ContentProvider = ({ children }) => {
         }));
     };
 
+    const updateImage = (url) => {
+        setData((prevData) => ({
+            ...prevData,
+            img: url,
+        }));
+    };
+
     return (
-        <ContentContext.Provider value={{ data, setData, updateMainSubject, updateSubjects, updateDetails, updateActivity }}>
+        <ContentContext.Provider value={{ data, setData, updateMainSubject, updateSubjects, updateDetails, updateActivity, updateImage }}>
             {children}
         </ContentContext.Provider>
     );

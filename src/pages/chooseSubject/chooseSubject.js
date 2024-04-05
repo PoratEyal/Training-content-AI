@@ -3,7 +3,7 @@ import { useContentContext } from '../../context/ContentContext';
 import styles from './chooseSubject.module.css';
 import { FaWandMagicSparkles } from "react-icons/fa6";
 import { VscLoading } from "react-icons/vsc";
-import { getSubjects, getActivity } from '../../service/openAiPrompts';
+import { getSubjects, getActivity, getImg } from '../../service/openAiPrompts';
 import AddSubject from '../../components/popups/addSubject/addSubject';
 import { useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
@@ -11,7 +11,7 @@ import { useCallback } from 'react';
 
 function ChooseSubject() {
 
-    const { updateSubjects, data, updateMainSubject, updateActivity } = useContentContext();
+    const { updateSubjects, data, updateMainSubject, updateActivity, updateImage } = useContentContext();
     const [generateClicked, setGenerateClicked] = useState(false);
     const [popupOpen, setPopupOpen] = useState(false);
     const [selectedSubjectIndex, setSelectedSubjectIndex] = useState(null);
@@ -31,6 +31,16 @@ function ChooseSubject() {
         setBtnClicked(true)
         const ans =  await getActivity(data.mainSubject, data.time, data.amount, data.grade, data.place)
         updateActivity(ans)
+        generateImg(ans)
+    }
+
+    const generateImg = async (activity) => {
+        const img = await getImg(activity)
+        const response = await getImg(img);
+        if (response && response.data) {
+            console.log(response.data);
+            updateImage(response.data)
+        }
         navigate('/activity')
     }
 
