@@ -4,39 +4,44 @@ const ContentContext = createContext();
 
 export const ContentProvider = ({ children }) => {
     const [data, setData] = useState({
-        subjects: [],
+        pointOfView: {
+            use: false,
+            data: ''
+        },
+        contentActivity: {
+            use: false,
+            data: ''
+        },
+        scoutingTime: {
+            use: false,
+            data: ''
+        },
+        playingTime: {
+            use: false,
+            data: ''
+        },
+        other: {
+            use: false,
+        },
         activity: '',
-        mainSubject: '',
         grade: '',
+        gender: '',
         time: '',
         amount: 0,
         place: '',
         img: ''
     });
 
-    const updateDetails = (grade, time, amount, place) => {
+    const updateDetails = (grade, time, amount, place, gender) => {
         setData((prevData) => ({
             ...prevData,
             grade: grade,
             time: time,
             amount: amount,
             place: place,
+            gender: gender
         }));
     }
-
-    const updateSubjects = (newSubjects) => {
-        setData((prevData) => ({
-            ...prevData,
-            subjects: newSubjects,
-        }));
-    };
-
-    const updateMainSubject = (subject) => {
-        setData((prevData) => ({
-            ...prevData,
-            mainSubject: subject,
-        }));
-    };
 
     const updateActivity = (activity) => {
         setData((prevData) => ({
@@ -52,8 +57,67 @@ export const ContentProvider = ({ children }) => {
         }));
     };
 
+    // - - - - - - Content Activity - - - - - - - - - - - - - - -
+
+    const updateContentActivity = (data) => {
+        setData((prevData) => ({
+            ...prevData,
+            contentActivity: {
+                use: true,
+                data: data
+            }
+        }));
+    };
+
+    // - - - - - - Point Of View - - - - - - - - - - - - - - -
+
+    const updatePointOfView = (data) => {
+        setData((prevData) => ({
+            ...prevData,
+            pointOfView: {
+                use: true,
+                data: data
+            }
+        }));
+    };
+
+    // - - - - - - Scouting Time - - - - - - - - - - - - - - -
+
+    const updateScoutingTime = (data) => {
+        setData((prevData) => ({
+            ...prevData,
+            scoutingTime: {
+                use: true,
+                data: data
+            }
+        }));
+    };
+
+     // - - - - - - playing Time - - - - - - - - - - - - - - -
+
+    const updatePlayingTime = (data) => {
+        setData((prevData) => ({
+            ...prevData,
+            playingTime: {
+                use: true,
+                data: data
+            }
+        }));
+        console.log(data.pointOfView);
+    };
+
     return (
-        <ContentContext.Provider value={{ data, setData, updateMainSubject, updateSubjects, updateDetails, updateActivity, updateImage }}>
+        <ContentContext.Provider value={{
+                data,
+                setData,
+                updateDetails,
+                updateActivity,
+                updateImage, 
+                updatePointOfView, 
+                updateContentActivity, 
+                updateScoutingTime, 
+                updatePlayingTime
+            }}>
             {children}
         </ContentContext.Provider>
     );

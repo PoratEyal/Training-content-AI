@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styles from './details.module.css';
-import { getSubjects } from '../../service/openAiPrompts';
 import { VscLoading } from "react-icons/vsc";
 import { useContentContext } from '../../context/ContentContext';
 import { useNavigate } from 'react-router-dom';
@@ -11,26 +10,19 @@ function Details() {
     const [numberOfChildren, setNumberOfChildren] = useState('');
     const [activityLocation, setActivityLocation] = useState('');
     const [activityDuration, setActivityDuration] = useState('');
+    const [gender, setGender] = useState('');
 
     const [clicked, setClicked] = useState(false)
-    const [subjects, setSubjects] = useState([])
 
-    const { updateSubjects, updateDetails } = useContentContext();
+    const { updateDetails } = useContentContext();
 
     const navigate = useNavigate();
-
-    const getAndSetSubjects = async () => {
-        const ans = await getSubjects();
-        setSubjects(ans.subjectList);
-        updateSubjects(ans.subjectList);
-        navigate('/chooseSubject')
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setClicked(true);
-        updateDetails(classLevel, activityDuration, numberOfChildren, activityLocation)
-        getAndSetSubjects()
+        updateDetails(classLevel, activityDuration, numberOfChildren, activityLocation, gender)
+        navigate('/choosePath')
     };
 
     return (
@@ -46,7 +38,7 @@ function Details() {
                       aria-label="כיתה"
                     >
                         <option value="" disabled>כיתה</option>
-                        {['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח'].map((level) => (
+                        {['ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט'].map((level) => (
                             <option key={level} value={level}>{level}</option>
                         ))}
                     </select>
@@ -59,7 +51,7 @@ function Details() {
                       aria-label="מספר ילדים"
                     >
                         <option value="" disabled>מספר ילדים</option>
-                        {['1-5', '5-10', '10-20', '20-30'].map((range) => (
+                        {['1-5', '5-10', '10-20', '20-30', '30-50', '50-75', '75-100'].map((range) => (
                             <option key={range} value={range}>{range}</option>
                         ))}
                     </select>
@@ -91,10 +83,23 @@ function Details() {
                     </select>
                 </div>
 
+                <div className={styles.input_div}>
+                    <select 
+                      value={gender} 
+                      onChange={(e) => setGender(e.target.value)}
+                      aria-label="מין"
+                    >
+                        <option value="" disabled>מין</option>
+                        {['בנות', 'בנים', 'מעורב'].map((duration) => (
+                            <option key={duration} value={duration}>{duration}</option>
+                        ))}
+                    </select>
+                </div>
+
                 <div className={styles.btn_div}>
                     <button onClick={() => setClicked(true)} className={styles.submit_btn} type="submit">
                         {!clicked ?
-                            "צור לי פעולה"
+                            "המשיכו"
                         :
                             <VscLoading className={styles.loading_icon}></VscLoading>}
                     </button>
