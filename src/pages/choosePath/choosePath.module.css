@@ -4,7 +4,7 @@
     margin-top: 30px;
     width: auto;
     justify-content: space-between;
-    height: 90vh;
+    height: 94vh;
 }
 
 .back_icon{
@@ -28,7 +28,7 @@
 
 .checkbox_div{
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .inputs_div{
@@ -37,7 +37,7 @@
     justify-content: center;
     align-items: flex-start;
 }
-.checkbox_div input{
+.input{
     padding: 12px;
     margin: 10px;
     border: none;
@@ -48,6 +48,11 @@
     background-color: rgb(255, 255, 255);
     border: 1px solid orange;
     outline: none;
+    width: 250px;
+}
+
+.checkbox_input{
+    font-size: 21px;
 }
 
 .input_and_icon{
@@ -69,7 +74,6 @@
 .loading_icon_magic{
     color: orange;
     padding: 5px;
-    /* padding-right: 10px; */
     margin-right: -48px;
     border: none;
     background-color: white;
@@ -78,7 +82,8 @@
 
 
 .btn_div{
-    margin-top: 30px;
+    margin-top: 10px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: center;
     align-items: center;

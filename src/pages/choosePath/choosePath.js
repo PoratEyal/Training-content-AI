@@ -6,7 +6,7 @@ import {  } from '../../service/openAiPrompts';
 import { useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
 import { FaWandMagicSparkles } from "react-icons/fa6";
-import { getPointOfView, getContentActivity, getScoutingTime, getPlayingTime, getScoutingTimeSubject } from '../../service/openAiPrompts';
+import { getPointOfView, getContentActivity, getScoutingTime, getPlayingTime, getScoutingTimeSubject, getPointOfViewSubject } from '../../service/openAiPrompts';
 
 function ChoosePath() {
 
@@ -17,13 +17,13 @@ function ChoosePath() {
         } = useContentContext();
 
     const [clicked, setClicked] = useState(false)
-    const [magicClicked, setMagicClicked] = useState(false)
     const navigate = useNavigate();
 
     // State hooks for managing visibility of input fields
     const [showPointOfView, setShowPointOfView] = useState(false);
     const [pointOfViewSubject, setPointOfViewSubject] = useState('');
     const [pointOfViewTime, setPointOfViewTime] = useState('');
+    const [magicClickedPoint, setMagicClickedPoint] = useState(false);
 
     const [showContentActivity, setShowContentActivity] = useState(false);
     const [contentActivitySubject, setContentActivitySubject] = useState('');
@@ -32,6 +32,7 @@ function ChoosePath() {
     const [showScoutingTime, setShowScoutingTime] = useState(false);
     const [scoutingTimeSubject, setScoutingTimeSubject] = useState('');
     const [scoutingTimeTime, setScoutingTimeTime] = useState('');
+    const [magicClicked, setMagicClicked] = useState(false);
 
     const [showPlayingTime, setShowPlayingTime] = useState(false);
     const [playingTimeSubject, setPlayingTimeSubject] = useState('');
@@ -48,14 +49,27 @@ function ChoosePath() {
 
     const handleInputChange = (setter) => (e) => setter(e.target.value);
 
-    const generateSubject = async () => {
-        setMagicClicked(true)
-        setScoutingTimeSubject('')
-        const response = await getScoutingTimeSubject()
-        console.log(response);
-        setMagicClicked(false)
-        if (response.subjectList && response.subjectList.length > 0) {
-            setScoutingTimeSubject(response.subjectList[0])
+    const generateSubject = async (index) => {
+        if(index == 3){
+            setMagicClicked(true)
+            setScoutingTimeSubject('')
+            const response = await getScoutingTimeSubject()
+            console.log(response);
+            setMagicClicked(false)
+            if (response.subjectList && response.subjectList.length > 0) {
+                setScoutingTimeSubject(response.subjectList[0])
+            }
+        }
+
+        if(index == 1){
+            setMagicClickedPoint(true)
+            setPointOfViewSubject('')
+            const response = await getPointOfViewSubject()
+            console.log(response);
+            setMagicClickedPoint(false)
+            if (response.subjectList && response.subjectList.length > 0) {
+                setPointOfViewSubject(response.subjectList[0])
+            }
         }
     }
 
@@ -104,18 +118,25 @@ function ChoosePath() {
                 <h3 className={styles.h3}>שלום מדריכים אלופים! <br></br>בחרו במה תרצו להתמקד בפעילות שלכם</h3>
 
                 <div className={styles.checkbox_div}>
-                    <label><input type="checkbox" checked={showPointOfView} onChange={togglePointOfView} /> נקודת מבט</label>
+                    <label className={styles.checkbox_input}><input type="checkbox" checked={showPointOfView} onChange={togglePointOfView} /> נקודת מבט</label>
                     {showPointOfView && <div className={styles.inputs_div}>
-                        <input value={pointOfViewSubject} onChange={handleInputChange(setPointOfViewSubject)} placeholder="נושא הפעילות" type="text" />
-                        <input value={pointOfViewTime} onChange={handleInputChange(setPointOfViewTime)} placeholder="זמן הפעילות" type="text" />  
+                    <div className={styles.input_and_icon}>
+                        <input className={styles.input} value={pointOfViewSubject} onChange={handleInputChange(setPointOfViewSubject)} placeholder="נושא הפעילות" type="text" />
+                        {!magicClickedPoint? 
+                                <FaWandMagicSparkles onClick={() => generateSubject(1)} className={styles.magic_icon}></FaWandMagicSparkles>
+                            :
+                                <VscLoading className={styles.loading_icon_magic}></VscLoading>}
+                    </div>
+                        
+                        <input className={styles.input} value={pointOfViewTime} onChange={handleInputChange(setPointOfViewTime)} placeholder="זמן הפעילות" type="text" />  
                     </div>}
                 </div>
 
                 <div className={styles.checkbox_div}>
                     <label><input type="checkbox" checked={showContentActivity} onChange={toggleContentActivity} /> פעילות תוכן</label>
                     {showContentActivity && <div className={styles.inputs_div}>
-                        <input value={contentActivitySubject} onChange={handleInputChange(setContentActivitySubject)} placeholder="נושא הפעילות" type="text" />
-                        <input value={contentActivityTime} onChange={handleInputChange(setContentActivityTime)} placeholder="זמן הפעילות" type="text" />  
+                        <input className={styles.input} value={contentActivitySubject} onChange={handleInputChange(setContentActivitySubject)} placeholder="נושא הפעילות" type="text" />
+                        <input className={styles.input} value={contentActivityTime} onChange={handleInputChange(setContentActivityTime)} placeholder="זמן הפעילות" type="text" />  
                     </div>}
                 </div>
 
@@ -123,21 +144,21 @@ function ChoosePath() {
                     <label><input type="checkbox" checked={showScoutingTime} onChange={toggleScoutingTime} /> זמן צופיות</label>
                     {showScoutingTime && <div className={styles.inputs_div}>
                         <div className={styles.input_and_icon}>
-                            <input value={scoutingTimeSubject} onChange={handleInputChange(setScoutingTimeSubject)} placeholder="נושא הפעילות" type="text" />
+                            <input className={styles.input} value={scoutingTimeSubject} onChange={handleInputChange(setScoutingTimeSubject)} placeholder="נושא הפעילות" type="text" />
                             {!magicClicked? 
-                                <FaWandMagicSparkles onClick={generateSubject} className={styles.magic_icon}></FaWandMagicSparkles>
+                                <FaWandMagicSparkles onClick={() => generateSubject(3)} className={styles.magic_icon}></FaWandMagicSparkles>
                             :
                                 <VscLoading className={styles.loading_icon_magic}></VscLoading>}
                         </div>
-                        <input value={scoutingTimeTime} onChange={handleInputChange(setScoutingTimeTime)} placeholder="זמן הפעילות" type="text" />  
+                        <input className={styles.input} value={scoutingTimeTime} onChange={handleInputChange(setScoutingTimeTime)} placeholder="זמן הפעילות" type="text" />  
                     </div>}
                 </div>
 
                 <div className={styles.checkbox_div}>
                     <label><input type="checkbox" checked={showPlayingTime} onChange={togglePlayingTime} /> זמן משחק</label>
                     {showPlayingTime && <div className={styles.inputs_div}>
-                        <input value={playingTimeSubject} onChange={handleInputChange(setPlayingTimeSubject)} placeholder="נושא הפעילות" type="text" />
-                        <input value={playingTimeTime} onChange={handleInputChange(setPlayingTimeTime)} placeholder="זמן הפעילות" type="text" />  
+                        <input className={styles.input} value={playingTimeSubject} onChange={handleInputChange(setPlayingTimeSubject)} placeholder="נושא הפעילות" type="text" />
+                        <input className={styles.input} value={playingTimeTime} onChange={handleInputChange(setPlayingTimeTime)} placeholder="זמן הפעילות" type="text" />  
                     </div>}
                 </div>
 

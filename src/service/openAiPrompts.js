@@ -147,6 +147,55 @@ export async function getPointOfView (subject, time) {
     }
 };
 
+const pointOfViewSubjectPrompt = {
+    "model": "gpt-4",
+    "messages": [
+        {
+            "role": "user",
+            "content": "מצא לי נושא אחד בלבד, מעניין וספציפי, שנמצא בישראל או בעולם, המתאים לדיון עם ילדים. נא להחזיר את התשובה בשפה העברית בלבד."
+        }
+    ],
+    "temperature": 0.7,
+    "functions": [
+        {
+            "name": "generate_subject",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "subjectList": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "minItems": 1,
+                        "maxItems": 1
+                    }
+                }
+            }
+        }
+    ]
+}
+
+export async function getPointOfViewSubject() {
+    const requestOptions = {
+        method: "post",
+        url: OpenAIUrl,
+        data: pointOfViewSubjectPrompt,
+        headers: openAiheaders,
+    };
+
+    try {
+        const response = await axios(requestOptions);
+        const responseData = response.data;
+        const subjectListString = responseData?.choices?.[0]?.message?.function_call?.arguments;
+        const subjectList = JSON.parse(subjectListString);
+        return subjectList;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
 
 // - - - - - - - - - - Content activity - - - - - - - - - - - - - - - - - - 
 
@@ -218,7 +267,7 @@ const scoutingTimeSubjectPrompt = {
     messages: [
         {
             role: "user",
-            content: "give me just One topic! related to the skill of scouts. return the answer in Hebrew languge. example: הדלקת מדורה",
+            content: "give me just One topic! related to the skill of scouts. return the answer in Hebrew languge. example answers: הדלקת מדורה .(dont use the example as an answer)",
         },
     ],
     temperature: 0.7,
