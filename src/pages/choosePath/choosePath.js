@@ -6,14 +6,16 @@ import {  } from '../../service/openAiPrompts';
 import { useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
 import { FaWandMagicSparkles } from "react-icons/fa6";
-import { getPointOfView, getContentActivity, getScoutingTime, getPlayingTime, getScoutingTimeSubject, getPointOfViewSubject } from '../../service/openAiPrompts';
+import { getImg, getPointOfView, getContentActivity, getScoutingTime, getPlayingTime, getScoutingTimeSubject, getPointOfViewSubject } from '../../service/openAiPrompts';
 
 function ChoosePath() {
 
-    const { updatePointOfView,
+    const { data,
+            updatePointOfView,
             updateContentActivity,
             updateScoutingTime,
-            updatePlayingTime
+            updatePlayingTime,
+            updateImage
         } = useContentContext();
 
     const [clicked, setClicked] = useState(false)
@@ -75,38 +77,35 @@ function ChoosePath() {
 
     const submitHandler = async () => {
         setClicked(true);
-        if(showPointOfView){
-            const ans = await getPointOfView(pointOfViewSubject, pointOfViewTime)
-            console.log(ans);
-            updatePointOfView(ans)
+        const promises = [];
+    
+        if (showPointOfView) {
+            promises.push(getPointOfView(pointOfViewSubject, pointOfViewTime).then(updatePointOfView));
         }
-        if(showContentActivity){
-            const ans = await getContentActivity(contentActivitySubject, contentActivityTime)
-            console.log(ans);
-            updateContentActivity(ans)
+        if (showContentActivity) {
+            promises.push(getContentActivity(contentActivitySubject, contentActivityTime).then(updateContentActivity));
         }
-        if(showScoutingTime){
-            const ans = await getScoutingTime(scoutingTimeSubject, scoutingTimeTime)
-            console.log(ans);
-            updateScoutingTime(ans)
+        if (showScoutingTime) {
+            promises.push(getScoutingTime(scoutingTimeSubject, scoutingTimeTime).then(updateScoutingTime));
         }
-        if(showPlayingTime){
-            const ans = await getPlayingTime(playingTimeSubject, playingTimeTime)
-            console.log(ans);
-            updatePlayingTime(ans)
+        if (showPlayingTime) {
+            promises.push(getPlayingTime(playingTimeSubject, playingTimeTime).then(updatePlayingTime));
+        }
+    
+        await Promise.allSettled(promises);
+        navigate('/activity')
+        //await generateImg(data.playingTime.data)
+    }
+
+    const generateImg = async (activity) => {
+        const img = await getImg(activity)
+        const response = await getImg(img);
+        if (response && response.data) {
+            console.log(response.data);
+            updateImage(response.data)
         }
         navigate('/activity')
     }
-
-    // const generateImg = async (activity) => {
-    //     const img = await getImg(activity)
-    //     const response = await getImg(img);
-    //     if (response && response.data) {
-    //         console.log(response.data);
-    //         updateImage(response.data)
-    //     }
-    //     navigate('/activity')
-    // }
 
     return (
         <div className={styles.container}>
