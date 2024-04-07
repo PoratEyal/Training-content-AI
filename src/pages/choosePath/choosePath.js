@@ -5,7 +5,8 @@ import { VscLoading } from "react-icons/vsc";
 import {  } from '../../service/openAiPrompts';
 import { useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
-import { getPointOfView, getContentActivity, getScoutingTime, getPlayingTime } from '../../service/openAiPrompts';
+import { FaWandMagicSparkles } from "react-icons/fa6";
+import { getPointOfView, getContentActivity, getScoutingTime, getPlayingTime, getScoutingTimeSubject } from '../../service/openAiPrompts';
 
 function ChoosePath() {
 
@@ -16,6 +17,7 @@ function ChoosePath() {
         } = useContentContext();
 
     const [clicked, setClicked] = useState(false)
+    const [magicClicked, setMagicClicked] = useState(false)
     const navigate = useNavigate();
 
     // State hooks for managing visibility of input fields
@@ -45,6 +47,17 @@ function ChoosePath() {
     const toggleOthers = () => setShowOthers(!showOthers);
 
     const handleInputChange = (setter) => (e) => setter(e.target.value);
+
+    const generateSubject = async () => {
+        setMagicClicked(true)
+        setScoutingTimeSubject('')
+        const response = await getScoutingTimeSubject()
+        console.log(response);
+        setMagicClicked(false)
+        if (response.subjectList && response.subjectList.length > 0) {
+            setScoutingTimeSubject(response.subjectList[0])
+        }
+    }
 
     const submitHandler = async () => {
         setClicked(true);
@@ -109,7 +122,13 @@ function ChoosePath() {
                 <div className={styles.checkbox_div}>
                     <label><input type="checkbox" checked={showScoutingTime} onChange={toggleScoutingTime} /> זמן צופיות</label>
                     {showScoutingTime && <div className={styles.inputs_div}>
-                        <input value={scoutingTimeSubject} onChange={handleInputChange(setScoutingTimeSubject)} placeholder="נושא הפעילות" type="text" />
+                        <div className={styles.input_and_icon}>
+                            <input value={scoutingTimeSubject} onChange={handleInputChange(setScoutingTimeSubject)} placeholder="נושא הפעילות" type="text" />
+                            {!magicClicked? 
+                                <FaWandMagicSparkles onClick={generateSubject} className={styles.magic_icon}></FaWandMagicSparkles>
+                            :
+                                <VscLoading className={styles.loading_icon_magic}></VscLoading>}
+                        </div>
                         <input value={scoutingTimeTime} onChange={handleInputChange(setScoutingTimeTime)} placeholder="זמן הפעילות" type="text" />  
                     </div>}
                 </div>

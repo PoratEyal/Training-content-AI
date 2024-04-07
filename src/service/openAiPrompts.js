@@ -213,6 +213,51 @@ export async function getScoutingTime (subject, time) {
     }
 };
 
+const scoutingTimeSubjectPrompt = {
+    model: "gpt-4",
+    messages: [
+        {
+            role: "user",
+            content: "give me just One topic! related to the skill of scouts. return the answer in Hebrew languge. example: הדלקת מדורה",
+        },
+    ],
+    temperature: 0.7,
+    functions: [
+        {
+            name: "generate_subjects",
+            parameters: {
+                type: "object",
+                properties: {
+                    subjectList: {
+                        type: "array",
+                        items: {
+                            type: "string",
+                        },
+                    },
+                },
+            },
+        },
+    ],
+};
+export async function getScoutingTimeSubject() {
+    const requestOptions = {
+        method: "post",
+        url: OpenAIUrl,
+        data: scoutingTimeSubjectPrompt,
+        headers: openAiheaders,
+    };
+
+    try {
+        const response = await axios(requestOptions);
+        const responseData = response.data;
+        const subjectListString = responseData?.choices?.[0]?.message?.function_call?.arguments;
+        const subjectList = JSON.parse(subjectListString);
+        return subjectList;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
 
 // - - - - - - - - - - playing Time - - - - - - - - - - - - - - - - - - 
 
