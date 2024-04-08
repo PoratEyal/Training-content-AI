@@ -57,24 +57,24 @@ export async function getSubjects() {
 
 // - - - - - - activity prompt section - - - - - - - - - - - -
 
-const activityPrompt = (subjet, time, amount, age, place) => {
+const moreContnentPrompt  = (activityDescription) => {
     return {
-      model: "gpt-4",
-      messages: [
+        model: "gpt-4",
+        messages: [
         {
-          role: "user",
-          content: `You are a Eagle Scout and i want you to create activity for the your gruop. Your subject for the activity is: ${subjet}, The grade of the group is: ${age}, the number of the children in the activiy is: ${amount}, the time of the activiy is: ${time}. the place of the activity is: ${place}. In the begining of the activity add the title of the activity, the number of the children, the time of the activity. Add in the activity tools or things that need to be used to use them for the activity. When creating the activity, consider that the equipment for preparing the activity should be light and simple. Do not omit any information from the activity that would be unclear to the reader of the activity. return me the answer in hebrew languge.`,
+            role: "user",
+            content: `Expand on this activity: ${activityDescription}. Include comprehensive details to ensure everything is thoroughly explained. The response should be in Hebrew.`,
         },
-      ],
-      temperature: 0.7,
+        ],
+        temperature: 0.7,
     };
-};
+};  
 
-export async function getActivity (subject, time, amount, age, place) {
+export async function getMoreContent (activityDescription) {
     const requestOptions2 = {
         method: "post",
         url: OpenAIUrl,
-        data: activityPrompt(subject, time, amount, age, place),
+        data: moreContnentPrompt(activityDescription),
         headers: openAiheaders,
     };
 
@@ -114,7 +114,6 @@ export async function getImg(activity) {
         throw error;
     }
 }
-
 
 // - - - - - - - - - - Point of View - - - - - - - - - - - - - - - - - - 
 

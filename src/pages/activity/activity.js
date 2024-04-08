@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './activity.module.css';
 import { useContentContext } from '../../context/ContentContext';
 import { useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
-import { getPointOfView, getContentActivity, getScoutingTime, getPlayingTime } from '../../service/openAiPrompts';
+import { AiOutlineLoading } from "react-icons/ai";
+import { getPointOfView, getContentActivity, getScoutingTime, getPlayingTime, getMoreContent } from '../../service/openAiPrompts';
 
 function Activity() {
     
@@ -17,9 +18,16 @@ function Activity() {
     const navigate = useNavigate();
 
     const [iconClickedPoint, setIconClickedPoint] = useState(false)
+    const [moreDataPoint, setMoreDataPoint] = useState(false)
+
     const [iconClickedContent, setIconClickedContent] = useState(false)
+    const [moreDataContent, setMoreDataContent] = useState(false)
+
     const [iconClickedScoutingTime, setIconClickedScoutingTime] = useState(false)
+    const [moreDataScoutingTime, setMoreDataScoutingTime] = useState(false)
+
     const [iconClickedPlaying, setIconClickedPlaying] = useState(false)
+    const [moreDataPlaying, setMoreDataPlaying] = useState(false)
 
     const generateAgain = async (index) => {
         if(index == 1){
@@ -48,6 +56,33 @@ function Activity() {
         }
     }
 
+    const moreData = async (index) => {
+        if(index == 1){
+            setMoreDataPoint(true)
+            const result = await getMoreContent(data.pointOfView.data)
+            updatePointOfView(data.pointOfView.subject, data.pointOfView.time, result)
+            setMoreDataPoint(false)
+        }
+        if(index == 2){
+            setMoreDataContent(true)
+            const result = await getMoreContent(data.contentActivity.data)
+            updateContentActivity(data.contentActivity.subject, data.contentActivity.time, result)
+            setMoreDataContent(false)
+        }
+        if(index == 3){
+            setMoreDataScoutingTime(true)
+            const result = await getMoreContent(data.scoutingTime.data)
+            updateScoutingTime(data.scoutingTime.subject, data.scoutingTime.time, result)
+            setMoreDataScoutingTime(false)
+        }
+        if(index == 4){
+            setMoreDataPlaying(true)
+            const result = await getMoreContent(data.playingTime.data)
+            updatePlayingTime(data.playingTime.subject, data.playingTime.time, result)
+            setMoreDataPlaying(false)
+        }
+    }
+
     // Function to format the activity text with line breaks
     const formatTextWithLineBreaks = (text) => {
         return text.split('\n').map((line, index, array) => (
@@ -72,10 +107,16 @@ function Activity() {
                 <div className={styles.activity_div}>
                     <div className={styles.h2_icon_div}>
                         <h2>נקודת מבט</h2>
-                        {!iconClickedPoint ?
-                            <img onClick={() => generateAgain(1)} className={styles.svg_icon} src='ai.svg'></img>
-                        :
-                            <img onClick={() => generateAgain(1)} className={styles.svg_icon_loading} src='ai.svg'></img>}
+                        <div className={styles.icons}>
+                            {!iconClickedPoint ?
+                                <img onClick={() => generateAgain(1)} className={styles.svg_icon} src='ai.svg'></img>
+                            :
+                                <img onClick={() => generateAgain(1)} className={styles.svg_icon_loading} src='ai.svg'></img>}
+                            {!moreDataPoint ?
+                                <img onClick={() => moreData(1)} className={styles.svg_icon} src='more.svg'></img>
+                            :
+                                <AiOutlineLoading onClick={() => moreData(1)} className={styles.icon_more}></AiOutlineLoading>}
+                        </div>
                     </div>
                     {formatTextWithLineBreaks(data.pointOfView.data)}
                 </div>}
@@ -84,10 +125,16 @@ function Activity() {
                 <div className={styles.activity_div}>
                     <div className={styles.h2_icon_div}>
                         <h2>פעילות תוכן</h2>
-                        {!iconClickedContent ?
-                            <img onClick={() => generateAgain(2)} className={styles.svg_icon} src='ai.svg'></img>
-                        :
-                            <img onClick={() => generateAgain(2)} className={styles.svg_icon_loading} src='ai.svg'></img>}
+                        <div className={styles.icons}>
+                            {!iconClickedContent ?
+                                <img onClick={() => generateAgain(2)} className={styles.svg_icon} src='ai.svg'></img>
+                            :
+                                <img onClick={() => generateAgain(2)} className={styles.svg_icon_loading} src='ai.svg'></img>}
+                            {!moreDataContent ?
+                                    <img onClick={() => moreData(2)} className={styles.svg_icon} src='more.svg'></img>
+                                :
+                                    <AiOutlineLoading onClick={() => moreData(2)} className={styles.icon_more}></AiOutlineLoading>}
+                        </div>
                     </div>
                     {formatTextWithLineBreaks(data.contentActivity.data)}
                 </div>}
@@ -96,10 +143,16 @@ function Activity() {
                 <div className={styles.activity_div}>
                     <div className={styles.h2_icon_div}>
                         <h2>זמן צופיות</h2>
-                        {!iconClickedScoutingTime ?
-                            <img onClick={() => generateAgain(3)} className={styles.svg_icon} src='ai.svg'></img>
-                        :
-                            <img onClick={() => generateAgain(3)} className={styles.svg_icon_loading} src='ai.svg'></img>}
+                        <div className={styles.icons}>
+                            {!iconClickedScoutingTime ?
+                                <img onClick={() => generateAgain(3)} className={styles.svg_icon} src='ai.svg'></img>
+                            :
+                                <img onClick={() => generateAgain(3)} className={styles.svg_icon_loading} src='ai.svg'></img>}
+                            {!moreDataScoutingTime ?
+                                <img onClick={() => moreData(3)} className={styles.svg_icon} src='more.svg'></img>
+                            :
+                                <AiOutlineLoading onClick={() => moreData(3)} className={styles.icon_more}></AiOutlineLoading>}
+                        </div>
                     </div>
                     {formatTextWithLineBreaks(data.scoutingTime.data)}
                 </div>}
@@ -108,10 +161,16 @@ function Activity() {
                 <div className={styles.activity_div}>
                     <div className={styles.h2_icon_div}>
                         <h2>זמן משחק</h2>
-                        {!iconClickedPlaying ?
-                            <img onClick={() => generateAgain(4)} className={styles.svg_icon} src='ai.svg'></img>
-                        :
-                            <img onClick={() => generateAgain(4)} className={styles.svg_icon_loading} src='ai.svg'></img>}
+                        <div className={styles.icons}>
+                            {!iconClickedPlaying ?
+                                <img onClick={() => generateAgain(4)} className={styles.svg_icon} src='ai.svg'></img>
+                            :
+                                <img onClick={() => generateAgain(4)} className={styles.svg_icon_loading} src='ai.svg'></img>}
+                            {!moreDataPlaying ?
+                                <img onClick={() => moreData(4)} className={styles.svg_icon} src='more.svg'></img>
+                            :
+                                <AiOutlineLoading onClick={() => moreData(4)} className={styles.icon_more}></AiOutlineLoading>}
+                        </div>
                     </div>
                     {formatTextWithLineBreaks(data.playingTime.data)}
                 </div>}

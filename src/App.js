@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ContentProvider } from '../src/context/ContentContext';
 import Details from '../src/pages/details/details';
-import ChooseSubject from './pages/chooseSubject/chooseSubject';
 import Activity from './pages/activity/activity';
 import ChoosePath from './pages/choosePath/choosePath'
 
@@ -12,7 +11,6 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Details />} />
-          <Route path="/chooseSubject" element={<ChooseSubject />} />
           <Route path="/choosePath" element={<ChoosePath />} />
           <Route path="/activity" element={<Activity />} />
         </Routes>
