@@ -5,18 +5,26 @@ const ContentContext = createContext();
 export const ContentProvider = ({ children }) => {
     const [data, setData] = useState({
         pointOfView: {
+            subject: '',
+            time: '',
             use: false,
             data: ''
         },
         contentActivity: {
+            subject: '',
+            time: '',
             use: false,
             data: ''
         },
         scoutingTime: {
+            subject: '',
+            time: '',
             use: false,
             data: ''
         },
         playingTime: {
+            subject: '',
+            time: '',
             use: false,
             data: ''
         },
@@ -57,51 +65,38 @@ export const ContentProvider = ({ children }) => {
 
     // - - - - - - Content Activity - - - - - - - - - - - - - - -
 
-    const updateContentActivity = (data) => {
+    const updateContentActivity = (subject, time, result) => {
         setData((prevData) => ({
             ...prevData,
-            contentActivity: {
-                use: true,
-                data: data
-            }
+            contentActivity: { subject, time, use: true, data: result }
         }));
     };
 
     // - - - - - - Point Of View - - - - - - - - - - - - - - -
 
-    const updatePointOfView = (data) => {
+    const updatePointOfView = (subject, time, result) => {
         setData((prevData) => ({
             ...prevData,
-            pointOfView: {
-                use: true,
-                data: data
-            }
+            pointOfView: { subject, time, use: true, data: result }
         }));
     };
 
     // - - - - - - Scouting Time - - - - - - - - - - - - - - -
 
-    const updateScoutingTime = (data) => {
+    const updateScoutingTime = (subject, time, result) => {
         setData((prevData) => ({
             ...prevData,
-            scoutingTime: {
-                use: true,
-                data: data
-            }
+            scoutingTime: { subject, time, use: true, data: result }
         }));
     };
 
      // - - - - - - playing Time - - - - - - - - - - - - - - -
 
-    const updatePlayingTime = (data) => {
+     const updatePlayingTime = (subject, time, result) => {
         setData((prevData) => ({
             ...prevData,
-            playingTime: {
-                use: true,
-                data: data
-            }
+            playingTime: { subject, time, use: true, data: result }
         }));
-        console.log(data.pointOfView);
     };
 
     return (

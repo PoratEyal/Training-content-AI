@@ -82,17 +82,19 @@ function ChoosePath() {
         setClicked(true);
         const promises = [];
     
-        if (showPointOfView) {
-            promises.push(getPointOfView(pointOfViewSubject, pointOfViewTime, data.amount, data.grade, data.gender, data.place).then(updatePointOfView));
-        }
         if (showContentActivity) {
-            promises.push(getContentActivity(contentActivitySubject, contentActivityTime, data.amount, data.grade, data.gender, data.place).then(updateContentActivity));
+            promises.push(getContentActivity(contentActivitySubject, contentActivityTime, data.amount, data.grade, data.gender, data.place)
+                .then((result) => updateContentActivity(contentActivitySubject, contentActivityTime, result)));
         }
+        
         if (showScoutingTime) {
-            promises.push(getScoutingTime(scoutingTimeSubject, scoutingTimeTime, data.amount, data.grade, data.gender, data.place).then(updateScoutingTime));
+            promises.push(getScoutingTime(scoutingTimeSubject, scoutingTimeTime, data.amount, data.grade, data.gender, data.place)
+                .then((result) => updateScoutingTime(scoutingTimeSubject, scoutingTimeTime, result)));
         }
+        
         if (showPlayingTime) {
-            promises.push(getPlayingTime(playingTimeSubject, playingTimeTime, data.amount, data.grade, data.gender, data.place).then(updatePlayingTime));
+            promises.push(getPlayingTime(playingTimeSubject, playingTimeTime, data.amount, data.grade, data.gender, data.place)
+                .then((result) => updatePlayingTime(playingTimeSubject, playingTimeTime, result)));
         }
     
         await Promise.allSettled(promises);

@@ -3,9 +3,16 @@ import styles from './activity.module.css';
 import { useContentContext } from '../../context/ContentContext';
 import { useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
+import { getPointOfView, getContentActivity, getScoutingTime, getPlayingTime } from '../../service/openAiPrompts';
 
 function Activity() {
-    const { data } = useContentContext();
+    
+    const { data,
+        updatePointOfView,
+        updateContentActivity,
+        updateScoutingTime,
+        updatePlayingTime,
+    } = useContentContext();
     const navigate = useNavigate();
 
     const [iconClickedPoint, setIconClickedPoint] = useState(false)
@@ -13,8 +20,31 @@ function Activity() {
     const [iconClickedScoutingTime, setIconClickedScoutingTime] = useState(false)
     const [iconClickedPlaying, setIconClickedPlaying] = useState(false)
 
-    const generateAgain = async () => {
-
+    const generateAgain = async (index) => {
+        if(index == 1){
+            setIconClickedPoint(true)
+            const result = await getPointOfView(data.pointOfView.subject, data.pointOfView.time, data.amount, data.grade, data.gender, data.place)
+            updatePointOfView(data.pointOfView.subject, data.pointOfView.time, result)
+            setIconClickedPoint(false)
+        }
+        if(index == 2){
+            setIconClickedContent(true)
+            const result = await getContentActivity(data.contentActivity.subject, data.contentActivity.time, data.amount, data.grade, data.gender, data.place)
+            updateContentActivity(data.contentActivity.subject, data.contentActivity.time, result)
+            setIconClickedContent(false)
+        }
+        if(index == 3){
+            setIconClickedScoutingTime(true)
+            const result = await getScoutingTime(data.scoutingTime.subject, data.scoutingTime.time, data.amount, data.grade, data.gender, data.place)
+            updateScoutingTime(data.scoutingTime.subject, data.scoutingTime.time, result)
+            setIconClickedScoutingTime(false)
+        }
+        if(index == 4){
+            setIconClickedPlaying(true)
+            const result = await getPlayingTime(data.playingTime.subject, data.playingTime.time, data.amount, data.grade, data.gender, data.place)
+            updatePlayingTime(data.playingTime.subject, data.playingTime.time, result)
+            setIconClickedPlaying(false)
+        }
     }
 
     // Function to format the activity text with line breaks
@@ -36,7 +66,10 @@ function Activity() {
                 <div className={styles.activity_div}>
                     <div className={styles.h2_icon_div}>
                         <h2>נקודת מבט</h2>
-                        <img onClick={() => generateAgain(1)} className={styles.svg_icon} src='ai.svg'></img>
+                        {!iconClickedPoint ?
+                            <img onClick={() => generateAgain(1)} className={styles.svg_icon} src='ai.svg'></img>
+                        :
+                            <img onClick={() => generateAgain(1)} className={styles.svg_icon_loading} src='ai.svg'></img>}
                     </div>
                     {formatTextWithLineBreaks(data.pointOfView.data)}
                 </div>}
@@ -45,7 +78,10 @@ function Activity() {
                 <div className={styles.activity_div}>
                     <div className={styles.h2_icon_div}>
                         <h2>פעילות תוכן</h2>
-                        <img onClick={() => generateAgain(2)} className={styles.svg_icon} src='ai.svg'></img>
+                        {!iconClickedContent ?
+                            <img onClick={() => generateAgain(2)} className={styles.svg_icon} src='ai.svg'></img>
+                        :
+                            <img onClick={() => generateAgain(2)} className={styles.svg_icon_loading} src='ai.svg'></img>}
                     </div>
                     {formatTextWithLineBreaks(data.contentActivity.data)}
                 </div>}
@@ -54,7 +90,10 @@ function Activity() {
                 <div className={styles.activity_div}>
                     <div className={styles.h2_icon_div}>
                         <h2>זמן צופיות</h2>
-                        <img onClick={() => generateAgain(3)} className={styles.svg_icon} src='ai.svg'></img>
+                        {!iconClickedScoutingTime ?
+                            <img onClick={() => generateAgain(3)} className={styles.svg_icon} src='ai.svg'></img>
+                        :
+                            <img onClick={() => generateAgain(3)} className={styles.svg_icon_loading} src='ai.svg'></img>}
                     </div>
                     {formatTextWithLineBreaks(data.scoutingTime.data)}
                 </div>}
@@ -63,7 +102,10 @@ function Activity() {
                 <div className={styles.activity_div}>
                     <div className={styles.h2_icon_div}>
                         <h2>זמן משחק</h2>
-                        <img onClick={() => generateAgain(4)} className={styles.svg_icon} src='ai.svg'></img>
+                        {!iconClickedPlaying ?
+                            <img onClick={() => generateAgain(4)} className={styles.svg_icon} src='ai.svg'></img>
+                        :
+                            <img onClick={() => generateAgain(4)} className={styles.svg_icon_loading} src='ai.svg'></img>}
                     </div>
                     {formatTextWithLineBreaks(data.playingTime.data)}
                 </div>}
