@@ -9,7 +9,6 @@ function Details() {
     const [classLevel, setClassLevel] = useState('');
     const [numberOfChildren, setNumberOfChildren] = useState('');
     const [activityLocation, setActivityLocation] = useState('');
-    const [activityDuration, setActivityDuration] = useState('');
     const [gender, setGender] = useState('');
 
     const [clicked, setClicked] = useState(false)
@@ -21,7 +20,7 @@ function Details() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setClicked(true);
-        updateDetails(classLevel, activityDuration, numberOfChildren, activityLocation, gender)
+        updateDetails(classLevel, numberOfChildren, activityLocation, gender)
         navigate('/choosePath')
     };
 
@@ -66,19 +65,6 @@ function Details() {
                         <option value="" disabled>מיקום הפעילות</option>
                         {['במקום סגור', 'במקום פתוח', 'לא משנה'].map((location) => (
                             <option key={location} value={location}>{location}</option>
-                        ))}
-                    </select>
-                </div>
-
-                <div className={styles.input_div}>
-                    <select 
-                      value={activityDuration} 
-                      onChange={(e) => setActivityDuration(e.target.value)}
-                      aria-label="אורך הפעילות"
-                    >
-                        <option value="" disabled>אורך הפעילות</option>
-                        {['20 דקות', 'חצי שעה', 'שעה', 'שעה וחצי', 'שעתיים'].map((duration) => (
-                            <option key={duration} value={duration}>{duration}</option>
                         ))}
                     </select>
                 </div>

@@ -13,7 +13,7 @@
     left: 20px;
     font-size: 24px;
     border: none;
-    padding: 4px;
+    padding: 6px;
     border-radius: 30px;
     color: white;
     background-color: orange;
@@ -48,7 +48,7 @@
     background-color: rgb(255, 255, 255);
     border: 1px solid orange;
     outline: none;
-    width: 250px;
+    width: 280px;
 }
 
 .checkbox_input{

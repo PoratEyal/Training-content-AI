@@ -6,7 +6,7 @@ import {  } from '../../service/openAiPrompts';
 import { useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
 import { FaWandMagicSparkles } from "react-icons/fa6";
-import { getImg, getPointOfView, getContentActivity, getScoutingTime, getPlayingTime, getScoutingTimeSubject, getPointOfViewSubject } from '../../service/openAiPrompts';
+import { getImg, getPointOfView, getContentActivity, getScoutingTime, getPlayingTime, getScoutingTimeSubject, getContentActivitySubject, getPointOfViewSubject } from '../../service/openAiPrompts';
 
 function ChoosePath() {
 
@@ -30,6 +30,7 @@ function ChoosePath() {
     const [showContentActivity, setShowContentActivity] = useState(false);
     const [contentActivitySubject, setContentActivitySubject] = useState('');
     const [contentActivityTime, setContentActivityTime] = useState('');
+    const [magicClickedContent, setMagicClickedContent] = useState(false);
 
     const [showScoutingTime, setShowScoutingTime] = useState(false);
     const [scoutingTimeSubject, setScoutingTimeSubject] = useState('');
@@ -56,22 +57,24 @@ function ChoosePath() {
             setMagicClicked(true)
             setScoutingTimeSubject('')
             const response = await getScoutingTimeSubject()
-            console.log(response);
             setMagicClicked(false)
-            if (response.subjectList && response.subjectList.length > 0) {
-                setScoutingTimeSubject(response.subjectList[0])
-            }
+            setScoutingTimeSubject(response)
         }
 
         if(index == 1){
             setMagicClickedPoint(true)
             setPointOfViewSubject('')
             const response = await getPointOfViewSubject()
-            console.log(response);
             setMagicClickedPoint(false)
-            if (response.subjectList && response.subjectList.length > 0) {
-                setPointOfViewSubject(response.subjectList[0])
-            }
+            setPointOfViewSubject(response)
+        }
+
+        if(index == 2){
+            setMagicClickedContent(true)
+            setContentActivitySubject('')
+            const response = await getContentActivitySubject()
+            setMagicClickedContent(false)
+            setContentActivitySubject(response)
         }
     }
 
@@ -80,16 +83,16 @@ function ChoosePath() {
         const promises = [];
     
         if (showPointOfView) {
-            promises.push(getPointOfView(pointOfViewSubject, pointOfViewTime).then(updatePointOfView));
+            promises.push(getPointOfView(pointOfViewSubject, pointOfViewTime, data.amount, data.grade, data.gender, data.place).then(updatePointOfView));
         }
         if (showContentActivity) {
-            promises.push(getContentActivity(contentActivitySubject, contentActivityTime).then(updateContentActivity));
+            promises.push(getContentActivity(contentActivitySubject, contentActivityTime, data.amount, data.grade, data.gender, data.place).then(updateContentActivity));
         }
         if (showScoutingTime) {
-            promises.push(getScoutingTime(scoutingTimeSubject, scoutingTimeTime).then(updateScoutingTime));
+            promises.push(getScoutingTime(scoutingTimeSubject, scoutingTimeTime, data.amount, data.grade, data.gender, data.place).then(updateScoutingTime));
         }
         if (showPlayingTime) {
-            promises.push(getPlayingTime(playingTimeSubject, playingTimeTime).then(updatePlayingTime));
+            promises.push(getPlayingTime(playingTimeSubject, playingTimeTime, data.amount, data.grade, data.gender, data.place).then(updatePlayingTime));
         }
     
         await Promise.allSettled(promises);
@@ -134,7 +137,13 @@ function ChoosePath() {
                 <div className={styles.checkbox_div}>
                     <label><input type="checkbox" checked={showContentActivity} onChange={toggleContentActivity} /> פעילות תוכן</label>
                     {showContentActivity && <div className={styles.inputs_div}>
-                        <input className={styles.input} value={contentActivitySubject} onChange={handleInputChange(setContentActivitySubject)} placeholder="נושא הפעילות" type="text" />
+                        <div className={styles.input_and_icon}>
+                            <input className={styles.input} value={contentActivitySubject} onChange={handleInputChange(setContentActivitySubject)} placeholder="נושא הפעילות" type="text" />
+                            {!magicClickedContent? 
+                                <FaWandMagicSparkles onClick={() => generateSubject(2)} className={styles.magic_icon}></FaWandMagicSparkles>
+                            :
+                                <VscLoading className={styles.loading_icon_magic}></VscLoading>}
+                        </div> 
                         <input className={styles.input} value={contentActivityTime} onChange={handleInputChange(setContentActivityTime)} placeholder="זמן הפעילות" type="text" />  
                     </div>}
                 </div>
@@ -156,8 +165,8 @@ function ChoosePath() {
                 <div className={styles.checkbox_div}>
                     <label><input type="checkbox" checked={showPlayingTime} onChange={togglePlayingTime} /> זמן משחק</label>
                     {showPlayingTime && <div className={styles.inputs_div}>
-                        <input className={styles.input} value={playingTimeSubject} onChange={handleInputChange(setPlayingTimeSubject)} placeholder="נושא הפעילות" type="text" />
-                        <input className={styles.input} value={playingTimeTime} onChange={handleInputChange(setPlayingTimeTime)} placeholder="זמן הפעילות" type="text" />  
+                        <input className={styles.input} value={playingTimeSubject} onChange={handleInputChange(setPlayingTimeSubject)} placeholder="הסבר על המשחק" type="text" />
+                        <input className={styles.input} value={playingTimeTime} onChange={handleInputChange(setPlayingTimeTime)} placeholder="זמן המשחק" type="text" />  
                     </div>}
                 </div>
 

@@ -10,22 +10,52 @@
     left: 20px;
     font-size: 24px;
     border: none;
-    padding: 4px;
+    padding: 6px;
     border-radius: 30px;
     color: white;
     background-color: orange;
 }
 
 .container h2{
+    margin-top: 50px;
     font-size: 22px;
     color: orange;
 }
+.svg_icon{
+    width: 30px;
+    height: 30px;
+    margin-top: 30px;
+}
+.svg_icon_loading{
+    width: 30px;
+    height: 30px;
+    animation: spin 1.5s infinite linear;
+    margin-top: 30px;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.h2_icon_div {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: right;
+}
 
 .activity_div{
-    padding: 20px;
+    padding: 25px;
 }
 
 .img{
+    color: #ffa500;
     margin-top: 20px;
     border-radius: 20px;
     width: 80%;

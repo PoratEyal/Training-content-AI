@@ -26,17 +26,15 @@ export const ContentProvider = ({ children }) => {
         activity: '',
         grade: '',
         gender: '',
-        time: '',
         amount: 0,
         place: '',
         img: ''
     });
 
-    const updateDetails = (grade, time, amount, place, gender) => {
+    const updateDetails = (grade, amount, place, gender) => {
         setData((prevData) => ({
             ...prevData,
             grade: grade,
-            time: time,
             amount: amount,
             place: place,
             gender: gender
