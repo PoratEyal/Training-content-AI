@@ -63,7 +63,7 @@ const moreContnentPrompt  = (activityDescription) => {
         messages: [
         {
             role: "user",
-            content: `Expand on this activity: ${activityDescription}. Include comprehensive details to ensure everything is thoroughly explained. The response should be in Hebrew.`,
+            content: `Expand on this activity: ${activityDescription}. Include comprehensive details to ensure everything is thoroughly explained. Do not remove things in your answer from the activity that i provied you, just add more data about her! The response should be in Hebrew.`,
         },
         ],
         temperature: 0.7,
@@ -180,15 +180,16 @@ const pointOfViewSubjectPrompt = {
     messages: [
         {
             role: "user",
-            content: "מצא לי נושא  אקטואלי אחד בלבד, מעניין וספציפי, שנמצא בישראל או בעולם, המתאים לדיון עם ילדים. נא להחזיר את התשובה בשפה העברית בלבד.",
+            content: "בכל פעם שאני שואל, מצא לי נושא חדש ואקטואלי, ייחודי ומעניין, הקשור לישראל או לעולם, המתאים לדיון עם ילדים. הפעם אני מחפש משהו שלא הצגת לפני כן. תביא לי את הנושא בלי גרשיים. נושא בפחות מ-40 תווים נא להחזיר את התשובה בעברית.",
         },
     ],
-    temperature: 0.7,
+    temperature: 0.9,
     max_tokens: 60,
     top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0,
+    frequency_penalty: 1,
+    presence_penalty: 1,
 };
+
 
 export async function getPointOfViewSubject() {
     const requestOptions = {
@@ -247,14 +248,14 @@ const contentActivitySubjectPrompt = {
     messages: [
         {
             role: "user",
-            content: "מצא לי נושא אחד בלבד, מעניין וספציפי המתאים לדיון עם ילדים. נא להחזיר את התשובה בשפה העברית בלבד.",
+            content: "בכל פעם שאני שואל, מצא לי נושא חדש, ייחודי ומעניין, המתאים לדיון עם ילדים. הפעם אני מחפש משהו שלא הצגת לפני כן. נושא בפחות מ-40 תווים נא להחזיר את התשובה בעברית.",
         },
     ],
-    temperature: 0.7,
+    temperature: 0.9,
     max_tokens: 60,
     top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0,
+    frequency_penalty: 1,
+    presence_penalty: 1,
 };
 
 export async function getContentActivitySubject() {
@@ -309,19 +310,20 @@ export async function getScoutingTime (subject, time, amount, age, gender, place
 };
 
 const scoutingSkillSubjectPromptHebrew = {
-    model: "gpt-4",
-    messages: [
+    "model": "gpt-4",
+    "messages": [
         {
-            role: "user",
-            content: "נושא הקשור למיומנות צופים, תן לי תשובה בעברית. דוגמאות לתשובות טובות: הדלקת מדורה, בניית מכסה. (אל תשתמש בדוגמאות שניתנו)",
-        },
+            "role": "user",
+            "content": "תן לי דוגמא אחת בלבד למיומנויות שלומדים בתנועת נוער צופים, דוגמאות לתשובות רצויות: הדלקת מדורה, הכנת אוהל. תביא לי את התשובה בעברית."
+        }
     ],
-    temperature: 0.7,
-    max_tokens: 60,
-    top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0,
-};
+    "temperature": 0.5,
+    "max_tokens": 40,
+    "top_p": 1,
+    "frequency_penalty": 0,
+    "presence_penalty": 0
+}
+
 
 export async function getScoutingTimeSubject() {
     const requestOptions = {

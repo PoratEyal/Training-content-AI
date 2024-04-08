@@ -42,13 +42,13 @@
     margin: 10px;
     border: none;
     border-radius: 15px;
-    font-size: 18px;
+    font-size: 17px;
     font-family: 'Fredoka', sans-serif;
     text-align: right;
     background-color: rgb(255, 255, 255);
     border: 1px solid orange;
     outline: none;
-    width: 280px;
+    width: 290px;
 }
 
 .checkbox_input{
