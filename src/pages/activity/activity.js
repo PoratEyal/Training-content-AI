@@ -12,6 +12,7 @@ function Activity() {
         updateContentActivity,
         updateScoutingTime,
         updatePlayingTime,
+        resetAllUseFields
     } = useContentContext();
     const navigate = useNavigate();
 
@@ -57,10 +58,15 @@ function Activity() {
         ));
     };
 
+    const goingBack = () => {
+        resetAllUseFields()
+        navigate('/choosePath')
+    }
+
     return (
         <div className={styles.container}>
 
-            <IoMdArrowBack onClick={() => navigate('/choosePath')} className={styles.back_icon}></IoMdArrowBack>
+            <IoMdArrowBack onClick={goingBack} className={styles.back_icon}></IoMdArrowBack>
 
             {data.pointOfView.use &&
                 <div className={styles.activity_div}>

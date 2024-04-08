@@ -63,6 +63,16 @@ export const ContentProvider = ({ children }) => {
         }));
     };
 
+    const resetAllUseFields = () => {
+        setData((prevData) => ({
+            ...prevData,
+            pointOfView: { ...prevData.pointOfView, use: false },
+            contentActivity: { ...prevData.contentActivity, use: false },
+            scoutingTime: { ...prevData.scoutingTime, use: false },
+            playingTime: { ...prevData.playingTime, use: false },
+        }));
+    };
+
     // - - - - - - Content Activity - - - - - - - - - - - - - - -
 
     const updateContentActivity = (subject, time, result) => {
@@ -109,7 +119,8 @@ export const ContentProvider = ({ children }) => {
                 updatePointOfView, 
                 updateContentActivity, 
                 updateScoutingTime, 
-                updatePlayingTime
+                updatePlayingTime,
+                resetAllUseFields
             }}>
             {children}
         </ContentContext.Provider>

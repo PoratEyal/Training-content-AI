@@ -81,6 +81,11 @@ function ChoosePath() {
     const submitHandler = async () => {
         setClicked(true);
         const promises = [];
+
+        if (showPointOfView) {
+            promises.push(getPointOfView(pointOfViewSubject, pointOfViewTime, data.amount, data.grade, data.gender, data.place)
+                .then((result) => updatePointOfView(pointOfViewSubject, pointOfViewTime, result)));
+        }
     
         if (showContentActivity) {
             promises.push(getContentActivity(contentActivitySubject, contentActivityTime, data.amount, data.grade, data.gender, data.place)
