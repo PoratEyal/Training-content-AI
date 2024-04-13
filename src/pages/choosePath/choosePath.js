@@ -122,15 +122,17 @@ function ChoosePath() {
                                 :
                                     <VscLoading className={styles.loading_icon_magic}></VscLoading>}
                         </div>
-                        <select className={styles.input_select} value={pointOfViewTime} onChange={handleInputChange(setPointOfViewTime)} placeholder="זמן הפעילות">
-                            <option value="" disabled selected>זמן פעילות</option>
-                            <option value="20 דקות">20 דקות</option>
-                            <option value="חצי שעה">חצי שעה</option>
-                            <option value="45 דקות">45 דקות</option>
-                            <option value="שעה">שעה</option>
-                            <option value="שעה חצי">שעה חצי</option>
-                            <option value="שעתיים">שעתיים</option>
-                        </select>
+                        <div className={styles.input_div}>
+                            <select className={styles.input_select} value={pointOfViewTime} onChange={handleInputChange(setPointOfViewTime)} placeholder="זמן הפעילות">
+                                <option value="" disabled selected>זמן פעילות</option>
+                                <option value="20 דקות">20 דקות</option>
+                                <option value="חצי שעה">חצי שעה</option>
+                                <option value="45 דקות">45 דקות</option>
+                                <option value="שעה">שעה</option>
+                                <option value="שעה חצי">שעה חצי</option>
+                                <option value="שעתיים">שעתיים</option>
+                            </select>
+                        </div>
                     </div>}
                 </div>
 
@@ -144,15 +146,17 @@ function ChoosePath() {
                             :
                                 <VscLoading className={styles.loading_icon_magic}></VscLoading>}
                         </div> 
-                        <select className={styles.input_select} value={contentActivityTime} onChange={handleInputChange(setContentActivityTime)} placeholder="זמן הפעילות">
-                            <option value="" disabled selected>זמן פעילות</option>
-                            <option value="20 דקות">20 דקות</option>
-                            <option value="חצי שעה">חצי שעה</option>
-                            <option value="45 דקות">45 דקות</option>
-                            <option value="שעה">שעה</option>
-                            <option value="שעה חצי">שעה חצי</option>
-                            <option value="שעתיים">שעתיים</option>
-                        </select>
+                        <div className={styles.input_div}>
+                            <select className={styles.input_select} value={contentActivityTime} onChange={handleInputChange(setContentActivityTime)} placeholder="זמן הפעילות">
+                                <option value="" disabled selected>זמן פעילות</option>
+                                <option value="20 דקות">20 דקות</option>
+                                <option value="חצי שעה">חצי שעה</option>
+                                <option value="45 דקות">45 דקות</option>
+                                <option value="שעה">שעה</option>
+                                <option value="שעה חצי">שעה חצי</option>
+                                <option value="שעתיים">שעתיים</option>
+                            </select>
+                        </div>
                     </div>}
                 </div>
 
@@ -166,15 +170,17 @@ function ChoosePath() {
                             :
                                 <VscLoading className={styles.loading_icon_magic}></VscLoading>}
                         </div>
-                        <select className={styles.input_select} value={scoutingTimeTime} onChange={handleInputChange(setScoutingTimeTime)}>
-                            <option value="" disabled selected>זמן פעילות</option>
-                            <option value="20 דקות">20 דקות</option>
-                            <option value="חצי שעה">חצי שעה</option>
-                            <option value="45 דקות">45 דקות</option>
-                            <option value="שעה">שעה</option>
-                            <option value="שעה חצי">שעה חצי</option>
-                            <option value="שעתיים">שעתיים</option>
-                        </select>
+                        <div className={styles.input_div}>
+                            <select className={styles.input_select} value={scoutingTimeTime} onChange={handleInputChange(setScoutingTimeTime)}>
+                                <option value="" disabled selected>זמן פעילות</option>
+                                <option value="20 דקות">20 דקות</option>
+                                <option value="חצי שעה">חצי שעה</option>
+                                <option value="45 דקות">45 דקות</option>
+                                <option value="שעה">שעה</option>
+                                <option value="שעה חצי">שעה חצי</option>
+                                <option value="שעתיים">שעתיים</option>
+                            </select>
+                        </div>
                     </div>}
                 </div>
 
@@ -182,15 +188,18 @@ function ChoosePath() {
                     <label><input type="checkbox" checked={showPlayingTime} onChange={togglePlayingTime} /> זמן משחק</label>
                     {showPlayingTime && <div className={styles.inputs_div}>
                         <input className={styles.input} value={playingTimeSubject} onChange={handleInputChange(setPlayingTimeSubject)} placeholder="הסבר על המשחק" type="text" />
-                        <select className={styles.input_select} value={playingTimeTime} onChange={handleInputChange(setPlayingTimeTime)}>
-                            <option value="" disabled selected>זמן המשחק</option>
-                            <option value="20 דקות">20 דקות</option>
-                            <option value="חצי שעה">חצי שעה</option>
-                            <option value="45 דקות">45 דקות</option>
-                            <option value="שעה">שעה</option>
-                            <option value="שעה חצי">שעה חצי</option>
-                            <option value="שעתיים">שעתיים</option>
-                        </select>
+                        <div className={styles.input_div}>
+                            <select className={styles.input_select} value={playingTimeTime} onChange={handleInputChange(setPlayingTimeTime)}>
+                                <option value="" disabled selected>זמן המשחק</option>
+                                <option value="20 דקות">20 דקות</option>
+                                <option value="חצי שעה">חצי שעה</option>
+                                <option value="45 דקות">45 דקות</option>
+                                <option value="שעה">שעה</option>
+                                <option value="שעה חצי">שעה חצי</option>
+                                <option value="שעתיים">שעתיים</option>
+                            </select>
+                        </div>
+
 
                     </div>}
                 </div>

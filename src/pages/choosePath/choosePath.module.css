@@ -49,7 +49,8 @@
     outline: none;
     width: 310px;
 }
-.input_select{
+.input_div select {
+    -webkit-appearance: none;
     padding: 12px;
     margin-top: 15px;
     border: none;
@@ -62,6 +63,25 @@
     outline: none;
     width: 335px;
 }
+
+.input_div::after {
+    content: '▼';
+    position: absolute;
+    left: 13px;
+    top: 63%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: orange;
+}
+
+.input_div {
+    position: relative;
+}
+
+.input_div select:focus {
+    outline: none;
+}
+
 
 .checkbox_input{
     font-size: 21px;
