@@ -25,12 +25,13 @@
     width: 30px;
     height: 30px;
     margin-top: 50px;
+    color: orange;
 }
 .svg_icon_loading{
     width: 30px;
     height: 30px;
     animation: spin 1.5s infinite linear;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 @keyframes spin {
     from {

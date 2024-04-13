@@ -4,6 +4,7 @@ import { useContentContext } from '../../context/ContentContext';
 import { useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
 import { AiOutlineLoading } from "react-icons/ai";
+import { FaRegFilePdf } from "react-icons/fa6";
 import { getPointOfView, getContentActivity, getScoutingTime, getPlayingTime, getMoreContent } from '../../service/openAiPrompts';
 
 function Activity() {
@@ -15,6 +16,7 @@ function Activity() {
         updatePlayingTime,
         resetAllUseFields
     } = useContentContext();
+
     const navigate = useNavigate();
 
     const [iconClickedPoint, setIconClickedPoint] = useState(false)
@@ -108,6 +110,7 @@ function Activity() {
                     <div className={styles.h2_icon_div}>
                         <h2>נקודת מבט</h2>
                         <div className={styles.icons}>
+                            <FaRegFilePdf className={styles.svg_icon}></FaRegFilePdf>
                             {!iconClickedPoint ?
                                 <img onClick={() => generateAgain(1)} className={styles.svg_icon} src='ai.svg'></img>
                             :
