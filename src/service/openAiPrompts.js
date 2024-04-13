@@ -146,41 +146,12 @@ export async function getPointOfView (subject, time, amount, age, gender, place)
     }
 };
 
-// const pointOfViewSubjectPrompt = {
-//     "model": "gpt-4",
-//     "messages": [
-//         {
-//             "role": "user",
-//             "content": "מצא לי נושא אחד בלבד, מעניין וספציפי, שנמצא בישראל או בעולם, המתאים לדיון עם ילדים. נא להחזיר את התשובה בשפה העברית בלבד."
-//         }
-//     ],
-//     "temperature": 0.7,
-//     "functions": [
-//         {
-//             "name": "generate_subject",
-//             "parameters": {
-//                 "type": "object",
-//                 "properties": {
-//                     "subjectList": {
-//                         "type": "array",
-//                         "items": {
-//                             "type": "string"
-//                         },
-//                         "minItems": 1,
-//                         "maxItems": 1
-//                     }
-//                 }
-//             }
-//         }
-//     ]
-// }
-
 const pointOfViewSubjectPrompt = {
     model: "gpt-4",
     messages: [
         {
             role: "user",
-            content: "בכל פעם שאני שואל, מצא לי נושא חדש ואקטואלי, ייחודי ומעניין, הקשור לישראל או לעולם, המתאים לדיון עם ילדים. הפעם אני מחפש משהו שלא הצגת לפני כן. תביא לי את הנושא בלי גרשיים. נושא בפחות מ-40 תווים נא להחזיר את התשובה בעברית.",
+            content: "בכל פעם שאני שואל, מצא לי נושא חדש ואקטואלי, ייחודי ומעניין, הקשור לישראל או לעולם, המתאים לדיון עם ילדים. הפעם אני מחפש משהו שלא הצגת לפני כן. תביא לי את הנושא בלי גרשיים. נושא בפחות מ-30 תווים נא להחזיר את התשובה בעברית.",
         },
     ],
     temperature: 0.9,
@@ -248,7 +219,7 @@ const contentActivitySubjectPrompt = {
     messages: [
         {
             role: "user",
-            content: "בכל פעם שאני שואל, מצא לי נושא חדש, ייחודי ומעניין, המתאים לדיון עם ילדים. הפעם אני מחפש משהו שלא הצגת לפני כן. נושא בפחות מ-40 תווים נא להחזיר את התשובה בעברית.",
+            content: "בכל פעם שאני שואל, מצא לי נושא חדש, ייחודי ומעניין, המתאים לדיון עם ילדים. הפעם אני מחפש משהו שלא הצגת לפני כן. תחזיר לי את הנושא בלי גרשיים. נושא בפחות מ-30 תווים. נא להחזיר את התשובה בעברית.",
         },
     ],
     temperature: 0.9,
@@ -374,3 +345,37 @@ export async function getPlayingTime (subject, time, amount, age, gender, place)
         throw error;
     }
 };
+
+const playingTimeSubjectPrompt = {
+    model: "gpt-4",
+    messages: [
+        {
+            role: "user",
+            content: "בכל פעם שאני שואל, מצא לי משחק חברה. הפעם אני מחפש משהו שלא הצגת לפני כן. נא להחזיר את התשובה בעברית.",
+        },
+    ],
+    temperature: 0.9,
+    max_tokens: 60,
+    top_p: 1,
+    frequency_penalty: 1,
+    presence_penalty: 1,
+};
+
+export async function getPlayingTimeSubject() {
+    const requestOptions = {
+        method: "post",
+        url: OpenAIUrl,
+        data: playingTimeSubjectPrompt,
+        headers: openAiheaders,
+    };
+
+    try {
+        const response = await axios(requestOptions);
+        const responseData = response.data;
+        const subjectListString = responseData.choices[0].message.content;
+        return subjectListString;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}

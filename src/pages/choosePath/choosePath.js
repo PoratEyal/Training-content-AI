@@ -6,7 +6,7 @@ import {  } from '../../service/openAiPrompts';
 import { useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
 import { FaWandMagicSparkles } from "react-icons/fa6";
-import { getImg, getPointOfView, getContentActivity, getScoutingTime, getPlayingTime, getScoutingTimeSubject, getContentActivitySubject, getPointOfViewSubject } from '../../service/openAiPrompts';
+import { getImg, getPlayingTimeSubject, getPointOfView, getContentActivity, getScoutingTime, getPlayingTime, getScoutingTimeSubject, getContentActivitySubject, getPointOfViewSubject } from '../../service/openAiPrompts';
 
 function ChoosePath() {
 
@@ -14,8 +14,7 @@ function ChoosePath() {
             updatePointOfView,
             updateContentActivity,
             updateScoutingTime,
-            updatePlayingTime,
-            updateImage
+            updatePlayingTime
         } = useContentContext();
 
     const [clicked, setClicked] = useState(false)
@@ -41,14 +40,11 @@ function ChoosePath() {
     const [playingTimeSubject, setPlayingTimeSubject] = useState('');
     const [playingTimeTime, setPlayingTimeTime] = useState('');
 
-    const [showOthers, setShowOthers] = useState(false);
-
     // Handlers for checkboxes
     const togglePointOfView = () => setShowPointOfView(!showPointOfView);
     const toggleContentActivity = () => setShowContentActivity(!showContentActivity);
     const toggleScoutingTime = () => setShowScoutingTime(!showScoutingTime);
     const togglePlayingTime = () => setShowPlayingTime(!showPlayingTime);
-    const toggleOthers = () => setShowOthers(!showOthers);
 
     const handleInputChange = (setter) => (e) => setter(e.target.value);
 
@@ -107,16 +103,6 @@ function ChoosePath() {
         //await generateImg(data.playingTime.data)
     }
 
-    const generateImg = async (activity) => {
-        const img = await getImg(activity)
-        const response = await getImg(img);
-        if (response && response.data) {
-            console.log(response.data);
-            updateImage(response.data)
-        }
-        navigate('/activity')
-    }
-
     return (
         <div className={styles.container}>
 
@@ -129,15 +115,22 @@ function ChoosePath() {
                 <div className={styles.checkbox_div}>
                     <label className={styles.checkbox_input}><input type="checkbox" checked={showPointOfView} onChange={togglePointOfView} /> נקודת מבט</label>
                     {showPointOfView && <div className={styles.inputs_div}>
-                    <div className={styles.input_and_icon}>
-                        <input className={styles.input} value={pointOfViewSubject} onChange={handleInputChange(setPointOfViewSubject)} placeholder="נושא הפעילות" type="text" />
-                        {!magicClickedPoint? 
-                                <FaWandMagicSparkles onClick={() => generateSubject(1)} className={styles.magic_icon}></FaWandMagicSparkles>
-                            :
-                                <VscLoading className={styles.loading_icon_magic}></VscLoading>}
-                    </div>
-                        
-                        <input className={styles.input} value={pointOfViewTime} onChange={handleInputChange(setPointOfViewTime)} placeholder="זמן הפעילות" type="text" />  
+                        <div className={styles.input_and_icon}>
+                            <input className={styles.input} value={pointOfViewSubject} onChange={handleInputChange(setPointOfViewSubject)} placeholder="נושא הפעילות" type="text" />
+                            {!magicClickedPoint? 
+                                    <FaWandMagicSparkles onClick={() => generateSubject(1)} className={styles.magic_icon}></FaWandMagicSparkles>
+                                :
+                                    <VscLoading className={styles.loading_icon_magic}></VscLoading>}
+                        </div>
+                        <select className={styles.input_select} value={pointOfViewTime} onChange={handleInputChange(setPointOfViewTime)} placeholder="זמן הפעילות">
+                            <option value="" disabled selected>זמן פעילות</option>
+                            <option value="20 דקות">20 דקות</option>
+                            <option value="חצי שעה">חצי שעה</option>
+                            <option value="45 דקות">45 דקות</option>
+                            <option value="שעה">שעה</option>
+                            <option value="שעה חצי">שעה חצי</option>
+                            <option value="שעתיים">שעתיים</option>
+                        </select>
                     </div>}
                 </div>
 
@@ -151,7 +144,15 @@ function ChoosePath() {
                             :
                                 <VscLoading className={styles.loading_icon_magic}></VscLoading>}
                         </div> 
-                        <input className={styles.input} value={contentActivityTime} onChange={handleInputChange(setContentActivityTime)} placeholder="זמן הפעילות" type="text" />  
+                        <select className={styles.input_select} value={contentActivityTime} onChange={handleInputChange(setContentActivityTime)} placeholder="זמן הפעילות">
+                            <option value="" disabled selected>זמן פעילות</option>
+                            <option value="20 דקות">20 דקות</option>
+                            <option value="חצי שעה">חצי שעה</option>
+                            <option value="45 דקות">45 דקות</option>
+                            <option value="שעה">שעה</option>
+                            <option value="שעה חצי">שעה חצי</option>
+                            <option value="שעתיים">שעתיים</option>
+                        </select>
                     </div>}
                 </div>
 
@@ -165,7 +166,15 @@ function ChoosePath() {
                             :
                                 <VscLoading className={styles.loading_icon_magic}></VscLoading>}
                         </div>
-                        <input className={styles.input} value={scoutingTimeTime} onChange={handleInputChange(setScoutingTimeTime)} placeholder="זמן הפעילות" type="text" />  
+                        <select className={styles.input_select} value={scoutingTimeTime} onChange={handleInputChange(setScoutingTimeTime)}>
+                            <option value="" disabled selected>זמן פעילות</option>
+                            <option value="20 דקות">20 דקות</option>
+                            <option value="חצי שעה">חצי שעה</option>
+                            <option value="45 דקות">45 דקות</option>
+                            <option value="שעה">שעה</option>
+                            <option value="שעה חצי">שעה חצי</option>
+                            <option value="שעתיים">שעתיים</option>
+                        </select>
                     </div>}
                 </div>
 
@@ -173,17 +182,18 @@ function ChoosePath() {
                     <label><input type="checkbox" checked={showPlayingTime} onChange={togglePlayingTime} /> זמן משחק</label>
                     {showPlayingTime && <div className={styles.inputs_div}>
                         <input className={styles.input} value={playingTimeSubject} onChange={handleInputChange(setPlayingTimeSubject)} placeholder="הסבר על המשחק" type="text" />
-                        <input className={styles.input} value={playingTimeTime} onChange={handleInputChange(setPlayingTimeTime)} placeholder="זמן המשחק" type="text" />  
+                        <select className={styles.input_select} value={playingTimeTime} onChange={handleInputChange(setPlayingTimeTime)}>
+                            <option value="" disabled selected>זמן המשחק</option>
+                            <option value="20 דקות">20 דקות</option>
+                            <option value="חצי שעה">חצי שעה</option>
+                            <option value="45 דקות">45 דקות</option>
+                            <option value="שעה">שעה</option>
+                            <option value="שעה חצי">שעה חצי</option>
+                            <option value="שעתיים">שעתיים</option>
+                        </select>
+
                     </div>}
                 </div>
-
-                {/* <div className={styles.checkbox_div}>
-                    <label><input type="checkbox" checked={showOthers} onChange={toggleOthers} /> אחר</label>
-                    {showOthers && <div className={styles.inputs_div}>
-                        <input value={pointOfViewSubject} onChange={handleInputChange(setPointOfViewSubject)} placeholder="נושא הפעילות" type="text" />
-                        <input value={pointOfViewTime} onChange={handleInputChange(setPointOfViewTime)} placeholder="זמן הפעילות" type="text" />  
-                    </div>}
-                </div> */}
 
             </div>
 

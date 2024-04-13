@@ -3,7 +3,7 @@
     flex-direction: column;
     width: auto;
     justify-content: space-between;
-    height: 100vh;
+    height: 90vh;
 }
 
 .back_icon{
@@ -48,6 +48,19 @@
     border: 1px solid orange;
     outline: none;
     width: 310px;
+}
+.input_select{
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    font-family: 'Fredoka', sans-serif;
+    text-align: right;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid orange;
+    outline: none;
+    width: 335px;
 }
 
 .checkbox_input{
