@@ -1,10 +1,9 @@
 .container{
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
     width: auto;
     justify-content: space-between;
-    height: 94vh;
+    height: 100vh;
 }
 
 .back_icon{
@@ -22,7 +21,7 @@
 .h3{
     color: orange;
     font-size: 27px;
-    margin-top: 40px;
+    margin-top: 60px;
     width: 330px;
 }
 
@@ -39,16 +38,16 @@
 }
 .input{
     padding: 12px;
-    margin: 10px;
+    margin-top: 15px;
     border: none;
     border-radius: 15px;
-    font-size: 17px;
+    font-size: 16px;
     font-family: 'Fredoka', sans-serif;
     text-align: right;
     background-color: rgb(255, 255, 255);
     border: 1px solid orange;
     outline: none;
-    width: 290px;
+    width: 310px;
 }
 
 .checkbox_input{
@@ -66,24 +65,24 @@
 .magic_icon{
     color: orange;
     padding: 5px;
-    padding-right: 10px;
     margin-right: -50px;
+    padding-right: 15px;
     border: none;
-    background-color: white;
+    margin-top: 15px;
+    background-color: rgb(255, 255, 255);
 }
 .loading_icon_magic{
     color: orange;
     padding: 5px;
-    margin-right: -48px;
+    margin-right: -40px;
+    margin-top: 15px;
     border: none;
     background-color: white;
     animation: spin 1s infinite linear;
 }
 
-
 .btn_div{
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,21 +90,22 @@
 .submit_btn{
     border: none;
     padding: 14px;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 600;
-    border-radius: 30px;
+    border-radius: 50px;
     font-family: 'Fredoka', sans-serif;
     background-color: rgb(255, 151, 47);
     transition: background-color 0.3s ease;
-    width: 280px;
-    height: 55px;
+    width: 320px;
+    height: 62px;
     color: white;
+    margin-bottom: 20px;
 }
 
 .loading_icon{
     color: white;
     animation: spin 1s infinite linear;
-    font-size: 28px;
+    font-size: 32px;
 }
 @keyframes spin {
     from {

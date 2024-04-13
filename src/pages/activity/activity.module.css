@@ -17,21 +17,19 @@
 }
 
 .container h2{
-    margin-top: 70px;
+    margin-top: 35px;
     font-size: 22px;
     color: orange;
 }
 .svg_icon{
-    width: 30px;
-    height: 30px;
-    margin-top: 50px;
-    color: orange;
+    width: 25px;
+    height: 25px;
+    color: rgb(255, 255, 255);
 }
 .svg_icon_loading{
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     animation: spin 1.5s infinite linear;
-    margin-top: 50px;
 }
 @keyframes spin {
     from {
@@ -44,9 +42,8 @@
 
 .icon_more{
     animation: spin 1.5s infinite linear;
-    margin-top: 50px;
-    font-size: 26px;
-    color: orange;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
 }
 
 .h2_icon_div {
@@ -67,6 +64,32 @@
 
 .activity_div{
     padding: 25px;
+}
+
+.buttons_div{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+    font-family: 'Fredoka', sans-serif;
+    border-radius: 60px;
+    padding: 10px;
+    color: #ffffff;
+    border: none;
+    font-size: 16px;
+    background-color:orange;
+}
+.button label{
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .img{

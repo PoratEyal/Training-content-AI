@@ -124,7 +124,7 @@ function ChoosePath() {
 
             <div className={styles.checkbox_container}>
 
-                <h3 className={styles.h3}>שלום מדריכים אלופים! <br></br>בחרו במה תרצו להתמקד בפעילות שלכם</h3>
+                <h3 className={styles.h3}>שלום מדריכים אלופים !<br></br>בחרו את הפעילות שלכם</h3>
 
                 <div className={styles.checkbox_div}>
                     <label className={styles.checkbox_input}><input type="checkbox" checked={showPointOfView} onChange={togglePointOfView} /> נקודת מבט</label>

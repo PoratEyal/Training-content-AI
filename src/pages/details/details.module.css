@@ -8,11 +8,11 @@
 .container h3{
     color: rgb(231, 150, 0);
     margin-right: 10px;
-    font-size: 22px;
+    font-size: 26px;
 }
 
 .input_div{
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -23,10 +23,10 @@
 .input_div select {
     -webkit-appearance: none;
     border: 1px solid orange;
-    padding: 13px 13px 13px 13px;
-    font-size: 16px;
+    padding: 15px 15px 15px 15px;
+    font-size: 18px;
     border-radius: 30px;
-    width: 280px;
+    width: 320px;
     font-family: 'Fredoka', sans-serif;
     direction: rtl;
     background-color: white;
@@ -57,23 +57,23 @@
 .submit_btn{
     border: none;
     padding: 14px;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 600;
-    border-radius: 30px;
+    border-radius: 50px;
     font-family: 'Fredoka', sans-serif;
     background-color: rgb(255, 151, 47);
     transition: background-color 0.3s ease;
     position: absolute;
     bottom: 30px;
-    width: 280px;
-    height: 55px;
+    width: 320px;
+    height: 62px;
     color: white;
 }
 
 .loading_icon{
     color: white;
     animation: spin 1s infinite linear;
-    font-size: 28px;
+    font-size: 32px;
 }
     
 @keyframes spin {

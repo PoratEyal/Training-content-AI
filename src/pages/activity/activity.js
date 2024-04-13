@@ -4,7 +4,8 @@ import { useContentContext } from '../../context/ContentContext';
 import { useNavigate } from 'react-router-dom';
 import { IoMdArrowBack } from "react-icons/io";
 import { AiOutlineLoading } from "react-icons/ai";
-import { FaRegFilePdf } from "react-icons/fa6";
+import { FaWhatsapp } from "react-icons/fa";
+import { BsFiletypeDocx } from "react-icons/bs";
 import { getPointOfView, getContentActivity, getScoutingTime, getPlayingTime, getMoreContent } from '../../service/openAiPrompts';
 
 function Activity() {
@@ -109,73 +110,89 @@ function Activity() {
                 <div className={styles.activity_div}>
                     <div className={styles.h2_icon_div}>
                         <h2>נקודת מבט</h2>
-                        <div className={styles.icons}>
-                            <FaRegFilePdf className={styles.svg_icon}></FaRegFilePdf>
-                            {!iconClickedPoint ?
-                                <img onClick={() => generateAgain(1)} className={styles.svg_icon} src='ai.svg'></img>
-                            :
-                                <img onClick={() => generateAgain(1)} className={styles.svg_icon_loading} src='ai.svg'></img>}
-                            {!moreDataPoint ?
-                                <img onClick={() => moreData(1)} className={styles.svg_icon} src='more.svg'></img>
-                            :
-                                <AiOutlineLoading onClick={() => moreData(1)} className={styles.icon_more}></AiOutlineLoading>}
-                        </div>
                     </div>
                     {formatTextWithLineBreaks(data.pointOfView.data)}
+                    
+                    <div className={styles.buttons_div}>
+                        <button onClick={() => generateAgain(1)} className={styles.button}>
+                            <label onClick={() => generateAgain(1)}>דוגמא נוספת</label>
+                            {iconClickedPoint &&
+                                <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
+                        </button>
+
+                        <button onClick={() => moreData(1)} className={styles.button}>
+                            <label onClick={() => moreData(1)}>הרחבת התוכן</label>
+                            {moreDataPoint &&
+                                <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
+                        </button>
+                    </div>
+
                 </div>}
 
             {data.contentActivity.use &&
                 <div className={styles.activity_div}>
                     <div className={styles.h2_icon_div}>
                         <h2>פעילות תוכן</h2>
-                        <div className={styles.icons}>
-                            {!iconClickedContent ?
-                                <img onClick={() => generateAgain(2)} className={styles.svg_icon} src='ai.svg'></img>
-                            :
-                                <img onClick={() => generateAgain(2)} className={styles.svg_icon_loading} src='ai.svg'></img>}
-                            {!moreDataContent ?
-                                    <img onClick={() => moreData(2)} className={styles.svg_icon} src='more.svg'></img>
-                                :
-                                    <AiOutlineLoading onClick={() => moreData(2)} className={styles.icon_more}></AiOutlineLoading>}
-                        </div>
                     </div>
                     {formatTextWithLineBreaks(data.contentActivity.data)}
+
+                    <div className={styles.buttons_div}>
+                        <button onClick={() => generateAgain(2)} className={styles.button}>
+                            <label onClick={() => generateAgain(2)}>דוגמא נוספת</label>
+                            {iconClickedPoint &&
+                                <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
+                        </button>
+
+                        <button onClick={() => moreData(2)} className={styles.button}>
+                            <label onClick={() => moreData(2)}>הרחבת התוכן</label>
+                            {moreDataPoint &&
+                                <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
+                        </button>
+                    </div>
                 </div>}
 
             {data.scoutingTime.use &&
                 <div className={styles.activity_div}>
                     <div className={styles.h2_icon_div}>
                         <h2>זמן צופיות</h2>
-                        <div className={styles.icons}>
-                            {!iconClickedScoutingTime ?
-                                <img onClick={() => generateAgain(3)} className={styles.svg_icon} src='ai.svg'></img>
-                            :
-                                <img onClick={() => generateAgain(3)} className={styles.svg_icon_loading} src='ai.svg'></img>}
-                            {!moreDataScoutingTime ?
-                                <img onClick={() => moreData(3)} className={styles.svg_icon} src='more.svg'></img>
-                            :
-                                <AiOutlineLoading onClick={() => moreData(3)} className={styles.icon_more}></AiOutlineLoading>}
-                        </div>
                     </div>
                     {formatTextWithLineBreaks(data.scoutingTime.data)}
+
+                    <div className={styles.buttons_div}>
+                        <button onClick={() => generateAgain(3)} className={styles.button}>
+                            <label onClick={() => generateAgain(3)}>דוגמא נוספת</label>
+                            {iconClickedPoint &&
+                                <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
+                        </button>
+
+                        <button onClick={() => moreData(3)} className={styles.button}>
+                            <label onClick={() => moreData(3)}>הרחבת התוכן</label>
+                            {moreDataPoint &&
+                                <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
+                        </button>
+                    </div>
                 </div>}
 
             {data.playingTime.use &&
                 <div className={styles.activity_div}>
                     <div className={styles.h2_icon_div}>
                         <h2>זמן משחק</h2>
-                        <div className={styles.icons}>
-                            {!iconClickedPlaying ?
-                                <img onClick={() => generateAgain(4)} className={styles.svg_icon} src='ai.svg'></img>
-                            :
-                                <img onClick={() => generateAgain(4)} className={styles.svg_icon_loading} src='ai.svg'></img>}
-                            {!moreDataPlaying ?
-                                <img onClick={() => moreData(4)} className={styles.svg_icon} src='more.svg'></img>
-                            :
-                                <AiOutlineLoading onClick={() => moreData(4)} className={styles.icon_more}></AiOutlineLoading>}
-                        </div>
                     </div>
                     {formatTextWithLineBreaks(data.playingTime.data)}
+
+                    <div className={styles.buttons_div}>
+                        <button onClick={() => generateAgain(4)} className={styles.button}>
+                            <label onClick={() => generateAgain(4)}>דוגמא נוספת</label>
+                            {iconClickedPoint &&
+                                <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
+                        </button>
+
+                        <button onClick={() => moreData(4)} className={styles.button}>
+                            <label onClick={() => moreData(4)}>הרחבת התוכן</label>
+                            {moreDataPoint &&
+                                <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
+                        </button>
+                    </div>
                 </div>}
 
             {/* <a href={data.img[0]?.url} download={`image.jpg`}><img className={styles.img} src={data.img[0]?.url} alt="Generated img" /></a> */}
