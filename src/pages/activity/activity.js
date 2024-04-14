@@ -305,7 +305,7 @@ function Activity() {
                     
                     <div className={styles.buttons_div}>
                         <button onClick={() => generateAgain(1)} className={styles.button}>
-                            <label onClick={() => generateAgain(1)}>דוגמא נוספת</label>
+                            <label onClick={() => generateAgain(1)}>פעילות נוספת</label>
                             {!iconClickedPoint ?
                                 <img onClick={() => generateAgain(1)} className={styles.icon_svg} src='ai.svg'></img>
                             :
@@ -336,7 +336,7 @@ function Activity() {
 
                     <div className={styles.buttons_div}>
                         <button onClick={() => generateAgain(2)} className={styles.button}>
-                            <label onClick={() => generateAgain(2)}>דוגמא נוספת</label>
+                            <label onClick={() => generateAgain(2)}>פעילות נוספת</label>
                             {!iconClickedContent ?
                                 <img onClick={() => generateAgain(2)} className={styles.icon_svg} src='ai.svg'></img>
                             :
@@ -366,7 +366,7 @@ function Activity() {
 
                     <div className={styles.buttons_div}>
                         <button onClick={() => generateAgain(3)} className={styles.button}>
-                            <label onClick={() => generateAgain(3)}>דוגמא נוספת</label>
+                            <label onClick={() => generateAgain(3)}>פעילות נוספת</label>
                             {!iconClickedScoutingTime ?
                                 <img onClick={() => generateAgain(3)} className={styles.icon_svg} src='ai.svg'></img>
                             :
@@ -396,7 +396,7 @@ function Activity() {
 
                     <div className={styles.buttons_div}>
                         <button onClick={() => generateAgain(4)} className={styles.button}>
-                            <label onClick={() => generateAgain(4)}>דוגמא נוספת</label>
+                            <label onClick={() => generateAgain(4)}>פעילות נוספת</label>
                             {!iconClickedPlaying ?
                                 <img onClick={() => generateAgain(4)} className={styles.icon_svg} src='ai.svg'></img>
                             :
