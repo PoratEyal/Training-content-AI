@@ -96,35 +96,31 @@ function Activity() {
 
     const importWhatsup = (index) => {
         if (index === 1) {
-            setWhatsupPoint(true)
+            setWhatsupPoint(true);
             const message = encodeURIComponent(data.pointOfView.data);
             const whatsappUrl = `https://wa.me/?text=${message}`;
-    
-            window.open(whatsappUrl, '_blank');
-            setWhatsupPoint(false)
-        }
+            window.location.href = whatsappUrl;
+            setWhatsupPoint(false);
+        }        
         if (index === 2) {
             setWhatsupContent(true)
             const message = encodeURIComponent(data.contentActivity.data);
             const whatsappUrl = `https://wa.me/?text=${message}`;
-    
-            window.open(whatsappUrl, '_blank');
+            window.location.href = whatsappUrl;
             setWhatsupContent(false)
         }
         if (index === 3) {
             setWhatsupScoutingTime(true)
             const message = encodeURIComponent(data.scoutingTime.data);
             const whatsappUrl = `https://wa.me/?text=${message}`;
-    
-            window.open(whatsappUrl, '_blank');
+            window.location.href = whatsappUrl;
             setWhatsupScoutingTime(false)
         }
         if (index === 4) {
             setWhatsupPlaying(true)
             const message = encodeURIComponent(data.playingTime.data);
             const whatsappUrl = `https://wa.me/?text=${message}`;
-    
-            window.open(whatsappUrl, '_blank');
+            window.location.href = whatsappUrl;
             setWhatsupPlaying(false)
         }
     }
