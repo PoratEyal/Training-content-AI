@@ -62,6 +62,7 @@
     border: 1px solid orange;
     outline: none;
     width: 335px;
+    color: black;
 }
 
 .input_div::after {
