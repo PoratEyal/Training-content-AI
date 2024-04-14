@@ -1,6 +1,7 @@
 .container{
     display: flex;
     flex-direction: column;
+    margin-top: 35px;
 }
 
 .back_icon{
@@ -22,7 +23,6 @@
 }
 
 .h2_icon_div {
-    margin-top: 35px;
     display: flex;
     flex-direction: row;
     gap: 15px;
@@ -40,6 +40,12 @@
     font-size: 23px;
 }
 
+.icon_svg{
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
 .activity_div{
     padding: 25px;
 }
@@ -50,6 +56,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
 }
 .button{
     display: flex;
@@ -62,12 +69,13 @@
     padding: 10px;
     color: #ffffff;
     border: none;
-    font-size: 16px;
+    font-size: 15px;
     background-color:orange;
+    width: 160px;
 }
 .button label{
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 .icon_more{
     animation: spin 1.5s infinite linear;
