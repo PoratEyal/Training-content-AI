@@ -130,7 +130,7 @@ function ChoosePath() {
                         </div>
                         <div className={styles.input_div}>
                             <select className={styles.input_select} value={pointOfViewTime} onChange={handleInputChange(setPointOfViewTime)} placeholder="זמן הפעילות">
-                                <option value="" disabled selected>בחרו זמן פעילות</option>
+                                <option value="" disabled>בחרו זמן פעילות</option>
                                 <option value="20 דקות">20 דקות</option>
                                 <option value="חצי שעה">חצי שעה</option>
                                 <option value="45 דקות">45 דקות</option>
@@ -154,7 +154,7 @@ function ChoosePath() {
                         </div> 
                         <div className={styles.input_div}>
                             <select className={styles.input_select} value={contentActivityTime} onChange={handleInputChange(setContentActivityTime)} placeholder="זמן הפעילות">
-                                <option value="" disabled selected>בחרו זמן פעילות</option>
+                                <option value="" disabled>בחרו זמן פעילות</option>
                                 <option value="20 דקות">20 דקות</option>
                                 <option value="חצי שעה">חצי שעה</option>
                                 <option value="45 דקות">45 דקות</option>
@@ -178,7 +178,7 @@ function ChoosePath() {
                         </div>
                         <div className={styles.input_div}>
                             <select className={styles.input_select} value={scoutingTimeTime} onChange={handleInputChange(setScoutingTimeTime)}>
-                                <option value="" disabled selected>בחרו זמן פעילות</option>
+                                <option value="" disabled>בחרו זמן פעילות</option>
                                 <option value="20 דקות">20 דקות</option>
                                 <option value="חצי שעה">חצי שעה</option>
                                 <option value="45 דקות">45 דקות</option>
@@ -202,8 +202,12 @@ function ChoosePath() {
                         </div>
                         
                         <div className={styles.input_div}>
-                            <select className={styles.input_select} value={playingTimeTime} onChange={handleInputChange(setPlayingTimeTime)}>
-                                <option value="" disabled selected>בחרו זמן משחק</option>
+                            <select 
+                                className={styles.input_select} 
+                                value={playingTimeTime}
+                                onChange={handleInputChange(setPlayingTimeTime)}
+                            >
+                                <option value="" disabled>בחרו זמן משחק</option>
                                 <option value="20 דקות">20 דקות</option>
                                 <option value="חצי שעה">חצי שעה</option>
                                 <option value="45 דקות">45 דקות</option>

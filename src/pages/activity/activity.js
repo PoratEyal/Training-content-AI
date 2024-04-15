@@ -97,28 +97,28 @@ function Activity() {
     const importWhatsup = (index) => {
         if (index === 1) {
             setWhatsupPoint(true);
-            const message = encodeURIComponent(data.pointOfView.data);
+            const message = encodeURIComponent("*נקודת מבט*\n" + data.pointOfView.data);
             const whatsappUrl = `https://wa.me/?text=${message}`;
             window.location.href = whatsappUrl;
             setWhatsupPoint(false);
         }        
         if (index === 2) {
             setWhatsupContent(true)
-            const message = encodeURIComponent(data.contentActivity.data);
+            const message = encodeURIComponent("*פעילות תוכן*\n" + data.contentActivity.data);
             const whatsappUrl = `https://wa.me/?text=${message}`;
             window.location.href = whatsappUrl;
             setWhatsupContent(false)
         }
         if (index === 3) {
             setWhatsupScoutingTime(true)
-            const message = encodeURIComponent(data.scoutingTime.data);
+            const message = encodeURIComponent("*זמן צופיות*\n" + data.scoutingTime.data);
             const whatsappUrl = `https://wa.me/?text=${message}`;
             window.location.href = whatsappUrl;
             setWhatsupScoutingTime(false)
         }
         if (index === 4) {
             setWhatsupPlaying(true)
-            const message = encodeURIComponent(data.playingTime.data);
+            const message = encodeURIComponent("*זמן משחק*\n" + data.playingTime.data);
             const whatsappUrl = `https://wa.me/?text=${message}`;
             window.location.href = whatsappUrl;
             setWhatsupPlaying(false)
@@ -301,17 +301,17 @@ function Activity() {
                     
                     <div className={styles.buttons_div}>
                         <button onClick={() => generateAgain(1)} className={styles.button}>
-                            <label onClick={() => generateAgain(1)}>פעילות נוספת</label>
+                            <label>פעילות נוספת</label>
                             {!iconClickedPoint ?
-                                <img onClick={() => generateAgain(1)} className={styles.icon_svg} src='ai.svg'></img>
+                                <img className={styles.icon_svg} src='ai.svg'></img>
                             :
                                 <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
                         </button>
 
                         <button onClick={() => moreData(1)} className={styles.button}>
-                            <label onClick={() => moreData(1)}>הרחבת התוכן</label>
+                            <label>הרחבת התוכן</label>
                             {!moreDataPoint ?
-                                <img onClick={() => moreData(1)} className={styles.icon_svg} src='more.svg'></img>
+                                <img className={styles.icon_svg} src='more.svg'></img>
                             :
                                 <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
                         </button>
@@ -332,17 +332,17 @@ function Activity() {
 
                     <div className={styles.buttons_div}>
                         <button onClick={() => generateAgain(2)} className={styles.button}>
-                            <label onClick={() => generateAgain(2)}>פעילות נוספת</label>
+                            <label>פעילות נוספת</label>
                             {!iconClickedContent ?
-                                <img onClick={() => generateAgain(2)} className={styles.icon_svg} src='ai.svg'></img>
+                                <img className={styles.icon_svg} src='ai.svg'></img>
                             :
                                 <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
                         </button>
 
                         <button onClick={() => moreData(2)} className={styles.button}>
-                            <label onClick={() => moreData(2)}>הרחבת התוכן</label>
+                            <label>הרחבת התוכן</label>
                             {!moreDataContent ?
-                                <img onClick={() => moreData(2)} className={styles.icon_svg} src='more.svg'></img>
+                                <img className={styles.icon_svg} src='more.svg'></img>
                             :
                                 <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
                         </button>
@@ -362,17 +362,17 @@ function Activity() {
 
                     <div className={styles.buttons_div}>
                         <button onClick={() => generateAgain(3)} className={styles.button}>
-                            <label onClick={() => generateAgain(3)}>פעילות נוספת</label>
+                            <label>פעילות נוספת</label>
                             {!iconClickedScoutingTime ?
-                                <img onClick={() => generateAgain(3)} className={styles.icon_svg} src='ai.svg'></img>
+                                <img className={styles.icon_svg} src='ai.svg'></img>
                             :
                                 <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
                         </button>
 
                         <button onClick={() => moreData(3)} className={styles.button}>
-                            <label onClick={() => moreData(3)}>הרחבת התוכן</label>
+                            <label>הרחבת התוכן</label>
                             {!moreDataScoutingTime ?
-                                <img onClick={() => moreData(3)} className={styles.icon_svg} src='more.svg'></img>
+                                <img className={styles.icon_svg} src='more.svg'></img>
                             :
                                 <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
                         </button>
@@ -392,17 +392,17 @@ function Activity() {
 
                     <div className={styles.buttons_div}>
                         <button onClick={() => generateAgain(4)} className={styles.button}>
-                            <label onClick={() => generateAgain(4)}>פעילות נוספת</label>
+                            <label>פעילות נוספת</label>
                             {!iconClickedPlaying ?
-                                <img onClick={() => generateAgain(4)} className={styles.icon_svg} src='ai.svg'></img>
+                                <img className={styles.icon_svg} src='ai.svg'></img>
                             :
                                 <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
                         </button>
 
                         <button onClick={() => moreData(4)} className={styles.button}>
-                            <label onClick={() => moreData(4)}>הרחבת התוכן</label>
+                            <label>הרחבת התוכן</label>
                             {!moreDataPlaying ?
-                                <img onClick={() => moreData(4)} className={styles.icon_svg} src='more.svg'></img>
+                                <img className={styles.icon_svg} src='more.svg'></img>
                             :
                                 <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>}
                         </button>
