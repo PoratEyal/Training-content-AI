@@ -3,7 +3,7 @@
     flex-direction: column;
     width: auto;
     justify-content: space-between;
-    height: 90vh;
+    height: 100vh;
 }
 
 .back_icon{
@@ -20,9 +20,9 @@
 
 .h3{
     color: orange;
-    font-size: 27px;
-    margin-top: 60px;
-    width: 330px;
+    font-size: 32px;
+    margin-top: 80px;
+    width: 335px;
 }
 
 .checkbox_div{
@@ -135,7 +135,7 @@
     width: 320px;
     height: 62px;
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .loading_icon{

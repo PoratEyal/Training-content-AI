@@ -116,7 +116,7 @@ function ChoosePath() {
 
             <div className={styles.checkbox_container}>
 
-                <h3 className={styles.h3}>שלום מדריכים אלופים !<br></br>בחרו את הפעילות שלכם</h3>
+                <h3 className={styles.h3}>בחרו את הפעילות שלכם</h3>
 
                 <div className={styles.checkbox_div}>
                     <label className={styles.checkbox_input}><input type="checkbox" checked={showPointOfView} onChange={togglePointOfView} /> נקודת מבט</label>
@@ -222,7 +222,7 @@ function ChoosePath() {
             <div className={styles.btn_div}>
                 <button onClick={submitHandler} className={styles.submit_btn}>
                     {!clicked ?
-                        "לקבלת הפעילות"
+                        "אני רוצה הצעה לפעילות"
                     :
                         <VscLoading className={styles.loading_icon}></VscLoading>}
                 </button>

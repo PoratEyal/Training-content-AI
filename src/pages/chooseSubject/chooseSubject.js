@@ -106,7 +106,7 @@ function ChooseSubject() {
 
             <button onClick={submitHandler} className={styles.submit_btn}>
                 {!btnClicked ? 
-                    <label>לקבלת פעילות</label>
+                    <label>אני רוצה הצעה לפעילות</label>
                 :
                     <div className={styles.submit_btn_div}>
                         <label>הפעילות בהכנה</label>
