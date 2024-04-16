@@ -4,7 +4,7 @@ import styles from './choosePath.module.css';
 import { VscLoading } from "react-icons/vsc";
 import {  } from '../../service/openAiPrompts';
 import { useNavigate } from 'react-router-dom';
-import { IoMdArrowBack } from "react-icons/io";
+import { IoArrowForward } from "react-icons/io5";
 import { FaWandMagicSparkles } from "react-icons/fa6";
 import { getPlayingTimeSubject, getPointOfView, getContentActivity, getScoutingTime, getPlayingTime, getScoutingTimeSubject, getContentActivitySubject, getPointOfViewSubject } from '../../service/openAiPrompts';
 
@@ -112,9 +112,12 @@ function ChoosePath() {
     return (
         <div className={styles.container}>
 
-            <IoMdArrowBack onClick={() => navigate('/')} className={styles.back_icon}></IoMdArrowBack>
-
             <div className={styles.checkbox_container}>
+
+                <div className={styles.navbar}>
+                    <img src='icon.png'></img>
+                    <IoArrowForward onClick={() => navigate('/')} className={styles.back_icon}></IoArrowForward>
+                </div>
 
                 <h3 className={styles.h3}>בחרו את הפעילות שלכם</h3>
 

@@ -1,8 +1,27 @@
 .container{
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
-    width: auto;
+    margin-top: 0px;
+}
+
+.half_circle{
+    width: 350px;       
+    height: 150px;        
+    background-color: rgb(255, 151, 47); 
+    border-bottom-left-radius: 200px;  
+    border-bottom-right-radius: 200px;
+    margin-bottom: 50px;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 27px;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+.half_circle label{
+    margin-bottom: 40px;
 }
 
 .container h3{
@@ -26,7 +45,7 @@
     padding: 15px 15px 15px 15px;
     font-size: 18px;
     border-radius: 30px;
-    width: 320px;
+    width: 350px;
     font-family: 'Fredoka', sans-serif;
     direction: rtl;
     background-color: white;
@@ -65,7 +84,7 @@
     transition: background-color 0.3s ease;
     position: absolute;
     bottom: 30px;
-    width: 320px;
+    width: 350px;
     height: 62px;
     color: white;
 }

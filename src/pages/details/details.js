@@ -28,7 +28,11 @@ function Details() {
         <div className={styles.container}>
             <form onSubmit={handleSubmit}>
 
-                <h3>הזינו מספר פרטים על הפעולה</h3>
+                <div className={styles.half_circle}>
+                    <label>הזינו מספר פרטים <br></br>על הקבוצה שלכם</label>
+                </div>
+
+                {/* <h3>הזינו מספר פרטים על הפעולה</h3> */}
 
                 <div className={styles.input_div}>
                     <select 
