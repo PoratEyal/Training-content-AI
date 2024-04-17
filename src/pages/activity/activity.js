@@ -6,6 +6,8 @@ import { IoMdArrowBack } from "react-icons/io";
 import { AiOutlineLoading } from "react-icons/ai";
 import { FaWhatsapp } from "react-icons/fa";
 import { BsFiletypeDocx } from "react-icons/bs";
+import { saveAs } from 'file-saver';
+import { Document, Packer, Paragraph } from 'docx';
 import { getPointOfView, getContentActivity, getScoutingTime, getPlayingTime, getMoreContent } from '../../service/openAiPrompts';
 
 function Activity() {
@@ -128,143 +130,184 @@ function Activity() {
     const importDocs = async (index) => {
         if (index === 1) {
             setDocsPoint(true);
-            console.log(data.pointOfView.data);
-    
-            const newWindow = window.open('', '_blank');
-            if(newWindow) {
-                newWindow.document.write(`
-                    <html>
-                    <head>
-                        <title>נקודת מבט</title>
-                        <style>
-                            body { 
-                                text-align: right; 
-                                direction: rtl; 
-                                font-family: 'Fredoka', sans-serif;
+            const doc = new Document({
+                styles: {
+                    paragraphStyles: [
+                        {
+                            id: 'headerStyle',
+                            name: 'Header Style',
+                            basedOn: 'Heading3',  // Use Heading3 as the base for size and other attributes
+                            next: 'Normal',
+                            quickFormat: true,
+                            run: {
+                                bold: true,  // Make the text bold
+                                size: 32,  // Font size, where 32 is equivalent to 16pt
+                                font: {
+                                    name: 'Arial'  // Ensuring the font is a commonly supported sans-serif
+                                }
+                            },
+                            paragraph: {
+                                spacing: {
+                                    after: 200,  // Spacing after the paragraph to separate from the next
+                                }
                             }
-                            h1 {
-                                font-weight: bold;
-                                font-family: 'Fredoka', sans-serif;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <h1>נקודת מבט</h1>
-                        <pre>${data.pointOfView.data}</pre>
-                    </body>
-                    </html>
-                `);
-                newWindow.document.close();
-            } else {
-                alert('Pop-up blocker might have prevented opening the new window.');
-            }
-    
+                        }
+                    ]
+                },
+                sections: [
+                    {
+                        properties: {},
+                        children: [
+                            new Paragraph({
+                                text: "נקודת מבט",
+                                style: 'headerStyle',
+                                bidirectional: true
+                            }),
+                            new Paragraph(data.pointOfView.data)  // Normal paragraph style
+                        ],
+                    },
+                ],
+            });
+            
+            Packer.toBlob(doc).then(blob => {
+                saveAs(blob, "פעילות נקודת מבט.docx");
+            });
             setDocsPoint(false);
-        }
+        }        
         if (index === 2) {
-            setDocsPoint(true);
-            console.log(data.pointOfView.data);
-    
-            const newWindow = window.open('', '_blank');
-            if(newWindow) {
-                newWindow.document.write(`
-                    <html>
-                    <head>
-                        <title>פעילות תוכן</title>
-                        <style>
-                            body { 
-                                text-align: right; 
-                                direction: rtl; 
-                                font-family: 'Fredoka', sans-serif;
+            setDocsContent(true);
+            const doc = new Document({
+                styles: {
+                    paragraphStyles: [
+                        {
+                            id: 'headerStyle',
+                            name: 'Header Style',
+                            basedOn: 'Heading3',  // Use Heading3 as the base for size and other attributes
+                            next: 'Normal',
+                            quickFormat: true,
+                            run: {
+                                bold: true,  // Make the text bold
+                                size: 32,  // Font size, where 32 is equivalent to 16pt
+                                font: {
+                                    name: 'Arial'  // Ensuring the font is a commonly supported sans-serif
+                                }
+                            },
+                            paragraph: {
+                                spacing: {
+                                    after: 200,  // Spacing after the paragraph to separate from the next
+                                }
                             }
-                            h1 {
-                                font-weight: bold;
-                                font-family: 'Fredoka', sans-serif;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <h1>פעילות תוכן</h1>
-                        <pre>${data.contentActivity.data}</pre>
-                    </body>
-                    </html>
-                `);
-                newWindow.document.close();
-            } else {
-                alert('Pop-up blocker might have prevented opening the new window.');
-            }
-    
-            setDocsPoint(false);
+                        }
+                    ]
+                },
+                sections: [
+                    {
+                        properties: {},
+                        children: [
+                            new Paragraph({
+                                text: "פעילות תוכן",
+                                style: 'headerStyle',
+                                bidirectional: true
+                            }),
+                            new Paragraph(data.contentActivity.data)  // Normal paragraph style
+                        ],
+                    },
+                ],
+            });
+            Packer.toBlob(doc).then(blob => {
+                saveAs(blob, "פעילות תוכן.docx");
+            });
+            setDocsContent(false);
         }
         if (index === 3) {
-            setDocsPoint(true);
-            console.log(data.pointOfView.data);
-    
-            const newWindow = window.open('', '_blank');
-            if(newWindow) {
-                newWindow.document.write(`
-                    <html>
-                    <head>
-                        <title>זמן צופיות</title>
-                        <style>
-                            body { 
-                                text-align: right; 
-                                direction: rtl; 
-                                font-family: 'Fredoka', sans-serif;
+            setDocsScoutingTime(true);
+            const doc = new Document({
+                styles: {
+                    paragraphStyles: [
+                        {
+                            id: 'headerStyle',
+                            name: 'Header Style',
+                            basedOn: 'Heading3',  // Use Heading3 as the base for size and other attributes
+                            next: 'Normal',
+                            quickFormat: true,
+                            run: {
+                                bold: true,  // Make the text bold
+                                size: 32,  // Font size, where 32 is equivalent to 16pt
+                                font: {
+                                    name: 'Arial'  // Ensuring the font is a commonly supported sans-serif
+                                }
+                            },
+                            paragraph: {
+                                spacing: {
+                                    after: 200,  // Spacing after the paragraph to separate from the next
+                                }
                             }
-                            h1 {
-                                font-weight: bold;
-                                font-family: 'Fredoka', sans-serif;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <h1>זמן צופיות</h1>
-                        <pre>${data.scoutingTime.data}</pre>
-                    </body>
-                    </html>
-                `);
-                newWindow.document.close();
-            } else {
-                alert('Pop-up blocker might have prevented opening the new window.');
-            }
-    
-            setDocsPoint(false);
+                        }
+                    ]
+                },
+                sections: [
+                    {
+                        properties: {},
+                        children: [
+                            new Paragraph({
+                                text: "זמן תנועת נוער",
+                                style: 'headerStyle',
+                                bidirectional: true
+                            }),
+                            new Paragraph(data.scoutingTime.data)  // Normal paragraph style
+                        ],
+                    },
+                ],
+            });
+            Packer.toBlob(doc).then(blob => {
+                saveAs(blob, "זמן תנועת נוער.docx");
+            });
+            setDocsScoutingTime(false);
         }
         if (index === 4) {
-            setDocsPoint(true);
-            console.log(data.pointOfView.data);
-    
-            const newWindow = window.open('', '_blank');
-            if(newWindow) {
-                newWindow.document.write(`
-                    <html>
-                    <head>
-                        <title>זמן משחק</title>
-                        <style>
-                            body { 
-                                text-align: right; 
-                                direction: rtl; 
-                                font-family: 'Fredoka', sans-serif;
+            setDocsPlaying(true);
+            const doc = new Document({
+                styles: {
+                    paragraphStyles: [
+                        {
+                            id: 'headerStyle',
+                            name: 'Header Style',
+                            basedOn: 'Heading3',  // Use Heading3 as the base for size and other attributes
+                            next: 'Normal',
+                            quickFormat: true,
+                            run: {
+                                bold: true,  // Make the text bold
+                                size: 32,  // Font size, where 32 is equivalent to 16pt
+                                font: {
+                                    name: 'Arial'  // Ensuring the font is a commonly supported sans-serif
+                                }
+                            },
+                            paragraph: {
+                                spacing: {
+                                    after: 200,  // Spacing after the paragraph to separate from the next
+                                }
                             }
-                            h1 {
-                                font-weight: bold;
-                                font-family: 'Fredoka', sans-serif;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <h1>זמן משחק</h1>
-                        <pre>${data.playingTime.data}</pre>
-                    </body>
-                    </html>
-                `);
-                newWindow.document.close();
-            } else {
-                alert('Pop-up blocker might have prevented opening the new window.');
-            }
-    
-            setDocsPoint(false);
+                        }
+                    ]
+                },
+                sections: [
+                    {
+                        properties: {},
+                        children: [
+                            new Paragraph({
+                                text: "זמן משחק",
+                                style: 'headerStyle',
+                                bidirectional: true
+                            }),
+                            new Paragraph(data.playingTime.data)  // Normal paragraph style
+                        ],
+                    },
+                ],
+            });
+            Packer.toBlob(doc).then(blob => {
+                saveAs(blob, "זמן משחק.docx");
+            });
+            setDocsPlaying(false);
         }
     }
 
