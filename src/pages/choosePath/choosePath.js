@@ -115,8 +115,8 @@ function ChoosePath() {
             <div className={styles.checkbox_container}>
 
                 <div className={styles.navbar}>
-                    {/* <img src='icon.png'></img> */}
                     <IoArrowForward onClick={() => navigate('/')} className={styles.back_icon}></IoArrowForward>
+                    <img onClick={() => navigate('/')} src='icon.png'></img>
                 </div>
 
                 <h3 className={styles.h3}>בחרו את הפעילות שלכם</h3>
@@ -231,7 +231,10 @@ function ChoosePath() {
                     {!clicked ?
                         "אני רוצה הצעה לפעילות"
                     :
-                        <VscLoading className={styles.loading_icon}></VscLoading>}
+                    <div className={styles.loading_btn_txt}>
+                        <label>הפעילות בהכנה</label>
+                        <VscLoading className={styles.loading_icon}></VscLoading>
+                    </div>}
                 </button>
             </div>
 

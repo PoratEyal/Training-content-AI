@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './activity.module.css';
 import { useContentContext } from '../../context/ContentContext';
 import { useNavigate } from 'react-router-dom';
-import { IoMdArrowBack } from "react-icons/io";
+import { IoArrowForward } from "react-icons/io5";
 import { AiOutlineLoading } from "react-icons/ai";
 import { FaWhatsapp } from "react-icons/fa";
 import { BsFiletypeDocx } from "react-icons/bs";
@@ -329,7 +329,10 @@ function Activity() {
     return (
         <div className={styles.container}>
 
-            <IoMdArrowBack onClick={goingBack} className={styles.back_icon}></IoMdArrowBack>
+            <div className={styles.navbar}>
+                <IoArrowForward onClick={goingBack} className={styles.back_icon}></IoArrowForward>
+                <img onClick={() => navigate('/')} className={styles.logo_img} src='icon.png'></img>
+            </div>
 
             {data.pointOfView.use &&
                 <div className={styles.activity_div}>

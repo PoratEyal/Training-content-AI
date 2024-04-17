@@ -7,20 +7,22 @@
 }
 
 .navbar{
-    background-color: white;
     width: 100%;
     height: 60px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid orange;
     margin-bottom: 30px;
     width: 100vw;
     position: sticky;
     top: 0;
     left: 0;
     z-index: 999;
+    background: #f5f5dc73;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: none;
 }
 .navbar img{
     width: 40px;
@@ -158,6 +160,14 @@
     height: 62px;
     color: white;
     margin-bottom: 25px;
+}
+
+.loading_btn_txt{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
 
 .loading_icon{
