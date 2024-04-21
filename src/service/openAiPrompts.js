@@ -63,7 +63,7 @@ const moreContnentPrompt  = (activityDescription) => {
         messages: [
         {
             role: "user",
-            content: `Expand on this activity: ${activityDescription}. Include comprehensive details to ensure everything is thoroughly explained. Do not remove things in your answer from the activity that i provied you, just add more data about her! The response should be in Hebrew.`,
+            content: `Expand on this activity: ${activityDescription}. Include comprehensive details to ensure everything is thoroughly explained. Do not remove things in your answer from the activity that i provied you like the name and the time, just add more data about her! If in the activity written that the Instructions will bring subjects or data to the apprentices - you will write the subjects or the data. The response should be in Hebrew.`,
         },
         ],
         temperature: 0.7,
