@@ -57,18 +57,18 @@ export async function getSubjects() {
 
 // - - - - - - activity prompt section - - - - - - - - - - - -
 
-const moreContnentPrompt  = (activityDescription) => {
+const moreContnentPrompt = (activityDescription) => {
     return {
         model: "gpt-4",
         messages: [
-        {
-            role: "user",
-            content: `Expand on this activity: ${activityDescription}. Include comprehensive details to ensure everything is thoroughly explained. Do not remove things in your answer from the activity that i provied you like the name and the time, just add more data about her! If in the activity written that the Instructions will bring subjects or data to the apprentices - you will write the subjects or the data. The response should be in Hebrew.`,
-        },
+            {
+                role: "user",
+                content: `Provide a detailed expansion of this activity: ${activityDescription}. Ensure comprehensive coverage of all aspects, including the name and the time of the activity, and any specific instructions or data mentioned in the activity. Reflect any direct content like names and times without alteration, but enrich the description with additional relevant details to enhance understanding. The response should be detailed and in Hebrew.`,
+            },
         ],
         temperature: 0.7,
     };
-};  
+}; 
 
 export async function getMoreContent (activityDescription) {
     const requestOptions2 = {
@@ -151,7 +151,7 @@ const pointOfViewSubjectPrompt = {
     messages: [
         {
             role: "user",
-            content: "בכל פעם שאני שואל, מצא לי נושא חדש אקטואלי ופשוט שמתאים להעברת פעילות בתנועות נוער ומתאים לדיון עם ילדים בגילאים 8-18. הפעם אני מחפש משהו שלא הצגת לפני כן. תביא לי את הנושא בלי גרשיים. נושא בפחות מ-70 תווים נא להחזיר את התשובה בעברית, תשמור על עברית תקינה ובלי שגיאות כתיב! התשובה צריכה להיות פשוטה ומובנת לילדים.",
+            content: "בכל פעם שאני שואל, מצא לי נושא חדש אקטואלי ופשוט שמתאים להעברת פעילות בתנועות נוער ומתאים לדיון עם ילדים בגילאים 8-18. הפעם אני מחפש משהו שלא הצגת לפני כן. אל תביא/תציע לי סרטונים ומצגות בפעילות. תביא לי את הנושא בלי גרשיים. נושא בפחות מ-70 תווים נא להחזיר את התשובה בעברית, תשמור על עברית תקינה ובלי שגיאות כתיב! התשובה צריכה להיות פשוטה ומובנת לילדים.",
         },
     ],
     temperature: 0.9,
@@ -189,7 +189,7 @@ const contentActivityPrompt = (subject, time, amount, age, gender, place) => {
         messages: [
             {
                 role: "user",
-                content: `A content activity is an activity that the instructor does with his mentees. You are a scoutmaster and i want you to create a "content activity" on the topic of ${subject} that will last ${time}, the number of the children in the activity are" ${amount}, the grade of them is: ${age} and the gender of them is ${gender}. The place of the activity will be ${place}. At the begining of the answer write the the name of the activity and the time for her. In eac part of the activity, you will put his time. Return the answer in Hebrew! For example, an activity might involve sharing a screen with the group to display photos of Yitzhak Rabin, which can be sourced from the internet or an attached appendix. Participants are asked to select a photo that attracts or interests them, discussing what the photograph suggests about Rabin's character and why they chose that particular picture. Responses are compiled on a common page. After the discussion, the guide elaborates on Rabin's life and character. It's beneficial to add various photos to the appendix to highlight different aspects of Rabin's personality, such as being a family man, a man of peace, a military strategist, a statesman, and a leader. The activity encourages contributions from the participants, but guides can help conceptualize Rabin's features at the discussion's end. Guides are recommended to read up on Rabin's life beforehand and to be mindful of the diverse political opinions participants might have. For inspiration, guides can consult the Rabin Center website and read about Rabin's work.`
+                content: `A content activity is an activity that the instructor does with his mentees. You are a scoutmaster and i want you to create a "content activity" on the topic of ${subject} that will last ${time}, the number of the children in the activity are" ${amount}, the grade of them is: ${age} and the gender of them is ${gender}. The place of the activity will be ${place}. At the begining of the answer write the the name of the activity and the time for her. In eac part of the activity, you will put his time. Return the answer in Hebrew! For example, an activity might involve sharing a screen with the group to display photos of Yitzhak Rabin, which can be sourced from the internet or an attached appendix. Dont suggest me videos or Presentation in the activity. Participants are asked to select a photo that attracts or interests them, discussing what the photograph suggests about Rabin's character and why they chose that particular picture. Responses are compiled on a common page. After the discussion, the guide elaborates on Rabin's life and character. It's beneficial to add various photos to the appendix to highlight different aspects of Rabin's personality, such as being a family man, a man of peace, a military strategist, a statesman, and a leader. The activity encourages contributions from the participants, but guides can help conceptualize Rabin's features at the discussion's end. Guides are recommended to read up on Rabin's life beforehand and to be mindful of the diverse political opinions participants might have. For inspiration, guides can consult the Rabin Center website and read about Rabin's work.`
             }
         ],
         temperature: 0.7,
@@ -256,7 +256,7 @@ const scoutingTimePrompt = (subject, time, amount, age, gender, place) => {
         model: "gpt-4",
         messages: [{
             role: "user",
-            content: `A Scouting time focuses on scouting skills and experiences, where the instructor teaches a scouting skill or imparts scouting experiences. You are a scoutmaster and i want you to create a Scouting time on the topic of ${subject} that will last ${time}, the number of the children in the activity are" ${amount}, the grade of them is: ${age} and the gender of them is ${gender}. The place of the activity will be ${place}. Come up with a nice name for the activity. At the begining of the answer write the the name of the activity and the time for her. In each part of the activity, you will put his time. Do not add a study phase, focus on practice. Return the answer in Hebrew! For example, The trainees are divided into two groups, in front of each group will be placed an (identical) heavy object - the object can be a large rock or anything you can imagine as long as it is not dangerous. The goal of the teams is to connect to the object with a Spanish block, and drag it a distance of four to five meters to the end point that will be marked with a rope. The first team to reach the finish point wins!`
+            content: `A Scouting time focuses on scouting skills and experiences, where the instructor teaches a scouting skill or imparts scouting experiences. You are a scoutmaster and i want you to create a Scouting time on the topic of ${subject} that will last ${time}, the number of the children in the activity are" ${amount}, the grade of them is: ${age} and the gender of them is ${gender}. The place of the activity will be ${place}. Come up with a nice name for the activity. At the begining of the answer write the the name of the activity and the time for her. In each part of the activity, you will put his time. Do not add a study phase, focus on practice. Return the answer in Hebrew! For example, The trainees are divided into two groups, in front of each group will be placed an (identical) heavy object - the object can be a large rock or anything you can imagine as long as it is not dangerous. Dont suggest me video or Presentation in the activity. The goal of the teams is to connect to the object with a Spanish block, and drag it a distance of four to five meters to the end point that will be marked with a rope. The first team to reach the finish point wins!`
         }],
         temperature: 0.7,
     };
@@ -322,7 +322,7 @@ const playingTimePrompt = (subject, time, amount, age, gender, place) => {
         model: "gpt-4",
         messages: [{
             role: "user",
-            content: `You are a scoutmaster and i want you to create a "Playing time" activity on the topic of ${subject} that will last ${time}, the number of the children in the activity are" ${amount}, the grade of them is: ${age} and the gender of them is ${gender}. The place of the activity will be ${place}. Come up with a nice name for the game. at the begining of the answer write the name of the game and the time. Return the answer in Hebrew! For example, Every time I tell the trainees a fact about me, and they have to guess whether it is true or false.`
+            content: `You are a scoutmaster and i want you to create a "Playing time" activity on the topic of ${subject} that will last ${time}, the number of the children in the activity are" ${amount}, the grade of them is: ${age} and the gender of them is ${gender}. The place of the activity will be ${place}. Come up with a nice name for the game. at the begining of the answer write the name of the game and the time. Dont suggest me video or Presentation in the activity. Return the answer in Hebrew! For example, Every time I tell the trainees a fact about me, and they have to guess whether it is true or false.`
         }],
         temperature: 0.7,
     };
