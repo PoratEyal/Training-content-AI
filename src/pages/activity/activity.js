@@ -113,7 +113,7 @@ function Activity() {
         }
         if (index === 3) {
             setWhatsupScoutingTime(true)
-            const message = encodeURIComponent("*זמן צופיות*\n" + data.scoutingTime.data);
+            const message = encodeURIComponent("*זמן תנועת נוער*\n" + data.scoutingTime.data);
             const whatsappUrl = `https://wa.me/?text=${message}`;
             window.location.href = whatsappUrl;
             setWhatsupScoutingTime(false)
@@ -418,7 +418,7 @@ function Activity() {
             {data.scoutingTime.use &&
                 <div className={styles.activity_div}>
                     <div className={styles.h2_icon_div}>
-                        <h2>זמן צופיות</h2>
+                        <h2>זמן תנועת נוער</h2>
                         <div className={styles.icons}>
                             {!whatsupScoutingTime ? <FaWhatsapp onClick={() => importWhatsup(3)}></FaWhatsapp> : <AiOutlineLoading></AiOutlineLoading>}
                             {!docsScoutingTime ? <BsFiletypeDocx onClick={() => importDocs(3)}></BsFiletypeDocx> : <AiOutlineLoading></AiOutlineLoading>}

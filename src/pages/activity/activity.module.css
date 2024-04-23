@@ -121,7 +121,7 @@
         width: 400px;
         overflow-x: hidden;
         overflow-y: auto;
-        height: 60vh;
+        height: 70vh;
         border: none;
         border-radius: 30px;
         background-color: #F5F5DC;
@@ -147,6 +147,11 @@
         margin-top: 10px;
         margin-bottom: 10px;
         cursor: pointer;
+    }
+
+    .activity_div{
+        padding: 30px;
+        padding-top: 0px;
     }
     
     body{

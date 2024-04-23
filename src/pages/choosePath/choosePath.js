@@ -171,7 +171,7 @@ function ChoosePath() {
                 </div>
 
                 <div className={styles.checkbox_div}>
-                    <label><input type="checkbox" checked={showScoutingTime} onChange={toggleScoutingTime} />זמן צופיות</label>
+                    <label><input type="checkbox" checked={showScoutingTime} onChange={toggleScoutingTime} />זמן תנועת נוער/צופיות</label>
                     {showScoutingTime && <div className={styles.inputs_div}>
                         <div className={styles.input_and_icon}>
                             <textarea className={styles.input} value={scoutingTimeSubject} onChange={handleInputChange(setScoutingTimeSubject)} placeholder="נושא הפעילות" type="text" />
