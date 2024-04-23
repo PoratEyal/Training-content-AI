@@ -163,7 +163,12 @@ function Activity() {
                                 style: 'headerStyle',
                                 bidirectional: true
                             }),
-                            new Paragraph(data.pointOfView.data)  // Normal paragraph style
+                            new Paragraph({
+                                text: data.pointOfView.data,
+                                style: 'Normal',
+                                bidirectional: true,
+                                rightToLeft: true,
+                            })
                         ],
                     },
                 ],
@@ -209,7 +214,12 @@ function Activity() {
                                 style: 'headerStyle',
                                 bidirectional: true
                             }),
-                            new Paragraph(data.contentActivity.data)  // Normal paragraph style
+                            new Paragraph({
+                                text: data.contentActivity.data,
+                                style: 'Normal',
+                                bidirectional: true,
+                                rightToLeft: true,
+                            })
                         ],
                     },
                 ],
@@ -254,7 +264,12 @@ function Activity() {
                                 style: 'headerStyle',
                                 bidirectional: true
                             }),
-                            new Paragraph(data.scoutingTime.data)  // Normal paragraph style
+                            new Paragraph({
+                                text: data.scoutingTime.data,
+                                style: 'Normal',
+                                bidirectional: true,
+                                rightToLeft: true,
+                            })
                         ],
                     },
                 ],
@@ -299,7 +314,12 @@ function Activity() {
                                 style: 'headerStyle',
                                 bidirectional: true
                             }),
-                            new Paragraph(data.playingTime.data)  // Normal paragraph style
+                            new Paragraph({
+                                text: data.playingTime.data,
+                                style: 'Normal',
+                                bidirectional: true,
+                                rightToLeft: true,
+                            })
                         ],
                     },
                 ],
