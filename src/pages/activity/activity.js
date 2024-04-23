@@ -398,7 +398,7 @@ function Activity() {
             {data.scoutingTime.use &&
                 <div className={styles.activity_div}>
                     <div className={styles.h2_icon_div}>
-                        <h2>זמן תנועת נוער</h2>
+                        <h2>זמן צופיות</h2>
                         <div className={styles.icons}>
                             {!whatsupScoutingTime ? <FaWhatsapp onClick={() => importWhatsup(3)}></FaWhatsapp> : <AiOutlineLoading></AiOutlineLoading>}
                             {!docsScoutingTime ? <BsFiletypeDocx onClick={() => importDocs(3)}></BsFiletypeDocx> : <AiOutlineLoading></AiOutlineLoading>}
