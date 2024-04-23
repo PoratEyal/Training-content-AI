@@ -331,7 +331,7 @@ function Activity() {
 
             <div className={styles.navbar}>
                 <IoArrowForward onClick={goingBack} className={styles.back_icon}></IoArrowForward>
-                <img onClick={() => navigate('/')} className={styles.logo_img} src='icon.png'></img>
+                {/* <img onClick={() => navigate('/')} className={styles.logo_img} src='icon.png'></img> */}
             </div>
 
             {data.pointOfView.use &&
