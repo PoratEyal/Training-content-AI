@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useContentContext } from '../../context/ContentContext';
 import styles from './choosePath.module.css';
 import { VscLoading } from "react-icons/vsc";
@@ -6,6 +6,7 @@ import {  } from '../../service/openAiPrompts';
 import { useNavigate } from 'react-router-dom';
 import { IoArrowForward } from "react-icons/io5";
 import { FaWandMagicSparkles } from "react-icons/fa6";
+import Loading from '../../components/loading/loading';
 import { getPlayingTimeSubject, getPointOfView, getContentActivity, getScoutingTime, getPlayingTime, getScoutingTimeSubject, getContentActivitySubject, getPointOfViewSubject } from '../../service/openAiPrompts';
 
 function ChoosePath() {
@@ -109,8 +110,8 @@ function ChoosePath() {
         //await generateImg(data.playingTime.data)
     }
 
-    return (
-        <div className={styles.container}>
+    return <React.Fragment>
+        <div className={!clicked ? styles.container : styles.container_disabled}>
 
             <div className={styles.checkbox_container}>
 
@@ -228,18 +229,14 @@ function ChoosePath() {
 
             <div className={styles.btn_div}>
                 <button onClick={submitHandler} className={styles.submit_btn}>
-                    {!clicked ?
                         "אני רוצה הצעה לפעילות"
-                    :
-                    <div className={styles.loading_btn_txt}>
-                        <label>הפעילות בהכנה</label>
-                        <VscLoading className={styles.loading_icon}></VscLoading>
-                    </div>}
                 </button>
             </div>
 
         </div>
-    );
+
+        {clicked && <Loading></Loading>}
+    </React.Fragment>
 }
 
 export default ChoosePath;
