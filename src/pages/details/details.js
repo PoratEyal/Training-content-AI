@@ -4,8 +4,8 @@ import { VscLoading } from "react-icons/vsc";
 import { useContentContext } from '../../context/ContentContext';
 import { useNavigate } from 'react-router-dom';
 import { MdOutlinePrivacyTip } from "react-icons/md";
-import LimitRequest from '../../components/popups/limitRequests/limitRequests';
-import TermsAndConds from '../../components/popups/termsAndConds/TermAndConds';
+// import LimitRequest from '../../components/popups/limitRequests/limitRequests';
+// import TermsAndConds from '../../components/popups/termsAndConds/TermAndConds';
 import Cookies from 'js-cookie';
 
 function Details() {
