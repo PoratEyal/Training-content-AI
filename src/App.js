@@ -5,6 +5,7 @@ import Details from '../src/pages/details/details';
 import Activity from './pages/activity/activity';
 import ChoosePath from './pages/choosePath/choosePath';
 import PrivacyPolicy from './pages/privacyPolicy/privacyPolicy';
+import Maintenance from './pages/maintenance/maintenance';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/choosePath" element={<ChoosePath />} />
           <Route path="/activity" element={<Activity />} />
           <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
+          {/* <Route path="/privacyPolicy" element={<Maintenance />} /> */}
         </Routes>
       </Router>
     </ContentProvider>
