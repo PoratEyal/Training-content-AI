@@ -10,7 +10,7 @@ const openAiheaders = {
 };
 
 const subjectsPrompt = {
-    model: "gpt-4",
+    model: "gpt-3.5-turbo",
     messages: [
         {
             role: "user",
@@ -59,7 +59,7 @@ export async function getSubjects() {
 
 const moreContnentPrompt = (activityDescription) => {
     return {
-        model: "gpt-4",
+        model: "gpt-3.5-turbo",
         messages: [
             {
                 role: "user",
@@ -119,7 +119,7 @@ export async function getImg(activity) {
 
 const pointOfViewPrompt = (subject, time, amount, age, gender, place) => {
     return {
-        model: "gpt-4",
+        model: "gpt-3.5-turbo",
         messages: [{
             role: "user",
             content: `A "point of view activity" is an activity that the instructor does with his mentees, focusing on a certain topical issue. You are a scoutmaster and i want you to create a Point of View Activity on the topic of ${subject} that will last ${time}, the number of the children in the activity are" ${amount}, the grade of them is: ${age} and the gender of them is ${gender}. The place of the activity will be ${place}. At the begining of the answer write the the name of the activity and the time for her. In eac part of the activity, you will put his time. Return the answer in Hebrew! For example, I will scatter sentences on the floor to help participants understand the situation (if the activity is delivered online, the sentences can be shown on the screen in a presentation): - The glaciers are melting faster and losing 31% more snow and ice per year compared to the situation 15 years ago. - The glaciers in the mountains lose more than 328 billion tons of ice and snow every year. - The water from the melted glaciers flows into the sea, and as a result, the sea level rises. - Between the years 2015 and 2019, the melting rate of the glaciers is 78 billion tons more than the rate between 2000 and 2004. - By the end of the 21st century, the sea level is expected to rise by one meter, turning a billion people into refugees. Questions for discussion: - How does that happen? - Why is it happening? - How can this be prevented? - Why is it important to prevent it?`
@@ -147,7 +147,7 @@ export async function getPointOfView (subject, time, amount, age, gender, place)
 };
 
 const pointOfViewSubjectPrompt = {
-    model: "gpt-4",
+    model: "gpt-3.5-turbo",
     messages: [
         {
             role: "user",
@@ -185,7 +185,7 @@ export async function getPointOfViewSubject() {
 
 const contentActivityPrompt = (subject, time, amount, age, gender, place) => {
     return {
-        model: "gpt-4",
+        model: "gpt-3.5-turbo",
         messages: [
             {
                 role: "user",
@@ -215,7 +215,7 @@ export async function getContentActivity (subject, time, amount, age, gender, pl
 };
 
 const contentActivitySubjectPrompt = {
-    model: "gpt-4",
+    model: "gpt-3.5-turbo",
     messages: [
         {
             role: "user",
@@ -253,7 +253,7 @@ export async function getContentActivitySubject() {
 
 const scoutingTimePrompt = (subject, time, amount, age, gender, place) => {
     return {
-        model: "gpt-4",
+        model: "gpt-3.5-turbo",
         messages: [{
             role: "user",
             content: `A Scouting time focuses on scouting skills and experiences, where the instructor teaches a scouting skill or imparts scouting experiences. You are a scoutmaster and i want you to create a Scouting time on the topic of ${subject} that will last ${time}, the number of the children in the activity are" ${amount}, the grade of them is: ${age} and the gender of them is ${gender}. The place of the activity will be ${place}. Come up with a nice name for the activity. At the begining of the answer write the the name of the activity and the time for her. In each part of the activity, you will put his time. Do not add a study phase, focus on practice. Return the answer in Hebrew! For example, The trainees are divided into two groups, in front of each group will be placed an (identical) heavy object - the object can be a large rock or anything you can imagine as long as it is not dangerous. Dont suggest me video or Presentation in the activity. The goal of the teams is to connect to the object with a Spanish block, and drag it a distance of four to five meters to the end point that will be marked with a rope. The first team to reach the finish point wins!`
@@ -281,7 +281,7 @@ export async function getScoutingTime (subject, time, amount, age, gender, place
 };
 
 const scoutingSkillSubjectPromptHebrew = {
-    "model": "gpt-4",
+    model: "gpt-3.5-turbo",
     "messages": [
         {
             "role": "user",
@@ -319,7 +319,7 @@ export async function getScoutingTimeSubject() {
 
 const playingTimePrompt = (subject, time, amount, age, gender, place) => {
     return {
-        model: "gpt-4",
+        model: "gpt-3.5-turbo",
         messages: [{
             role: "user",
             content: `You are a scoutmaster and i want you to create a "Playing time" activity on the topic of ${subject} that will last ${time}, the number of the children in the activity are" ${amount}, the grade of them is: ${age} and the gender of them is ${gender}. The place of the activity will be ${place}. Come up with a nice name for the game. at the begining of the answer write the name of the game and the time. Dont suggest me video or Presentation in the activity. Return the answer in Hebrew! For example, Every time I tell the trainees a fact about me, and they have to guess whether it is true or false.`
@@ -347,7 +347,7 @@ export async function getPlayingTime (subject, time, amount, age, gender, place)
 };
 
 const playingTimeSubjectPrompt = {
-    model: "gpt-4",
+    model: "gpt-3.5-turbo",
     messages: [
         {
             role: "user",

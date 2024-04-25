@@ -107,7 +107,6 @@ function ChoosePath() {
     
         await Promise.allSettled(promises);
         navigate('/activity')
-        //await generateImg(data.playingTime.data)
     }
 
     return <React.Fragment>
