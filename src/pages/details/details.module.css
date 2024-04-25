@@ -89,6 +89,12 @@
     color: white;
 }
 
+.submit_btn:disabled{
+    background-color: rgb(255, 151, 47, 0.5);
+    color: white;
+    cursor: default;
+}
+
 .loading_icon{
     color: white;
     animation: spin 1s infinite linear;
