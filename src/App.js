@@ -12,11 +12,11 @@ function App() {
     <ContentProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Details />} />
+          {/* <Route path="/" element={<Details />} />
           <Route path="/choosePath" element={<ChoosePath />} />
           <Route path="/activity" element={<Activity />} />
-          <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
-          {/* <Route path="/privacyPolicy" element={<Maintenance />} /> */}
+          <Route path="/privacyPolicy" element={<PrivacyPolicy />} /> */}
+          <Route path="/" element={<Maintenance />} />
         </Routes>
       </Router>
     </ContentProvider>
