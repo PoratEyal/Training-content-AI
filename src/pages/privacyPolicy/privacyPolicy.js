@@ -29,6 +29,11 @@ function PrivacyPolicy() {
         </div>
 
         <div className={styles.space_div}>
+        <strong className={styles.bold}>נגישות:</strong> אנו מחויבים לספק חווית שימוש שווה לכל המשתמשים, ללא קשר למוגבלויותיהם.
+בשלב זה, הנגשת האפליקציה מתבצעת באמצעות תכונות הנגישות המובנות במערכת ההפעלה שלך.
+        </div>
+
+        <div className={styles.space_div}>
             <strong className={styles.bold}>הגבלת אחריות:</strong> האפליקציה ניתנת "כפי שהיא" ואין אנו נושאים באחריות לכל נזק שעלול להיגרם לך כתוצאה משימוש בה. השימוש בה נעשה על אחריותך בלבד.
         </div>
 
@@ -39,6 +44,8 @@ function PrivacyPolicy() {
         <div className={styles.space_div}>
             <strong className={styles.bold}>שינויים:</strong> אנו רשאים לשנות את תנאי השימוש, מדיניות הפרטיות וכל הסכם אחר הקשור לאפליקציה בכל עת. הודעה על שינויים אלו תינתן בעדכון עמוד זה
         </div>
+        
+
     </div>    
 
 }
