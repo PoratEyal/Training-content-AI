@@ -68,7 +68,7 @@
 }
 
 .btn_div{
-    margin-top: 30px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,7 +83,7 @@
     background-color: rgb(255, 151, 47);
     transition: background-color 0.3s ease;
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
     width: 350px;
     height: 62px;
     color: white;
@@ -100,6 +100,21 @@
     animation: spin 1s infinite linear;
     font-size: 32px;
 }
+
+.privacy_div{
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: rgba(27, 3, 3, 0.948);
+    padding-bottom: 1px;
+    padding-right: 3px;
+    border-bottom: 1px solid rgba(27, 3, 3, 0.948);
+}
     
 @keyframes spin {
     from {
@@ -107,5 +122,27 @@
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+
+@media (min-width: 550px) {
+    .container {
+        display: flex;
+        padding-left: 25px;
+        padding-right: 25px;
+        border-radius: 25px;
+        flex-direction: column;
+        margin-top: 50px;
+        background-color: #F5F5DC;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .submit_btn{
+        position: relative;
+        margin-top: 40px;
+        cursor: pointer;
+    }   
+    body{
+        background-color: #ffe1a0;
     }
 }

@@ -1,0 +1,25 @@
+.privacyPolicyContainer{
+    padding: 25px;
+    white-space: pre-wrap;
+}
+.space_div{
+    margin-bottom: 10px;
+}
+.back_icon{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    transform: rotate(-0.50turn);
+    font-size: 24px;
+    border: none;
+    padding: 6px;
+    border-radius: 30px;
+    color: white;
+    background-color: orange;
+}
+h2{
+    color: orange;
+}
+.bold{
+    color: orange;
+}

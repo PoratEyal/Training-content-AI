@@ -3,6 +3,8 @@ import styles from './details.module.css';
 import { VscLoading } from "react-icons/vsc";
 import { useContentContext } from '../../context/ContentContext';
 import { useNavigate } from 'react-router-dom';
+import { MdOutlinePrivacyTip } from "react-icons/md";
+import LimitRequest from '../../components/popups/limitRequests/limitRequests';
 
 function Details() {
 
@@ -97,6 +99,10 @@ function Details() {
 
             </form>
 
+            <div onClick={() => navigate('/privacyPolicy')} className={styles.privacy_div}>
+                <label>מדיניות פרטיות</label>
+                <MdOutlinePrivacyTip></MdOutlinePrivacyTip>
+            </div>
         </div>
     );
 }

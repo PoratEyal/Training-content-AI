@@ -9,14 +9,23 @@
     border: none;
     text-align: center;
     padding: 20px;
-    height: 75px;
+    height: 180px;
+    width: 300px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    border: 2px solid orange;
 }
 
-.container label{
+.label{
     color: orange;
     font-size: 19px;
-    font-weight: 500;
+    font-weight: 400;
+    margin-right: 20px;
+    margin-top: 15px;
 }
 
 .cancel_btn{

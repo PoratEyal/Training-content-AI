@@ -113,7 +113,7 @@ function Activity() {
         }
         if (index === 3) {
             setWhatsupScoutingTime(true)
-            const message = encodeURIComponent("*זמן צופיות*\n" + data.scoutingTime.data);
+            const message = encodeURIComponent("*זמן תנועת נוער*\n" + data.scoutingTime.data);
             const whatsappUrl = `https://wa.me/?text=${message}`;
             window.location.href = whatsappUrl;
             setWhatsupScoutingTime(false)
@@ -163,7 +163,12 @@ function Activity() {
                                 style: 'headerStyle',
                                 bidirectional: true
                             }),
-                            new Paragraph(data.pointOfView.data)  // Normal paragraph style
+                            new Paragraph({
+                                text: data.pointOfView.data,
+                                style: 'Normal',
+                                bidirectional: true,
+                                rightToLeft: true,
+                            })
                         ],
                     },
                 ],
@@ -209,7 +214,12 @@ function Activity() {
                                 style: 'headerStyle',
                                 bidirectional: true
                             }),
-                            new Paragraph(data.contentActivity.data)  // Normal paragraph style
+                            new Paragraph({
+                                text: data.contentActivity.data,
+                                style: 'Normal',
+                                bidirectional: true,
+                                rightToLeft: true,
+                            })
                         ],
                     },
                 ],
@@ -254,7 +264,12 @@ function Activity() {
                                 style: 'headerStyle',
                                 bidirectional: true
                             }),
-                            new Paragraph(data.scoutingTime.data)  // Normal paragraph style
+                            new Paragraph({
+                                text: data.scoutingTime.data,
+                                style: 'Normal',
+                                bidirectional: true,
+                                rightToLeft: true,
+                            })
                         ],
                     },
                 ],
@@ -299,7 +314,12 @@ function Activity() {
                                 style: 'headerStyle',
                                 bidirectional: true
                             }),
-                            new Paragraph(data.playingTime.data)  // Normal paragraph style
+                            new Paragraph({
+                                text: data.playingTime.data,
+                                style: 'Normal',
+                                bidirectional: true,
+                                rightToLeft: true,
+                            })
                         ],
                     },
                 ],
@@ -331,7 +351,7 @@ function Activity() {
 
             <div className={styles.navbar}>
                 <IoArrowForward onClick={goingBack} className={styles.back_icon}></IoArrowForward>
-                <img onClick={() => navigate('/')} className={styles.logo_img} src='icon.png'></img>
+                {/* <img onClick={() => navigate('/')} className={styles.logo_img} src='icon.png'></img> */}
             </div>
 
             {data.pointOfView.use &&
@@ -398,7 +418,7 @@ function Activity() {
             {data.scoutingTime.use &&
                 <div className={styles.activity_div}>
                     <div className={styles.h2_icon_div}>
-                        <h2>זמן צופיות</h2>
+                        <h2>זמן תנועת נוער</h2>
                         <div className={styles.icons}>
                             {!whatsupScoutingTime ? <FaWhatsapp onClick={() => importWhatsup(3)}></FaWhatsapp> : <AiOutlineLoading></AiOutlineLoading>}
                             {!docsScoutingTime ? <BsFiletypeDocx onClick={() => importDocs(3)}></BsFiletypeDocx> : <AiOutlineLoading></AiOutlineLoading>}

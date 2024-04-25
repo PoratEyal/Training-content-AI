@@ -55,6 +55,7 @@
     border-radius: 30px;
     color: white;
     background-color: orange;
+    cursor: pointer;
 }
 
 .h3{
@@ -147,6 +148,7 @@
     border: none;
     margin-top: 45px;
     background-color: rgb(255, 255, 255);
+    cursor: pointer;
 }
 .loading_icon_magic{
     color: orange;
@@ -177,6 +179,7 @@
     height: 62px;
     color: white;
     margin-bottom: 25px;
+    cursor: pointer;
 }
 
 .loading_btn_txt{
@@ -198,5 +201,43 @@
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+
+@media (min-width: 550px) {
+    .container {
+        margin-top: 50px;
+        width: 400px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 70vh;
+        border: none;
+        border-radius: 30px;
+        background-color: #F5F5DC;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .container_disabled{
+        overflow: hidden;
+        width: 400px;
+    }
+
+    .container::-webkit-scrollbar-track {
+        border-radius: 20px;
+        background-color: transparent;
+    }
+    
+    .container::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+        background-color: #dfdfdf00;
+    }
+    
+    /* Set the scrollbar width */
+    .container::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    body{
+        background-color: #ffe1a0;
     }
 }

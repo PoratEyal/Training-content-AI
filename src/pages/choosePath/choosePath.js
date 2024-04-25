@@ -117,7 +117,7 @@ function ChoosePath() {
 
                 <div className={styles.navbar}>
                     <IoArrowForward onClick={() => navigate('/')} className={styles.back_icon}></IoArrowForward>
-                    <img onClick={() => navigate('/')} src='icon.png'></img>
+                    {/* <img onClick={() => navigate('/')} src='icon.png'></img> */}
                 </div>
 
                 <h3 className={styles.h3}>בחרו את הפעילות שלכם</h3>
@@ -171,7 +171,7 @@ function ChoosePath() {
                 </div>
 
                 <div className={styles.checkbox_div}>
-                    <label><input type="checkbox" checked={showScoutingTime} onChange={toggleScoutingTime} />זמן צופיות</label>
+                    <label><input type="checkbox" checked={showScoutingTime} onChange={toggleScoutingTime} />זמן תנועת נוער/צופיות</label>
                     {showScoutingTime && <div className={styles.inputs_div}>
                         <div className={styles.input_and_icon}>
                             <textarea className={styles.input} value={scoutingTimeSubject} onChange={handleInputChange(setScoutingTimeSubject)} placeholder="נושא הפעילות" type="text" />
@@ -229,7 +229,7 @@ function ChoosePath() {
 
             <div className={styles.btn_div}>
                 <button onClick={submitHandler} className={styles.submit_btn}>
-                        "אני רוצה הצעה לפעילות"
+                        אני רוצה הצעה לפעילות
                 </button>
             </div>
 
