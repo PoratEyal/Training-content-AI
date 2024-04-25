@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ContentProvider } from '../src/context/ContentContext';
 import Details from '../src/pages/details/details';
 import Activity from './pages/activity/activity';
-import ChoosePath from './pages/choosePath/choosePath'
+import ChoosePath from './pages/choosePath/choosePath';
+import PrivacyPolicy from './pages/privacyPolicy/privacyPolicy';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Details />} />
           <Route path="/choosePath" element={<ChoosePath />} />
           <Route path="/activity" element={<Activity />} />
+          <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
         </Routes>
       </Router>
     </ContentProvider>
