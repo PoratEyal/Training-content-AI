@@ -2,11 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import styles from "./choosePath.module.css";
 import { useNavigate } from "react-router-dom";
-import { IoArrowForward } from "react-icons/io5";
 import Loading from "../../components/Loading/Loading";
 import Path from "../../components/Path/Path";
 import { useErrorContext } from "../../context/ErrorContext";
-import { buildContentActivityActivity, buildPlayingTimeActivity, buildPointOfViewActivity, buildScoutingTimeActivity } from "../../service/buildActivity";
+import {
+    buildContentActivityActivity,
+    buildPlayingTimeActivity,
+    buildPointOfViewActivity,
+    buildScoutingTimeActivity,
+} from "../../service/buildActivity";
+import BackBtn from "../../components/backBtn/backBtn";
 
 function ChoosePath() {
     const {
@@ -28,9 +33,9 @@ function ChoosePath() {
     const [scoutingTime, setScoutingTime] = useState(undefined);
     const [playingTime, setPlayingTime] = useState(undefined);
 
-    useEffect(()=>{
-        setIsDisabled(pointOfView || contentActivity || scoutingTime || playingTime ? false : true)
-    },[pointOfView, contentActivity, scoutingTime, playingTime])
+    useEffect(() => {
+        setIsDisabled(pointOfView || contentActivity || scoutingTime || playingTime ? false : true);
+    }, [pointOfView, contentActivity, scoutingTime, playingTime]);
 
     const submitHandler = async () => {
         setClicked(true);
@@ -39,7 +44,14 @@ function ChoosePath() {
         if (pointOfView) {
             const { subject, time } = pointOfView;
             promises.push(
-                buildPointOfViewActivity(subject, time, data.amount, data.grade, data.gender, data.place)
+                buildPointOfViewActivity(
+                    subject,
+                    time,
+                    data.amount,
+                    data.grade,
+                    data.gender,
+                    data.place,
+                )
                     .then((result) => updatePointOfView(subject, time, result))
                     .catch((error) => {
                         handleError(error);
@@ -50,7 +62,14 @@ function ChoosePath() {
         if (contentActivity) {
             const { subject, time } = contentActivity;
             promises.push(
-                buildContentActivityActivity(subject, time, data.amount, data.grade, data.gender, data.place)
+                buildContentActivityActivity(
+                    subject,
+                    time,
+                    data.amount,
+                    data.grade,
+                    data.gender,
+                    data.place,
+                )
                     .then((result) => updateContentActivity(subject, time, result))
                     .catch((error) => {
                         handleError(error);
@@ -61,7 +80,14 @@ function ChoosePath() {
         if (scoutingTime) {
             const { subject, time } = scoutingTime;
             promises.push(
-                buildScoutingTimeActivity(subject, time, data.amount, data.grade, data.gender, data.place)
+                buildScoutingTimeActivity(
+                    subject,
+                    time,
+                    data.amount,
+                    data.grade,
+                    data.gender,
+                    data.place,
+                )
                     .then((result) => updateScoutingTime(subject, time, result))
                     .catch((error) => {
                         handleError(error);
@@ -72,7 +98,14 @@ function ChoosePath() {
         if (playingTime) {
             const { subject, time } = playingTime;
             promises.push(
-                buildPlayingTimeActivity(subject, time, data.amount, data.grade, data.gender, data.place)
+                buildPlayingTimeActivity(
+                    subject,
+                    time,
+                    data.amount,
+                    data.grade,
+                    data.gender,
+                    data.place,
+                )
                     .then((result) => updatePlayingTime(subject, time, result))
                     .catch((error) => {
                         handleError(error);
@@ -91,10 +124,7 @@ function ChoosePath() {
             <div className={!clicked ? styles.container : styles.container_disabled}>
                 <div className={styles.checkbox_container}>
                     <div className={styles.navbar}>
-                        <IoArrowForward
-                            onClick={() => navigate("/")}
-                            className={styles.back_icon}
-                        ></IoArrowForward>
+                        <BackBtn path={"/"} />
                     </div>
 
                     <h3 className={styles.h3}>בחרו את הפעילות שלכם</h3>
