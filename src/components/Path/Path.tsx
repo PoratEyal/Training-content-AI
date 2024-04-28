@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Path.module.css";
 import { FaWandMagicSparkles } from "react-icons/fa6";
 import { VscLoading } from "react-icons/vsc";
-import SelectDetails from "../SelectDetails/SelectDetails";
+import SelectDetails from "../SelectDetailsPath/SelectDetailsPath";
 import { ActivityTime } from "../../models/resources/activity";
 import { useContentContext } from "../../context/ContentContext";
 import { useErrorContext } from "../../context/ErrorContext";
+import PlayingTimeSubjects from '../../models/resources/playingTime.json';
+import ScoutingTimeSubjects from '../../models/resources/scoutesActivities.json';
 
-function Path({ title, setPath }) {
+function Path({ index, generate, title, setPath }) {
     const { updateLimit } = useContentContext();
     const { handleError } = useErrorContext();
     const [show, setShow] = useState(false);
@@ -43,22 +45,35 @@ function Path({ title, setPath }) {
         try {
             setMagic(true);
             setSubject("");
-            console.log('hello');
-            updateLimit();
-            //setSubject(response);
+
+            if (index === 3) {
+                setTimeout(() => {
+                    const activities = ScoutingTimeSubjects.activities;
+                    const randomIndex = Math.floor(Math.random() * activities.length);
+                    setSubject(activities[randomIndex].name);
+                    setMagic(false);
+                }, 500); 
+            }            
+            if(index === 4){
+                setTimeout(() => {
+                    const activities = PlayingTimeSubjects;
+                    const randomIndex = Math.floor(Math.random() * activities.length);
+                    setSubject(activities[randomIndex].name);
+                    setMagic(false);
+                }, 500); 
+            }
         } catch (error) {
             handleError(error);
-        } finally {
-            setMagic(false);
         }
     };
 
     return (
         <div className={styles.checkbox_div}>
-            <label className={styles.checkbox_input}>
+            <label className={styles.custom_checkbox}>
                 <input type="checkbox" checked={show} onChange={toggleShow} />
                 {title}
             </label>
+
             {show && (
                 <div className={styles.inputs_div}>
                     <div className={styles.input_and_icon}>
@@ -68,14 +83,16 @@ function Path({ title, setPath }) {
                             onChange={handleInputChange}
                             placeholder="נושא הפעילות"
                         />
-                        {!magic ? (
-                            <FaWandMagicSparkles
-                                onClick={() => generateSubject()}
-                                className={styles.magic_icon}
-                            ></FaWandMagicSparkles>
-                        ) : (
-                            <VscLoading className={styles.loading_icon_magic}></VscLoading>
-                        )}
+                        {generate &&
+                            (magic ? (
+                                <VscLoading className={styles.loading_icon_magic} />
+                            ) : (
+                                <FaWandMagicSparkles
+                                    onClick={() => generateSubject()}
+                                    className={styles.magic_icon}
+                                />
+                            ))
+                        }
                     </div>
 
                     <SelectDetails

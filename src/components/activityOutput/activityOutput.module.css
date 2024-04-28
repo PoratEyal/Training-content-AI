@@ -12,16 +12,17 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 12px;
     color: orange;
     font-size: 23px;
     cursor: pointer;
 }
 
 .icon_svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     margin-left: 5px;
+    color: orange;
 }
 
 .activity_div {
@@ -29,11 +30,10 @@
     padding-top: 0px;
 }
 
-.buttons_div {
-    margin-top: 20px;
+.button_and_icons_div{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 10px;
 }
@@ -46,25 +46,35 @@
     align-items: center;
     font-family: 'Fredoka', sans-serif;
     border-radius: 60px;
-    padding: 10px;
-    color: #ffffff;
+    padding: 6px;
+    color: orange;
     border: none;
-    font-size: 15px;
-    background-color: orange;
-    width: 160px;
+    font-size: 13px;
+    background-color: rgba(255, 255, 255, 0);
+    width: 95px;
     cursor: pointer;
+    border: 1px solid orange;
+    height: 30px;
+}
+
+.btn_content_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
 
 .button label {
-    margin-right: 5px;
-    margin-left: 5px;
+    margin-right: 3px;
+    margin-left: 3px;
     cursor: pointer;
 }
 
 .icon_more {
     animation: spin 1.5s infinite linear;
-    font-size: 20px;
-    color: rgb(255, 255, 255);
+    font-size: 15px;
+    color: orange;
 }
 
 @keyframes spin {

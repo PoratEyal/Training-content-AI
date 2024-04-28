@@ -5,10 +5,8 @@
 }
 
 .checkbox_input {
-    font-size: 21px;
-}
-.checkbox_input input{
-    cursor: pointer;
+    font-size: 19px;
+    color: rgb(46, 46, 46);
 }
 
 .inputs_div {
@@ -39,10 +37,8 @@
     background-color: rgb(255, 255, 255);
     border: 1px solid orange;
     outline: none;
-    width: 320px;
-    min-width: 320px;
+    width: 310px;
     resize: none;
-    max-width: 320px;
     height: 50px;
     min-height: 50px;
     overflow: hidden;
@@ -67,4 +63,13 @@
     border: none;
     background-color: white;
     animation: spin 1s infinite linear;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }

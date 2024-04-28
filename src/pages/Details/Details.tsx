@@ -43,9 +43,11 @@ function Details() {
             <form onSubmit={handleSubmit}>
                 <div className={styles.half_circle}>
                     <label>
-                        הזינו מספר פרטים <br></br>על הקבוצה שלכם
+                          בונה פעולות <br></br> לתנועות נוער  
                     </label>
                 </div>
+
+                <h2 className={styles.h2_group}>הזינו מספר פרטים על הקבוצה שלכם</h2>
 
                 <SelectDetails
                     data={ClassLevel}
@@ -80,13 +82,15 @@ function Details() {
                             <VscLoading className={styles.loading_icon}></VscLoading>
                         )}
                     </button>
+
+                    <div onClick={() => navigate("/privacyPolicy")} className={styles.privacy_div}>
+                        <label>מדיניות פרטיות</label>
+                        <MdOutlinePrivacyTip className={styles.icon_privacy}></MdOutlinePrivacyTip>
+                    </div>
                 </div>
+
             </form>
 
-            <div onClick={() => navigate("/privacyPolicy")} className={styles.privacy_div}>
-                <label>מדיניות פרטיות</label>
-                <MdOutlinePrivacyTip className={styles.icon_privacy}></MdOutlinePrivacyTip>
-            </div>
         </div>
     );
 }

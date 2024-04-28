@@ -21,13 +21,23 @@
     padding-bottom: 20px;
 }
 .half_circle label{
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 33px;
 }
 
 .container h3{
     color: rgb(231, 150, 0);
     margin-right: 10px;
     font-size: 26px;
+}
+
+.h2_group{
+    margin-top: -20px;
+    color: orange;
+    margin-right: 10px;
+    font-size: 20px;
+    font-weight: 550;
 }
 
 .btn_div{
@@ -66,8 +76,8 @@
 
 .privacy_div{
     position: absolute;
+    bottom: 15px;
     cursor: pointer;
-    bottom: 10px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -107,6 +117,7 @@
         background-color: #F5F5DC;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         border: 2px solid orange;
+        position: relative;
     }
     .submit_btn{
         position: relative;
@@ -114,11 +125,10 @@
         cursor: pointer;
     }   
     .privacy_div{
-        position: relative;
+        position: absolute;
         cursor: pointer;
         width: 90px;
         margin-top: -20px;
-        margin-right: 120px;
     }
     body{
         background-color: #ffe1a0 !important;

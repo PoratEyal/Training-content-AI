@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import styles from "./ChoosePath.module.css";
 import { useNavigate } from "react-router-dom";
-import Loading from "../../components/Loading/Loading";
+import Loading from "../../components/loading/loading";
 import Path from "../../components/Path/Path";
 import { useErrorContext } from "../../context/ErrorContext";
 import {
@@ -11,7 +11,7 @@ import {
     buildPointOfViewActivity,
     buildScoutingTimeActivity,
 } from "../../service/buildActivity";
-import BackBtn from "../../components/BackBtn/BackBtn";
+import BackBtn from "../../components/backBtn/backBtn";
 
 function ChoosePath() {
     const {
@@ -129,10 +129,10 @@ function ChoosePath() {
 
                     <h3 className={styles.h3}>בחרו את הפעילות שלכם</h3>
 
-                    <Path title="נקודת מבט" setPath={setPointOfView} />
-                    <Path title="פעילות תוכן" setPath={setContentActivity} />
-                    <Path title="זמן צופיות" setPath={setScoutingTime} />
-                    <Path title="זמן משחק" setPath={setPlayingTime} />
+                    <Path generate={false} index={1} title="נקודת מבט" setPath={setPointOfView} />
+                    <Path generate={false} index={2} title="פעילות תוכן" setPath={setContentActivity} />
+                    <Path generate={true} index={3} title="זמן צופיות" setPath={setScoutingTime} />
+                    <Path generate={true} index={4} title="זמן משחק" setPath={setPlayingTime} />
                 </div>
 
                 <div className={styles.btn_div}>

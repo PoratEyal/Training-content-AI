@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./ActivityOutput.module.css";
+import styles from "./activityOutput.module.css";
 import { FaWhatsapp } from "react-icons/fa";
 import { AiOutlineLoading } from "react-icons/ai";
 import { BsFiletypeDocx } from "react-icons/bs";
@@ -8,7 +8,6 @@ import { importDocx, importWhatsUp } from "../../utils/import";
 import { useErrorContext } from "../../context/ErrorContext";
 import {
     getContentActivity,
-    getMoreContent,
     getPlayingTime,
     getPointOfView,
     getScoutingTime,
@@ -24,16 +23,12 @@ type ActivityOutputProps = {
 
 function ActivityOutput({ index, title, path, contextData }: ActivityOutputProps) {
     const [iconClickedPoint, setIconClickedPoint] = useState(false);
-    const [moreDataPoint, setMoreDataPoint] = useState(false);
     const [whatsupPoint, setWhatsupPoint] = useState(false);
     const [docsPoint, setDocsPoint] = useState(false);
 
     const {
         updateLimit,
         updatePointOfView,
-        updateContentActivity,
-        updateScoutingTime,
-        updatePlayingTime,
     } = useContentContext();
     const { handleError } = useErrorContext();
     const { data, subject, time } = path;
@@ -83,63 +78,38 @@ function ActivityOutput({ index, title, path, contextData }: ActivityOutputProps
         }
     };
 
-    const moreData = async () => {
-        try {
-            setMoreDataPoint(true);
-            const result = await getMoreContent(data);
-            if (index === 1) {
-                updatePointOfView(subject, time, result);
-            } else if (index === 2) {
-                updateContentActivity(subject, time, result);
-            } else if (index === 3) {
-                updateScoutingTime(subject, time, result);
-            } else {
-                updatePlayingTime(subject, time, result);
-            }
-            updateLimit();
-        } catch (error) {
-            handleError(error);
-        } finally {
-            setMoreDataPoint(false);
-        }
-    };
-
     return (
         <div className={styles.activity_div}>
             <div className={styles.h2_icon_div}>
                 <h2 className={styles.h2_activity}>{title}</h2>
-                <div className={styles.icons}>
-                    {!whatsupPoint ? (
-                        <FaWhatsapp onClick={importWhatsup}></FaWhatsapp>
-                    ) : (
-                        <AiOutlineLoading></AiOutlineLoading>
-                    )}
-                    {!docsPoint ? (
-                        <BsFiletypeDocx onClick={importDocs}></BsFiletypeDocx>
-                    ) : (
-                        <AiOutlineLoading></AiOutlineLoading>
-                    )}
+                <div className={styles.button_and_icons_div}>
+                    <div className={styles.icons}>
+                        {!whatsupPoint ? (
+                            <FaWhatsapp onClick={importWhatsup}></FaWhatsapp>
+                        ) : (
+                            <AiOutlineLoading></AiOutlineLoading>
+                        )}
+                        {!docsPoint ? (
+                            <BsFiletypeDocx onClick={importDocs}></BsFiletypeDocx>
+                        ) : (
+                            <AiOutlineLoading></AiOutlineLoading>
+                        )}
+                    </div>
+                    <button onClick={generateAgain} className={styles.button}>
+                        {!iconClickedPoint ? 
+                        <div className={styles.btn_content_div}>
+                            <label>פעילות אחרת</label>
+                            {/* <img className={styles.icon_svg} src="ai.svg"></img> */}
+                        </div>
+                        :
+                        <div className={styles.btn_content_div}>
+                            {/* <label>הפעילות בהכנה</label> */}
+                            <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>
+                        </div>}
+                    </button>
                 </div>
             </div>
             {formatTextWithLineBreaks(data)}
-            <div className={styles.buttons_div}>
-                <button onClick={generateAgain} className={styles.button}>
-                    <label>פעילות נוספת</label>
-                    {!iconClickedPoint ? (
-                        <img className={styles.icon_svg} src="ai.svg"></img>
-                    ) : (
-                        <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>
-                    )}
-                </button>
-                <button onClick={moreData} className={styles.button}>
-                    <label>הרחבת התוכן</label>
-                    {!moreDataPoint ? (
-                        <img className={styles.icon_svg} src="more.svg"></img>
-                    ) : (
-                        <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>
-                    )}
-                </button>
-            </div>
         </div>
     );
 }
