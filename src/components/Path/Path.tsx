@@ -4,7 +4,6 @@ import { FaWandMagicSparkles } from "react-icons/fa6";
 import { VscLoading } from "react-icons/vsc";
 import SelectDetails from "../SelectDetails/SelectDetails";
 import { ActivityTime } from "../../models/resources/activity";
-import { getScoutingTimeSubject } from "../../service/openAiPrompts";
 import { useContentContext } from "../../context/ContentContext";
 import { useErrorContext } from "../../context/ErrorContext";
 
@@ -44,9 +43,9 @@ function Path({ title, setPath }) {
         try {
             setMagic(true);
             setSubject("");
-            const response = await getScoutingTimeSubject();
+            console.log('hello');
             updateLimit();
-            setSubject(response);
+            //setSubject(response);
         } catch (error) {
             handleError(error);
         } finally {
