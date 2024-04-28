@@ -1,17 +1,22 @@
 import styles from "./Activity.module.css";
 import { useContentContext } from "../../context/ContentContext";
-import ActivityOutput from "../../components/activityOutput/activityOutput";
+import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import { IoArrowForward } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
 function Activity() {
-    const { data } = useContentContext();
+    const { data, resetAllUseFields } = useContentContext();
     const navigate = useNavigate();
+
+    const goingBack = () => {
+        resetAllUseFields();
+        navigate("/choosePath");
+    };
 
     return (
         <div className={styles.container}>
             <div className={styles.navbar}>
-                <IoArrowForward onClick={() => navigate("/choosePath")} className={styles.back_icon}></IoArrowForward>
+                <IoArrowForward onClick={goingBack} className={styles.back_icon}></IoArrowForward>
             </div>
 
             {data.pointOfView.use && (

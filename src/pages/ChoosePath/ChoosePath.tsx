@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import styles from "./ChoosePath.module.css";
 import { useNavigate } from "react-router-dom";
-import Loading from "../../components/loading/loading";
+import Loading from "../../components/Loading/Loading";
 import Path from "../../components/Path/Path";
 import { useErrorContext } from "../../context/ErrorContext";
 import {
@@ -11,7 +11,7 @@ import {
     buildPointOfViewActivity,
     buildScoutingTimeActivity,
 } from "../../service/buildActivity";
-import BackBtn from "../../components/backBtn/backBtn";
+import { IoArrowForward } from "react-icons/io5";
 
 function ChoosePath() {
     const {
@@ -124,13 +124,21 @@ function ChoosePath() {
             <div className={!clicked ? styles.container : styles.container_disabled}>
                 <div className={styles.checkbox_container}>
                     <div className={styles.navbar}>
-                        <BackBtn path={"/"} />
+                        <IoArrowForward
+                            onClick={() => navigate("/")}
+                            className={styles.back_icon}
+                        ></IoArrowForward>
                     </div>
 
                     <h3 className={styles.h3}>בחרו את הפעילות שלכם</h3>
 
                     <Path generate={false} index={1} title="נקודת מבט" setPath={setPointOfView} />
-                    <Path generate={false} index={2} title="פעילות תוכן" setPath={setContentActivity} />
+                    <Path
+                        generate={false}
+                        index={2}
+                        title="פעילות תוכן"
+                        setPath={setContentActivity}
+                    />
                     <Path generate={true} index={3} title="זמן צופיות" setPath={setScoutingTime} />
                     <Path generate={true} index={4} title="זמן משחק" setPath={setPlayingTime} />
                 </div>
