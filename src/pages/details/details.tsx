@@ -85,7 +85,7 @@ function Details() {
 
             <div onClick={() => navigate("/privacyPolicy")} className={styles.privacy_div}>
                 <label>מדיניות פרטיות</label>
-                <MdOutlinePrivacyTip></MdOutlinePrivacyTip>
+                <MdOutlinePrivacyTip className={styles.icon_privacy}></MdOutlinePrivacyTip>
             </div>
         </div>
     );

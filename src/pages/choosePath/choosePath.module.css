@@ -41,29 +41,14 @@
     -webkit-backdrop-filter: blur(5px);
     border: none;
 }
-.navbar img{
-    width: 40px;
-    height: 40px;
-    margin-left: 15px;
-}
-
-.back_icon{
-    margin-right: 20px;
-    font-size: 24px;
-    border: none;
-    padding: 6px;
-    border-radius: 30px;
-    color: white;
-    background-color: orange;
-    cursor: pointer;
-}
 
 .h3{
     color: orange;
     font-size: 30px;
-    margin-top: -10px;
+    margin-top: -25px;
     width: 335px;
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 .input_div select {
@@ -163,6 +148,8 @@
         border-radius: 30px;
         background-color: #F5F5DC;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border: 2px solid orange;
+        width: 430px;
     }
     .container_disabled{
         overflow: hidden;
@@ -185,6 +172,6 @@
     }
     
     body{
-        background-color: #ffe1a0;
+        background-color: #ffe1a0 !important;
     }
 }

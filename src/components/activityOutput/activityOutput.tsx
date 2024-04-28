@@ -107,7 +107,7 @@ function ActivityOutput({ index, title, path, contextData }: ActivityOutputProps
     return (
         <div className={styles.activity_div}>
             <div className={styles.h2_icon_div}>
-                <h2>{title}</h2>
+                <h2 className={styles.h2_activity}>{title}</h2>
                 <div className={styles.icons}>
                     {!whatsupPoint ? (
                         <FaWhatsapp onClick={importWhatsup}></FaWhatsapp>

@@ -8,7 +8,6 @@ function BackBtn({ path }) {
     const navigate = useNavigate();
 
     const goingBack = () => {
-        //TODO: do I need resetAllUseFields?
         resetAllUseFields();
         navigate(path);
     };

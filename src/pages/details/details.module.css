@@ -66,17 +66,24 @@
 
 .privacy_div{
     position: absolute;
+    cursor: pointer;
     bottom: 10px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 3px;
     font-size: 11px;
-    color: rgba(27, 3, 3, 0.948);
+    color: rgb(162, 123, 51);
     padding-bottom: 1px;
     padding-right: 3px;
-    border-bottom: 1px solid rgba(27, 3, 3, 0.948);
+    border-bottom: 1px solid rgb(162, 123, 51);
+}
+.privacy_div label{
+    cursor: pointer;
+}
+.icon_privacy{
+    margin-bottom: 2px;
 }
     
 @keyframes spin {
@@ -99,13 +106,21 @@
         margin-top: 50px;
         background-color: #F5F5DC;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border: 2px solid orange;
     }
     .submit_btn{
         position: relative;
         margin-top: 40px;
         cursor: pointer;
     }   
+    .privacy_div{
+        position: relative;
+        cursor: pointer;
+        width: 90px;
+        margin-top: -20px;
+        margin-right: 120px;
+    }
     body{
-        background-color: #ffe1a0;
+        background-color: #ffe1a0 !important;
     }
 }
