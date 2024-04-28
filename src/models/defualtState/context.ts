@@ -32,7 +32,7 @@ export const defualtData: DataType = {
     activity: "",
     grade: "",
     gender: "",
-    amount: 0,
+    amount: "",
     place: "",
     img: "",
 };

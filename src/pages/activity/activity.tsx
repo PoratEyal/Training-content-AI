@@ -1,7 +1,7 @@
 import styles from "./activity.module.css";
 import { useContentContext } from "../../context/ContentContext";
-import BackBtn from "../../components/backBtn/backBtn";
-import ActivityOutput from "../../components/activityOutput/activityOutput";
+import BackBtn from "../../components/BackBtn/BackBtn";
+import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 
 function Activity() {
     const { data } = useContentContext();

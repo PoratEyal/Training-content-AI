@@ -1,4 +1,4 @@
-import styles from "./backBtn.module.css";
+import styles from "./BackBtn.module.css";
 import { useContentContext } from "../../context/ContentContext";
 import { useNavigate } from "react-router-dom";
 import { IoArrowForward } from "react-icons/io5";

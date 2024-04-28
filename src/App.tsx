@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { ContentProvider } from "./context/ContentContext";
-import Details from "./pages/details/details";
-import ChoosePath from "./pages/choosePath/choosePath";
-import Activity from "./pages/activity/activity";
-import PrivacyPolicy from "./pages/privacyPolicy/privacyPolicy";
+import Details from "./pages/Details/details";
+import ChoosePath from "./pages/ChoosePath/choosePath";
+import Activity from "./pages/Activity/activity";
+import PrivacyPolicy from "./pages/PrivacyPolicy/privacyPolicy";
 import PrivateRoutes from "./components/PrivateRoutes";
 import { ErrorContextProvider } from "./context/ErrorContext";
 import { ReactNotifications } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
-import Maintenance from "./pages/maintenance/maintenance";
+// import Maintenance from "./pages/Maintenance/maintenance";
 
 function App() {
     return (

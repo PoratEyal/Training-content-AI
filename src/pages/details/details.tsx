@@ -34,7 +34,7 @@ function Details() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setClicked(true);
-        updateDetails(classLevel, +numberOfChildren, activityLocation, gender);
+        updateDetails(classLevel, numberOfChildren, activityLocation, gender);
         navigate("/choosePath");
     };
 

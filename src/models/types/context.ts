@@ -16,7 +16,7 @@ export type DataType = {
     activity: string;
     grade: string;
     gender: string;
-    amount: number;
+    amount: string;
     place: string;
     img: string;
 };
@@ -28,7 +28,7 @@ export type ContentContextType = {
     updateLimit: () => void;
     cookies: any;
     setCookie: (name: string, value: any, options?: any) => void;
-    updateDetails: (grade: string, amount: number, place: string, gender: string) => void;
+    updateDetails: (grade: string, amount: string, place: string, gender: string) => void;
     updateActivity: (activity: string) => void;
     updateImage: (url: string) => void;
     resetAllUseFields: () => void;

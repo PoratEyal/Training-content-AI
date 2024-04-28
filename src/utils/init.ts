@@ -1,5 +1,6 @@
 import { DocumentData } from "firebase/firestore";
 import { Activity } from "../models/types/activity";
+import { getUpdateAt } from "./time";
 
 export const initActivityFromDB = (data: DocumentData) => {
     return {
@@ -27,7 +28,7 @@ export const initActivityFromAI = (
     place: string,
 ) => {
     return {
-        updatedAt: new Date().toString(),
+        updatedAt: getUpdateAt(),
         fetchCount: 0,
         path,
         grade,
