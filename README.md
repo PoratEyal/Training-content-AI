@@ -47,10 +47,18 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 
 
-התיבת טקסט גדלה בלי סיום
 גודל קבוצת ילדים 50+
 להוריד את הרעיונות קסם
 ליצר מאגר רעיונות לזמן צופיות (השרדות זמן משחק (משחק))
 
 https://www.youtube.com/watch?v=2hR-uWjBAgw
 https://www.youtube.com/watch?v=xi3F2Zv91UE
+
+// JSON storage
+// cookie fix time
+// fetch time for each activity
+// better random
+// check prompt with wierd characters
+// text "its still a beta"
+// handle refresh cache
+// 

@@ -3,7 +3,7 @@ import { VscLoading } from "react-icons/vsc";
 import { useContentContext } from "../../context/ContentContext";
 import { useNavigate } from "react-router-dom";
 import { MdOutlinePrivacyTip } from "react-icons/md";
-import styles from "./details.module.css";
+import styles from "./Details.module.css";
 import {
     ActivityLocation,
     ChildrensNumber,

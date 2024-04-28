@@ -1,4 +1,4 @@
-import styles from "./activity.module.css";
+import styles from "./Activity.module.css";
 import { useContentContext } from "../../context/ContentContext";
 import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import { IoArrowForward } from "react-icons/io5";

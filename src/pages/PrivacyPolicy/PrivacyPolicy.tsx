@@ -1,4 +1,4 @@
-import styles from "./privacyPolicy.module.css";
+import styles from "./PrivacyPolicy.module.css";
 import { IoArrowForward } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import policy from "../../models/resources/policy.json";
