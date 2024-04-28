@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { ContentProvider } from "./context/ContentContext";
-import Details from "./pages/Details/Detailss";
-import ChoosePath from "./pages/ChoosePath/ChoosePaths";
-import Activity from "./pages/Activity/Activitys";
-import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicys";
+import Details from "./pages/Details/Details";
+import ChoosePath from "./pages/ChoosePath/ChoosePath";
+import Activity from "./pages/Activity/Activity";
+import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import PrivateRoutes from "./components/PrivateRoutes";
 import { ErrorContextProvider } from "./context/ErrorContext";
 import { ReactNotifications } from "react-notifications-component";
