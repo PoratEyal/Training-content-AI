@@ -3,7 +3,7 @@ import { useContentContext } from "../../context/ContentContext";
 import styles from "./choosePath.module.css";
 import { useNavigate } from "react-router-dom";
 import { IoArrowForward } from "react-icons/io5";
-import Loading from "../../components/Loading/Loading";
+import Loading from "../../components/loading/Loading";
 import Path from "../../components/Path/Path";
 import { useErrorContext } from "../../context/ErrorContext";
 import { buildContentActivityActivity, buildPlayingTimeActivity, buildPointOfViewActivity, buildScoutingTimeActivity } from "../../service/buildActivity";
