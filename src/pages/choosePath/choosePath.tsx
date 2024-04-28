@@ -11,7 +11,7 @@ import {
     buildPointOfViewActivity,
     buildScoutingTimeActivity,
 } from "../../service/buildActivity";
-import BackBtn from "../../components/BackBtn/BackBtn";
+import BackBtn from "../../components/BackBtn/BackBtns";
 
 function ChoosePath() {
     const {
