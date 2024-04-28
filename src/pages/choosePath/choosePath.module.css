@@ -35,7 +35,7 @@
     position: sticky;
     top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 995;
     background: #f5f5dcc1;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -66,33 +66,6 @@
     margin-right: 20px;
 }
 
-.checkbox_div{
-    font-size: 20px;
-    margin-bottom: 30px;
-    margin-right: 20px;
-}
-
-.inputs_div{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-}
-.input{
-    padding: 12px;
-    margin-top: 15px;
-    border: none;
-    border-radius: 15px;
-    font-size: 16px;
-    font-family: 'Fredoka', sans-serif;
-    text-align: right;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid orange;
-    outline: none;
-    width: 310px;
-    height: 50px;
-    overflow: hidden;
-}
 .input_div select {
     -webkit-appearance: none;
     padding: 12px;
@@ -128,38 +101,6 @@
 }
 
 
-.checkbox_input{
-    font-size: 21px;
-}
-
-.input_and_icon{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 0px;
-    direction: rtl;
-}
-.magic_icon{
-    color: orange;
-    padding: 5px;
-    margin-right: -40px;
-    padding-right: 5px;
-    border: none;
-    margin-top: 45px;
-    background-color: rgb(255, 255, 255);
-    cursor: pointer;
-}
-.loading_icon_magic{
-    color: orange;
-    padding: 5px;
-    margin-right: -40px;
-    margin-top: 45px;
-    border: none;
-    background-color: white;
-    animation: spin 1s infinite linear;
-}
-
 .btn_div{
     margin-top: 15px;
     display: flex;
@@ -180,6 +121,12 @@
     color: white;
     margin-bottom: 25px;
     cursor: pointer;
+}
+
+.submit_btn:disabled{
+    background-color: rgb(255, 151, 47, 0.5);
+    color: white;
+    cursor: default;
 }
 
 .loading_btn_txt{
