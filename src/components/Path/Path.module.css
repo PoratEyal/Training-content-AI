@@ -1,6 +1,6 @@
 .checkbox_div {
     font-size: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     margin-right: 20px;
 }
 
@@ -41,6 +41,7 @@
     outline: none;
     width: 320px;
     min-width: 320px;
+    resize: none;
     max-width: 320px;
     height: 50px;
     min-height: 50px;

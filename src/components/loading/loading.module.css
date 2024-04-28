@@ -146,3 +146,31 @@
       transform: translateY(-900%);
     }
   }
+
+
+
+@media (min-width: 550px) {
+  .spinner{
+    width: 146px;
+    height: 146px;
+    display: grid;
+    border: 4px solid rgb(255, 119, 0);
+    border-radius: 50%;
+    border-right-color: rgba(0, 0, 0, 0);
+    animation: tri-spinner 1s infinite linear;
+  }
+  .loader {
+    color: rgb(255, 119, 0);
+    font-family: "Poppins",sans-serif;
+    font-weight: 500;
+    font-size: 35px;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 40px;
+    padding: 20px 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 8px;
+  }
+}
