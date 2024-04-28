@@ -29,8 +29,6 @@ export type ContentContextType = {
     cookies: any;
     setCookie: (name: string, value: any, options?: any) => void;
     updateDetails: (grade: string, amount: string, place: string, gender: string) => void;
-    updateActivity: (activity: string) => void;
-    updateImage: (url: string) => void;
     resetAllUseFields: () => void;
     updateContentActivity: (subject: string, time: string, result: string) => void;
     updatePointOfView: (subject: string, time: string, result: string) => void;

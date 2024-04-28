@@ -1,8 +1,24 @@
-import { getDocs, addDoc, query, where, collection } from "firebase/firestore";
-import { db } from "../config/firebase";
+import {
+    getDocs,
+    addDoc,
+    updateDoc,
+    query,
+    where,
+    DocumentData,
+    CollectionReference,
+    DocumentReference,
+} from "firebase/firestore";
 import { Activity } from "../models/types/activity";
 
-export const getActivity = async (activityRef, subject, time, amount, grade, gender, place) => {
+export const getActivity = async (
+    activityRef: CollectionReference<DocumentData, DocumentData>,
+    subject: string,
+    time: string,
+    amount: string,
+    grade: string,
+    gender: string,
+    place: string,
+) => {
     const q = query(
         activityRef,
         where("subject", "==", subject),
@@ -17,6 +33,16 @@ export const getActivity = async (activityRef, subject, time, amount, grade, gen
     return snapshot;
 };
 
-export const addActivity = async (activityRef, activity: Activity) => {
+export const addActivity = async (
+    activityRef: CollectionReference<DocumentData, DocumentData>,
+    activity: Activity,
+) => {
     await addDoc(activityRef, activity);
+};
+
+export const updateActivity = async (
+    activityRef: DocumentReference<DocumentData, DocumentData>,
+    activity: Activity,
+) => {
+    await updateDoc(activityRef, activity);
 };

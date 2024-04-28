@@ -40,3 +40,11 @@ export const initActivityFromAI = (
         activity,
     } as Activity;
 };
+
+export const updateActivityFromDB = (activity: Activity) => {
+    return {
+        ...activity,
+        fetchCount: activity.fetchCount + 1,
+        updatedAt: getUpdateAt(),
+    } as Activity;
+};

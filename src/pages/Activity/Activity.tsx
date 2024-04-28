@@ -5,11 +5,10 @@ import { IoArrowForward } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
 function Activity() {
-    const { data, resetAllUseFields } = useContentContext();
+    const { data } = useContentContext();
     const navigate = useNavigate();
 
     const goingBack = () => {
-        resetAllUseFields();
         navigate("/choosePath");
     };
 
@@ -19,7 +18,7 @@ function Activity() {
                 <IoArrowForward onClick={goingBack} className={styles.back_icon}></IoArrowForward>
             </div>
 
-            {data.pointOfView.use && (
+            {data?.pointOfView?.use && (
                 <ActivityOutput
                     index={1}
                     title={"נקודת מבט"}
@@ -28,7 +27,7 @@ function Activity() {
                 />
             )}
 
-            {data.contentActivity.use && (
+            {data?.contentActivity?.use && (
                 <ActivityOutput
                     index={2}
                     title={"פעילות תוכן"}
@@ -37,7 +36,7 @@ function Activity() {
                 />
             )}
 
-            {data.scoutingTime.use && (
+            {data?.scoutingTime?.use && (
                 <ActivityOutput
                     index={3}
                     title={"זמן תנועת נוער"}
@@ -46,7 +45,7 @@ function Activity() {
                 />
             )}
 
-            {data.playingTime.use && (
+            {data?.playingTime?.use && (
                 <ActivityOutput
                     index={4}
                     title={"זמן משחק"}

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Outlet, Navigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useContentContext } from "../context/ContentContext";
 import LimitRequest from "./popups/LimitRequests/LimitRequests";
 import { PROMPT_LIMIT } from "../models/constants/state";
 import TSCs from "./popups/TSCs/TSCs";
 
 const PrivateRoutes = () => {
-    //TODO: redirect to / if context state in not set (if refresh page)
     const { cookies, setCookie, limit } = useContentContext();
     const [prevent, setPrevent] = useState(-1);
     const [tscs, setTscs] = useState(false);
@@ -38,8 +37,7 @@ const PrivateRoutes = () => {
         <React.Fragment>
             {prevent === 0 ? <LimitRequest /> : null}
             {tscs ? <TSCs handleAccept={handleAccept} /> : null}
-
-            <Outlet />
+            <Outlet /> 
         </React.Fragment>
     );
 };

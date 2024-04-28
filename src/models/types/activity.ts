@@ -10,3 +10,12 @@ export type Activity = {
     time: string;
     activity: string;
 };
+
+export type ActivityFunc = (
+    subject: string,
+    time: string,
+    amount: string,
+    age: string,
+    gender: string,
+    place: string,
+) => Promise<any>;

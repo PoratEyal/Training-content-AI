@@ -1,4 +1,10 @@
-import { DocumentData, QuerySnapshot, collection } from "firebase/firestore";
+import {
+    doc,
+    collection,
+    CollectionReference,
+    DocumentData,
+    QueryDocumentSnapshot,
+} from "firebase/firestore";
 import { db } from "../config/firebase";
 import { MIN_ACTIVITIES } from "../models/constants/state";
 import {
@@ -7,9 +13,11 @@ import {
     getPointOfView,
     getScoutingTime,
 } from "./openAiPrompts";
-import { initActivityFromAI, initActivityFromDB } from "../utils/init";
-import { addActivity, getActivity } from "../utils/db";
+import { initActivityFromAI, initActivityFromDB, updateActivityFromDB } from "../utils/init";
+import { addActivity, getActivity, updateActivity } from "../utils/db";
 import { PathActivity } from "../models/constants/path";
+import { ActivityFunc } from "../models/types/activity";
+import { PathName } from "../models/types/path";
 
 export const buildPointOfViewActivity = async (
     subject: string,
@@ -91,16 +99,9 @@ export const buildPlayingTimeActivity = async (
     );
 };
 
-const buildActivity = async (
-    funcAI: (
-        subject: string,
-        time: string,
-        amount: string,
-        age: string,
-        gender: string,
-        place: string,
-    ) => Promise<any>,
-    path: string,
+export const buildActivity = async (
+    funcAI: ActivityFunc,
+    path: PathName,
     subject: string,
     time: string,
     amount: string,
@@ -110,31 +111,38 @@ const buildActivity = async (
 ) => {
     const activityRef = collection(db, "activity");
     const snapshot = await getActivity(activityRef, subject, time, amount, grade, gender, place);
+    const { empty, size, docs } = snapshot;
 
-    if (snapshot.empty || snapshot.size === 0 || snapshot.docs.length <= MIN_ACTIVITIES) {
-        const data = await funcAI(subject, time, amount, grade, gender, place);
-        const activity = initActivityFromAI(
-            data,
-            path,
-            subject,
-            time,
-            amount,
-            grade,
-            gender,
-            place,
-        );
-        await addActivity(activityRef, activity);
-        return activity.activity;
+    if (empty || size === 0 || docs.length <= MIN_ACTIVITIES) {
+        return buildActivityFromAI(funcAI, path, subject, time, amount, grade, gender, place);
     } else {
-        return activityFromDB(snapshot);
+        buildActivityFromDB(docs);
     }
 };
 
-const activityFromDB = (snapshot: QuerySnapshot<unknown, DocumentData>) => {
-    const activities = snapshot.docs.map((doc) => {
-        const data = doc.data();
-        return initActivityFromDB(data);
-    });
-    const activityBD = activities[Math.floor(Math.random() * activities.length)];
-    return activityBD.activity;
+export const buildActivityFromAI = async (
+    funcAI: ActivityFunc,
+    path: PathName,
+    subject: string,
+    time: string,
+    amount: string,
+    grade: string,
+    gender: string,
+    place: string,
+) => {
+    const activityRef = collection(db, "activity");
+    const text = await funcAI(subject, time, amount, grade, gender, place);
+    const activity = initActivityFromAI(text, path, subject, time, amount, grade, gender, place);
+    await addActivity(activityRef, activity);
+    return activity.activity;
+};
+
+const buildActivityFromDB = async (docs: QueryDocumentSnapshot<DocumentData, DocumentData>[]) => {
+    const randomIndex = Math.floor(Math.random() * docs.length);
+    const randomDocs = docs[randomIndex];
+    const activity = initActivityFromDB(randomDocs.data());
+    const docRef = doc(db, "activity", randomDocs.id);
+    const updatedActivity = updateActivityFromDB(activity);
+    await updateActivity(docRef, updatedActivity);
+    return activity.activity;
 };

@@ -1,8 +1,10 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { ContentContextType, DataType } from "../models/types/context";
-import { typeContext, defualtData } from "../models/defualtState/context";
+import { typeContext } from "../models/defualtState/context";
 import { PROMPT_LIMIT } from "../models/constants/state";
 import { useCookies } from "react-cookie";
+import Session from "../utils/sessionStorage";
+import { oneDay } from "../utils/time";
 
 export const ContentContext = createContext<ContentContextType>(typeContext);
 
@@ -11,48 +13,43 @@ export const useContentContext = () => useContext(ContentContext);
 export const ContentProvider = ({ children }: { children: React.ReactNode }) => {
     const [cookies, setCookie] = useCookies(["limit", "user-consent"]);
 
-    const [data, setData] = useState<DataType>(defualtData);
+    const [data, setData] = useState<DataType | undefined>();
     const [limit, setLimit] = useState<number>(PROMPT_LIMIT);
 
+    const setStateFromSession = () => {
+        if (data === undefined) {
+            const sessionData: DataType | undefined = Session.get("data");
+            if (sessionData) {
+                setData(sessionData);
+            }
+        }
+    };
+    setStateFromSession();
+
     const updateDetails = (grade, amount, place, gender) => {
-        setData((prevData) => ({
-            ...prevData,
-            grade: grade,
-            amount: amount,
-            place: place,
-            gender: gender,
-        }));
+        setData((prevData) => {
+            const d = {
+                ...prevData,
+                grade: grade,
+                amount: amount,
+                place: place,
+                gender: gender,
+            };
+            Session.set("data", d);
+            return d;
+        });
     };
 
     const updateLimit = () => {
         setLimit((prev) => {
             if (prev === 0) return 0;
             const lim = prev - 1;
-            let time = new Date(Date.now() + 1000 * 60 * 60 * 24);
-
-            const cookieRes = cookies["limit"];
-            if (cookieRes && cookieRes.time) time = new Date(cookieRes.time);
-
-            setCookie("limit", JSON.stringify({ limit: lim, time }), {
+            setCookie("limit", JSON.stringify(lim), {
                 path: "/",
-                expires: time,
+                expires: oneDay,
             });
             return lim;
         });
-    };
-
-    const updateActivity = (activity) => {
-        setData((prevData) => ({
-            ...prevData,
-            activity: activity,
-        }));
-    };
-
-    const updateImage = (url) => {
-        setData((prevData) => ({
-            ...prevData,
-            img: url,
-        }));
     };
 
     const resetAllUseFields = () => {
@@ -63,42 +60,59 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
             scoutingTime: { ...prevData.scoutingTime, use: false },
             playingTime: { ...prevData.playingTime, use: false },
         }));
+        Session.clear();
     };
 
     // - - - - - - Content Activity - - - - - - - - - - - - - - -
 
     const updateContentActivity = (subject, time, result) => {
-        setData((prevData) => ({
-            ...prevData,
-            contentActivity: { subject, time, use: true, data: result },
-        }));
+        setData((prevData) => {
+            const d = {
+                ...prevData,
+                contentActivity: { subject, time, use: true, data: result },
+            };
+            Session.set("data", d);
+            return d;
+        });
     };
 
     // - - - - - - Point Of View - - - - - - - - - - - - - - -
 
     const updatePointOfView = (subject, time, result) => {
-        setData((prevData) => ({
-            ...prevData,
-            pointOfView: { subject, time, use: true, data: result },
-        }));
+        setData((prevData) => {
+            const d = {
+                ...prevData,
+                pointOfView: { subject, time, use: true, data: result },
+            };
+            Session.set("data", d);
+            return d;
+        });
     };
 
     // - - - - - - Scouting Time - - - - - - - - - - - - - - -
 
     const updateScoutingTime = (subject, time, result) => {
-        setData((prevData) => ({
-            ...prevData,
-            scoutingTime: { subject, time, use: true, data: result },
-        }));
+        setData((prevData) => {
+            const d = {
+                ...prevData,
+                scoutingTime: { subject, time, use: true, data: result },
+            };
+            Session.set("data", d);
+            return d;
+        });
     };
 
     // - - - - - - playing Time - - - - - - - - - - - - - - -
 
     const updatePlayingTime = (subject, time, result) => {
-        setData((prevData) => ({
-            ...prevData,
-            playingTime: { subject, time, use: true, data: result },
-        }));
+        setData((prevData) => {
+            const d = {
+                ...prevData,
+                playingTime: { subject, time, use: true, data: result },
+            };
+            Session.set("data", d);
+            return d;
+        });
     };
 
     return (
@@ -111,8 +125,6 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
                 cookies,
                 setCookie,
                 updateDetails,
-                updateActivity,
-                updateImage,
                 resetAllUseFields,
                 updateContentActivity,
                 updatePointOfView,

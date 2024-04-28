@@ -4,13 +4,11 @@ import { FaWandMagicSparkles } from "react-icons/fa6";
 import { VscLoading } from "react-icons/vsc";
 import SelectDetails from "../SelectDetailsPath/SelectDetailsPath";
 import { ActivityTime } from "../../models/resources/activity";
-import { useContentContext } from "../../context/ContentContext";
 import { useErrorContext } from "../../context/ErrorContext";
-import PlayingTimeSubjects from '../../models/resources/playingTime.json';
-import ScoutingTimeSubjects from '../../models/resources/scoutesActivities.json';
+import PlayingTimeSubjects from "../../models/resources/playingTime.json";
+import ScoutingTimeSubjects from "../../models/resources/scoutesActivities.json";
 
-function Path({ index, generate, title, setPath }) {
-    const { updateLimit } = useContentContext();
+function Path({ index, title, setPath, isGenerate = false }) {
     const { handleError } = useErrorContext();
     const [show, setShow] = useState(false);
     const [subject, setSubject] = useState("");
@@ -18,16 +16,16 @@ function Path({ index, generate, title, setPath }) {
     const [magic, setMagic] = useState(false);
 
     useEffect(() => {
-        if(!show){
+        if (!show) {
             setPath(undefined);
             setSubject("");
             setTime("");
             return;
         }
-        if (!subject || !time || subject === "" || time === ""){
+        if (!subject || !time || subject === "" || time === "") {
             setPath(undefined);
             return;
-        };
+        }
         setPath({ subject, time });
     }, [show, subject, time]);
 
@@ -39,28 +37,22 @@ function Path({ index, generate, title, setPath }) {
         if (newValue.length <= 80) {
             setSubject(newValue);
         }
-      };
+    };
 
     const generateSubject = async () => {
         try {
             setMagic(true);
             setSubject("");
 
-            if (index === 3) {
+            if (isGenerate) {
                 setTimeout(() => {
-                    const activities = ScoutingTimeSubjects.activities;
+                    let activities = [];
+                    if (index === 3) activities = ScoutingTimeSubjects;
+                    if (index === 4) activities = PlayingTimeSubjects;
                     const randomIndex = Math.floor(Math.random() * activities.length);
                     setSubject(activities[randomIndex].name);
                     setMagic(false);
-                }, 500); 
-            }            
-            if(index === 4){
-                setTimeout(() => {
-                    const activities = PlayingTimeSubjects;
-                    const randomIndex = Math.floor(Math.random() * activities.length);
-                    setSubject(activities[randomIndex].name);
-                    setMagic(false);
-                }, 500); 
+                }, 500);
             }
         } catch (error) {
             handleError(error);
@@ -83,7 +75,7 @@ function Path({ index, generate, title, setPath }) {
                             onChange={handleInputChange}
                             placeholder="נושא הפעילות"
                         />
-                        {generate &&
+                        {isGenerate &&
                             (magic ? (
                                 <VscLoading className={styles.loading_icon_magic} />
                             ) : (
@@ -91,8 +83,7 @@ function Path({ index, generate, title, setPath }) {
                                     onClick={() => generateSubject()}
                                     className={styles.magic_icon}
                                 />
-                            ))
-                        }
+                            ))}
                     </div>
 
                     <SelectDetails

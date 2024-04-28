@@ -45,8 +45,6 @@ export const typeContext = {
     cookies: {},
     setCookie: () => {},
     updateDetails: () => {},
-    updateActivity: () => {},
-    updateImage: () => {},
     resetAllUseFields: () => {},
     updateContentActivity: () => {},
     updatePointOfView: () => {},
@@ -59,4 +57,3 @@ export const defualtErrorContext = {
     handleAlert: () => {},
     handleSuccess: () => {},
 };
-

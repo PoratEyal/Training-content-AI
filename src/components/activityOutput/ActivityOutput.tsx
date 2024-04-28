@@ -13,6 +13,8 @@ import {
     getScoutingTime,
 } from "../../service/openAiPrompts";
 import { ActivityType, DataType } from "../../models/types/context";
+import { PathActivity } from "../../models/constants/path";
+import { buildActivityFromAI } from "../../service/buildActivity";
 
 type ActivityOutputProps = {
     index: number;
@@ -27,8 +29,12 @@ function ActivityOutput({ index, title, path, contextData }: ActivityOutputProps
     const [docsPoint, setDocsPoint] = useState(false);
 
     const {
+        limit,
         updateLimit,
         updatePointOfView,
+        updateContentActivity,
+        updateScoutingTime,
+        updatePlayingTime,
     } = useContentContext();
     const { handleError } = useErrorContext();
     const { data, subject, time } = path;
@@ -56,25 +62,68 @@ function ActivityOutput({ index, title, path, contextData }: ActivityOutputProps
     };
 
     const generateAgain = async () => {
-        try {
+        updateLimit();
+        if (limit > 1) {
             setIconClickedPoint(true);
             const { amount, grade, gender, place } = contextData;
-            let result;
+
             if (index === 1) {
-                result = await getPointOfView(subject, time, amount, grade, gender, place);
+                buildActivityFromAI(
+                    getPointOfView,
+                    PathActivity.pointOfView.path,
+                    subject,
+                    time,
+                    amount,
+                    grade,
+                    gender,
+                    place,
+                )
+                    .then((result) => updatePointOfView(subject, time, result))
+                    .catch((error) => handleError(error))
+                    .finally(() => setIconClickedPoint(false));
             } else if (index === 2) {
-                result = await getContentActivity(subject, time, amount, grade, gender, place);
+                buildActivityFromAI(
+                    getContentActivity,
+                    PathActivity.contentActivity.path,
+                    subject,
+                    time,
+                    amount,
+                    grade,
+                    gender,
+                    place,
+                )
+                    .then((result) => updateContentActivity(subject, time, result))
+                    .catch((error) => handleError(error))
+                    .finally(() => setIconClickedPoint(false));
             } else if (index === 3) {
-                result = await getScoutingTime(subject, time, amount, grade, gender, place);
+                buildActivityFromAI(
+                    getScoutingTime,
+                    PathActivity.scoutingTime.path,
+                    subject,
+                    time,
+                    amount,
+                    grade,
+                    gender,
+                    place,
+                )
+                    .then((result) => updateScoutingTime(subject, time, result))
+                    .catch((error) => handleError(error))
+                    .finally(() => setIconClickedPoint(false));
             } else {
-                result = await getPlayingTime(subject, time, amount, grade, gender, place);
+                buildActivityFromAI(
+                    getPlayingTime,
+                    PathActivity.playingTime.path,
+                    subject,
+                    time,
+                    amount,
+                    grade,
+                    gender,
+                    place,
+                )
+                    .then((result) => updatePlayingTime(subject, time, result))
+                    .catch((error) => handleError(error))
+                    .finally(() => setIconClickedPoint(false));
             }
-            updatePointOfView(subject, time, result);
-            updateLimit();
-        } catch (error) {
-            handleError(error);
-        } finally {
-            setIconClickedPoint(false);
         }
     };
 
@@ -96,16 +145,17 @@ function ActivityOutput({ index, title, path, contextData }: ActivityOutputProps
                         )}
                     </div>
                     <button onClick={generateAgain} className={styles.button}>
-                        {!iconClickedPoint ? 
-                        <div className={styles.btn_content_div}>
-                            <label>פעילות אחרת</label>
-                            {/* <img className={styles.icon_svg} src="ai.svg"></img> */}
-                        </div>
-                        :
-                        <div className={styles.btn_content_div}>
-                            {/* <label>הפעילות בהכנה</label> */}
-                            <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>
-                        </div>}
+                        {!iconClickedPoint ? (
+                            <div className={styles.btn_content_div}>
+                                <label>פעילות אחרת</label>
+                                {/* <img className={styles.icon_svg} src="ai.svg"></img> */}
+                            </div>
+                        ) : (
+                            <div className={styles.btn_content_div}>
+                                {/* <label>הפעילות בהכנה</label> */}
+                                <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>
+                            </div>
+                        )}
                     </button>
                 </div>
             </div>
