@@ -14,13 +14,20 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
     const [cookies, setCookie] = useCookies(["limit", "user-consent"]);
 
     const [data, setData] = useState<DataType | undefined>();
-    const [limit, setLimit] = useState<number>(PROMPT_LIMIT);
+    const [limit, setLimit] = useState<number | undefined>();
 
     const setStateFromSession = () => {
         if (data === undefined) {
             const sessionData: DataType | undefined = Session.get("data");
             if (sessionData) {
                 setData(sessionData);
+            }
+        }
+        if(limit === undefined){
+            console.log("setStateFromSession", limit)
+            const cookieLimit = cookies["limit"];
+            if(cookieLimit){
+                setLimit(parseInt(cookieLimit));
             }
         }
     };
@@ -42,12 +49,13 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
 
     const updateLimit = () => {
         setLimit((prev) => {
-            if (prev === 0) return 0;
-            const lim = prev - 1;
-            setCookie("limit", JSON.stringify(lim), {
-                path: "/",
-                expires: oneDay,
-            });
+            const lim = prev ? prev + 1 : 1;
+            if(lim <= PROMPT_LIMIT){
+                setCookie("limit", JSON.stringify(lim), {
+                    path: "/",
+                    expires: oneDay,
+                });
+            }
             return lim;
         });
     };

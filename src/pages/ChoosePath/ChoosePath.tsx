@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import styles from "./ChoosePath.module.css";
 import { useNavigate } from "react-router-dom";
-import Loading from "../../components/loading/loading";
+import Loading from "../../components/Loading/Loading";
 import Path from "../../components/Path/Path";
 import { useErrorContext } from "../../context/ErrorContext";
 import { buildActivity } from "../../service/buildActivity";
@@ -15,6 +15,7 @@ import {
 } from "../../service/openAiPrompts";
 import { PathActivity } from "../../models/constants/path";
 import hints from "../../models/resources/hints.json"
+import { PROMPT_LIMIT } from "../../models/constants/state";
 
 function ChoosePath() {
     const {
@@ -44,7 +45,7 @@ function ChoosePath() {
 
     const submitHandler = async () => {
         updateLimit();
-        if (limit > 1) {
+        if (!limit || limit < PROMPT_LIMIT-1) {
             setClicked(true);
             const promises = [];
             const { amount, grade, gender, place } = data;

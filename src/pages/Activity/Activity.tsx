@@ -1,9 +1,8 @@
 import styles from "./Activity.module.css";
 import { useContentContext } from "../../context/ContentContext";
-import ActivityOutput from "../../components/activityOutput/ativityOutput";
+import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import { IoArrowForward } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import { FcInfo } from "react-icons/fc";
 
 function Activity() {
     const { data } = useContentContext();

@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useContentContext } from "../context/ContentContext";
-import LimitRequest from "./popups/limitRequests/limitRequests";
-import { PROMPT_LIMIT } from "../models/constants/state";
+import LimitRequest from "./popups/LimitRequests/LimitRequests";
 import TSCs from "./popups/TSCs/TSCs";
+import { PROMPT_LIMIT } from "../models/constants/state";
 
 const PrivateRoutes = () => {
     const { cookies, setCookie, limit } = useContentContext();
-    const [prevent, setPrevent] = useState(-1);
+    const [prevent, setPrevent] = useState(false);
     const [tscs, setTscs] = useState(false);
 
     useEffect(() => {
-        if (limit !== PROMPT_LIMIT) {
-            setPrevent(limit);
-        } else {
-            const cookieRes = cookies["limit"];
-            setPrevent(cookieRes && cookieRes.limit !== undefined ? cookieRes.limit : -1);
-        }
+        if (limit >= PROMPT_LIMIT) {
+            setPrevent(true);
+        } 
     }, [limit]);
 
     useEffect(() => {
@@ -25,7 +22,7 @@ const PrivateRoutes = () => {
         }
     }, [cookies]);
 
-    const handleAccept = () => {
+    const handleAcceptTerms = () => {
         setCookie("user-consent", "accepted", {
             path: "/",
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30 * 6),
@@ -33,23 +30,17 @@ const PrivateRoutes = () => {
         setTscs(false);
     };
 
+    const handleAcceptLimit = () => {
+        setPrevent(false);
+    }
+
     return (
         <React.Fragment>
-            {prevent === 0 ? <LimitRequest /> : null}
-            {tscs ? <TSCs handleAccept={handleAccept} /> : null}
+            {prevent ? <LimitRequest handleAccept={handleAcceptLimit} /> : null}
+            {tscs ? <TSCs handleAccept={handleAcceptTerms} /> : null}
             <Outlet /> 
         </React.Fragment>
     );
 };
 
 export default PrivateRoutes;
-// return limit ? <Outlet /> : <Navigate to={"/"} />;
-
-// return prevent === 0 ? (
-//     <React.Fragment>
-//         <LimitRequest />
-//         <Outlet />
-//     </React.Fragment>
-// ) : (
-//     <Outlet />
-// );

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./activityOutput.module.css";
+import styles from "./ActivityOutput.module.css";
 import { FaWhatsapp } from "react-icons/fa";
 import { AiOutlineLoading } from "react-icons/ai";
 import { BsFiletypeDocx } from "react-icons/bs";
@@ -15,6 +15,7 @@ import {
 import { ActivityType, DataType } from "../../models/types/context";
 import { PathActivity } from "../../models/constants/path";
 import { buildActivityFromAI } from "../../service/buildActivity";
+import { PROMPT_LIMIT } from "../../models/constants/state";
 
 type ActivityOutputProps = {
     index: number;
@@ -63,7 +64,7 @@ function ActivityOutput({ index, title, path, contextData }: ActivityOutputProps
 
     const generateAgain = async () => {
         updateLimit();
-        if (limit > 1) {
+        if (!limit || limit < PROMPT_LIMIT-1) {
             setIconClickedPoint(true);
             const { amount, grade, gender, place } = contextData;
 
