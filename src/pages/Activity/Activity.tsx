@@ -1,6 +1,6 @@
 import styles from "./Activity.module.css";
 import { useContentContext } from "../../context/ContentContext";
-import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
+import ActivityOutput from "../../components/activityOutput/activityOutput";
 import { IoArrowForward } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
