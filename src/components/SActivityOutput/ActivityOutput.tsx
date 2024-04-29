@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./activityOutput.module.css";
+import styles from "./ActivityOutput.module.css";
 import { FaWhatsapp } from "react-icons/fa";
 import { AiOutlineLoading } from "react-icons/ai";
 import { BsFiletypeDocx } from "react-icons/bs";
