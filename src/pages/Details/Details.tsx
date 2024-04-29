@@ -11,7 +11,6 @@ import {
     Gender,
 } from "../../models/resources/group";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
-import { getGeminiAnswer } from "../../service/gemini";
 
 function Details() {
     const [classLevel, setClassLevel] = useState("");
@@ -27,7 +26,6 @@ function Details() {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        getGeminiAnswer()
         if(classLevel && numberOfChildren && activityLocation && gender){
             setIsDisabled(false)
         }

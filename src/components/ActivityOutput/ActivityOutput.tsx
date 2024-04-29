@@ -6,16 +6,12 @@ import { BsFiletypeDocx } from "react-icons/bs";
 import { useContentContext } from "../../context/ContentContext";
 import { importDocx, importWhatsUp } from "../../utils/import";
 import { useErrorContext } from "../../context/ErrorContext";
-import {
-    getContentActivity,
-    getPlayingTime,
-    getPointOfView,
-    getScoutingTime,
-} from "../../service/openAiPrompts";
 import { ActivityType, DataType } from "../../models/types/context";
 import { PathActivity } from "../../models/constants/path";
 import { buildActivityFromAI } from "../../service/buildActivity";
 import { PROMPT_LIMIT } from "../../models/constants/state";
+import { getContentActivity, getPlayingTime, getPointOfView, getScoutingTime } from "../../service/geminiPrompts";
+
 
 type ActivityOutputProps = {
     index: number;

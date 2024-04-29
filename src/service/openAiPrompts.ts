@@ -12,27 +12,6 @@ const request = (prompt) => {
 };
 
 
-// - - - - - - activity prompt section - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-const moreContnentPrompt = (activityDescription) => {
-    return {
-        ...DefualtPromptDetails(0.7),
-        messages: [
-            {
-                role: "user",
-                content: `Provide a detailed expansion of this activity: ${activityDescription}. Ensure comprehensive coverage of all aspects, including the name and the time of the activity, and any specific instructions or data mentioned in the activity. Reflect any direct content like names and times without alteration, but enrich the description with additional relevant details to enhance understanding. The response should be detailed and in Hebrew.`,
-            },
-        ],
-    };
-};
-
-export async function getMoreContent(activityDescription) {
-    const response = await axios(request(moreContnentPrompt(activityDescription)));
-    const responseData = response.data.choices?.[0].message.content;
-    return responseData;
-}
-
-
 // - - - - - - - - - - Point of View - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 const pointOfViewPrompt = (subject, time, amount, age, gender, place) => {
