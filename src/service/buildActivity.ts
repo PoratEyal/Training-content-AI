@@ -1,23 +1,17 @@
-import {
-    doc,
-    collection,
-    CollectionReference,
-    DocumentData,
-    QueryDocumentSnapshot,
-} from "firebase/firestore";
+import { doc, collection, DocumentData, QueryDocumentSnapshot } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { MIN_ACTIVITIES } from "../models/constants/state";
-import {
-    getContentActivity,
-    getPlayingTime,
-    getPointOfView,
-    getScoutingTime,
-} from "./openAiPrompts";
 import { initActivityFromAI, initActivityFromDB, updateActivityFromDB } from "../utils/init";
 import { addActivity, getActivity, updateActivity } from "../utils/db";
 import { PathActivity } from "../models/constants/path";
 import { ActivityFunc } from "../models/types/activity";
 import { PathName } from "../models/types/path";
+import {
+    getContentActivity,
+    getPlayingTime,
+    getPointOfView,
+    getScoutingTime,
+} from "./geminiPrompts";
 
 export const buildPointOfViewActivity = async (
     subject: string,

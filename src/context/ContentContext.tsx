@@ -24,7 +24,6 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
             }
         }
         if(limit === undefined){
-            console.log("setStateFromSession", limit)
             const cookieLimit = cookies["limit"];
             if(cookieLimit){
                 setLimit(parseInt(cookieLimit));
