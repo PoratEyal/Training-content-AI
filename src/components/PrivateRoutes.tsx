@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useContentContext } from "../context/ContentContext";
-import LimitRequest from "./popups/limitRequests/limitRequests";
+import LimitRequest from "./popups/limitRequests/LimitRequests";
 import TSCs from "./popups/TSCs/TSCs";
 import { PROMPT_LIMIT } from "../models/constants/state";
 
