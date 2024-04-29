@@ -31,6 +31,13 @@
     background-color: orange;
 }
 
+.ai_text{
+    font-size: 11px;
+    margin-top: 5px;
+    padding-right: 25px;
+    font-style: italic;
+}
+
 .container h2{
     font-size: 22px;
     color: orange;

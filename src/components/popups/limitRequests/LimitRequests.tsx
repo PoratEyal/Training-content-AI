@@ -1,16 +1,16 @@
-import styles from "./LimitRequests.module.css";
+import styles from "./limitRequests.module.css";
 
 function LimitRequest() {
   return (
     <div className={styles.background}>
       <div className={styles.container}>
         <label className={styles.label}>
-          בשל עומס זמני על המערכת, אנו מגבילים את מספר הפעילויות שניתן לבנות
-          ביום אחד.{" "}
+          אנו שמחים שאתם משתמשים במערכת לבניית הפעולות. 
         </label>
         <label className={styles.label}>
-          אנו מתנצלים על אי הנוחות ומבטיחים לחזור בהקדם האפשרי למצב רגיל
+        בשלב זה אנו מגבילים את כמות הפעולות היומית על מנת ללמוד ולשפר את המערכת ולשמור על הביצועים. עם הזמן נוכל להסיר את ההגבלה ונאפשר ליצור יותר פעולות.
         </label>
+        <button className={styles.submit_btn}>אישור</button>
       </div>
     </div>
   );
