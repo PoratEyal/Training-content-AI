@@ -9,6 +9,21 @@
     color: rgb(46, 46, 46);
 }
 
+.custom_checkbox{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.custom_checkbox input[type="checkbox"] {
+    cursor: pointer;
+    position: relative;
+    top: 1px;
+}
+.custom_checkbox section {
+    position: relative;
+    top: 2px;
+}
+
 .inputs_div {
     display: flex;
     flex-direction: column;

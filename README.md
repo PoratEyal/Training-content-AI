@@ -46,18 +46,14 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 
-
-גודל קבוצת ילדים 50+
-להוריד את הרעיונות קסם
-ליצר מאגר רעיונות לזמן צופיות (השרדות זמן משחק (משחק))
-
 https://www.youtube.com/watch?v=2hR-uWjBAgw
 https://www.youtube.com/watch?v=xi3F2Zv91UE
 
-// JSON storage - more data
 // check prompt with wierd characters
-// text "its still a beta"
-// bug - new activity run on other path
-// limit popup text
+
 // new activity also from database? - I think no
 // show the limit ?
+
+// text "its still a beta"
+// JSON storage - more data
+// limit popup text

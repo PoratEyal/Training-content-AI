@@ -11,10 +11,12 @@ export const PathActivity = {
     } as PathType,
     scoutingTime: {
         path: "scoutingTime",
-        name: "זמן צופיות",
+        name: "מיומנויות",
     } as PathType,
     playingTime: {
         path: "playingTime",
         name: "זמן משחק",
     } as PathType,
 };
+
+// כישורי חיים

@@ -29,6 +29,7 @@
     border-radius: 30px;
     color: white;
     background-color: orange;
+    cursor: pointer;
 }
 
 .container h2{

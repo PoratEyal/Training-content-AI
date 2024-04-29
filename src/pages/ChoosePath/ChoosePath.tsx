@@ -5,16 +5,16 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
 import Path from "../../components/Path/Path";
 import { useErrorContext } from "../../context/ErrorContext";
-import {
-    buildActivity,
-    buildContentActivityActivity,
-    buildPlayingTimeActivity,
-    buildPointOfViewActivity,
-    buildScoutingTimeActivity,
-} from "../../service/buildActivity";
+import { buildActivity } from "../../service/buildActivity";
 import { IoArrowForward } from "react-icons/io5";
-import { getContentActivity, getPlayingTime, getPointOfView, getScoutingTime } from "../../service/openAiPrompts";
+import {
+    getContentActivity,
+    getPlayingTime,
+    getPointOfView,
+    getScoutingTime,
+} from "../../service/openAiPrompts";
 import { PathActivity } from "../../models/constants/path";
+import hints from "../../models/resources/hints.json"
 
 function ChoosePath() {
     const {
@@ -52,7 +52,16 @@ function ChoosePath() {
             if (pointOfView) {
                 const { subject, time } = pointOfView;
                 promises.push(
-                    buildActivity(getPointOfView, PathActivity.pointOfView.path, subject, time, amount, grade, gender, place)
+                    buildActivity(
+                        getPointOfView,
+                        PathActivity.pointOfView.path,
+                        subject,
+                        time,
+                        amount,
+                        grade,
+                        gender,
+                        place,
+                    )
                         .then((result) => updatePointOfView(subject, time, result))
                         .catch((error) => handleError(error)),
                 );
@@ -61,7 +70,16 @@ function ChoosePath() {
             if (contentActivity) {
                 const { subject, time } = contentActivity;
                 promises.push(
-                    buildActivity(getContentActivity, PathActivity.contentActivity.path, subject, time, amount, grade, gender, place)
+                    buildActivity(
+                        getContentActivity,
+                        PathActivity.contentActivity.path,
+                        subject,
+                        time,
+                        amount,
+                        grade,
+                        gender,
+                        place,
+                    )
                         .then((result) => updateContentActivity(subject, time, result))
                         .catch((error) => handleError(error)),
                 );
@@ -70,7 +88,16 @@ function ChoosePath() {
             if (scoutingTime) {
                 const { subject, time } = scoutingTime;
                 promises.push(
-                    buildActivity(getScoutingTime, PathActivity.scoutingTime.path, subject, time, amount, grade, gender, place)
+                    buildActivity(
+                        getScoutingTime,
+                        PathActivity.scoutingTime.path,
+                        subject,
+                        time,
+                        amount,
+                        grade,
+                        gender,
+                        place,
+                    )
                         .then((result) => updateScoutingTime(subject, time, result))
                         .catch((error) => handleError(error)),
                 );
@@ -79,7 +106,16 @@ function ChoosePath() {
             if (playingTime) {
                 const { subject, time } = playingTime;
                 promises.push(
-                    buildActivity(getPlayingTime, PathActivity.playingTime.path, subject, time, amount, grade, gender, place)
+                    buildActivity(
+                        getPlayingTime,
+                        PathActivity.playingTime.path,
+                        subject,
+                        time,
+                        amount,
+                        grade,
+                        gender,
+                        place,
+                    )
                         .then((result) => updatePlayingTime(subject, time, result))
                         .catch((error) => handleError(error)),
                 );
@@ -108,10 +144,10 @@ function ChoosePath() {
 
                     <h3 className={styles.h3}>בחרו את הפעילות שלכם</h3>
 
-                    <Path index={1} title="נקודת מבט" setPath={setPointOfView} />
-                    <Path index={2} title="פעילות תוכן" setPath={setContentActivity} />
-                    <Path index={3} title="זמן צופיות" setPath={setScoutingTime} isGenerate />
-                    <Path index={4} title="זמן משחק" setPath={setPlayingTime} isGenerate />
+                    <Path index={1} title="נקודת מבט" hint={hints.pointOfView} setPath={setPointOfView} />
+                    <Path index={2} title="פעילות תוכן" hint={hints.contentActivity} setPath={setContentActivity} />
+                    <Path index={3} title="זמן צופיות" hint={hints.scoutingTime} setPath={setScoutingTime} isGenerate />
+                    <Path index={4} title="זמן משחק" hint={hints.playingTime} setPath={setPlayingTime} isGenerate />
                 </div>
 
                 <div className={styles.btn_div}>

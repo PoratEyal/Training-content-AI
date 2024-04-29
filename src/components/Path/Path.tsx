@@ -7,8 +7,9 @@ import { ActivityTime } from "../../models/resources/activity";
 import { useErrorContext } from "../../context/ErrorContext";
 import PlayingTimeSubjects from "../../models/resources/playingTime.json";
 import ScoutingTimeSubjects from "../../models/resources/scoutesActivities.json";
+import Hint from "../Hint/Hint";
 
-function Path({ index, title, setPath, isGenerate = false }) {
+function Path({ index, title, setPath, hint, isGenerate = false }) {
     const { handleError } = useErrorContext();
     const [show, setShow] = useState(false);
     const [subject, setSubject] = useState("");
@@ -61,10 +62,11 @@ function Path({ index, title, setPath, isGenerate = false }) {
 
     return (
         <div className={styles.checkbox_div}>
-            <label className={styles.custom_checkbox}>
+            <div className={styles.custom_checkbox}>
                 <input type="checkbox" checked={show} onChange={toggleShow} />
-                {title}
-            </label>
+                <span>{title}</span>
+                <Hint hint={hint} />
+            </div>
 
             {show && (
                 <div className={styles.inputs_div}>
