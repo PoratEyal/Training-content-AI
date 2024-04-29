@@ -1,4 +1,4 @@
-import styles from "./limitRequests.module.css";
+import styles from "./LimitRequests.module.css";
 
 function LimitRequest({ handleAccept }) {
     return (
