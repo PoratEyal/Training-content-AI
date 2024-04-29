@@ -12,7 +12,7 @@ import {
     getPlayingTime,
     getPointOfView,
     getScoutingTime,
-} from "../../service/openAiPrompts";
+} from "../../service/geminiPrompts";
 import { PathActivity } from "../../models/constants/path";
 import hints from "../../models/resources/hints.json"
 import { PROMPT_LIMIT } from "../../models/constants/state";
