@@ -41,11 +41,12 @@ const pointOfViewPrompt = (subject, time, amount, age, gender, place) => {
         messages: [
             {
                 role: "user",
-                content: `You are a scoutmaster who transfers activity to his trainees in a youth movement and i want you to create a 'Point of View Activity' on the topic of ${subject} that will last ${time}, the number of the children in the activity are" ${amount}, the grade of them is: ${age} and the gender of them is ${gender}. The place of the activity will be ${place}. At the begining of the answer write the name of the activity and the time for her. In each part of the activity, you will add his time(in minutes). Ensure comprehensive coverage of all aspects, and any specific instructions for the activity. Reflect any direct content like names and times without alteration, but enrich the description with additional relevant details to enhance understanding. Do not incorporate a presentation or video into your activity. The response should be detailed and in Hebrew.`,
+                content: `אתה מדריך צופים המעביר פעילות לחניכיו בתנועת הנוער ואני רוצה שתיצור פעילות בשם 'פעילות נקודת מבט' על הנושא ${subject} שתימשך ${time}, מספר הילדים בפעילות הוא ${amount}, כיתתם היא ${age} ומינם הוא ${gender}. מקום הפעילות יהיה ב${place} .(וודא שאין שגיאות כתיב כלל) בתחילת התשובה כתוב את שם הפעילות ואת משך הזמן שלה. בכל חלק של הפעילות, ציין את הזמן הנדרש בדקות. וודא כיסוי מלא של כל ההיבטים והוראות מפורטות לפעילות. הבט לשקף תכנים ישירים כמו שמות וזמנים ללא שינוי, אך העשר את התיאור בפרטים רלוונטיים נוספים להבנה טובה יותר. אל תכלול מצגת או וידאו בפעילות. התשובה צריכה להיות מפורטת ובעברית בלבד.`,
             },
         ],
     };
-};
+}
+
 
 export async function getPointOfView(subject, time, amount, age, gender, place) {
     const response = await axios(
@@ -64,11 +65,12 @@ const contentActivityPrompt = (subject, time, amount, age, gender, place) => {
         messages: [
             {
                 role: "user",
-                content: `You are a scoutmaster who transfers activity to his trainees in a youth movement and i want you to create a 'Content activity Activity' on the topic of ${subject} that will last ${time}, the number of the children in the activity are" ${amount}, the grade of them is: ${age} and the gender of them is ${gender}. The place of the activity will be ${place}. At the begining of the answer write a name for the activity and the time for her. In each part of the activity, you will add his time(in minutes). Ensure comprehensive coverage of all aspects, and any specific instructions for the activity. Reflect any direct content like names and times without alteration, but enrich the description with additional relevant details to enhance understanding. Do not incorporate a presentation or video into your activity. The response should be detailed and in Hebrew.`,
+                content: `אתה מדריך צופים המעביר פעילות לחניכיו בתנועת הנוער, ואני רוצה שתיצור פעילות בשם 'פעילות תוכן' בנושא ${subject} שתימשך ${time}, מספר הילדים בפעילות הוא ${amount}, שכבת הגיל שלהם היא: ${age} והמין שלהם הוא ${gender}. מקום הפעילות יהיה ${place}. (וודא שאין שגיאות כתיב )בתחילת התשובה תן שם לפעילות וציין את הזמן המיועד לה. בכל חלק מהפעילות, ציין את הזמן הנדרש בדקות. הקפד על כיסוי מלא של כל ההיבטים והוראות מפורטות לפעילות. השתדל לשקף תוכן ישיר כמו שמות וזמנים ללא שינוי, אך העשיר את התיאור בפרטים רלוונטיים נוספים להבנה מוגברת. אל תכלול מצגת או וידאו בפעילות שלך. התשובה צריכה להיות מפורטת ובעברית בלבד.`,
             },
         ],
     };
-};
+}
+
 
 export async function getContentActivity(subject, time, amount, age, gender, place) {
     const response = await axios(
@@ -87,11 +89,12 @@ const scoutingTimePrompt = (subject, time, amount, age, gender, place) => {
         messages: [
             {
                 role: "user",
-                content: `You are a scoutmaster who transfers activity to his trainees in a youth movement and i want you to create a 'Scouting time Activity' on the topic of ${subject} that will last ${time}, the number of the children in the activity are" ${amount}, the grade of them is: ${age} and the gender of them is ${gender}. The place of the activity will be ${place}. Come up with a nice name for the activity. At the begining of the answer write the the name of the activity and the time for her. In each part of the activity, you will put his time(in minutes). Do not add a study phase, focus on practice. Ensure comprehensive coverage of all aspects, and any specific instructions for the activity. Reflect any direct content like names and times without alteration, but enrich the description with additional relevant details to enhance understanding. Do not incorporate a presentation or video into your activity. The response should be detailed and in Hebrew.`,
+                content: `אתה מדריך צופים שמעביר פעילות למתאמנים בתנועת נוער, ואני רוצה שתיצור פעילות בשם 'זמן צופים' על נושא ${subject} שתימשך ${time}, מספר הילדים בפעילות הוא ${amount}, הגילאים שלהם הם: ${age} ומינם הוא ${gender}. מקום הפעילות יהיה ב${place} .חשוב על שם מושך לפעילות. בתחילת התשובה כתוב את שם הפעילות והזמן שהיא תימשך. בכל חלק מהפעילות ציין את זמנו (בדקות). על הפעילות להתמקד בתרגול ולא בלימוד. הקפד על כיסוי מקיף של כל ההיבטים והוראות מפורטות לביצוע הפעילות. שקף תוכן ישיר כמו שמות וזמנים ללא שינוי, אך עשיר את התיאור בפרטים רלוונטיים נוספים להבנה מעמיקה יותר. אל תכלול מצגת או וידאו בפעילות שלך, בנוסף וודא שאין שימוש בכלים מסוכנים בפעילות. התשובה צריכה להיות מפורטת ובעברית בלבד(וודא שאין שגיאות כתיב)..`,
             },
         ],
     };
-};
+}
+
 
 export async function getScoutingTime(subject, time, amount, age, gender, place) {
     const response = await axios(
@@ -110,7 +113,7 @@ const playingTimePrompt = (subject, time, amount, age, gender, place) => {
         messages: [
             {
                 role: "user",
-                content: `You are a scoutmaster who transfers activity to his trainees in a youth movement and i want you to create a "Playing time" activity that related to this topic: ${subject} but not the same game! that will last ${time}, the number of the children in the activity are" ${amount}, the grade of them is: ${age} and the gender of them is ${gender}. The place of the activity will be ${place}. Come up with a nice name for the game. at the begining of the answer write the name of the game and the time(in minutes). In each part of the activity, you will add his time(in minutes). Ensure comprehensive coverage of all aspects, and any specific instructions for the activity. Reflect any direct content like names and times without alteration, but enrich the description with additional relevant details to enhance understanding. Do not incorporate a presentation or video into your activity. The response should be detailed and in Hebrew.`,
+                content: `אתה מדריך חובב המעביר פעילות למתאמנים בתנועת נוער, ואני רוצה שתיצור פעילות "זמן משחק" הקשורה לנושא הזה: ${subject}, אך לא את אותה המשחק! הפעילות תימשך ${time}, מספר הילדים בפעילות הוא ${amount}, כיתתם היא: ${age} ומינם הוא ${gender}. מקום הפעילות יהיה ${place}. תחשוב על שם יפה למשחק. בתחילת התשובה כתוב את שם המשחק ואת הזמן (בדקות). בכל חלק של הפעילות, תוסיף את זמנו (בדקות). הקפד על כיסוי מקיף של כל ההיבטים, והוראות מפורטות לפעילות. השתדל לשמור על דיוק בכתיב ובשפה, מבלי להכליל הצגה או וידאו בתשובתך. התשובה צריכה להיות מפורטת ובעברית בלבד(וודא שאין שגיאות כתיב).`,
             },
         ],
     };
