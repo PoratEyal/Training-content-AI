@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./ActivityOutput.module.css";
 import { FaWhatsapp } from "react-icons/fa";
 import { AiOutlineLoading } from "react-icons/ai";
@@ -11,7 +11,8 @@ import { PathActivity } from "../../models/constants/path";
 import { buildActivityFromAI } from "../../service/buildActivity";
 import { PROMPT_LIMIT } from "../../models/constants/state";
 import { getContentActivity, getPlayingTime, getPointOfView, getScoutingTime } from "../../service/geminiPrompts";
-
+import ReactMarkdown from 'react-markdown';
+import "./Markdown.css";
 
 type ActivityOutputProps = {
     index: number;
@@ -46,16 +47,6 @@ function ActivityOutput({ index, title, path, contextData }: ActivityOutputProps
         setDocsPoint(true);
         importDocx(title, data);
         setDocsPoint(false);
-    };
-
-    // Function to format the activity text with line breaks
-    const formatTextWithLineBreaks = (text) => {
-        return text.split("\n").map((line, index, array) => (
-            <React.Fragment key={index}>
-                {line}
-                {index !== array.length - 1 && <br />}
-            </React.Fragment>
-        ));
     };
 
     const generateAgain = async () => {
@@ -125,7 +116,7 @@ function ActivityOutput({ index, title, path, contextData }: ActivityOutputProps
     };
 
     return (
-        <div className={styles.activity_div}>
+        <div className={styles.activity_div} id="markdown">
             <div className={styles.h2_icon_div}>
                 <h2 className={styles.h2_activity}>{title}</h2>
                 <div className={styles.button_and_icons_div}>
@@ -156,7 +147,8 @@ function ActivityOutput({ index, title, path, contextData }: ActivityOutputProps
                     </button>
                 </div>
             </div>
-            {formatTextWithLineBreaks(data)}
+
+            <ReactMarkdown>{data}</ReactMarkdown>
         </div>
     );
 }
