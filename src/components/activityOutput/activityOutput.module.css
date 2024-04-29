@@ -1,0 +1,132 @@
+.h2_icon_div {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: orange;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.icon_svg {
+    width: 18px;
+    height: 18px;
+    margin-left: 5px;
+    color: orange;
+}
+
+.activity_div {
+    padding: 25px;
+    padding-top: 0px;
+}
+
+.button_and_icons_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+    font-family: 'Fredoka', sans-serif;
+    border-radius: 60px;
+    padding: 6px;
+    color: orange;
+    border: none;
+    font-size: 13px;
+    background-color: rgba(255, 255, 255, 0);
+    width: 95px;
+    cursor: pointer;
+    border: 1px solid orange;
+    height: 30px;
+}
+
+.btn_content_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.button label {
+    margin-right: 3px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.icon_more {
+    animation: spin 1.5s infinite linear;
+    font-size: 15px;
+    color: orange;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (min-width: 550px) {
+    .container {
+        margin-top: 50px;
+        width: 400px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 70vh;
+        border: none;
+        border-radius: 30px;
+        background-color: #F5F5DC;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .container::-webkit-scrollbar-track {
+        border-radius: 20px;
+        background-color: transparent;
+    }
+
+    .container::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+        background-color: #dfdfdf00;
+    }
+
+    /* Set the scrollbar width */
+    .container::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .back_icon {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    .activity_div {
+        padding: 30px;
+        padding-top: 0px;
+    }
+
+    body {
+        background-color: #ffe1a0;
+    }
+}

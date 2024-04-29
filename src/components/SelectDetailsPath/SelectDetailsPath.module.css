@@ -1,0 +1,37 @@
+.input_div{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.input_div select {
+    cursor: pointer;
+    -webkit-appearance: none;
+    border: 1px solid orange;
+    padding: 15px 15px 15px 15px;
+    font-size: 16px;
+    border-radius: 15px;
+    width: 335px;
+    font-family: 'Fredoka', sans-serif;
+    direction: rtl;
+    background-color: white;
+    color: rgb(36, 36, 36);
+}
+.input_div::after {
+    content: '▼';
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: orange;
+}
+.input_div {
+    position: relative;
+}
+.input_div select:focus {
+    outline: none;
+}
