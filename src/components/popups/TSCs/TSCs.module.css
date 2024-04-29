@@ -1,10 +1,10 @@
-.background{
+.background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.51);
     z-index: 996;
 }
 
@@ -15,35 +15,38 @@
     transform: translate(-50%, -50%);
     z-index: 997;
     background-color: white;
-    border-radius: 20px;
-    border: none;
+    border-radius:20px;
     text-align: center;
-    padding: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    height: 500px;
     width: 300px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
+    gap: 10px;
     text-align: right;
     border: 2px solid orange;
+    overflow: scroll;
 }
 
-.icon_alert{
-    font-size: 410px;
+.h3_privacy{
+    color: orange;
+    font-size: 20px;
+    margin-top: -5px;
+    text-align: right;
+    font-weight: 550;
+    margin-bottom: 5px;
 }
 
-.label{
-    color: rgb(51, 51, 51);
-    font-size: 15px;
-    font-weight: 400;
-    margin-right: 20px;
-    margin-top: 15px;
-    line-height: 24px;
+.space_div {
+    font-size: 14px;
 }
 
 .submit_btn {
-    margin-top: 30px;
     border: none;
     padding: 7px;
     box-sizing: border-box;
@@ -59,4 +62,9 @@
     color: white;
 }
 
-
+@media (min-width: 550px) {
+    .submit_btn {
+        position: relative;
+        cursor: pointer;
+    }
+}

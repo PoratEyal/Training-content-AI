@@ -1,0 +1,28 @@
+.hintContainer{
+    position: relative;
+}
+
+.hintBtn{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 16px;
+    color: #bdbdbd;
+}
+
+.hint{
+    position: absolute;
+    z-index: 1;
+    background-color: #f1f1f1;
+    display: inline-block;
+    color: #090909;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    box-sizing: content-box;
+    white-space: nowrap;
+    top: 0;
+    right: 20px;
+    font-size: 12px;
+    border: 1px solid #d9d9d9;
+}

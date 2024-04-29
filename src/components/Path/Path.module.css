@@ -1,0 +1,90 @@
+.checkbox_div {
+    font-size: 20px;
+    margin-bottom: 25px;
+    margin-right: 20px;
+}
+
+.checkbox_input {
+    font-size: 19px;
+    color: rgb(46, 46, 46);
+}
+
+.custom_checkbox{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.custom_checkbox input[type="checkbox"] {
+    cursor: pointer;
+    position: relative;
+    top: 1px;
+}
+.custom_checkbox section {
+    position: relative;
+    top: 2px;
+}
+
+.inputs_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.input_and_icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    direction: rtl;
+}
+
+.input {
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    font-family: 'Fredoka', sans-serif;
+    text-align: right;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid orange;
+    outline: none;
+    width: 310px;
+    resize: none;
+    height: 50px;
+    min-height: 50px;
+    overflow: hidden;
+}
+
+.magic_icon {
+    color: orange;
+    padding: 5px;
+    margin-right: -40px;
+    padding-right: 5px;
+    border: none;
+    margin-top: 45px;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.loading_icon_magic {
+    color: orange;
+    padding: 5px;
+    margin-right: -40px;
+    margin-top: 45px;
+    border: none;
+    background-color: white;
+    animation: spin 1s infinite linear;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
