@@ -90,7 +90,7 @@ function Path({ index, title, setPath, hint, isGenerate = false }) {
 
                     <SelectDetails
                         data={ActivityTime}
-                        placeholder={"בחרו זמן פעילות"}
+                        placeholder={"זמן הפעילות"}
                         obj={time}
                         setObj={setTime}
                     />
