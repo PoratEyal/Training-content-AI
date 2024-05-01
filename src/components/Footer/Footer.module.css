@@ -1,0 +1,48 @@
+.footer {
+    position: relative;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin: 15px 0;
+}
+
+.privacy_div {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    font-size: 11px;
+    color: rgb(162, 123, 51);
+    padding-bottom: 1px;
+    padding-right: 3px;
+    border-bottom: 1px solid #a27b33;
+}
+
+.connect_div {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    font-size: 11px;
+    color: #a27b33;
+    padding-bottom: 1px;
+    padding-right: 3px;
+}
+
+.connect_div a {
+    color: #a27b33;
+    text-decoration: none;
+    border-bottom: 1px solid #a27b33;
+}
+
+.icon_privacy {
+    margin-bottom: 2px;
+}

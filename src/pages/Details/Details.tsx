@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { VscLoading } from "react-icons/vsc";
 import { useContentContext } from "../../context/ContentContext";
 import { useNavigate } from "react-router-dom";
-import { MdOutlinePrivacyTip } from "react-icons/md";
 import styles from "./Details.module.css";
 import {
     ActivityLocation,
@@ -11,6 +10,7 @@ import {
     Gender,
 } from "../../models/resources/group";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
+import Footer from "../../components/Footer/Footer";
 
 function Details() {
     const [classLevel, setClassLevel] = useState("");
@@ -25,11 +25,11 @@ function Details() {
 
     const navigate = useNavigate();
 
-    useEffect(()=>{
-        if(classLevel && numberOfChildren && activityLocation && gender){
-            setIsDisabled(false)
+    useEffect(() => {
+        if (classLevel && numberOfChildren && activityLocation && gender) {
+            setIsDisabled(false);
         }
-    },[classLevel, numberOfChildren, activityLocation, gender])
+    }, [classLevel, numberOfChildren, activityLocation, gender]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -40,10 +40,10 @@ function Details() {
 
     return (
         <div className={styles.container}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={styles.detailsForm}>
                 <div className={styles.half_circle}>
                     <label>
-                          בונה פעולות <br></br> לתנועות נוער  
+                        בונה פעולות <br></br> לתנועות נוער
                     </label>
                 </div>
 
@@ -82,15 +82,10 @@ function Details() {
                             <VscLoading className={styles.loading_icon}></VscLoading>
                         )}
                     </button>
-
-                    <div onClick={() => navigate("/privacyPolicy")} className={styles.privacy_div}>
-                        <label>מדיניות פרטיות</label>
-                        <MdOutlinePrivacyTip className={styles.icon_privacy}></MdOutlinePrivacyTip>
-                    </div>
                 </div>
-
             </form>
 
+            <Footer />
         </div>
     );
 }
