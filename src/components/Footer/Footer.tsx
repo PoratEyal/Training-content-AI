@@ -10,7 +10,7 @@ function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles.connect_div}>
-                <label>{policy.p9.text2}</label>
+                <label>{policy.p9.text3}</label>
                 <a href={`mailto:${policy.p9.email}`}>{policy.p9.text4}</a>
             </div>
             <div onClick={() => navigate("/privacyPolicy")} className={styles.privacy_div}>
