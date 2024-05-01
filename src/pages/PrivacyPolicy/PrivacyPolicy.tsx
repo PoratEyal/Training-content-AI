@@ -47,7 +47,9 @@ function PrivacyPolicy() {
             </div>
 
             <div className={styles.email}>
-                {policy.p9.text}
+                {policy.p9.text1}
+                <a href={`mailto:${policy.p9.email}`}>{policy.p9.email}</a>.
+                <div>{policy.p9.text2}.</div>
             </div>
         </div>
     );

@@ -17,10 +17,6 @@ function App() {
             <ContentProvider>
                 <ReactNotifications />
                 <Router>
-                    <Helmet>
-                        <title>בונה פעולות לתנועות נוער</title>
-                        <meta name="description" content="צור פעולות מרתקות ומותאמות אישית עבור חניכיך תוך דקות ספורות באמצעות כלי בינה מלאכותית חדשניים. חסוך זמן, התמקד ביצירתיות, והענק לחניכים חוויה חינוכית בלתי נשכחת" />
-                    </Helmet>
                     <Routes>
                         <Route element={<PrivateRoutes />}>
                             <Route path="/" element={

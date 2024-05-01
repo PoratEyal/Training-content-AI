@@ -1,16 +1,18 @@
-.container{
+.container {
+    position: relative;
     display: flex;
     flex-direction: column;
     margin-top: 0px;
+    width: fit-content;
 }
 
-.half_circle{
-    width: 350px;       
-    height: 150px;        
-    background-color: rgb(255, 151, 47); 
-    border-bottom-left-radius: 200px;  
+.half_circle {
+    width: 350px;
+    height: 150px;
+    background-color: rgb(255, 151, 47);
+    border-bottom-left-radius: 200px;
     border-bottom-right-radius: 200px;
-    margin-bottom: 50px;  
+    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,19 +22,21 @@
     font-weight: 600;
     padding-bottom: 20px;
 }
-.half_circle label{
+
+.half_circle label {
     margin-bottom: 30px;
     text-align: center;
     font-size: 33px;
 }
 
-.h2_group{
-    color: rgb(231, 150, 0);
-    margin-right: 10px;
-    font-size: 26px;
+.detailsForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
 }
 
-.h2_group{
+.h2_group {
     margin-top: -20px;
     color: orange;
     font-size: 20px;
@@ -41,13 +45,14 @@
     text-align: center;
 }
 
-.btn_div{
-    margin-top: 50px;
+.btn_div {
+    /* margin-top: 50px; */
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.submit_btn{
+
+.submit_btn {
     border: none;
     padding: 14px;
     font-size: 25px;
@@ -56,51 +61,31 @@
     font-family: 'Fredoka', sans-serif;
     background-color: rgb(255, 151, 47);
     transition: background-color 0.3s ease;
-    position: absolute;
-    bottom: 40px;
+    /* position: absolute;
+    bottom: 40px; */
     width: 350px;
     height: 62px;
     color: white;
 }
 
-.submit_btn:disabled{
+.submit_btn:disabled {
     background-color: rgb(255, 151, 47, 0.5);
     color: white;
     cursor: default;
 }
 
-.loading_icon{
+.loading_icon {
     color: white;
     animation: spin 1s infinite linear;
     font-size: 32px;
 }
 
-.privacy_div{
-    position: absolute;
-    bottom: 15px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 3px;
-    font-size: 11px;
-    color: rgb(162, 123, 51);
-    padding-bottom: 1px;
-    padding-right: 3px;
-    border-bottom: 1px solid rgb(162, 123, 51);
-}
-.privacy_div label{
-    cursor: pointer;
-}
-.icon_privacy{
-    margin-bottom: 2px;
-}
-    
+
 @keyframes spin {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -109,6 +94,8 @@
 
 @media (min-width: 550px) {
     .container {
+        position: relative;
+        width: fit-content;
         display: flex;
         padding-left: 25px;
         padding-right: 25px;
@@ -118,20 +105,15 @@
         background-color: #F5F5DC;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         border: 2px solid orange;
-        position: relative;
     }
-    .submit_btn{
+
+    .submit_btn {
         position: relative;
         margin-top: 40px;
         cursor: pointer;
-    }   
-    .privacy_div{
-        position: absolute;
-        cursor: pointer;
-        width: 90px;
-        margin-top: -20px;
     }
-    body{
+
+    body {
         background-color: #ffe1a0 !important;
     }
 }

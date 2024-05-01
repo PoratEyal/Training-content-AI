@@ -1,15 +1,23 @@
 .privacyPolicyContainer{
     padding: 25px;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 19px;
 }
+
 .space_div{
     margin-bottom: 15px;
 }
+
 .email{
-    font-weight: 500;
+    text-align: center;
     font-size: 14px;
 }
+
+.email a{
+    margin-right: 4px;
+    color: #4088a7;
+}
+
 .back_icon{
     position: absolute;
     left: 20px;
