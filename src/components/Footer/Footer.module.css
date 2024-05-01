@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3px;
+    gap: 2px;
     font-size: 11px;
     color: rgb(162, 123, 51);
     padding-bottom: 1px;
@@ -44,5 +44,5 @@
 }
 
 .icon_privacy {
-    margin-bottom: 2px;
+    margin-bottom: -1px;
 }
