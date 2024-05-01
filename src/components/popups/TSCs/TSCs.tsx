@@ -1,9 +1,10 @@
 import styles from "./TSCs.module.css";
 import policy from "../../../models/resources/policy.json";
+import Modal from "../Modal/Modal";
 
 function TSCs({ handleAccept }) {
     return (
-        <div className={styles.background}>
+        <Modal>
             <div className={styles.container}>
                 <h3 className={styles.h3_privacy}>מדיניות פרטיות</h3>
 
@@ -40,10 +41,10 @@ function TSCs({ handleAccept }) {
                 </div>
 
                 <button className={styles.submit_btn} onClick={handleAccept}>
-                     אישור
+                    אישור
                 </button>
             </div>
-        </div>
+        </Modal>
     );
 }
 

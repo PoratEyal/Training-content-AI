@@ -1,0 +1,21 @@
+.submit_btn {
+    border: none;
+    padding: 14px;
+    font-size: 25px;
+    font-weight: 600;
+    border-radius: 50px;
+    font-family: 'Fredoka', sans-serif;
+    background-color: rgb(255, 151, 47);
+    transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 40px;
+    width: 350px;
+    height: 62px;
+    color: white;
+}
+
+.submit_btn:disabled {
+    background-color: rgb(255, 151, 47, 0.5);
+    color: white;
+    cursor: default;
+}

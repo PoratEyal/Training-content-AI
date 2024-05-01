@@ -8,17 +8,13 @@ import {
     CollectionReference,
     DocumentReference,
 } from "firebase/firestore";
-import { Activity } from "../models/types/activity";
+import { Activity, RawActivity } from "../../models/types/activity";
 
 export const getActivity = async (
     activityRef: CollectionReference<DocumentData, DocumentData>,
-    subject: string,
-    time: string,
-    amount: string,
-    grade: string,
-    gender: string,
-    place: string,
+    rawActivity: RawActivity,
 ) => {
+    const { subject, time, amount, grade, gender, place } = rawActivity;
     const q = query(
         activityRef,
         where("subject", "==", subject),

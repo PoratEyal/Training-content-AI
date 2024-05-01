@@ -1,8 +1,9 @@
+import Modal from "../Modal/Modal";
 import styles from "./LimitRequests.module.css";
 
 function LimitRequest({ handleAccept }) {
     return (
-        <div className={styles.background}>
+        <Modal>
             <div className={styles.container}>
                 <label className={styles.label}>
                     אנו שמחים שאתם משתמשים במערכת לבניית הפעולות.
@@ -18,7 +19,7 @@ function LimitRequest({ handleAccept }) {
                     אישור
                 </button>
             </div>
-        </div>
+        </Modal>
     );
 }
 

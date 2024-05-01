@@ -1,17 +1,17 @@
 import { doc, collection, DocumentData, QueryDocumentSnapshot } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { MIN_ACTIVITIES } from "../models/constants/state";
-import { initActivityFromAI, initActivityFromDB, updateActivityFromDB } from "../utils/init";
-import { addActivity, getActivity, updateActivity } from "../utils/db";
-import { PathActivity } from "../models/constants/path";
-import { ActivityFunc } from "../models/types/activity";
-import { PathName } from "../models/types/path";
 import {
-    getContentActivity,
-    getPlayingTime,
-    getPointOfView,
-    getScoutingTime,
-} from "./geminiPrompts";
+    initActivityFromAI,
+    initActivityFromDB,
+    initRawActivity,
+    updateActivityFetch,
+} from "../utils/activity";
+import { addActivity, getActivity, updateActivity } from "../utils/DB/activityDB";
+import { PathActivity } from "../models/constants/path";
+import { PathName } from "../models/types/path";
+import { GeminiFunctionsSet } from "./geminiPrompts";
+import { RawActivity } from "../models/types/activity";
 
 export const buildPointOfViewActivity = async (
     subject: string,
@@ -21,16 +21,8 @@ export const buildPointOfViewActivity = async (
     gender: string,
     place: string,
 ) => {
-    return await buildActivity(
-        getPointOfView,
-        PathActivity.pointOfView.path,
-        subject,
-        time,
-        amount,
-        grade,
-        gender,
-        place,
-    );
+    const rawActivity = initRawActivity(subject, time, amount, grade, gender, place);
+    return await buildActivity(PathActivity.pointOfView.path, rawActivity);
 };
 
 export const buildContentActivityActivity = async (
@@ -41,16 +33,8 @@ export const buildContentActivityActivity = async (
     gender: string,
     place: string,
 ) => {
-    return await buildActivity(
-        getContentActivity,
-        PathActivity.contentActivity.path,
-        subject,
-        time,
-        amount,
-        grade,
-        gender,
-        place,
-    );
+    const rawActivity = initRawActivity(subject, time, amount, grade, gender, place);
+    return await buildActivity(PathActivity.contentActivity.path, rawActivity);
 };
 
 export const buildScoutingTimeActivity = async (
@@ -61,16 +45,8 @@ export const buildScoutingTimeActivity = async (
     gender: string,
     place: string,
 ) => {
-    return await buildActivity(
-        getScoutingTime,
-        PathActivity.scoutingTime.path,
-        subject,
-        time,
-        amount,
-        grade,
-        gender,
-        place,
-    );
+    const rawActivity = initRawActivity(subject, time, amount, grade, gender, place);
+    return await buildActivity(PathActivity.scoutingTime.path, rawActivity);
 };
 
 export const buildPlayingTimeActivity = async (
@@ -81,62 +57,60 @@ export const buildPlayingTimeActivity = async (
     gender: string,
     place: string,
 ) => {
-    return await buildActivity(
-        getPlayingTime,
-        PathActivity.playingTime.path,
-        subject,
-        time,
-        amount,
-        grade,
-        gender,
-        place,
-    );
+    const rawActivity = initRawActivity(subject, time, amount, grade, gender, place);
+    return await buildActivity(PathActivity.playingTime.path, rawActivity);
 };
 
-export const buildActivity = async (
-    funcAI: ActivityFunc,
-    path: PathName,
-    subject: string,
-    time: string,
-    amount: string,
-    grade: string,
-    gender: string,
-    place: string,
-) => {
+
+/**
+ * Builds an activity based on the specified activity data.
+ * Determines whether to build the activity from AI or from an existing database entry.
+ * @param path - type of activity.
+ * @param rawActivity - activity details.
+ * @returns The built activity.
+ */
+export const buildActivity = async (path: PathName, rawActivity: RawActivity) => {
     const activityRef = collection(db, "activity");
-    const snapshot = await getActivity(activityRef, subject, time, amount, grade, gender, place);
+    const snapshot = await getActivity(activityRef, rawActivity);
     const { empty, size, docs } = snapshot;
 
     if (empty || size === 0 || docs.length <= MIN_ACTIVITIES) {
-        return buildActivityFromAI(funcAI, path, subject, time, amount, grade, gender, place);
+        return buildActivityFromAI(path, rawActivity);
     } else {
         buildActivityFromDB(docs);
     }
 };
 
-export const buildActivityFromAI = async (
-    funcAI: ActivityFunc,
-    path: PathName,
-    subject: string,
-    time: string,
-    amount: string,
-    grade: string,
-    gender: string,
-    place: string,
-) => {
+
+/**
+ * Builds an activity from Gemini AI based on the specified activity data.
+ * @param path - type of activity.
+ * @param rawActivity - activity details.
+ * @returns The built activity.
+ */
+export const buildActivityFromAI = async (path: PathName, rawActivity: RawActivity) => {
+    const { subject, time, amount, grade, gender, place } = rawActivity;
     const activityRef = collection(db, "activity");
-    const text = await funcAI(subject, time, amount, grade, gender, place);
-    const activity = initActivityFromAI(text, path, subject, time, amount, grade, gender, place);
+    const geminiAiFunc = GeminiFunctionsSet[path];
+    const result = await geminiAiFunc(subject, time, amount, grade, gender, place);
+    const activity = initActivityFromAI(result, path, rawActivity);
     await addActivity(activityRef, activity);
     return activity.activity;
 };
 
+
+/**
+ * Builds an activity from an existing database entry based on the specified documents.
+ * Updates the activity fetch count and last updated time.
+ * @param docs - QueryDocumentSnapshot containing the activity data.
+ * @returns The built activity.
+ */
 const buildActivityFromDB = async (docs: QueryDocumentSnapshot<DocumentData, DocumentData>[]) => {
     const randomIndex = Math.floor(Math.random() * docs.length);
     const randomDocs = docs[randomIndex];
-    const activity = initActivityFromDB(randomDocs.data());
+    const activity = initActivityFromDB(randomDocs.data(), randomDocs.id);
     const docRef = doc(db, "activity", randomDocs.id);
-    const updatedActivity = updateActivityFromDB(activity);
+    const updatedActivity = updateActivityFetch(activity);
     await updateActivity(docRef, updatedActivity);
     return activity.activity;
 };

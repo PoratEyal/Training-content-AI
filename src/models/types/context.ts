@@ -1,3 +1,5 @@
+import { PathName } from "./path";
+
 export type ActivityType = {
     subject: string;
     time: string;
@@ -13,12 +15,10 @@ export type DataType = {
     other: {
         use: boolean;
     };
-    activity: string;
     grade: string;
     gender: string;
     amount: string;
     place: string;
-    img: string;
 };
 
 export type ContentContextType = {
@@ -34,6 +34,7 @@ export type ContentContextType = {
     updatePointOfView: (subject: string, time: string, result: string) => void;
     updateScoutingTime: (subject: string, time: string, result: string) => void;
     updatePlayingTime: (subject: string, time: string, result: string) => void;
+    updateDataByPath: (path: PathName, subject: string, time: string, result: string) => void
 };
 
 export type ErrorContextType = {

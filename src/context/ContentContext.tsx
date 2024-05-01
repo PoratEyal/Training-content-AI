@@ -5,6 +5,7 @@ import { PROMPT_LIMIT } from "../models/constants/state";
 import { useCookies } from "react-cookie";
 import Session from "../utils/sessionStorage";
 import { oneDay } from "../utils/time";
+import { PathActivity } from "../models/constants/path";
 
 export const ContentContext = createContext<ContentContextType>(typeContext);
 
@@ -122,6 +123,19 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
         });
     };
 
+    const updateDataByPath = (path, subject, time, result) => {
+        switch (path) {
+            case PathActivity.pointOfView.path:
+                return updatePointOfView(subject, time, result);
+            case PathActivity.contentActivity.path:
+                return updateContentActivity(subject, time, result);
+            case PathActivity.scoutingTime.path:
+                return updateScoutingTime(subject, time, result);
+            case PathActivity.playingTime.path:
+                return updatePlayingTime(subject, time, result);
+        }
+    };
+
     return (
         <ContentContext.Provider
             value={{
@@ -137,6 +151,7 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
                 updatePointOfView,
                 updateScoutingTime,
                 updatePlayingTime,
+                updateDataByPath,
             }}
         >
             {children}

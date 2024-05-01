@@ -5,29 +5,15 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
 import Path from "../../components/Path/Path";
 import { useErrorContext } from "../../context/ErrorContext";
-import { buildActivity } from "../../service/buildActivity";
+import { buildActivityFromAI } from "../../service/buildActivity";
 import { IoArrowForward } from "react-icons/io5";
-import {
-    getContentActivity,
-    getPlayingTime,
-    getPointOfView,
-    getScoutingTime,
-} from "../../service/geminiPrompts";
 import { PathActivity } from "../../models/constants/path";
-import hints from "../../models/resources/hints.json"
+import hints from "../../models/resources/hints.json";
 import { PROMPT_LIMIT } from "../../models/constants/state";
+import { initRawActivity } from "../../utils/activity";
 
 function ChoosePath() {
-    const {
-        data,
-        limit,
-        updateLimit,
-        updatePointOfView,
-        updateContentActivity,
-        updateScoutingTime,
-        updatePlayingTime,
-        resetAllUseFields,
-    } = useContentContext();
+    const { data, limit, updateLimit, updateDataByPath, resetAllUseFields } = useContentContext();
     const { handleError } = useErrorContext();
 
     const [clicked, setClicked] = useState(false);
@@ -40,84 +26,61 @@ function ChoosePath() {
     const [playingTime, setPlayingTime] = useState(undefined);
 
     useEffect(() => {
+        // Disable the submit button if all options are empty
         setIsDisabled(pointOfView || contentActivity || scoutingTime || playingTime ? false : true);
     }, [pointOfView, contentActivity, scoutingTime, playingTime]);
 
     const submitHandler = async () => {
         updateLimit();
-        if (!limit || limit < PROMPT_LIMIT-1) {
+        if (!limit || limit < PROMPT_LIMIT - 1) {
             setClicked(true);
             const promises = [];
             const { amount, grade, gender, place } = data;
 
             if (pointOfView) {
                 const { subject, time } = pointOfView;
+                const path = PathActivity.pointOfView.path;
+                const rawActivity = initRawActivity(subject, time, amount, grade, gender, place);
+
                 promises.push(
-                    buildActivity(
-                        getPointOfView,
-                        PathActivity.pointOfView.path,
-                        subject,
-                        time,
-                        amount,
-                        grade,
-                        gender,
-                        place,
-                    )
-                        .then((result) => updatePointOfView(subject, time, result))
+                    buildActivityFromAI(path, rawActivity)
+                        .then((result) => updateDataByPath(path, subject, time, result))
                         .catch((error) => handleError(error)),
                 );
             }
 
             if (contentActivity) {
                 const { subject, time } = contentActivity;
+                const path = PathActivity.contentActivity.path;
+                const rawActivity = initRawActivity(subject, time, amount, grade, gender, place);
+
                 promises.push(
-                    buildActivity(
-                        getContentActivity,
-                        PathActivity.contentActivity.path,
-                        subject,
-                        time,
-                        amount,
-                        grade,
-                        gender,
-                        place,
-                    )
-                        .then((result) => updateContentActivity(subject, time, result))
+                    buildActivityFromAI(path, rawActivity)
+                        .then((result) => updateDataByPath(path, subject, time, result))
                         .catch((error) => handleError(error)),
                 );
             }
 
             if (scoutingTime) {
                 const { subject, time } = scoutingTime;
+                const path = PathActivity.scoutingTime.path;
+                const rawActivity = initRawActivity(subject, time, amount, grade, gender, place);
+
                 promises.push(
-                    buildActivity(
-                        getScoutingTime,
-                        PathActivity.scoutingTime.path,
-                        subject,
-                        time,
-                        amount,
-                        grade,
-                        gender,
-                        place,
-                    )
-                        .then((result) => updateScoutingTime(subject, time, result))
+                    buildActivityFromAI(path, rawActivity)
+                        .then((result) => updateDataByPath(path, subject, time, result))
                         .catch((error) => handleError(error)),
                 );
             }
 
             if (playingTime) {
                 const { subject, time } = playingTime;
+                const path = PathActivity.playingTime.path;
+                const rawActivity = initRawActivity(subject, time, amount, grade, gender, place);
+
                 promises.push(
-                    buildActivity(
-                        getPlayingTime,
-                        PathActivity.playingTime.path,
-                        subject,
-                        time,
-                        amount,
-                        grade,
-                        gender,
-                        place,
-                    )
-                        .then((result) => updatePlayingTime(subject, time, result))
+                    buildActivityFromAI(path, rawActivity)
+                        .then((result) => updateDataByPath(path, subject, time, result))
                         .catch((error) => handleError(error)),
                 );
             }
@@ -145,10 +108,32 @@ function ChoosePath() {
 
                     <h3 className={styles.h3}>בחרו את הפעילות שלכם</h3>
 
-                    <Path index={1} title="נקודת מבט" hint={hints.pointOfView} setPath={setPointOfView} />
-                    <Path index={2} title="פעילות תוכן" hint={hints.contentActivity} setPath={setContentActivity} />
-                    <Path index={3} title="זמן צופיות" hint={hints.scoutingTime} setPath={setScoutingTime} isGenerate />
-                    <Path index={4} title="זמן משחק" hint={hints.playingTime} setPath={setPlayingTime} isGenerate />
+                    <Path
+                        index={1}
+                        title="נקודת מבט"
+                        hint={hints.pointOfView}
+                        setPath={setPointOfView}
+                    />
+                    <Path
+                        index={2}
+                        title="פעילות תוכן"
+                        hint={hints.contentActivity}
+                        setPath={setContentActivity}
+                    />
+                    <Path
+                        index={3}
+                        title="זמן צופיות"
+                        hint={hints.scoutingTime}
+                        setPath={setScoutingTime}
+                        isGenerate
+                    />
+                    <Path
+                        index={4}
+                        title="זמן משחק"
+                        hint={hints.playingTime}
+                        setPath={setPlayingTime}
+                        isGenerate
+                    />
                 </div>
 
                 <div className={styles.btn_div}>
