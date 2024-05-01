@@ -6,6 +6,10 @@
 .space_div{
     margin-bottom: 15px;
 }
+.email{
+    font-weight: 500;
+    font-size: 14px;
+}
 .back_icon{
     position: absolute;
     left: 20px;

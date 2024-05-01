@@ -39,6 +39,10 @@ function TSCs({ handleAccept }) {
                     <label>{policy.p8.label}</label> {policy.p8.text}
                 </div>
 
+                <div className={styles.email}>
+                    {policy.p9.text}
+                </div>
+
                 <button className={styles.submit_btn} onClick={handleAccept}>
                      אישור
                 </button>
