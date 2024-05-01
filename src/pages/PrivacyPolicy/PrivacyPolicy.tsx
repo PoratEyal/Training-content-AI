@@ -45,6 +45,10 @@ function PrivacyPolicy() {
             <div className={styles.space_div}>
                 <label>{policy.p8.label}</label> {policy.p8.text}
             </div>
+
+            <div className={styles.email}>
+                {policy.p9.text}
+            </div>
         </div>
     );
 }
