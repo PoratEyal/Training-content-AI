@@ -26,3 +26,13 @@
     font-size: 12px;
     border: 1px solid #d9d9d9;
 }
+
+
+@media (max-width: 400px) {
+    .hint{
+        min-width: 170px;
+        max-width: 170px;
+        white-space: normal;
+        text-align: right;
+    }
+  }
