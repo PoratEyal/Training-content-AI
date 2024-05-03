@@ -1,4 +1,4 @@
-import { PathType } from "../types/path";
+import { PathType } from "../types/activity";
 
 export const PathActivity = {
     pointOfView: {

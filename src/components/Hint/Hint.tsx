@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Hint.module.css";
-import { HiOutlineQuestionMarkCircle } from "react-icons/hi2";
+import { RxQuestionMarkCircled } from "react-icons/rx";
 
 function Hint({ hint }) {
     const [showHint, setShowHint] = useState(false);
@@ -25,7 +25,7 @@ function Hint({ hint }) {
     return (
         <section className={styles.hintContainer}>
             <div onClick={handleOnClick} className={styles.hintBtn}>
-                <HiOutlineQuestionMarkCircle />
+                <RxQuestionMarkCircled />
             </div>
             {showHint ? <div className={styles.hint}>{hint}</div> : null}
         </section>

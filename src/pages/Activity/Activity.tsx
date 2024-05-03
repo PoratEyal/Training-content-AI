@@ -11,6 +11,7 @@ function Activity() {
     const goingBack = () => {
         navigate("/choosePath");
     };
+    console.log("data", data)
 
     return (
         <div className={styles.container}>
@@ -19,46 +20,45 @@ function Activity() {
             </div>
 
             <div className={styles.ai_text}>
-                <strong>שימו לב</strong>{" "}
-                מקור הפעולות הוא מערכת בינה מלאכותית, <br></br>ייתכן ותמצאו בהן אי דיוקים וטעויות.
-                אנא בדקו את התוכן לפני כל הפעלה
+                <strong>שימו לב</strong> מקור הפעולות הוא מערכת בינה מלאכותית, <br></br>ייתכן ותמצאו
+                בהן אי דיוקים וטעויות. אנא בדקו את התוכן לפני כל הפעלה
             </div>
 
-            {data?.pointOfView?.use && (
+            {data?.pointOfView ? (
                 <ActivityOutput
                     index={1}
                     title={"נקודת מבט"}
                     path={data.pointOfView}
                     contextData={data}
                 />
-            )}
+            ) : null}
 
-            {data?.contentActivity?.use && (
+            {data?.contentActivity ? (
                 <ActivityOutput
                     index={2}
                     title={"פעילות תוכן"}
                     path={data.contentActivity}
                     contextData={data}
                 />
-            )}
+            ) : null}
 
-            {data?.scoutingTime?.use && (
+            {data?.scoutingTime ? (
                 <ActivityOutput
                     index={3}
                     title={"זמן תנועת נוער"}
                     path={data.scoutingTime}
                     contextData={data}
                 />
-            )}
+            ) : null}
 
-            {data?.playingTime?.use && (
+            {data?.playingTime ? (
                 <ActivityOutput
                     index={4}
                     title={"זמן משחק"}
                     path={data.playingTime}
                     contextData={data}
                 />
-            )}
+            ) : null}
         </div>
     );
 }
