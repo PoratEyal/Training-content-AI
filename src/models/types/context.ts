@@ -1,3 +1,5 @@
+import { Activity } from "./activity";
+
 export type ActivityType = {
     subject: string;
     time: string;
@@ -6,19 +8,17 @@ export type ActivityType = {
 };
 
 export type DataType = {
-    pointOfView: ActivityType;
-    contentActivity: ActivityType;
-    scoutingTime: ActivityType;
-    playingTime: ActivityType;
+    pointOfView: Activity | undefined;
+    contentActivity: Activity | undefined;
+    scoutingTime: Activity | undefined;
+    playingTime: Activity | undefined;
     other: {
         use: boolean;
     };
-    activity: string;
     grade: string;
     gender: string;
     amount: string;
     place: string;
-    img: string;
 };
 
 export type ContentContextType = {
@@ -30,10 +30,10 @@ export type ContentContextType = {
     setCookie: (name: string, value: any, options?: any) => void;
     updateDetails: (grade: string, amount: string, place: string, gender: string) => void;
     resetAllUseFields: () => void;
-    updateContentActivity: (subject: string, time: string, result: string) => void;
-    updatePointOfView: (subject: string, time: string, result: string) => void;
-    updateScoutingTime: (subject: string, time: string, result: string) => void;
-    updatePlayingTime: (subject: string, time: string, result: string) => void;
+    updateContentActivity: (activity: Activity) => void;
+    updatePointOfView: (activity: Activity) => void;
+    updateScoutingTime: (activity: Activity) => void;
+    updatePlayingTime: (activity: Activity) => void;
 };
 
 export type ErrorContextType = {

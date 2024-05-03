@@ -11,13 +11,13 @@ import {
 } from "../../models/resources/group";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import Footer from "../../components/Footer/Footer";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 function Details() {
-    const [classLevel, setClassLevel] = useState(Cookies.get('classLevel') || "");
-    const [numberOfChildren, setNumberOfChildren] = useState(Cookies.get('numberOfChildren') || "");
-    const [activityLocation, setActivityLocation] = useState(Cookies.get('activityLocation') || "");
-    const [gender, setGender] = useState(Cookies.get('gender') || "");
+    const [classLevel, setClassLevel] = useState(Cookies.get("classLevel") || "");
+    const [numberOfChildren, setNumberOfChildren] = useState(Cookies.get("numberOfChildren") || "");
+    const [activityLocation, setActivityLocation] = useState(Cookies.get("activityLocation") || "");
+    const [gender, setGender] = useState(Cookies.get("gender") || "");
 
     const [clicked, setClicked] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
@@ -37,10 +37,10 @@ function Details() {
         setClicked(true);
         updateDetails(classLevel, numberOfChildren, activityLocation, gender);
 
-        Cookies.set('classLevel', classLevel);
-        Cookies.set('numberOfChildren', numberOfChildren);
-        Cookies.set('activityLocation', activityLocation);
-        Cookies.set('gender', gender);
+        Cookies.set("classLevel", classLevel);
+        Cookies.set("numberOfChildren", numberOfChildren);
+        Cookies.set("activityLocation", activityLocation);
+        Cookies.set("gender", gender);
 
         navigate("/choosePath");
     };
