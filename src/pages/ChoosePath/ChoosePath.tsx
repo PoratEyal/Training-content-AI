@@ -40,7 +40,6 @@ function ChoosePath() {
     const submitHandler = async () => {
         updateLimit();
         if (!limit || limit < PROMPT_LIMIT - 1) {
-            setClicked(true);
             const promises = [];
             const { amount, grade, gender, place } = data;
 
@@ -108,8 +107,13 @@ function ChoosePath() {
                 );
             }
 
-            await Promise.allSettled(promises);
-            navigate("/activity");
+            try {
+                setClicked(true);
+                await Promise.allSettled(promises);
+                navigate("/activity");
+            } catch (error) {
+                setClicked(false);
+            }
         }
     };
 

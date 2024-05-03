@@ -3,15 +3,26 @@ import { useContentContext } from "../../context/ContentContext";
 import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import { IoArrowForward } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Activity() {
     const { data } = useContentContext();
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if (
+            !data ||
+            !data.grade ||
+            (!data.pointOfView && !data.contentActivity && !data.scoutingTime && !data.playingTime)
+        ) {
+            navigate("/choosePath");
+        }
+    }, []);
+
     const goingBack = () => {
         navigate("/choosePath");
     };
-    console.log("data", data)
+
 
     return (
         <div className={styles.container}>
