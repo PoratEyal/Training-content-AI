@@ -5,6 +5,7 @@ import { PROMPT_LIMIT } from "../models/constants/state";
 import { useCookies } from "react-cookie";
 import Session from "../utils/sessionStorage";
 import { oneDay } from "../utils/time";
+import { Activity } from "../models/types/activity";
 
 export const ContentContext = createContext<ContentContextType>(typeContext);
 
@@ -17,18 +18,20 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
     const [limit, setLimit] = useState<number | undefined>();
 
     const setStateFromSession = () => {
-        if (data === undefined) {
-            const sessionData: DataType | undefined = Session.get("data");
-            if (sessionData) {
-                setData(sessionData);
+        try {
+            if (data === undefined) {
+                const sessionData: DataType | undefined = Session.get("data");
+                if (sessionData) {
+                    setData(sessionData);
+                }
             }
-        }
-        if(limit === undefined){
-            const cookieLimit = cookies["limit"];
-            if(cookieLimit){
-                setLimit(parseInt(cookieLimit));
+            if (limit === undefined) {
+                const cookieLimit = cookies["limit"];
+                if (cookieLimit) {
+                    setLimit(parseInt(cookieLimit));
+                }
             }
-        }
+        } catch (error) {}
     };
     setStateFromSession();
 
@@ -49,7 +52,7 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
     const updateLimit = () => {
         setLimit((prev) => {
             const lim = prev ? prev + 1 : 1;
-            if(lim <= PROMPT_LIMIT){
+            if (lim <= PROMPT_LIMIT) {
                 setCookie("limit", JSON.stringify(lim), {
                     path: "/",
                     expires: oneDay,
@@ -62,22 +65,19 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
     const resetAllUseFields = () => {
         setData((prevData) => ({
             ...prevData,
-            pointOfView: { ...prevData.pointOfView, use: false },
-            contentActivity: { ...prevData.contentActivity, use: false },
-            scoutingTime: { ...prevData.scoutingTime, use: false },
-            playingTime: { ...prevData.playingTime, use: false },
+            pointOfView: undefined,
+            contentActivity: undefined,
+            scoutingTime: undefined,
+            playingTime: undefined,
         }));
         Session.clear();
     };
 
     // - - - - - - Content Activity - - - - - - - - - - - - - - -
 
-    const updateContentActivity = (subject, time, result) => {
+    const updateContentActivity = (activity: Activity) => {
         setData((prevData) => {
-            const d = {
-                ...prevData,
-                contentActivity: { subject, time, use: true, data: result },
-            };
+            const d = { ...prevData, contentActivity: activity };
             Session.set("data", d);
             return d;
         });
@@ -85,12 +85,9 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
 
     // - - - - - - Point Of View - - - - - - - - - - - - - - -
 
-    const updatePointOfView = (subject, time, result) => {
+    const updatePointOfView = (activity: Activity) => {
         setData((prevData) => {
-            const d = {
-                ...prevData,
-                pointOfView: { subject, time, use: true, data: result },
-            };
+            const d = { ...prevData, pointOfView: activity };
             Session.set("data", d);
             return d;
         });
@@ -98,12 +95,9 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
 
     // - - - - - - Scouting Time - - - - - - - - - - - - - - -
 
-    const updateScoutingTime = (subject, time, result) => {
+    const updateScoutingTime = (activity: Activity) => {
         setData((prevData) => {
-            const d = {
-                ...prevData,
-                scoutingTime: { subject, time, use: true, data: result },
-            };
+            const d = { ...prevData, scoutingTime: activity };
             Session.set("data", d);
             return d;
         });
@@ -111,12 +105,9 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
 
     // - - - - - - playing Time - - - - - - - - - - - - - - -
 
-    const updatePlayingTime = (subject, time, result) => {
+    const updatePlayingTime = (activity: Activity) => {
         setData((prevData) => {
-            const d = {
-                ...prevData,
-                playingTime: { subject, time, use: true, data: result },
-            };
+            const d = { ...prevData, playingTime: activity };
             Session.set("data", d);
             return d;
         });

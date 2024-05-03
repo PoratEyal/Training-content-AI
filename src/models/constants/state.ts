@@ -1,2 +1,1 @@
-export const PROMPT_LIMIT = 6;
-export const MIN_ACTIVITIES = 3;
+export const PROMPT_LIMIT = process.env.NODE_ENV === "development" ? 6000 : 6;

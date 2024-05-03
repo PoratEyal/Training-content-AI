@@ -1,4 +1,3 @@
-import { DataType } from "../models/types/context";
 import { Document, Packer, Paragraph, TextRun } from "docx";
 import { saveAs } from "file-saver";
 

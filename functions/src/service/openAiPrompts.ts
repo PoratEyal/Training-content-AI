@@ -1,8 +1,21 @@
 import axios from "axios";
-import { DefualtPromptDetails, OpenAIUrl, openAiheaders } from "../models/constants/openAi";
+// -- NOT IN USE -- //
 
-const request = (prompt) => {
-    const apiKey = process.env.REACT_APP_API_KEY;
+export const OpenAIUrl = "https://api.openai.com/v1/chat/completions";
+
+export const openAiheaders = (apiKey: any) => {
+    return {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+    };
+};
+
+export const DefualtPromptDetails = (temperature = 0.7) => {
+    return { model: "gpt-3.5-turbo", temperature };
+};
+
+const request = (prompt: any) => {
+    const apiKey = process.env.REACT_APP_API_KEY || "";
     return {
         method: "post",
         url: OpenAIUrl,
@@ -11,10 +24,16 @@ const request = (prompt) => {
     };
 };
 
+// - - - - - - - - - - Point of View - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// - - - - - - - - - - Point of View - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-const pointOfViewPrompt = (subject, time, amount, age, gender, place) => {
+const pointOfViewPrompt = (
+    subject: string,
+    time: string,
+    amount: string,
+    age: string,
+    gender: string,
+    place: string,
+) => {
     return {
         ...DefualtPromptDetails(0.7),
         messages: [
@@ -24,10 +43,16 @@ const pointOfViewPrompt = (subject, time, amount, age, gender, place) => {
             },
         ],
     };
-}
+};
 
-
-export async function getPointOfView(subject, time, amount, age, gender, place) {
+export async function getPointOfView(
+    subject: string,
+    time: string,
+    amount: string,
+    age: string,
+    gender: string,
+    place: string,
+) {
     const response = await axios(
         request(pointOfViewPrompt(subject, time, amount, age, gender, place)),
     );
@@ -35,10 +60,16 @@ export async function getPointOfView(subject, time, amount, age, gender, place) 
     return responseData;
 }
 
+// - - - - - - - - - - Content activity - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// - - - - - - - - - - Content activity - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-const contentActivityPrompt = (subject, time, amount, age, gender, place) => {
+const contentActivityPrompt = (
+    subject: string,
+    time: string,
+    amount: string,
+    age: string,
+    gender: string,
+    place: string,
+) => {
     return {
         ...DefualtPromptDetails(0.7),
         messages: [
@@ -48,10 +79,16 @@ const contentActivityPrompt = (subject, time, amount, age, gender, place) => {
             },
         ],
     };
-}
+};
 
-
-export async function getContentActivity(subject, time, amount, age, gender, place) {
+export async function getContentActivity(
+    subject: string,
+    time: string,
+    amount: string,
+    age: string,
+    gender: string,
+    place: string,
+) {
     const response = await axios(
         request(contentActivityPrompt(subject, time, amount, age, gender, place)),
     );
@@ -59,10 +96,16 @@ export async function getContentActivity(subject, time, amount, age, gender, pla
     return responseData;
 }
 
+// - - - - - - - - - - Scouting time - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - -
 
-// - - - - - - - - - - Scouting time - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - -  
-
-const scoutingTimePrompt = (subject, time, amount, age, gender, place) => {
+const scoutingTimePrompt = (
+    subject: string,
+    time: string,
+    amount: string,
+    age: string,
+    gender: string,
+    place: string,
+) => {
     return {
         ...DefualtPromptDetails(0.7),
         messages: [
@@ -72,10 +115,16 @@ const scoutingTimePrompt = (subject, time, amount, age, gender, place) => {
             },
         ],
     };
-}
+};
 
-
-export async function getScoutingTime(subject, time, amount, age, gender, place) {
+export async function getScoutingTime(
+    subject: string,
+    time: string,
+    amount: string,
+    age: string,
+    gender: string,
+    place: string,
+) {
     const response = await axios(
         request(scoutingTimePrompt(subject, time, amount, age, gender, place)),
     );
@@ -83,10 +132,16 @@ export async function getScoutingTime(subject, time, amount, age, gender, place)
     return responseData;
 }
 
+// - - - - - - - - - - playing Time - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// - - - - - - - - - - playing Time - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-const playingTimePrompt = (subject, time, amount, age, gender, place) => {
+const playingTimePrompt = (
+    subject: string,
+    time: string,
+    amount: string,
+    age: string,
+    gender: string,
+    place: string,
+) => {
     return {
         ...DefualtPromptDetails(0.7),
         messages: [
@@ -96,14 +151,21 @@ const playingTimePrompt = (subject, time, amount, age, gender, place) => {
             },
         ],
     };
-}
+};
 
-export async function getPlayingTime(subject, time, amount, age, gender, place) {
+export async function getPlayingTime(
+    subject: string,
+    time: string,
+    amount: string,
+    age: string,
+    gender: string,
+    place: string,
+) {
     const response = await axios(
         request(playingTimePrompt(subject, time, amount, age, gender, place)),
     );
-    console.log('hello');
-    
+    console.log("hello");
+
     const responseData = response.data.choices?.[0].message.content;
     return responseData;
 }

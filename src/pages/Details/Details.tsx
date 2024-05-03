@@ -11,6 +11,8 @@ import {
 } from "../../models/resources/group";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import Footer from "../../components/Footer/Footer";
+import { httpsCallable } from "firebase/functions";
+import { functions } from "../../config/firebase";
 
 function Details() {
     const [classLevel, setClassLevel] = useState("");
