@@ -23,15 +23,10 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 0px;
-    opacity: 0.05;
-    filter: alpha(opacity=10);
     pointer-events:none;
     z-index: 950;
     overflow: hidden;
-    background: #f5f5dcc1;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: none;
+    opacity: 0.35;
 }
 
 .navbar{
