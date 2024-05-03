@@ -1,6 +1,8 @@
 export type Activity = {
+    id: string;
     updatedAt: string;
     fetchCount: number;
+    likes: number;
     path: string;
     grade: string;
     amount: string;
@@ -9,6 +11,13 @@ export type Activity = {
     subject: string;
     time: string;
     activity: string;
+};
+
+export type ActivityPathName = "pointOfView" | "contentActivity" | "scoutingTime" | "playingTime";
+
+export type PathType = {
+    path: ActivityPathName;
+    name: string;
 };
 
 export type ActivityFunc = (

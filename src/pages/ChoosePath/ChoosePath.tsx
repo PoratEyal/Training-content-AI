@@ -5,17 +5,11 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
 import Path from "../../components/Path/Path";
 import { useErrorContext } from "../../context/ErrorContext";
-import { buildActivity } from "../../service/buildActivity";
 import { IoArrowForward } from "react-icons/io5";
-import {
-    getContentActivity,
-    getPlayingTime,
-    getPointOfView,
-    getScoutingTime,
-} from "../../service/geminiPrompts";
 import { PathActivity } from "../../models/constants/path";
-import hints from "../../models/resources/hints.json"
+import hints from "../../models/resources/hints.json";
 import { PROMPT_LIMIT } from "../../models/constants/state";
+import { fetchGetActivity } from "../../utils/fetch";
 
 function ChoosePath() {
     const {
@@ -45,7 +39,7 @@ function ChoosePath() {
 
     const submitHandler = async () => {
         updateLimit();
-        if (!limit || limit < PROMPT_LIMIT-1) {
+        if (!limit || limit < PROMPT_LIMIT - 1) {
             setClicked(true);
             const promises = [];
             const { amount, grade, gender, place } = data;
@@ -53,72 +47,64 @@ function ChoosePath() {
             if (pointOfView) {
                 const { subject, time } = pointOfView;
                 promises.push(
-                    buildActivity(
-                        getPointOfView,
-                        PathActivity.pointOfView.path,
+                    fetchGetActivity(updatePointOfView, {
+                        fetchFrom: ["AI", "DB"],
+                        path: PathActivity.pointOfView.path,
                         subject,
                         time,
                         amount,
                         grade,
                         gender,
                         place,
-                    )
-                        .then((result) => updatePointOfView(subject, time, result))
-                        .catch((error) => handleError(error)),
+                    }).catch((error) => handleError(error)),
                 );
             }
 
             if (contentActivity) {
                 const { subject, time } = contentActivity;
                 promises.push(
-                    buildActivity(
-                        getContentActivity,
-                        PathActivity.contentActivity.path,
+                    fetchGetActivity(updateContentActivity, {
+                        fetchFrom: ["AI", "DB"],
+                        path: PathActivity.contentActivity.path,
                         subject,
                         time,
                         amount,
                         grade,
                         gender,
                         place,
-                    )
-                        .then((result) => updateContentActivity(subject, time, result))
-                        .catch((error) => handleError(error)),
+                    }).catch((error) => handleError(error)),
                 );
             }
 
             if (scoutingTime) {
                 const { subject, time } = scoutingTime;
                 promises.push(
-                    buildActivity(
-                        getScoutingTime,
-                        PathActivity.scoutingTime.path,
+                    fetchGetActivity(updateScoutingTime, {
+                        fetchFrom: ["AI", "DB"],
+                        path: PathActivity.scoutingTime.path,
                         subject,
                         time,
                         amount,
                         grade,
                         gender,
                         place,
-                    )
-                        .then((result) => updateScoutingTime(subject, time, result))
-                        .catch((error) => handleError(error)),
+                    }).catch((error) => handleError(error)),
                 );
             }
 
             if (playingTime) {
                 const { subject, time } = playingTime;
                 promises.push(
-                    buildActivity(
-                        getPlayingTime,
-                        PathActivity.playingTime.path,
+                    fetchGetActivity(updatePlayingTime, {
+                        fetchFrom: ["AI", "DB"],
+                        path: PathActivity.playingTime.path,
                         subject,
                         time,
                         amount,
                         grade,
                         gender,
                         place,
-                    )
-                        .then((result) => updatePlayingTime(subject, time, result))
-                        .catch((error) => handleError(error)),
+                    }).catch((error) => handleError(error)),
                 );
             }
 
@@ -145,10 +131,32 @@ function ChoosePath() {
 
                     <h3 className={styles.h3}>בחרו את הפעילות שלכם</h3>
 
-                    <Path index={1} title="נקודת מבט" hint={hints.pointOfView} setPath={setPointOfView} />
-                    <Path index={2} title="פעילות תוכן" hint={hints.contentActivity} setPath={setContentActivity} />
-                    <Path index={3} title="זמן צופיות" hint={hints.scoutingTime} setPath={setScoutingTime} isGenerate />
-                    <Path index={4} title="זמן משחק" hint={hints.playingTime} setPath={setPlayingTime} isGenerate />
+                    <Path
+                        index={1}
+                        title="נקודת מבט"
+                        hint={hints.pointOfView}
+                        setPath={setPointOfView}
+                    />
+                    <Path
+                        index={2}
+                        title="פעילות תוכן"
+                        hint={hints.contentActivity}
+                        setPath={setContentActivity}
+                    />
+                    <Path
+                        index={3}
+                        title="זמן צופיות"
+                        hint={hints.scoutingTime}
+                        setPath={setScoutingTime}
+                        isGenerate
+                    />
+                    <Path
+                        index={4}
+                        title="זמן משחק"
+                        hint={hints.playingTime}
+                        setPath={setPlayingTime}
+                        isGenerate
+                    />
                 </div>
 
                 <div className={styles.btn_div}>

@@ -6,18 +6,18 @@ import { BsFiletypeDocx } from "react-icons/bs";
 import { useContentContext } from "../../context/ContentContext";
 import { importDocx, importWhatsUp } from "../../utils/import";
 import { useErrorContext } from "../../context/ErrorContext";
-import { ActivityType, DataType } from "../../models/types/context";
+import { DataType } from "../../models/types/context";
 import { PathActivity } from "../../models/constants/path";
-import { buildActivityFromAI } from "../../service/buildActivity";
 import { PROMPT_LIMIT } from "../../models/constants/state";
-import { getContentActivity, getPlayingTime, getPointOfView, getScoutingTime } from "../../service/geminiPrompts";
-import ReactMarkdown from 'react-markdown';
+import { fetchGetActivity } from "../../utils/fetch";
+import ReactMarkdown from "react-markdown";
 import "./Markdown.css";
+import { Activity } from "../../models/types/activity";
 
 type ActivityOutputProps = {
     index: number;
     title: string;
-    path: ActivityType;
+    path: Activity;
     contextData: DataType;
 };
 
@@ -35,7 +35,7 @@ function ActivityOutput({ index, title, path, contextData }: ActivityOutputProps
         updatePlayingTime,
     } = useContentContext();
     const { handleError } = useErrorContext();
-    const { data, subject, time } = path;
+    const { activity: data, subject, time } = path;
 
     const importWhatsup = () => {
         setWhatsupPoint(true);
@@ -51,64 +51,60 @@ function ActivityOutput({ index, title, path, contextData }: ActivityOutputProps
 
     const generateAgain = async () => {
         updateLimit();
-        if (!limit || limit < PROMPT_LIMIT-1) {
+        if (!limit || limit < PROMPT_LIMIT - 1) {
             setIconClickedPoint(true);
             const { amount, grade, gender, place } = contextData;
 
             if (index === 1) {
-                buildActivityFromAI(
-                    getPointOfView,
-                    PathActivity.pointOfView.path,
+                fetchGetActivity(updatePointOfView, {
+                    fetchFrom: ["AI"],
+                    path: PathActivity.pointOfView.path,
                     subject,
                     time,
                     amount,
                     grade,
                     gender,
                     place,
-                )
-                    .then((result) => updatePointOfView(subject, time, result))
+                })
                     .catch((error) => handleError(error))
                     .finally(() => setIconClickedPoint(false));
             } else if (index === 2) {
-                buildActivityFromAI(
-                    getContentActivity,
-                    PathActivity.contentActivity.path,
+                fetchGetActivity(updateContentActivity, {
+                    fetchFrom: ["AI"],
+                    path: PathActivity.contentActivity.path,
                     subject,
                     time,
                     amount,
                     grade,
                     gender,
                     place,
-                )
-                    .then((result) => updateContentActivity(subject, time, result))
+                })
                     .catch((error) => handleError(error))
                     .finally(() => setIconClickedPoint(false));
             } else if (index === 3) {
-                buildActivityFromAI(
-                    getScoutingTime,
-                    PathActivity.scoutingTime.path,
+                fetchGetActivity(updateScoutingTime, {
+                    fetchFrom: ["AI"],
+                    path: PathActivity.scoutingTime.path,
                     subject,
                     time,
                     amount,
                     grade,
                     gender,
                     place,
-                )
-                    .then((result) => updateScoutingTime(subject, time, result))
+                })
                     .catch((error) => handleError(error))
                     .finally(() => setIconClickedPoint(false));
             } else {
-                buildActivityFromAI(
-                    getPlayingTime,
-                    PathActivity.playingTime.path,
+                fetchGetActivity(updatePlayingTime, {
+                    fetchFrom: ["AI"],
+                    path: PathActivity.playingTime.path,
                     subject,
                     time,
                     amount,
                     grade,
                     gender,
                     place,
-                )
-                    .then((result) => updatePlayingTime(subject, time, result))
+                })
                     .catch((error) => handleError(error))
                     .finally(() => setIconClickedPoint(false));
             }
