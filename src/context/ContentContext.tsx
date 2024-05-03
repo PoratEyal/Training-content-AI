@@ -63,14 +63,17 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
     };
 
     const resetAllUseFields = () => {
-        setData((prevData) => ({
-            ...prevData,
-            pointOfView: undefined,
-            contentActivity: undefined,
-            scoutingTime: undefined,
-            playingTime: undefined,
-        }));
-        Session.clear();
+        setData((prevData) => {
+            const d = {
+                ...prevData,
+                pointOfView: undefined,
+                contentActivity: undefined,
+                scoutingTime: undefined,
+                playingTime: undefined,
+            };
+            Session.set("data", d);
+            return d;
+        });
     };
 
     // - - - - - - Content Activity - - - - - - - - - - - - - - -

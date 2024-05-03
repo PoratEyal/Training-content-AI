@@ -10,7 +10,12 @@ export const useErrorContext = () => useContext(ErrorContext);
 export const ErrorContextProvider = ({ children }: { children: React.ReactNode }) => {
     const handleError = (error: Error | string | undefined) => {
         console.error(error);
-        notification("שגיאה", "חיפושך לא הניב תוצאות. בשל העובדה שהחיפוש מבוסס בינה מלאכותית אפשר לנסות שוב עם אותם מילות חיפוש" || "", "danger");
+        notification(
+            "שגיאה",
+            "חיפושך לא הניב תוצאות. בשל העובדה שהחיפוש מבוסס בינה מלאכותית אפשר לנסות שוב עם אותם מילות חיפוש",
+            "danger",
+            { duration: 5000, onScreen: true },
+        );
     };
 
     const handleAlert = (message: string, duration?: number) => {
