@@ -1,1 +1,1 @@
-export const PROMPT_LIMIT = 60;
+export const PROMPT_LIMIT = 6;
