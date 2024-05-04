@@ -34,6 +34,7 @@ export type ContentContextType = {
     updatePointOfView: (activity: Activity) => void;
     updateScoutingTime: (activity: Activity) => void;
     updatePlayingTime: (activity: Activity) => void;
+    contextUpdateSet: Object;
 };
 
 export type ErrorContextType = {

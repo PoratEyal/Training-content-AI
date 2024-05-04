@@ -14,6 +14,7 @@ export const typeContext = {
     updatePointOfView: () => {},
     updateScoutingTime: () => {},
     updatePlayingTime: () => {},
+    contextUpdateSet: {},
 };
 
 export const defualtErrorContext = {

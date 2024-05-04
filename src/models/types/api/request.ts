@@ -1,4 +1,4 @@
-import { ActivityPathName } from "../activity";
+import { Activity, ActivityPathName } from "../activity";
 
 export type FetchFrom = "DB" | "AI";
 
@@ -12,3 +12,8 @@ export type GetActivityRequest = {
     gender: string;
     place: string;
 };
+
+export type UpdateActivityLikesRequest = {
+    activity: Activity;
+    likesAmount: number;
+}

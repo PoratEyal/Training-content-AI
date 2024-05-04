@@ -1,0 +1,15 @@
+.linkBtns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.like, .dislike {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    color: orange;
+    cursor: pointer;
+    font-size: 25px;
+}
