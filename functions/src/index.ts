@@ -3,12 +3,14 @@ import express from "express";
 import * as functions from "firebase-functions";
 import ping from './callableFunctions/ping';
 import getActivity from "./callableFunctions/getActivity"
+import updateActivityLikes from "./callableFunctions/updateActivityLikes"
 
 const app = express();
 app.use(cors());
 
 exports.ping = ping;
 exports.getActivity = getActivity;
+exports.updateLikes = updateActivityLikes;
 
 exports.app = functions.https.onRequest(app);
 
