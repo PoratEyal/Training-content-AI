@@ -4,6 +4,7 @@ import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import { IoArrowForward } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { PathActivity } from "../../models/constants/path";
 
 function Activity() {
     const { data } = useContentContext();
@@ -23,7 +24,6 @@ function Activity() {
         navigate("/choosePath");
     };
 
-
     return (
         <div className={styles.container}>
             <div className={styles.navbar}>
@@ -35,41 +35,17 @@ function Activity() {
                 בהן אי דיוקים וטעויות. אנא בדקו את התוכן לפני כל הפעלה
             </div>
 
-            {data?.pointOfView ? (
-                <ActivityOutput
-                    index={1}
-                    title={"נקודת מבט"}
-                    path={data.pointOfView}
-                    contextData={data}
-                />
-            ) : null}
+            {data?.pointOfView ? <ActivityOutput pathActivity={PathActivity.pointOfView} /> : null}
 
             {data?.contentActivity ? (
-                <ActivityOutput
-                    index={2}
-                    title={"פעילות תוכן"}
-                    path={data.contentActivity}
-                    contextData={data}
-                />
+                <ActivityOutput pathActivity={PathActivity.contentActivity} />
             ) : null}
 
             {data?.scoutingTime ? (
-                <ActivityOutput
-                    index={3}
-                    title={"זמן תנועת נוער"}
-                    path={data.scoutingTime}
-                    contextData={data}
-                />
+                <ActivityOutput pathActivity={PathActivity.scoutingTime} />
             ) : null}
 
-            {data?.playingTime ? (
-                <ActivityOutput
-                    index={4}
-                    title={"זמן משחק"}
-                    path={data.playingTime}
-                    contextData={data}
-                />
-            ) : null}
+            {data?.playingTime ? <ActivityOutput pathActivity={PathActivity.playingTime} /> : null}
         </div>
     );
 }
