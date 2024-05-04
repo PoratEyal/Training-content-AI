@@ -5,3 +5,9 @@ export type GetActivityResponse = {
     activity?: Activity;
     message?: string;
 };
+
+export type UpdateActivityLikesResponse = {
+    success: boolean;
+    activity?: Activity;
+    message?: string;
+};

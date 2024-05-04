@@ -116,6 +116,13 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
         });
     };
 
+    const contextUpdateSet = {
+        pointOfView: updatePointOfView,
+        contentActivity: updateContentActivity,
+        scoutingTime: updateScoutingTime,
+        playingTime: updatePlayingTime,
+    };
+
     return (
         <ContentContext.Provider
             value={{
@@ -131,6 +138,7 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
                 updatePointOfView,
                 updateScoutingTime,
                 updatePlayingTime,
+                contextUpdateSet,
             }}
         >
             {children}
