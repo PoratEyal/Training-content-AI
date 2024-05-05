@@ -12,7 +12,7 @@ function PrivacyPolicy() {
                 onClick={() => navigate("/")}
                 className={styles.back_icon}
             ></IoArrowForward>
-            <h2 className={styles.h2_privacy}>מדיניות פרטיות</h2>
+            <h1 className={styles.page_title}>מדיניות פרטיות</h1>
 
             <div className={styles.space_div}>
                 <label>{policy.p1.label}</label> {policy.p1.text}

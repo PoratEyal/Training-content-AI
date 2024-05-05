@@ -49,7 +49,7 @@ function Details() {
                     </label>
                 </div>
 
-                <h2 className={styles.h2_group}>הזינו מספר פרטים על הקבוצה שלכם</h2>
+                <h1 className={styles.page_title}>הזינו מספר פרטים על הקבוצה שלכם</h1>
 
                 <SelectDetails
                     data={ClassLevel}

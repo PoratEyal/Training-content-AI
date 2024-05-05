@@ -11,7 +11,7 @@ export const PathActivity = {
     } as PathType,
     scoutingTime: {
         path: "scoutingTime",
-        name: "מיומנויות",
+        name: "זמן צופיות",
     } as PathType,
     playingTime: {
         path: "playingTime",
