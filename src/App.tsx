@@ -1,5 +1,5 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
+import React from "react";
+import { Helmet } from "react-helmet";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { ContentProvider } from "./context/ContentContext";
 import Details from "./pages/Details/Details";
@@ -19,33 +19,9 @@ function App() {
                 <Router>
                     <Routes>
                         <Route element={<PrivateRoutes />}>
-                            <Route path="/" element={
-                                <>
-                                    <Helmet>
-                                        <title>בונה פעולות</title>
-                                        <meta name="description" content="צור פעולות מרתקות ומותאמות אישית תוך דקות ספורות באמצעות כלי בינה מלאכותית חדשניים. חסוך זמן, התמקד ביצירתיות, והענק לחניכים חוויה חינוכית בלתי נשכחת" />
-                                    </Helmet>
-                                    <Details />
-                                </>
-                            } />
-                            <Route path="/choosePath" element={
-                                <>
-                                    <Helmet>
-                                        <title>בונה פעולות</title>
-                                        <meta name="description" content="צור פעולות מרתקות ומותאמות אישית תוך דקות ספורות באמצעות כלי בינה מלאכותית חדשניים. חסוך זמן, התמקד ביצירתיות, והענק לחניכים חוויה חינוכית בלתי נשכחת" />
-                                    </Helmet>
-                                    <ChoosePath />
-                                </>
-                            } />
-                            <Route path="/activity" element={
-                                <>
-                                    <Helmet>
-                                        <title>בונה פעולות</title>
-                                        <meta name="description" content="צור פעולות מרתקות ומותאמות אישית תוך דקות ספורות באמצעות כלי בינה מלאכותית חדשניים. חסוך זמן, התמקד ביצירתיות, והענק לחניכים חוויה חינוכית בלתי נשכחת" />
-                                    </Helmet>
-                                    <Activity />
-                                </>
-                            } />
+                            <Route path="/" element={<Details />} />
+                            <Route path="/choosePath" element={<ChoosePath />} />
+                            <Route path="/activity" element={<Activity />} />
                         </Route>
                         <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
                         <Route path={"*"} element={<Navigate replace to="/" />} />
