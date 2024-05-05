@@ -48,14 +48,15 @@
     border: none;
 }
 
-.h3{
+.page_title{
     color: orange;
-    font-size: 22px;
-    margin-top: -25px;
-    width: 335px;
     margin-right: 20px;
     margin-bottom: 20px;
-    font-weight: 550;
+    margin-top: -20px;
+    font-size: 20px;
+    font-weight: 500;
+    width: 100%;
+    text-align:right;
 }
 
 .input_div select {
