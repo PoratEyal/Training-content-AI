@@ -25,7 +25,7 @@ const PrivateRoutes = () => {
     const handleAcceptTerms = () => {
         setCookie("user-consent", "accepted", {
             path: "/",
-            expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30 * 6),
+            expires: new Date().setHours(24, 0, 0, 0)
         });
         setTscs(false);
     };
