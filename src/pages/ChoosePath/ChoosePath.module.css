@@ -43,9 +43,14 @@
     left: 0;
     z-index: 995;
     background: #f5f5dcc1;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
     border: none;
+}
+
+@supports (backdrop-filter: blur(5px)) {
+    .navbar {
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
 }
 
 .page_title{
