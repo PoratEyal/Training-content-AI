@@ -44,12 +44,12 @@ function Details() {
         <div className={styles.container}>
             <form onSubmit={handleSubmit} className={styles.detailsForm}>
                 <div className={styles.half_circle}>
-                    <label>
+                    <h1>
                         בונה פעולות <br></br> לתנועות נוער
-                    </label>
+                    </h1>
                 </div>
 
-                <h1 className={styles.page_title}>פרטי הקבוצה שלכם</h1>
+                <h2 className={styles.page_title}>פרטי הקבוצה שלכם</h2>
 
                 <SelectDetails
                     data={ClassLevel}
