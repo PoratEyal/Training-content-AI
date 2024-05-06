@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { PathActivity } from "../../models/constants/path";
 
 function Activity() {
-    const { data } = useContentContext();
+    const { data, resetAllUseFields } = useContentContext();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -21,6 +21,7 @@ function Activity() {
     }, []);
 
     const goingBack = () => {
+        resetAllUseFields();
         navigate("/choosePath");
     };
 
