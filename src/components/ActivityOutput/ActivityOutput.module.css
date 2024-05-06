@@ -1,24 +1,18 @@
-.activity_div {
+.activity_contianer {
     padding: 25px;
     padding-top: 0px;
 }
 
-.h2_icon_div {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    justify-content: space-between;
-    align-items: center;
+.activity_title {
     text-align: right;
-}
-
-.h2_activity {
     font-size: 22px;
     color: orange;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
 @media (min-width: 550px) {
-    .activity_div {
+    .activity_contianer {
         padding: 30px;
         padding-top: 0px;
     }

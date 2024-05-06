@@ -16,15 +16,13 @@ function ActivityOutput({ pathActivity }: ActivityOutputProps) {
     const { activity } = data[pathActivity.path as keyof Activity];
 
     return (
-        <div className={styles.activity_div} id="markdown">
-            <div className={styles.h2_icon_div}>
-                <h2 className={styles.h2_activity}>{name}</h2>
-            </div>
+        <section className={styles.activity_contianer} id="markdown">
+            <div className={styles.activity_title}>{name}</div>
 
             <ReactMarkdown>{activity}</ReactMarkdown>
 
             <MoreActions pathActivity={pathActivity} />
-        </div>
+        </section>
     );
 }
 

@@ -8,9 +8,10 @@ import { fetchGetActivity } from "../../utils/fetch";
 import ShareBtn from "../ShareBtn/ShareBtn";
 import { FaWhatsapp } from "react-icons/fa";
 import { BsFiletypeDocx } from "react-icons/bs";
-import { importDocx, importWhatsUp } from "../../utils/import";
+import { formatWhatsUp, importDocx, importWhatsUp } from "../../utils/import";
 import { AiOutlineLoading } from "react-icons/ai";
 import LikeBtns from "../LikeBtns/LikeBtns";
+import { WhatsappShareButton, WhatsappIcon } from "react-share";
 
 type MoreActionsProps = {
     pathActivity: PathType;
@@ -60,12 +61,18 @@ function MoreActions({ pathActivity }: MoreActionsProps) {
 
                 <div className={styles.more_actions_share}>
                     {/* WhatsApp */}
-                    <ShareBtn Icon={FaWhatsapp} func={() => importWhatsUp(name, text)} />
+                    <WhatsappShareButton
+                        url={"https://activitybuilders.com/"}
+                        title={formatWhatsUp(text)}
+                    >
+                        <div className={styles.iconBtn}>
+                            <FaWhatsapp size={30} />
+                        </div>
+                    </WhatsappShareButton>
                     {/* Docx */}
                     <ShareBtn Icon={BsFiletypeDocx} func={() => importDocx(name, text)} />
                 </div>
             </div>
-            
 
             <button onClick={generateAgain} className={styles.button}>
                 {!loadingGenerate ? (
