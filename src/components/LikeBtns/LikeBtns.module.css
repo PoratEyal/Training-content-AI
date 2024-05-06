@@ -4,12 +4,26 @@
     gap: 10px;
 }
 
-.like, .dislike {
+.like {
     position: relative;
     display: flex;
     align-items: center;
     justify-self: center;
-    color: orange;
     cursor: pointer;
-    font-size: 25px;
+    font-size: 23px;
+    border: 1px solid green;
+    border-radius: 100px;
+    padding: 4px;
+}
+
+.dislike{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    cursor: pointer;
+    font-size: 23px;
+    border: 1px solid red;
+    border-radius: 100px;
+    padding: 4px;
 }
