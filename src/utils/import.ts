@@ -1,6 +1,13 @@
 import { Document, Packer, Paragraph, TextRun } from "docx";
 import { saveAs } from "file-saver";
 
+export const formatWhatsUp = (text: string) => {
+    const title = "אני יצרתי את הפעולה הזאת דרך בונה הפעולות:";
+    const br = "\n";
+    const result = text.replace(/\*\*/g, "*") + br + br + title;
+    return result;
+}
+
 export const importWhatsUp = (path: string, data: string) => {
     const title = `*${path}*\n`;
     const message = encodeURIComponent(title + data);

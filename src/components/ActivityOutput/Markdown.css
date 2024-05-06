@@ -1,3 +1,27 @@
-#markdown strong{
+#markdown em{
+    font-style: italic;
+}
+
+#markdown h1{
+    font-size: 18px;
     font-weight: 500;
+    color: #000;
+}
+
+#markdown h2{
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+}
+
+#markdown h3{
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+}
+
+#markdown strong{
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
 }
