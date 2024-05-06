@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./SelectDetails.module.css";
 
 function SelectDetails({ data, placeholder, obj, setObj }) {
