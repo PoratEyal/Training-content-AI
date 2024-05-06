@@ -55,14 +55,17 @@ function MoreActions({ pathActivity }: MoreActionsProps) {
 
     return (
         <section className={styles.more_actions_container}>
-            <div className={styles.more_actions_share}>
-                {/* WhatsApp */}
-                <ShareBtn Icon={FaWhatsapp} func={() => importWhatsUp(name, text)} />
-                {/* Docx */}
-                <ShareBtn Icon={BsFiletypeDocx} func={() => importDocx(name, text)} />
-            </div>
+            <div className={styles.all_icons_div}>
+                <LikeBtns activity={activity} reset={reset} />
 
-            <LikeBtns activity={activity} reset={reset} />
+                <div className={styles.more_actions_share}>
+                    {/* WhatsApp */}
+                    <ShareBtn Icon={FaWhatsapp} func={() => importWhatsUp(name, text)} />
+                    {/* Docx */}
+                    <ShareBtn Icon={BsFiletypeDocx} func={() => importDocx(name, text)} />
+                </div>
+            </div>
+            
 
             <button onClick={generateAgain} className={styles.button}>
                 {!loadingGenerate ? (

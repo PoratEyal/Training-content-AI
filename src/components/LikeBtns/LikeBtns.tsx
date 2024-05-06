@@ -65,14 +65,21 @@ function LikeBtns({ activity, reset }: LikeBtnsProps) {
             <AiOutlineLike
                 className={styles.like}
                 onClick={isDisabled ? () => {} : handleClickLike}
-                style={selectLike ? { color: "green" } : { color: "orange" }}
+                style={{
+                    color: selectLike ? "green" : "orange",
+                    borderColor: selectLike ? "green" : "orange"
+                }}
             />
             <AiOutlineDislike
                 className={styles.dislike}
                 onClick={isDisabled ? () => {} : handleClickDislike}
-                style={selectDislike ? { color: "red" } : { color: "orange" }}
+                style={{
+                    color: selectDislike ? "red" : "orange",
+                    borderColor: selectDislike ? "red" : "orange"
+                }}
             />
         </div>
+
     );
 }
 

@@ -49,11 +49,11 @@ function Details() {
                     </label>
                 </div>
 
-                <h1 className={styles.page_title}>הזינו מספר פרטים על הקבוצה שלכם</h1>
+                <h1 className={styles.page_title}>פרטי הקבוצה שלכם</h1>
 
                 <SelectDetails
                     data={ClassLevel}
-                    placeholder={"כיתה"}
+                    placeholder={"קבוצת גיל"}
                     obj={classLevel}
                     setObj={setClassLevel}
                 />

@@ -3,7 +3,7 @@ import styles from "./Maintenance.module.css";
 function Maintenance() {
     return (
         <div className={styles.container}>
-            <img className={styles.img} src="maintenance.png"></img>
+            <img className={styles.img} alt="Man fixing laptop with tools and gears." src="maintenance.png"></img>
 
             <div className={styles.div}>
                 בשל עומס רב באתר, אנו נאלצים להוריד אותו זמנית לצורך שדרוג ושיפורים.

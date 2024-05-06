@@ -1,9 +1,18 @@
 .more_actions_container {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: space-between;
     gap: 25px;
     width: 100%;
+    direction: ltr;
+}
+
+.all_icons_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .more_actions_share {
