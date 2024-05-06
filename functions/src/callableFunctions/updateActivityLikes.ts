@@ -17,13 +17,13 @@ const updateActivityLikes = functions.https.onCall(
             const activityRef = db.collection(CollectionDB.ACTIVITY).doc(activity.id);
             await activityRef.update(updates);
             return {
-                success: true,
+                result: "success",
                 activity: { ...activity, likes: activity.likes + likesAmount },
             };
         } catch (error) {
             console.error("Error updating activity: ", error);
             return {
-                success: false,
+                result: "error",
                 activity: undefined,
                 message: "Failed to update activity.",
             };
