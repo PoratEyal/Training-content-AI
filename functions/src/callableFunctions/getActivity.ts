@@ -7,16 +7,14 @@ import { GeminiApiSet } from "../service/geminiAPI";
 import { initActivityFromAI, initActivityFromDB, updateActivityWithId } from "../utils/activity";
 import { getUpdateAt } from "../utils/time";
 import { CollectionDB } from "../model/enum/DB";
-import { GetActivityResponse } from "../model/types/response";
+import { GetActivityResponse, Resposne } from "../model/types/response";
+import { GoogleGenerativeAIResponseError } from "@google/generative-ai";
 
 admin.initializeApp();
 const db = admin.firestore();
 
 const getActivity = functions.https.onCall(
-    async (
-        data: GetActivityRequest,
-        context: functions.https.CallableContext,
-    ): Promise<GetActivityResponse> => {
+    async (data: GetActivityRequest): Promise<GetActivityResponse> => {
         const { fetchFrom, path, subject, time, amount, grade, gender, place } = data;
         let query: admin.firestore.Query = db.collection(CollectionDB.ACTIVITY);
 
@@ -42,8 +40,7 @@ const getActivity = functions.https.onCall(
                 };
                 const activityRef = db.collection(CollectionDB.ACTIVITY).doc(activity.id);
                 await activityRef.update(updates);
-                return { success: true, activity };
-
+                return { result: "success", activity };
             } else if (fetchFrom.includes("AI")) {
                 const geminiAPI = GeminiApiSet[path];
                 const activityResult = await geminiAPI({
@@ -59,20 +56,31 @@ const getActivity = functions.https.onCall(
 
                 const docRef = await db.collection(CollectionDB.ACTIVITY).add(restActivity);
                 const updateActivity = updateActivityWithId(docRef.id, activity);
-                return { success: true, activity: updateActivity };
+                return { result: "success", activity: updateActivity };
             }
 
             return {
-                success: false,
+                result: "notFound",
                 activity: undefined,
                 message: "Failed to retrieve activity.",
             };
         } catch (error) {
             console.error("Error retrieving activity: ", error);
+            let message = "Failed to retrieve activity.";
+            let result: Resposne = "error"
+            if (
+                error instanceof GoogleGenerativeAIResponseError &&
+                error.message.includes("Candidate was blocked due to SAFETY")
+            ) {
+                result = "safety";
+                message =
+                    "Failed to retrieve activity: Google Generative AI blocked the candidate due to safety concerns.";
+            }
+            console.error(message);
             return {
-                success: false,
+                result,
                 activity: undefined,
-                message: "Failed to retrieve activity.",
+                message,
             };
         }
     },

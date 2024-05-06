@@ -1,13 +1,15 @@
 import { Activity } from "../activity";
 
+export type Resposne = "success" | "notFound" | "safety" | "error"
+
 export type GetActivityResponse = {
-    success: boolean;
+    result: Resposne;
     activity?: Activity;
     message?: string;
 };
 
 export type UpdateActivityLikesResponse = {
-    success: boolean;
+    result: Resposne;
     activity?: Activity;
     message?: string;
 };
