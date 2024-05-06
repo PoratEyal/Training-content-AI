@@ -21,6 +21,6 @@ getAnalytics(app);
 export const db = getFirestore(app);
 
 export const functions = getFunctions(app);
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV !== "development") {
     connectFunctionsEmulator(functions, "localhost", 5001);
 }
