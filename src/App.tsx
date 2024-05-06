@@ -20,7 +20,22 @@ function App() {
                     <Router>
                         <Routes>
                             <Route element={<PrivateRoutes />}>
-                                <Route path="/" element={<Details />} />
+                                <Route
+                                    path="/"
+                                    element={
+                                        <>
+                                            <Helmet>
+                                                <title>בונה פעולות</title>
+                                                <meta
+                                                    name="description"
+                                                    content="צור פעולות מרתקות ומותאמות אישית, על ידי הזנת פרטים על הקבוצה שלך, באמצעות כלי בינה מלאכותית."
+                                                />
+                                                <link rel="canonical" href="/choosePath" />
+                                            </Helmet>
+                                            <Details />
+                                        </>
+                                    }
+                                />
                                 <Route
                                     path="/choosePath"
                                     element={
