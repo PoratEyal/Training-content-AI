@@ -133,7 +133,7 @@ function ChoosePath() {
                         ></IoArrowForward>
                     </div>
 
-                    <h3 className={styles.h3}>בחרו את הפעילות שלכם</h3>
+                    <h1 className={styles.page_title}>בחרו את הפעילות שלכם</h1>
 
                     <Path
                         index={1}
