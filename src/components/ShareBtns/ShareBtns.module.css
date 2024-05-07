@@ -1,7 +1,7 @@
 .share_btns {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 .whatsapp_btn {
@@ -15,28 +15,11 @@
 }
 
 .copy_btn {
+    position: relative;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 5px;
     align-items: center;
-    font-family: 'Fredoka', sans-serif;
-    border-radius: 60px;
-    padding: 6px;
+    justify-self: center;
     color: orange;
-    border: none;
-    font-size: 13px;
-    background-color: rgba(255, 255, 255, 0);
-    width: 95px;
-    border: 1px solid orange;
-    height: 30px;
     cursor: pointer;
-}
-
-.copy_btn_text {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+    font-size: 25px;
 }

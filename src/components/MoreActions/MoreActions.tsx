@@ -7,6 +7,7 @@ import styles from "./MoreActions.module.css";
 import { fetchGetActivity } from "../../utils/fetch";
 import { AiOutlineLoading } from "react-icons/ai";
 import LikeBtns from "../LikeBtns/LikeBtns";
+import ShareBtns from "../ShareBtns/ShareBtns";
 
 type MoreActionsProps = {
     pathActivity: PathType;
@@ -21,7 +22,7 @@ function MoreActions({ pathActivity }: MoreActionsProps) {
 
     const { path } = pathActivity;
     const activity = data[path as keyof Activity];
-    const { subject, time, amount, grade, gender, place } = activity;
+    const { activity: text, subject, time, amount, grade, gender, place } = activity;
 
     const generateAgain = async () => {
         updateLimit();
@@ -51,6 +52,10 @@ function MoreActions({ pathActivity }: MoreActionsProps) {
 
     return (
         <section className={styles.more_actions_container}>
+            <div className={styles.more_actions_left}>
+                <LikeBtns activity={activity} reset={reset} />
+                <ShareBtns text={text} />
+            </div>
             <button onClick={generateAgain} className={styles.button}>
                 {!loadingGenerate ? (
                     <div className={styles.btn_content_div}>
@@ -62,7 +67,6 @@ function MoreActions({ pathActivity }: MoreActionsProps) {
                     </div>
                 )}
             </button>
-            <LikeBtns activity={activity} reset={reset} />
         </section>
     );
 }

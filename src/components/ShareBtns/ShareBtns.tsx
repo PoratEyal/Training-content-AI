@@ -3,6 +3,8 @@ import { WhatsappShareButton } from "react-share";
 import { FaWhatsapp } from "react-icons/fa";
 import { useErrorContext } from "../../context/ErrorContext";
 import { formatCopy, formatWhatsUp } from "../../utils/format";
+import { FaRegCopy } from "react-icons/fa6";
+
 
 type ShareBtnsProps = {
     text: string;
@@ -18,16 +20,14 @@ function ShareBtns({ text }: ShareBtnsProps) {
 
     return (
         <div className={styles.share_btns}>
+            <div onClick={handleCopy} className={styles.copy_btn}>
+                <FaRegCopy />
+            </div>
             <WhatsappShareButton url={"https://activitybuilders.com/"} title={formatWhatsUp(text)}>
                 <div className={styles.whatsapp_btn}>
-                    <FaWhatsapp size={30} />
+                    <FaWhatsapp />
                 </div>
             </WhatsappShareButton>
-            <button onClick={handleCopy} className={styles.copy_btn}>
-                <div className={styles.copy_btn_text}>
-                    <label>העתק פעילות</label>
-                </div>
-            </button>
         </div>
     );
 }

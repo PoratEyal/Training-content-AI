@@ -1,24 +1,17 @@
 .more_actions_container {
     display: flex;
     align-items: center;
-    justify-content: left;
-    gap: 25px;
+    justify-content: space-between;
     width: 100%;
     direction: ltr;
 }
 
-.all_icons_div{
+.more_actions_left{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-}
-
-.more_actions_share {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+    gap: 30px;
 }
 
 .button {
