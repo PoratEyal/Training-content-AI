@@ -4,7 +4,7 @@ import { typeContext } from "../models/defualtState/context";
 import { PROMPT_LIMIT } from "../models/constants/state";
 import { useCookies } from "react-cookie";
 import Session from "../utils/sessionStorage";
-import { oneDay } from "../utils/time";
+import { tillEndOfDay } from "../utils/time";
 import { Activity } from "../models/types/activity";
 
 export const ContentContext = createContext<ContentContextType>(typeContext);
@@ -55,7 +55,7 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
             if (lim <= PROMPT_LIMIT) {
                 setCookie("limit", JSON.stringify(lim), {
                     path: "/",
-                    expires: oneDay,
+                    expires: tillEndOfDay,
                 });
             }
             return lim;

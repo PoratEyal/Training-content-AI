@@ -11,10 +11,8 @@ export const fetchGetActivity = async (
     const getActivityFunc = httpsCallable(functions, "getActivity");
 
     const response = (await getActivityFunc(request)).data as GetActivityResponse;
-    if (response.result === "success" && response.activity) {
+    if ((response.result === "success" || response.result === "safety") && response.activity) {
         conextUpdate(response.activity);
-    } else if (response.result === "safety") {
-        throw new Error(msg.safety.message);
     } else {
         throw new Error(msg.error.message);
     }
@@ -30,8 +28,6 @@ export const fetchUpdateActivityLikes = async (
     const response = (await updateActivityLikesFunc(request)).data as UpdateActivityLikesResponse;
     if (response.result === "success" && response.activity) {
         conextUpdate(response.activity);
-    } else if (response.result === "safety") {
-        throw new Error(msg.safety.message);
     } else {
         throw new Error(msg.error.message);
     }
