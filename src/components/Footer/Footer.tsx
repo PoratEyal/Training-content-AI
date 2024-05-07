@@ -14,7 +14,7 @@ function Footer() {
                 <a href={`mailto:${policy.p9.email}`}>{policy.p9.text4}</a>
             </div>
             <div onClick={() => navigate("/privacyPolicy")} className={styles.privacy_div}>
-                <label>מדיניות פרטיות</label>
+                <label>תנאי שירות</label>
                 <MdOutlinePrivacyTip className={styles.icon_privacy}></MdOutlinePrivacyTip>
             </div>
         </footer>
