@@ -7,7 +7,7 @@ import { GeminiApiSet } from "../service/geminiAPI";
 import { initActivityFromAI, initActivityFromDB, updateActivityWithId } from "../utils/activity";
 import { getUpdateAt } from "../utils/time";
 import { CollectionDB } from "../model/enum/DB";
-import { GetActivityResponse, Resposne } from "../model/types/response";
+import { GetActivityResponse } from "../model/types/response";
 import { GoogleGenerativeAIResponseError } from "@google/generative-ai";
 
 admin.initializeApp();
@@ -59,29 +59,25 @@ const getActivity = functions.https.onCall(
                 return { result: "success", activity: updateActivity };
             }
 
-            return {
-                result: "notFound",
-                activity: undefined,
-                message: "Failed to retrieve activity.",
-            };
+            return { result: "notFound", message: "Failed to retrieve activity." };
         } catch (error) {
-            console.error("Error retrieving activity: ", error);
-            let message = "Failed to retrieve activity.";
-            let result: Resposne = "error"
             if (
                 error instanceof GoogleGenerativeAIResponseError &&
                 error.message.includes("Candidate was blocked due to SAFETY")
             ) {
-                result = "safety";
-                message =
-                    "Failed to retrieve activity: Google Generative AI blocked the candidate due to safety concerns.";
+                const activity = initActivityFromAI(
+                    `המערכת מצאה שהתוכן שהנכם מחפשים עלול להיות בעייתי ולכן חיפוש זה נחסם. אנו ממליצים לנסות שוב עם נושא פעולה אחר.`,
+                    data,
+                );
+                return {
+                    result: "safety",
+                    activity,
+                    message:
+                        "Failed to retrieve activity: Google Generative AI blocked the candidate due to safety concerns.",
+                };
             }
-            console.error(message);
-            return {
-                result,
-                activity: undefined,
-                message,
-            };
+            console.error("Failed to retrieve activity.", error);
+            return { result: "error", message: "Failed to retrieve activity." };
         }
     },
 );

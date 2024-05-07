@@ -24,7 +24,6 @@ const updateActivityLikes = functions.https.onCall(
             console.error("Error updating activity: ", error);
             return {
                 result: "error",
-                activity: undefined,
                 message: "Failed to update activity.",
             };
         }
