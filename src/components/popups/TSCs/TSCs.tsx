@@ -5,7 +5,7 @@ function TSCs({ handleAccept }) {
     return (
         <div className={styles.background}>
             <div className={styles.container}>
-                <h3 className={styles.h3_privacy}>מדיניות פרטיות</h3>
+                <h3 className={styles.h3_privacy}>תנאי שירות</h3>
 
                 <div className={styles.space_div}>
                     <label>{policy.p1.label}</label> {policy.p1.text}
