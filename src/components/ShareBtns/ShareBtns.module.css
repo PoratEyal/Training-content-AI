@@ -1,0 +1,42 @@
+.share_btns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.whatsapp_btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    color: orange;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.copy_btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+    font-family: 'Fredoka', sans-serif;
+    border-radius: 60px;
+    padding: 6px;
+    color: orange;
+    border: none;
+    font-size: 13px;
+    background-color: rgba(255, 255, 255, 0);
+    width: 95px;
+    border: 1px solid orange;
+    height: 30px;
+    cursor: pointer;
+}
+
+.copy_btn_text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}

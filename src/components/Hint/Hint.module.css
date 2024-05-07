@@ -8,6 +8,7 @@
     cursor: pointer;
     font-size: 16px;
     color: #bdbdbd;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .hint{

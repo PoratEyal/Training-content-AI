@@ -29,13 +29,13 @@ function LikeBtns({ activity, reset }: LikeBtnsProps) {
     const handleClickLike = async () => {
         try {
             setIsDisabled(true);
-            setSelectLike((prev) => !prev);
-            setSelectDislike(false);
             const contextUpdateFunc = contextUpdateSet[activity.path as keyof Activity];
             await fetchUpdateActivityLikes(contextUpdateFunc, {
                 activity,
                 likesAmount: selectLike ? -1 : 1,
             });
+            setSelectLike((prev) => !prev);
+            setSelectDislike(false);
         } catch (error) {
             handleError(error);
         } finally {
@@ -46,13 +46,13 @@ function LikeBtns({ activity, reset }: LikeBtnsProps) {
     const handleClickDislike = async () => {
         try {
             setIsDisabled(true);
-            setSelectDislike((prev) => !prev);
-            setSelectLike(false);
             const contextUpdateFunc = contextUpdateSet[activity.path as keyof Activity];
             await fetchUpdateActivityLikes(contextUpdateFunc, {
                 activity,
                 likesAmount: selectDislike ? 1 : -1,
             });
+            setSelectDislike((prev) => !prev);
+            setSelectLike(false);
         } catch (error) {
             handleError(error);
         } finally {

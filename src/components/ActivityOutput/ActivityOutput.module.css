@@ -1,4 +1,5 @@
 .activity_contianer {
+    position: relative;
     padding: 25px;
     padding-top: 0px;
 }
@@ -9,6 +10,13 @@
     color: orange;
     font-weight: bold;
     margin: 10px 0;
+}
+
+.activity_top{
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 @media (min-width: 550px) {
