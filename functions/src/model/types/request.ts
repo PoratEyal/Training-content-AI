@@ -16,4 +16,11 @@ export type GetActivityRequest = {
 export type UpdateActivityLikesRequest = {
     activity: Activity;
     likesAmount: number;
-}
+};
+
+export type AddMovmentRequest = {
+    name: string;
+    path: string[];
+};
+
+export type GetMovmentsRequest = {};

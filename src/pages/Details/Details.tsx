@@ -10,7 +10,7 @@ import {
     Gender,
 } from "../../models/resources/group";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
-import Footer from "../../components/Footer/Footer";
+import Footer from "../../components/Layout/Footer/Footer";
 
 function Details() {
     const { data, updateDetails } = useContentContext();
