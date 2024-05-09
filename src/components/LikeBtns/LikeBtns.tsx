@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./LikeBtns.module.css";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
@@ -15,71 +15,86 @@ type LikeBtnsProps = {
 function LikeBtns({ activity, reset }: LikeBtnsProps) {
     const { contextUpdateSet } = useContentContext();
     const { handleError } = useErrorContext();
-    const [isDisabled, setIsDisabled] = useState(false);
-    const [selectLike, setSelectLike] = useState(false);
-    const [selectDislike, setSelectDislike] = useState(false);
 
-    useEffect(()=>{
-        if(reset){
-            setSelectLike(false);
-            setSelectDislike(false);
+    const [action, setAction] = useState({ like: undefined, dislike: undefined });
+    const [debouncedLiked, setDebouncedLiked] = useState(false);
+    const [debouncedDisliked, setDebouncedDisliked] = useState(false);
+
+    useEffect(() => {
+        if (reset) {
+            setAction({ like: undefined, dislike: undefined });
         }
-    }, [reset])
+    }, [reset]);
 
-    const handleClickLike = async () => {
+    useEffect(() => {
+        let likeTimeHandler: NodeJS.Timeout;
+        let dislikeTimeHandler: NodeJS.Timeout;
+        const { like, dislike } = action;
+
+        if ((like || !like) && dislike === undefined) {
+            likeTimeHandler = setTimeout(() => {
+                if (debouncedLiked !== like) {
+                    setDebouncedLiked(like);
+                    sendLikeStatusToServer(like ? 1 : -1);
+                }
+            }, 1500);
+        } else if ((dislike || !dislike) && like === undefined) {
+            dislikeTimeHandler = setTimeout(() => {
+                if (debouncedDisliked !== dislike) {
+                    setDebouncedDisliked(dislike);
+                    sendLikeStatusToServer(dislike ? -1 : 1);
+                }
+            }, 1000);
+        }
+        return () => {
+            clearTimeout(likeTimeHandler);
+            clearTimeout(dislikeTimeHandler);
+        };
+    }, [action]);
+
+    const sendLikeStatusToServer = useCallback(async (likesAmount: number) => {
+        const contextUpdateFunc = contextUpdateSet[activity.path as keyof Activity];
         try {
-            setIsDisabled(true);
-            setSelectLike((prev) => !prev);
-            setSelectDislike(false);
-            const contextUpdateFunc = contextUpdateSet[activity.path as keyof Activity];
             await fetchUpdateActivityLikes(contextUpdateFunc, {
                 activity,
-                likesAmount: selectLike ? -1 : 1,
+                likesAmount,
             });
         } catch (error) {
             handleError(error);
-        } finally {
-            setIsDisabled(false);
         }
+    }, []);
+
+    const handleClickLike = async () => {
+        setAction((prev) => {
+            return { like: !prev.like, dislike: undefined };
+        });
     };
 
     const handleClickDislike = async () => {
-        try {
-            setIsDisabled(true);
-            setSelectDislike((prev) => !prev);
-            setSelectLike(false);
-            const contextUpdateFunc = contextUpdateSet[activity.path as keyof Activity];
-            await fetchUpdateActivityLikes(contextUpdateFunc, {
-                activity,
-                likesAmount: selectDislike ? 1 : -1,
-            });
-        } catch (error) {
-            handleError(error);
-        } finally {
-            setIsDisabled(false);
-        }
+        setAction((prev) => {
+            return { like: undefined, dislike: !prev.dislike };
+        });
     };
 
     return (
         <div className={styles.linkBtns}>
             <AiOutlineLike
                 className={styles.like}
-                onClick={isDisabled ? () => {} : handleClickLike}
+                onClick={handleClickLike}
                 style={{
-                    color: selectLike ? "green" : "orange",
-                    borderColor: selectLike ? "green" : "orange"
+                    color: action.like ? "green" : "orange",
+                    borderColor: action.like ? "green" : "orange",
                 }}
             />
             <AiOutlineDislike
                 className={styles.dislike}
-                onClick={isDisabled ? () => {} : handleClickDislike}
+                onClick={handleClickDislike}
                 style={{
-                    color: selectDislike ? "red" : "orange",
-                    borderColor: selectDislike ? "red" : "orange"
+                    color: action.dislike ? "red" : "orange",
+                    borderColor: action.dislike ? "red" : "orange",
                 }}
             />
         </div>
-
     );
 }
 
