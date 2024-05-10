@@ -12,7 +12,7 @@ function Home() {
     const handleOpenModal = () => setOpenModal(true);
     const handleCloseModal = () => setOpenModal(false);
 
-    const handleStart = () => navigate("/group");
+    const handleStart = () => navigate("/details");
 
     return (
         <section className={styles.container}>

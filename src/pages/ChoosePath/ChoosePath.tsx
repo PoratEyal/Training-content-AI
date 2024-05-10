@@ -6,107 +6,47 @@ import Loading from "../../components/Loading/Loading";
 import Path from "../../components/Path/Path";
 import { useErrorContext } from "../../context/ErrorContext";
 import { IoArrowForward } from "react-icons/io5";
-import { PathActivity } from "../../models/constants/path";
-import hints from "../../models/resources/hints.json";
 import { PROMPT_LIMIT } from "../../models/constants/state";
 import { fetchGetActivity } from "../../utils/fetch";
 
 function ChoosePath() {
-    const {
-        data,
-        limit,
-        updateLimit,
-        updatePointOfView,
-        updateContentActivity,
-        updateScoutingTime,
-        updatePlayingTime,
-        resetAllUseFields,
-    } = useContentContext();
+    const { data, limit, updateLimit, updateMovementPath, resetAllUseFields } = useContentContext();
     const { handleError } = useErrorContext();
+
+    const { movement } = data || {};
+    const { path } = movement || {};
+    const [optionsPath, setOptionsPath] = useState(new Array(path?.length || 1).fill(undefined));
 
     const [clicked, setClicked] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
     const navigate = useNavigate();
 
-    const [pointOfView, setPointOfView] = useState(undefined);
-    const [contentActivity, setContentActivity] = useState(undefined);
-    const [scoutingTime, setScoutingTime] = useState(undefined);
-    const [playingTime, setPlayingTime] = useState(undefined);
-
-    useEffect(() => {
-        setIsDisabled(pointOfView || contentActivity || scoutingTime || playingTime ? false : true);
-    }, [pointOfView, contentActivity, scoutingTime, playingTime]);
+    useEffect(()=>{
+        setIsDisabled(optionsPath.every((option) => option === undefined));
+    },[optionsPath])
 
     const submitHandler = async () => {
         updateLimit();
         if (!limit || limit < PROMPT_LIMIT - 1) {
             const promises = [];
             const { amount, grade, gender, place } = data;
-
-            if (pointOfView) {
-                const { subject, time } = pointOfView;
-                promises.push(
-                    fetchGetActivity(updatePointOfView, {
-                        fetchFrom: ["AI", "DB"],
-                        path: PathActivity.pointOfView.path,
-                        subject,
-                        time,
-                        amount,
-                        grade,
-                        gender,
-                        place,
-                    }).catch((error) => handleError(error)),
-                );
+            for (const option of optionsPath) {
+                if (option !== undefined) {
+                    const { subject, time, name, index } = option;
+                    promises.push(
+                        fetchGetActivity(updateMovementPath, index, {
+                            fetchFrom: ["AI", "DB"],
+                            path: name,
+                            subject,
+                            time,
+                            amount,
+                            grade,
+                            gender,
+                            place,
+                        }).catch((error) => handleError(error)),
+                    );
+                }
             }
-
-            if (contentActivity) {
-                const { subject, time } = contentActivity;
-                promises.push(
-                    fetchGetActivity(updateContentActivity, {
-                        fetchFrom: ["AI", "DB"],
-                        path: PathActivity.contentActivity.path,
-                        subject,
-                        time,
-                        amount,
-                        grade,
-                        gender,
-                        place,
-                    }).catch((error) => handleError(error)),
-                );
-            }
-
-            if (scoutingTime) {
-                const { subject, time } = scoutingTime;
-                promises.push(
-                    fetchGetActivity(updateScoutingTime, {
-                        fetchFrom: ["AI", "DB"],
-                        path: PathActivity.scoutingTime.path,
-                        subject,
-                        time,
-                        amount,
-                        grade,
-                        gender,
-                        place,
-                    }).catch((error) => handleError(error)),
-                );
-            }
-
-            if (playingTime) {
-                const { subject, time } = playingTime;
-                promises.push(
-                    fetchGetActivity(updatePlayingTime, {
-                        fetchFrom: ["AI", "DB"],
-                        path: PathActivity.playingTime.path,
-                        subject,
-                        time,
-                        amount,
-                        grade,
-                        gender,
-                        place,
-                    }).catch((error) => handleError(error)),
-                );
-            }
-
             try {
                 setClicked(true);
                 await Promise.allSettled(promises);
@@ -119,7 +59,7 @@ function ChoosePath() {
 
     const goBack = () => {
         resetAllUseFields();
-        navigate("/");
+        navigate("/details");
     };
 
     return (
@@ -135,32 +75,9 @@ function ChoosePath() {
 
                     <h1 className={styles.page_title}>בחרו את הפעילות שלכם</h1>
 
-                    <Path
-                        index={1}
-                        title="נקודת מבט"
-                        hint={hints.pointOfView}
-                        setPath={setPointOfView}
-                    />
-                    <Path
-                        index={2}
-                        title="פעילות תוכן"
-                        hint={hints.contentActivity}
-                        setPath={setContentActivity}
-                    />
-                    <Path
-                        index={3}
-                        title="זמן צופיות"
-                        hint={hints.scoutingTime}
-                        setPath={setScoutingTime}
-                        isGenerate
-                    />
-                    <Path
-                        index={4}
-                        title="זמן משחק"
-                        hint={hints.playingTime}
-                        setPath={setPlayingTime}
-                        isGenerate
-                    />
+                    {path?.map((p, i) => (
+                        <Path key={i} index={i} path={p} setPath={setOptionsPath} />
+                    ))}
                 </div>
 
                 <div className={styles.btn_div}>
