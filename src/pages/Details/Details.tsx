@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { VscLoading } from "react-icons/vsc";
 import { useContentContext } from "../../context/ContentContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./Details.module.css";
@@ -10,8 +9,9 @@ import {
     Gender,
 } from "../../models/resources/group";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
-import Footer from "../../components/Layout/Footer/Footer";
 import { MovmentsTitle } from "../../models/resources/group";
+import Btn from '../../components/btn/btn';
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 function Details() {
     const { data, updateDetails } = useContentContext();
@@ -43,51 +43,50 @@ function Details() {
 
     return (
         <div className={styles.container}>
+
+            <IoMdArrowRoundBack onClick={() => navigate("/")} className={styles.back_icon}></IoMdArrowRoundBack>
+
+            <img className={styles.h2_img} alt="h2 text" src="h2_page2.svg"></img>
+
             <form onSubmit={handleSubmit} className={styles.detailsForm}>
-                <SelectDetails
-                    data={MovmentsTitle}
-                    placeholder={"תנועת נוער"}
-                    obj={movement}
-                    setObj={setMovment}
-                />
-                <br />
-                <SelectDetails
-                    data={ClassLevel}
-                    placeholder={"קבוצת גיל"}
-                    obj={classLevel}
-                    setObj={setClassLevel}
-                />
-                <SelectDetails
-                    data={ChildrensNumber}
-                    placeholder={"מספר ילדים"}
-                    obj={numberOfChildren}
-                    setObj={setNumberOfChildren}
-                />
-                <SelectDetails
-                    data={ActivityLocation}
-                    placeholder={"מיקום הפעילות"}
-                    obj={activityLocation}
-                    setObj={setActivityLocation}
-                />
-                <SelectDetails data={Gender} placeholder={"מין"} obj={gender} setObj={setGender} />
+
+                <img className={styles.lamp_img} alt="lamp image" src="lamp.svg"></img>
+
+                <div className={styles.spacer}></div>
+                
+                <div>
+                    <SelectDetails
+                        data={MovmentsTitle}
+                        placeholder={"תנועת נוער"}
+                        obj={movement}
+                        setObj={setMovment}
+                    />
+                    <SelectDetails
+                        data={ClassLevel}
+                        placeholder={"קבוצת גיל"}
+                        obj={classLevel}
+                        setObj={setClassLevel}
+                    />
+                    <SelectDetails
+                        data={ChildrensNumber}
+                        placeholder={"מספר ילדים"}
+                        obj={numberOfChildren}
+                        setObj={setNumberOfChildren}
+                    />
+                    <SelectDetails
+                        data={ActivityLocation}
+                        placeholder={"מיקום הפעילות"}
+                        obj={activityLocation}
+                        setObj={setActivityLocation}
+                    />
+                    <SelectDetails data={Gender} placeholder={"מין"} obj={gender} setObj={setGender} />
+                </div>
 
                 <div className={styles.btn_div}>
-                    <button
-                        disabled={isDisabled}
-                        onClick={() => setClicked(true)}
-                        className={styles.submit_btn}
-                        type="submit"
-                    >
-                        {!clicked ? (
-                            "המשיכו"
-                        ) : (
-                            <VscLoading className={styles.loading_icon}></VscLoading>
-                        )}
-                    </button>
+                    <Btn isDisabled={isDisabled} height={38} text={"בחירת פעילות"} func={handleSubmit}></Btn>
                 </div>
-            </form>
 
-            <Footer />
+            </form>
         </div>
     );
 }
