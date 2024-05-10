@@ -9,6 +9,8 @@ export const typeContext = {
     setCookie: () => {},
     updateDetails: () => {},
     resetAllUseFields: () => {},
+    updateMovementPath: () => {},
+
     updateContentActivity: () => {},
     updatePointOfView: () => {},
     updateScoutingTime: () => {},

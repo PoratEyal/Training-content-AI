@@ -16,7 +16,7 @@ import { MovmentsTitle } from "../../models/resources/group";
 function Details() {
     const { data, updateDetails } = useContentContext();
 
-    const [movement, setMovment] = useState(data?.movement.title || "");
+    const [movement, setMovment] = useState(data?.movement?.title || "");
     const [classLevel, setClassLevel] = useState(data?.grade || "");
     const [numberOfChildren, setNumberOfChildren] = useState(data?.amount || "");
     const [activityLocation, setActivityLocation] = useState(data?.place || "");

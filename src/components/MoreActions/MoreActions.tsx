@@ -32,21 +32,21 @@ function MoreActions({ pathActivity }: MoreActionsProps) {
 
             const contextUpdateFunc = contextUpdateSet[path as keyof Activity];
 
-            fetchGetActivity(contextUpdateFunc, {
-                fetchFrom: ["AI"],
-                path,
-                subject,
-                time,
-                amount,
-                grade,
-                gender,
-                place,
-            })
-                .catch((error) => handleError(error))
-                .finally(() => {
-                    setLoadingGenerate(false);
-                    setReset(false);
-                });
+            // fetchGetActivity(contextUpdateFunc, {
+            //     fetchFrom: ["AI"],
+            //     path,
+            //     subject,
+            //     time,
+            //     amount,
+            //     grade,
+            //     gender,
+            //     place,
+            // })
+            //     .catch((error) => handleError(error))
+            //     .finally(() => {
+            //         setLoadingGenerate(false);
+            //         setReset(false);
+            //     });
         }
     };
 

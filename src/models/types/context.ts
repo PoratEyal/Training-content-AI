@@ -25,6 +25,8 @@ export type ContentContextType = {
     setCookie: (name: string, value: any, options?: any) => void;
     updateDetails: (movement: string, grade: string, amount: string, place: string, gender: string) => void;
     resetAllUseFields: () => void;
+    updateMovementPath: (index: number, activity: Activity) => void;
+
     updateContentActivity: (activity: Activity) => void;
     updatePointOfView: (activity: Activity) => void;
     updateScoutingTime: (activity: Activity) => void;

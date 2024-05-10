@@ -40,7 +40,7 @@ function App() {
                                         }
                                     />
                                     <Route
-                                        path="/group"
+                                        path="/details"
                                         element={
                                             <>
                                                 <Helmet>
@@ -49,7 +49,7 @@ function App() {
                                                         name="description"
                                                         content="צור פעולות מרתקות ומותאמות אישית, על ידי הזנת פרטים על הפעילות שתרצה להעביר, באמצעות כלי בינה מלאכותית."
                                                     />
-                                                    <link rel="canonical" href="/group" />
+                                                    <link rel="canonical" href="/details" />
                                                 </Helmet>
                                                 <Details />
                                             </>
