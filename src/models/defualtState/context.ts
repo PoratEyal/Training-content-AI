@@ -22,3 +22,9 @@ export const defualtErrorContext = {
     handleAlert: () => {},
     handleSuccess: () => {},
 };
+
+export const defualtAuthContext = {
+    currentUser: null,
+    userLoggedIn: false,
+    loading: true,
+};

@@ -42,3 +42,9 @@ export type ErrorContextType = {
     handleAlert: (message: string, duration?: number) => void;
     handleSuccess: (message: string) => void;
 };
+
+export type AuthContextType = {
+    currentUser: any;
+    userLoggedIn: boolean;
+    loading: boolean;
+};

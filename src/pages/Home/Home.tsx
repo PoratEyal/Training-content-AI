@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../../components/core/Logo/Logo";
 import styles from "./Home.module.css";
+import SignUp from "../../components/popups/SignUp/SignUp";
 
 function Home() {
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleOpenModal = () => setOpenModal(true);
+
     return (
         <section>
             <Logo />
@@ -15,8 +20,9 @@ function Home() {
 
             <section>
                 <button className={styles.home_start_btn}>מתחילים</button>
-                <button className={styles.home_login_btn}>הרשמה</button>
+                <button onClick={handleOpenModal} className={styles.home_login_btn}>הרשמה</button>
             </section>
+            {openModal ? <SignUp /> : null}
         </section>
     );
 }
