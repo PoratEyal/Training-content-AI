@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 //project-193920685822
 
@@ -21,6 +22,7 @@ const app = initializeApp(firebaseConfig);
 getAnalytics(app);
 
 export const db = getFirestore(app);
+export const auth = getAuth(app);
 
 export const functions = getFunctions(app);
 if (process.env.NODE_ENV === "development") {
