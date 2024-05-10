@@ -1,5 +1,15 @@
-import { GetActivityRequest, UpdateActivityLikesRequest } from "../models/types/api/request";
-import { GetActivityResponse, UpdateActivityLikesResponse } from "../models/types/api/response";
+import {
+    CreateNewUserRequest,
+    GetActivityRequest,
+    GetUserByIdRequest,
+    UpdateActivityLikesRequest,
+} from "../models/types/api/request";
+import {
+    CreateNewUserResponse,
+    GetActivityResponse,
+    GetUserByIdResponse,
+    UpdateActivityLikesResponse,
+} from "../models/types/api/response";
 import { functions } from "../config/firebase";
 import { httpsCallable } from "firebase/functions";
 import msg from "../models/resources/errorMsg.json";
@@ -34,4 +44,30 @@ export const fetchUpdateActivityLikes = async (
         throw new Error(msg.error.message);
     }
     return response;
+};
+
+export const fetchCreateNewUser = async (
+    request: CreateNewUserRequest,
+): Promise<CreateNewUserResponse> => {
+    const createNewUserFunc = httpsCallable(functions, "createNewUser");
+
+    const response = (await createNewUserFunc(request)).data as CreateNewUserResponse;
+    if (response.result === "success" && response.user) {
+        return response;
+    } else {
+        throw new Error(msg.error.message);
+    }
+};
+
+export const fetchGetUserById = async (
+    request: GetUserByIdRequest,
+): Promise<GetUserByIdResponse> => {
+    const getUserByIdFunc = httpsCallable(functions, "getUserById");
+
+    const response = (await getUserByIdFunc(request)).data as GetUserByIdResponse;
+    if (response.result === "success" && response.user) {
+        return response;
+    } else {
+        throw new Error(msg.error.message);
+    }
 };

@@ -1,22 +1,15 @@
-import { Movement } from "../model/types/movement";
+import { DocumentData } from "firebase-admin/firestore";
 import { User } from "../model/types/user";
 
-export const initUser = (
-    id: string,
-    name: string,
-    email: string,
-    image: string,
-    limit: number,
-    movement: Movement,
-    isAcceptTerms: boolean,
-): User => {
+export const initUserFromDB = (id: string, data: DocumentData) => {
     return {
         id,
-        name,
-        email,
-        image,
-        limit,
-        movement,
-        isAcceptTerms,
+        name: data.name || "",
+        email: data.email || "",
+        image: data.image || "",
+        role: data.role || "",
+        movements: data.movements || undefined,
+        isAcceptTerms: data.isAcceptTerms || false,
+        limit: data.limit || 0,
     } as User;
 };

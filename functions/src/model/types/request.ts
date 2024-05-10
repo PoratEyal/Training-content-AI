@@ -1,5 +1,5 @@
 import { Activity, ActivityPathName } from "./activity";
-import { Movement } from "./movement";
+import { User } from "./user";
 
 export type FetchFrom = "DB" | "AI";
 
@@ -27,11 +27,9 @@ export type AddMovmentRequest = {
 export type GetMovmentsRequest = {};
 
 export type CreateNewUserRequest = {
+    newUser: User;
+};
+
+export type GetUserByIdRequest = {
     id: string;
-    limit: number;
-    movement: Movement;
-    isAcceptTerms: boolean;
-    name: string;
-    email: string;
-    image: string;
 };

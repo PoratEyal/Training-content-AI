@@ -33,3 +33,9 @@ export type CreateNewUserResponse = {
     user?: User;
     message?: string;
 };
+
+export type GetUserByIdResponse = {
+    result: Resposne;
+    user?: User;
+    message?: string;
+};
