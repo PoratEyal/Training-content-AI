@@ -6,6 +6,9 @@ import { useCookies } from "react-cookie";
 import Session from "../utils/sessionStorage";
 import { tillEndOfDay } from "../utils/time";
 import { Activity } from "../models/types/activity";
+import { Movments } from "../models/resources/movment";
+import { Movement } from "../models/types/movement";
+import { getMovementByTitle } from "../utils/movement";
 
 export const ContentContext = createContext<ContentContextType>(typeContext);
 
@@ -35,10 +38,11 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
     };
     setStateFromSession();
 
-    const updateDetails = (grade, amount, place, gender) => {
+    const updateDetails = (movement, grade, amount, place, gender) => {
         setData((prevData) => {
             const d = {
                 ...prevData,
+                movement: getMovementByTitle(movement),
                 grade: grade,
                 amount: amount,
                 place: place,
@@ -64,13 +68,7 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
 
     const resetAllUseFields = () => {
         setData((prevData) => {
-            const d = {
-                ...prevData,
-                pointOfView: undefined,
-                contentActivity: undefined,
-                scoutingTime: undefined,
-                playingTime: undefined,
-            };
+            const d: DataType = { ...prevData, movement: undefined };
             Session.set("data", d);
             return d;
         });

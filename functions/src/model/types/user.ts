@@ -1,11 +1,11 @@
 import { Activity } from "./activity";
-import { Movment } from "./movment";
+import { Movement } from "./movement";
 
 export type User = {
     id: string;
     activities: Activity[];
     limit: number;
-    movment: Movment;
+    movement: Movement;
     isAcceptTerms: boolean;
 
     // name: string;

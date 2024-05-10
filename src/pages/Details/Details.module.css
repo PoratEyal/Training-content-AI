@@ -6,31 +6,6 @@
     width: fit-content;
 }
 
-.half_circle {
-    width: 350px;
-    height: 150px;
-    background-color: rgb(255, 151, 47);
-    border-bottom-left-radius: 200px;
-    border-bottom-right-radius: 200px;
-    margin-bottom: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    padding-bottom: 20px;
-}
-
-.half_circle h1 {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 33px;
-    font-weight: 600;
-    letter-spacing: 2px;
-}
-
 .detailsForm{
     display: flex;
     flex-direction: column;

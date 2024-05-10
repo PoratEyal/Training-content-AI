@@ -3,8 +3,8 @@ import { GetMovmentsRequest } from "../model/types/request";
 import * as admin from "firebase-admin";
 import { CollectionDB } from "../model/enum/DB";
 import { GetMovmentsResponse } from "../model/types/response";
-import { initMovmentFromDB } from "../utils/movment";
-import { Movment } from "../model/types/movment";
+import { initMovmentFromDB } from "../utils/movement";
+import { Movement } from "../model/types/movement";
 
 const db = admin.firestore();
 
@@ -16,17 +16,17 @@ const getActivity = functions.https.onCall(
 
         try {
             const querySnapshot = await query.get();
-            const movments = querySnapshot.docs.map((doc) => {
+            const movements = querySnapshot.docs.map((doc) => {
                 return initMovmentFromDB(doc.id, doc.data());
-            }) as Movment[];
+            }) as Movement[];
 
-            if (movments.length !== 0) {
-                return { result: "success", movments };
+            if (movements.length !== 0) {
+                return { result: "success", movements };
             }
-            return { result: "notFound", movments: [], message: "Failed to find Movments" };
+            return { result: "notFound", movements: [], message: "Failed to find Movments" };
         } catch (error) {
             console.error("Failed to retrieve activity.", error);
-            return { result: "error", movments: [], message: "Failed to retrieve activity." };
+            return { result: "error", movements: [], message: "Failed to retrieve activity." };
         }
     },
 );

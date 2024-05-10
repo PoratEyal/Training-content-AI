@@ -1,4 +1,5 @@
 import { Activity } from "./activity";
+import { Movement } from "./movement";
 
 export type ActivityType = {
     subject: string;
@@ -8,13 +9,7 @@ export type ActivityType = {
 };
 
 export type DataType = {
-    pointOfView: Activity | undefined;
-    contentActivity: Activity | undefined;
-    scoutingTime: Activity | undefined;
-    playingTime: Activity | undefined;
-    other: {
-        use: boolean;
-    };
+    movement: Movement | undefined;
     grade: string;
     gender: string;
     amount: string;
@@ -28,7 +23,7 @@ export type ContentContextType = {
     updateLimit: () => void;
     cookies: any;
     setCookie: (name: string, value: any, options?: any) => void;
-    updateDetails: (grade: string, amount: string, place: string, gender: string) => void;
+    updateDetails: (movement: string, grade: string, amount: string, place: string, gender: string) => void;
     resetAllUseFields: () => void;
     updateContentActivity: (activity: Activity) => void;
     updatePointOfView: (activity: Activity) => void;

@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import Logo from "../../components/core/Logo/Logo";
 import styles from "./Home.module.css";
 import SignUp from "../../components/popups/SignUp/SignUp";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
     const [openModal, setOpenModal] = useState(false);
+    const navigate = useNavigate();
 
     const handleOpenModal = () => setOpenModal(true);
+    const handleCloseModal = () => setOpenModal(false);
+
+    const handleStart = () => navigate("/group");
 
     return (
         <section>
@@ -19,10 +24,14 @@ function Home() {
             </label>
 
             <section>
-                <button className={styles.home_start_btn}>מתחילים</button>
-                <button onClick={handleOpenModal} className={styles.home_login_btn}>הרשמה</button>
+                <button onClick={handleStart} className={styles.home_start_btn}>
+                    מתחילים
+                </button>
+                <button onClick={handleOpenModal} className={styles.home_login_btn}>
+                    הרשמה
+                </button>
             </section>
-            {openModal ? <SignUp /> : null}
+            {openModal ? <SignUp closeFunc={handleCloseModal} /> : null}
         </section>
     );
 }

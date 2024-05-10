@@ -13,8 +13,8 @@ function Activity() {
     useEffect(() => {
         if (
             !data ||
-            !data.grade ||
-            (!data.pointOfView && !data.contentActivity && !data.scoutingTime && !data.playingTime)
+            !data.grade
+            // (!data.pointOfView && !data.contentActivity && !data.scoutingTime && !data.playingTime)
         ) {
             navigate("/choosePath");
         }
@@ -36,7 +36,7 @@ function Activity() {
                 בהן אי דיוקים וטעויות. אנא בדקו את התוכן לפני כל הפעלה
             </div>
 
-            {data?.pointOfView ? <ActivityOutput pathActivity={PathActivity.pointOfView} /> : null}
+            {/* {data?.pointOfView ? <ActivityOutput pathActivity={PathActivity.pointOfView} /> : null}
 
             {data?.contentActivity ? (
                 <ActivityOutput pathActivity={PathActivity.contentActivity} />
@@ -46,7 +46,7 @@ function Activity() {
                 <ActivityOutput pathActivity={PathActivity.scoutingTime} />
             ) : null}
 
-            {data?.playingTime ? <ActivityOutput pathActivity={PathActivity.playingTime} /> : null}
+            {data?.playingTime ? <ActivityOutput pathActivity={PathActivity.playingTime} /> : null} */}
         </div>
     );
 }

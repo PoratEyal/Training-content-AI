@@ -1,14 +1,48 @@
-import { Movment } from "../types/movment";
+import { Movement } from "../types/movement";
+import hints from "./hints.json";
 
-export const Movments: Movment[] = [
-    {
-        name: "צופים",
-        path: ["נקודת מבט", "פעילות תוכן", "זמן צופיות", "זמן משחק"],
-        isForPublish: true,
-    },
-    {
-        name: "חוגי סיירות",
-        path: ["פעילות"],
-        isForPublish: true,
-    },
-];
+export const MovmentName: string[] = ["scout", "maccabi"];
+
+export const Movments = {
+    scout: {
+        name: "scout",
+        title: "צופים",
+        path: [
+            {
+                name: "pointOfView",
+                title: "נקודת מבט",
+                hint: hints.pointOfView,
+                activities: [],
+            },
+            {
+                name: "contentActivity",
+                title: "פעילות תוכן",
+                hint: hints.contentActivity,
+                activities: [],
+            },
+            {
+                name: "scoutingTime",
+                title: "זמן צופיות",
+                hint: hints.scoutingTime,
+                activities: [],
+            },
+            {
+                name: "playingTime",
+                title: "זמן משחק",
+                hint: hints.playingTime,
+                activities: [],
+            },
+        ],
+    } as Movement,
+    maccabi: {
+        name: "maccabi",
+        title: "מכבי צעיר",
+        path: [
+            {
+                name: "activity",
+                title: "פעילות",
+                activities: [],
+            },
+        ],
+    } as Movement,
+};

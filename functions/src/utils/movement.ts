@@ -1,12 +1,12 @@
 import { DocumentData } from "firebase-admin/firestore";
-import { Movment } from "../model/types/movment";
+import { Movement } from "../model/types/movement";
 
 export const initMovment = (name: string, path: string[]) => {
     return {
         name,
         path,
         isForPublish: false,
-    } as Movment;
+    } as Movement;
 };
 
 export const initMovmentFromDB = (id: string, data: DocumentData) => {
@@ -15,5 +15,5 @@ export const initMovmentFromDB = (id: string, data: DocumentData) => {
         name: data.name || "",
         path: data.path || [],
         isForPublish: data.isForPublish || true,
-    } as Movment;
+    } as Movement;
 };
