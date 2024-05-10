@@ -1,5 +1,5 @@
 import { Activity } from "./activity";
-import { Movment } from "./movment";
+import { Movement } from "./movement";
 
 export type Resposne = "success" | "notFound" | "safety" | "error"
 
@@ -17,12 +17,12 @@ export type UpdateActivityLikesResponse = {
 
 export type AddMovmentResponse = {
     result: Resposne;
-    movment?: Movment;
+    movement?: Movement;
     message?: string;
 }
 
 export type GetMovmentsResponse = {
     result: Resposne;
-    movments: Movment[];
+    movements: Movement[];
     message?: string;
 };

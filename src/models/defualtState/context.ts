@@ -1,5 +1,4 @@
 import { PROMPT_LIMIT } from "../constants/state";
-import { DataType } from "../types/context";
 
 export const typeContext = {
     data: undefined,

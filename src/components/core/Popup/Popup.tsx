@@ -3,14 +3,19 @@ import styles from "./Popup.module.css";
 
 type PopupProps = {
     hasCloseBtn?: boolean;
+    closeFunc?: () => void;
     children: React.ReactNode;
 };
 
-function Popup({ hasCloseBtn = false, children }: PopupProps) {
+function Popup({ hasCloseBtn = false, children, closeFunc = () => {} }: PopupProps) {
     return (
         <section className={styles.background}>
             <article className={styles.container_popup}>
-                {hasCloseBtn ? <button className={styles.close_btn}>X</button> : null}
+                {hasCloseBtn ? (
+                    <button onClick={closeFunc} className={styles.close_btn}>
+                        X
+                    </button>
+                ) : null}
                 {children}
             </article>
         </section>

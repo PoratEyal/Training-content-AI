@@ -23,9 +23,8 @@ function App() {
                         <Router>
                             <Routes>
                                 <Route element={<PrivateRoutes />}>
-                                    <Route path="/" element={<Home/>}/>
                                     <Route
-                                        path="/group"
+                                        path="/"
                                         element={
                                             <>
                                                 <Helmet>
@@ -34,7 +33,23 @@ function App() {
                                                         name="description"
                                                         content="צור פעולות מרתקות ומותאמות אישית, על ידי הזנת פרטים על הקבוצה שלך, באמצעות כלי בינה מלאכותית."
                                                     />
-                                                    <link rel="canonical" href="/choosePath" />
+                                                    <link rel="canonical" href="/" />
+                                                </Helmet>
+                                                <Home />
+                                            </>
+                                        }
+                                    />
+                                    <Route
+                                        path="/group"
+                                        element={
+                                            <>
+                                                <Helmet>
+                                                    <title>בונה פעולות</title>
+                                                    <meta
+                                                        name="description"
+                                                        content="צור פעולות מרתקות ומותאמות אישית, על ידי הזנת פרטים על הפעילות שתרצה להעביר, באמצעות כלי בינה מלאכותית."
+                                                    />
+                                                    <link rel="canonical" href="/group" />
                                                 </Helmet>
                                                 <Details />
                                             </>

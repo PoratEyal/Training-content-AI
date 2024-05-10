@@ -11,10 +11,12 @@ import {
 } from "../../models/resources/group";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import Footer from "../../components/Layout/Footer/Footer";
+import { MovmentsTitle } from "../../models/resources/group";
 
 function Details() {
     const { data, updateDetails } = useContentContext();
 
+    const [movement, setMovment] = useState(data?.movement.title || "");
     const [classLevel, setClassLevel] = useState(data?.grade || "");
     const [numberOfChildren, setNumberOfChildren] = useState(data?.amount || "");
     const [activityLocation, setActivityLocation] = useState(data?.place || "");
@@ -23,19 +25,18 @@ function Details() {
     const [clicked, setClicked] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
 
-
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (classLevel && numberOfChildren && activityLocation && gender) {
+        if (movement && classLevel && numberOfChildren && activityLocation && gender) {
             setIsDisabled(false);
         }
-    }, [classLevel, numberOfChildren, activityLocation, gender]);
+    }, [movement, classLevel, numberOfChildren, activityLocation, gender]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setClicked(true);
-        updateDetails(classLevel, numberOfChildren, activityLocation, gender);
+        updateDetails(movement, classLevel, numberOfChildren, activityLocation, gender);
 
         navigate("/choosePath");
     };
@@ -43,14 +44,13 @@ function Details() {
     return (
         <div className={styles.container}>
             <form onSubmit={handleSubmit} className={styles.detailsForm}>
-                <div className={styles.half_circle}>
-                    <h1>
-                        בונה פעולות <br></br> לתנועות נוער
-                    </h1>
-                </div>
-
-                <h2 className={styles.page_title}>פרטי הקבוצה שלכם</h2>
-
+                <SelectDetails
+                    data={MovmentsTitle}
+                    placeholder={"תנועת נוער"}
+                    obj={movement}
+                    setObj={setMovment}
+                />
+                <br />
                 <SelectDetails
                     data={ClassLevel}
                     placeholder={"קבוצת גיל"}

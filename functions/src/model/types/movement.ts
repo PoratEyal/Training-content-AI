@@ -1,4 +1,4 @@
-export type Movment = {
+export type Movement = {
     name: string;
     path: string[];
     isForPublish: boolean;

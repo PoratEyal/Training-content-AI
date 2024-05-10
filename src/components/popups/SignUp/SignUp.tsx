@@ -5,7 +5,11 @@ import UserProfile from "../../auth/UserProfile/UserProfile";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../../config/firebase";
 
-function SignUp() {
+type SignUpProps = {
+    closeFunc: () => void;
+};
+
+function SignUp({ closeFunc }: SignUpProps) {
     const signInWithGoogle = () => {
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
@@ -26,12 +30,18 @@ function SignUp() {
             });
     };
 
+    const signInWithApple = () => {};
+
+    const signInWithFacebook = () => {};
+
     return (
-        <Popup>
+        <Popup closeFunc={closeFunc} hasCloseBtn>
             <h1>הרשמה</h1>
             <section>
                 <UserProfile size="large" />
                 <button onClick={signInWithGoogle}>connect with Google</button>
+                <button onClick={signInWithApple}>connect with Apple</button>
+                <button onClick={signInWithFacebook}>connect with Facebook</button>
             </section>
         </Popup>
     );

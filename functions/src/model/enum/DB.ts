@@ -1,6 +1,6 @@
 export enum CollectionDB {
     ACTIVITY = "activity",
-    MOVMENT = "movment",
+    MOVMENT = "movement",
     USERS = "users",
     MSG = "messages",
 }
