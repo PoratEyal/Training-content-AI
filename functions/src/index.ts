@@ -4,6 +4,8 @@ import * as functions from "firebase-functions";
 import ping from './callableFunctions/ping';
 import getActivity from "./callableFunctions/getActivity"
 import updateActivityLikes from "./callableFunctions/updateActivityLikes"
+import createNewUser from "./callableFunctions/createNewUser"
+import getUserById from "./callableFunctions/getUserById"
 
 const app = express();
 app.use(cors());
@@ -11,6 +13,8 @@ app.use(cors());
 exports.ping = ping;
 exports.getActivity = getActivity;
 exports.updateLikes = updateActivityLikes;
+exports.createNewUser = createNewUser;
+exports.getUserById = getUserById;
 
 exports.app = functions.https.onRequest(app);
 

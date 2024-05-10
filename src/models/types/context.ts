@@ -1,5 +1,6 @@
 import { Activity } from "./activity";
 import { Movement } from "./movement";
+import { User } from "./user";
 
 export type ActivityType = {
     subject: string;
@@ -41,7 +42,7 @@ export type ErrorContextType = {
 };
 
 export type AuthContextType = {
-    currentUser: any;
+    currentUser: User | undefined;
     userLoggedIn: boolean;
     loading: boolean;
 };

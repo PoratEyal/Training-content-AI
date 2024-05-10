@@ -3,14 +3,17 @@ import { auth } from "../config/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { AuthContextType } from "../models/types/context";
 import { defualtAuthContext } from "../models/defualtState/context";
-import { GoogleUser } from "../models/types/user";
+import { GoogleUser, User } from "../models/types/user";
+import { fetchGetUserById } from "../utils/fetch";
+import { useErrorContext } from "./ErrorContext";
 
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
 
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-    const [currentUser, setCurrentUser] = useState<any>(null);
+    const { handleError } = useErrorContext();
+    const [currentUser, setCurrentUser] = useState<User | undefined>();
     const [userLoggedIn, setUserLoggedIn] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -20,15 +23,22 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }, []);
 
     const initializeUser = async (user) => {
-        console.log("initializeUser", user as GoogleUser)
-        if (user) {
-            setCurrentUser({ ...user });
-            setUserLoggedIn(true);
-        } else {
-            setCurrentUser(null);
-            setUserLoggedIn(false);
+        try {
+            if (user) {
+                const response = await fetchGetUserById({ id: (user as GoogleUser).uid });
+                if (response.user) {
+                    setCurrentUser(response.user);
+                    setUserLoggedIn(true);
+                } else {
+                    setCurrentUser(undefined);
+                    setUserLoggedIn(false);
+                }
+            }
+        } catch (error) {
+            handleError(error);
+        } finally {
+            setLoading(false);
         }
-        setLoading(false);
     };
 
     return (

@@ -4,8 +4,11 @@ import Btn from "../../components/btn/btn"
 import styles from "./Home.module.css";
 import SignUp from "../../components/popups/SignUp/SignUp";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext";
+import Profile from "../../components/auth/Profile/Profile";
 
 function Home() {
+    const { currentUser } = useAuthContext();
     const [openModal, setOpenModal] = useState(false);
     const navigate = useNavigate();
 
@@ -17,6 +20,7 @@ function Home() {
     return (
         <section className={styles.container}>
             {/* <Logo /> */}
+            <Profile img={currentUser?.image || ""} name={currentUser?.name || "r"} role="guide"/>
             <div className={styles.logo_text_div}>
                 <img className={styles.logo} alt="big logo image for the homePage" src="bigLogo.svg"></img>
 
