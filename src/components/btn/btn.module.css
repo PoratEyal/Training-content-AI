@@ -1,0 +1,38 @@
+.home_start_btn{
+    width: fit-content;
+    padding: 0 15px;
+    border: none;
+    border-radius: 19px;
+    font-size: 16px;
+    font-weight: 550;
+    background-color: #FFD324;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    direction: rtl;
+}
+.home_start_btn label{
+    color: #333335;
+}
+.home_start_btn_disabled{
+    background-color: #ffd32467;
+}
+
+.btn_icon{
+    width: 20px;
+    height: 20px;
+    background-color: #708254;
+    border: none;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon{
+    color: #FFD324;
+    font-size: 15px;
+}
