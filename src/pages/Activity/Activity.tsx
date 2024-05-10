@@ -10,15 +10,17 @@ function Activity() {
     const { data, resetAllUseFields } = useContentContext();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (
-            !data ||
-            !data.grade
-            // (!data.pointOfView && !data.contentActivity && !data.scoutingTime && !data.playingTime)
-        ) {
-            navigate("/choosePath");
-        }
-    }, []);
+    console.log("data: ", data)
+
+    // useEffect(() => {
+    //     if (
+    //         !data ||
+    //         !data.grade ||
+    //         (!data.pointOfView && !data.contentActivity && !data.scoutingTime && !data.playingTime)
+    //     ) {
+    //         navigate("/choosePath");
+    //     }
+    // }, []);
 
     const goingBack = () => {
         resetAllUseFields();

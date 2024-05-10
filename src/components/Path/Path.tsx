@@ -7,27 +7,49 @@ import { ActivityTime } from "../../models/resources/activity";
 import { useErrorContext } from "../../context/ErrorContext";
 import PlayingTimeSubjects from "../../models/resources/playingTime.json";
 import ScoutingTimeSubjects from "../../models/resources/scoutesActivities.json";
+import { MovementPath } from "../../models/types/movement";
 import Hint from "../Hint/Hint";
 
-function Path({ index, title, setPath, hint, isGenerate = false }) {
+type PathProps = {
+    index: number;
+    path: MovementPath;
+    setPath: React.Dispatch<React.SetStateAction<any[]>>;
+    isGenerate?: boolean;
+};
+
+function Path({ index, path, setPath, isGenerate = false }: PathProps) {
     const { handleError } = useErrorContext();
     const [show, setShow] = useState(false);
     const [subject, setSubject] = useState("");
     const [time, setTime] = useState("");
     const [magic, setMagic] = useState(false);
 
+    const { name, title, hint } = path;
+
     useEffect(() => {
         if (!show) {
-            setPath(undefined);
+            setPath((prev) => {
+                const newPath = [...prev];
+                newPath[index] = undefined;
+                return newPath;
+            });
             setSubject("");
             setTime("");
             return;
         }
         if (!subject || !time || subject === "" || time === "") {
-            setPath(undefined);
+            setPath((prev) => {
+                const newPath = [...prev];
+                newPath[index] = undefined;
+                return newPath;
+            });
             return;
         }
-        setPath({ subject, time });
+        setPath((prev) => {
+            const newPath = [...prev];
+            newPath[index] = { subject, time, name, index };
+            return newPath;
+        });
     }, [show, subject, time]);
 
     const toggleShow = () => setShow((prev) => !prev);
@@ -48,8 +70,8 @@ function Path({ index, title, setPath, hint, isGenerate = false }) {
             if (isGenerate) {
                 setTimeout(() => {
                     let activities = [];
-                    if (index === 3) activities = ScoutingTimeSubjects;
-                    if (index === 4) activities = PlayingTimeSubjects;
+                    if (index === 2) activities = ScoutingTimeSubjects;
+                    if (index === 3) activities = PlayingTimeSubjects;
                     const randomIndex = Math.floor(Math.random() * activities.length);
                     setSubject(activities[randomIndex].name);
                     setMagic(false);
