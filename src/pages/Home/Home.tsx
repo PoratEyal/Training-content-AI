@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Logo from "../../components/core/Logo/Logo";
+import Btn from "../../components/btn/btn"
 import styles from "./Home.module.css";
 import SignUp from "../../components/popups/SignUp/SignUp";
 import { useNavigate } from "react-router-dom";
@@ -14,19 +15,20 @@ function Home() {
     const handleStart = () => navigate("/group");
 
     return (
-        <section>
-            <Logo />
-            <h1 className={styles.home_title} id="title">
-                מתקדמים לפעילות ב-AI
-            </h1>
-            <label htmlFor="title" className={styles.home_lable}>
-                אם בא לנו טקסט כאן
-            </label>
+        <section className={styles.container}>
+            {/* <Logo /> */}
+            <div className={styles.logo_text_div}>
+                <img className={styles.logo} alt="big logo image for the homePage" src="bigLogo.svg"></img>
 
-            <section>
-                <button onClick={handleStart} className={styles.home_start_btn}>
-                    מתחילים
-                </button>
+                <label className={styles.home_lable}>
+                    <label>תכנון פעילויות פשוט ומהיר בלי מאמץ</label>
+                    <img className={styles.hand_icon} alt="Hand cool icon" src="hand_icon.svg"></img>
+                </label>
+            </div>
+            
+
+            <section className={styles.button_section}>
+                <Btn isDisabled={false} func={handleStart} height={38} text={"מתחילים"}></Btn>
                 <button onClick={handleOpenModal} className={styles.home_login_btn}>
                     הרשמה
                 </button>

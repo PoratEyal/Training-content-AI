@@ -4,92 +4,59 @@
     flex-direction: column;
     margin-top: 0px;
     width: fit-content;
+    height: 100vh;
+    background-color: #708254;
+    width: 100vw;
+}
+
+.back_icon{
+    rotate: 180deg;
+    padding: 10px;
+    font-size: 24px;
+    color: #FFD324;
+}
+
+.h2_img{
+    width: 180px;
+    position: absolute;
+    top: 50px;
+    right: 40px;
+}
+.lamp_img{
+    z-index: 2;
+    position: absolute;
+    top: -100px;
+    left: 20px;
 }
 
 .detailsForm{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     gap: 5px;
+    background-color: #FAF6EE;
+    border-top-left-radius: 37px;
+    border-top-right-radius: 37px;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 75%;
+}
+.spacer{
+    margin-top: 40px;
+    position: relative;
 }
 
-.page_title {
-    margin-top: -20px;
-    color: orange;
-    font-size: 20px;
-    font-weight: 500;
-    width: 100%;
-    text-align: center;
-}
-
-.btn_div {
-    /* margin-top: 50px; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.submit_btn {
-    border: none;
-    padding: 14px;
-    font-size: 25px;
-    font-weight: 600;
-    border-radius: 50px;
-    font-family: 'Fredoka', sans-serif;
-    background-color: rgb(255, 151, 47);
-    transition: background-color 0.3s ease;
-    /* position: absolute;
-    bottom: 40px; */
-    width: 350px;
-    height: 62px;
-    color: white;
-}
-
-.submit_btn:disabled {
-    background-color: rgb(255, 151, 47, 0.5);
-    color: white;
-    cursor: default;
-}
-
-.loading_icon {
-    color: white;
-    animation: spin 1s infinite linear;
-    font-size: 32px;
-}
-
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+.btn_div{
+    margin-top: 20px;
+    direction: ltr;
+    width: 70vw;
+    margin-bottom: 50px;
 }
 
 
 @media (min-width: 550px) {
-    .container {
-        position: relative;
-        width: fit-content;
-        display: flex;
-        padding-left: 25px;
-        padding-right: 25px;
-        border-radius: 25px;
-        flex-direction: column;
-        margin-top: 50px;
-        background-color: #F5F5DC;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        border: 2px solid orange;
-    }
-
-    .submit_btn {
-        position: relative;
-        margin-top: 40px;
-        cursor: pointer;
-    }
-
     body {
         background-color: #ffe1a0 !important;
     }
