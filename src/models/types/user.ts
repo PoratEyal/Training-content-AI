@@ -1,15 +1,13 @@
-import { Activity } from "./activity";
 import { Movement } from "./movement";
 
 export type User = {
     id: string;
-    activities: Activity[];
+    name: string;
+    email: string;
+    image: string;
     limit: number;
     movement: Movement;
     isAcceptTerms: boolean;
-
-    // name: string;
-    // image: string;
 };
 
 export type GoogleUser = {

@@ -3,6 +3,7 @@ import { auth } from "../config/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { AuthContextType } from "../models/types/context";
 import { defualtAuthContext } from "../models/defualtState/context";
+import { GoogleUser } from "../models/types/user";
 
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
 
@@ -18,8 +19,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         return unsubscribe;
     }, []);
 
-    const initializeUser = async (user: any) => {
-        console.log("initializeUser", user)
+    const initializeUser = async (user) => {
+        console.log("initializeUser", user as GoogleUser)
         if (user) {
             setCurrentUser({ ...user });
             setUserLoggedIn(true);
