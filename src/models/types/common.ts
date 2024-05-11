@@ -5,3 +5,9 @@ export type NavOption = {
     path: string;
     Icon: React.ReactNode;
 };
+
+export type DropdownOption = {
+    title: string;
+    path?: string;
+    Icon: React.ReactNode;
+};
