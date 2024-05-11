@@ -10,12 +10,6 @@ export const typeContext = {
     updateDetails: () => {},
     resetAllUseFields: () => {},
     updateMovementPath: () => {},
-
-    updateContentActivity: () => {},
-    updatePointOfView: () => {},
-    updateScoutingTime: () => {},
-    updatePlayingTime: () => {},
-    contextUpdateSet: {},
 };
 
 export const defualtErrorContext = {
@@ -26,6 +20,6 @@ export const defualtErrorContext = {
 
 export const defualtAuthContext = {
     currentUser: null,
-    userLoggedIn: false,
+    isLoggedIn: false,
     loading: true,
 };
