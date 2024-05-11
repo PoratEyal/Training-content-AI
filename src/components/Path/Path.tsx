@@ -85,8 +85,8 @@ function Path({ index, path, setPath, isGenerate = false }: PathProps) {
     return (
         <div className={styles.checkbox_div}>
             <div className={styles.custom_checkbox}>
-                <input type="checkbox" checked={show} onChange={toggleShow} />
-                <span>{title}</span>
+                <input type="checkbox" id={name} checked={show} onChange={toggleShow} />
+                <label  htmlFor={name}>{title}</label>
                 <Hint hint={hint} />
             </div>
 
@@ -112,7 +112,7 @@ function Path({ index, path, setPath, isGenerate = false }: PathProps) {
 
                     <SelectDetails
                         data={ActivityTime}
-                        placeholder={"זמן הפעילות"}
+                        placeholder={"משך הפעילות"}
                         obj={time}
                         setObj={setTime}
                     />

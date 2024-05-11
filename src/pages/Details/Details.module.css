@@ -35,7 +35,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 5px;
-    background-color: #FAF6EE;
+    background-color: var(--background-color);
     border-top-left-radius: 37px;
     border-top-right-radius: 37px;
     position: absolute;
