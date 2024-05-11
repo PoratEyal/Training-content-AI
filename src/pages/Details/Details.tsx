@@ -10,11 +10,14 @@ import {
 } from "../../models/resources/group";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import { MovmentsTitle } from "../../models/resources/group";
-import Btn from '../../components/btn/btn';
+import Btn from "../../components/btn/btn";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import Profile from "../../components/auth/Profile/Profile";
+import { useAuthContext } from "../../context/AuthContext";
 
 function Details() {
     const { data, updateDetails } = useContentContext();
+    const { userLoggedIn, currentUser } = useAuthContext();
 
     const [movement, setMovment] = useState(data?.movement?.title || "");
     const [classLevel, setClassLevel] = useState(data?.grade || "");
@@ -43,17 +46,26 @@ function Details() {
 
     return (
         <div className={styles.container}>
+            {userLoggedIn ? (
+                <Profile
+                    img={currentUser?.image || ""}
+                    name={currentUser?.name || "r"}
+                    role="guide"
+                />
+            ) : null}
 
-            <IoMdArrowRoundBack onClick={() => navigate("/")} className={styles.back_icon}></IoMdArrowRoundBack>
+            <IoMdArrowRoundBack
+                onClick={() => navigate("/")}
+                className={styles.back_icon}
+            ></IoMdArrowRoundBack>
 
             <img className={styles.h2_img} alt="h2 text" src="h2_page2.svg"></img>
 
             <form onSubmit={handleSubmit} className={styles.detailsForm}>
-
                 <img className={styles.lamp_img} alt="lamp image" src="lamp.svg"></img>
 
                 <div className={styles.spacer}></div>
-                
+
                 <div>
                     <SelectDetails
                         data={MovmentsTitle}
@@ -79,13 +91,22 @@ function Details() {
                         obj={activityLocation}
                         setObj={setActivityLocation}
                     />
-                    <SelectDetails data={Gender} placeholder={"מין"} obj={gender} setObj={setGender} />
+                    <SelectDetails
+                        data={Gender}
+                        placeholder={"מין"}
+                        obj={gender}
+                        setObj={setGender}
+                    />
                 </div>
 
                 <div className={styles.btn_div}>
-                    <Btn isDisabled={isDisabled} height={38} text={"בחירת פעילות"} func={handleSubmit}></Btn>
+                    <Btn
+                        isDisabled={isDisabled}
+                        height={38}
+                        text={"בחירת פעילות"}
+                        func={handleSubmit}
+                    ></Btn>
                 </div>
-
             </form>
         </div>
     );
