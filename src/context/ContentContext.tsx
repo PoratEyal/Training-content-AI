@@ -6,8 +6,6 @@ import { useCookies } from "react-cookie";
 import Session from "../utils/sessionStorage";
 import { tillEndOfDay } from "../utils/time";
 import { Activity } from "../models/types/activity";
-import { Movments } from "../models/resources/movment";
-import { Movement } from "../models/types/movement";
 import { getMovementByTitle } from "../utils/movement";
 
 export const ContentContext = createContext<ContentContextType>(typeContext);
@@ -82,53 +80,6 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
         });
     };
 
-    // - - - - - - Content Activity - - - - - - - - - - - - - - -
-
-    const updateContentActivity = (activity: Activity) => {
-        setData((prevData) => {
-            const d = { ...prevData, contentActivity: activity };
-            Session.set("data", d);
-            return d;
-        });
-    };
-
-    // - - - - - - Point Of View - - - - - - - - - - - - - - -
-
-    const updatePointOfView = (activity: Activity) => {
-        setData((prevData) => {
-            const d = { ...prevData, pointOfView: activity };
-            Session.set("data", d);
-            return d;
-        });
-    };
-
-    // - - - - - - Scouting Time - - - - - - - - - - - - - - -
-
-    const updateScoutingTime = (activity: Activity) => {
-        setData((prevData) => {
-            const d = { ...prevData, scoutingTime: activity };
-            Session.set("data", d);
-            return d;
-        });
-    };
-
-    // - - - - - - playing Time - - - - - - - - - - - - - - -
-
-    const updatePlayingTime = (activity: Activity) => {
-        setData((prevData) => {
-            const d = { ...prevData, playingTime: activity };
-            Session.set("data", d);
-            return d;
-        });
-    };
-
-    const contextUpdateSet = {
-        pointOfView: updatePointOfView,
-        contentActivity: updateContentActivity,
-        scoutingTime: updateScoutingTime,
-        playingTime: updatePlayingTime,
-    };
-
     return (
         <ContentContext.Provider
             value={{
@@ -141,12 +92,6 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
                 updateDetails,
                 resetAllUseFields,
                 updateMovementPath,
-
-                updateContentActivity,
-                updatePointOfView,
-                updateScoutingTime,
-                updatePlayingTime,
-                contextUpdateSet,
             }}
         >
             {children}

@@ -14,7 +14,7 @@ type MoreActionsProps = {
 };
 
 function MoreActions({ pathActivity }: MoreActionsProps) {
-    const { data, limit, updateLimit, contextUpdateSet } = useContentContext();
+    const { data, limit, updateLimit } = useContentContext();
     const { handleError } = useErrorContext();
 
     const [loadingGenerate, setLoadingGenerate] = useState(false);
@@ -30,7 +30,7 @@ function MoreActions({ pathActivity }: MoreActionsProps) {
             setLoadingGenerate(true);
             setReset(true);
 
-            const contextUpdateFunc = contextUpdateSet[path as keyof Activity];
+            // const contextUpdateFunc = contextUpdateSet[path as keyof Activity];
 
             // fetchGetActivity(contextUpdateFunc, {
             //     fetchFrom: ["AI"],

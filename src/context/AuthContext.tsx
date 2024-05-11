@@ -14,7 +14,7 @@ export const useAuthContext = () => useContext(AuthContext);
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const { handleError } = useErrorContext();
     const [currentUser, setCurrentUser] = useState<User | undefined>();
-    const [userLoggedIn, setUserLoggedIn] = useState<boolean>(false);
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
@@ -28,10 +28,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 const response = await fetchGetUserById({ id: (user as GoogleUser).uid });
                 if (response.user) {
                     setCurrentUser(response.user);
-                    setUserLoggedIn(true);
+                    setIsLoggedIn(true);
                 } else {
                     setCurrentUser(undefined);
-                    setUserLoggedIn(false);
+                    setIsLoggedIn(false);
                 }
             }
         } catch (error) {
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ currentUser, userLoggedIn, loading }}>
+        <AuthContext.Provider value={{ currentUser, isLoggedIn, loading }}>
             {children}
         </AuthContext.Provider>
     );
