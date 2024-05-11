@@ -2,17 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import styles from "./ChoosePath.module.css";
 import { useNavigate } from "react-router-dom";
-import Loading from "../../components/Loading/Loading";
 import Path from "../../components/Path/Path";
 import { useErrorContext } from "../../context/ErrorContext";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { PROMPT_LIMIT } from "../../models/constants/state";
 import { fetchGetActivity } from "../../utils/fetch";
-import Btn from '../../components/btn/btn'
+import Btn from "../../components/btn/btn";
+import { useAuthContext } from "../../context/AuthContext";
+import Profile from "../../components/auth/Profile/Profile";
+import Loading from "../../components/Loading/Loading";
 
 function ChoosePath() {
     const { data, limit, updateLimit, updateMovementPath, resetAllUseFields } = useContentContext();
     const { handleError } = useErrorContext();
+    const { isLoggedIn, currentUser } = useAuthContext();
 
     const { movement } = data || {};
     const { path } = movement || {};
@@ -22,9 +25,9 @@ function ChoosePath() {
     const [isDisabled, setIsDisabled] = useState(true);
     const navigate = useNavigate();
 
-    useEffect(()=>{
+    useEffect(() => {
         setIsDisabled(optionsPath.every((option) => option === undefined));
-    },[optionsPath])
+    }, [optionsPath]);
 
     const submitHandler = async () => {
         updateLimit();
@@ -64,14 +67,35 @@ function ChoosePath() {
     };
 
     return (
-        <React.Fragment>
-            <div className={styles.container}>
-                <div className={styles.checkbox_container}>
+        <div className={styles.container}>
+            <div>
+                {isLoggedIn ? (
+                    <Profile
+                        img={currentUser?.image || ""}
+                        name={currentUser?.name || "r"}
+                        role="guide"
+                    />
+                ) : null}
 
-                    <IoMdArrowRoundBack onClick={goBack} className={styles.back_icon}></IoMdArrowRoundBack>
+                <IoMdArrowRoundBack
+                    onClick={goBack}
+                    className={styles.back_icon}
+                ></IoMdArrowRoundBack>
 
-                    <h1 className={styles.page_title}>בחרו את הפעילות שלכם</h1>
+                <div className={styles.h2_div}>
+                    <label>בחרו את הפעילות</label>
+                    <img alt="cool effect to the text" src="page3_effect.svg"></img>
+                </div>
+            </div>
 
+            <div className={styles.contnet_div}>
+                <img
+                    className={styles.path_img}
+                    alt="path icon and heart logo"
+                    src="path.svg"
+                ></img>
+
+                <div className={styles.path_div}>
                     {path?.map((p, i) => (
                         <Path key={i} index={i} path={p} setPath={setOptionsPath} />
                     ))}
@@ -86,9 +110,8 @@ function ChoosePath() {
                     ></Btn>
                 </div>
             </div>
-
             {clicked && <Loading></Loading>}
-        </React.Fragment>
+        </div>
     );
 }
 
