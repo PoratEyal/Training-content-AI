@@ -17,7 +17,7 @@ import { useAuthContext } from "../../context/AuthContext";
 
 function Details() {
     const { data, updateDetails } = useContentContext();
-    const { userLoggedIn, currentUser } = useAuthContext();
+    const { isLoggedIn, currentUser } = useAuthContext();
 
     const [movement, setMovment] = useState(data?.movement?.title || "");
     const [classLevel, setClassLevel] = useState(data?.grade || "");
@@ -46,7 +46,7 @@ function Details() {
 
     return (
         <div className={styles.container}>
-            {userLoggedIn ? (
+            {isLoggedIn ? (
                 <Profile
                     img={currentUser?.image || ""}
                     name={currentUser?.name || "r"}

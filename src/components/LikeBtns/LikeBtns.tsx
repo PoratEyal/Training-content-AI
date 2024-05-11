@@ -13,7 +13,6 @@ type LikeBtnsProps = {
 };
 
 function LikeBtns({ activity, reset }: LikeBtnsProps) {
-    const { contextUpdateSet } = useContentContext();
     const { handleError } = useErrorContext();
 
     const [action, setAction] = useState({ like: undefined, dislike: undefined });
@@ -53,15 +52,15 @@ function LikeBtns({ activity, reset }: LikeBtnsProps) {
     }, [action]);
 
     const sendLikeStatusToServer = useCallback(async (likesAmount: number) => {
-        const contextUpdateFunc = contextUpdateSet[activity.path as keyof Activity];
-        try {
-            await fetchUpdateActivityLikes(contextUpdateFunc, {
-                activity,
-                likesAmount,
-            });
-        } catch (error) {
-            handleError(error);
-        }
+        // const contextUpdateFunc = contextUpdateSet[activity.path as keyof Activity];
+        // try {
+        //     await fetchUpdateActivityLikes(contextUpdateFunc, {
+        //         activity,
+        //         likesAmount,
+        //     });
+        // } catch (error) {
+        //     handleError(error);
+        // }
     }, []);
 
     const handleClickLike = async () => {

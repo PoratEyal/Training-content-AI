@@ -27,12 +27,6 @@ export type ContentContextType = {
     updateDetails: (movement: string, grade: string, amount: string, place: string, gender: string) => void;
     resetAllUseFields: () => void;
     updateMovementPath: (index: number, activity: Activity) => void;
-
-    updateContentActivity: (activity: Activity) => void;
-    updatePointOfView: (activity: Activity) => void;
-    updateScoutingTime: (activity: Activity) => void;
-    updatePlayingTime: (activity: Activity) => void;
-    contextUpdateSet: Object;
 };
 
 export type ErrorContextType = {
@@ -43,6 +37,6 @@ export type ErrorContextType = {
 
 export type AuthContextType = {
     currentUser: User | undefined;
-    userLoggedIn: boolean;
+    isLoggedIn: boolean;
     loading: boolean;
 };
