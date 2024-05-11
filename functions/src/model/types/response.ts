@@ -39,3 +39,15 @@ export type GetUserByIdResponse = {
     user?: User;
     message?: string;
 };
+
+export type UpdateUserResponse = {
+    result: Resposne;
+    user?: User;
+    message?: string;
+};
+
+export type updateUserByIdResponse = {
+    result: Resposne;
+    user?: User;
+    message?: string;
+};

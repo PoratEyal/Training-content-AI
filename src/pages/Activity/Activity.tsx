@@ -4,7 +4,6 @@ import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import { IoArrowForward } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { PathActivity } from "../../models/constants/path";
 
 function Activity() {
     const { data, resetAllUseFields } = useContentContext();

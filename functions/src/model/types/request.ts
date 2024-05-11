@@ -1,11 +1,11 @@
-import { Activity, ActivityPathName } from "./activity";
+import { Activity } from "./activity";
 import { User } from "./user";
 
 export type FetchFrom = "DB" | "AI";
 
 export type GetActivityRequest = {
     fetchFrom: FetchFrom[];
-    path: ActivityPathName;
+    path: string;
     subject: string;
     time: string;
     amount: string;
@@ -32,4 +32,8 @@ export type CreateNewUserRequest = {
 
 export type GetUserByIdRequest = {
     id: string;
+};
+
+export type UpdateUserRequest = {
+    user: User;
 };

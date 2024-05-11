@@ -1,4 +1,4 @@
-import { Movement } from "./movement";
+import { UserMovementDetails } from "./movement";
 
 export type User = {
     id: string;
@@ -7,7 +7,7 @@ export type User = {
     image: string;
     role: string;
     limit: number;
-    movement: Movement;
+    movement: UserMovementDetails | undefined;
     isAcceptTerms: boolean;
 };
 

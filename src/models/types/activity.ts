@@ -13,13 +13,6 @@ export type Activity = {
     activity: string;
 };
 
-export type ActivityPathName = "pointOfView" | "contentActivity" | "scoutingTime" | "playingTime";
-
-export type PathType = {
-    path: ActivityPathName;
-    name: string;
-};
-
 export type ActivityFunc = (
     subject: string,
     time: string,

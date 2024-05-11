@@ -1,7 +1,22 @@
+import { Activity } from "./activity";
+
 export type Movement = {
     name: string;
-    path: string[];
-    isForPublish: boolean;
+    title: string;
+    path: MovementPath[];
+};
 
-    // logo: string;
-}
+export type MovementPath = {
+    name: string;
+    title: string;
+    activities: Activity[] | undefined;
+    hint?: string;
+};
+
+export type UserMovementDetails = {
+    movement: string; //the en name
+    grade: string;
+    gender: string;
+    amount: string;
+    place: string;
+};

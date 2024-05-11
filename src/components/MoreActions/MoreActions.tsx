@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import { useErrorContext } from "../../context/ErrorContext";
-import { Activity, PathType } from "../../models/types/activity";
 import { PROMPT_LIMIT } from "../../models/constants/state";
 import styles from "./MoreActions.module.css";
 import { fetchGetActivity } from "../../utils/fetch";
@@ -10,19 +9,18 @@ import LikeBtns from "../LikeBtns/LikeBtns";
 import ShareBtns from "../ShareBtns/ShareBtns";
 
 type MoreActionsProps = {
-    pathActivity: PathType;
 };
 
-function MoreActions({ pathActivity }: MoreActionsProps) {
+function MoreActions({  }: MoreActionsProps) {
     const { data, limit, updateLimit } = useContentContext();
     const { handleError } = useErrorContext();
 
     const [loadingGenerate, setLoadingGenerate] = useState(false);
     const [reset, setReset] = useState(false);
 
-    const { path } = pathActivity;
-    const activity = data[path as keyof Activity];
-    const { activity: text, subject, time, amount, grade, gender, place } = activity;
+    // const { path } = pathActivity;
+    // const activity = data[path as keyof Activity];
+    // const { activity: text, subject, time, amount, grade, gender, place } = activity;
 
     const generateAgain = async () => {
         updateLimit();
@@ -53,8 +51,8 @@ function MoreActions({ pathActivity }: MoreActionsProps) {
     return (
         <section className={styles.more_actions_container}>
             <div className={styles.more_actions_left}>
-                <LikeBtns activity={activity} reset={reset} />
-                <ShareBtns text={text} />
+                {/* <LikeBtns activity={activity} reset={reset} />
+                <ShareBtns text={text} /> */}
             </div>
             <button onClick={generateAgain} className={styles.button}>
                 {!loadingGenerate ? (

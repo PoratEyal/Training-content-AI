@@ -8,6 +8,7 @@ export type NavOption = {
 
 export type DropdownOption = {
     title: string;
-    path?: string;
+    path: string;
+    func?: () => void;
     Icon: React.ReactNode;
 };
