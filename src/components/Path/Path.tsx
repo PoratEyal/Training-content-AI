@@ -3,7 +3,7 @@ import styles from "./Path.module.css";
 import { FaWandMagicSparkles } from "react-icons/fa6";
 import { VscLoading } from "react-icons/vsc";
 import SelectDetails from "../SelectDetailsPath/SelectDetailsPath";
-import { ActivityTime } from "../../models/resources/activity";
+import { ActivityTimeOptions } from "../../models/resources/select";
 import { useErrorContext } from "../../context/ErrorContext";
 import PlayingTimeSubjects from "../../models/resources/playingTime.json";
 import ScoutingTimeSubjects from "../../models/resources/scoutesActivities.json";
@@ -111,7 +111,7 @@ function Path({ index, path, setPath, isGenerate = false }: PathProps) {
                     </div>
 
                     <SelectDetails
-                        data={ActivityTime}
+                        data={ActivityTimeOptions}
                         placeholder={"משך הפעילות"}
                         obj={time}
                         setObj={setTime}

@@ -27,6 +27,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             if (user) {
                 const response = await fetchGetUserById({ id: (user as GoogleUser).uid });
                 if (response.user) {
+                    console.log("user:", response.user);
                     setCurrentUser(response.user);
                     setIsLoggedIn(true);
                 } else {
@@ -52,6 +53,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     return (
+
         <AuthContext.Provider value={{ currentUser, isLoggedIn, loading, logout }}>
             {children}
         </AuthContext.Provider>

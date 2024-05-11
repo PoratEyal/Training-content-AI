@@ -8,8 +8,8 @@ export const initUserFromDB = (id: string, data: DocumentData) => {
         email: data.email || "",
         image: data.image || "",
         role: data.role || "",
-        movements: data.movements || undefined,
-        isAcceptTerms: data.isAcceptTerms || false,
         limit: data.limit || 0,
+        movement: data.movement || undefined,
+        isAcceptTerms: data.isAcceptTerms || false,
     } as User;
 };

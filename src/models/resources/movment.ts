@@ -1,9 +1,9 @@
 import { Movement } from "../types/movement";
 import hints from "./hints.json";
 
-export const MovmentName: string[] = ["scout", "maccabi"];
+export const MovementName: string[] = ["scout", "maccabi"];
 
-export const Movments = {
+export const Movements = {
     scout: {
         name: "scout",
         title: "צופים",

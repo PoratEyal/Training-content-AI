@@ -6,14 +6,18 @@ import getActivity from "./callableFunctions/getActivity"
 import updateActivityLikes from "./callableFunctions/updateActivityLikes"
 import createNewUser from "./callableFunctions/createNewUser"
 import getUserById from "./callableFunctions/getUserById"
+import updateUser from "./callableFunctions/updateUser"
 
 const app = express();
 app.use(cors());
 
 exports.ping = ping;
+
 exports.getActivity = getActivity;
 exports.updateLikes = updateActivityLikes;
+
 exports.createNewUser = createNewUser;
+exports.updateUser = updateUser
 exports.getUserById = getUserById;
 
 exports.app = functions.https.onRequest(app);

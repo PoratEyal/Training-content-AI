@@ -3,13 +3,13 @@ import { useContentContext } from "../../context/ContentContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./Details.module.css";
 import {
-    ActivityLocation,
-    ChildrensNumber,
-    ClassLevel,
-    Gender,
-} from "../../models/resources/group";
+    MovmentsOptions,
+    GradeOptions,
+    AmountOptions,
+    PlaceOptions,
+    GenderOptions,
+} from "../../models/resources/select";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
-import { MovmentsTitle } from "../../models/resources/group";
 import Btn from "../../components/btn/btn";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import Profile from "../../components/auth/Profile/Profile";
@@ -21,11 +21,11 @@ function Details() {
     const { data, updateDetails } = useContentContext();
     const { isLoggedIn, currentUser } = useAuthContext();
 
-    const [movement, setMovment] = useState(data?.movement?.title || "");
-    const [classLevel, setClassLevel] = useState(data?.grade || "");
-    const [numberOfChildren, setNumberOfChildren] = useState(data?.amount || "");
-    const [activityLocation, setActivityLocation] = useState(data?.place || "");
-    const [gender, setGender] = useState(data?.gender || "");
+    const [movement, setMovment] = useState(currentUser?.movement?.movement || "");
+    const [classLevel, setClassLevel] = useState(currentUser?.movement?.grade || "");
+    const [numberOfChildren, setNumberOfChildren] = useState(currentUser?.movement?.amount || "");
+    const [activityLocation, setActivityLocation] = useState(currentUser?.movement?.place || "");
+    const [gender, setGender] = useState(currentUser?.movement?.gender || "");
 
     const [isDisabled, setIsDisabled] = useState(true);
 
@@ -40,8 +40,9 @@ function Details() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         updateDetails(movement, classLevel, numberOfChildren, activityLocation, gender);
-        if(isLoggedIn && currentUser) {
-            const user = updateUserMovement(
+        if (isLoggedIn && currentUser) {
+            //TODO: check if the param changed
+            const updatedUser = updateUserMovement(
                 currentUser,
                 movement,
                 classLevel,
@@ -49,7 +50,7 @@ function Details() {
                 numberOfChildren,
                 activityLocation,
             );
-            await fetchUpdateUser({ user });
+            await fetchUpdateUser({ user: updatedUser });
         }
         navigate("/choosePath");
     };
@@ -78,31 +79,31 @@ function Details() {
 
                 <div>
                     <SelectDetails
-                        data={MovmentsTitle}
+                        data={MovmentsOptions}
                         placeholder={"תנועת נוער"}
                         obj={movement}
                         setObj={setMovment}
                     />
                     <SelectDetails
-                        data={ClassLevel}
+                        data={GradeOptions}
                         placeholder={"קבוצת גיל"}
                         obj={classLevel}
                         setObj={setClassLevel}
                     />
                     <SelectDetails
-                        data={ChildrensNumber}
+                        data={AmountOptions}
                         placeholder={"מספר ילדים"}
                         obj={numberOfChildren}
                         setObj={setNumberOfChildren}
                     />
                     <SelectDetails
-                        data={ActivityLocation}
+                        data={PlaceOptions}
                         placeholder={"מיקום הפעילות"}
                         obj={activityLocation}
                         setObj={setActivityLocation}
                     />
                     <SelectDetails
-                        data={Gender}
+                        data={GenderOptions}
                         placeholder={"מין"}
                         obj={gender}
                         setObj={setGender}

@@ -42,7 +42,7 @@ const getActivity = functions.https.onCall(
                 await activityRef.update(updates);
                 return { result: "success", activity };
             } else if (fetchFrom.includes("AI")) {
-                const geminiAPI = GeminiApiSet[path];
+                const geminiAPI = GeminiApiSet[path as keyof typeof GeminiApiSet];
                 const activityResult = await geminiAPI({
                     subject,
                     time,

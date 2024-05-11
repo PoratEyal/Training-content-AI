@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./SignUp.module.css";
+import axios from "axios";
 import Popup from "../../core/Popup/Popup";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../../config/firebase";
 import { fetchCreateNewUser } from "../../../utils/fetch";
 import { GoogleUser } from "../../../models/types/user";
@@ -35,16 +36,39 @@ function SignUp({ closeFunc }: SignUpProps) {
         }
     };
 
-    const signInWithApple = () => {};
+    const signInWithFacebook = async () => {
+        const provider = new FacebookAuthProvider();
+        try {
+            const userResult = await signInWithPopup(auth, provider);
+            const credential = FacebookAuthProvider.credentialFromResult(userResult);
+            const token = credential.accessToken;
+            axios
+                .get(
+                    `https://graph.facebook.com/${userResult.user.providerData[0].uid}/picture?type=large&redirect=false&access_token=${token}`,
+                )
+                .then((res) => res.data.blob())
+                .then((blob) => {
+                    console.log("blob:", URL.createObjectURL(blob));
+                });
 
-    const signInWithFacebook = () => {};
+            console.log("userResult:", userResult);
+            // closeFunc();
+            // if (userResult) {
+            //     const user = userResult.user as unknown as GoogleUser;
+            //     const newUser = initUser(user);
+            //     await fetchCreateNewUser({ newUser });
+            // }
+        } catch (error) {
+            closeFunc();
+        }
+    };
 
     return (
         <Popup closeFunc={closeFunc} hasCloseBtn>
             <h1>הרשמה</h1>
             <section>
                 <button onClick={signInWithGoogle}>connect with Google</button>
-                <button onClick={signInWithApple}>connect with Apple</button>
+                <br />
                 <button onClick={signInWithFacebook}>connect with Facebook</button>
             </section>
         </Popup>

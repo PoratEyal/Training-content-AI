@@ -23,7 +23,7 @@ const getActivity = functions.https.onCall(
             if (movements.length !== 0) {
                 return { result: "success", movements };
             }
-            return { result: "notFound", movements: [], message: "Failed to find Movments" };
+            return { result: "notFound", movements: [], message: "Failed to find Movements" };
         } catch (error) {
             console.error("Failed to retrieve activity.", error);
             return { result: "error", movements: [], message: "Failed to retrieve activity." };
