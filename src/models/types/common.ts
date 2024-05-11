@@ -12,3 +12,9 @@ export type DropdownOption = {
     func?: () => void;
     Icon: React.ReactNode;
 };
+
+export type SelectOption = {
+    readonly value: string;
+    readonly label: string;
+    action?: () => any;
+}

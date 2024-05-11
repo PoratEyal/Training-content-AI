@@ -7,6 +7,7 @@ import Session from "../utils/sessionStorage";
 import { tillEndOfDay } from "../utils/time";
 import { Activity } from "../models/types/activity";
 import { getMovementByTitle } from "../utils/movement";
+import { Movements } from "../models/resources/movment";
 
 export const ContentContext = createContext<ContentContextType>(typeContext);
 
@@ -40,7 +41,7 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
         setData((prevData) => {
             const d = {
                 ...prevData,
-                movement: getMovementByTitle(movement),
+                movement: Movements[movement],
                 grade: grade,
                 amount: amount,
                 place: place,

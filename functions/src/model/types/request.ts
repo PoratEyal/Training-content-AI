@@ -21,7 +21,7 @@ export type UpdateActivityLikesRequest = {
 
 export type AddMovmentRequest = {
     name: string;
-    path: string[];
+    title: string;
 };
 
 export type GetMovmentsRequest = {};

@@ -10,8 +10,8 @@ const db = admin.firestore();
 const addMovment = functions.https.onCall(
     async (data: AddMovmentRequest): Promise<AddMovmentResponse> => {
         try {
-            const { name, path } = data;
-            const movement = initMovment(name, path);
+            const { name, title } = data;
+            const movement = initMovment(name, title);
 
             await db.collection(CollectionDB.MOVMENT).add(movement);
             return { result: "success", movement };

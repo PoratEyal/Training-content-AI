@@ -77,7 +77,7 @@ export const fetchGetUserById = async (
 export const fetchUpdateUser = async (request: UpdateUserRequest): Promise<UpdateUserResponse> => {
     const updateUserFunc = httpsCallable(functions, "updateUser");
 
-    const response = (await updateUserFunc(request)).data as any;
+    const response = (await updateUserFunc(request)).data as UpdateUserResponse;
     if (response.result === "success") {
         return response;
     } else {

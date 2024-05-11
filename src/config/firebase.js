@@ -4,7 +4,8 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 //project-193920685822
-
+//https://activity-builder-45923.firebaseapp.com/__/auth/handler
+//https://activity-builder-45923.firebaseapp.com/__/auth/handler
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
