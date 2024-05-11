@@ -15,6 +15,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #FAF6EE;
+    background-color: var(--background-color);
     direction: rtl;
 }

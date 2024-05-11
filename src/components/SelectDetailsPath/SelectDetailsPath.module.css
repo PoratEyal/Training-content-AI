@@ -11,15 +11,21 @@
 .input_div select {
     cursor: pointer;
     -webkit-appearance: none;
-    border: 1px solid orange;
-    padding: 15px 15px 15px 15px;
-    font-size: 16px;
-    border-radius: 15px;
-    width: 335px;
+    border: 1px solid var(--text-color);
+    padding: 15px 20px 15px 15px;
+    font-size: 13px;
+    border-radius: 24px;
+    width: 100%;
+    min-width: 245px;
     font-family: 'Fredoka', sans-serif;
     direction: rtl;
-    background-color: white;
-    color: rgb(36, 36, 36);
+    background-color: var(--select-color);
+    color: var(--text-color);
+}
+.input_div select::placeholder{
+    color: #5D5D5D;
+    font-weight: 300;
+    font-size: 13px;
 }
 .input_div::after {
     content: '▼';
@@ -28,7 +34,7 @@
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    color: orange;
+    color: var(--text-color);
 }
 .input_div {
     position: relative;
