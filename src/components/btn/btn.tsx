@@ -7,8 +7,8 @@ function Btn({ func, height, text, isDisabled }) {
 
     return (
         <div onClick={!isDisabled ? func : undefined} className={btnClassName} style={{ height }}>
-            <label>{text}</label>
-            <div className={styles.btn_icon}>
+            <label style={{ opacity: isDisabled ? 0.5 : 1 }}>{text}</label>
+            <div className={styles.btn_icon} style={{ opacity: isDisabled ? 0.5 : 1 }}>
                 <FiChevronsLeft className={styles.icon} />
             </div>
         </div>

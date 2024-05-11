@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
 import Path from "../../components/Path/Path";
 import { useErrorContext } from "../../context/ErrorContext";
-import { IoArrowForward } from "react-icons/io5";
+import { IoMdArrowRoundBack } from "react-icons/io";
 import { PROMPT_LIMIT } from "../../models/constants/state";
 import { fetchGetActivity } from "../../utils/fetch";
+import Btn from '../../components/btn/btn'
 
 function ChoosePath() {
     const { data, limit, updateLimit, updateMovementPath, resetAllUseFields } = useContentContext();
@@ -64,14 +65,10 @@ function ChoosePath() {
 
     return (
         <React.Fragment>
-            <div className={!clicked ? styles.container : styles.container_disabled}>
+            <div className={styles.container}>
                 <div className={styles.checkbox_container}>
-                    <div className={styles.navbar}>
-                        <IoArrowForward
-                            onClick={goBack}
-                            className={styles.back_icon}
-                        ></IoArrowForward>
-                    </div>
+
+                    <IoMdArrowRoundBack onClick={goBack} className={styles.back_icon}></IoMdArrowRoundBack>
 
                     <h1 className={styles.page_title}>בחרו את הפעילות שלכם</h1>
 
@@ -81,13 +78,12 @@ function ChoosePath() {
                 </div>
 
                 <div className={styles.btn_div}>
-                    <button
-                        disabled={isDisabled}
-                        onClick={submitHandler}
-                        className={styles.submit_btn}
-                    >
-                        אני רוצה הצעה לפעילות
-                    </button>
+                    <Btn
+                        isDisabled={isDisabled}
+                        height={38}
+                        text={"הצעה לפעילות"}
+                        func={submitHandler}
+                    ></Btn>
                 </div>
             </div>
 

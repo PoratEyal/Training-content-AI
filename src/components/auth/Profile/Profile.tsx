@@ -12,10 +12,10 @@ function Profile({ img, name, role }: ProfileProps) {
     return (
         <div className={styles.user_profile}>
             <UserImage img={img} size="small" />
-            <div className={styles.user_profile_description}>
+            {/* <div className={styles.user_profile_description}>
                 <span className={styles.user_profile_name}>{name}</span>
                 <span className={styles.user_profile_role}>{role}</span>
-            </div>
+            </div> */}
         </div>
     );
 }
