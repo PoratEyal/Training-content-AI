@@ -1,3 +1,4 @@
+import { UserMovementDetails } from "../models/types/movement";
 import { GoogleUser, User } from "../models/types/user";
 
 export const initUser = (googleUser: GoogleUser) => {
@@ -11,4 +12,22 @@ export const initUser = (googleUser: GoogleUser) => {
         movement: undefined,
         isAcceptTerms: true,
     } as User;
+};
+
+export const updateUserMovement = (
+    user: User,
+    movementName: string,
+    grade: string,
+    gender: string,
+    amount: string,
+    place: string,
+) => {
+    const movement: UserMovementDetails = {
+        movement: movementName,
+        grade,
+        gender,
+        amount,
+        place,
+    };
+    return { ...user, movement } as User;
 };

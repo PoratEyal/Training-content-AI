@@ -14,6 +14,8 @@ import Btn from "../../components/btn/btn";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import Profile from "../../components/auth/Profile/Profile";
 import { useAuthContext } from "../../context/AuthContext";
+import { updateUserMovement } from "../../utils/user";
+import { fetchUpdateUser } from "../../utils/fetch";
 
 function Details() {
     const { data, updateDetails } = useContentContext();
@@ -25,7 +27,6 @@ function Details() {
     const [activityLocation, setActivityLocation] = useState(data?.place || "");
     const [gender, setGender] = useState(data?.gender || "");
 
-    const [clicked, setClicked] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
 
     const navigate = useNavigate();
@@ -36,11 +37,20 @@ function Details() {
         }
     }, [movement, classLevel, numberOfChildren, activityLocation, gender]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setClicked(true);
         updateDetails(movement, classLevel, numberOfChildren, activityLocation, gender);
-
+        if(isLoggedIn && currentUser) {
+            const user = updateUserMovement(
+                currentUser,
+                movement,
+                classLevel,
+                gender,
+                numberOfChildren,
+                activityLocation,
+            );
+            await fetchUpdateUser({ user });
+        }
         navigate("/choosePath");
     };
 

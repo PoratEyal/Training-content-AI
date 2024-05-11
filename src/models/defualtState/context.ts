@@ -22,4 +22,5 @@ export const defualtAuthContext = {
     currentUser: null,
     isLoggedIn: false,
     loading: true,
+    logout: async () => {},
 };

@@ -2,13 +2,6 @@ import { Activity } from "./activity";
 import { Movement } from "./movement";
 import { User } from "./user";
 
-export type ActivityType = {
-    subject: string;
-    time: string;
-    use: boolean;
-    data: string;
-};
-
 export type DataType = {
     movement: Movement | undefined;
     grade: string;
@@ -39,4 +32,5 @@ export type AuthContextType = {
     currentUser: User | undefined;
     isLoggedIn: boolean;
     loading: boolean;
+    logout: () => Promise<void>;
 };

@@ -3,12 +3,14 @@ import {
     GetActivityRequest,
     GetUserByIdRequest,
     UpdateActivityLikesRequest,
+    UpdateUserRequest,
 } from "../models/types/api/request";
 import {
     CreateNewUserResponse,
     GetActivityResponse,
     GetUserByIdResponse,
     UpdateActivityLikesResponse,
+    UpdateUserResponse,
 } from "../models/types/api/response";
 import { functions } from "../config/firebase";
 import { httpsCallable } from "firebase/functions";
@@ -66,6 +68,17 @@ export const fetchGetUserById = async (
 
     const response = (await getUserByIdFunc(request)).data as GetUserByIdResponse;
     if (response.result === "success" && response.user) {
+        return response;
+    } else {
+        throw new Error(msg.error.message);
+    }
+};
+
+export const fetchUpdateUser = async (request: UpdateUserRequest): Promise<UpdateUserResponse> => {
+    const updateUserFunc = httpsCallable(functions, "updateUser");
+
+    const response = (await updateUserFunc(request)).data as any;
+    if (response.result === "success") {
         return response;
     } else {
         throw new Error(msg.error.message);

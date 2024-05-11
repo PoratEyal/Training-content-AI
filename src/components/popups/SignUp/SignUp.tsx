@@ -16,7 +16,7 @@ function SignUp({ closeFunc }: SignUpProps) {
         const provider = new GoogleAuthProvider();
         try {
             const userResult = await signInWithPopup(auth, provider);
-
+            closeFunc();
             // This gives you a Google Access Token. You can use it to access the Google API.
             // const credential = GoogleAuthProvider.credentialFromResult(userResult);
             // const token = credential.accessToken;
@@ -31,7 +31,6 @@ function SignUp({ closeFunc }: SignUpProps) {
             const errorMessage = error.message;
             const email = error.email;
             const credential = GoogleAuthProvider.credentialFromError(error);
-        } finally {
             closeFunc();
         }
     };

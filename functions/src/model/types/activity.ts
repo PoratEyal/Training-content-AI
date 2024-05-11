@@ -1,6 +1,3 @@
-export type ActivityPathName = "pointOfView" | "contentActivity" | "scoutingTime" | "playingTime";
-
-
 export type Activity = {
     id: string;
     updatedAt: string;

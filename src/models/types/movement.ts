@@ -12,3 +12,11 @@ export type MovementPath = {
     activities: Activity[] | undefined;
     hint?: string;
 }
+
+export type UserMovementDetails = {
+    movement: string; //the en name
+    grade: string;
+    gender: string;
+    amount: string;
+    place: string;
+}

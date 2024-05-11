@@ -41,8 +41,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
     };
 
+    const logout = async () => {
+        try {
+            await auth.signOut();
+            setCurrentUser(undefined);
+            setIsLoggedIn(false);
+        } catch (error) {
+            handleError(error);
+        }
+    };
+
     return (
-        <AuthContext.Provider value={{ currentUser, isLoggedIn, loading }}>
+        <AuthContext.Provider value={{ currentUser, isLoggedIn, loading, logout }}>
             {children}
         </AuthContext.Provider>
     );
