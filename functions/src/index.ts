@@ -7,6 +7,7 @@ import updateActivityLikes from "./callableFunctions/updateActivityLikes"
 import createNewUser from "./callableFunctions/createNewUser"
 import getUserById from "./callableFunctions/getUserById"
 import updateUser from "./callableFunctions/updateUser"
+import deleteUser from "./callableFunctions/deleteUser"
 
 const app = express();
 app.use(cors());
@@ -19,6 +20,7 @@ exports.updateLikes = updateActivityLikes;
 exports.createNewUser = createNewUser;
 exports.updateUser = updateUser
 exports.getUserById = getUserById;
+exports.deleteUser = deleteUser;
 
 exports.app = functions.https.onRequest(app);
 

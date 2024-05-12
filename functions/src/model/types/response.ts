@@ -51,3 +51,8 @@ export type updateUserByIdResponse = {
     user?: User;
     message?: string;
 };
+
+export type DeleteUserResponse = {
+    result: Resposne;
+    message?: string;
+};
