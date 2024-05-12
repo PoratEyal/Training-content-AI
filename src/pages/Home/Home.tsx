@@ -37,10 +37,10 @@ function Home() {
             </div>
 
             <section className={styles.button_section}>
-                <Btn isDisabled={false} func={handleStart} height={38} text={"מתחילים"}></Btn>
+                <Btn isDisabled={false} func={handleStart} height={38} text="מתחילים"></Btn>
                 {!isLoggedIn ? (
                     <button onClick={handleOpenModal} className={styles.home_login_btn}>
-                        הרשמה
+                        התחברות
                     </button>
                 ) : null}
             </section>
