@@ -36,3 +36,9 @@
 .input_div select:focus {
     outline: none;
 }
+
+@media (min-width: 550px) {
+    .input_div{
+        width: 300px;
+    }
+}
