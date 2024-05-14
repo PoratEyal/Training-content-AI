@@ -95,3 +95,12 @@
     font-weight: 300;
     font-size: 13px;
 }
+
+@media (min-width: 550px) {
+    .inputs_div{
+        width: 300px;
+    }
+    .input{
+        width: 270px;
+    }
+}
