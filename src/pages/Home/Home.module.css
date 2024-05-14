@@ -53,4 +53,26 @@
     font-weight: 550;
     border-bottom: 1px solid #333335;
     color: #333335;
+    cursor: pointer;
+}
+
+@media (min-width: 550px) {
+    .container{
+        margin-top: 50px;
+        width: 400px;
+        background-color: var(--background-color);
+        height: 630px;
+        border: none;
+        border-radius: 30px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .logo_text_div{
+        margin-top: 100px;
+    }
+    .button_section{
+        margin-bottom: 100px;
+    }
+    body {
+        background-color: #ffe1a0 !important;
+    }
 }

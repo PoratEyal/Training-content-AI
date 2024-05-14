@@ -28,14 +28,14 @@ function Dropdown({ handleClose }: DropdownProps) {
 
     const OptionBtn = (option: DropdownOption) => (
         <li onClick={() => handleClick(option)} className={styles.navbar_option}>
-            {option.Icon}
             <span>{option.title}</span>
+            <span className={styles.icons}>{option.Icon}</span>
         </li>
     );
 
     return (
-        <nav style={{position: "absolute", top: 30, left: 10}}>
-            <ul style={{ display: "flex", flexDirection: "column", gap: 5, width: 100, backgroundColor: "white" }}>
+        <nav className={styles.nav_container}>
+            <ul className={styles.ul}>
                 {options.map((option, i) => (
                     <OptionBtn key={i} {...option} />
                 ))}

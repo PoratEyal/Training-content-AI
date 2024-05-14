@@ -79,7 +79,20 @@
 }
 
 @media (min-width: 550px) {
-    body{
-        background-color: #ffe1a0 !important;
+    .container{
+        margin-top: 50px;
+        height: 630px;
+        width: 400px;
+        border: none;
+        border-radius: 30px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .contnet_div{
+        width: 400px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+    .btn_div{
+        width: 300px;
     }
 }

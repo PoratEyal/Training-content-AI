@@ -77,7 +77,7 @@ function Details() {
 
                 <div className={styles.spacer}></div>
 
-                <div>
+                <div className={styles.select_div}>
                     <SelectDetails
                         data={MovmentsOptions}
                         placeholder={"תנועת נוער"}

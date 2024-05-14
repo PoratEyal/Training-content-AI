@@ -36,6 +36,12 @@ export async function getPlayingTime(activityDetials: ActivityDetails): Promise<
     return await generateContent(prompt);
 }
 
+export async function getActivity(activityDetials: ActivityDetails): Promise<string> {
+    const { subject, time, amount, grade, gender, place } = activityDetials;
+    const prompt = `אתה מדריך צופים המעביר פעילות לחניכיו בתנועת הנוער, ואני רוצה שתיצור פעילות בנושא ${subject} שתימשך ${time}, מספר הילדים בפעילות הוא ${amount}, שכבת הגיל שלהם היא: ${grade} והמין שלהם הוא ${gender}. מקום הפעילות יהיה ${place}. (וודא שאין שגיאות כתיב )בתחילת התשובה תן שם לפעילות וציין את הזמן המיועד לה. בכל חלק מהפעילות, ציין את הזמן הנדרש בדקות. הקפד על כיסוי מלא של כל ההיבטים והוראות מפורטות לפעילות. התשובה צריכה להיות בפורמט של markdown style (תוודא שאתה לא מוסיף שפות אחרות) השתדל לשקף תוכן ישיר כמו שמות וזמנים ללא שינוי, אך העשיר את התיאור בפרטים רלוונטיים נוספים להבנה מוגברת. אל תכלול מצגת או וידאו בפעילות שלך. התשובה צריכה להיות מפורטת ובעברית בלבד.`;
+    return await generateContent(prompt);
+}
+
 export const GeminiApiSet = {
     pointOfView: getPointOfView,
     contentActivity: getContentActivity,
