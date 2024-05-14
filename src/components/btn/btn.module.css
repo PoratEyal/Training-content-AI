@@ -12,9 +12,11 @@
     align-items: center;
     gap: 8px;
     direction: rtl;
+    cursor: pointer;
 }
 .home_start_btn label{
     color: #333335;
+    cursor: pointer;
 }
 .home_start_btn_disabled{
     background-color: #ffd32467;
