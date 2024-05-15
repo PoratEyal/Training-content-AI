@@ -6,7 +6,8 @@
 .custom_checkbox {
     display: flex;
     flex-direction: row;
-    align-items: center; /* Ensure alignment of all items */
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .custom_checkbox input[type="checkbox"] {

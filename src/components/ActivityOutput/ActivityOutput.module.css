@@ -12,12 +12,29 @@
     margin: 10px 0;
 }
 
-.activity_top{
+.activity_top {
     margin-top: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
+.activity_close {
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toggel_arrow_animation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 @media (min-width: 550px) {
     .activity_contianer {
