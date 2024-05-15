@@ -2,6 +2,7 @@ import styles from "./PrivacyPolicy.module.css";
 import { IoArrowForward } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import policy from "../../models/resources/policy.json";
+import BlurEffect from "../../components/BlurEffect/BlurEffect";
 
 function PrivacyPolicy() {
     const navigate = useNavigate();
@@ -51,6 +52,8 @@ function PrivacyPolicy() {
                 <a href={`mailto:${policy.p9.email}`}>{policy.p9.text2}</a>
                 <div>{policy.p9.text3}.</div>
             </div>
+            
+            {/* <BlurEffect></BlurEffect> */}
         </div>
     );
 }

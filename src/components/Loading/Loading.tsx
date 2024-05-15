@@ -19,7 +19,10 @@ function Loading() {
                 </div>
             </div> */}
             <label className={styles.h2}>הפעילות בדרך</label>
-            <label className={styles.text}>האם באלנו כאן טקסט הסבר מעצבן על מה אנחנו עושים כאן לא לא באלנו בכלל זה סתם חופר</label>
+            <label className={styles.text}>
+                <strong>שימו לב</strong> מקור הפעולות הוא מערכת בינה מלאכותית, <br></br>ייתכן ותמצאו
+                בהן אי דיוקים וטעויות. אנא בדקו את התוכן לפני כל הפעלה
+            </label>
         </div>
     )
 }
