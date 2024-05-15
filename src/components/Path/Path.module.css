@@ -81,8 +81,7 @@
     background-color: rgb(255, 255, 255);
     border: 1px solid var(--text-color);
     outline: none;
-    width: 100%;
-    min-width: 220px;
+    width: 63vw;
     background-color: var(--select-color);
     resize: none;
     height: 60px;
