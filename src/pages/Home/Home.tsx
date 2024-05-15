@@ -5,16 +5,44 @@ import styles from "./Home.module.css";
 import SignUp from "../../components/popups/SignUp/SignUp";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
+import { auth } from "../../config/firebase";
+import {
+    GoogleAuthProvider,
+    signInWithPopup,
+    setPersistence,
+    browserLocalPersistence,
+} from "firebase/auth";
+import { GoogleUser } from "../../models/types/user";
+import { initUser } from "../../utils/user";
+import { fetchCreateNewUser } from "../../utils/fetch";
 
 function Home() {
-    const { isLoggedIn } = useAuthContext();
-    const [openModal, setOpenModal] = useState(false);
+    const { isLoggedIn, loading } = useAuthContext();
     const navigate = useNavigate();
 
-    const handleOpenModal = () => setOpenModal(true);
-    const handleCloseModal = () => setOpenModal(false);
-
     const handleStart = () => navigate("/details");
+
+    const signInWithGoogle = async () => {
+        const provider = new GoogleAuthProvider();
+        try {
+            await setPersistence(auth, browserLocalPersistence);
+            const userResult = await signInWithPopup(auth, provider);
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            // const credential = GoogleAuthProvider.credentialFromResult(userResult);
+            // const token = credential.accessToken;
+            if (userResult) {
+                const user = userResult.user as unknown as GoogleUser;
+                const newUser = initUser(user);
+                await fetchCreateNewUser({ newUser });
+            }
+        } catch (error) {
+            //TODO: Handle Errors
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const email = error.email;
+            const credential = GoogleAuthProvider.credentialFromError(error);
+        }
+    };
 
     return (
         <section className={styles.container}>
@@ -38,13 +66,14 @@ function Home() {
 
             <section className={styles.button_section}>
                 <Btn isDisabled={false} func={handleStart} height={38} text="מתחילים"></Btn>
-                {!isLoggedIn ? (
-                    <button onClick={handleOpenModal} className={styles.home_login_btn}>
+                {loading ? (
+                    <div>מתחבר...</div>
+                ) : !isLoggedIn ? (
+                    <button onClick={signInWithGoogle} className={styles.home_login_btn}>
                         התחברות
                     </button>
                 ) : null}
             </section>
-            {openModal ? <SignUp closeFunc={handleCloseModal} /> : null}
         </section>
     );
 }
