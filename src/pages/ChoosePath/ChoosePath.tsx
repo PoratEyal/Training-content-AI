@@ -7,7 +7,7 @@ import { useErrorContext } from "../../context/ErrorContext";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { PROMPT_LIMIT } from "../../models/constants/state";
 import { fetchGetActivity } from "../../utils/fetch";
-import Btn from "../../components/btn/btn";
+import MainBtn from "../../components/MainBtn/MainBtn";
 import { useAuthContext } from "../../context/AuthContext";
 import Profile from "../../components/auth/Profile/Profile";
 import Loading from "../../components/Loading/Loading";
@@ -124,12 +124,12 @@ function ChoosePath() {
                 </div>
 
                 <div className={styles.btn_div}>
-                    <Btn
+                    <MainBtn
                         isDisabled={isDisabled}
                         height={38}
                         text={"הצעה לפעילות"}
                         func={submitHandler}
-                    ></Btn>
+                    ></MainBtn>
                 </div>
             </div>
             {clicked && <Loading></Loading>}

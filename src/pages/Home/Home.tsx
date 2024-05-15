@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Logo from "../../components/core/Logo/Logo";
-import Btn from "../../components/btn/btn";
+import MainBtn from "../../components/MainBtn/MainBtn";
 import styles from "./Home.module.css";
 import SignUp from "../../components/popups/SignUp/SignUp";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +20,9 @@ import Footer from "../../components/Layout/Footer/Footer";
 function Home() {
     const { isLoggedIn, loading } = useAuthContext();
     const navigate = useNavigate();
+
+    const btnTitle = loading ? "התחברות..." : isLoggedIn ? "מתחילים" : "מתחברים ומתחילים";
+    const btnFunc = isLoggedIn ? () => navigate("/details") : () => signInWithGoogle();
 
     const handleStart = () => navigate("/details");
 
@@ -66,16 +69,15 @@ function Home() {
             </div>
 
             <section className={styles.button_section}>
-                <Btn
-                    isDisabled={false}
-                    func={handleStart}
+                <MainBtn
+                    isDisabled={loading ? true : false}
+                    func={btnFunc}
                     height={38}
-                    text="מתחברים ומתחילים"
-                ></Btn>
-                {loading ? (
-                    <div>התחברות...</div>
-                ) : !isLoggedIn ? (
-                    <button onClick={signInWithGoogle} className={styles.home_login_btn}>
+                    text={btnTitle}
+                ></MainBtn>
+
+                {!isLoggedIn && !loading ? (
+                    <button onClick={handleStart} className={styles.home_login_btn}>
                         התחלה ללא חשבון
                     </button>
                 ) : null}
