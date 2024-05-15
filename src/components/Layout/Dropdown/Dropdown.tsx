@@ -15,7 +15,7 @@ function Dropdown({ handleClose }: DropdownProps) {
     const { logout } = useAuthContext();
     
     const options: DropdownOption[] = [
-        { title: "הפרופיל שלי", path: "/profile", Icon: <FaUser /> },
+        // { title: "הפרופיל שלי", path: "/profile", Icon: <FaUser /> },
         { title: "התנתקות", path: "/", func: logout, Icon: <MdLogout /> },
     ];
 
@@ -27,9 +27,9 @@ function Dropdown({ handleClose }: DropdownProps) {
     };
 
     const OptionBtn = (option: DropdownOption) => (
-        <li onClick={() => handleClick(option)} className={styles.navbar_option}>
-            <span>{option.title}</span>
-            <span className={styles.icons}>{option.Icon}</span>
+        <li className={styles.navbar_option}>
+            <span onClick={() => handleClick(option)}>{option.title}</span>
+            <span onClick={() => handleClick(option)} className={styles.icons}>{option.Icon}</span>
         </li>
     );
 

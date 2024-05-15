@@ -14,11 +14,9 @@ import Btn from "../../components/btn/btn";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import Profile from "../../components/auth/Profile/Profile";
 import { useAuthContext } from "../../context/AuthContext";
-import { updateUserMovement } from "../../utils/user";
-import { fetchUpdateUser } from "../../utils/fetch";
 
 function Details() {
-    const { data, updateDetails } = useContentContext();
+    const { updateDetails } = useContentContext();
     const { isLoggedIn, currentUser } = useAuthContext();
 
     const [movement, setMovment] = useState(currentUser?.movement?.movement || "");
@@ -40,18 +38,6 @@ function Details() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         updateDetails(movement, classLevel, numberOfChildren, activityLocation, gender);
-        if (isLoggedIn && currentUser) {
-            //TODO: check if the param changed
-            const updatedUser = updateUserMovement(
-                currentUser,
-                movement,
-                classLevel,
-                gender,
-                numberOfChildren,
-                activityLocation,
-            );
-            await fetchUpdateUser({ user: updatedUser });
-        }
         navigate("/choosePath");
     };
 

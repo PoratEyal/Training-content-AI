@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import styles from "./ChoosePath.module.css";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,8 @@ import Btn from "../../components/btn/btn";
 import { useAuthContext } from "../../context/AuthContext";
 import Profile from "../../components/auth/Profile/Profile";
 import Loading from "../../components/Loading/Loading";
+import { fetchUpdateUser } from "../../utils/fetch";
+import { updateUserMovement } from "../../utils/user";
 
 function ChoosePath() {
     const { data, limit, updateLimit, updateMovementPath, resetAllUseFields } = useContentContext();
@@ -27,6 +29,21 @@ function ChoosePath() {
 
     useEffect(() => {
         setIsDisabled(optionsPath.every((option) => option === undefined));
+        const updateUser = async () => {
+            if (isLoggedIn && currentUser) {
+                const updatedUser = updateUserMovement(
+                    currentUser,
+                    String(data.movement),
+                    data.grade,
+                    data.gender,
+                    data.amount,
+                    data.place,
+                );
+                await fetchUpdateUser({ user: updatedUser });
+            }
+        };
+        
+        updateUser();
     }, [optionsPath]);
 
     const submitHandler = async () => {
