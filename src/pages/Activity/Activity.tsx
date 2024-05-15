@@ -11,7 +11,7 @@ function Activity() {
 
     useEffect(() => {
         if (!data || !data.grade || !data.movement || data.movement.path.length === 0) {
-            navigate("/choosePath");
+            goingBack();
         }
     }, []);
 
@@ -30,9 +30,11 @@ function Activity() {
                 בהן אי דיוקים וטעויות. אנא בדקו את התוכן לפני כל הפעלה
             </div>
 
-            {data?.movement?.path.map((path, i) => (
-                <ActivityOutput key={i} index={i} movementPath={path} />
-            ))}
+            {data?.movement?.path.map((path, i) => {
+                return path.activity ? (
+                    <ActivityOutput key={i} index={i} movementPath={path} />
+                ) : null;
+            })}
         </div>
     );
 }
