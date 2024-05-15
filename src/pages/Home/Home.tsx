@@ -15,6 +15,7 @@ import {
 import { GoogleUser } from "../../models/types/user";
 import { initUser } from "../../utils/user";
 import { fetchCreateNewUser } from "../../utils/fetch";
+import Footer from "../../components/Layout/Footer/Footer";
 
 function Home() {
     const { isLoggedIn, loading } = useAuthContext();
@@ -65,15 +66,24 @@ function Home() {
             </div>
 
             <section className={styles.button_section}>
-                <Btn isDisabled={false} func={handleStart} height={38} text="מתחילים"></Btn>
+                <Btn
+                    isDisabled={false}
+                    func={handleStart}
+                    height={38}
+                    text="מתחברים ומתחילים"
+                ></Btn>
                 {loading ? (
-                    <div>מתחבר...</div>
+                    <div>התחברות...</div>
                 ) : !isLoggedIn ? (
                     <button onClick={signInWithGoogle} className={styles.home_login_btn}>
-                        התחברות
+                        התחלה ללא חשבון
                     </button>
                 ) : null}
             </section>
+
+            <div className={styles.privacy_div}>
+                <Footer></Footer>
+            </div>
         </section>
     );
 }

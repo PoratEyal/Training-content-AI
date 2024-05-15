@@ -20,20 +20,21 @@
 
 .back_icon{
     position: absolute;
-    left: 20px;
-    top: 20px;
+    left: 10px;
+    top: 10px;
     transform: rotate(-0.50turn);
     font-size: 24px;
     border: none;
     padding: 6px;
     border-radius: 30px;
-    color: white;
-    background-color: orange;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
     cursor: pointer;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .page_title{
-    color: orange;
+    color: var(--primary-color);
     font-size: 20px;
     font-weight: 500;
     width: 100%;
