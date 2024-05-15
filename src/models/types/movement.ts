@@ -9,7 +9,7 @@ export type Movement = {
 export type MovementPath = {
     name: string;
     title: string;
-    activities: Activity[] | undefined;
+    activity: Activity | undefined;
     hint?: string;
 }
 

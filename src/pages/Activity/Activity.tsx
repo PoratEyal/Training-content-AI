@@ -6,23 +6,16 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 function Activity() {
-    const { data, resetAllUseFields } = useContentContext();
+    const { data } = useContentContext();
     const navigate = useNavigate();
 
-    console.log("data: ", data)
-
-    // useEffect(() => {
-    //     if (
-    //         !data ||
-    //         !data.grade ||
-    //         (!data.pointOfView && !data.contentActivity && !data.scoutingTime && !data.playingTime)
-    //     ) {
-    //         navigate("/choosePath");
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (!data || !data.grade || !data.movement || data.movement.path.length === 0) {
+            navigate("/choosePath");
+        }
+    }, []);
 
     const goingBack = () => {
-        resetAllUseFields();
         navigate("/choosePath");
     };
 
@@ -37,17 +30,9 @@ function Activity() {
                 בהן אי דיוקים וטעויות. אנא בדקו את התוכן לפני כל הפעלה
             </div>
 
-            {/* {data?.pointOfView ? <ActivityOutput pathActivity={PathActivity.pointOfView} /> : null}
-
-            {data?.contentActivity ? (
-                <ActivityOutput pathActivity={PathActivity.contentActivity} />
-            ) : null}
-
-            {data?.scoutingTime ? (
-                <ActivityOutput pathActivity={PathActivity.scoutingTime} />
-            ) : null}
-
-            {data?.playingTime ? <ActivityOutput pathActivity={PathActivity.playingTime} /> : null} */}
+            {data?.movement?.path.map((path, i) => (
+                <ActivityOutput key={i} index={i} movementPath={path} />
+            ))}
         </div>
     );
 }

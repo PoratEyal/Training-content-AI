@@ -1,24 +1,22 @@
 import styles from "./ActivityOutput.module.css";
-import { useContentContext } from "../../context/ContentContext";
-import { Activity } from "../../models/types/activity";
 import ReactMarkdown from "react-markdown";
 import MoreActions from "../MoreActions/MoreActions";
+import { MovementPath } from "../../models/types/movement";
 import "./Markdown.css";
 
-type ActivityOutputProps = {};
+type ActivityOutputProps = {
+    index: number,
+    movementPath: MovementPath;
+};
 
-function ActivityOutput({}: ActivityOutputProps) {
-    const { data } = useContentContext();
-    // const { name } = pathActivity;
-    // const { activity } = data[pathActivity.path as keyof Activity];
+function ActivityOutput({ index, movementPath }: ActivityOutputProps) {
+    const { title, activity } = movementPath;
 
     return (
         <section className={styles.activity_contianer} id="markdown">
-            {/* <div className={styles.activity_title}>{name}</div> */}
-
-            {/* <ReactMarkdown>{activity}</ReactMarkdown> */}
-
-            <MoreActions />
+            <div className={styles.activity_title}>{title}</div>
+            {activity ? <ReactMarkdown>{activity?.activity}</ReactMarkdown> : null}
+            <MoreActions index={index} movementPath={movementPath} />
         </section>
     );
 }
