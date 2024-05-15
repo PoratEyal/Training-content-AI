@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import styles from "./ChoosePath.module.css";
 import { useNavigate } from "react-router-dom";
@@ -26,14 +26,15 @@ function ChoosePath() {
     const [clicked, setClicked] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
     const navigate = useNavigate();
+    const lockRef = useRef(true);
 
-    useEffect(() => {
-        setIsDisabled(optionsPath.every((option) => option === undefined));
+    useEffect(()=>{
         const updateUser = async () => {
+            lockRef.current = false;
             if (isLoggedIn && currentUser) {
                 const updatedUser = updateUserMovement(
                     currentUser,
-                    String(data.movement),
+                    data.movement.name,
                     data.grade,
                     data.gender,
                     data.amount,
@@ -43,7 +44,11 @@ function ChoosePath() {
             }
         };
         
-        updateUser();
+        if(lockRef.current) updateUser();
+    },[])
+
+    useEffect(() => {
+        setIsDisabled(optionsPath.every((option) => option === undefined));
     }, [optionsPath]);
 
     const submitHandler = async () => {

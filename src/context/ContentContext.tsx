@@ -75,7 +75,7 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
 
     const updateMovementPath = (index: number, activity: Activity) => {
         setData((prevData) => {
-            prevData.movement.path[index].activities.push(activity);
+            prevData.movement.path[index].activity = activity;
             Session.set("data", { ...prevData });
             return { ...prevData };
         });
