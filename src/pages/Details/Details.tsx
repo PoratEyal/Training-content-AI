@@ -10,7 +10,7 @@ import {
     GenderOptions,
 } from "../../models/resources/select";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
-import Btn from "../../components/btn/btn";
+import MainBtn from "../../components/MainBtn/MainBtn";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import Profile from "../../components/auth/Profile/Profile";
 import { useAuthContext } from "../../context/AuthContext";
@@ -97,12 +97,13 @@ function Details() {
                 </div>
 
                 <div className={styles.btn_div}>
-                    <Btn
+                    <MainBtn
+                        type="submit"
                         isDisabled={isDisabled}
                         height={38}
                         text={"בחירת פעילות"}
                         func={handleSubmit}
-                    ></Btn>
+                    ></MainBtn>
                 </div>
             </form>
         </div>
