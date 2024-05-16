@@ -58,7 +58,8 @@ const getActivity = functions.https.onCall(
                 await activityRef.update(updates);
                 return { result: "success", activity };
             } else if (fetchFrom.includes("AI")) {
-                const geminiAPI = GeminiApiSet[path as keyof typeof GeminiApiSet];
+                const geminiAPI =
+                    GeminiApiSet[path as keyof typeof GeminiApiSet] || GeminiApiSet.activity;
                 const activityResult = await geminiAPI({
                     subject,
                     time,

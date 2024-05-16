@@ -47,6 +47,30 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
         });
     };
 
+    const clearAll = () => {
+        Session.clear();
+        setData(undefined);
+    }
+
+    const clearPath = () => {
+        if(data?.movement?.path.length === 0) return;
+        setData((prevData) => {
+            const updatedPath = prevData.movement.path.map(pathItem => ({
+                ...pathItem,
+                activity: undefined
+            }));
+            const updatedData: DataType = { 
+                ...prevData, 
+                movement: { 
+                    ...prevData.movement, 
+                    path: updatedPath 
+                } 
+            };
+            Session.set("data", updatedData);
+            return updatedData;
+        });
+    }
+
     const updateMovementPath = (index: number, activity: Activity) => {
         setData((prevData) => {
             prevData.movement.path[index].activity = activity;
@@ -63,6 +87,8 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
                 updateDetails,
                 resetAllUseFields,
                 updateMovementPath,
+                clearAll,
+                clearPath,
             }}
         >
             {children}

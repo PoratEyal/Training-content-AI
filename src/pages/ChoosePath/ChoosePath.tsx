@@ -15,7 +15,7 @@ import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";
 
 function ChoosePath() {
     const { handleError } = useErrorContext();
-    const { data, updateMovementPath } = useContentContext();
+    const { data, updateMovementPath, clearPath } = useContentContext();
     const { isLoggedIn, currentUser, isNotReachUnRegisterLimit, updateUnRegisterLimit } =
         useAuthContext();
 
@@ -86,6 +86,7 @@ function ChoosePath() {
     };
 
     const goBack = () => {
+        clearPath();
         navigate("/details");
     };
 

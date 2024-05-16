@@ -1,10 +1,21 @@
 import { Activity } from "./activity";
 
+export type MovementName =
+    | "scout"
+    | "maccabi"
+    | "akiva"
+    | "oved"
+    | "shomer"
+    | "sayarut"
+    | "medtchim"
+    | "meshachim"
+    | "other";
+
 export type Movement = {
-    name: string;
+    name: MovementName;
     title: string;
     path: MovementPath[];
-}
+};
 
 export type MovementPath = {
     name: string;
@@ -12,7 +23,7 @@ export type MovementPath = {
     activity: Activity | undefined;
     hint?: string;
     magic?: any[];
-}
+};
 
 export type UserMovementDetails = {
     movement: string; //the en name
@@ -20,4 +31,4 @@ export type UserMovementDetails = {
     gender: string;
     amount: string;
     place: string;
-}
+};

@@ -1,9 +1,16 @@
 import { SelectOption } from "../types/common";
+import { Movements } from "./movment";
 
 export const MovmentsOptions: SelectOption[] = [
-    { value: "scout", label: "צופים" },
-    { value: "maccabi", label: "מכבי צעיר" },
-    { value: "akiva", label: "בני עקיבא" },
+    { value: Movements.scout.name, label: Movements.scout.title },
+    { value: Movements.maccabi.name, label: Movements.maccabi.title },
+    { value: Movements.akiva.name, label: Movements.akiva.title },
+    { value: Movements.oved.name, label: Movements.oved.title },
+    { value: Movements.shomer.name, label: Movements.shomer.title },
+    { value: Movements.sayarut.name, label: Movements.sayarut.title },
+    { value: Movements.medtchim.name, label: Movements.medtchim.title },
+    { value: Movements.meshachim.name, label: Movements.meshachim.title },
+    { value: Movements.other.name, label: Movements.other.title },
 ];
 
 export const GradeOptions: SelectOption[] = [

@@ -34,14 +34,15 @@ export const fetchGetActivity = async (
 };
 
 export const fetchUpdateActivityLikes = async (
-    contextUpdate: (activity: any) => void,
+    contextUpdate: (index: number, activity: Activity) => void,
+    index: number,
     request: UpdateActivityLikesRequest,
 ): Promise<UpdateActivityLikesResponse> => {
     const updateActivityLikesFunc = httpsCallable(functions, "updateLikes");
 
     const response = (await updateActivityLikesFunc(request)).data as UpdateActivityLikesResponse;
     if (response.result === "success" && response.activity) {
-        contextUpdate(response.activity);
+        contextUpdate(index, response.activity);
     } else {
         throw new Error(msg.error.message);
     }
