@@ -1,7 +1,6 @@
 import styles from "./Activity.module.css";
 import { useContentContext } from "../../context/ContentContext";
 import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
-import { IoArrowForward } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useAuthContext } from "../../context/AuthContext";
@@ -27,11 +26,13 @@ function Activity() {
         <div className={styles.container}>
             <div className={styles.navbar}>
                 {isLoggedIn ? (
-                    <Profile
-                        img={currentUser?.image || ""}
-                        name={currentUser?.name || "r"}
-                        role="guide"
-                    />
+                    <div className={styles.Profile_div}>
+                        <Profile
+                            img={currentUser?.image || ""}
+                            name={currentUser?.name || "r"}
+                            role="guide"
+                        />
+                    </div>
                 ) : null}
 
                 <IoMdArrowRoundBack className={styles.back_icon} onClick={goingBack}></IoMdArrowRoundBack>

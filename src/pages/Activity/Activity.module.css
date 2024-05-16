@@ -1,6 +1,7 @@
 .container{
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .navbar{
@@ -17,6 +18,12 @@
     background: #faf6ee83;
     border: none;
     direction: ltr;
+    height: 40px;
+}
+.Profile_div{
+    position: absolute;
+    top: 0px;
+    left: 5px;
 }
 
 @supports (backdrop-filter: blur(5px)) {
@@ -32,6 +39,9 @@
     font-size: 24px;
     color: var(--primary-color);
     cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 5px;
 }
 
 @media (min-width: 550px) {

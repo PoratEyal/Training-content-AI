@@ -3,8 +3,6 @@ import styles from "./LikeBtns.module.css";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { Activity } from "../../models/types/activity";
-import { useContentContext } from "../../context/ContentContext";
-import { fetchUpdateActivityLikes } from "../../utils/fetch";
 import { useErrorContext } from "../../context/ErrorContext";
 
 type LikeBtnsProps = {
@@ -81,16 +79,16 @@ function LikeBtns({ activity, reset }: LikeBtnsProps) {
                 className={styles.like}
                 onClick={handleClickLike}
                 style={{
-                    color: action.like ? "green" : "orange",
-                    borderColor: action.like ? "green" : "orange",
+                    color: action.like ? "green" : "#333335",
+                    borderColor: action.like ? "green" : "#333335",
                 }}
             />
             <AiOutlineDislike
                 className={styles.dislike}
                 onClick={handleClickDislike}
                 style={{
-                    color: action.dislike ? "red" : "orange",
-                    borderColor: action.dislike ? "red" : "orange",
+                    color: action.dislike ? "red" : "#333335",
+                    borderColor: action.dislike ? "red" : "#333335",
                 }}
             />
         </div>
