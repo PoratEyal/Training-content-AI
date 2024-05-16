@@ -14,8 +14,9 @@
     top: 0;
     left: 0;
     z-index: 995;
-    background: #f5f5dcc1;
+    background: #faf6ee83;
     border: none;
+    direction: ltr;
 }
 
 @supports (backdrop-filter: blur(5px)) {
@@ -26,23 +27,11 @@
 }
 
 .back_icon {
-    margin-right: 20px;
-    margin-top: 10px;
+    rotate: 180deg;
+    padding: 10px;
     font-size: 24px;
-    border: none;
-    padding: 6px;
-    border-radius: 30px;
-    color: white;
-    background-color: orange;
+    color: var(--primary-color);
     cursor: pointer;
-}
-
-.ai_text{
-    font-size: 12px;
-    margin-top: 5px;
-    line-height: 18px;
-    padding-right: 25px;
-    font-style: italic;
 }
 
 @media (min-width: 550px) {

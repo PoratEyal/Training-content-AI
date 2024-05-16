@@ -20,7 +20,7 @@ function Loading() {
             </div> */}
             <label className={styles.h2}>הפעילות בדרך</label>
             <label className={styles.text}>
-                <strong>שימו לב</strong> מקור הפעולות הוא מערכת בינה מלאכותית, <br></br>ייתכן ותמצאו
+                שימו לב! מקור הפעולות הוא מערכת בינה מלאכותית, ייתכן ותמצאו
                 בהן אי דיוקים וטעויות. אנא בדקו את התוכן לפני כל הפעלה
             </label>
         </div>

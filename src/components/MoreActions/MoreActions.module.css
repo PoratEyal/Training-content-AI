@@ -23,13 +23,13 @@
     font-family: 'Fredoka', sans-serif;
     border-radius: 60px;
     padding: 6px;
-    color: orange;
+    color: var(--primary-color);
     border: none;
     font-size: 13px;
-    background-color: rgba(255, 255, 255, 0);
     width: 95px;
     cursor: pointer;
-    border: 1px solid orange;
+    border: 1px solid var(--primary-color);
+    background-color: white;
     height: 30px;
 }
 
@@ -50,7 +50,7 @@
 .icon_more {
     animation: spin 1.5s infinite linear;
     font-size: 15px;
-    color: orange;
+    color: var(--primary-color);
 }
 
 .iconBtn {
@@ -58,7 +58,7 @@
     display: flex;
     align-items: center;
     justify-self: center;
-    color: orange;
+    color: var(--primary-color);
     cursor: pointer;
     font-size: 25px;
 }
