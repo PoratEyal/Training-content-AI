@@ -14,7 +14,8 @@
     padding: 10px;
     direction: ltr;
     width: 140px;
-    border-top-left-radius: 12px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 
 .nav_container::after {
@@ -28,7 +29,7 @@
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
     rotate: 180deg;
-    margin-top: -15px;
+    margin-top: -12px;
     
 }
 

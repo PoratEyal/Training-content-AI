@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     justify-self: center;
-    color: orange;
+    color: var(--primary-color);
     cursor: pointer;
     font-size: 25px;
 }
@@ -19,7 +19,7 @@
     display: flex;
     align-items: center;
     justify-self: center;
-    color: orange;
+    color: var(--primary-color);
     cursor: pointer;
     font-size: 25px;
 }
