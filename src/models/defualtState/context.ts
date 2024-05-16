@@ -4,7 +4,6 @@ export const typeContext = {
     data: undefined,
     setData: () => {},
     updateDetails: () => {},
-    resetAllUseFields: () => {},
     updateMovementPath: () => {},
     clearAll: () => {},
     clearPath: () => {},
