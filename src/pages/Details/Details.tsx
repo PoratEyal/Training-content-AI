@@ -21,23 +21,23 @@ function Details() {
     const navigate = useNavigate();
 
     const [movement, setMovment] = useState(
-        currentUser?.movement ? currentUser.movement?.movement : data.movement?.name || "",
+        data ? data.movement?.name : currentUser?.movement ? currentUser.movement?.movement : "",
     );
 
     const [classLevel, setClassLevel] = useState(
-        currentUser?.movement ? currentUser.movement?.grade : data.grade || "",
+        data ? data.grade : currentUser?.movement ? currentUser.movement?.grade : "",
     );
 
     const [numberOfChildren, setNumberOfChildren] = useState(
-        currentUser?.movement ? currentUser.movement?.amount : data.amount || "",
+        data ? data.amount : currentUser?.movement ? currentUser.movement?.amount : "",
     );
 
     const [activityLocation, setActivityLocation] = useState(
-        currentUser?.movement ? currentUser.movement?.place : data.place || "",
+        data ? data.place : currentUser?.movement ? currentUser.movement?.place : "",
     );
 
     const [gender, setGender] = useState(
-        currentUser?.movement ? currentUser.movement?.gender : data.gender || "",
+        data ? data.gender : currentUser?.movement ? currentUser.movement?.gender : "",
     );
 
     const [isDisabled, setIsDisabled] = useState(true);
