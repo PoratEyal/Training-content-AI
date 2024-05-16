@@ -5,19 +5,19 @@ import { useNavigate } from "react-router-dom";
 import Path from "../../components/Path/Path";
 import { useErrorContext } from "../../context/ErrorContext";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { PROMPT_LIMIT } from "../../models/constants/state";
 import { fetchGetActivity } from "../../utils/fetch";
 import MainBtn from "../../components/MainBtn/MainBtn";
 import { useAuthContext } from "../../context/AuthContext";
 import Profile from "../../components/auth/Profile/Profile";
 import Loading from "../../components/Loading/Loading";
 import { fetchUpdateUser } from "../../utils/fetch";
-import { updateUserMovement } from "../../utils/user";
+import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";
 
 function ChoosePath() {
-    const { data, limit, updateLimit, updateMovementPath, resetAllUseFields } = useContentContext();
     const { handleError } = useErrorContext();
-    const { isLoggedIn, currentUser } = useAuthContext();
+    const { data, updateMovementPath } = useContentContext();
+    const { isLoggedIn, currentUser, isNotReachUnRegisterLimit, updateUnRegisterLimit } =
+        useAuthContext();
 
     const { movement } = data || {};
     const { path } = movement || {};
@@ -28,32 +28,34 @@ function ChoosePath() {
     const navigate = useNavigate();
     const lockRef = useRef(true);
 
-    useEffect(()=>{
+    useEffect(() => {
         const updateUser = async () => {
             lockRef.current = false;
             if (isLoggedIn && currentUser) {
-                const updatedUser = updateUserMovement(
-                    currentUser,
-                    data.movement.name,
-                    data.grade,
-                    data.gender,
-                    data.amount,
-                    data.place,
-                );
-                await fetchUpdateUser({ user: updatedUser });
+                if (isGroupDetailsChanged(currentUser.movement, data)) {
+                    const updatedUser = updateUserMovement(
+                        currentUser,
+                        data.movement.name,
+                        data.grade,
+                        data.gender,
+                        data.amount,
+                        data.place,
+                    );
+                    await fetchUpdateUser({ user: updatedUser });
+                }
             }
         };
-        
-        if(lockRef.current) updateUser();
-    },[])
+
+        if (lockRef.current) updateUser();
+    }, []);
 
     useEffect(() => {
         setIsDisabled(optionsPath.every((option) => option === undefined));
     }, [optionsPath]);
 
     const submitHandler = async () => {
-        updateLimit();
-        if (!limit || limit < PROMPT_LIMIT - 1) {
+        updateUnRegisterLimit();
+        if (isNotReachUnRegisterLimit()) {
             const promises = [];
             const { amount, grade, gender, place } = data;
             for (const option of optionsPath) {
@@ -84,7 +86,6 @@ function ChoosePath() {
     };
 
     const goBack = () => {
-        resetAllUseFields();
         navigate("/details");
     };
 

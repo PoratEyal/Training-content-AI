@@ -7,8 +7,8 @@ export const initUserFromDB = (id: string, data: DocumentData) => {
         name: data.name || "",
         email: data.email || "",
         image: data.image || "",
-        role: data.role || "",
         limit: data.limit || 0,
+        lastUpdate: data.lastUpdate || "",
         movement: data.movement || undefined,
         isAcceptTerms: data.isAcceptTerms || false,
     } as User;

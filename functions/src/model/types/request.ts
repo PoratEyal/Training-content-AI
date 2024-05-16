@@ -37,7 +37,3 @@ export type GetUserByIdRequest = {
 export type UpdateUserRequest = {
     user: User;
 };
-
-export type DeleteUserRequest = {
-    userId: string;
-};

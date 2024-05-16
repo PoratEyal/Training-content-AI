@@ -16,18 +16,31 @@ import Profile from "../../components/auth/Profile/Profile";
 import { useAuthContext } from "../../context/AuthContext";
 
 function Details() {
-    const { updateDetails } = useContentContext();
+    const { data, updateDetails } = useContentContext();
     const { isLoggedIn, currentUser } = useAuthContext();
+    const navigate = useNavigate();
 
-    const [movement, setMovment] = useState(currentUser?.movement?.movement || "");
-    const [classLevel, setClassLevel] = useState(currentUser?.movement?.grade || "");
-    const [numberOfChildren, setNumberOfChildren] = useState(currentUser?.movement?.amount || "");
-    const [activityLocation, setActivityLocation] = useState(currentUser?.movement?.place || "");
-    const [gender, setGender] = useState(currentUser?.movement?.gender || "");
+    const [movement, setMovment] = useState(
+        currentUser?.movement ? currentUser.movement?.movement : data.movement?.name || "",
+    );
+
+    const [classLevel, setClassLevel] = useState(
+        currentUser?.movement ? currentUser.movement?.grade : data.grade || "",
+    );
+
+    const [numberOfChildren, setNumberOfChildren] = useState(
+        currentUser?.movement ? currentUser.movement?.amount : data.amount || "",
+    );
+
+    const [activityLocation, setActivityLocation] = useState(
+        currentUser?.movement ? currentUser.movement?.place : data.place || "",
+    );
+
+    const [gender, setGender] = useState(
+        currentUser?.movement ? currentUser.movement?.gender : data.gender || "",
+    );
 
     const [isDisabled, setIsDisabled] = useState(true);
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (movement && classLevel && numberOfChildren && activityLocation && gender) {

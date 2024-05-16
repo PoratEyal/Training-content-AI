@@ -6,8 +6,8 @@ export type User = {
     name: string;
     email: string;
     image: string;
-    role: string;
     limit: number;
+    lastUpdate: string;
     movement: UserMovementDetails | undefined;
     isAcceptTerms: boolean;
 };

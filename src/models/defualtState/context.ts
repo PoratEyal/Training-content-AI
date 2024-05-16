@@ -3,10 +3,6 @@ import { PROMPT_LIMIT } from "../constants/state";
 export const typeContext = {
     data: undefined,
     setData: () => {},
-    limit: PROMPT_LIMIT,
-    updateLimit: () => {},
-    cookies: {},
-    setCookie: () => {},
     updateDetails: () => {},
     resetAllUseFields: () => {},
     updateMovementPath: () => {},
@@ -23,4 +19,9 @@ export const defualtAuthContext = {
     isLoggedIn: false,
     loading: true,
     logout: async () => {},
+    unRegisterLimit: PROMPT_LIMIT,
+    updateUnRegisterLimit: () => {},
+    cookies: {},
+    setCookie: () => {},
+    isNotReachUnRegisterLimit: () => true,
 };

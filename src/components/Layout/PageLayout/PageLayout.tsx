@@ -5,6 +5,7 @@ import { PROMPT_LIMIT } from "../../../models/constants/state";
 import LimitRequest from "../../popups/LimitRequests/LimitRequests";
 import TSCs from "../../popups/TSCs/TSCs";
 import { forLongTime } from "../../../utils/time";
+import { useAuthContext } from "../../../context/AuthContext";
 
 type PageLayoutProps = {
     path: string;
@@ -12,15 +13,15 @@ type PageLayoutProps = {
 };
 
 function PageLayout({ path, children }: PageLayoutProps) {
-    const { cookies, setCookie, limit } = useContentContext();
+    const { cookies, setCookie, unRegisterLimit } = useAuthContext();
     const [prevent, setPrevent] = useState(false);
     const [tscs, setTscs] = useState(false);
 
     useEffect(() => {
-        if (limit >= PROMPT_LIMIT) {
+        if (unRegisterLimit >= PROMPT_LIMIT) {
             setPrevent(true);
         }
-    }, [limit]);
+    }, [unRegisterLimit]);
 
     useEffect(() => {
         if (cookies["user-consent"] === undefined) {

@@ -4,9 +4,6 @@ import { FaWandMagicSparkles } from "react-icons/fa6";
 import { VscLoading } from "react-icons/vsc";
 import SelectDetails from "../SelectDetails/SelectDetails";
 import { ActivityTimeOptions } from "../../models/resources/select";
-import { useErrorContext } from "../../context/ErrorContext";
-import PlayingTimeSubjects from "../../models/resources/playingTime.json";
-import ScoutingTimeSubjects from "../../models/resources/scoutesActivities.json";
 import { MovementPath } from "../../models/types/movement";
 import Hint from "../Hint/Hint";
 
@@ -14,17 +11,15 @@ type PathProps = {
     index: number;
     path: MovementPath;
     setPath: React.Dispatch<React.SetStateAction<any[]>>;
-    isGenerate?: boolean;
 };
 
-function Path({ index, path, setPath, isGenerate = false }: PathProps) {
-    const { handleError } = useErrorContext();
+function Path({ index, path, setPath }: PathProps) {
     const [show, setShow] = useState(false);
     const [subject, setSubject] = useState("");
     const [time, setTime] = useState("");
-    const [magic, setMagic] = useState(false);
+    const [loadingMagic, setLoadingMagic] = useState(false);
 
-    const { name, title, hint } = path;
+    const { name, title, hint, magic } = path;
 
     useEffect(() => {
         if (!show) {
@@ -63,22 +58,15 @@ function Path({ index, path, setPath, isGenerate = false }: PathProps) {
     };
 
     const generateSubject = async () => {
-        try {
-            setMagic(true);
+        if (magic && magic.length !== 0) {
             setSubject("");
-
-            if (isGenerate) {
-                setTimeout(() => {
-                    let activities = [];
-                    if (index === 2) activities = ScoutingTimeSubjects;
-                    if (index === 3) activities = PlayingTimeSubjects;
-                    const randomIndex = Math.floor(Math.random() * activities.length);
-                    setSubject(activities[randomIndex].name);
-                    setMagic(false);
-                }, 500);
-            }
-        } catch (error) {
-            handleError(error);
+            setLoadingMagic(true);
+            setTimeout(() => {
+                let activities = magic;
+                const randomIndex = Math.floor(Math.random() * activities.length);
+                setSubject(activities[randomIndex].name);
+                setLoadingMagic(false);
+            }, 500);
         }
     };
 
@@ -86,8 +74,8 @@ function Path({ index, path, setPath, isGenerate = false }: PathProps) {
         <div className={styles.checkbox_div}>
             <div className={styles.custom_checkbox}>
                 <input type="checkbox" id={name} checked={show} onChange={toggleShow} />
-                <label  htmlFor={name}>{title}</label>
-                <Hint hint={hint} />
+                <label htmlFor={name}>{title}</label>
+                {hint ? <Hint hint={hint} /> : null}
             </div>
 
             {show && (
@@ -99,8 +87,8 @@ function Path({ index, path, setPath, isGenerate = false }: PathProps) {
                             onChange={handleInputChange}
                             placeholder="נושא הפעילות"
                         />
-                        {isGenerate &&
-                            (magic ? (
+                        {magic && magic.length !== 0 &&
+                            (loadingMagic ? (
                                 <VscLoading className={styles.loading_icon_magic} />
                             ) : (
                                 <FaWandMagicSparkles

@@ -3,6 +3,7 @@ import { SelectOption } from "../types/common";
 export const MovmentsOptions: SelectOption[] = [
     { value: "scout", label: "צופים" },
     { value: "maccabi", label: "מכבי צעיר" },
+    { value: "akiva", label: "בני עקיבא" },
 ];
 
 export const GradeOptions: SelectOption[] = [

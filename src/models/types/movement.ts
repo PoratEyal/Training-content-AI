@@ -11,6 +11,7 @@ export type MovementPath = {
     title: string;
     activity: Activity | undefined;
     hint?: string;
+    magic?: any[];
 }
 
 export type UserMovementDetails = {

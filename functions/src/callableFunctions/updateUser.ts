@@ -16,6 +16,7 @@ const updateUser = functions.https.onCall(
         if (!context.auth) {
             return { result: "error", message: "User is not authenticated." };
         }
+        await admin.auth().setCustomUserClaims(context.auth.uid, { canEditUsers: true });
 
         try {
             const updates = {

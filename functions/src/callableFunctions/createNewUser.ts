@@ -15,6 +15,8 @@ const createNewUser = functions.https.onCall(
             if (!context.auth) {
                 return { result: "error", message: "User is not authenticated." };
             }
+            await admin.auth().setCustomUserClaims(context.auth.uid, { canEditUsers: true });
+
             const { newUser } = data;
             const { id: userId, ...restUser } = newUser;
 

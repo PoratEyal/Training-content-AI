@@ -8,6 +8,7 @@ import { AiOutlineLoading } from "react-icons/ai";
 import LikeBtns from "../LikeBtns/LikeBtns";
 import ShareBtns from "../ShareBtns/ShareBtns";
 import { MovementPath } from "../../models/types/movement";
+import { useAuthContext } from "../../context/AuthContext";
 
 type MoreActionsProps = {
     index: number;
@@ -15,8 +16,9 @@ type MoreActionsProps = {
 };
 
 function MoreActions({ index, movementPath }: MoreActionsProps) {
-    const { limit, updateLimit, updateMovementPath } = useContentContext();
+    const { updateMovementPath } = useContentContext();
     const { handleError } = useErrorContext();
+    const { isNotReachUnRegisterLimit, updateUnRegisterLimit } = useAuthContext();
 
     const [loadingGenerate, setLoadingGenerate] = useState(false);
     const [reset, setReset] = useState(false);
@@ -25,8 +27,10 @@ function MoreActions({ index, movementPath }: MoreActionsProps) {
     const { activity: text, subject, time, amount, grade, gender, place } = activity || {};
 
     const generateAgain = async () => {
-        updateLimit();
-        if ((activity && !limit) || limit < PROMPT_LIMIT - 1) {
+        if (loadingGenerate) return;
+
+        updateUnRegisterLimit();
+        if (isNotReachUnRegisterLimit()) {
             setLoadingGenerate(true);
             setReset(true);
 
@@ -58,13 +62,13 @@ function MoreActions({ index, movementPath }: MoreActionsProps) {
             ) : null}
 
             <button onClick={generateAgain} className={styles.button}>
-                {!loadingGenerate ? (
+                {loadingGenerate ? (
                     <div className={styles.btn_content_div}>
-                        <label>פעילות אחרת</label>
+                        <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>
                     </div>
                 ) : (
                     <div className={styles.btn_content_div}>
-                        <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>
+                        <label>פעילות אחרת</label>
                     </div>
                 )}
             </button>
