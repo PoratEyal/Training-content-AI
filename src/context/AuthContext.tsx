@@ -44,6 +44,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const initializeUser = async (user) => {
         try {
             if (user) {
+                //TODO: init user from data
                 const response = await fetchGetUserById({ id: (user as GoogleUser).uid });
                 if (response.user) {
                     setCurrentUser(response.user);

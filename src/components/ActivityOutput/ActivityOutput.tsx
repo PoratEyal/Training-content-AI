@@ -13,9 +13,9 @@ type ActivityOutputProps = {
     defualtOpen?: boolean;
 };
 
-function ActivityOutput({ index, movementPath, defualtOpen = false }: ActivityOutputProps) {
+function ActivityOutput({ index, movementPath, defualtOpen = true }: ActivityOutputProps) {
     const { title, activity } = movementPath;
-    const [isOpened, setIsOpened] = useState(true);
+    const [isOpened, setIsOpened] = useState(defualtOpen);
     
     const handleOpen = () => {
         setIsOpened((prev) => !prev);

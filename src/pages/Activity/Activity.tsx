@@ -8,7 +8,7 @@ import Profile from "../../components/auth/Profile/Profile";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 function Activity() {
-    const { data } = useContentContext();
+    const { data, clearPath } = useContentContext();
     const { isLoggedIn, currentUser } = useAuthContext();
     const navigate = useNavigate();
 
@@ -19,6 +19,7 @@ function Activity() {
     }, []);
 
     const goingBack = () => {
+        clearPath();
         navigate("/choosePath");
     };
 

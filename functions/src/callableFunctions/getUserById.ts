@@ -28,7 +28,7 @@ const getUserById = functions.https.onCall(
             }
             return { result: "notFound", message: "User not found." };
         } catch (error) {
-            console.error("Failed to add user.", error);
+            console.error("Failed to get user -- ", error);
             return { result: "error", message: "Failed to get user." };
         }
     },

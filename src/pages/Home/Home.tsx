@@ -75,7 +75,7 @@ function Home() {
                     text={btnTitle}
                 ></MainBtn>
 
-                {!isNotReachUnRegisterLimit() || (!isLoggedIn && !loading) ? (
+                {(!isLoggedIn && !loading) || !isNotReachUnRegisterLimit() ? (
                     <button onClick={handleStart} className={styles.home_login_btn}>
                         התחלה ללא חשבון
                     </button>

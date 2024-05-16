@@ -4,14 +4,18 @@ import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { Activity } from "../../models/types/activity";
 import { useErrorContext } from "../../context/ErrorContext";
+import { useContentContext } from "../../context/ContentContext";
+import { fetchUpdateActivityLikes } from "../../utils/fetch";
 
 type LikeBtnsProps = {
+    index: number;
     activity: Activity;
     reset: boolean;
 };
 
-function LikeBtns({ activity, reset }: LikeBtnsProps) {
+function LikeBtns({ index, activity, reset }: LikeBtnsProps) {
     const { handleError } = useErrorContext();
+    const { updateMovementPath } = useContentContext();
 
     const [action, setAction] = useState({ like: undefined, dislike: undefined });
     const [debouncedLiked, setDebouncedLiked] = useState(false);
@@ -27,6 +31,7 @@ function LikeBtns({ activity, reset }: LikeBtnsProps) {
         let likeTimeHandler: NodeJS.Timeout;
         let dislikeTimeHandler: NodeJS.Timeout;
         const { like, dislike } = action;
+        if(like === undefined && dislike === undefined) return;
 
         if ((like || !like) && dislike === undefined) {
             likeTimeHandler = setTimeout(() => {
@@ -50,15 +55,14 @@ function LikeBtns({ activity, reset }: LikeBtnsProps) {
     }, [action]);
 
     const sendLikeStatusToServer = useCallback(async (likesAmount: number) => {
-        // const contextUpdateFunc = contextUpdateSet[activity.path as keyof Activity];
-        // try {
-        //     await fetchUpdateActivityLikes(contextUpdateFunc, {
-        //         activity,
-        //         likesAmount,
-        //     });
-        // } catch (error) {
-        //     handleError(error);
-        // }
+        try {
+            await fetchUpdateActivityLikes(updateMovementPath, index, {
+                activity,
+                likesAmount,
+            });
+        } catch (error) {
+            handleError(error);
+        }
     }, []);
 
     const handleClickLike = async () => {

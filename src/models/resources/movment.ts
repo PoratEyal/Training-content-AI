@@ -3,8 +3,6 @@ import hints from "./hints.json";
 import PlayingTimeSubjects from "../../models/resources/playingTime.json";
 import ScoutingTimeSubjects from "../../models/resources/scoutesActivities.json";
 
-export const MovementName: string[] = ["scout", "maccabi", "akiva"];
-
 export const Movements = {
     scout: {
         name: "scout",
@@ -56,7 +54,7 @@ export const Movements = {
             {
                 name: "opening",
                 title: "פתיחה",
-                hint: hints.akiva.playingTime,
+                hint: hints.akiva.opening,
                 activity: undefined,
             },
             {
@@ -76,6 +74,87 @@ export const Movements = {
                 name: "summary",
                 title: "סיכום",
                 hint: hints.akiva.summary,
+                activity: undefined,
+            },
+        ],
+    } as Movement,
+    oved: {
+        name: "oved",
+        title: "הנוער העובד והלומד",
+        path: [
+            {
+                name: "activity",
+                title: "משחק פתיחה",
+                activity: undefined,
+            },
+            {
+                name: "activity",
+                title: "מתודת הצפה",
+                activity: undefined,
+            },
+            {
+                name: "activity",
+                title: "מתודה מרכזית",
+                activity: undefined,
+            },
+            {
+                name: "activity",
+                title: "סיכום",
+                activity: undefined,
+            },
+        ],
+    } as Movement,
+    shomer: {
+        name: "shomer",
+        title: "השומר הצעיר",
+        path: [
+            {
+                name: "activity",
+                title: "פעילות",
+                activity: undefined,
+            },
+        ],
+    } as Movement,
+    sayarut: {
+        name: "sayarut",
+        title: "חוגי סיירות",
+        path: [
+            {
+                name: "activity",
+                title: "פעילות",
+                activity: undefined,
+            },
+        ],
+    } as Movement,
+    medtchim: {
+        name: "medtchim",
+        title: "ארגון המד״צים",
+        path: [
+            {
+                name: "activity",
+                title: "פעילות",
+                activity: undefined,
+            },
+        ],
+    } as Movement,
+    meshachim: {
+        name: "meshachim",
+        title: "מדריכי של״ח צעירים",
+        path: [
+            {
+                name: "activity",
+                title: "פעילות",
+                activity: undefined,
+            },
+        ],
+    } as Movement,
+    other: {
+        name: "other",
+        title: "אחר",
+        path: [
+            {
+                name: "activity",
+                title: "פעילות",
                 activity: undefined,
             },
         ],

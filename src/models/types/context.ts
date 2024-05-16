@@ -22,6 +22,8 @@ export type ContentContextType = {
     ) => void;
     resetAllUseFields: () => void;
     updateMovementPath: (index: number, activity: Activity) => void;
+    clearAll: () => void;
+    clearPath: () => void;
 };
 
 export type ErrorContextType = {

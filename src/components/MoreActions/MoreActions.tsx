@@ -56,7 +56,7 @@ function MoreActions({ index, movementPath }: MoreActionsProps) {
         <section className={styles.more_actions_container}>
             {activity ? (
                 <div className={styles.more_actions_left}>
-                    <LikeBtns activity={activity} reset={reset} />
+                    <LikeBtns index={index} activity={activity} reset={reset} />
                     <ShareBtns text={text} />
                 </div>
             ) : null}

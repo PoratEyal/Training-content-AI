@@ -6,6 +6,8 @@ export const typeContext = {
     updateDetails: () => {},
     resetAllUseFields: () => {},
     updateMovementPath: () => {},
+    clearAll: () => {},
+    clearPath: () => {},
 };
 
 export const defualtErrorContext = {

@@ -16,7 +16,7 @@ import Profile from "../../components/auth/Profile/Profile";
 import { useAuthContext } from "../../context/AuthContext";
 
 function Details() {
-    const { data, updateDetails } = useContentContext();
+    const { data, updateDetails, clearAll } = useContentContext();
     const { isLoggedIn, currentUser } = useAuthContext();
     const navigate = useNavigate();
 
@@ -54,6 +54,11 @@ function Details() {
         navigate("/choosePath");
     };
 
+    const goBack = () => {
+        clearAll();
+        navigate("/");
+    }
+
     return (
         <div className={styles.container}>
             {isLoggedIn ? (
@@ -65,7 +70,7 @@ function Details() {
             ) : null}
 
             <IoMdArrowRoundBack
-                onClick={() => navigate("/")}
+                onClick={goBack}
                 className={styles.back_icon}
             ></IoMdArrowRoundBack>
 
