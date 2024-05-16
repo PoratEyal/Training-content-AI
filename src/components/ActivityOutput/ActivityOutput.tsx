@@ -15,7 +15,7 @@ type ActivityOutputProps = {
 
 function ActivityOutput({ index, movementPath, defualtOpen = false }: ActivityOutputProps) {
     const { title, activity } = movementPath;
-    const [isOpened, setIsOpened] = useState(defualtOpen);
+    const [isOpened, setIsOpened] = useState(true);
     
     const handleOpen = () => {
         setIsOpened((prev) => !prev);
@@ -23,7 +23,8 @@ function ActivityOutput({ index, movementPath, defualtOpen = false }: ActivityOu
     
     return (
         <section>
-            <div onClick={handleOpen} className={styles.activity_close}>
+            <div className={styles.spacer}></div>
+            <div onClick={handleOpen} className={`${styles.activity_close} ${isOpened ? styles.activityOpen : ''}`}>
                 <motion.div
                     className={styles.toggel_arrow_animation}
                     animate={{ rotate: isOpened ? 90 : 0 }}
@@ -31,12 +32,11 @@ function ActivityOutput({ index, movementPath, defualtOpen = false }: ActivityOu
                 >
                     <IoIosArrowDown />
                 </motion.div>
-                {title}
+                <div>{title}</div>
             </div>
             {isOpened ? (
                 <section className={styles.activity_contianer} id="markdown">
-                    <div className={styles.activity_title}>{title}</div>
-                    {activity ? <ReactMarkdown>{activity?.activity}</ReactMarkdown> : null}
+                    {activity ? <ReactMarkdown className={styles.activity_data}>{activity?.activity}</ReactMarkdown> : null}
                     <MoreActions index={index} movementPath={movementPath} />
                 </section>
             ) : null}

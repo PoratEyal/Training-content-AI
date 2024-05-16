@@ -43,16 +43,13 @@
 
 @media (min-width: 550px) {
     .privacyPolicyContainer {
-        display: flex;
-        padding-left: 25px;
-        padding-right: 25px;
-        border-radius: 25px;
-        flex-direction: column;
         margin-top: 50px;
-        background-color: #F5F5DC;
+        width: 400px;
+        background-color: var(--background-color);
+        height: 630px;
+        border: none;
+        border-radius: 30px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        border: 2px solid orange;
-        width: 430px;
         position: relative;
     } 
     .back_icon{
