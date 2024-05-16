@@ -1,8 +1,6 @@
-import React, { useState } from "react";
 import Logo from "../../components/core/Logo/Logo";
 import MainBtn from "../../components/MainBtn/MainBtn";
 import styles from "./Home.module.css";
-import SignUp from "../../components/popups/SignUp/SignUp";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import { auth } from "../../config/firebase";
@@ -18,13 +16,13 @@ import { fetchCreateNewUser } from "../../utils/fetch";
 import Footer from "../../components/Layout/Footer/Footer";
 
 function Home() {
-    const { isLoggedIn, loading } = useAuthContext();
+    const { isLoggedIn, loading, isNotReachUnRegisterLimit } = useAuthContext();
     const navigate = useNavigate();
 
-    const btnTitle = loading ? "התחברות..." : isLoggedIn ? "מתחילים" : "מתחברים ומתחילים";
-    const btnFunc = isLoggedIn ? () => navigate("/details") : () => signInWithGoogle();
-
     const handleStart = () => navigate("/details");
+
+    const btnTitle = loading ? "התחברות..." : isLoggedIn ? "מתחילים" : "מתחברים ומתחילים";
+    const btnFunc = isLoggedIn ? () => handleStart() : () => signInWithGoogle();
 
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
@@ -38,6 +36,7 @@ function Home() {
                 const user = userResult.user as unknown as GoogleUser;
                 const newUser = initUser(user);
                 await fetchCreateNewUser({ newUser });
+                handleStart();
             }
         } catch (error) {
             //TODO: Handle Errors
@@ -76,7 +75,7 @@ function Home() {
                     text={btnTitle}
                 ></MainBtn>
 
-                {!isLoggedIn && !loading ? (
+                {!isNotReachUnRegisterLimit() || (!isLoggedIn && !loading) ? (
                     <button onClick={handleStart} className={styles.home_login_btn}>
                         התחלה ללא חשבון
                     </button>

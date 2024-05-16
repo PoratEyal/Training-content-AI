@@ -8,14 +8,30 @@ import { initActivityFromAI, initActivityFromDB, updateActivityWithId } from "..
 import { getUpdateAt } from "../utils/time";
 import { CollectionDB } from "../model/enum/DB";
 import { GetActivityResponse } from "../model/types/response";
-import { GoogleGenerativeAIResponseError } from "@google/generative-ai";
+import { handleGetActivityErrors } from "../utils/handleError";
 
+//TODO: move to index.js
 admin.initializeApp();
 const db = admin.firestore();
 
 const getActivity = functions.https.onCall(
-    async (data: GetActivityRequest): Promise<GetActivityResponse> => {
+    async (
+        data: GetActivityRequest,
+        context: functions.https.CallableContext,
+    ): Promise<GetActivityResponse> => {
         const { fetchFrom, path, subject, time, amount, grade, gender, place } = data;
+
+        // if (context.auth) {
+        //     const userId = context.auth.uid;
+        //     const userDoc = await db.collection(CollectionDB.USERS).doc(userId).get();
+        //     const userData = userDoc.data();
+        //     if (userDoc.exists && userData) {
+        //         if (userData.limit < PROMPT_LIMIT) {
+        //             return { result: "limit", message: "User reached the limit." };
+        //         }
+        //     }
+        // }
+
         let query: admin.firestore.Query = db.collection(CollectionDB.ACTIVITY);
 
         query = query.where("subject", "==", subject);
@@ -61,23 +77,7 @@ const getActivity = functions.https.onCall(
 
             return { result: "notFound", message: "Failed to retrieve activity." };
         } catch (error) {
-            if (
-                error instanceof GoogleGenerativeAIResponseError &&
-                error.message.includes("Candidate was blocked due to SAFETY")
-            ) {
-                const activity = initActivityFromAI(
-                    `המערכת מצאה שהתוכן שהנכם מחפשים עלול להיות בעייתי ולכן חיפוש זה נחסם. אנו ממליצים לנסות שוב עם נושא פעולה אחר.`,
-                    data,
-                );
-                return {
-                    result: "safety",
-                    activity,
-                    message:
-                        "Failed to retrieve activity: Google Generative AI blocked the candidate due to safety concerns.",
-                };
-            }
-            console.error("Failed to retrieve activity.", error);
-            return { result: "error", message: "Failed to retrieve activity." };
+            return handleGetActivityErrors(error, data);
         }
     },
 );

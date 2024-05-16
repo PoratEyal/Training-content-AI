@@ -1,5 +1,7 @@
+import { DataType } from "../models/types/context";
 import { UserMovementDetails } from "../models/types/movement";
 import { GoogleUser, User } from "../models/types/user";
+import { getUpdateAt } from "./time";
 
 export const initUser = (googleUser: GoogleUser) => {
     return {
@@ -7,8 +9,8 @@ export const initUser = (googleUser: GoogleUser) => {
         email: googleUser.email,
         name: googleUser.displayName,
         image: googleUser.photoURL,
-        role: "מדריך",
         limit: 0,
+        lastUpdate: getUpdateAt(),
         movement: undefined,
         isAcceptTerms: true,
     } as User;
@@ -30,4 +32,16 @@ export const updateUserMovement = (
         place,
     };
     return { ...user, movement } as User;
+};
+
+export const isGroupDetailsChanged = (movement: UserMovementDetails, data: DataType) => {
+    if (
+        movement?.movement === data?.movement?.name &&
+        movement?.grade === data?.grade &&
+        movement?.amount === data?.amount &&
+        movement?.place === data?.place &&
+        movement?.gender === data?.gender
+    )
+        return false;
+    return true;
 };

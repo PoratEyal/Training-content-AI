@@ -13,11 +13,13 @@ export type DataType = {
 export type ContentContextType = {
     data: DataType;
     setData: React.Dispatch<React.SetStateAction<DataType>>;
-    limit: number;
-    updateLimit: () => void;
-    cookies: any;
-    setCookie: (name: string, value: any, options?: any) => void;
-    updateDetails: (movement: string, grade: string, amount: string, place: string, gender: string) => void;
+    updateDetails: (
+        movement: string,
+        grade: string,
+        amount: string,
+        place: string,
+        gender: string,
+    ) => void;
     resetAllUseFields: () => void;
     updateMovementPath: (index: number, activity: Activity) => void;
 };
@@ -33,4 +35,9 @@ export type AuthContextType = {
     isLoggedIn: boolean;
     loading: boolean;
     logout: () => Promise<void>;
+    unRegisterLimit: number;
+    updateUnRegisterLimit: () => void;
+    cookies: any;
+    setCookie: (name: string, value: any, options?: any) => void;
+    isNotReachUnRegisterLimit: () => boolean;
 };
