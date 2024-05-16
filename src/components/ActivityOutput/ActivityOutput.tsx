@@ -36,7 +36,7 @@ function ActivityOutput({ index, movementPath, defualtOpen = false }: ActivityOu
             {isOpened ? (
                 <section className={styles.activity_contianer} id="markdown">
                     <div className={styles.activity_title}>{title}</div>
-                    {activity ? <ReactMarkdown>{activity?.activity}</ReactMarkdown> : null}
+                    {activity ? <ReactMarkdown className={styles.activity_data}>{activity?.activity}</ReactMarkdown> : null}
                     <MoreActions index={index} movementPath={movementPath} />
                 </section>
             ) : null}
