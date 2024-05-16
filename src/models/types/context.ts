@@ -20,7 +20,6 @@ export type ContentContextType = {
         place: string,
         gender: string,
     ) => void;
-    resetAllUseFields: () => void;
     updateMovementPath: (index: number, activity: Activity) => void;
     clearAll: () => void;
     clearPath: () => void;

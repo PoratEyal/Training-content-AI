@@ -39,14 +39,6 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
         });
     };
 
-    const resetAllUseFields = () => {
-        setData((prevData) => {
-            const d: DataType = { ...prevData, movement: undefined };
-            Session.set("data", d);
-            return d;
-        });
-    };
-
     const clearAll = () => {
         Session.clear();
         setData(undefined);
@@ -85,7 +77,6 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
                 data,
                 setData,
                 updateDetails,
-                resetAllUseFields,
                 updateMovementPath,
                 clearAll,
                 clearPath,
