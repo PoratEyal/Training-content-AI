@@ -1,5 +1,4 @@
 .container {
-    position: relative;
     display: flex;
     flex-direction: column;
     margin-top: 0px;
@@ -31,7 +30,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    /* gap: 5px; */
     background-color: var(--background-color);
     border-top-left-radius: 37px;
     border-top-right-radius: 37px;
