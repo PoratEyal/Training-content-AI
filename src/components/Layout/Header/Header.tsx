@@ -26,7 +26,8 @@ function Header({ goBack, isFade = false }: HeaderProps) {
                         role="guide"
                     />
                 ) : (
-                    <LimitIndicator />
+                    // <LimitIndicator />
+                    <div></div>
                 )
             ) : null}
         </section>
