@@ -72,53 +72,53 @@ function Details() {
             <form onSubmit={handleSubmit} className={styles.detailsForm}>
                 <img className={styles.lamp_img} alt="lamp image" src="lamp.svg"></img>
 
-                <div className={styles.spacer}></div>
+                <div className={styles.selects_btn}>
+                    {loading ? (
+                        <VscLoading className={styles.loading_icon_magic} />
+                    ) : (
+                        <div className={styles.select_div}>
+                            <SelectDetails
+                                data={MovmentsOptions}
+                                placeholder={"תנועת נוער"}
+                                obj={movement}
+                                setObj={setMovment}
+                            />
+                            <SelectDetails
+                                data={GradeOptions}
+                                placeholder={"קבוצת גיל"}
+                                obj={classLevel}
+                                setObj={setClassLevel}
+                            />
+                            <SelectDetails
+                                data={AmountOptions}
+                                placeholder={"מספר ילדים"}
+                                obj={numberOfChildren}
+                                setObj={setNumberOfChildren}
+                            />
+                            <SelectDetails
+                                data={PlaceOptions}
+                                placeholder={"מיקום הפעילות"}
+                                obj={activityLocation}
+                                setObj={setActivityLocation}
+                            />
+                            <SelectDetails
+                                data={GenderOptions}
+                                placeholder={"מין"}
+                                obj={gender}
+                                setObj={setGender}
+                            />
+                        </div>
+                    )}
 
-                {loading ? (
-                    <VscLoading className={styles.loading_icon_magic} />
-                ) : (
-                    <div className={styles.select_div}>
-                        <SelectDetails
-                            data={MovmentsOptions}
-                            placeholder={"תנועת נוער"}
-                            obj={movement}
-                            setObj={setMovment}
-                        />
-                        <SelectDetails
-                            data={GradeOptions}
-                            placeholder={"קבוצת גיל"}
-                            obj={classLevel}
-                            setObj={setClassLevel}
-                        />
-                        <SelectDetails
-                            data={AmountOptions}
-                            placeholder={"מספר ילדים"}
-                            obj={numberOfChildren}
-                            setObj={setNumberOfChildren}
-                        />
-                        <SelectDetails
-                            data={PlaceOptions}
-                            placeholder={"מיקום הפעילות"}
-                            obj={activityLocation}
-                            setObj={setActivityLocation}
-                        />
-                        <SelectDetails
-                            data={GenderOptions}
-                            placeholder={"מין"}
-                            obj={gender}
-                            setObj={setGender}
-                        />
+                    <div className={styles.btn_div}>
+                        <MainBtn
+                            type="submit"
+                            isDisabled={isDisabled}
+                            height={42}
+                            text="המשיכו"
+                            func={handleSubmit}
+                        ></MainBtn>
                     </div>
-                )}
-
-                <div className={styles.btn_div}>
-                    <MainBtn
-                        type="submit"
-                        isDisabled={isDisabled}
-                        height={42}
-                        text="המשיכו"
-                        func={handleSubmit}
-                    ></MainBtn>
                 </div>
             </form>
         </div>
