@@ -82,7 +82,7 @@ function Home() {
                     isDisabled={signInDisabled}
                     func={handleStart}
                     height={42}
-                    text={signInBtnText}
+                    text="מתחילים"
                 ></MainBtn>
 
                 {/* {!isLoggedIn && !loading && !reachUnRegisterLimit() ? (
