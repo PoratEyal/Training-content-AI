@@ -11,9 +11,10 @@ import {
 } from "../../models/resources/select";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import MainBtn from "../../components/MainBtn/MainBtn";
-import { IoMdArrowRoundBack } from "react-icons/io";
 import Profile from "../../components/auth/Profile/Profile";
 import { useAuthContext } from "../../context/AuthContext";
+import LimitIndicator from "../../components/LimitIndicator/LimitIndicator";
+import Header from "../../components/Layout/Header/Header";
 
 function Details() {
     const { data, updateDetails, clearAll } = useContentContext();
@@ -57,23 +58,12 @@ function Details() {
     const goBack = () => {
         clearAll();
         navigate("/");
-    }
+    };
 
     return (
         <div className={styles.container}>
-            {isLoggedIn ? (
-                <Profile
-                    img={currentUser?.image || ""}
-                    name={currentUser?.name || "r"}
-                    role="guide"
-                />
-            ) : null}
-
-            <IoMdArrowRoundBack
-                onClick={goBack}
-                className={styles.back_icon}
-            ></IoMdArrowRoundBack>
-
+            <Header goBack={goBack} />
+            
             <img className={styles.h2_img} alt="h2 text" src="h2_page2.svg"></img>
 
             <form onSubmit={handleSubmit} className={styles.detailsForm}>

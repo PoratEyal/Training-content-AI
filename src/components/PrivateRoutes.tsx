@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import LimitRequest from "./popups/LimitRequests/LimitRequests";
 import TSCs from "./popups/TSCs/TSCs";
-import { PROMPT_LIMIT } from "../models/constants/state";
+import { NOT_REGISTER_LIMIT } from "../models/constants";
 import { useAuthContext } from "../context/AuthContext";
 import { forLongTime } from "../utils/time";
 
 const PrivateRoutes = () => {
+    const location = useLocation();
     const { cookies, setCookie, unRegisterLimit } = useAuthContext();
+    const { isLoggedIn } = useAuthContext();
     const [block, setBlock] = useState(false);
     const [tscs, setTscs] = useState(false);
 
     useEffect(() => {
-        if (unRegisterLimit >= PROMPT_LIMIT) {
+        if(location.pathname === "/") return;
+        if (isLoggedIn) return;
+        if (unRegisterLimit >= NOT_REGISTER_LIMIT + 1) {
             setBlock(true);
         }
     }, [unRegisterLimit]);
