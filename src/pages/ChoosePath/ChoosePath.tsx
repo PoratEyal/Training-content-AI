@@ -9,13 +9,14 @@ import MainBtn from "../../components/MainBtn/MainBtn";
 import { useAuthContext } from "../../context/AuthContext";
 import Loading from "../../components/Loading/Loading";
 import { fetchUpdateUser } from "../../utils/fetch";
+import { VscLoading } from "react-icons/vsc";
 import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";
 import Header from "../../components/Layout/Header/Header";
 
 function ChoosePath() {
     const { handleError } = useErrorContext();
     const { data, updateMovementPath, clearPath } = useContentContext();
-    const { isLoggedIn, currentUser, reachUnRegisterLimit, updateUnRegisterLimit } =
+    const { isLoggedIn, currentUser, loading, reachUnRegisterLimit, updateUnRegisterLimit } =
         useAuthContext();
 
     const { movement } = data || {};
@@ -49,8 +50,9 @@ function ChoosePath() {
     }, []);
 
     useEffect(() => {
-        setIsDisabled(optionsPath.every((option) => option === undefined));
-    }, [optionsPath]);
+        if (loading) setIsDisabled(true);
+        else setIsDisabled(optionsPath.every((option) => option === undefined));
+    }, [optionsPath, loading]);
 
     const submitHandler = async () => {
         updateUnRegisterLimit();
@@ -107,11 +109,15 @@ function ChoosePath() {
                     src="path.svg"
                 ></img>
 
-                <div className={styles.path_div}>
-                    {path?.map((p, i) => (
-                        <Path key={i} index={i} path={p} setPath={setOptionsPath} />
-                    ))}
-                </div>
+                {loading ? (
+                    <VscLoading className={styles.loading_icon_magic} />
+                ) : (
+                    <div className={styles.path_div}>
+                        {path?.map((p, i) => (
+                            <Path key={i} index={i} path={p} setPath={setOptionsPath} />
+                        ))}
+                    </div>
+                )}
 
                 <div className={styles.btn_div}>
                     <MainBtn

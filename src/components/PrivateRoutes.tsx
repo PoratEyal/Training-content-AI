@@ -9,13 +9,13 @@ import { forLongTime } from "../utils/time";
 const PrivateRoutes = () => {
     const location = useLocation();
     const { cookies, setCookie, unRegisterLimit } = useAuthContext();
-    const { isLoggedIn } = useAuthContext();
+    const { isLoggedIn, loading } = useAuthContext();
     const [block, setBlock] = useState(false);
     const [tscs, setTscs] = useState(false);
 
     useEffect(() => {
         if(location.pathname === "/") return;
-        if (isLoggedIn) return;
+        if (loading || isLoggedIn) return;
         if (unRegisterLimit >= NOT_REGISTER_LIMIT + 1) {
             setBlock(true);
         }

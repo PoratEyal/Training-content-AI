@@ -81,6 +81,23 @@
     margin-bottom: 50px !important;
 }
 
+.loading_icon_magic {
+    position: relative;
+    top: 20vh;
+    color: var(--primary-color);
+    animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 @media (min-width: 550px) {
     .container{
         margin-top: 50px;
