@@ -74,7 +74,7 @@ function Path({ index, path, setPath }: PathProps) {
         <div className={styles.checkbox_div}>
             <div className={styles.custom_checkbox}>
                 <input type="checkbox" id={name} checked={show} onChange={toggleShow} />
-                <label htmlFor={name}>{title}</label>
+                <label className={styles.title} htmlFor={name}>{title}</label>
                 {hint ? <Hint hint={hint} /> : null}
             </div>
 

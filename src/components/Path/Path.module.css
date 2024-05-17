@@ -1,3 +1,7 @@
+.title{
+    font-size: 18px;
+}
+
 .checkbox_div{
     margin-bottom: 25px;
     margin-right: 20px;
@@ -89,27 +93,29 @@
     height: 60px;
     min-height: 50px;
     overflow: hidden;
-    font-size: 13px;
+    font-size: 15px;
 }
 .input::placeholder {
     color: #5D5D5D;
     font-weight: 300;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .magic_icon{
     position: absolute;
-    left: 10px;
-    bottom: 10px;
+    left: 12px;
+    bottom: 12px;
     color: var(--primary-color);
     cursor: pointer;
+    font-size: 20px;
 }
 .loading_icon_magic{
     position: absolute;
-    left: 10px;
-    bottom: 10px;
+    left: 12px;
+    bottom: 12px;
     color: var(--primary-color);
     animation: spin 1.5s infinite linear;
+    font-size: 20px;
 }
 
 @keyframes spin {

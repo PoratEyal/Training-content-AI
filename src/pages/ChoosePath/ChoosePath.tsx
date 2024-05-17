@@ -122,7 +122,7 @@ function ChoosePath() {
                 <div className={styles.btn_div}>
                     <MainBtn
                         isDisabled={isDisabled}
-                        height={38}
+                        height={42}
                         text={"הצעה לפעילות"}
                         func={submitHandler}
                     ></MainBtn>

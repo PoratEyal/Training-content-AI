@@ -81,7 +81,7 @@ function Home() {
                 <MainBtn
                     isDisabled={signInDisabled}
                     func={btnFunc}
-                    height={38}
+                    height={42}
                     text={signInBtnText}
                 ></MainBtn>
 

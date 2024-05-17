@@ -4,7 +4,7 @@
     border: none;
     border-radius: 19px;
     font-family: 'Fredoka', sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 550;
     background-color: #FFD324;
     display: flex;
@@ -38,4 +38,5 @@
 .icon{
     color: #FFD324;
     font-size: 15px;
+    margin-right: 1px;
 }
