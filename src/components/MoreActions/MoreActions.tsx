@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import { useErrorContext } from "../../context/ErrorContext";
-import { PROMPT_LIMIT } from "../../models/constants/state";
 import styles from "./MoreActions.module.css";
 import { fetchGetActivity } from "../../utils/fetch";
 import { AiOutlineLoading } from "react-icons/ai";
@@ -18,7 +17,7 @@ type MoreActionsProps = {
 function MoreActions({ index, movementPath }: MoreActionsProps) {
     const { updateMovementPath } = useContentContext();
     const { handleError } = useErrorContext();
-    const { isNotReachUnRegisterLimit, updateUnRegisterLimit } = useAuthContext();
+    const { reachUnRegisterLimit, updateUnRegisterLimit } = useAuthContext();
 
     const [loadingGenerate, setLoadingGenerate] = useState(false);
     const [reset, setReset] = useState(false);
@@ -30,7 +29,7 @@ function MoreActions({ index, movementPath }: MoreActionsProps) {
         if (loadingGenerate) return;
 
         updateUnRegisterLimit();
-        if (isNotReachUnRegisterLimit()) {
+        if (!reachUnRegisterLimit()) {
             setLoadingGenerate(true);
             setReset(true);
 

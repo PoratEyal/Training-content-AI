@@ -1,47 +1,8 @@
 .container{
+    position: relative;
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
-}
-
-.navbar{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    width: 100vw;
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 995;
-    background: #faf6ee83;
-    border: none;
-    direction: ltr;
-    height: 40px;
-}
-.Profile_div{
-    position: absolute;
-    top: 0px;
-    left: 5px;
-}
-
-@supports (backdrop-filter: blur(5px)) {
-    .navbar {
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-    }
-}
-
-.back_icon {
-    rotate: 180deg;
-    padding: 10px;
-    font-size: 24px;
-    color: var(--primary-color);
-    cursor: pointer;
-    position: absolute;
-    top: 0px;
-    right: 5px;
 }
 
 @media (min-width: 550px) {
@@ -70,11 +31,6 @@
     /* Set the scrollbar width */
     .container::-webkit-scrollbar {
         width: 0px;
-    }
-
-    .back_icon{
-        margin-bottom: 10px;
-        cursor: pointer;
     }
 
     .activity_div{

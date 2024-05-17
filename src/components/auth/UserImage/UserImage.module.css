@@ -1,11 +1,6 @@
-.img_div{
-    padding: 10px;
-    position: absolute;
-    left: 0px;
-}
 
 .user_profile_img{
-    border: 1px solid #FFD324;
+    border: 1px solid var(--secondary-color);
     border-radius: 100px;
     width: 30px;
     height: 30px;

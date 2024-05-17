@@ -4,8 +4,7 @@ import { CollectionDB } from "../model/enum/DB";
 import { GetUserByIdRequest } from "../model/types/request";
 import { GetUserByIdResponse } from "../model/types/response";
 import { initUserFromDB } from "../utils/user";
-
-const db = admin.firestore();
+import { db } from "../index";
 
 const getUserById = functions.https.onCall(
     async (
