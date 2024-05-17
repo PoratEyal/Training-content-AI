@@ -11,13 +11,7 @@ export type Activity = {
     subject: string;
     time: string;
     activity: string;
-};
-
-export type ActivityPathName = "pointOfView" | "contentActivity" | "scoutingTime" | "playingTime";
-
-export type PathType = {
-    path: ActivityPathName;
-    name: string;
+    userId: string | undefined;
 };
 
 export type ActivityFunc = (

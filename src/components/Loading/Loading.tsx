@@ -4,7 +4,7 @@ function Loading() {
     return (
         <div className={styles.spinnerContainer}>
             <div className={styles.spinner}></div>
-            <div className={styles.loader}>
+            {/* <div className={styles.loader}>
                 <div className={styles.words}>
                     <span className={styles.word}></span>
                     <span className={styles.word}>טעינת נתונים</span>
@@ -17,7 +17,12 @@ function Loading() {
                     <span className={styles.word}>רק עוד רגע..</span>
                     <span className={styles.word}>כמעט סיימנו..</span>
                 </div>
-            </div>
+            </div> */}
+            <label className={styles.h2}>הפעילות בדרך</label>
+            <label className={styles.text}>
+                שימו לב! מקור הפעילויות הינו מערכת בינה מלאכותית, ייתכן ותמצאו
+                 אי דיוקים. אנא בדקו את התוכן לפני כל הפעלה
+            </label>
         </div>
     )
 }

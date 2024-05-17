@@ -1,93 +1,126 @@
 import { useEffect, useState } from "react";
-import { VscLoading } from "react-icons/vsc";
 import { useContentContext } from "../../context/ContentContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./Details.module.css";
+import { VscLoading } from "react-icons/vsc";
 import {
-    ActivityLocation,
-    ChildrensNumber,
-    ClassLevel,
-    Gender,
-} from "../../models/resources/group";
+    MovmentsOptions,
+    GradeOptions,
+    AmountOptions,
+    PlaceOptions,
+    GenderOptions,
+} from "../../models/resources/select";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
-import Footer from "../../components/Footer/Footer";
+import MainBtn from "../../components/MainBtn/MainBtn";
+import { useAuthContext } from "../../context/AuthContext";
+import Header from "../../components/Layout/Header/Header";
 
 function Details() {
-    const { data, updateDetails } = useContentContext();
-
-    const [classLevel, setClassLevel] = useState(data?.grade || "");
-    const [numberOfChildren, setNumberOfChildren] = useState(data?.amount || "");
-    const [activityLocation, setActivityLocation] = useState(data?.place || "");
-    const [gender, setGender] = useState(data?.gender || "");
-
-    const [clicked, setClicked] = useState(false);
-    const [isDisabled, setIsDisabled] = useState(true);
-
-
+    const { data, updateDetails, clearAll } = useContentContext();
+    const { isLoggedIn, currentUser, loading } = useAuthContext();
     const navigate = useNavigate();
 
+    const [movement, setMovment] = useState(
+        data ? data?.movement?.name : currentUser?.movement ? currentUser?.movement?.movement : "",
+    );
+
+    const [classLevel, setClassLevel] = useState(
+        data ? data?.grade : currentUser?.movement ? currentUser?.movement?.grade : "",
+    );
+
+    const [numberOfChildren, setNumberOfChildren] = useState(
+        data ? data?.amount : currentUser?.movement ? currentUser?.movement?.amount : "",
+    );
+
+    const [activityLocation, setActivityLocation] = useState(
+        data ? data?.place : currentUser?.movement ? currentUser?.movement?.place : "",
+    );
+
+    const [gender, setGender] = useState(
+        data ? data?.gender : currentUser?.movement ? currentUser?.movement?.gender : "",
+    );
+
+    const [isDisabled, setIsDisabled] = useState(true);
+
     useEffect(() => {
-        if (classLevel && numberOfChildren && activityLocation && gender) {
-            setIsDisabled(false);
+        if (loading) setIsDisabled(true);
+        else {
+            if (movement && classLevel && numberOfChildren && activityLocation && gender) {
+                setIsDisabled(false);
+            }
         }
-    }, [classLevel, numberOfChildren, activityLocation, gender]);
+    }, [movement, classLevel, numberOfChildren, activityLocation, gender, loading]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setClicked(true);
-        updateDetails(classLevel, numberOfChildren, activityLocation, gender);
-
+        updateDetails(movement, classLevel, numberOfChildren, activityLocation, gender);
         navigate("/choosePath");
+    };
+
+    const goBack = () => {
+        console.log("goBack");
+        clearAll();
+        navigate("/");
     };
 
     return (
         <div className={styles.container}>
+            <Header goBack={isLoggedIn ? undefined : goBack} />
+
+            <img className={styles.h2_img} alt="h2 text" src="h2_page2.svg"></img>
+
             <form onSubmit={handleSubmit} className={styles.detailsForm}>
-                <div className={styles.half_circle}>
-                    <h1>
-                        בונה פעולות <br></br> לתנועות נוער
-                    </h1>
-                </div>
+                <img className={styles.lamp_img} alt="lamp image" src="lamp.svg"></img>
 
-                <h2 className={styles.page_title}>פרטי הקבוצה שלכם</h2>
+                <div className={styles.spacer}></div>
 
-                <SelectDetails
-                    data={ClassLevel}
-                    placeholder={"קבוצת גיל"}
-                    obj={classLevel}
-                    setObj={setClassLevel}
-                />
-                <SelectDetails
-                    data={ChildrensNumber}
-                    placeholder={"מספר ילדים"}
-                    obj={numberOfChildren}
-                    setObj={setNumberOfChildren}
-                />
-                <SelectDetails
-                    data={ActivityLocation}
-                    placeholder={"מיקום הפעילות"}
-                    obj={activityLocation}
-                    setObj={setActivityLocation}
-                />
-                <SelectDetails data={Gender} placeholder={"מין"} obj={gender} setObj={setGender} />
+                {loading ? (
+                    <VscLoading className={styles.loading_icon_magic} />
+                ) : (
+                    <div className={styles.select_div}>
+                        <SelectDetails
+                            data={MovmentsOptions}
+                            placeholder={"תנועת נוער"}
+                            obj={movement}
+                            setObj={setMovment}
+                        />
+                        <SelectDetails
+                            data={GradeOptions}
+                            placeholder={"קבוצת גיל"}
+                            obj={classLevel}
+                            setObj={setClassLevel}
+                        />
+                        <SelectDetails
+                            data={AmountOptions}
+                            placeholder={"מספר ילדים"}
+                            obj={numberOfChildren}
+                            setObj={setNumberOfChildren}
+                        />
+                        <SelectDetails
+                            data={PlaceOptions}
+                            placeholder={"מיקום הפעילות"}
+                            obj={activityLocation}
+                            setObj={setActivityLocation}
+                        />
+                        <SelectDetails
+                            data={GenderOptions}
+                            placeholder={"מין"}
+                            obj={gender}
+                            setObj={setGender}
+                        />
+                    </div>
+                )}
 
                 <div className={styles.btn_div}>
-                    <button
-                        disabled={isDisabled}
-                        onClick={() => setClicked(true)}
-                        className={styles.submit_btn}
+                    <MainBtn
                         type="submit"
-                    >
-                        {!clicked ? (
-                            "המשיכו"
-                        ) : (
-                            <VscLoading className={styles.loading_icon}></VscLoading>
-                        )}
-                    </button>
+                        isDisabled={isDisabled}
+                        height={38}
+                        text="המשיכו"
+                        func={handleSubmit}
+                    ></MainBtn>
                 </div>
             </form>
-
-            <Footer />
         </div>
     );
 }

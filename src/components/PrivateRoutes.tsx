@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
-import { useContentContext } from "../context/ContentContext";
+import { Outlet, useLocation } from "react-router-dom";
 import LimitRequest from "./popups/LimitRequests/LimitRequests";
 import TSCs from "./popups/TSCs/TSCs";
-import { PROMPT_LIMIT } from "../models/constants/state";
+import { NOT_REGISTER_LIMIT } from "../models/constants";
+import { useAuthContext } from "../context/AuthContext";
+import { forLongTime } from "../utils/time";
 
 const PrivateRoutes = () => {
-    const { cookies, setCookie, limit } = useContentContext();
-    const [prevent, setPrevent] = useState(false);
+    const location = useLocation();
+    const { cookies, setCookie, unRegisterLimit } = useAuthContext();
+    const { isLoggedIn, loading } = useAuthContext();
+    const [block, setBlock] = useState(false);
     const [tscs, setTscs] = useState(false);
 
     useEffect(() => {
-        if (limit >= PROMPT_LIMIT) {
-            setPrevent(true);
-        } 
-    }, [limit]);
+        if(location.pathname === "/") return;
+        if (loading || isLoggedIn) return;
+        if (unRegisterLimit >= NOT_REGISTER_LIMIT + 1) {
+            setBlock(true);
+        }
+    }, [unRegisterLimit]);
 
     useEffect(() => {
         if (cookies["user-consent"] === undefined) {
@@ -25,20 +30,20 @@ const PrivateRoutes = () => {
     const handleAcceptTerms = () => {
         setCookie("user-consent", "accepted", {
             path: "/",
-            expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30 * 6),
+            expires: forLongTime,
         });
         setTscs(false);
     };
 
     const handleAcceptLimit = () => {
-        setPrevent(false);
-    }
+        setBlock(false);
+    };
 
     return (
         <React.Fragment>
-            {prevent ? <LimitRequest handleAccept={handleAcceptLimit} /> : null}
+            {block ? <LimitRequest handleAccept={handleAcceptLimit} /> : null}
             {tscs ? <TSCs handleAccept={handleAcceptTerms} /> : null}
-            <Outlet /> 
+            <Outlet />
         </React.Fragment>
     );
 };

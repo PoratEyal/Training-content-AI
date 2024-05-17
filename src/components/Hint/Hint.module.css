@@ -1,5 +1,6 @@
 .hintContainer{
     position: relative;
+    margin-bottom: -5px;
 }
 
 .hintBtn{
@@ -29,11 +30,20 @@
 }
 
 
-@media (max-width: 400px) {
+@media (max-width: 430px) {
     .hint{
-        min-width: 170px;
-        max-width: 170px;
+        min-width: 130px;
+        max-width: 130px;
         white-space: normal;
         text-align: right;
     }
-  }
+}
+
+@media (min-width: 550px) {
+    .hint{
+        min-width: 160px;
+        max-width: 160px;
+        white-space: normal;
+        text-align: right;
+    }
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Footer.module.css";
 import { useNavigate } from "react-router-dom";
-import policy from "../../models/resources/policy.json";
+import policy from "../../../models/resources/policy.json";
 import { MdOutlinePrivacyTip } from "react-icons/md";
 
 function Footer() {

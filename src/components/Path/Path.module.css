@@ -1,28 +1,59 @@
-.checkbox_div {
-    font-size: 20px;
+.checkbox_div{
     margin-bottom: 25px;
     margin-right: 20px;
 }
 
-.checkbox_input {
-    font-size: 19px;
-    color: rgb(46, 46, 46);
+.custom_checkbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.custom_checkbox{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
 .custom_checkbox input[type="checkbox"] {
+    display: none; /* Hide the default checkbox */
+}
+
+.custom_checkbox label {
+    position: relative;
+    padding-left: 5px;
     cursor: pointer;
-    position: relative;
-    top: 1px;
+    line-height: 20px;
+    margin-right: 30px; /* Adjusted to separate the label from the checkbox */
 }
-.custom_checkbox section {
-    position: relative;
-    top: 2px;
+
+.custom_checkbox label::before {
+    content: "";
+    position: absolute;
+    right: -30px;
+    top: 0;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    border: 1px solid var(--text-color);
+    background-color: var(--select-color);
+    transition: background-color 0.3s, border-color 0.3s;
 }
+
+.custom_checkbox input[type="checkbox"]:checked + label::before {
+    background-color: white;
+    border: 1px solid var(--text-color);
+}
+
+.custom_checkbox input[type="checkbox"]:checked + label::after {
+    content: ""; /* Creating the inner circle */
+    position: absolute;
+    right: -25px; /* Slightly inside the outer circle */
+    top: 5px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: var(--primary-color); /* White inner circle */
+}
+
+
+
+
 
 .inputs_div {
     display: flex;
@@ -39,46 +70,48 @@
     align-items: center;
     gap: 0px;
     direction: rtl;
+    position: relative;
 }
 
 .input {
     padding: 12px;
     margin-top: 15px;
     border: none;
-    border-radius: 15px;
-    font-size: 16px;
+    border-radius: 14px;
     font-family: 'Fredoka', sans-serif;
     text-align: right;
     background-color: rgb(255, 255, 255);
-    border: 1px solid orange;
+    border: 1px solid var(--text-color);
     outline: none;
-    width: 310px;
+    width: 63vw;
+    background-color: var(--select-color);
     resize: none;
-    height: 50px;
+    height: 60px;
     min-height: 50px;
     overflow: hidden;
+    font-size: 13px;
+}
+.input::placeholder {
+    color: #5D5D5D;
+    font-weight: 300;
+    font-size: 13px;
 }
 
-.magic_icon {
-    color: orange;
-    padding: 5px;
-    margin-right: -40px;
-    padding-right: 5px;
-    border: none;
-    margin-top: 45px;
-    background-color: rgb(255, 255, 255);
+.magic_icon{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    color: var(--primary-color);
     cursor: pointer;
 }
-
-.loading_icon_magic {
-    color: orange;
-    padding: 5px;
-    margin-right: -40px;
-    margin-top: 45px;
-    border: none;
-    background-color: white;
-    animation: spin 1s infinite linear;
+.loading_icon_magic{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    color: var(--primary-color);
+    animation: spin 1.5s infinite linear;
 }
+
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -86,5 +119,14 @@
 
     to {
         transform: rotate(360deg);
+    }
+}
+
+@media (min-width: 550px) {
+    .inputs_div{
+        width: 300px;
+    }
+    .input{
+        width: 270px;
     }
 }

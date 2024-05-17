@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 
+:root {
+    --background-color: #FAF6EE;
+    --primary-color: #708254;
+    --secondary-color: #FFD324;
+    --text-color: #333335;
+    --select-color: #fcfaf5;
+}
+
 body {
     margin: 0;
     font-family: 'Fredoka', sans-serif;
@@ -7,6 +15,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #F5F5DC;
+    background-color: var(--background-color);
     direction: rtl;
 }

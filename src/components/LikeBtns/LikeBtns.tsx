@@ -3,18 +3,19 @@ import styles from "./LikeBtns.module.css";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { Activity } from "../../models/types/activity";
+import { useErrorContext } from "../../context/ErrorContext";
 import { useContentContext } from "../../context/ContentContext";
 import { fetchUpdateActivityLikes } from "../../utils/fetch";
-import { useErrorContext } from "../../context/ErrorContext";
 
 type LikeBtnsProps = {
+    index: number;
     activity: Activity;
     reset: boolean;
 };
 
-function LikeBtns({ activity, reset }: LikeBtnsProps) {
-    const { contextUpdateSet } = useContentContext();
+function LikeBtns({ index, activity, reset }: LikeBtnsProps) {
     const { handleError } = useErrorContext();
+    const { updateMovementPath } = useContentContext();
 
     const [action, setAction] = useState({ like: undefined, dislike: undefined });
     const [debouncedLiked, setDebouncedLiked] = useState(false);
@@ -30,6 +31,7 @@ function LikeBtns({ activity, reset }: LikeBtnsProps) {
         let likeTimeHandler: NodeJS.Timeout;
         let dislikeTimeHandler: NodeJS.Timeout;
         const { like, dislike } = action;
+        if(like === undefined && dislike === undefined) return;
 
         if ((like || !like) && dislike === undefined) {
             likeTimeHandler = setTimeout(() => {
@@ -53,9 +55,8 @@ function LikeBtns({ activity, reset }: LikeBtnsProps) {
     }, [action]);
 
     const sendLikeStatusToServer = useCallback(async (likesAmount: number) => {
-        const contextUpdateFunc = contextUpdateSet[activity.path as keyof Activity];
         try {
-            await fetchUpdateActivityLikes(contextUpdateFunc, {
+            await fetchUpdateActivityLikes(updateMovementPath, index, {
                 activity,
                 likesAmount,
             });
@@ -82,16 +83,18 @@ function LikeBtns({ activity, reset }: LikeBtnsProps) {
                 className={styles.like}
                 onClick={handleClickLike}
                 style={{
-                    color: action.like ? "green" : "orange",
-                    borderColor: action.like ? "green" : "orange",
+                    color: action.like ? "white" : "#708254",
+                    borderColor: action.like ? "#4CAF50" : "#708254",
+                    backgroundColor: action.like ? "#4CAF50" : "rgba(255, 255, 255, 0)",
                 }}
             />
             <AiOutlineDislike
                 className={styles.dislike}
                 onClick={handleClickDislike}
                 style={{
-                    color: action.dislike ? "red" : "orange",
-                    borderColor: action.dislike ? "red" : "orange",
+                    color: action.dislike ? "white" : "#708254",
+                    borderColor: action.dislike ? "#F44336" : "#708254",
+                    backgroundColor: action.dislike ? "#F44336" : "rgba(255, 255, 255, 0)",
                 }}
             />
         </div>
