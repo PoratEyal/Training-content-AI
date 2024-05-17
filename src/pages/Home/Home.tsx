@@ -10,16 +10,23 @@ import {
     setPersistence,
     browserLocalPersistence,
 } from "firebase/auth";
-import { GoogleUser } from "../../models/types/user";
-import { initUser } from "../../utils/user";
+import { GoogleUser, RawUser } from "../../models/types/user";
 import { fetchCreateNewUser } from "../../utils/fetch";
 import Footer from "../../components/Layout/Footer/Footer";
+import { useEffect } from "react";
+import { useContentContext } from "../../context/ContentContext";
+import { initRawUser } from "../../utils/user";
 
 function Home() {
     const { isLoggedIn, loading, reachUnRegisterLimit } = useAuthContext();
+    const { data} = useContentContext();
     const navigate = useNavigate();
 
     const handleStart = () => navigate("/details");
+
+    useEffect(() => {
+        if (!loading && isLoggedIn && data) handleStart();
+    }, [loading, isLoggedIn]);
 
     const btnTitle = loading ? "התחברות..." : isLoggedIn ? "מתחילים" : "מתחברים ומתחילים";
     const btnFunc = isLoggedIn ? () => handleStart() : () => signInWithGoogle();
@@ -29,13 +36,9 @@ function Home() {
         try {
             await setPersistence(auth, browserLocalPersistence);
             const userResult = await signInWithPopup(auth, provider);
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            // const credential = GoogleAuthProvider.credentialFromResult(userResult);
-            // const token = credential.accessToken;
             if (userResult) {
-                const user = userResult.user as unknown as GoogleUser;
-                const newUser = initUser(user);
-                await fetchCreateNewUser({ newUser });
+                const rawUser = initRawUser(userResult.user);
+                await fetchCreateNewUser({ rawUser });
                 handleStart();
             }
         } catch (error) {
@@ -44,6 +47,7 @@ function Home() {
             const errorMessage = error.message;
             const email = error.email;
             const credential = GoogleAuthProvider.credentialFromError(error);
+            console.log("error - ", error)
         }
     };
 
@@ -75,7 +79,7 @@ function Home() {
                     text={btnTitle}
                 ></MainBtn>
 
-                {(!isLoggedIn && !loading) && !reachUnRegisterLimit() ? (
+                {!isLoggedIn && !loading && !reachUnRegisterLimit() ? (
                     <button onClick={handleStart} className={styles.home_login_btn}>
                         התחלה ללא חשבון
                     </button>

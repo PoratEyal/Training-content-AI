@@ -1,5 +1,5 @@
 import { Activity } from "./activity";
-import { User } from "./user";
+import { RawUser, User } from "./user";
 
 export type FetchFrom = "DB" | "AI";
 
@@ -27,7 +27,7 @@ export type AddMovmentRequest = {
 export type GetMovmentsRequest = {};
 
 export type CreateNewUserRequest = {
-    newUser: User;
+    rawUser: RawUser
 };
 
 export type GetUserByIdRequest = {

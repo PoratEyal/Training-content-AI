@@ -1,6 +1,5 @@
 import { UserMovementDetails } from "./movement";
 
-
 export type User = {
     id: string;
     name: string;
@@ -11,3 +10,12 @@ export type User = {
     movement: UserMovementDetails | undefined;
     isAcceptTerms: boolean;
 };
+
+export type RawUser = {
+    uid: string;
+    accessToken: string;
+    displayName: string;
+    email: string;
+    phoneNumber: string;
+    photoURL: string;
+}

@@ -3,7 +3,7 @@ import { ContentContextType, DataType } from "../models/types/context";
 import { typeContext } from "../models/defualtState/context";
 import Session from "../utils/sessionStorage";
 import { Activity } from "../models/types/activity";
-import { Movements } from "../models/resources/movment";
+import { addSessionData } from "../utils/movment";
 
 export const ContentContext = createContext<ContentContextType>(typeContext);
 
@@ -26,16 +26,9 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
 
     const updateDetails = (movement, grade, amount, place, gender) => {
         setData((prevData) => {
-            const d = {
-                ...prevData,
-                movement: Movements[movement],
-                grade: grade,
-                amount: amount,
-                place: place,
-                gender: gender,
-            };
-            Session.set("data", d);
-            return d;
+            const data = addSessionData(movement, grade, amount, place, gender)
+            Session.set("data", data);
+            return data;
         });
     };
 

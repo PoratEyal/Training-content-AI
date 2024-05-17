@@ -11,6 +11,15 @@ export type User = {
     isAcceptTerms: boolean;
 };
 
+export type RawUser = {
+    uid: string;
+    accessToken: string;
+    displayName: string;
+    email: string;
+    phoneNumber: string;
+    photoURL: string;
+}
+
 export type GoogleUser = {
     uid: string;
     accessToken: string;

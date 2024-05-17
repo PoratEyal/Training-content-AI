@@ -1,12 +1,10 @@
-import React from "react";
 import { useAuthContext } from "../../../context/AuthContext";
 import Profile from "../../auth/Profile/Profile";
-import LimitIndicator from "../../LimitIndicator/LimitIndicator";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import styles from "./Header.module.css";
 
 type HeaderProps = {
-    goBack: () => void;
+    goBack?: () => void;
     isFade?: boolean;
 };
 
@@ -17,19 +15,18 @@ function Header({ goBack, isFade = false }: HeaderProps) {
 
     return (
         <section className={style}>
-            <IoMdArrowRoundBack onClick={goBack} className={styleIcon}></IoMdArrowRoundBack>
             {!loading ? (
                 isLoggedIn ? (
-                    <Profile
-                        img={currentUser?.image || ""}
-                        name={currentUser?.name || "r"}
-                        role="guide"
-                    />
+                    <Profile img={currentUser?.image || ""} name={currentUser?.name || ""} />
                 ) : (
                     // <LimitIndicator />
                     <div></div>
                 )
             ) : null}
+            {goBack ? (
+                <IoMdArrowRoundBack onClick={goBack} className={styleIcon}></IoMdArrowRoundBack>
+            ) : null}
+
         </section>
     );
 }
