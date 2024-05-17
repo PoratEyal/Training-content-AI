@@ -2,32 +2,49 @@ import { useEffect, useState } from "react";
 import styles from "./Path.module.css";
 import { FaWandMagicSparkles } from "react-icons/fa6";
 import { VscLoading } from "react-icons/vsc";
-import SelectDetails from "../SelectDetailsPath/SelectDetailsPath";
-import { ActivityTime } from "../../models/resources/activity";
-import { useErrorContext } from "../../context/ErrorContext";
-import PlayingTimeSubjects from "../../models/resources/playingTime.json";
-import ScoutingTimeSubjects from "../../models/resources/scoutesActivities.json";
+import SelectDetails from "../SelectDetails/SelectDetails";
+import { ActivityTimeOptions } from "../../models/resources/select";
+import { MovementPath } from "../../models/types/movement";
 import Hint from "../Hint/Hint";
 
-function Path({ index, title, setPath, hint, isGenerate = false }) {
-    const { handleError } = useErrorContext();
+type PathProps = {
+    index: number;
+    path: MovementPath;
+    setPath: React.Dispatch<React.SetStateAction<any[]>>;
+};
+
+function Path({ index, path, setPath }: PathProps) {
     const [show, setShow] = useState(false);
     const [subject, setSubject] = useState("");
     const [time, setTime] = useState("");
-    const [magic, setMagic] = useState(false);
+    const [loadingMagic, setLoadingMagic] = useState(false);
+
+    const { name, title, hint, magic } = path;
 
     useEffect(() => {
         if (!show) {
-            setPath(undefined);
+            setPath((prev) => {
+                const newPath = [...prev];
+                newPath[index] = undefined;
+                return newPath;
+            });
             setSubject("");
             setTime("");
             return;
         }
         if (!subject || !time || subject === "" || time === "") {
-            setPath(undefined);
+            setPath((prev) => {
+                const newPath = [...prev];
+                newPath[index] = undefined;
+                return newPath;
+            });
             return;
         }
-        setPath({ subject, time });
+        setPath((prev) => {
+            const newPath = [...prev];
+            newPath[index] = { subject, time, name, index };
+            return newPath;
+        });
     }, [show, subject, time]);
 
     const toggleShow = () => setShow((prev) => !prev);
@@ -41,31 +58,24 @@ function Path({ index, title, setPath, hint, isGenerate = false }) {
     };
 
     const generateSubject = async () => {
-        try {
-            setMagic(true);
+        if (magic && magic.length !== 0) {
             setSubject("");
-
-            if (isGenerate) {
-                setTimeout(() => {
-                    let activities = [];
-                    if (index === 3) activities = ScoutingTimeSubjects;
-                    if (index === 4) activities = PlayingTimeSubjects;
-                    const randomIndex = Math.floor(Math.random() * activities.length);
-                    setSubject(activities[randomIndex].name);
-                    setMagic(false);
-                }, 500);
-            }
-        } catch (error) {
-            handleError(error);
+            setLoadingMagic(true);
+            setTimeout(() => {
+                let activities = magic;
+                const randomIndex = Math.floor(Math.random() * activities.length);
+                setSubject(activities[randomIndex].name);
+                setLoadingMagic(false);
+            }, 500);
         }
     };
 
     return (
         <div className={styles.checkbox_div}>
             <div className={styles.custom_checkbox}>
-                <input type="checkbox" checked={show} onChange={toggleShow} />
-                <span>{title}</span>
-                <Hint hint={hint} />
+                <input type="checkbox" id={name} checked={show} onChange={toggleShow} />
+                <label htmlFor={name}>{title}</label>
+                {hint ? <Hint hint={hint} /> : null}
             </div>
 
             {show && (
@@ -77,8 +87,8 @@ function Path({ index, title, setPath, hint, isGenerate = false }) {
                             onChange={handleInputChange}
                             placeholder="נושא הפעילות"
                         />
-                        {isGenerate &&
-                            (magic ? (
+                        {magic && magic.length !== 0 &&
+                            (loadingMagic ? (
                                 <VscLoading className={styles.loading_icon_magic} />
                             ) : (
                                 <FaWandMagicSparkles
@@ -89,8 +99,8 @@ function Path({ index, title, setPath, hint, isGenerate = false }) {
                     </div>
 
                     <SelectDetails
-                        data={ActivityTime}
-                        placeholder={"זמן הפעילות"}
+                        data={ActivityTimeOptions}
+                        placeholder={"משך הפעילות"}
                         obj={time}
                         setObj={setTime}
                     />

@@ -1,21 +1,19 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { ContentContextType, DataType } from "../models/types/context";
 import { typeContext } from "../models/defualtState/context";
-import { PROMPT_LIMIT } from "../models/constants/state";
-import { useCookies } from "react-cookie";
 import Session from "../utils/sessionStorage";
-import { tillEndOfDay } from "../utils/time";
 import { Activity } from "../models/types/activity";
+import { addSessionData } from "../utils/movment";
+import { useAuthContext } from "./AuthContext";
+import { Movements } from "../models/resources/movment";
 
 export const ContentContext = createContext<ContentContextType>(typeContext);
 
 export const useContentContext = () => useContext(ContentContext);
 
 export const ContentProvider = ({ children }: { children: React.ReactNode }) => {
-    const [cookies, setCookie] = useCookies(["limit", "user-consent"]);
-
+    const { currentUser } = useAuthContext();
     const [data, setData] = useState<DataType | undefined>();
-    const [limit, setLimit] = useState<number | undefined>();
 
     const setStateFromSession = () => {
         try {
@@ -25,102 +23,61 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
                     setData(sessionData);
                 }
             }
-            if (limit === undefined) {
-                const cookieLimit = cookies["limit"];
-                if (cookieLimit) {
-                    setLimit(parseInt(cookieLimit));
-                }
-            }
         } catch (error) {}
     };
     setStateFromSession();
 
-    const updateDetails = (grade, amount, place, gender) => {
-        setData((prevData) => {
-            const d = {
-                ...prevData,
+    useEffect(() => {
+        if (!data && currentUser && currentUser.movement) {
+            const { grade, amount, place, gender, movement } = currentUser.movement;
+            setData({
+                movement: Movements[movement],
                 grade: grade,
                 amount: amount,
                 place: place,
                 gender: gender,
-            };
-            Session.set("data", d);
-            return d;
-        });
-    };
+            });
+        }
+    }, [currentUser]);
 
-    const updateLimit = () => {
-        setLimit((prev) => {
-            const lim = prev ? prev + 1 : 1;
-            if (lim <= PROMPT_LIMIT) {
-                setCookie("limit", JSON.stringify(lim), {
-                    path: "/",
-                    expires: tillEndOfDay,
-                });
-            }
-            return lim;
-        });
-    };
-
-    const resetAllUseFields = () => {
+    const updateDetails = (movement, grade, amount, place, gender) => {
         setData((prevData) => {
-            const d = {
+            const data = addSessionData(movement, grade, amount, place, gender);
+            Session.set("data", data);
+            return data;
+        });
+    };
+
+    const clearAll = () => {
+        Session.clear();
+        setData(undefined);
+    };
+
+    const clearPath = () => {
+        if (data?.movement?.path.length === 0) return;
+        setData((prevData) => {
+            const updatedPath = prevData.movement.path.map((pathItem) => ({
+                ...pathItem,
+                activity: undefined,
+            }));
+            const updatedData: DataType = {
                 ...prevData,
-                pointOfView: undefined,
-                contentActivity: undefined,
-                scoutingTime: undefined,
-                playingTime: undefined,
+                movement: {
+                    ...prevData.movement,
+                    path: updatedPath,
+                },
             };
-            Session.set("data", d);
-            return d;
+            Session.set("data", updatedData);
+            return updatedData;
         });
     };
 
-    // - - - - - - Content Activity - - - - - - - - - - - - - - -
-
-    const updateContentActivity = (activity: Activity) => {
+    const updateMovementPath = (index: number, activity: Activity) => {
         setData((prevData) => {
-            const d = { ...prevData, contentActivity: activity };
-            Session.set("data", d);
-            return d;
+            prevData.movement.path[index].activity = activity;
+            Session.set("data", { ...prevData });
+            return { ...prevData };
         });
-    };
-
-    // - - - - - - Point Of View - - - - - - - - - - - - - - -
-
-    const updatePointOfView = (activity: Activity) => {
-        setData((prevData) => {
-            const d = { ...prevData, pointOfView: activity };
-            Session.set("data", d);
-            return d;
-        });
-    };
-
-    // - - - - - - Scouting Time - - - - - - - - - - - - - - -
-
-    const updateScoutingTime = (activity: Activity) => {
-        setData((prevData) => {
-            const d = { ...prevData, scoutingTime: activity };
-            Session.set("data", d);
-            return d;
-        });
-    };
-
-    // - - - - - - playing Time - - - - - - - - - - - - - - -
-
-    const updatePlayingTime = (activity: Activity) => {
-        setData((prevData) => {
-            const d = { ...prevData, playingTime: activity };
-            Session.set("data", d);
-            return d;
-        });
-    };
-
-    const contextUpdateSet = {
-        pointOfView: updatePointOfView,
-        contentActivity: updateContentActivity,
-        scoutingTime: updateScoutingTime,
-        playingTime: updatePlayingTime,
     };
 
     return (
@@ -128,17 +85,10 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
             value={{
                 data,
                 setData,
-                limit,
-                updateLimit,
-                cookies,
-                setCookie,
                 updateDetails,
-                resetAllUseFields,
-                updateContentActivity,
-                updatePointOfView,
-                updateScoutingTime,
-                updatePlayingTime,
-                contextUpdateSet,
+                updateMovementPath,
+                clearAll,
+                clearPath,
             }}
         >
             {children}

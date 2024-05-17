@@ -4,20 +4,56 @@
     padding-top: 0px;
 }
 
-.activity_title {
-    text-align: right;
-    font-size: 22px;
-    color: orange;
-    font-weight: bold;
-    margin: 10px 0;
+.activity_data{
+    color: var(--text-color);
 }
 
-.activity_top{
+.activity_top {
     margin-top: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
+.spacer{
+    margin-top: 20px;
+}
+
+.activity_close {
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--text-color);
+    font-size: 18px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 500;
+}
+.activityOpen{
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--primary-color);
+    font-size: 18px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 500;
+}
+.toggel_arrow_animation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 25px;
+    font-size: 22px;
+    margin-top: 3px;
+}
+
 
 @media (min-width: 550px) {
     .activity_contianer {

@@ -1,6 +1,3 @@
-export type ActivityPathName = "pointOfView" | "contentActivity" | "scoutingTime" | "playingTime";
-
-
 export type Activity = {
     id: string;
     updatedAt: string;
@@ -14,6 +11,7 @@ export type Activity = {
     subject: string;
     time: string;
     activity: string;
+    userId: string | undefined;
 };
 
 export type ActivityDetails = {

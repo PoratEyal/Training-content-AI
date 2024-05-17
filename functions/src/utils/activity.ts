@@ -3,7 +3,7 @@ import { Activity } from "../model/types/activity";
 import { GetActivityRequest } from "../model/types/request";
 import { getUpdateAt } from "./time";
 
-export const initActivityFromDB = (id: string, data: DocumentData) => {
+export const initActivityFromDB = (id: string, data: DocumentData, userId: string) => {
     return {
         id,
         updatedAt: data.updatedAt || "",
@@ -17,10 +17,11 @@ export const initActivityFromDB = (id: string, data: DocumentData) => {
         subject: data.subject || "",
         time: data.time || "",
         activity: data.activity || "",
+        userId,
     } as Activity;
 };
 
-export const initActivityFromAI = (text: string, data: GetActivityRequest) => {
+export const initActivityFromAI = (text: string, data: GetActivityRequest, userId: string) => {
     const { path, subject, time, amount, grade, gender, place } = data;
     return {
         id: "",
@@ -35,6 +36,7 @@ export const initActivityFromAI = (text: string, data: GetActivityRequest) => {
         gender,
         subject,
         time,
+        userId,
     } as Activity;
 };
 

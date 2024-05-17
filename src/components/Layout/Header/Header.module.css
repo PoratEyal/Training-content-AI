@@ -1,0 +1,54 @@
+.header{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    direction: ltr;
+}
+
+.header_fade{
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 995;
+    background: #faf6ee83;
+    border: none;
+    direction: ltr;
+}
+
+@supports (backdrop-filter: blur(5px)) {
+    .header_fade {
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+}
+
+.back_icon {
+    rotate: 180deg;
+    font-size: 24px;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.back_icon_fade{
+    rotate: 180deg;
+    font-size: 24px;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+@media (min-width: 550px) {
+    .back_icon_fade{
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+}

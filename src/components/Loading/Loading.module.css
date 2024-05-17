@@ -12,23 +12,37 @@
   width: 100vw;
   height: 100vh;
   background: #ffffff30;
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: var(--secondary-color);
 }
 
-@supports (backdrop-filter: blur(14.7px)) {
+/* @supports (backdrop-filter: blur(14.7px)) {
   .spinnerContainer {
     backdrop-filter: blur(14.7px);
     -webkit-backdrop-filter: blur(14.7px);
     background: transparent;
   }
+} */
+
+.h2{
+  margin-top: 20px;
+  font-size: 42px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+.text{
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 300;
+  width: 240px;
+  text-align: center;
+  color: var(--text-color);
 }
   
   .spinner {
     width: 146px;
     height: 146px;
     display: grid;
-    border: 4px solid orange;
+    border: 4px solid var(--text-color);
     border-radius: 50%;
     border-right-color: rgba(0, 0, 0, 0);
     animation: tri-spinner 1s infinite linear;
@@ -56,7 +70,7 @@
   }
   
   .loader {
-    color: orange;
+    color: var(--primary-color);
     font-family: "Poppins",sans-serif;
     font-weight: 500;
     font-size: 35px;

@@ -12,6 +12,12 @@ async function generateContent(prompt: string): Promise<string> {
     return text;
 }
 
+export async function getActivity(activityDetials: ActivityDetails): Promise<string> {
+    const { subject, time, amount, grade, gender, place } = activityDetials;
+    const prompt = `אתה מדריך צופים המעביר פעילות לחניכיו בתנועת הנוער, ואני רוצה שתיצור פעילות בנושא ${subject} שתימשך ${time}, מספר הילדים בפעילות הוא ${amount}, שכבת הגיל שלהם היא: ${grade} והמין שלהם הוא ${gender}. מקום הפעילות יהיה ${place}. (וודא שאין שגיאות כתיב )בתחילת התשובה תן שם לפעילות וציין את הזמן המיועד לה. בכל חלק מהפעילות, ציין את הזמן הנדרש בדקות. הקפד על כיסוי מלא של כל ההיבטים והוראות מפורטות לפעילות. התשובה צריכה להיות בפורמט של markdown style (תוודא שאתה לא מוסיף שפות אחרות) השתדל לשקף תוכן ישיר כמו שמות וזמנים ללא שינוי, אך העשיר את התיאור בפרטים רלוונטיים נוספים להבנה מוגברת. אל תכלול מצגת או וידאו בפעילות שלך. התשובה צריכה להיות מפורטת ובעברית בלבד.`;
+    return await generateContent(prompt);
+}
+
 export async function getPointOfView(activityDetials: ActivityDetails): Promise<string> {
     const { subject, time, amount, grade, gender, place } = activityDetials;
     const prompt = `אתה מדריך צופים המעביר פעילות לחניכיו בתנועת הנוער ואני רוצה שתיצור פעילות בשם 'פעילות נקודת מבט' על הנושא ${subject} שתימשך ${time}, מספר הילדים בפעילות הוא ${amount}, כיתתם היא ${grade} ומינם הוא ${gender}. מקום הפעילות יהיה ב${place} .(וודא שאין שגיאות כתיב כלל) בתחילת התשובה כתוב את שם הפעילות ואת משך הזמן שלה. בכל חלק של הפעילות, ציין את הזמן הנדרש בדקות. וודא כיסוי מלא של כל ההיבטים והוראות מפורטות לפעילות. תחזיר את התשובה בפורמט של markdown style  (תוודא שאתה לא מוסיף שפות אחרות) הבט לשקף תכנים ישירים כמו שמות וזמנים ללא שינוי, אך העשר את התיאור בפרטים רלוונטיים נוספים להבנה טובה יותר. אל תכלול מצגת או וידאו בפעילות. התשובה צריכה להיות מפורטת ובעברית בלבד.`;
@@ -37,6 +43,7 @@ export async function getPlayingTime(activityDetials: ActivityDetails): Promise<
 }
 
 export const GeminiApiSet = {
+    activity: getActivity,
     pointOfView: getPointOfView,
     contentActivity: getContentActivity,
     scoutingTime: getScoutingTime,

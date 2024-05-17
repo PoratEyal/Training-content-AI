@@ -1,0 +1,88 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 55vh;
+    margin-top: 150px;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.logo_text_div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home_lable{
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-top: 50px;
+    border-top: 1px solid #333335;
+    border-bottom: 1px solid #333335;
+    font-size: 16px;
+    font-weight: 550;
+    color: #333335;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.hand_icon{
+    width: 18px;
+    height: 18px;
+}
+
+.button_section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home_login_btn{
+    margin-top: 12px;
+    border: none;
+    font-family: 'Fredoka', sans-serif;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 14px;
+    font-weight: 550;
+    border-bottom: 1px solid #333335;
+    color: #333335;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.privacy_div{
+    position: absolute;
+    bottom: 10px;
+}
+
+@media (min-width: 550px) {
+    .container{
+        margin-top: 50px;
+        width: 400px;
+        background-color: var(--background-color);
+        height: 630px;
+        border: none;
+        border-radius: 30px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        position: relative;
+    }
+    .logo_text_div{
+        margin-top: 100px;
+    }
+    .button_section{
+        margin-bottom: 100px;
+    }
+    .privacy_div{
+        bottom: 0px;
+    }
+    body {
+        background-color: #ffe1a0 !important;
+    }
+}

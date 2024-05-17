@@ -1,112 +1,81 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import styles from "./ChoosePath.module.css";
 import { useNavigate } from "react-router-dom";
-import Loading from "../../components/Loading/Loading";
 import Path from "../../components/Path/Path";
 import { useErrorContext } from "../../context/ErrorContext";
-import { IoArrowForward } from "react-icons/io5";
-import { PathActivity } from "../../models/constants/path";
-import hints from "../../models/resources/hints.json";
-import { PROMPT_LIMIT } from "../../models/constants/state";
 import { fetchGetActivity } from "../../utils/fetch";
+import MainBtn from "../../components/MainBtn/MainBtn";
+import { useAuthContext } from "../../context/AuthContext";
+import Loading from "../../components/Loading/Loading";
+import { fetchUpdateUser } from "../../utils/fetch";
+import { VscLoading } from "react-icons/vsc";
+import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";
+import Header from "../../components/Layout/Header/Header";
 
 function ChoosePath() {
-    const {
-        data,
-        limit,
-        updateLimit,
-        updatePointOfView,
-        updateContentActivity,
-        updateScoutingTime,
-        updatePlayingTime,
-        resetAllUseFields,
-    } = useContentContext();
     const { handleError } = useErrorContext();
+    const { data, updateMovementPath, clearPath } = useContentContext();
+    const { isLoggedIn, currentUser, loading, reachUnRegisterLimit, updateUnRegisterLimit } =
+        useAuthContext();
+
+    const { movement } = data || {};
+    const { path } = movement || {};
+    const [optionsPath, setOptionsPath] = useState(new Array(path?.length || 1).fill(undefined));
 
     const [clicked, setClicked] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
     const navigate = useNavigate();
-
-    const [pointOfView, setPointOfView] = useState(undefined);
-    const [contentActivity, setContentActivity] = useState(undefined);
-    const [scoutingTime, setScoutingTime] = useState(undefined);
-    const [playingTime, setPlayingTime] = useState(undefined);
+    const lockRef = useRef(true);
 
     useEffect(() => {
-        setIsDisabled(pointOfView || contentActivity || scoutingTime || playingTime ? false : true);
-    }, [pointOfView, contentActivity, scoutingTime, playingTime]);
+        const updateUser = async () => {
+            lockRef.current = false;
+            if (isLoggedIn && currentUser) {
+                if (isGroupDetailsChanged(currentUser.movement, data)) {
+                    const updatedUser = updateUserMovement(
+                        currentUser,
+                        data.movement.name,
+                        data.grade,
+                        data.gender,
+                        data.amount,
+                        data.place,
+                    );
+                    await fetchUpdateUser({ user: updatedUser });
+                }
+            }
+        };
+
+        if (lockRef.current) updateUser();
+    }, []);
+
+    useEffect(() => {
+        if (loading) setIsDisabled(true);
+        else setIsDisabled(optionsPath.every((option) => option === undefined));
+    }, [optionsPath, loading]);
 
     const submitHandler = async () => {
-        updateLimit();
-        if (!limit || limit < PROMPT_LIMIT - 1) {
+        updateUnRegisterLimit();
+        if (!reachUnRegisterLimit()) {
             const promises = [];
             const { amount, grade, gender, place } = data;
-
-            if (pointOfView) {
-                const { subject, time } = pointOfView;
-                promises.push(
-                    fetchGetActivity(updatePointOfView, {
-                        fetchFrom: ["AI", "DB"],
-                        path: PathActivity.pointOfView.path,
-                        subject,
-                        time,
-                        amount,
-                        grade,
-                        gender,
-                        place,
-                    }).catch((error) => handleError(error)),
-                );
+            for (const option of optionsPath) {
+                if (option !== undefined) {
+                    const { subject, time, name, index } = option;
+                    promises.push(
+                        fetchGetActivity(updateMovementPath, index, {
+                            fetchFrom: ["AI", "DB"],
+                            path: name,
+                            subject,
+                            time,
+                            amount,
+                            grade,
+                            gender,
+                            place,
+                        }).catch((error) => handleError(error)),
+                    );
+                }
             }
-
-            if (contentActivity) {
-                const { subject, time } = contentActivity;
-                promises.push(
-                    fetchGetActivity(updateContentActivity, {
-                        fetchFrom: ["AI", "DB"],
-                        path: PathActivity.contentActivity.path,
-                        subject,
-                        time,
-                        amount,
-                        grade,
-                        gender,
-                        place,
-                    }).catch((error) => handleError(error)),
-                );
-            }
-
-            if (scoutingTime) {
-                const { subject, time } = scoutingTime;
-                promises.push(
-                    fetchGetActivity(updateScoutingTime, {
-                        fetchFrom: ["AI", "DB"],
-                        path: PathActivity.scoutingTime.path,
-                        subject,
-                        time,
-                        amount,
-                        grade,
-                        gender,
-                        place,
-                    }).catch((error) => handleError(error)),
-                );
-            }
-
-            if (playingTime) {
-                const { subject, time } = playingTime;
-                promises.push(
-                    fetchGetActivity(updatePlayingTime, {
-                        fetchFrom: ["AI", "DB"],
-                        path: PathActivity.playingTime.path,
-                        subject,
-                        time,
-                        amount,
-                        grade,
-                        gender,
-                        place,
-                    }).catch((error) => handleError(error)),
-                );
-            }
-
             try {
                 setClicked(true);
                 await Promise.allSettled(promises);
@@ -118,64 +87,49 @@ function ChoosePath() {
     };
 
     const goBack = () => {
-        resetAllUseFields();
-        navigate("/");
+        clearPath();
+        navigate("/details");
     };
 
     return (
-        <React.Fragment>
-            <div className={!clicked ? styles.container : styles.container_disabled}>
-                <div className={styles.checkbox_container}>
-                    <div className={styles.navbar}>
-                        <IoArrowForward
-                            onClick={goBack}
-                            className={styles.back_icon}
-                        ></IoArrowForward>
-                    </div>
+        <div className={styles.container}>
+            <div>
+                <Header goBack={goBack} />
 
-                    <h1 className={styles.page_title}>בחרו את הפעילות שלכם</h1>
-
-                    <Path
-                        index={1}
-                        title="נקודת מבט"
-                        hint={hints.pointOfView}
-                        setPath={setPointOfView}
-                    />
-                    <Path
-                        index={2}
-                        title="פעילות תוכן"
-                        hint={hints.contentActivity}
-                        setPath={setContentActivity}
-                    />
-                    <Path
-                        index={3}
-                        title="זמן צופיות"
-                        hint={hints.scoutingTime}
-                        setPath={setScoutingTime}
-                        isGenerate
-                    />
-                    <Path
-                        index={4}
-                        title="זמן משחק"
-                        hint={hints.playingTime}
-                        setPath={setPlayingTime}
-                        isGenerate
-                    />
-                </div>
-
-                <div className={styles.btn_div}>
-                    <button
-                        disabled={isDisabled}
-                        onClick={submitHandler}
-                        className={styles.submit_btn}
-                    >
-                        אני רוצה הצעה לפעילות
-                    </button>
+                <div className={styles.h2_div}>
+                    <label>בחרו את<br></br> נושא הפעילות</label>
+                    <img alt="cool effect to the text" src="page3_effect.svg"></img>
                 </div>
             </div>
 
+            <div className={styles.contnet_div}>
+                <img
+                    className={styles.path_img}
+                    alt="path icon and heart logo"
+                    src="path.svg"
+                ></img>
+
+                {loading ? (
+                    <VscLoading className={styles.loading_icon_magic} />
+                ) : (
+                    <div className={styles.path_div}>
+                        {path?.map((p, i) => (
+                            <Path key={i} index={i} path={p} setPath={setOptionsPath} />
+                        ))}
+                    </div>
+                )}
+
+                <div className={styles.btn_div}>
+                    <MainBtn
+                        isDisabled={isDisabled}
+                        height={38}
+                        text={"הצעה לפעילות"}
+                        func={submitHandler}
+                    ></MainBtn>
+                </div>
+            </div>
             {clicked && <Loading></Loading>}
-        </React.Fragment>
+        </div>
     );
 }
 

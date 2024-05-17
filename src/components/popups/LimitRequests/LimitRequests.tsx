@@ -1,24 +1,60 @@
+import Popup from "../../core/Popup/Popup";
 import styles from "./LimitRequests.module.css";
+import MainBtn from "../../MainBtn/MainBtn";
+import { IoCloseOutline } from "react-icons/io5";
+import {
+    GoogleAuthProvider,
+    signInWithPopup,
+    setPersistence,
+    browserLocalPersistence,
+} from "firebase/auth";
+import { auth } from "../../../config/firebase";
+import { initRawUser } from "../../../utils/user";
+import { fetchCreateNewUser } from "../../../utils/fetch";
+import { useNavigate } from "react-router-dom";
+import { useErrorContext } from "../../../context/ErrorContext";
+import errMsg from "../../../models/resources/errorMsg.json";
 
 function LimitRequest({ handleAccept }) {
+    const { handleError } = useErrorContext();
+    const navigate = useNavigate();
+
+    const signInWithGoogle = async () => {
+        const provider = new GoogleAuthProvider();
+        try {
+            await setPersistence(auth, browserLocalPersistence);
+            const userResult = await signInWithPopup(auth, provider);
+            if (userResult) {
+                const rawUser = initRawUser(userResult.user);
+                await fetchCreateNewUser({ rawUser });
+                handleStart();
+            }
+        } catch (error) {
+            handleError(errMsg.google.message);
+        }
+    };
+
+    const handleStart = () => navigate("/details");
+
     return (
-        <div className={styles.background}>
-            <div className={styles.container}>
-                <label className={styles.label}>
-                    אנו שמחים שאתם משתמשים במערכת לבניית הפעולות.
-                </label>
-                <label className={styles.label}>
-                    בשלב זה אנו מגבילים את כמות הפעולות היומית על מנת ללמוד ולשפר את המערכת. מחר
-                    תוכלו להמשיך וליצור פעולות נוספות.
-                </label>
-                <label className={styles.label}>
-                    עם הזמן נוכל להסיר את ההגבלה ונאפשר ליצור יותר פעולות.
-                </label>
-                <button onClick={handleAccept} className={styles.submit_btn}>
-                    אישור
-                </button>
+        <Popup>
+            <IoCloseOutline onClick={handleAccept} className={styles.back_icon} />
+            <label className={styles.label}>
+                הגעתם למגבלת הפעולות, <br></br>כדי להמשיך ולהנות מפעולות ותכנים נוספים, התחברו בחינם
+                עכשיו
+            </label>
+            <label className={styles.label2}>וקבלו גישה מלאה!</label>
+
+            <div className={styles.btn_div}>
+                <MainBtn
+                    type="submit"
+                    isDisabled={false}
+                    height={38}
+                    text={"התחברות"}
+                    func={signInWithGoogle}
+                ></MainBtn>
             </div>
-        </div>
+        </Popup>
     );
 }
 
