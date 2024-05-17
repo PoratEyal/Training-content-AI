@@ -9,8 +9,6 @@ import { useErrorContext } from "./ErrorContext";
 import { NOT_REGISTER_LIMIT } from "../models/constants";
 import { useCookies } from "react-cookie";
 import { forLongTime } from "../utils/time";
-import Session from "../utils/sessionStorage";
-import { Movements } from "../models/resources/movment";
 import { addSessionData } from "../utils/movment";
 
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);

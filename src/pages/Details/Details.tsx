@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./Details.module.css";
+import { VscLoading } from "react-icons/vsc";
 import {
     MovmentsOptions,
     GradeOptions,
@@ -42,10 +43,13 @@ function Details() {
     const [isDisabled, setIsDisabled] = useState(true);
 
     useEffect(() => {
-        if (movement && classLevel && numberOfChildren && activityLocation && gender) {
-            setIsDisabled(false);
+        if (loading) setIsDisabled(true);
+        else {
+            if (movement && classLevel && numberOfChildren && activityLocation && gender) {
+                setIsDisabled(false);
+            }
         }
-    }, [movement, classLevel, numberOfChildren, activityLocation, gender]);
+    }, [movement, classLevel, numberOfChildren, activityLocation, gender, loading]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -54,7 +58,7 @@ function Details() {
     };
 
     const goBack = () => {
-        console.log("goBack")
+        console.log("goBack");
         clearAll();
         navigate("/");
     };
@@ -65,14 +69,14 @@ function Details() {
 
             <img className={styles.h2_img} alt="h2 text" src="h2_page2.svg"></img>
 
-            {loading ? (
-                <div>loading...</div>
-            ) : (
-                <form onSubmit={handleSubmit} className={styles.detailsForm}>
-                    <img className={styles.lamp_img} alt="lamp image" src="lamp.svg"></img>
+            <form onSubmit={handleSubmit} className={styles.detailsForm}>
+                <img className={styles.lamp_img} alt="lamp image" src="lamp.svg"></img>
 
-                    <div className={styles.spacer}></div>
+                <div className={styles.spacer}></div>
 
+                {loading ? (
+                    <VscLoading className={styles.loading_icon_magic} />
+                ) : (
                     <div className={styles.select_div}>
                         <SelectDetails
                             data={MovmentsOptions}
@@ -105,18 +109,18 @@ function Details() {
                             setObj={setGender}
                         />
                     </div>
+                )}
 
-                    <div className={styles.btn_div}>
-                        <MainBtn
-                            type="submit"
-                            isDisabled={isDisabled}
-                            height={38}
-                            text={"בחירת פעילות"}
-                            func={handleSubmit}
-                        ></MainBtn>
-                    </div>
-                </form>
-            )}
+                <div className={styles.btn_div}>
+                    <MainBtn
+                        type="submit"
+                        isDisabled={isDisabled}
+                        height={38}
+                        text={"בחירת פעילות"}
+                        func={handleSubmit}
+                    ></MainBtn>
+                </div>
+            </form>
         </div>
     );
 }
