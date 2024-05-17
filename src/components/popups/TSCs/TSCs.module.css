@@ -1,43 +1,29 @@
 .h3_privacy{
-    color: orange;
-    font-size: 20px;
+    color: var(--primary-color);
+    font-size: 18px;
     margin-top: -5px;
     text-align: right;
     font-weight: 550;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
+    width: 100%;
 }
 
 .space_div {
-    font-size: 14px;
+    font-size: 10px;
 }
 
 
-.submit_btn {
-    border: none;
-    padding: 7px;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 50px;
-    font-family: 'Fredoka', sans-serif;
-    background-color: rgb(255, 151, 47);
-    transition: background-color 0.3s ease;
-    width: 150px;
-    height: 42px;
-    color: white;
+.btn_div{
     margin-top: 10px;
+    width: 95%;
+    direction: ltr;
 }
 
 @media (min-width: 550px) {
-    .submit_btn {
-        position: relative;
-        cursor: pointer;
+    .space_div {
+        font-size: 11.5px;
     }
-    .container{
-        width: 500px;
-        height: 550px;
-        justify-content: space-between;
-        top: 40%;
+    .btn_div{
+        width: 380px;
     }
 }

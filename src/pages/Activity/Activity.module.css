@@ -10,12 +10,11 @@
         margin-top: 50px;
         overflow-x: hidden;
         overflow-y: auto;
-        height: 70vh;
-        border-radius: 30px;
+        height: 630px;
         background-color: #F5F5DC;
+        border-radius: 30px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        border: 2px solid orange;
-        width: 430px;
+        width: 400px;
     }
 
     .container::-webkit-scrollbar-track {
