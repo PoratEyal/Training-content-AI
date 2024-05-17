@@ -95,7 +95,7 @@ function ChoosePath() {
                 <Header goBack={goBack} />
 
                 <div className={styles.h2_div}>
-                    <label>בחרו את הפעילות</label>
+                    <label>בחרו את<br></br> נושא הפעילות</label>
                     <img alt="cool effect to the text" src="page3_effect.svg"></img>
                 </div>
             </div>

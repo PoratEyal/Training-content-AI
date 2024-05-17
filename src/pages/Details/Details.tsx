@@ -111,7 +111,7 @@ function Details() {
                             type="submit"
                             isDisabled={isDisabled}
                             height={38}
-                            text={"בחירת פעילות"}
+                            text={"המשיכו"}
                             func={handleSubmit}
                         ></MainBtn>
                     </div>

@@ -27,7 +27,7 @@ function ActivityOutput({ index, movementPath, defualtOpen = true }: ActivityOut
             <div onClick={handleOpen} className={`${styles.activity_close} ${isOpened ? styles.activityOpen : ''}`}>
                 <motion.div
                     className={styles.toggel_arrow_animation}
-                    animate={{ rotate: isOpened ? 90 : 0 }}
+                    animate={{ rotate: isOpened ? 0 : 90 }}
                     transition={{ duration: 0.2 }}
                 >
                     <IoIosArrowDown />
