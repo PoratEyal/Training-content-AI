@@ -29,9 +29,6 @@ function Home() {
         try {
             await setPersistence(auth, browserLocalPersistence);
             const userResult = await signInWithPopup(auth, provider);
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            // const credential = GoogleAuthProvider.credentialFromResult(userResult);
-            // const token = credential.accessToken;
             if (userResult) {
                 const user = userResult.user as unknown as GoogleUser;
                 const newUser = initUser(user);
@@ -58,7 +55,7 @@ function Home() {
                 ></img>
 
                 <label className={styles.home_lable}>
-                    <label>תכנון פעילויות פשוט ומהיר בלי מאמץ</label>
+                    <label>תכנון פעילויות: מותאם, פשוט ומהיר</label>
                     <img
                         className={styles.hand_icon}
                         alt="Hand cool icon"
