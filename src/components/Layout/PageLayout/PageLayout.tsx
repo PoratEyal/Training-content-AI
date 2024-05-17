@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useContentContext } from "../../../context/ContentContext";
-import { PROMPT_LIMIT } from "../../../models/constants/state";
+import { NOT_REGISTER_LIMIT } from "../../../models/constants";
 import LimitRequest from "../../popups/LimitRequests/LimitRequests";
 import TSCs from "../../popups/TSCs/TSCs";
 import { forLongTime } from "../../../utils/time";
@@ -18,7 +18,7 @@ function PageLayout({ path, children }: PageLayoutProps) {
     const [tscs, setTscs] = useState(false);
 
     useEffect(() => {
-        if (unRegisterLimit >= PROMPT_LIMIT) {
+        if (unRegisterLimit >= NOT_REGISTER_LIMIT) {
             setPrevent(true);
         }
     }, [unRegisterLimit]);

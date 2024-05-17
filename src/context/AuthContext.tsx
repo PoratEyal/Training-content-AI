@@ -6,7 +6,7 @@ import { defualtAuthContext } from "../models/defualtState/context";
 import { GoogleUser, User } from "../models/types/user";
 import { fetchGetUserById } from "../utils/fetch";
 import { useErrorContext } from "./ErrorContext";
-import { PROMPT_LIMIT } from "../models/constants/state";
+import { NOT_REGISTER_LIMIT } from "../models/constants";
 import { useCookies } from "react-cookie";
 import { forLongTime } from "../utils/time";
 
@@ -74,7 +74,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const updateUnRegisterLimit = () => {
         setUnRegisterLimit((prev) => {
             const lim = prev ? prev + 1 : 1;
-            if (lim <= PROMPT_LIMIT) {
+            if (lim <= NOT_REGISTER_LIMIT) {
                 setCookie("limit", JSON.stringify(lim), {
                     path: "/",
                     expires: forLongTime,
@@ -84,8 +84,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         });
     };
 
-    const isNotReachUnRegisterLimit = () => {
-        if (!unRegisterLimit || unRegisterLimit < PROMPT_LIMIT - 1) return true;
+    const reachUnRegisterLimit = () => {
+        if(isLoggedIn) return false;
+        if (unRegisterLimit >= NOT_REGISTER_LIMIT) return true;
         return false;
     };
 
@@ -97,7 +98,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 loading,
                 logout,
                 updateUnRegisterLimit,
-                isNotReachUnRegisterLimit,
+                reachUnRegisterLimit,
                 unRegisterLimit,
                 cookies,
                 setCookie,

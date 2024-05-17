@@ -3,8 +3,7 @@ import * as admin from "firebase-admin";
 import { CreateNewUserResponse } from "../model/types/response";
 import { CreateNewUserRequest } from "../model/types/request";
 import { CollectionDB } from "../model/enum/DB";
-
-const db = admin.firestore();
+import { db } from "../index";
 
 const createNewUser = functions.https.onCall(
     async (

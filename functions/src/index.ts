@@ -7,9 +7,14 @@ import updateActivityLikes from "./callableFunctions/updateActivityLikes"
 import createNewUser from "./callableFunctions/createNewUser"
 import getUserById from "./callableFunctions/getUserById"
 import updateUser from "./callableFunctions/updateUser"
+import * as admin from "firebase-admin";
 
 const app = express();
 app.use(cors());
+
+admin.initializeApp();
+const db = admin.firestore();
+export { db };
 
 exports.ping = ping;
 

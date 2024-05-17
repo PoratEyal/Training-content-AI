@@ -3,8 +3,7 @@ import * as admin from "firebase-admin";
 import { UpdateUserRequest } from "../model/types/request";
 import { CollectionDB } from "../model/enum/DB";
 import { UpdateUserResponse } from "../model/types/response";
-
-const db = admin.firestore();
+import { db } from "../index";
 
 const updateUser = functions.https.onCall(
     async (
