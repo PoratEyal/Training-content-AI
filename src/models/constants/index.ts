@@ -1,1 +1,1 @@
-export const NOT_REGISTER_LIMIT = process.env.NODE_ENV === "development" ? 60 : 6;
+export const NOT_REGISTER_LIMIT = process.env.NODE_ENV === "development" ? 60 : 20;
