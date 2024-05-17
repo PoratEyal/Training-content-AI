@@ -52,7 +52,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    gap: 5px;
     border-top-left-radius: 37px;
     border-top-right-radius: 37px;
     position: absolute;
@@ -75,10 +74,15 @@
 }
 
 .btn_div{
-    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 20px 0 20px 15%;
     direction: ltr;
-    width: 70vw;
-    margin-bottom: 50px !important;
+    display: flex;
+    align-items: end;
+    width: 100%;
+    background-color: var(--background-color);
 }
 
 .loading_icon_magic {
