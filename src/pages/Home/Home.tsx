@@ -10,30 +10,37 @@ import {
     setPersistence,
     browserLocalPersistence,
 } from "firebase/auth";
-import { GoogleUser, RawUser } from "../../models/types/user";
 import { fetchCreateNewUser } from "../../utils/fetch";
 import Footer from "../../components/Layout/Footer/Footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import { initRawUser } from "../../utils/user";
 
 function Home() {
     const { isLoggedIn, loading, reachUnRegisterLimit } = useAuthContext();
-    const { data} = useContentContext();
+    const { data } = useContentContext();
     const navigate = useNavigate();
+
+    const [signInBtnText, setSignInBtnText] = useState<string>(
+        isLoggedIn ? "מתחילים" : "מתחברים ומתחילים",
+    );
+
+    const [signInDisabled, setSignInDisabled] = useState<boolean>(loading ? true : false);
 
     const handleStart = () => navigate("/details");
 
     useEffect(() => {
         if (!loading && isLoggedIn && data) handleStart();
+        setSignInBtnText(isLoggedIn ? "מתחילים" : "מתחברים ומתחילים");
     }, [loading, isLoggedIn]);
 
-    const btnTitle = loading ? "התחברות..." : isLoggedIn ? "מתחילים" : "מתחברים ומתחילים";
     const btnFunc = isLoggedIn ? () => handleStart() : () => signInWithGoogle();
 
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
         try {
+            setSignInBtnText("התחברות...");
+            setSignInDisabled(true);
             await setPersistence(auth, browserLocalPersistence);
             const userResult = await signInWithPopup(auth, provider);
             if (userResult) {
@@ -47,7 +54,7 @@ function Home() {
             const errorMessage = error.message;
             const email = error.email;
             const credential = GoogleAuthProvider.credentialFromError(error);
-            console.log("error - ", error)
+            console.log("error - ", error);
         }
     };
 
@@ -73,10 +80,10 @@ function Home() {
 
             <section className={styles.button_section}>
                 <MainBtn
-                    isDisabled={loading ? true : false}
+                    isDisabled={signInDisabled}
                     func={btnFunc}
                     height={38}
-                    text={btnTitle}
+                    text={signInBtnText}
                 ></MainBtn>
 
                 {!isLoggedIn && !loading && !reachUnRegisterLimit() ? (
