@@ -4,19 +4,18 @@ import styles from "./ChoosePath.module.css";
 import { useNavigate } from "react-router-dom";
 import Path from "../../components/Path/Path";
 import { useErrorContext } from "../../context/ErrorContext";
-import { IoMdArrowRoundBack } from "react-icons/io";
 import { fetchGetActivity } from "../../utils/fetch";
 import MainBtn from "../../components/MainBtn/MainBtn";
 import { useAuthContext } from "../../context/AuthContext";
-import Profile from "../../components/auth/Profile/Profile";
 import Loading from "../../components/Loading/Loading";
 import { fetchUpdateUser } from "../../utils/fetch";
 import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";
+import Header from "../../components/Layout/Header/Header";
 
 function ChoosePath() {
     const { handleError } = useErrorContext();
     const { data, updateMovementPath, clearPath } = useContentContext();
-    const { isLoggedIn, currentUser, isNotReachUnRegisterLimit, updateUnRegisterLimit } =
+    const { isLoggedIn, currentUser, reachUnRegisterLimit, updateUnRegisterLimit } =
         useAuthContext();
 
     const { movement } = data || {};
@@ -55,7 +54,7 @@ function ChoosePath() {
 
     const submitHandler = async () => {
         updateUnRegisterLimit();
-        if (isNotReachUnRegisterLimit()) {
+        if (!reachUnRegisterLimit()) {
             const promises = [];
             const { amount, grade, gender, place } = data;
             for (const option of optionsPath) {
@@ -93,18 +92,7 @@ function ChoosePath() {
     return (
         <div className={styles.container}>
             <div>
-                {isLoggedIn ? (
-                    <Profile
-                        img={currentUser?.image || ""}
-                        name={currentUser?.name || "r"}
-                        role="guide"
-                    />
-                ) : null}
-
-                <IoMdArrowRoundBack
-                    onClick={goBack}
-                    className={styles.back_icon}
-                ></IoMdArrowRoundBack>
+                <Header goBack={goBack} />
 
                 <div className={styles.h2_div}>
                     <label>בחרו את הפעילות</label>

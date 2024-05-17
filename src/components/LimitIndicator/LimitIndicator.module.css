@@ -1,0 +1,9 @@
+.limit_indicator {
+    color: var(--text-color);
+    z-index: 1;
+}
+
+.limit_indicator g {
+    stroke: var(--secondary-color);
+    
+}

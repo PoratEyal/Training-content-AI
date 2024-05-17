@@ -16,7 +16,7 @@ import { fetchCreateNewUser } from "../../utils/fetch";
 import Footer from "../../components/Layout/Footer/Footer";
 
 function Home() {
-    const { isLoggedIn, loading, isNotReachUnRegisterLimit } = useAuthContext();
+    const { isLoggedIn, loading, reachUnRegisterLimit } = useAuthContext();
     const navigate = useNavigate();
 
     const handleStart = () => navigate("/details");
@@ -75,7 +75,7 @@ function Home() {
                     text={btnTitle}
                 ></MainBtn>
 
-                {(!isLoggedIn && !loading) || !isNotReachUnRegisterLimit() ? (
+                {(!isLoggedIn && !loading) && !reachUnRegisterLimit() ? (
                     <button onClick={handleStart} className={styles.home_login_btn}>
                         התחלה ללא חשבון
                     </button>

@@ -9,10 +9,7 @@ import { getUpdateAt } from "../utils/time";
 import { CollectionDB } from "../model/enum/DB";
 import { GetActivityResponse } from "../model/types/response";
 import { handleGetActivityErrors } from "../utils/handleError";
-
-//TODO: move to index.js
-admin.initializeApp();
-const db = admin.firestore();
+import { db } from "../index";
 
 const getActivity = functions.https.onCall(
     async (
@@ -26,7 +23,7 @@ const getActivity = functions.https.onCall(
         //     const userDoc = await db.collection(CollectionDB.USERS).doc(userId).get();
         //     const userData = userDoc.data();
         //     if (userDoc.exists && userData) {
-        //         if (userData.limit < PROMPT_LIMIT) {
+        //         if (userData.limit < NOT_REGISTER_LIMIT) {
         //             return { result: "limit", message: "User reached the limit." };
         //         }
         //     }

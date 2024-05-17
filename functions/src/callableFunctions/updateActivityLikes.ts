@@ -1,10 +1,8 @@
 import * as functions from "firebase-functions";
-import * as admin from "firebase-admin";
 import { UpdateActivityLikesRequest } from "../model/types/request";
 import { CollectionDB } from "../model/enum/DB";
 import { UpdateActivityLikesResponse } from "../model/types/response";
-
-const db = admin.firestore();
+import { db } from "../index";
 
 const updateActivityLikes = functions.https.onCall(
     async (data: UpdateActivityLikesRequest): Promise<UpdateActivityLikesResponse> => {
