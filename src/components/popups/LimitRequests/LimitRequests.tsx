@@ -9,9 +9,8 @@ import {
     browserLocalPersistence,
 } from "firebase/auth";
 import { auth } from "../../../config/firebase";
-import { initUser } from "../../../utils/user";
+import { initRawUser } from "../../../utils/user";
 import { fetchCreateNewUser } from "../../../utils/fetch";
-import { GoogleUser } from "../../../models/types/user";
 import { useNavigate } from "react-router-dom";
 
 function LimitRequest({ handleAccept }) {
@@ -24,17 +23,17 @@ function LimitRequest({ handleAccept }) {
             await setPersistence(auth, browserLocalPersistence);
             const userResult = await signInWithPopup(auth, provider);
             if (userResult) {
-                const user = userResult.user as unknown as GoogleUser;
-                const newUser = initUser(user);
-                await fetchCreateNewUser({ newUser });
-                handleAccept()
+                const rawUser = initRawUser(userResult.user);
+                await fetchCreateNewUser({ rawUser });
                 handleStart();
             }
         } catch (error) {
+            //TODO: Handle Errors
             const errorCode = error.code;
             const errorMessage = error.message;
             const email = error.email;
             const credential = GoogleAuthProvider.credentialFromError(error);
+            console.log("error - ", error)
         }
     };
 
