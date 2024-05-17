@@ -10,7 +10,7 @@ export const initUser = (user: RawUser) => {
         image: user.photoURL,
         limit: 0,
         lastUpdate: getUpdateAt(),
-        movement: undefined,
+        movement: null,
         isAcceptTerms: true,
     } as User;
 };
@@ -23,7 +23,7 @@ export const initUserFromDB = (id: string, data: DocumentData) => {
         image: data.image || "",
         limit: data.limit || 0,
         lastUpdate: data.lastUpdate || "",
-        movement: data.movement || undefined,
+        movement: data.movement || null,
         isAcceptTerms: data.isAcceptTerms || false,
     } as User;
 };

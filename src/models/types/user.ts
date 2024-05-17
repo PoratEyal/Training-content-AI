@@ -7,7 +7,7 @@ export type User = {
     image: string;
     limit: number;
     lastUpdate: string;
-    movement: UserMovementDetails | undefined;
+    movement: UserMovementDetails | null;
     isAcceptTerms: boolean;
 };
 
