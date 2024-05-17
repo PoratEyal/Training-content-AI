@@ -12,9 +12,11 @@ import { auth } from "../../../config/firebase";
 import { initRawUser } from "../../../utils/user";
 import { fetchCreateNewUser } from "../../../utils/fetch";
 import { useNavigate } from "react-router-dom";
+import { useErrorContext } from "../../../context/ErrorContext";
+import errMsg from "../../../models/resources/errorMsg.json";
 
 function LimitRequest({ handleAccept }) {
-
+    const { handleError } = useErrorContext();
     const navigate = useNavigate();
 
     const signInWithGoogle = async () => {
@@ -28,12 +30,7 @@ function LimitRequest({ handleAccept }) {
                 handleStart();
             }
         } catch (error) {
-            //TODO: Handle Errors
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            const email = error.email;
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            console.log("error - ", error)
+            handleError(errMsg.google.message);
         }
     };
 
@@ -41,8 +38,11 @@ function LimitRequest({ handleAccept }) {
 
     return (
         <Popup>
-            <IoCloseOutline onClick={handleAccept} className={styles.back_icon}/>
-            <label className={styles.label}>הגעתם למגבלת הפעולות, <br></br>כדי להמשיך ולהנות מפעולות ותכנים נוספים, התחברו בחינם עכשיו</label>
+            <IoCloseOutline onClick={handleAccept} className={styles.back_icon} />
+            <label className={styles.label}>
+                הגעתם למגבלת הפעולות, <br></br>כדי להמשיך ולהנות מפעולות ותכנים נוספים, התחברו בחינם
+                עכשיו
+            </label>
             <label className={styles.label2}>וקבלו גישה מלאה!</label>
 
             <div className={styles.btn_div}>
@@ -59,5 +59,3 @@ function LimitRequest({ handleAccept }) {
 }
 
 export default LimitRequest;
-
-

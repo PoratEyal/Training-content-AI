@@ -15,10 +15,13 @@ import Footer from "../../components/Layout/Footer/Footer";
 import { useEffect, useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import { initRawUser } from "../../utils/user";
+import { useErrorContext } from "../../context/ErrorContext";
+import errMsg from "../../models/resources/errorMsg.json";
 
 function Home() {
     const { isLoggedIn, loading, reachUnRegisterLimit } = useAuthContext();
     const { data } = useContentContext();
+    const { handleError } = useErrorContext();
     const navigate = useNavigate();
 
     const [signInBtnText, setSignInBtnText] = useState<string>(
@@ -50,12 +53,7 @@ function Home() {
                 handleStart();
             }
         } catch (error) {
-            //TODO: Handle Errors
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            const email = error.email;
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            console.log("error - ", error);
+            handleError(errMsg.google.message)
         }
     };
 
