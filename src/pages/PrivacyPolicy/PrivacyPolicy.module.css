@@ -20,9 +20,8 @@
 
 .back_icon{
     position: absolute;
-    left: 10px;
+    right: 10px;
     top: 10px;
-    transform: rotate(-0.50turn);
     font-size: 24px;
     border: none;
     padding: 6px;
@@ -38,7 +37,8 @@
     font-size: 20px;
     font-weight: 500;
     width: 100%;
-    text-align: right;
+    text-align: center;
+    margin-top: 25px;
 }
 
 @media (min-width: 550px) {

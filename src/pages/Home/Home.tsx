@@ -62,7 +62,7 @@ function Home() {
                 ></img>
 
                 <label className={styles.home_lable}>
-                    <label>תכנון פעילויות: מותאם, פשוט ומהיר</label>
+                    <label>יצירת פעילויות: מותאם, פשוט ומהיר</label>
                     <img
                         className={styles.hand_icon}
                         alt="Hand cool icon"
