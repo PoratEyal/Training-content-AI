@@ -32,6 +32,7 @@ function Home() {
     useEffect(() => {
         if (!loading && isLoggedIn && data) handleStart();
         setSignInBtnText(isLoggedIn ? "מתחילים" : "מתחברים ומתחילים");
+        setSignInDisabled(loading ? true : false);
     }, [loading, isLoggedIn]);
 
     const btnFunc = isLoggedIn ? () => handleStart() : () => signInWithGoogle();
