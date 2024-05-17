@@ -6,9 +6,16 @@
         "playingTime": "זמן משחק וכיף"
     },
     "akiva": {
-        "opening": "",
         "contentActivity": "זמן המוקדש ליצירת דיון משמעותי",
+        "playingTime": "זמן משחק וכיף"
+    },
+    "sayarut": {
+        "activity": "זמן הפעילות המרכזי",
         "playingTime": "זמן משחק וכיף",
-        "summary": ""
+        "surviveTime": "זמן המוקדש להקניית מיומנויות וכישורי חיים"
+    },
+    "other": {
+        "activity": "זמן הפעילות המרכזי",
+        "playingTime": "זמן משחק וכיף"
     }
 }

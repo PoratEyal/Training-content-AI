@@ -43,7 +43,15 @@ export const Movements = {
             {
                 name: "activity",
                 title: "פעילות",
+                hint: hints.other.activity,
                 activity: undefined,
+            },
+            {
+                name: "playingTime",
+                title: "זמן משחק",
+                hint: hints.other.playingTime,
+                activity: undefined,
+                magic: PlayingTimeSubjects,
             },
         ],
     } as Movement,
@@ -51,12 +59,6 @@ export const Movements = {
         name: "akiva",
         title: "בני עקיבא",
         path: [
-            {
-                name: "opening",
-                title: "פתיחה",
-                hint: hints.akiva.opening,
-                activity: undefined,
-            },
             {
                 name: "contentActivity",
                 title: "פעילות תוכן",
@@ -70,12 +72,6 @@ export const Movements = {
                 activity: undefined,
                 magic: PlayingTimeSubjects,
             },
-            {
-                name: "summary",
-                title: "סיכום",
-                hint: hints.akiva.summary,
-                activity: undefined,
-            },
         ],
     } as Movement,
     oved: {
@@ -83,23 +79,19 @@ export const Movements = {
         title: "הנוער העובד והלומד",
         path: [
             {
-                name: "activity",
+                name: "playingTime",
                 title: "משחק פתיחה",
                 activity: undefined,
+                magic: PlayingTimeSubjects,
             },
             {
-                name: "activity",
+                name: "pointOfView",
                 title: "מתודת הצפה",
                 activity: undefined,
             },
             {
-                name: "activity",
+                name: "contentActivity",
                 title: "מתודה מרכזית",
-                activity: undefined,
-            },
-            {
-                name: "activity",
-                title: "סיכום",
                 activity: undefined,
             },
         ],
@@ -111,7 +103,15 @@ export const Movements = {
             {
                 name: "activity",
                 title: "פעילות",
+                hint: hints.other.activity,
                 activity: undefined,
+            },
+            {
+                name: "playingTime",
+                title: "זמן משחק",
+                hint: hints.other.playingTime,
+                activity: undefined,
+                magic: PlayingTimeSubjects,
             },
         ],
     } as Movement,
@@ -122,7 +122,22 @@ export const Movements = {
             {
                 name: "activity",
                 title: "פעילות",
+                hint: hints.sayarut.activity,
                 activity: undefined,
+            },
+            {
+                name: "scoutingTime",
+                title: "הישרדות",
+                hint: hints.sayarut.surviveTime,
+                activity: undefined,
+                magic: ScoutingTimeSubjects,
+            },
+            {
+                name: "playingTime",
+                title: "זמן משחק",
+                hint: hints.sayarut.playingTime,
+                activity: undefined,
+                magic: PlayingTimeSubjects,
             },
         ],
     } as Movement,
@@ -133,7 +148,15 @@ export const Movements = {
             {
                 name: "activity",
                 title: "פעילות",
+                hint: hints.other.activity,
                 activity: undefined,
+            },
+            {
+                name: "playingTime",
+                title: "זמן משחק",
+                hint: hints.other.playingTime,
+                activity: undefined,
+                magic: PlayingTimeSubjects,
             },
         ],
     } as Movement,
@@ -144,7 +167,15 @@ export const Movements = {
             {
                 name: "activity",
                 title: "פעילות",
+                hint: hints.other.activity,
                 activity: undefined,
+            },
+            {
+                name: "playingTime",
+                title: "זמן משחק",
+                hint: hints.other.playingTime,
+                activity: undefined,
+                magic: PlayingTimeSubjects,
             },
         ],
     } as Movement,
@@ -155,7 +186,15 @@ export const Movements = {
             {
                 name: "activity",
                 title: "פעילות",
+                hint: hints.other.activity,
                 activity: undefined,
+            },
+            {
+                name: "playingTime",
+                title: "זמן משחק",
+                hint: hints.other.playingTime,
+                activity: undefined,
+                magic: PlayingTimeSubjects,
             },
         ],
     } as Movement,
