@@ -21,7 +21,6 @@
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     height: fit-content;
-    max-height: 520px;
     width: 85%;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     display: flex;
