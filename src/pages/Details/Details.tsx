@@ -11,34 +11,32 @@ import {
 } from "../../models/resources/select";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import MainBtn from "../../components/MainBtn/MainBtn";
-import Profile from "../../components/auth/Profile/Profile";
 import { useAuthContext } from "../../context/AuthContext";
-import LimitIndicator from "../../components/LimitIndicator/LimitIndicator";
 import Header from "../../components/Layout/Header/Header";
 
 function Details() {
     const { data, updateDetails, clearAll } = useContentContext();
-    const { isLoggedIn, currentUser } = useAuthContext();
+    const { isLoggedIn, currentUser, loading } = useAuthContext();
     const navigate = useNavigate();
 
     const [movement, setMovment] = useState(
-        data ? data.movement?.name : currentUser?.movement ? currentUser.movement?.movement : "",
+        data ? data?.movement?.name : currentUser?.movement ? currentUser?.movement?.movement : "",
     );
 
     const [classLevel, setClassLevel] = useState(
-        data ? data.grade : currentUser?.movement ? currentUser.movement?.grade : "",
+        data ? data?.grade : currentUser?.movement ? currentUser?.movement?.grade : "",
     );
 
     const [numberOfChildren, setNumberOfChildren] = useState(
-        data ? data.amount : currentUser?.movement ? currentUser.movement?.amount : "",
+        data ? data?.amount : currentUser?.movement ? currentUser?.movement?.amount : "",
     );
 
     const [activityLocation, setActivityLocation] = useState(
-        data ? data.place : currentUser?.movement ? currentUser.movement?.place : "",
+        data ? data?.place : currentUser?.movement ? currentUser?.movement?.place : "",
     );
 
     const [gender, setGender] = useState(
-        data ? data.gender : currentUser?.movement ? currentUser.movement?.gender : "",
+        data ? data?.gender : currentUser?.movement ? currentUser?.movement?.gender : "",
     );
 
     const [isDisabled, setIsDisabled] = useState(true);
@@ -56,64 +54,69 @@ function Details() {
     };
 
     const goBack = () => {
+        console.log("goBack")
         clearAll();
         navigate("/");
     };
 
     return (
         <div className={styles.container}>
-            <Header goBack={goBack} />
-            
+            <Header goBack={isLoggedIn ? undefined : goBack} />
+
             <img className={styles.h2_img} alt="h2 text" src="h2_page2.svg"></img>
 
-            <form onSubmit={handleSubmit} className={styles.detailsForm}>
-                <img className={styles.lamp_img} alt="lamp image" src="lamp.svg"></img>
+            {loading ? (
+                <div>loading...</div>
+            ) : (
+                <form onSubmit={handleSubmit} className={styles.detailsForm}>
+                    <img className={styles.lamp_img} alt="lamp image" src="lamp.svg"></img>
 
-                <div className={styles.spacer}></div>
+                    <div className={styles.spacer}></div>
 
-                <div className={styles.select_div}>
-                    <SelectDetails
-                        data={MovmentsOptions}
-                        placeholder={"תנועת נוער"}
-                        obj={movement}
-                        setObj={setMovment}
-                    />
-                    <SelectDetails
-                        data={GradeOptions}
-                        placeholder={"קבוצת גיל"}
-                        obj={classLevel}
-                        setObj={setClassLevel}
-                    />
-                    <SelectDetails
-                        data={AmountOptions}
-                        placeholder={"מספר ילדים"}
-                        obj={numberOfChildren}
-                        setObj={setNumberOfChildren}
-                    />
-                    <SelectDetails
-                        data={PlaceOptions}
-                        placeholder={"מיקום הפעילות"}
-                        obj={activityLocation}
-                        setObj={setActivityLocation}
-                    />
-                    <SelectDetails
-                        data={GenderOptions}
-                        placeholder={"מין"}
-                        obj={gender}
-                        setObj={setGender}
-                    />
-                </div>
+                    <div className={styles.select_div}>
+                        <SelectDetails
+                            data={MovmentsOptions}
+                            placeholder={"תנועת נוער"}
+                            obj={movement}
+                            setObj={setMovment}
+                        />
+                        <SelectDetails
+                            data={GradeOptions}
+                            placeholder={"קבוצת גיל"}
+                            obj={classLevel}
+                            setObj={setClassLevel}
+                        />
+                        <SelectDetails
+                            data={AmountOptions}
+                            placeholder={"מספר ילדים"}
+                            obj={numberOfChildren}
+                            setObj={setNumberOfChildren}
+                        />
+                        <SelectDetails
+                            data={PlaceOptions}
+                            placeholder={"מיקום הפעילות"}
+                            obj={activityLocation}
+                            setObj={setActivityLocation}
+                        />
+                        <SelectDetails
+                            data={GenderOptions}
+                            placeholder={"מין"}
+                            obj={gender}
+                            setObj={setGender}
+                        />
+                    </div>
 
-                <div className={styles.btn_div}>
-                    <MainBtn
-                        type="submit"
-                        isDisabled={isDisabled}
-                        height={38}
-                        text={"בחירת פעילות"}
-                        func={handleSubmit}
-                    ></MainBtn>
-                </div>
-            </form>
+                    <div className={styles.btn_div}>
+                        <MainBtn
+                            type="submit"
+                            isDisabled={isDisabled}
+                            height={38}
+                            text={"בחירת פעילות"}
+                            func={handleSubmit}
+                        ></MainBtn>
+                    </div>
+                </form>
+            )}
         </div>
     );
 }

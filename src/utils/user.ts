@@ -1,19 +1,18 @@
 import { DataType } from "../models/types/context";
 import { UserMovementDetails } from "../models/types/movement";
-import { GoogleUser, User } from "../models/types/user";
-import { getUpdateAt } from "./time";
+import { GoogleUser, RawUser, User } from "../models/types/user";
 
-export const initUser = (googleUser: GoogleUser) => {
-    return {
-        id: googleUser.uid,
+export const initRawUser = (user: any) => {
+    const googleUser = user as unknown as GoogleUser;
+    const rawUser: RawUser = {
+        uid: googleUser.uid,
+        accessToken: googleUser.accessToken,
+        displayName: googleUser.displayName,
         email: googleUser.email,
-        name: googleUser.displayName,
-        image: googleUser.photoURL,
-        limit: 0,
-        lastUpdate: getUpdateAt(),
-        movement: undefined,
-        isAcceptTerms: true,
-    } as User;
+        phoneNumber: googleUser.phoneNumber,
+        photoURL: googleUser.photoURL,
+    };
+    return rawUser;
 };
 
 export const updateUserMovement = (

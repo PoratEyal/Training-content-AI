@@ -9,6 +9,9 @@ import { useErrorContext } from "./ErrorContext";
 import { NOT_REGISTER_LIMIT } from "../models/constants";
 import { useCookies } from "react-cookie";
 import { forLongTime } from "../utils/time";
+import Session from "../utils/sessionStorage";
+import { Movements } from "../models/resources/movment";
+import { addSessionData } from "../utils/movment";
 
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
 
@@ -47,6 +50,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 //TODO: init user from data
                 const response = await fetchGetUserById({ id: (user as GoogleUser).uid });
                 if (response.user) {
+                    if(response.user.movement){
+                        const {grade, amount, place, gender, movement} = response.user.movement;
+                        addSessionData(movement, grade, amount, place, gender);
+                    }
                     setCurrentUser(response.user);
                     setIsLoggedIn(true);
                 } else {

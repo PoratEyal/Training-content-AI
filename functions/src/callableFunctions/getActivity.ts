@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import { GetActivityRequest } from "../model/types/request";
 import * as admin from "firebase-admin";
-import { MIN_ACTIVITIES } from "../model/constants";
+import { MIN_ACTIVITIES, NOT_REGISTERED } from "../model/constants";
 import { Activity } from "../model/types/activity";
 import { GeminiApiSet } from "../service/geminiAPI";
 import { initActivityFromAI, initActivityFromDB, updateActivityWithId } from "../utils/activity";
@@ -17,6 +17,7 @@ const getActivity = functions.https.onCall(
         context: functions.https.CallableContext,
     ): Promise<GetActivityResponse> => {
         const { fetchFrom, path, subject, time, amount, grade, gender, place } = data;
+        let userId = context.auth?.uid || NOT_REGISTERED;
 
         // if (context.auth) {
         //     const userId = context.auth.uid;
@@ -41,9 +42,8 @@ const getActivity = functions.https.onCall(
         try {
             const querySnapshot = await query.get();
             const activities = querySnapshot.docs.map((doc) => {
-                return initActivityFromDB(doc.id, doc.data());
+                return initActivityFromDB(doc.id, doc.data(), userId);
             }) as Activity[];
-
             if (activities.length > MIN_ACTIVITIES && fetchFrom.includes("DB")) {
                 const randomIndex = Math.floor(Math.random() * activities.length);
                 const activity = activities[randomIndex];
@@ -65,9 +65,9 @@ const getActivity = functions.https.onCall(
                     gender,
                     place,
                 });
-                const activity = initActivityFromAI(activityResult, data);
+                const activity = initActivityFromAI(activityResult, data, userId);
                 const { id, ...restActivity } = activity;
-
+                
                 const docRef = await db.collection(CollectionDB.ACTIVITY).add(restActivity);
                 const updateActivity = updateActivityWithId(docRef.id, activity);
                 return { result: "success", activity: updateActivity };
@@ -75,7 +75,7 @@ const getActivity = functions.https.onCall(
 
             return { result: "notFound", message: "Failed to retrieve activity." };
         } catch (error) {
-            return handleGetActivityErrors(error, data);
+            return handleGetActivityErrors(error, data, userId);
         }
     },
 );

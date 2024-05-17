@@ -11,6 +11,7 @@ export type Activity = {
     subject: string;
     time: string;
     activity: string;
+    userId: string | undefined;
 };
 
 export type ActivityFunc = (

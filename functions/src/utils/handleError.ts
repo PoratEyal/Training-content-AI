@@ -6,6 +6,7 @@ import { GetActivityResponse } from "../model/types/response";
 export const handleGetActivityErrors = (
     error: unknown,
     data: GetActivityRequest,
+    userId: string,
 ): GetActivityResponse => {
     if (
         error instanceof GoogleGenerativeAIResponseError &&
@@ -14,6 +15,7 @@ export const handleGetActivityErrors = (
         const activity = initActivityFromAI(
             `המערכת מצאה שהתוכן שהנכם מחפשים עלול להיות בעייתי ולכן חיפוש זה נחסם. אנו ממליצים לנסות שוב עם נושא פעולה אחר.`,
             data,
+            userId,
         );
         return {
             result: "safety",
