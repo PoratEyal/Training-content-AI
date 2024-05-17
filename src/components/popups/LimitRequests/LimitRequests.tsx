@@ -42,16 +42,15 @@ function LimitRequest({ handleAccept }) {
     return (
         <Popup>
             <IoCloseOutline onClick={handleAccept} className={styles.back_icon}/>
-            <div className={styles.div}>הגעת למגבלת הפעולות שלך!</div>
-            <label className={styles.label}>כדי להמשיך ולהנות מעוד פעולות ותכנים, הירשם בחינם עכשיו</label>
-            <label className={styles.label2}>וקבל גישה מלאה!</label>
+            <label className={styles.label}>הגעתם למגבלת הפעולות, <br></br>כדי להמשיך ולהנות מפעולות ותכנים נוספים, התחברו בחינם עכשיו</label>
+            <label className={styles.label2}>וקבלו גישה מלאה!</label>
 
             <div className={styles.btn_div}>
                 <MainBtn
                     type="submit"
                     isDisabled={false}
                     height={38}
-                    text={"להרשמה"}
+                    text={"התחברות"}
                     func={signInWithGoogle}
                 ></MainBtn>
             </div>
