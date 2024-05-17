@@ -115,7 +115,7 @@ function Details() {
                     <MainBtn
                         type="submit"
                         isDisabled={isDisabled}
-                        height={38}
+                        height={42}
                         text="המשיכו"
                         func={handleSubmit}
                     ></MainBtn>
