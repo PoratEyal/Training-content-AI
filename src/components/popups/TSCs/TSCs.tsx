@@ -1,6 +1,7 @@
 import styles from "./TSCs.module.css";
 import policy from "../../../models/resources/policy.json";
 import Popup from "../../core/Popup/Popup";
+import MainBtn from "../../MainBtn/MainBtn";
 
 function TSCs({ handleAccept }) {
     return (
@@ -39,9 +40,16 @@ function TSCs({ handleAccept }) {
                 <label>{policy.p8.label}</label> {policy.p8.text}
             </div>
 
-            <button className={styles.submit_btn} onClick={handleAccept}>
-                אישור
-            </button>
+            <div className={styles.btn_div}>
+                <MainBtn
+                    type="submit"
+                    isDisabled={false}
+                    height={38}
+                    text={"אישור"}
+                    func={handleAccept}
+                ></MainBtn>
+            </div>
+
         </Popup>
     );
 }

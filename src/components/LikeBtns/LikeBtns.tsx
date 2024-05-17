@@ -84,8 +84,8 @@ function LikeBtns({ index, activity, reset }: LikeBtnsProps) {
                 onClick={handleClickLike}
                 style={{
                     color: action.like ? "white" : "#708254",
-                    borderColor: action.like ? "green" : "#708254",
-                    backgroundColor: action.dislike ? "red" : "rgba(255, 255, 255, 0)",
+                    borderColor: action.like ? "#4CAF50" : "#708254",
+                    backgroundColor: action.like ? "#4CAF50" : "rgba(255, 255, 255, 0)",
                 }}
             />
             <AiOutlineDislike
@@ -93,8 +93,8 @@ function LikeBtns({ index, activity, reset }: LikeBtnsProps) {
                 onClick={handleClickDislike}
                 style={{
                     color: action.dislike ? "white" : "#708254",
-                    borderColor: action.dislike ? "red" : "#708254",
-                    backgroundColor: action.dislike ? "green" : "rgba(255, 255, 255, 0)",
+                    borderColor: action.dislike ? "#F44336" : "#708254",
+                    backgroundColor: action.dislike ? "#F44336" : "rgba(255, 255, 255, 0)",
                 }}
             />
         </div>
