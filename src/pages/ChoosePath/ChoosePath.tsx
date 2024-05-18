@@ -92,7 +92,7 @@ function ChoosePath() {
     };
 
     return (
-        <div className={styles.container}>
+        <section className={styles.choose_path_container}>
             <div>
                 <Header goBack={goBack} />
 
@@ -104,7 +104,7 @@ function ChoosePath() {
                 </div>
             </div>
 
-            <div className={styles.contnet_div}>
+            <div className={styles.path_form_container}>
                 <div className={styles.contnet_path}>
                     <img
                         className={styles.path_img}
@@ -132,7 +132,7 @@ function ChoosePath() {
                 </div>
                 {clicked && <Loading></Loading>}
             </div>
-        </div>
+        </section>
     );
 }
 
