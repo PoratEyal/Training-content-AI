@@ -97,28 +97,31 @@ function ChoosePath() {
                 <Header goBack={goBack} />
 
                 <div className={styles.h2_div}>
-                    <label>בחרו את<br></br> נושא הפעילות</label>
+                    <label>
+                        בחרו את<br></br> נושא הפעילות
+                    </label>
                     <img alt="cool effect to the text" src="page3_effect.svg"></img>
                 </div>
             </div>
 
             <div className={styles.contnet_div}>
-                <img
-                    className={styles.path_img}
-                    alt="path icon and heart logo"
-                    src="path.svg"
-                ></img>
+                <div className={styles.contnet_path}>
+                    <img
+                        className={styles.path_img}
+                        alt="path icon and heart logo"
+                        src="path.svg"
+                    ></img>
 
-                {loading ? (
-                    <VscLoading className={styles.loading_icon_magic} />
-                ) : (
-                    <div className={styles.path_div}>
-                        {path?.map((p, i) => (
-                            <Path key={i} index={i} path={p} setPath={setOptionsPath} />
-                        ))}
-                    </div>
-                )}
-
+                    {loading ? (
+                        <VscLoading className={styles.loading_icon_magic} />
+                    ) : (
+                        <div className={styles.path_div}>
+                            {path?.map((p, i) => (
+                                <Path key={i} index={i} path={p} setPath={setOptionsPath} />
+                            ))}
+                        </div>
+                    )}
+                </div>
                 <div className={styles.btn_div}>
                     <MainBtn
                         isDisabled={isDisabled}
@@ -127,8 +130,8 @@ function ChoosePath() {
                         func={submitHandler}
                     ></MainBtn>
                 </div>
+                {clicked && <Loading></Loading>}
             </div>
-            {clicked && <Loading></Loading>}
         </div>
     );
 }
