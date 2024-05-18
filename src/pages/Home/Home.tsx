@@ -53,7 +53,7 @@ function Home() {
                 handleStart();
             }
         } catch (error) {
-            handleError(errMsg.google.message)
+            handleError(errMsg.google.message);
         }
     };
 
@@ -92,9 +92,7 @@ function Home() {
                 ) : null} */}
             </section>
 
-            <div className={styles.privacy_div}>
-                <Footer></Footer>
-            </div>
+            <Footer />
         </section>
     );
 }
