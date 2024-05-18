@@ -9,24 +9,29 @@ type HeaderProps = {
 };
 
 function Header({ goBack, isFade = false }: HeaderProps) {
-    const { loading, isLoggedIn, currentUser } = useAuthContext();
+    const { isLoggedIn, loading, currentUser } = useAuthContext();
     const style = isFade ? styles.header_fade : styles.header;
     const styleIcon = isFade ? styles.back_icon_fade : styles.back_icon;
 
     return (
         <section className={style}>
             {!loading ? (
-                isLoggedIn ? (
-                    <Profile img={currentUser?.image || ""} name={currentUser?.name || ""} />
-                ) : (
-                    // <LimitIndicator />
-                    <div></div>
-                )
+                <div className={styles.header_container}>
+                    {isLoggedIn ? (
+                        <Profile img={currentUser?.image || ""} name={currentUser?.name || ""} />
+                    ) : (
+                        <div />
+                    )}
+                    {goBack ? (
+                        <IoMdArrowRoundBack
+                            onClick={goBack}
+                            className={styleIcon}
+                        ></IoMdArrowRoundBack>
+                    ) : (
+                        <div />
+                    )}
+                </div>
             ) : null}
-            {goBack ? (
-                <IoMdArrowRoundBack onClick={goBack} className={styleIcon}></IoMdArrowRoundBack>
-            ) : null}
-
         </section>
     );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./Dropdown.module.css";
 import { DropdownOption } from "../../../models/types/common";
 import { MdLogout } from "react-icons/md";
@@ -6,6 +6,7 @@ import { MdLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../../context/AuthContext";
 import { useContentContext } from "../../../context/ContentContext";
+import useClickOutside from "../../../hooks/useClickOutside";
 
 type DropdownProps = {
     handleClose: () => void;
@@ -15,6 +16,9 @@ function Dropdown({ handleClose }: DropdownProps) {
     const navigate = useNavigate();
     const { clearAll } = useContentContext();
     const { logout } = useAuthContext();
+    const modalRef = useRef<any>(null);
+    useClickOutside(modalRef, () => handleClose());
+
 
     const options: DropdownOption[] = [
         // { title: "הפרופיל שלי", path: "/profile", Icon: <FaUser /> },
@@ -46,7 +50,7 @@ function Dropdown({ handleClose }: DropdownProps) {
     );
 
     return (
-        <nav className={styles.nav_container}>
+        <nav ref={modalRef} className={styles.nav_container}>
             <ul className={styles.ul}>
                 {options.map((option, i) => (
                     <OptionBtn key={i} {...option} />
