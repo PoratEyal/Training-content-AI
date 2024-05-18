@@ -47,13 +47,13 @@ function Home() {
             setSignInDisabled(true);
             await setPersistence(auth, browserLocalPersistence);
             const userResult = await signInWithPopup(auth, provider);
-            // if (userResult) {
-            //     const rawUser = initRawUser(userResult.user);
-            //     await fetchCreateNewUser({ rawUser });
-            //     handleStart();
-            // }
+            if (userResult) {
+                const rawUser = initRawUser(userResult.user);
+                await fetchCreateNewUser({ rawUser });
+                handleStart();
+            }
         } catch (error) {
-            console.log(error);
+            console.error(error);
             handleError(errMsg.google.message);
         }
     };
