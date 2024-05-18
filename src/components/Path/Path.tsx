@@ -74,11 +74,13 @@ function Path({ index, path, setPath }: PathProps) {
         <div className={styles.checkbox_div}>
             <div className={styles.custom_checkbox}>
                 <input type="checkbox" id={name} checked={show} onChange={toggleShow} />
-                <label className={styles.title} htmlFor={name}>{title}</label>
+                <label className={styles.title} htmlFor={name}>
+                    {title}
+                </label>
                 {hint ? <Hint hint={hint} /> : null}
             </div>
 
-            {show && (
+            {show ? (
                 <div className={styles.inputs_div}>
                     <div className={styles.input_and_icon}>
                         <textarea
@@ -87,7 +89,8 @@ function Path({ index, path, setPath }: PathProps) {
                             onChange={handleInputChange}
                             placeholder="נושא הפעילות"
                         />
-                        {magic && magic.length !== 0 &&
+                        {magic &&
+                            magic.length !== 0 &&
                             (loadingMagic ? (
                                 <VscLoading className={styles.loading_icon_magic} />
                             ) : (
@@ -105,7 +108,7 @@ function Path({ index, path, setPath }: PathProps) {
                         setObj={setTime}
                     />
                 </div>
-            )}
+            ) : null}
         </div>
     );
 }

@@ -1,9 +1,8 @@
-.container{
+.container {
     position: relative;
     display: flex;
     flex-direction: column;
     margin-top: 0px;
-    width: fit-content;
     height: 100vh;
     background-color: var(--primary-color);
     width: 101vw;
@@ -12,14 +11,7 @@
     left: 0;
 }
 
-.back_icon {
-    rotate: 180deg;
-    padding: 10px;
-    font-size: 24px;
-    color: var(--secondary-color);
-}
-
-.path_img{
+.path_img {
     z-index: 300;
     position: absolute;
     top: -120px;
@@ -27,25 +19,27 @@
     width: 130px;
 }
 
-.h2_div{
+.h2_div {
     width: 190px;
     position: absolute;
     top: 60px;
     right: 50px;
 }
-.h2_div label{
+
+.h2_div label {
     color: #FAF6EE;
     font-size: 25px;
     font-weight: bold;
     position: relative;
 }
-.h2_div img{
+
+.h2_div img {
     position: absolute;
     top: -10px;
     right: -10px;
 }
 
-.contnet_div{
+.contnet_div {
     background-color: var(--background-color);
     border: none;
     display: flex;
@@ -55,29 +49,36 @@
     border-top-left-radius: 37px;
     border-top-right-radius: 37px;
     position: absolute;
+    left: 0;
     bottom: 0;
-    width: 101vw;
+    width: 99%;
     height: 75%;
 }
 
-.path_div{
-    width: 85%;
-    margin-top: 60px;
-    overflow: scroll;
-}
-.path_div::-webkit-scrollbar {
-    display: none;
-}
 .path_div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 50px 60px 50px;
+    box-sizing: border-box;
+    margin-top: 60px;
+    height: fit-content;
+    overflow: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
-.btn_div{
+.path_div::-webkit-scrollbar {
+    display: none;
+}
+
+.btn_div {
     position: fixed;
     bottom: 0;
     left: 0;
-    padding: 20px 0 20px 15%;
+    padding: 20px 0 20px 50px;
+    box-sizing: border-box;
     direction: ltr;
     display: flex;
     align-items: end;
@@ -103,7 +104,7 @@
 }
 
 @media (min-width: 550px) {
-    .container{
+    .container {
         margin-top: 50px;
         height: 630px;
         width: 400px;
@@ -111,13 +112,16 @@
         border-radius: 30px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         position: relative;
+        overflow: hidden;
     }
-    .contnet_div{
+
+    .contnet_div {
         width: 400px;
         border-bottom-left-radius: 30px;
         border-bottom-right-radius: 30px;
     }
-    .btn_div{
-        width: 300px;
+
+    .btn_div {
+        position: relative;
     }
 }
