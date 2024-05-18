@@ -55,6 +55,8 @@ function Home() {
         } catch (error) {
             console.error(error);
             handleError(errMsg.google.message);
+            setSignInBtnText(isLoggedIn ? "מתחילים" : "מתחברים ומתחילים")
+            setSignInDisabled(true);
         }
     };
 

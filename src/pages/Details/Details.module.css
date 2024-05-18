@@ -39,6 +39,15 @@
     height: 75%;
 }
 
+.loading_mock_selection_container{
+    min-height: 300px;
+    height: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .selects_btn{
     margin-top: 50px;
     position: absolute;    
@@ -85,7 +94,7 @@
         border-bottom-right-radius: 30px;
     }
 
-    .select_div {
+    .selection_container {
         margin-top: 20px;
         width: 300px;
     }
