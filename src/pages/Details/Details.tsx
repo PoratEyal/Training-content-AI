@@ -74,9 +74,11 @@ function Details() {
 
                 <div className={styles.selects_btn}>
                     {loading ? (
-                        <VscLoading className={styles.loading_icon_magic} />
+                        <div className={styles.loading_mock_selection_container}>
+                            <VscLoading className={styles.loading_icon_magic} />
+                        </div>
                     ) : (
-                        <div className={styles.select_div}>
+                        <div className={styles.selection_container}>
                             <SelectDetails
                                 data={MovmentsOptions}
                                 placeholder={"תנועת נוער"}
