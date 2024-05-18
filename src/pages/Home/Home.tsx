@@ -79,7 +79,7 @@ function Home() {
 
             <section className={styles.button_section}>
                 <MainBtn
-                    isDisabled={signInDisabled}
+                    isDisabled={false}
                     func={handleStart}
                     height={42}
                     text="מתחילים"
