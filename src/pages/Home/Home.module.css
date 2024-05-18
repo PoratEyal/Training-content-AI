@@ -1,4 +1,5 @@
 .container{
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,7 +68,6 @@
         border: none;
         border-radius: 30px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        position: relative;
     }
     .logo_text_div{
         margin-top: 100px;
