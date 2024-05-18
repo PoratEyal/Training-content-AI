@@ -121,14 +121,14 @@ function ChoosePath() {
                             ))}
                         </div>
                     )}
-                </div>
-                <div className={styles.btn_div}>
-                    <MainBtn
-                        isDisabled={isDisabled}
-                        height={42}
-                        text={"הצעה לפעילות"}
-                        func={submitHandler}
-                    ></MainBtn>
+                    <div className={styles.btn_div}>
+                        <MainBtn
+                            isDisabled={isDisabled}
+                            height={42}
+                            text={"הצעה לפעילות"}
+                            func={submitHandler}
+                        ></MainBtn>
+                    </div>
                 </div>
                 {clicked && <Loading></Loading>}
             </div>
