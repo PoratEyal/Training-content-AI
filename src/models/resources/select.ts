@@ -17,6 +17,7 @@ export const GradeOptions: SelectOption[] = [
     { value: "כיתה א", label: "כיתה א" },
     { value: "כיתה ב", label: "כיתה ב" },
     { value: "כיתה ג", label: "כיתה ג" },
+    { value: "כיתה ד", label: "כיתה ד" },
     { value: "כיתה ה", label: "כיתה ה" },
     { value: "כיתה ו", label: "כיתה ו" },
     { value: "כיתה ז", label: "כיתה ז" },
