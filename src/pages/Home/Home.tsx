@@ -92,7 +92,7 @@ function Home() {
                 ) : null} */}
             </section>
 
-            <Footer />
+            <Footer func={signInWithGoogle} />
         </section>
     );
 }

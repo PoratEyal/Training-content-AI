@@ -21,6 +21,7 @@
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     height: fit-content;
+    max-height: 90vh;
     width: 85%;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     display: flex;
@@ -31,6 +32,7 @@
     text-align: right;
     border: 3px solid var(--secondary-color);
     color: var(--text-color);
+    overflow-y: scroll;
     overflow: auto; /* Allows scrolling */
     scrollbar-width: none; /* For Firefox */
     -ms-overflow-style: none; /* For Internet Explorer and Edge */

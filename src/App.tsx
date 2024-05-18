@@ -12,6 +12,7 @@ import { ReactNotifications } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { AuthProvider } from "./context/AuthContext";
 import Home from "./pages/Home/Home";
+import "./App.css";
 
 function App() {
     return (
@@ -19,7 +20,7 @@ function App() {
             <ErrorContextProvider>
                 <AuthProvider>
                     <ContentProvider>
-                        <ReactNotifications />
+                        <ReactNotifications className="react-notifications" />
                         <Router>
                             <Routes>
                                 <Route element={<PrivateRoutes />}>
