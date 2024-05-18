@@ -58,7 +58,6 @@ function Details() {
     };
 
     const goBack = () => {
-        console.log("goBack");
         clearAll();
         navigate("/");
     };

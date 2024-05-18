@@ -25,7 +25,7 @@ const getUserById = functions.https.onCall(
                 const user = initUserFromDB(id, userData);
                 return { result: "success", user };
             }
-            return { result: "notFound", message: "User not found." };
+            return { result: "success", user: undefined, message: "User not found." };
         } catch (error) {
             console.error("Failed to get user -- ", error);
             return { result: "error", message: "Failed to get user." };

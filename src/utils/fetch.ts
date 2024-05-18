@@ -68,7 +68,7 @@ export const fetchGetUserById = async (
     const getUserByIdFunc = httpsCallable(functions, "getUserById");
 
     const response = (await getUserByIdFunc(request)).data as GetUserByIdResponse;
-    if (response.result === "success" && response.user) {
+    if (response.result === "success" ) {
         return response;
     } else {
         throw new Error(msg.error.message);

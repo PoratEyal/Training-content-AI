@@ -52,7 +52,7 @@ function Home() {
 
             await setPersistence(auth, browserLocalPersistence);
             const userResult = await signInWithPopup(auth, provider);
-            console.log("11")
+            console.log("11");
             if (userResult) {
                 const rawUser = initRawUser(userResult.user);
                 await fetchCreateNewUser({ rawUser });
@@ -60,8 +60,10 @@ function Home() {
             }
         } catch (error) {
             console.log("Error in signInWithGoogle: ", error);
-            handleError(errMsg.google.message);
-            setSignInBtnText(isLoggedIn ? "מתחילים" : "מתחברים ומתחילים")
+            if (!(error as unknown as string).toString().includes("(auth/popup-closed-by-user)")) {
+                handleError(errMsg.google.message);
+            }
+            setSignInBtnText(isLoggedIn ? "מתחילים" : "מתחברים ומתחילים");
             setSignInDisabled(true);
         }
     };
