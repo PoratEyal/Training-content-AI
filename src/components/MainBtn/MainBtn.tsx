@@ -16,6 +16,7 @@ function MainBtn({ func, height, text, isDisabled, type = "button" }: MainBtnPro
         <button
             type={type}
             onClick={!isDisabled ? func : undefined}
+            disabled={isDisabled}
             className={btnClassName}
             style={{ height }}
         >

@@ -45,17 +45,21 @@ function Home() {
         try {
             setSignInBtnText("התחברות...");
             setSignInDisabled(true);
+            if (!auth) {
+                console.error("Firebase auth not initialized");
+                return;
+            }
+
             await setPersistence(auth, browserLocalPersistence);
             const userResult = await signInWithPopup(auth, provider);
             console.log("11")
             if (userResult) {
                 const rawUser = initRawUser(userResult.user);
                 await fetchCreateNewUser({ rawUser });
-                console.log("22")
                 handleStart();
             }
         } catch (error) {
-            console.error("33", error);
+            console.log("Error in signInWithGoogle: ", error);
             handleError(errMsg.google.message);
             setSignInBtnText(isLoggedIn ? "מתחילים" : "מתחברים ומתחילים")
             setSignInDisabled(true);
