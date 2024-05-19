@@ -44,17 +44,22 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const initializeUser = async (user) => {
         try {
+            console.log("user 1", user)
             if (user && !currentUser) {
                 let resultUser;
-                for (let i = 0; i < 4; i++) {
+                for (let i = 0; i < 2; i++) {
                     const response = await fetchGetUserById({ id: (user as GoogleUser).uid });
+                    console.log("user 2")
                     await delay(100);
                     if (response.user) {
                         resultUser = response.user;
                         break;
                     }
                 }
+                
+                console.log("user 3", resultUser)
                 if (resultUser) {
+                    console.log("user 4")
                     if (resultUser.movement) {
                         const { grade, amount, place, gender, movement } = resultUser.movement;
                         addSessionData(movement, grade, amount, place, gender);
@@ -67,6 +72,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 }
             }
         } catch (error) {
+            console.log("user 5", error)
             handleError(error);
         } finally {
             setLoading(false);
