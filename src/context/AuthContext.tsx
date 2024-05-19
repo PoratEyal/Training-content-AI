@@ -8,7 +8,7 @@ import { fetchGetUserById } from "../utils/fetch";
 import { useErrorContext } from "./ErrorContext";
 import { NOT_REGISTER_LIMIT } from "../models/constants";
 import { useCookies } from "react-cookie";
-import { forLongTime } from "../utils/time";
+import { delay, forLongTime } from "../utils/time";
 import { addSessionData } from "../utils/movment";
 
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
@@ -44,17 +44,22 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const initializeUser = async (user) => {
         try {
-            console.log("1")
-            if (user) {
-                //TODO: init user from data
-                const response = await fetchGetUserById({ id: (user as GoogleUser).uid });
-                console.log("2", response)
-                if (response.user) {
-                    if(response.user.movement){
-                        const {grade, amount, place, gender, movement} = response.user.movement;
+            if (user && !currentUser) {
+                let resultUser;
+                for (let i = 0; i < 4; i++) {
+                    const response = await fetchGetUserById({ id: (user as GoogleUser).uid });
+                    await delay(100);
+                    if (response.user) {
+                        resultUser = response.user;
+                        break;
+                    }
+                }
+                if (resultUser) {
+                    if (resultUser.movement) {
+                        const { grade, amount, place, gender, movement } = resultUser.movement;
                         addSessionData(movement, grade, amount, place, gender);
                     }
-                    setCurrentUser(response.user);
+                    setCurrentUser(resultUser);
                     setIsLoggedIn(true);
                 } else {
                     setCurrentUser(undefined);
@@ -62,7 +67,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 }
             }
         } catch (error) {
-            console.log("3", error)
             handleError(error);
         } finally {
             setLoading(false);
@@ -93,7 +97,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const reachUnRegisterLimit = () => {
-        if(isLoggedIn) return false;
+        if (isLoggedIn) return false;
         if (unRegisterLimit >= NOT_REGISTER_LIMIT) return true;
         return false;
     };
