@@ -101,7 +101,7 @@ function ChoosePath() {
                     <label>
                         בחרו את<br></br> נושא הפעילות
                     </label>
-                    <img alt="Sparks effect" src={PAGE3_EFFECT_IMG}></img>
+                    <img alt="Sparks effect" src={"page3_effect.svg"}></img>
                 </div>
             </div>
 
@@ -110,7 +110,7 @@ function ChoosePath() {
                     <img
                         className={styles.path_img}
                         alt="Yellow sign with with heart"
-                        src={PATH_IMG}
+                        src={"path.svg"}
                     ></img>
 
                     {loading ? (

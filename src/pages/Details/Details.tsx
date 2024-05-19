@@ -67,10 +67,10 @@ function Details() {
         <div className={styles.container}>
             <Header goBack={isLoggedIn ? undefined : goBack} />
 
-            <img className={styles.h2_img} alt="Tell us about your group" src={H2_PAGE2_IMG}></img>
+            <img className={styles.h2_img} alt="Tell us about your group" src={"h2_page2.svg"}></img>
 
             <form onSubmit={handleSubmit} className={styles.detailsForm}>
-                <img className={styles.lamp_img} alt="Yellow lamp" src={LAMP_IMG}></img>
+                <img className={styles.lamp_img} alt="Yellow lamp" src={"lamp.svg"}></img>
 
                 <div className={styles.selects_btn}>
                     {loading ? (
