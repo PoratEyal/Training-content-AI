@@ -18,7 +18,7 @@ import { useContentContext } from "../context/ContentContext";
 const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const { data } = useContentContext();
     const { handleError } = useErrorContext();
-    const { isLoggedIn, loading } = useAuthContext();
+    const { isLoggedIn, loading, setUser } = useAuthContext();
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     const [signInBtnText, setSignInBtnText] = useState<string>(
@@ -36,22 +36,9 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
         const handleRedirectResult = async () => {
             try {
                 const userResult = await getRedirectResult(auth);
-                console.log("3 userResult: ", userResult);
-                if (userResult) {
-                    const rawUser = initRawUser(userResult.user);
-                    await fetchCreateNewUser({ rawUser });
-                    console.log("4");
-                    handleStart();
-                }
+                userResult && (await ifNewUserLoggedIn(userResult.user));
             } catch (error) {
-                console.log("Error in signInWithGoogle: ", error);
-                if (
-                    !(error as unknown as string).toString().includes("(auth/popup-closed-by-user)")
-                ) {
-                    handleError(errMsg.google.message);
-                }
-                setSignInBtnText(isLoggedIn ? loggedInText : notLoggedInText);
-                setSignInDisabled(true);
+                handleErrors(error);
             }
         };
 
@@ -59,7 +46,6 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     }, []);
 
     const signInWithGoogle = async () => {
-        console.log("1");
         const provider = new GoogleAuthProvider();
         try {
             setSignInBtnText(loadingText);
@@ -70,28 +56,31 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
             }
 
             await setPersistence(auth, browserLocalPersistence);
-            console.log("2");
             if (isMobile) {
-                console.log("isMobile")
                 await signInWithRedirect(auth, provider);
             } else {
                 const userResult = await signInWithPopup(auth, provider);
-                console.log("3 userResult: ", userResult);
-                if (userResult) {
-                    const rawUser = initRawUser(userResult.user);
-                    await fetchCreateNewUser({ rawUser });
-                    console.log("4");
-                    handleStart();
-                }
+                userResult && (await ifNewUserLoggedIn(userResult.user));
             }
         } catch (error) {
-            console.log("Error in signInWithGoogle: ", error);
-            if (!(error as unknown as string).toString().includes("(auth/popup-closed-by-user)")) {
-                handleError(errMsg.google.message);
-            }
-            setSignInBtnText(isLoggedIn ? loggedInText : notLoggedInText);
-            setSignInDisabled(true);
+            handleErrors(error);
         }
+    };
+
+    const ifNewUserLoggedIn = async (user) => {
+        const rawUser = initRawUser(user);
+        const response = await fetchCreateNewUser({ rawUser });
+        setUser(response.user);
+        handleStart();
+    };
+
+    const handleErrors = (error) => {
+        console.log("Error in signInWithGoogle: ", error);
+        if (!(error as unknown as string).toString().includes("(auth/popup-closed-by-user)")) {
+            handleError(errMsg.google.message);
+        }
+        setSignInBtnText(isLoggedIn ? loggedInText : notLoggedInText);
+        setSignInDisabled(true);
     };
 
     return { signInBtnText, signInDisabled, signInWithGoogle };

@@ -41,4 +41,5 @@ export type AuthContextType = {
     cookies: any;
     setCookie: (name: string, value: any, options?: any) => void;
     reachUnRegisterLimit: () => boolean;
+    setUser: (user: User | undefined) => void;
 };
