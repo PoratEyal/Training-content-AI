@@ -11,8 +11,8 @@ function Footer({func}) {
         <footer className={styles.footer}>
             <div className={styles.connect_div}>
                 <label>{policy.p9.text3}</label>
-                {/* <a href={`mailto:${policy.p9.email}`}>{policy.p9.text4}</a> */}
-                <div onClick={func}>{policy.p9.text4}</div>
+                <a href={`mailto:${policy.p9.email}`}>{policy.p9.text4}</a>
+                {/* <div onClick={func}>{policy.p9.text4}</div> */}
             </div>
             <div onClick={() => navigate("/privacyPolicy")} className={styles.privacy_div}>
                 <label>תנאי שירות</label>

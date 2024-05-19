@@ -14,6 +14,7 @@ import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import MainBtn from "../../components/MainBtn/MainBtn";
 import { useAuthContext } from "../../context/AuthContext";
 import Header from "../../components/Layout/Header/Header";
+import { H2_PAGE2_IMG, LAMP_IMG } from "../../models/constants/img";
 
 function Details() {
     const { data, updateDetails, clearAll } = useContentContext();
@@ -66,10 +67,10 @@ function Details() {
         <div className={styles.container}>
             <Header goBack={isLoggedIn ? undefined : goBack} />
 
-            <img className={styles.h2_img} alt="h2 text" src="h2_page2.svg"></img>
+            <img className={styles.h2_img} alt="Tell us about your group" src={H2_PAGE2_IMG}></img>
 
             <form onSubmit={handleSubmit} className={styles.detailsForm}>
-                <img className={styles.lamp_img} alt="lamp image" src="lamp.svg"></img>
+                <img className={styles.lamp_img} alt="Yellow lamp" src={LAMP_IMG}></img>
 
                 <div className={styles.selects_btn}>
                     {loading ? (

@@ -2,39 +2,18 @@ import Popup from "../../core/Popup/Popup";
 import styles from "./LimitRequests.module.css";
 import MainBtn from "../../MainBtn/MainBtn";
 import { IoCloseOutline } from "react-icons/io5";
-import {
-    GoogleAuthProvider,
-    signInWithPopup,
-    setPersistence,
-    browserLocalPersistence,
-} from "firebase/auth";
-import { auth } from "../../../config/firebase";
-import { initRawUser } from "../../../utils/user";
-import { fetchCreateNewUser } from "../../../utils/fetch";
 import { useNavigate } from "react-router-dom";
-import { useErrorContext } from "../../../context/ErrorContext";
-import errMsg from "../../../models/resources/errorMsg.json";
+import useSignIn from "../../../hooks/useSignIn";
 
 function LimitRequest({ handleAccept }) {
-    const { handleError } = useErrorContext();
     const navigate = useNavigate();
-
-    const signInWithGoogle = async () => {
-        const provider = new GoogleAuthProvider();
-        try {
-            await setPersistence(auth, browserLocalPersistence);
-            const userResult = await signInWithPopup(auth, provider);
-            if (userResult) {
-                const rawUser = initRawUser(userResult.user);
-                await fetchCreateNewUser({ rawUser });
-                handleStart();
-            }
-        } catch (error) {
-            handleError(errMsg.google.message);
-        }
-    };
-
     const handleStart = () => navigate("/details");
+    const { signInBtnText, signInDisabled, signInWithGoogle } = useSignIn(
+        handleStart,
+        "התחברות...",
+        "התחברות",
+        "התחברות",
+    );
 
     return (
         <Popup>
@@ -47,10 +26,9 @@ function LimitRequest({ handleAccept }) {
 
             <div className={styles.btn_div}>
                 <MainBtn
-                    type="submit"
-                    isDisabled={false}
+                    isDisabled={signInDisabled}
                     height={38}
-                    text={"התחברות"}
+                    text={signInBtnText}
                     func={signInWithGoogle}
                 ></MainBtn>
             </div>

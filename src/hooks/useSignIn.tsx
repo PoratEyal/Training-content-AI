@@ -13,7 +13,7 @@ import { useAuthContext } from "../context/AuthContext";
 import { useEffect, useState } from "react";
 import { useContentContext } from "../context/ContentContext";
 
-const useSignIn = async (handleStart, loadingText, loggedInText, notLoggedInText) => {
+const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const { data } = useContentContext();
     const { handleError } = useErrorContext();
     const { isLoggedIn, loading } = useAuthContext();
