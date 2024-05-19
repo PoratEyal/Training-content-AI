@@ -20,6 +20,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const { handleError } = useErrorContext();
     const { isLoggedIn, loading, setUser } = useAuthContext();
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const [err, setErr] = useState<string[]>([]);
 
     const [signInBtnText, setSignInBtnText] = useState<string>(
         isLoggedIn ? loggedInText : notLoggedInText,
@@ -36,6 +37,12 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
         const handleRedirectResult = async () => {
             try {
                 const userResult = await getRedirectResult(auth);
+                if(userResult){
+                    setErr(prev => {
+                        prev.push(`enter google sign in mobile return ${userResult?.providerId}\n`)
+                        return prev
+                    })
+                }
                 userResult && (await ifNewUserLoggedIn(userResult.user));
             } catch (error) {
                 handleErrors(error);
@@ -57,9 +64,17 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
 
             await setPersistence(auth, browserLocalPersistence);
             if (isMobile) {
+                setErr(prev => {
+                    prev.push("enter google sign in mobile")
+                    return prev
+                })
                 await signInWithRedirect(auth, provider);
             } else {
                 const userResult = await signInWithPopup(auth, provider);
+                setErr(prev => {
+                    prev.push(`enter google sign in desktop ${userResult?.providerId}\n`)
+                    return prev
+                })
                 userResult && (await ifNewUserLoggedIn(userResult.user));
             }
         } catch (error) {
@@ -70,8 +85,12 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const ifNewUserLoggedIn = async (user) => {
         const rawUser = initRawUser(user);
         const response = await fetchCreateNewUser({ rawUser });
+        setErr(prev => {
+            prev.push(`create new user ${response?.user?.email}\n`)
+            return prev
+        })
         setUser(response.user);
-        handleStart();
+        // handleStart();
     };
 
     const handleErrors = (error) => {
@@ -83,7 +102,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
         setSignInDisabled(true);
     };
 
-    return { signInBtnText, signInDisabled, signInWithGoogle };
+    return { signInBtnText, signInDisabled, signInWithGoogle, err };
 };
 
 export default useSignIn;
