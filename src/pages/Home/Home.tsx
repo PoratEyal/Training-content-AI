@@ -22,15 +22,15 @@ function Home() {
 
     return (
         <section className={styles.container}>
-            <div style={{position: "fixed", top: 0}}>
+            {/* <div style={{position: "fixed", top: 0}}>
                 {err.toString()}
-            </div>
+            </div> */}
             {/* <Logo /> */}
             <div className={styles.logo_text_div}>
                 <img
                     className={styles.logo}
                     alt="Advancing to activity with AI"
-                    src={BIG_LOGO_IMG}
+                    src={"bigLogo.svg"}
                 ></img>
 
                 <label className={styles.home_lable}>
@@ -38,7 +38,7 @@ function Home() {
                     <img
                         className={styles.hand_icon}
                         alt="I-L-Y Emoji hand"
-                        src={HAND_ICON_IMG}
+                        src={"hand_icon.svg"}
                     ></img>
                 </label>
             </div>
