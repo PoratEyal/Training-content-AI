@@ -90,7 +90,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
             return prev
         })
         setUser(response.user);
-        // handleStart();
+        handleStart();
     };
 
     const handleErrors = (error) => {
