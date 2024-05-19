@@ -12,6 +12,7 @@ import { fetchUpdateUser } from "../../utils/fetch";
 import { VscLoading } from "react-icons/vsc";
 import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";
 import Header from "../../components/Layout/Header/Header";
+import { PAGE3_EFFECT_IMG, PATH_IMG } from "../../models/constants/img";
 
 function ChoosePath() {
     const { handleError } = useErrorContext();
@@ -100,7 +101,7 @@ function ChoosePath() {
                     <label>
                         בחרו את<br></br> נושא הפעילות
                     </label>
-                    <img alt="cool effect to the text" src="page3_effect.svg"></img>
+                    <img alt="Sparks effect" src={PAGE3_EFFECT_IMG}></img>
                 </div>
             </div>
 
@@ -108,8 +109,8 @@ function ChoosePath() {
                 <div className={styles.contnet_path}>
                     <img
                         className={styles.path_img}
-                        alt="path icon and heart logo"
-                        src="path.svg"
+                        alt="Yellow sign with with heart"
+                        src={PATH_IMG}
                     ></img>
 
                     {loading ? (
