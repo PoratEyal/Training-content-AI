@@ -50,7 +50,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
         };
 
         isMobile && handleRedirectResult();
-    }, []);
+    }, [isMobile, auth]);
 
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider();

@@ -22,9 +22,9 @@ function Home() {
 
     return (
         <section className={styles.container}>
-            {/* <div style={{position: "fixed", top: 0}}>
+            <div style={{position: "fixed", top: 0}}>
                 {err.toString()}
-            </div> */}
+            </div>
             {/* <Logo /> */}
             <div className={styles.logo_text_div}>
                 <img
