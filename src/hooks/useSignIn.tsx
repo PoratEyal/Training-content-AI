@@ -39,12 +39,16 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
                 const userResult = await getRedirectResult(auth);
                 if(userResult){
                     setErr(prev => {
-                        prev.push(`enter google sign in mobile return ${userResult?.providerId}\n`)
+                        prev.push(`enter google sign in mobile return ${userResult?.providerId}, ${userResult?.operationType}, ${JSON.stringify(userResult?.user)}\n`)
                         return prev
                     })
                 }
                 userResult && (await ifNewUserLoggedIn(userResult.user));
             } catch (error) {
+                setErr(prev => {
+                    prev.push(`enter google sign in mobile return ${(error as unknown as string).toString()}\n`)
+                    return prev
+                })
                 handleErrors(error);
             }
         };
@@ -90,7 +94,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
             return prev
         })
         setUser(response.user);
-        handleStart();
+        // handleStart();
     };
 
     const handleErrors = (error) => {
