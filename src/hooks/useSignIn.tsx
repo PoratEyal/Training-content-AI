@@ -32,7 +32,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
         console.log("useSignIn useEffect isLoggedIn", isLoggedIn)
         console.log("useSignIn useEffect data", data)
         // if (!loading && isLoggedIn && data) handleStart();
-        if (!loading && isLoggedIn && data) console.log("useSignIn useEffect handleStart")
+        if (!loading && isLoggedIn) handleStart();
         setSignInBtnText(isLoggedIn ? loggedInText : notLoggedInText);
         setSignInDisabled(loading ? true : false);
     }, [loading, isLoggedIn]);
