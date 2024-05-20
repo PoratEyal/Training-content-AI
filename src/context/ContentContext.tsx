@@ -28,6 +28,9 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
     setStateFromSession();
 
     useEffect(() => {
+        console.log("ContentProvider useEffect currentUser", currentUser)
+        console.log("ContentProvider useEffect data - ", data ? "data" : "no data")
+        console.log("ContentProvider useEffect currentUser?.movement", currentUser?.movement)
         if (!data && currentUser && currentUser.movement) {
             const { grade, amount, place, gender, movement } = currentUser.movement;
             setData({

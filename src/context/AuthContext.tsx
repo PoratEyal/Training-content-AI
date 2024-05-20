@@ -50,6 +50,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             if (user && !currentUser) {
                 let resultUser;
                 const response = await fetchGetUserById({ id: (user as GoogleUser).uid });
+                console.log("initializeUser", response.user)
                 if (response.user) {
                     resultUser = response.user;
                 }
