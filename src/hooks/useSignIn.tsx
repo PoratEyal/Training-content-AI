@@ -28,6 +28,9 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const [signInDisabled, setSignInDisabled] = useState<boolean>(loading ? true : false);
 
     useEffect(() => {
+        console.log("useSignIn useEffect loading", loading)
+        console.log("useSignIn useEffect isLoggedIn", isLoggedIn)
+        console.log("useSignIn useEffect data", data)
         if (!loading && isLoggedIn && data) handleStart();
         setSignInBtnText(isLoggedIn ? loggedInText : notLoggedInText);
         setSignInDisabled(loading ? true : false);
@@ -46,7 +49,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
                 userResult && (await ifNewUserLoggedIn(userResult.user));
             } catch (error) {
                 setErr(prev => {
-                    prev.push(`enter google sign in mobile return ${(error as unknown as string).toString()}\n`)
+                    prev.push(`enter mobile error- ${(error as unknown as string).toString()}\n`)
                     return prev
                 })
                 handleErrors(error);
@@ -82,6 +85,10 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
                 userResult && (await ifNewUserLoggedIn(userResult.user));
             }
         } catch (error) {
+            setErr(prev => {
+                prev.push(`first error- ${(error as unknown as string).toString()}\n`)
+                return prev
+            })
             handleErrors(error);
         }
     };
@@ -99,7 +106,8 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
 
     const handleErrors = (error) => {
         console.log("Error in signInWithGoogle: ", error);
-        if (!(error as unknown as string).toString().includes("(auth/popup-closed-by-user)")) {
+        if (!(error as unknown as string).toString().includes("(auth/popup-closed-by-user)") || 
+            !(error as unknown as string).toString().includes("(auth/cancelled-popup-request)")) {
             handleError(errMsg.google.message);
         }
         setSignInBtnText(isLoggedIn ? loggedInText : notLoggedInText);
