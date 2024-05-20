@@ -29,8 +29,7 @@
     border: 1px solid #d9d9d9;
 }
 
-
-@media (max-width: 430px) {
+@media (max-width: 470px) {
     .hint{
         min-width: 130px;
         max-width: 130px;
@@ -41,8 +40,17 @@
 
 @media (min-width: 550px) {
     .hint{
-        min-width: 160px;
-        max-width: 160px;
+        min-width: 130px;
+        max-width: 130px;
+        white-space: normal;
+        text-align: right;
+    }
+}
+
+@media (max-width: 400px) {
+    .hint{
+        min-width: 100px;
+        max-width: 100px;
         white-space: normal;
         text-align: right;
     }
