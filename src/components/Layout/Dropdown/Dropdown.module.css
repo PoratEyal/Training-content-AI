@@ -41,10 +41,8 @@
 .navbar_option {
     display: flex;
     flex-direction: row;
-    justify-content: right;
+    justify-content: center;
     align-items: center;
-    gap: 7px;
-    text-align: right;
     margin-bottom: 4px;
     color: var(--text-color);
 }

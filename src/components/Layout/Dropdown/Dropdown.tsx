@@ -25,17 +25,17 @@ function Dropdown({ handleClose }: DropdownProps) {
         {
             title: "התנתקות",
             path: "/",
-            func: () => {
+            func: async () => {
+                await logout();
                 clearAll();
-                logout();
             },
             Icon: <MdLogout />,
         },
     ];
 
-    const handleClick = (option: DropdownOption) => {
+    const handleClick = async (option: DropdownOption) => {
         const { path, func } = option;
-        func && func();
+        func && await func();
         navigate(path);
         handleClose();
     };
@@ -43,9 +43,6 @@ function Dropdown({ handleClose }: DropdownProps) {
     const OptionBtn = (option: DropdownOption) => (
         <li className={styles.navbar_option}>
             <span onClick={() => handleClick(option)}>{option.title}</span>
-            <span onClick={() => handleClick(option)} className={styles.icons}>
-                {option.Icon}
-            </span>
         </li>
     );
 

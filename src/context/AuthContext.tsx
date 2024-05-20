@@ -38,19 +38,15 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setStateFromSession();
 
     useEffect(() => {
-        console.log("useEffect auth unsubscribe")
         const unsubscribe = onAuthStateChanged(auth, initializeUser);
         return unsubscribe;
     }, []);
 
     const initializeUser = async (user) => {
         try {
-            console.log("initializeUser", user ? "user" : "no user")
-            console.log("initializeUser", currentUser ? "currentUser" : "no currentUser")
             if (user && !currentUser) {
                 let resultUser;
                 const response = await fetchGetUserById({ id: (user as GoogleUser).uid });
-                console.log("initializeUser", response.user)
                 if (response.user) {
                     resultUser = response.user;
                 }

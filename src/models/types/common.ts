@@ -9,7 +9,7 @@ export type NavOption = {
 export type DropdownOption = {
     title: string;
     path: string;
-    func?: () => void;
+    func?: () => Promise<void> | void;
     Icon: React.ReactNode;
 };
 
