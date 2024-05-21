@@ -14,11 +14,12 @@ import { auth } from "../config/firebase";
 import { useAuthContext } from "../context/AuthContext";
 import { useEffect, useState } from "react";
 import { useContentContext } from "../context/ContentContext";
+//https://firebase.google.com/docs/auth/web/redirect-best-practices
 
 const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const { data } = useContentContext();
     const { handleError } = useErrorContext();
-    const { isLoggedIn, loading, setUser } = useAuthContext();
+    const { isLoggedIn, loading, currentUser, setUser } = useAuthContext();
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     const [signInBtnText, setSignInBtnText] = useState<string>(
@@ -28,7 +29,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
 
     useEffect(() => {
         //TODO: need to add data?
-        if (!loading && isLoggedIn) handleStart();
+        if (!loading && isLoggedIn && currentUser) handleStart();
         setSignInBtnText(isLoggedIn ? loggedInText : notLoggedInText);
         setSignInDisabled(loading ? true : false);
     }, [loading, isLoggedIn]);
