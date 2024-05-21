@@ -8,7 +8,7 @@ import { fetchGetUserById } from "../utils/fetch";
 import { useErrorContext } from "./ErrorContext";
 import { NOT_REGISTER_LIMIT } from "../models/constants";
 import { useCookies } from "react-cookie";
-import { delay, forLongTime } from "../utils/time";
+import { forLongTime } from "../utils/time";
 import { addSessionData } from "../utils/movment";
 
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
