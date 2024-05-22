@@ -70,13 +70,14 @@ function Path({ index, path, setPath }: PathProps) {
         }
     };
 
+    const checkboxStyle = show ? styles.checkbox_active : styles.checkbox_inactive;
+
     return (
         <div className={styles.checkbox_div}>
-            <div className={styles.custom_checkbox}>
-                <input type="checkbox" id={name} checked={show} onChange={toggleShow} />
-                <label className={styles.title} htmlFor={name}>
+            <div className={styles.selection}>
+                <span className={checkboxStyle} onClick={toggleShow}>
                     {title}
-                </label>
+                </span>
                 {hint ? <Hint hint={hint} /> : null}
             </div>
 

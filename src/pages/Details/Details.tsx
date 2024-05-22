@@ -60,7 +60,7 @@ function Details() {
 
     const goBack = () => {
         clearAll();
-        navigate("/");
+        navigate("/home");
     };
 
     return (
@@ -69,7 +69,7 @@ function Details() {
 
             <img className={styles.h2_img} alt="Tell us about your group" src={"h2_page2.svg"}></img>
 
-            <form onSubmit={handleSubmit} className={styles.detailsForm}>
+            <form onSubmit={handleSubmit} className={styles.details_form}>
                 <img className={styles.lamp_img} alt="Yellow lamp" src={"lamp.svg"}></img>
 
                 <div className={styles.selects_btn}>

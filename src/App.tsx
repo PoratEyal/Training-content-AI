@@ -13,6 +13,7 @@ import "react-notifications-component/dist/theme.css";
 import { AuthProvider } from "./context/AuthContext";
 import Home from "./pages/Home/Home";
 import "./App.css";
+import Maintenance from "./pages/Maintenance/Maintenance";
 
 function App() {
     return (
@@ -24,8 +25,9 @@ function App() {
                         <Router>
                             <Routes>
                                 <Route element={<PrivateRoutes />}>
+                                    <Route path="/" element={<Maintenance />} />
                                     <Route
-                                        path="/"
+                                        path="/home"
                                         element={
                                             <>
                                                 <Helmet>
@@ -34,7 +36,7 @@ function App() {
                                                         name="description"
                                                         content="צור פעולות מרתקות ומותאמות אישית, על ידי הזנת פרטים על הקבוצה שלך, באמצעות כלי בינה מלאכותית."
                                                     />
-                                                    <link rel="canonical" href="/" />
+                                                    <link rel="canonical" href="/home" />
                                                 </Helmet>
                                                 <Home />
                                             </>

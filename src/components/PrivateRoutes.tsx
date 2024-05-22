@@ -14,7 +14,7 @@ const PrivateRoutes = () => {
     const [tscs, setTscs] = useState(false);
 
     useEffect(() => {
-        if(location.pathname === "/") return;
+        if(location.pathname === "/home") return;
         if (loading || isLoggedIn) return;
         if (unRegisterLimit >= NOT_REGISTER_LIMIT + 1) {
             setBlock(true);
@@ -29,7 +29,7 @@ const PrivateRoutes = () => {
 
     const handleAcceptTerms = () => {
         setCookie("user-consent", "accepted", {
-            path: "/",
+            path: "/home",
             expires: forLongTime,
         });
         setTscs(false);
