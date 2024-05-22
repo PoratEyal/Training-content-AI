@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Popup.module.css";
+import BlurEffect from "../../BlurEffect/BlurEffect";
 
 type PopupProps = {
     hasCloseBtn?: boolean;
@@ -10,14 +11,18 @@ type PopupProps = {
 function Popup({ hasCloseBtn = false, children, closeFunc = () => {} }: PopupProps) {
     return (
         <section className={styles.background}>
-            <article className={styles.container_popup}>
-                {hasCloseBtn ? (
-                    <button onClick={closeFunc} className={styles.close_btn}>
-                        X
-                    </button>
-                ) : null}
-                {children}
-            </article>
+            <section className={styles.container_popup}>
+                <BlurEffect hasText height="70vh">
+                    <article className={styles.artical_popup}>
+                        {hasCloseBtn ? (
+                            <button onClick={closeFunc} className={styles.close_btn}>
+                                X
+                            </button>
+                        ) : null}
+                        {children}
+                    </article>
+                </BlurEffect>
+            </section>
         </section>
     );
 }

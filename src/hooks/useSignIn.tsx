@@ -30,7 +30,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     useEffect(() => {
         //TODO: need to add data?
         if (!loading && isLoggedIn && currentUser) handleStart();
-        setSignInBtnText(isLoggedIn ? loggedInText : notLoggedInText);
+        setSignInBtnText(loading ? loadingText : isLoggedIn ? loggedInText : notLoggedInText);
         setSignInDisabled(loading ? true : false);
     }, [loading, isLoggedIn]);
 

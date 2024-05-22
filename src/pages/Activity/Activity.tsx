@@ -2,8 +2,9 @@ import styles from "./Activity.module.css";
 import { useContentContext } from "../../context/ContentContext";
 import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "../../components/Layout/Header/Header";
+import BlurEffect from "../../components/BlurEffect/BlurEffect";
 
 function Activity() {
     const { data, clearPath } = useContentContext();
@@ -21,15 +22,18 @@ function Activity() {
     };
 
     return (
-        <div className={styles.container}>
-            <Header goBack={goBack} isFade />
-
-            {data?.movement?.path.map((path, i) => {
-                return path.activity ? (
-                    <ActivityOutput key={i} index={i} movementPath={path} />
-                ) : null;
-            })}
-        </div>
+        <section className={styles.container}>
+            <BlurEffect height="95vh">
+                <Header goBack={goBack} isFade />
+                <article>
+                    {data?.movement?.path.map((path, i) => {
+                        return path.activity ? (
+                            <ActivityOutput key={i} index={i} movementPath={path} />
+                        ) : null;
+                    })}
+                </article>
+            </BlurEffect>
+        </section>
     );
 }
 

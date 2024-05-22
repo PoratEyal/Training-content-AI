@@ -1,7 +1,7 @@
 .activity_contianer {
     position: relative;
-    padding: 25px;
-    padding-top: 0px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 .activity_data{
@@ -19,20 +19,7 @@
     margin-top: 20px;
 }
 
-.activity_close {
-    width: 100%;
-    cursor: pointer;
-    position: relative;
-    -webkit-tap-highlight-color: transparent;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    color: var(--text-color);
-    font-size: 18px;
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 500;
-}
-.activityOpen{
+.activity_title{
     width: 100%;
     cursor: pointer;
     position: relative;
@@ -45,20 +32,8 @@
     font-family: 'Fredoka', sans-serif;
     font-weight: 500;
 }
-.toggel_arrow_animation {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 25px;
-    font-size: 22px;
-    margin-top: 3px;
-}
 
 
 @media (min-width: 550px) {
-    .activity_contianer {
-        padding: 30px;
-        padding-top: 0px;
-    }
 
 }
