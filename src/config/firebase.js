@@ -6,12 +6,13 @@ import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 //project-193920685822
 //https://activity-builder-45923.firebaseapp.com/__/auth/handler
 //https://activity-builder-45923.firebaseapp.com/__/auth/handler
+//authDomain: "activity-builder-45923.firebaseapp.com",
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyCwqgCEflWya7SDKG99vUDPE9LPOZoBv4s",
-    authDomain: "activity-builder-45923.firebaseapp.com",
+    authDomain: "activitybuilders.com",
     projectId: "activity-builder-45923",
     storageBucket: "activity-builder-45923.appspot.com",
     messagingSenderId: "193920685822",
