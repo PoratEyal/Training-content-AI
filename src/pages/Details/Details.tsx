@@ -65,11 +65,8 @@ function Details() {
     };
 
     return (
-        <PageLayout
-            path="/details"
-            hasGreenBackground
-            hasHeader={{ goBack: isLoggedIn ? undefined : goBack }}
-        >
+        <div className={styles.container}>
+            <Header goBack={isLoggedIn ? undefined : goBack} />
             <img
                 className={styles.h2_img}
                 alt="Tell us about your group"
@@ -130,7 +127,7 @@ function Details() {
                     </div>
                 </div>
             </form>
-        </PageLayout>
+        </div>
     );
 }
 

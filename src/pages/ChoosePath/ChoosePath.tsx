@@ -94,8 +94,9 @@ function ChoosePath() {
     };
 
     return (
-        <PageLayout path="/choosePath" hasGreenBackground hasHeader={{ goBack }}>
+        <section className={styles.choose_path_container}>
             <div>
+                <Header goBack={goBack} />
                 <div className={styles.h2_div}>
                     <label>
                         בחרו את<br></br> נושא הפעילות
@@ -132,7 +133,7 @@ function ChoosePath() {
                 </div>
                 {clicked && <Loading></Loading>}
             </div>
-        </PageLayout>
+        </section>
     );
 }
 

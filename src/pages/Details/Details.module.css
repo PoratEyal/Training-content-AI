@@ -1,14 +1,15 @@
-/* .container {
+.container {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    background-color: var(--primary-color);
-    width: 100%;
-    max-width: 100vw;
+    margin-top: 0px;
+    width: fit-content;
+    height: 100vh;
+    background-color: #708254;
+    width: 101vw;
     position: fixed;
     top: 0;
     left: 0;
-} */
+}
 
 .h2_img {
     width: 190px;
@@ -34,11 +35,11 @@
     border-top-right-radius: 37px;
     position: absolute;
     bottom: 0;
-    width: 100vw;
+    width: 101vw;
     height: 75%;
 }
 
-.loading_mock_selection_container{
+.loading_mock_selection_container {
     min-height: 300px;
     height: 300px;
     width: 100%;
@@ -47,9 +48,9 @@
     justify-content: center;
 }
 
-.selects_btn{
+.selects_btn {
     margin-top: 50px;
-    position: absolute;    
+    position: absolute;
     top: 0;
     display: flex;
     flex-direction: column;
@@ -78,9 +79,9 @@
 
 @media (min-width: 550px) {
     .container {
-        margin-top: 5vh;
+        margin-top: 50px;
+        height: 630px;
         width: 400px;
-        height: 90vh;
         border: none;
         border-radius: 30px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -94,12 +95,8 @@
     }
 
     .selection_container {
-        margin-top: 2vh;
+        margin-top: 20px;
         width: 300px;
-    }
-
-    .selects_btn{
-        margin-top: 5vh;
     }
 
     .btn_div {

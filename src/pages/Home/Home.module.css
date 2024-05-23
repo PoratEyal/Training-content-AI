@@ -1,13 +1,11 @@
 .container{
     position: relative;
-    font-size: 16px;
-    line-height: 19px;
-    height: 100%;
-    width: 100%;
-    max-width: 100vw;
-    overflow-y: scroll;
-    padding: 25px;
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10vh;
+    height: fit-content;
+    margin-top: 25vh;
     font-family: 'Fredoka', sans-serif;
 }
 
@@ -17,7 +15,6 @@
     justify-content: center;
     align-items: center;
     gap: 5vh;
-    margin-top: 15vh;
 }
 
 .home_lable{
@@ -65,14 +62,13 @@
 
 @media (min-width: 550px) {
     .container{
-        margin-top: 5vh;
+        margin-top: 50px;
         width: 400px;
         background-color: var(--background-color);
-        height: 90vh;
+        height: 630px;
         border: none;
         border-radius: 30px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        position: relative;
     }
     .logo_text_div{
         margin-top: 100px;

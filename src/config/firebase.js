@@ -12,7 +12,7 @@ import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyCwqgCEflWya7SDKG99vUDPE9LPOZoBv4s",
-    authDomain: "activitybuilders.com",
+    authDomain: "activity-builder-45923.firebaseapp.com",
     projectId: "activity-builder-45923",
     storageBucket: "activity-builder-45923.appspot.com",
     messagingSenderId: "193920685822",

@@ -25,12 +25,87 @@ function App() {
                         <Router>
                             <Routes>
                                 <Route element={<PrivateRoutes />}>
-                                    <Route path="/" element={<Home />} />
-                                    <Route path="/details" element={<Details />} />
-                                    <Route path="/choosePath" element={<ChoosePath />} />
-                                    <Route path="/activity" element={<Activity />} />
+                                    <Route
+                                        path="/"
+                                        element={
+                                            <>
+                                                <Helmet>
+                                                    <title>בונה פעולות</title>
+                                                    <meta
+                                                        name="description"
+                                                        content="צור פעולות מרתקות ומותאמות אישית, על ידי הזנת פרטים על הקבוצה שלך, באמצעות כלי בינה מלאכותית."
+                                                    />
+                                                    <link rel="canonical" href="/" />
+                                                </Helmet>
+                                                <Home />
+                                            </>
+                                        }
+                                    />
+                                    <Route
+                                        path="/details"
+                                        element={
+                                            <>
+                                                <Helmet>
+                                                    <title>בונה פעולות</title>
+                                                    <meta
+                                                        name="description"
+                                                        content="צור פעולות מרתקות ומותאמות אישית, על ידי הזנת פרטים על הפעילות שתרצה להעביר, באמצעות כלי בינה מלאכותית."
+                                                    />
+                                                    <link rel="canonical" href="/details" />
+                                                </Helmet>
+                                                <Details />
+                                            </>
+                                        }
+                                    />
+                                    <Route
+                                        path="/choosePath"
+                                        element={
+                                            <>
+                                                <Helmet>
+                                                    <title>בונה פעולות</title>
+                                                    <meta
+                                                        name="description"
+                                                        content="צור פעולות מרתקות ומותאמות אישית, על ידי הזנת פרטים על הפעילות שתרצה להעביר, באמצעות כלי בינה מלאכותית."
+                                                    />
+                                                    <link rel="canonical" href="/choosePath" />
+                                                </Helmet>
+                                                <ChoosePath />
+                                            </>
+                                        }
+                                    />
+                                    <Route
+                                        path="/activity"
+                                        element={
+                                            <>
+                                                <Helmet>
+                                                    <title>בונה פעולות</title>
+                                                    <meta
+                                                        name="description"
+                                                        content="צור פעולות מרתקות ומותאמות אישית, תוך דקות ספורות, באמצעות כלי בינה מלאכותית. חסוך זמן, התמקד ביצירתיות, והענק לחניכים חוויה חינוכית."
+                                                    />
+                                                    <link rel="canonical" href="/activity" />
+                                                </Helmet>
+                                                <Activity />
+                                            </>
+                                        }
+                                    />
                                 </Route>
-                                <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
+                                <Route
+                                    path="/privacyPolicy"
+                                    element={
+                                        <>
+                                            <Helmet>
+                                                <title>בונה פעולות</title>
+                                                <meta
+                                                    name="description"
+                                                    content="עיין במדיניוית הפרטיות של האפליקציה בונה פעולות. האפליקציה נמצאת כרגע בשלב בטא/התנסות ולכן ייתכנו בעיות ותקלות."
+                                                />
+                                                <link rel="canonical" href="/privacyPolicy" />
+                                            </Helmet>
+                                            <PrivacyPolicy />
+                                        </>
+                                    }
+                                />
                                 <Route path={"*"} element={<Navigate replace to="/" />} />
                             </Routes>
                         </Router>
