@@ -43,17 +43,17 @@ function Home() {
 
             <section className={styles.button_section}>
                 <MainBtn
-                    isDisabled={false}
-                    func={handleStart}
+                    isDisabled={signInDisabled}
+                    func={btnFunc}
                     height={42}
-                    text={"מתחילים"}
+                    text={signInBtnText}
                 ></MainBtn>
 
-                {/* {!isLoggedIn && !loading && !reachUnRegisterLimit() ? (
+                {!isLoggedIn && !loading && !reachUnRegisterLimit() ? (
                     <button onClick={handleStart} className={styles.home_login_btn}>
                         התחלה ללא חשבון
                     </button>
-                ) : null} */}
+                ) : null}
             </section>
             <Footer />
         </section>

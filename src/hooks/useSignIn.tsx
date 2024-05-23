@@ -83,7 +83,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
             handleError(errMsg.google.message);
         }
         setSignInBtnText(isLoggedIn ? loggedInText : notLoggedInText);
-        setSignInDisabled(true);
+        setSignInDisabled(false);
     };
 
     return { signInBtnText, signInDisabled, signInWithGoogle };
