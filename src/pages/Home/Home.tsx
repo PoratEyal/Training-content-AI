@@ -6,6 +6,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import Footer from "../../components/Layout/Footer/Footer";
 import useSignIn from "../../hooks/useSignIn";
 import { BIG_LOGO_IMG, HAND_ICON_IMG } from "../../models/constants/img";
+import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 
 function Home() {
     const { isLoggedIn, loading, reachUnRegisterLimit } = useAuthContext();
@@ -21,7 +22,7 @@ function Home() {
     const btnFunc = isLoggedIn ? () => handleStart() : () => signInWithGoogle();
 
     return (
-        <section className={styles.container}>
+        <PageLayout path="/home" hasFooter>
             {/* <Logo /> */}
             <div className={styles.logo_text_div}>
                 <img
@@ -54,9 +55,7 @@ function Home() {
                     </button>
                 ) : null}
             </section>
-
-            <Footer />
-        </section>
+        </PageLayout>
     );
 }
 

@@ -1,7 +1,7 @@
 .section_contianer {
     position: relative;
     width: 100%;
-    height: fit-content;
+    height: 100vh;
     overflow-y: scroll;
     /* Allows scrolling */
     scrollbar-width: none;
@@ -37,6 +37,7 @@
 
 @media (min-width: 550px) {
     .section_contianer {
-        height: fit-content;
+        height: 100%;
+        max-height: none;
     }
 }
