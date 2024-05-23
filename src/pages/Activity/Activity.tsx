@@ -23,15 +23,15 @@ function Activity() {
     };
 
     return (
-        <PageLayout path="/activity" hasBlur hasHeader={{ goBack, isFade: true }}>
-            <article className={styles.activity_artical}>
-                {data?.movement?.path.map((path, i) => {
-                    return path.activity ? (
-                        <ActivityOutput key={i} index={i} movementPath={path} />
-                    ) : null;
-                })}
-            </article>
-        </PageLayout>
+        <div className={styles.container}>
+            <Header goBack={goBack} isFade />
+
+            {data?.movement?.path.map((path, i) => {
+                return path.activity ? (
+                    <ActivityOutput key={i} index={i} movementPath={path} />
+                ) : null;
+            })}
+        </div>
     );
 }
 

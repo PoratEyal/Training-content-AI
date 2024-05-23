@@ -22,7 +22,7 @@ function Home() {
     const btnFunc = isLoggedIn ? () => handleStart() : () => signInWithGoogle();
 
     return (
-        <PageLayout path="/" hasFooter>
+        <section className={styles.container}>
             {/* <Logo /> */}
             <div className={styles.logo_text_div}>
                 <img
@@ -55,7 +55,8 @@ function Home() {
                     </button>
                 ) : null} */}
             </section>
-        </PageLayout>
+            <Footer />
+        </section>
     );
 }
 

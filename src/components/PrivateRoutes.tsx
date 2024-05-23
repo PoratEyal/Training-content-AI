@@ -7,44 +7,44 @@ import { useAuthContext } from "../context/AuthContext";
 import { forLongTime } from "../utils/time";
 
 const PrivateRoutes = () => {
-    // const location = useLocation();
-    // const { cookies, setCookie, unRegisterLimit } = useAuthContext();
-    // const { isLoggedIn, loading } = useAuthContext();
-    // const [block, setBlock] = useState(false);
-    // const [tscs, setTscs] = useState(false);
+    const location = useLocation();
+    const { cookies, setCookie, unRegisterLimit } = useAuthContext();
+    const { isLoggedIn, loading } = useAuthContext();
+    const [block, setBlock] = useState(false);
+    const [tscs, setTscs] = useState(false);
 
-    // useEffect(() => {
-    //     if(location.pathname === "/") return;
-    //     if (loading || isLoggedIn) return;
-    //     if (unRegisterLimit >= NOT_REGISTER_LIMIT + 1) {
-    //         setBlock(true);
-    //     }
-    // }, [unRegisterLimit]);
+    useEffect(() => {
+        if(location.pathname === "/") return;
+        if (loading || isLoggedIn) return;
+        if (unRegisterLimit >= NOT_REGISTER_LIMIT + 1) {
+            setBlock(true);
+        }
+    }, [unRegisterLimit]);
 
-    // useEffect(() => {
-    //     if (cookies["user-consent"] === undefined) {
-    //         setTscs(true);
-    //     }
-    // }, [cookies]);
+    useEffect(() => {
+        if (cookies["user-consent"] === undefined) {
+            setTscs(true);
+        }
+    }, [cookies]);
 
-    // const handleAcceptTerms = () => {
-    //     setCookie("user-consent", "accepted", {
-    //         path: "/",
-    //         expires: forLongTime,
-    //     });
-    //     setTscs(false);
-    // };
+    const handleAcceptTerms = () => {
+        setCookie("user-consent", "accepted", {
+            path: "/",
+            expires: forLongTime,
+        });
+        setTscs(false);
+    };
 
-    // const handleAcceptLimit = () => {
-    //     setBlock(false);
-    // };
+    const handleAcceptLimit = () => {
+        setBlock(false);
+    };
 
     return (
-        // <React.Fragment>
-        //     {block ? <LimitRequest handleAccept={handleAcceptLimit} /> : null}
-        //     {tscs ? <TSCs handleAccept={handleAcceptTerms} /> : null}
-        // </React.Fragment>
-        <Outlet />
+        <React.Fragment>
+            {block ? <LimitRequest handleAccept={handleAcceptLimit} /> : null}
+            {tscs ? <TSCs handleAccept={handleAcceptTerms} /> : null}
+            <Outlet />
+        </React.Fragment>
     );
 };
 
