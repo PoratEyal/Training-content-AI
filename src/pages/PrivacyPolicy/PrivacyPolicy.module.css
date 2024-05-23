@@ -1,7 +1,14 @@
-.privacy_policy_container{
+.privacyPolicyContainer{
     padding: 25px;
     font-size: 14px;
     line-height: 19px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+
+.space_div{
+    margin-top: 7px;
 }
 
 .text_p {
@@ -11,6 +18,7 @@
 .email {
     text-align: center;
     font-size: 14px;
+    margin-top: 10px;
 }
 
 .email a {
@@ -43,7 +51,7 @@
 }
 
 @media (min-width: 550px) {
-    .privacy_policy_container {
+    .privacyPolicyContainer {
         margin-top: 50px;
         width: 400px;
         background-color: var(--background-color);
@@ -54,7 +62,7 @@
         position: relative;
     } 
 
-    .privacy_policy_container article{
+    .privacyPolicyContainer article{
         padding: 0 25px 25px 25px;
     }
 
