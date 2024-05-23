@@ -4,16 +4,16 @@ import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
 
 type BlurEffectProps = {
+    hasBlur?: boolean;
     height?: string;
     hasText?: boolean;
     children: React.ReactNode;
 };
 
-function BlurEffect({ height, hasText = false, children }: BlurEffectProps) {
+function BlurEffect({ hasBlur = true, hasText = false, children }: BlurEffectProps) {
     const [reachBottom, setReachBottom] = useState(false);
 
     const handleScroll = (e) => {
-        console.log("scrolling");
         const bottom =
             Math.abs(e.target.scrollHeight - e.target.scrollTop - e.target.clientHeight) <= 1;
 
@@ -22,10 +22,13 @@ function BlurEffect({ height, hasText = false, children }: BlurEffectProps) {
         } else if (reachBottom) setReachBottom(false);
     };
 
+    if (!hasBlur) {
+        return <section className={styles.section_contianer}>{children}</section>;
+    }
+
     return (
         <section
             className={styles.section_contianer}
-            style={{ maxHeight: height }}
             onScroll={handleScroll}
         >
             {children}

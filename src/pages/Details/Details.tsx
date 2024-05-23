@@ -15,6 +15,7 @@ import MainBtn from "../../components/MainBtn/MainBtn";
 import { useAuthContext } from "../../context/AuthContext";
 import Header from "../../components/Layout/Header/Header";
 import { H2_PAGE2_IMG, LAMP_IMG } from "../../models/constants/img";
+import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 
 function Details() {
     const { data, updateDetails, clearAll } = useContentContext();
@@ -64,10 +65,16 @@ function Details() {
     };
 
     return (
-        <div className={styles.container}>
-            <Header goBack={isLoggedIn ? undefined : goBack} />
-
-            <img className={styles.h2_img} alt="Tell us about your group" src={"h2_page2.svg"}></img>
+        <PageLayout
+            path="/details"
+            hasGreenBackground
+            hasHeader={{ goBack: isLoggedIn ? undefined : goBack }}
+        >
+            <img
+                className={styles.h2_img}
+                alt="Tell us about your group"
+                src={"h2_page2.svg"}
+            ></img>
 
             <form onSubmit={handleSubmit} className={styles.details_form}>
                 <img className={styles.lamp_img} alt="Yellow lamp" src={"lamp.svg"}></img>
@@ -123,7 +130,7 @@ function Details() {
                     </div>
                 </div>
             </form>
-        </div>
+        </PageLayout>
     );
 }
 
