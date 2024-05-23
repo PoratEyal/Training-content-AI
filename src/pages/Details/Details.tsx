@@ -61,7 +61,7 @@ function Details() {
 
     const goBack = () => {
         clearAll();
-        navigate("/home");
+        navigate("/");
     };
 
     return (

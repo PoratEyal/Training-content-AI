@@ -50,7 +50,7 @@ function PageLayout({
 
     const handleAcceptTerms = () => {
         setCookie("user-consent", "accepted", {
-            path: "/home",
+            path: "/",
             expires: forLongTime,
         });
         setTscs(false);

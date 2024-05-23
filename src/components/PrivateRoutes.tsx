@@ -14,7 +14,7 @@ const PrivateRoutes = () => {
     const [tscs, setTscs] = useState(false);
 
     useEffect(() => {
-        if(location.pathname === "/home") return;
+        if(location.pathname === "/") return;
         if (loading || isLoggedIn) return;
         if (unRegisterLimit >= NOT_REGISTER_LIMIT + 1) {
             setBlock(true);

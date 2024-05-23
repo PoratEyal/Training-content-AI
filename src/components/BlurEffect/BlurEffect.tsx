@@ -5,12 +5,19 @@ import { useState } from "react";
 
 type BlurEffectProps = {
     hasBlur?: boolean;
-    height?: string;
+    height?: string | undefined;
+    maxHeight?: string | undefined;
     hasText?: boolean;
     children: React.ReactNode;
 };
 
-function BlurEffect({ hasBlur = true, hasText = false, children }: BlurEffectProps) {
+function BlurEffect({
+    hasBlur = true,
+    height,
+    maxHeight,
+    hasText = false,
+    children,
+}: BlurEffectProps) {
     const [reachBottom, setReachBottom] = useState(false);
 
     const handleScroll = (e) => {
@@ -23,12 +30,26 @@ function BlurEffect({ hasBlur = true, hasText = false, children }: BlurEffectPro
     };
 
     if (!hasBlur) {
-        return <section className={styles.section_contianer}>{children}</section>;
+        return (
+            <section
+                style={{
+                    height: height ? height : "100vh",
+                    maxHeight: maxHeight ? maxHeight : "none",
+                }}
+                className={styles.section_contianer}
+            >
+                {children}
+            </section>
+        );
     }
 
     return (
         <section
             className={styles.section_contianer}
+            style={{
+                height: height ? height : "100vh",
+                maxHeight: maxHeight ? maxHeight : "none",
+            }}
             onScroll={handleScroll}
         >
             {children}

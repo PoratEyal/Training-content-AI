@@ -9,7 +9,7 @@ function PrivacyPolicy() {
     const navigate = useNavigate();
 
     const goBack = () => {
-        navigate("/home");
+        navigate("/");
     };
 
     return (

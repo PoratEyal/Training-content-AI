@@ -25,9 +25,8 @@ function App() {
                         <Router>
                             <Routes>
                                 <Route element={<PrivateRoutes />}>
-                                    <Route path="/" element={<Maintenance />} />
                                     <Route
-                                        path="/home"
+                                        path="/"
                                         element={
                                             <>
                                                 <Helmet>
@@ -36,7 +35,7 @@ function App() {
                                                         name="description"
                                                         content="צור פעולות מרתקות ומותאמות אישית, על ידי הזנת פרטים על הקבוצה שלך, באמצעות כלי בינה מלאכותית."
                                                     />
-                                                    <link rel="canonical" href="/home" />
+                                                    <link rel="canonical" href="/" />
                                                 </Helmet>
                                                 <Home />
                                             </>
