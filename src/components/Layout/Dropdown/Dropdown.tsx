@@ -24,7 +24,7 @@ function Dropdown({ handleClose }: DropdownProps) {
         // { title: "הפרופיל שלי", path: "/profile", Icon: <FaUser /> },
         {
             title: "התנתקות",
-            path: "/home",
+            path: "/",
             func: async () => {
                 await logout();
                 clearAll();

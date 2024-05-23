@@ -13,6 +13,7 @@ import { VscLoading } from "react-icons/vsc";
 import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";
 import Header from "../../components/Layout/Header/Header";
 import { PAGE3_EFFECT_IMG, PATH_IMG } from "../../models/constants/img";
+import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 
 function ChoosePath() {
     const { handleError } = useErrorContext();
@@ -93,10 +94,8 @@ function ChoosePath() {
     };
 
     return (
-        <section className={styles.choose_path_container}>
+        <PageLayout path="/choosePath" hasGreenBackground hasHeader={{ goBack }}>
             <div>
-                <Header goBack={goBack} />
-
                 <div className={styles.h2_div}>
                     <label>
                         בחרו את<br></br> נושא הפעילות
@@ -133,7 +132,7 @@ function ChoosePath() {
                 </div>
                 {clicked && <Loading></Loading>}
             </div>
-        </section>
+        </PageLayout>
     );
 }
 

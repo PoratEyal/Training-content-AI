@@ -22,7 +22,7 @@ function Home() {
     const btnFunc = isLoggedIn ? () => handleStart() : () => signInWithGoogle();
 
     return (
-        <PageLayout path="/home" hasFooter>
+        <PageLayout path="/" hasFooter>
             {/* <Logo /> */}
             <div className={styles.logo_text_div}>
                 <img
@@ -43,17 +43,17 @@ function Home() {
 
             <section className={styles.button_section}>
                 <MainBtn
-                    isDisabled={signInDisabled}
-                    func={btnFunc}
+                    isDisabled={false}
+                    func={handleStart}
                     height={42}
-                    text={signInBtnText}
+                    text={"מתחילים"}
                 ></MainBtn>
 
-                {!isLoggedIn && !loading && !reachUnRegisterLimit() ? (
+                {/* {!isLoggedIn && !loading && !reachUnRegisterLimit() ? (
                     <button onClick={handleStart} className={styles.home_login_btn}>
                         התחלה ללא חשבון
                     </button>
-                ) : null}
+                ) : null} */}
             </section>
         </PageLayout>
     );

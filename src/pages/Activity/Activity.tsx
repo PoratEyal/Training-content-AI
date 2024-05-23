@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Header from "../../components/Layout/Header/Header";
 import BlurEffect from "../../components/BlurEffect/BlurEffect";
+import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 
 function Activity() {
     const { data, clearPath } = useContentContext();
@@ -22,18 +23,15 @@ function Activity() {
     };
 
     return (
-        <section className={styles.container}>
-            <BlurEffect height="95vh">
-                <Header goBack={goBack} isFade />
-                <article>
-                    {data?.movement?.path.map((path, i) => {
-                        return path.activity ? (
-                            <ActivityOutput key={i} index={i} movementPath={path} />
-                        ) : null;
-                    })}
-                </article>
-            </BlurEffect>
-        </section>
+        <PageLayout path="/activity" hasBlur hasHeader={{ goBack, isFade: true }}>
+            <article className={styles.activity_artical}>
+                {data?.movement?.path.map((path, i) => {
+                    return path.activity ? (
+                        <ActivityOutput key={i} index={i} movementPath={path} />
+                    ) : null;
+                })}
+            </article>
+        </PageLayout>
     );
 }
 

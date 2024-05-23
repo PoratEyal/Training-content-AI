@@ -88,7 +88,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             const lim = prev ? prev + 1 : 1;
             if (lim <= NOT_REGISTER_LIMIT) {
                 setCookie("limit", JSON.stringify(lim), {
-                    path: "/home",
+                    path: "/",
                     expires: forLongTime,
                 });
             }

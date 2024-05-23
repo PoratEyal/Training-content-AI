@@ -12,7 +12,7 @@ function Popup({ hasCloseBtn = false, children, closeFunc = () => {} }: PopupPro
     return (
         <section className={styles.background}>
             <section className={styles.container_popup}>
-                <BlurEffect hasText height="70vh">
+                <BlurEffect hasText height="fit-content" maxHeight="70vh">
                     <article className={styles.artical_popup}>
                         {hasCloseBtn ? (
                             <button onClick={closeFunc} className={styles.close_btn}>
