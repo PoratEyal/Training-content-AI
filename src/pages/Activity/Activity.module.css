@@ -4,6 +4,28 @@
     flex-direction: column;
 }
 
+.btn_div{
+    margin-top: -20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+.shareBtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    border: none;
+    padding: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
+    color: var(--text-color);
+    width: fit-content;
+    border-radius: 25px;
+    font-weight: 500;
+}
+
 @media (min-width: 550px) {
     .container {
         margin-top: 50px;

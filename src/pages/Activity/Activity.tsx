@@ -2,10 +2,9 @@ import styles from "./Activity.module.css";
 import { useContentContext } from "../../context/ContentContext";
 import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Header from "../../components/Layout/Header/Header";
-import BlurEffect from "../../components/BlurEffect/BlurEffect";
-import PageLayout from "../../components/Layout/PageLayout/PageLayout";
+import { IoShareSocial } from "react-icons/io5";
 
 function Activity() {
     const { data, clearPath } = useContentContext();
@@ -31,7 +30,17 @@ function Activity() {
                     <ActivityOutput key={i} index={i} movementPath={path} />
                 ) : null;
             })}
+
+            {/* <div className={styles.btn_div}>
+                <div className={styles.shareBtn}>
+                    <label>הזמינו חברים</label>
+                    <IoShareSocial></IoShareSocial>
+                </div>
+            </div> */}
+
         </div>
+
+
     );
 }
 
