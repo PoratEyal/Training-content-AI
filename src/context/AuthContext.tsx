@@ -43,6 +43,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }, []);
 
     const initializeUser = async (user) => {
+        console.log("initializeUser user", user)
         try {
             if (user && !currentUser) {
                 let resultUser;

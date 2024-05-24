@@ -7,7 +7,7 @@ import { useErrorContext } from "../../context/ErrorContext";
 import { fetchGetActivity } from "../../utils/fetch";
 import MainBtn from "../../components/MainBtn/MainBtn";
 import { useAuthContext } from "../../context/AuthContext";
-import Loading from "../../components/Loading/Loading";
+import Loading from "../../components/Loading/LoadingActivity/LoadingActivity";
 import { fetchUpdateUser } from "../../utils/fetch";
 import { VscLoading } from "react-icons/vsc";
 import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";

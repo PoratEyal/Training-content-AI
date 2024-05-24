@@ -21,7 +21,6 @@
     direction: rtl;
     background-color: var(--select-color);
     color: #646464;
-
     -moz-appearance:none; /* Firefox */
     -webkit-appearance:none; /* Safari and Chrome */
     appearance:none;
@@ -44,6 +43,7 @@
 
 @media (min-width: 550px) {
     .input_div select{
-        min-width: 300px;
+        min-width: 20vw;
+        max-width: 340px;
     }
 }

@@ -5,7 +5,7 @@
     align-items: center;
     gap: 10vh;
     height: fit-content;
-    margin-top: 25vh;
+    margin-top: 20vh;
     font-family: 'Fredoka', sans-serif;
 }
 
@@ -43,7 +43,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 80px;
 }
 
 .home_login_btn{
@@ -53,10 +53,9 @@
     background-color: rgba(255, 255, 255, 0);
     font-size: 15px;
     font-weight: 550;
-    border-bottom: 1px solid var(--text-color);
     color: var(--text-color);
     cursor: pointer;
-    font-weight: 400;
+    font-weight: 550;
     padding: 1px;
 }
 

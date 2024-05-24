@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import Footer from "../../components/Layout/Footer/Footer";
 import useSignIn from "../../hooks/useSignIn";
-import { BIG_LOGO_IMG, HAND_ICON_IMG } from "../../models/constants/img";
-import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 
 function Home() {
     const { isLoggedIn, loading, reachUnRegisterLimit } = useAuthContext();
@@ -43,17 +41,17 @@ function Home() {
 
             <section className={styles.button_section}>
                 <MainBtn
-                    isDisabled={false}
-                    func={handleStart}
+                    isDisabled={signInDisabled}
+                    func={btnFunc}
                     height={42}
-                    text={"מתחילים"}
+                    text={signInBtnText}
                 ></MainBtn>
 
-                {/* {!isLoggedIn && !loading && !reachUnRegisterLimit() ? (
+                {!isLoggedIn && !loading && !reachUnRegisterLimit() ? (
                     <button onClick={handleStart} className={styles.home_login_btn}>
                         התחלה ללא חשבון
                     </button>
-                ) : null} */}
+                ) : null}
             </section>
             <Footer />
         </section>
