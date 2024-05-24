@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./Path.module.css";
 import { FaWandMagicSparkles } from "react-icons/fa6";
-import { VscLoading } from "react-icons/vsc";
 import SelectDetails from "../SelectDetails/SelectDetails";
 import { ActivityTimeOptions } from "../../models/resources/select";
 import { MovementPath } from "../../models/types/movement";
 import Hint from "../Hint/Hint";
+import SmallLoading from "../Loading/SmallLoading/SmallLoading";
 
 type PathProps = {
     index: number;
@@ -90,16 +90,15 @@ function Path({ index, path, setPath }: PathProps) {
                             onChange={handleInputChange}
                             placeholder="נושא הפעילות"
                         />
-                        {magic &&
-                            magic.length !== 0 &&
-                            (loadingMagic ? (
-                                <VscLoading className={styles.loading_icon_magic} />
-                            ) : (
-                                <FaWandMagicSparkles
-                                    onClick={() => generateSubject()}
-                                    className={styles.magic_icon}
-                                />
-                            ))}
+                        <span className={styles.magic_icon}>
+                            {magic &&
+                                magic.length !== 0 &&
+                                (loadingMagic ? (
+                                    <SmallLoading />
+                                ) : (
+                                    <FaWandMagicSparkles onClick={() => generateSubject()} />
+                                ))}
+                        </span>
                     </div>
 
                     <SelectDetails

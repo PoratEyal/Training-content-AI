@@ -10,7 +10,8 @@ function Home() {
     const { isLoggedIn, loading, reachUnRegisterLimit } = useAuthContext();
     const navigate = useNavigate();
     const handleStart = () => navigate("/details");
-    const { signInBtnText, signInDisabled, signInWithGoogle } = useSignIn(
+
+    const { signInBtnText, signInDisabled, btnLoading, signInWithGoogle } = useSignIn(
         handleStart,
         "התחברות...",
         "מתחילים",
@@ -41,6 +42,7 @@ function Home() {
 
             <section className={styles.button_section}>
                 <MainBtn
+                    isLoading={btnLoading}
                     isDisabled={signInDisabled}
                     func={btnFunc}
                     height={42}
