@@ -2,12 +2,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
-    width: 100vw;
-}
-
-.container article{
-    padding: 0 25px;
 }
 
 @media (min-width: 550px) {
