@@ -6,6 +6,8 @@
     --secondary-color: #FFD324;
     --text-color: #333335;
     --select-color: #fcfaf5;
+
+    --secondary-color-disable: #ffd32467;
 }
 
 body {
