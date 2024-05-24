@@ -1,6 +1,6 @@
-import styles from './Loading.module.css';
+import styles from './LoadingActivity.module.css';
 
-function Loading() {
+function LoadingActivity() {
     return (
         <div className={styles.spinnerContainer}>
             <div className={styles.spinner}></div>
@@ -27,4 +27,4 @@ function Loading() {
     )
 }
 
-export default Loading;
+export default LoadingActivity;
