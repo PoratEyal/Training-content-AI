@@ -173,9 +173,9 @@
     width: 146px;
     height: 146px;
     display: grid;
-    border: 4px solid rgba(0, 0, 0, 0);
+    border: 4px solid rgba(0, 0, 0, 0.979);
     border-radius: 50%;
-    border-right-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0.928);
     animation: tri-spinner 1s infinite linear;
   }
   .loader {

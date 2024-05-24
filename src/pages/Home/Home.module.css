@@ -5,7 +5,7 @@
     align-items: center;
     gap: 10vh;
     height: fit-content;
-    margin-top: 25vh;
+    margin-top: 20vh;
     font-family: 'Fredoka', sans-serif;
 }
 
@@ -43,7 +43,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 80px;
 }
 
 .home_login_btn{
