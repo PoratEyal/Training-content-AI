@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import Footer from "../../components/Layout/Footer/Footer";
 import useSignIn from "../../hooks/useSignIn";
-import { BIG_LOGO_IMG, HAND_ICON_IMG } from "../../models/constants/img";
-import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 
 function Home() {
     const { isLoggedIn, loading, reachUnRegisterLimit } = useAuthContext();

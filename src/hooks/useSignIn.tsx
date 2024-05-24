@@ -29,6 +29,9 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
 
     useEffect(() => {
         //TODO: need to add data?
+        console.log("loading", loading)
+        console.log("isLoggedIn", isLoggedIn)
+        console.log("currentUser", currentUser)
         if (!loading && isLoggedIn && currentUser) handleStart();
         setSignInBtnText(loading ? loadingText : isLoggedIn ? loggedInText : notLoggedInText);
         setSignInDisabled(loading ? true : false);
@@ -38,6 +41,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
         const handleRedirectResult = async () => {
             try {
                 const userResult = await getRedirectResult(auth);
+                console.log("1", userResult?.user)
                 userResult && (await ifNewUserLoggedIn(userResult.user));
             } catch (error) {
                 handleErrors(error);
@@ -72,6 +76,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const ifNewUserLoggedIn = async (user) => {
         const rawUser = initRawUser(user);
         const response = await fetchCreateNewUser({ rawUser });
+        console.log("setUser", response.user)
         setUser(response.user);
         // handleStart();
     };
