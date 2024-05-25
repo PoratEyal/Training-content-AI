@@ -3,13 +3,11 @@ import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
-//project-193920685822
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
     apiKey: "AIzaSyBBsnHK7C2C5wKNoh_U96mK-HHqdLZ-8Bw",
-    authDomain: process.env.REACT_APP_AUTH_DOMAIN || "activitywiz.com",
+    authDomain: process.env.NODE_ENV === "development" ? "activity-wizard.firebaseapp.com" : "activitywiz.com",
     projectId: "activity-wizard",
     storageBucket: "activity-wizard.appspot.com",
     messagingSenderId: "487708258594",
