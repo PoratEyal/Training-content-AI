@@ -30,10 +30,10 @@ function App() {
                                         element={
                                             <>
                                                 <Helmet>
-                                                    <title>בונה פעולות</title>
+                                                    <title>Activity Wiz</title>
                                                     <meta
                                                         name="description"
-                                                        content="צור פעולות מרתקות ומותאמות אישית, על ידי הזנת פרטים על הקבוצה שלך, באמצעות כלי בינה מלאכותית."
+                                                        content="צור פעילויות מרתקות ומותאמות אישית באמצעות כלי בינה מלאכותית."
                                                     />
                                                     <link rel="canonical" href="/" />
                                                 </Helmet>
@@ -49,7 +49,7 @@ function App() {
                                                     <title>בונה פעולות</title>
                                                     <meta
                                                         name="description"
-                                                        content="צור פעולות מרתקות ומותאמות אישית, על ידי הזנת פרטים על הפעילות שתרצה להעביר, באמצעות כלי בינה מלאכותית."
+                                                        content="צור פעילויות מרתקות ומותאמות אישית באמצעות כלי בינה מלאכותית."
                                                     />
                                                     <link rel="canonical" href="/details" />
                                                 </Helmet>

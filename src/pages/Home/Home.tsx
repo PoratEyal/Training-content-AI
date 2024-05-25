@@ -27,8 +27,11 @@ function Home() {
                 <img
                     className={styles.logo}
                     alt="Advancing to activity with AI"
-                    src={"bigLogo.svg"}
-                ></img>
+                    src={"optimizedBigLogo.svg"}
+                    width="200"
+                    height="200"
+                    style={{ maxWidth: '100%', height: 'auto' }}
+                />
 
                 <label className={styles.home_lable}>
                     <label>יצירת פעילויות: מותאם, פשוט ומהיר</label>
