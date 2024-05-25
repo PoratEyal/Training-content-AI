@@ -24,10 +24,10 @@ function Home() {
         <section className={styles.container}>
             {/* <Logo /> */}
             <div className={styles.logo_text_div}>
+
                 <img
-                    className={styles.logo}
-                    alt="Advancing to activity with AI"
-                    src={"bigLogo.svg"}
+                    alt="home page logo - מתקדמים לפעילות ב - AI"
+                    src={"homePageLogo.svg"}
                 ></img>
 
                 <label className={styles.home_lable}>
