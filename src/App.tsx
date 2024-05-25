@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { ContentProvider } from "./context/ContentContext";
 import Details from "./pages/Details/Details";
@@ -16,6 +16,10 @@ import "./App.css";
 import Maintenance from "./pages/Maintenance/Maintenance";
 
 function App() {
+    useEffect(() => {
+        window.location.href = "https://activitywiz.com/";
+    }, []);
+
     return (
         <HelmetProvider>
             <ErrorContextProvider>
@@ -30,10 +34,11 @@ function App() {
                                         element={
                                             <>
                                                 <Helmet>
-                                                    <title>בונה פעולות</title>
+                                                    <title>Activity Wiz - פעילויות</title>
                                                     <meta
                                                         name="description"
-                                                        content="צור פעולות מרתקות ומותאמות אישית, על ידי הזנת פרטים על הקבוצה שלך, באמצעות כלי בינה מלאכותית."
+                                                        content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
+                                                        מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
                                                     />
                                                     <link rel="canonical" href="/" />
                                                 </Helmet>
@@ -49,7 +54,8 @@ function App() {
                                                     <title>בונה פעולות</title>
                                                     <meta
                                                         name="description"
-                                                        content="צור פעולות מרתקות ומותאמות אישית, על ידי הזנת פרטים על הפעילות שתרצה להעביר, באמצעות כלי בינה מלאכותית."
+                                                        content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
+                                                        מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
                                                     />
                                                     <link rel="canonical" href="/details" />
                                                 </Helmet>
@@ -65,7 +71,8 @@ function App() {
                                                     <title>בונה פעולות</title>
                                                     <meta
                                                         name="description"
-                                                        content="צור פעולות מרתקות ומותאמות אישית, על ידי הזנת פרטים על הפעילות שתרצה להעביר, באמצעות כלי בינה מלאכותית."
+                                                        content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
+                                                        מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
                                                     />
                                                     <link rel="canonical" href="/choosePath" />
                                                 </Helmet>
@@ -81,7 +88,8 @@ function App() {
                                                     <title>בונה פעולות</title>
                                                     <meta
                                                         name="description"
-                                                        content="צור פעולות מרתקות ומותאמות אישית, תוך דקות ספורות, באמצעות כלי בינה מלאכותית. חסוך זמן, התמקד ביצירתיות, והענק לחניכים חוויה חינוכית."
+                                                        content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
+                                                        מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
                                                     />
                                                     <link rel="canonical" href="/activity" />
                                                 </Helmet>
@@ -98,7 +106,8 @@ function App() {
                                                 <title>בונה פעולות</title>
                                                 <meta
                                                     name="description"
-                                                    content="עיין במדיניוית הפרטיות של האפליקציה בונה פעולות. האפליקציה נמצאת כרגע בשלב בטא/התנסות ולכן ייתכנו בעיות ותקלות."
+                                                    content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
+                                                    מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
                                                 />
                                                 <link rel="canonical" href="/privacyPolicy" />
                                             </Helmet>
