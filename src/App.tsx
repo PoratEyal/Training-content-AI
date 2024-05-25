@@ -47,7 +47,7 @@ function App() {
                                         element={
                                             <>
                                                 <Helmet>
-                                                    <title>בונה פעולות</title>
+                                                    <title>Activity Wiz - פעילויות</title>
                                                     <meta
                                                         name="description"
                                                         content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
@@ -64,7 +64,7 @@ function App() {
                                         element={
                                             <>
                                                 <Helmet>
-                                                    <title>בונה פעולות</title>
+                                                    <title>Activity Wiz - פעילויות</title>
                                                     <meta
                                                         name="description"
                                                         content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
@@ -81,7 +81,7 @@ function App() {
                                         element={
                                             <>
                                                 <Helmet>
-                                                    <title>בונה פעולות</title>
+                                                    <title>Activity Wiz - פעילויות</title>
                                                     <meta
                                                         name="description"
                                                         content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
@@ -99,7 +99,7 @@ function App() {
                                     element={
                                         <>
                                             <Helmet>
-                                                <title>בונה פעולות</title>
+                                                <title>Activity Wiz - פעילויות</title>
                                                 <meta
                                                     name="description"
                                                     content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
