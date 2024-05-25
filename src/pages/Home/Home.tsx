@@ -23,39 +23,6 @@ function Home() {
 
     return (
         <section className={styles.container}>
-            {/* <Logo /> */}
-            <div className={styles.logo_text_div}>
-                <img
-                    className={styles.logo}
-                    alt="Advancing to activity with AI"
-                    src={"bigLogo.svg"}
-                ></img>
-
-                <label className={styles.home_lable}>
-                    <label>יצירת פעילויות: מותאם, פשוט ומהיר</label>
-                    <img
-                        className={styles.hand_icon}
-                        alt="I-L-Y Emoji hand"
-                        src={"hand_icon.svg"}
-                    ></img>
-                </label>
-            </div>
-
-            <section className={styles.button_section}>
-                <MainBtn
-                    isDisabled={false}
-                    func={handleStart}
-                    height={42}
-                    text={"מתחילים"}
-                ></MainBtn>
-
-                {/* {!isLoggedIn && !loading && !reachUnRegisterLimit() ? (
-                    <button onClick={handleStart} className={styles.home_login_btn}>
-                        התחלה ללא חשבון
-                    </button>
-                ) : null} */}
-            </section>
-            <Footer />
         </section>
     );
 }
