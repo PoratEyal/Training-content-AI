@@ -16,6 +16,7 @@
 
 .main_btn_disabled {
     background-color: var(--secondary-color-disable);
+    border-radius: 100px;
 }
 
 .btn,
@@ -29,7 +30,8 @@
 }
 
 .btn_loading {
-    width: 150px;
+    padding: 5px;
+    width: fit-content;
 }
 
 .btn {
