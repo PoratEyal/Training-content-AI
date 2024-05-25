@@ -43,7 +43,7 @@
 
 @media (min-width: 550px) {
     .input_div select{
-        min-width: 20vw;
-        max-width: 340px;
+        min-width: 20px;
+        max-width: 300px;
     }
 }
