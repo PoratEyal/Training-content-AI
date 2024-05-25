@@ -24,14 +24,11 @@ function Home() {
         <section className={styles.container}>
             {/* <Logo /> */}
             <div className={styles.logo_text_div}>
+
                 <img
-                    className={styles.logo}
-                    alt="Advancing to activity with AI"
-                    src={"optimizedBigLogo.svg"}
-                    width="200"
-                    height="200"
-                    style={{ maxWidth: '100%', height: 'auto' }}
-                />
+                    alt="home page logo - מתקדמים לפעילות ב - AI"
+                    src={"homePageLogo.svg"}
+                ></img>
 
                 <label className={styles.home_lable}>
                     <label>יצירת פעילויות: מותאם, פשוט ומהיר</label>
