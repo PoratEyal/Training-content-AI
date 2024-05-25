@@ -2,7 +2,15 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    font-family: 'Fredoka', sans-serif;
+    width: 100%;
 }
+
+
+
+
 
 .btn_div{
     margin-top: -20px;
@@ -38,10 +46,6 @@
         width: 400px;
     }
 
-    .container article{
-        padding: 0 25px 25px 25px;
-    }
-
     .container::-webkit-scrollbar-track {
         border-radius: 20px;
         background-color: transparent;
@@ -55,11 +59,6 @@
     /* Set the scrollbar width */
     .container::-webkit-scrollbar {
         width: 0px;
-    }
-
-    .activity_div {
-        padding: 30px;
-        padding-top: 0px;
     }
 
     body {

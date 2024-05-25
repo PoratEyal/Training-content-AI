@@ -22,7 +22,7 @@ function Activity() {
     };
 
     return (
-        <div className={styles.container}>
+        <section className={styles.container}>
             <Header goBack={goBack} isFade />
 
             {data?.movement?.path.map((path, i) => {
@@ -38,7 +38,7 @@ function Activity() {
                 </div>
             </div> */}
 
-        </div>
+        </section>
 
 
     );
