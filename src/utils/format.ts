@@ -6,7 +6,7 @@ export const formatWhatsUp = (text: string) => {
 };
 
 export const formatInviteFriend = () => {
-    return "קבלו איזה אתר מטורף, מצאתי אתר שבונה פעולות בעזרת בינה מלאכותית";
+    return "קבלו איזה אתר מטורף, אתר שבונה פעולות בעזרת בינה מלאכותית";
 };
 
 export const formatCopy = (text: string) => {
