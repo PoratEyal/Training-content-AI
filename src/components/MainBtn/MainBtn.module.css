@@ -25,23 +25,16 @@
     align-items: center;
     gap: 8px;
     direction: rtl;
-    border-radius: 50%;
 }
 
 .btn_loading {
-    width: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
     direction: rtl;
-    border-radius: 50%;
-    width: 42px;
-}
-
-.btn_loading {
-    padding: 5px;
-    width: fit-content;
+    border-radius: 900px;
+    width: 31px;
 }
 
 .btn {

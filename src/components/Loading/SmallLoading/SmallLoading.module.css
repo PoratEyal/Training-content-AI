@@ -2,7 +2,7 @@
     position: relative;
     color: var(--primary-color);
     animation: spin 1.5s infinite linear;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 @keyframes spin {
