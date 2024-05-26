@@ -7,12 +7,20 @@
     --text-color: #333335;
     --select-color: #fcfaf5;
 
+    --select-border-color: #646464;
+    --desktop-background-color: #ffe1a0;
     --secondary-color-disable: #ffd32467;
+    --email-color: #4088a7;
+
+    --font-family: 'Fredoka', sans-serif;
+
+    --like-color: #008000;
+    --dislike-color: #e40505;
 }
 
 body {
     margin: 0 !important;
-    font-family: 'Fredoka', sans-serif;
+    font-family: var(--font-family);
     display: flex;
     flex-direction: column;
     justify-content: center;

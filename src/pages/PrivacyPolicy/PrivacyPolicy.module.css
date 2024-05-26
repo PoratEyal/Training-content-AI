@@ -31,7 +31,7 @@
 
 .email a {
     margin-right: 4px;
-    color: #4088a7;
+    color: var(--email-color);
 }
 
 .back_icon {
@@ -58,6 +58,6 @@
     }
 
     body {
-        background-color: #ffe1a0 !important;
+        background-color: var(--desktop-background-color) !important;
     }
 }

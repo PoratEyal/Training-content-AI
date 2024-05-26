@@ -1,5 +1,5 @@
 .nav_container {
-    background-color: white;
+    background-color: var(--select-color);
     border: none;
     border-radius: 7px;
     position: absolute;
@@ -17,7 +17,7 @@
     top: 0px;
     width: 0;
     height: 0;
-    border-left: 10px solid white;
+    border-left: 10px solid var(--select-color);
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
     rotate: 270deg;
