@@ -3,36 +3,38 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: fit-content;
+    height: 100vh;
     font-family: 'Fredoka', sans-serif;
+    width: 100%;
+    background-color: var(--primary-color);
+    overflow: hidden;
+}
+
+.h2{
+    color: var(--background-color);
+    font-size: 27px;
+    font-weight: bold;
+    margin-top: -10px;
+}
+
+.activity_data_container{
+    background-color: var(--background-color);
+    border-top-left-radius: 37px;
+    border-top-right-radius: 37px;
+    overflow: hidden;
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
 
-
-
-
-
-.btn_div{
-    margin-top: -20px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
+.activity_data{
+    flex-grow: 1;
+    overflow: auto;
+    margin-top: 30px;
 }
-.shareBtn{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 7px;
-    border: none;
-    padding: 12px;
-    padding-left: 18px;
-    padding-right: 18px;
-    color: var(--text-color);
-    width: fit-content;
-    border-radius: 25px;
-    font-weight: 500;
-}
+
 
 @media (min-width: 550px) {
     .container {
