@@ -2,11 +2,13 @@ import React, { useRef } from "react";
 import styles from "./Dropdown.module.css";
 import { DropdownOption } from "../../../models/types/common";
 import { MdLogout } from "react-icons/md";
-// import { FaUser } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../../context/AuthContext";
 import { useContentContext } from "../../../context/ContentContext";
 import useClickOutside from "../../../hooks/useClickOutside";
+import { IoMdShare } from "react-icons/io";
+import { IoMailOpen } from "react-icons/io5";
+import policy from "../../../models/resources/policy.json";
 
 type DropdownProps = {
     handleClose: () => void;
@@ -21,7 +23,22 @@ function Dropdown({ handleClose }: DropdownProps) {
 
 
     const options: DropdownOption[] = [
-        // { title: "הפרופיל שלי", path: "/profile", Icon: <FaUser /> },
+        { 
+            title: "הזמינו חברים",
+            path: "",
+            func: async () => {
+                await inviteFriend();
+                clearAll();
+            },
+            Icon: <IoMdShare /> },
+        { 
+            title: "צרו קשר",
+            path: "",
+            func: async () => {
+                await contactUs();
+                clearAll();
+            },
+            Icon: <IoMailOpen /> },
         {
             title: "התנתקות",
             path: "/",
@@ -33,6 +50,16 @@ function Dropdown({ handleClose }: DropdownProps) {
         },
     ];
 
+    const contactUs = async () => {
+        const emailLink = document.createElement('a');
+        emailLink.href = `mailto:${policy.p9.email}`;
+        emailLink.click();
+    }
+
+    const inviteFriend = async () => {
+        console.log("inviteFriend");
+    }
+
     const handleClick = async (option: DropdownOption) => {
         const { path, func } = option;
         func && await func();
@@ -42,7 +69,7 @@ function Dropdown({ handleClose }: DropdownProps) {
 
     const OptionBtn = (option: DropdownOption) => (
         <li className={styles.navbar_option}>
-            <span onClick={() => handleClick(option)}>{option.title}</span>
+            <span className={styles.text_and_icon} onClick={() => handleClick(option)}>{option.title}{option.Icon}</span>
         </li>
     );
 
