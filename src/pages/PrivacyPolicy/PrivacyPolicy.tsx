@@ -2,15 +2,12 @@ import styles from "./PrivacyPolicy.module.css";
 import { useNavigate } from "react-router-dom";
 import policy from "../../models/resources/policy.json";
 import { IoArrowForward } from "react-icons/io5";
-import BlurEffect from "../../components/BlurEffect/BlurEffect";
-import Header from "../../components/Layout/Header/Header";
-import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 
 function PrivacyPolicy() {
     const navigate = useNavigate();
 
     const goBack = () => {
-        navigate("/");
+        navigate(-1);
     };
 
     return (
