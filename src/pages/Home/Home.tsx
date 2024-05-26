@@ -3,13 +3,14 @@ import MainBtn from "../../components/MainBtn/MainBtn";
 import styles from "./Home.module.css";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
-import Footer from "../../components/Layout/Footer/Footer";
+import route from "../../router/route.json";
 import useSignIn from "../../hooks/useSignIn";
+import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 
 function Home() {
     const { isLoggedIn, loading, reachUnRegisterLimit } = useAuthContext();
     const navigate = useNavigate();
-    const handleStart = () => navigate("/details");
+    const handleStart = () => navigate(route.details);
 
     const { signInBtnText, signInDisabled, btnLoading, signInWithGoogle } = useSignIn(
         handleStart,
@@ -21,7 +22,7 @@ function Home() {
     const btnFunc = isLoggedIn ? () => handleStart() : () => signInWithGoogle();
 
     return (
-        <section className={styles.container}>
+        <PageLayout path={route.home} hasFooter>
             {/* <Logo /> */}
             <div className={styles.logo_text_div}>
 
@@ -55,8 +56,7 @@ function Home() {
                     </button>
                 ) : null}
             </section>
-            <Footer />
-        </section>
+        </PageLayout>
     );
 }
 

@@ -10,14 +10,14 @@ type PopupProps = {
 function Popup({ hasCloseBtn = false, children, closeFunc = () => {} }: PopupProps) {
     return (
         <section className={styles.background}>
-            <article className={styles.container_popup}>
+            <section className={styles.container_popup}>
                 {hasCloseBtn ? (
                     <button onClick={closeFunc} className={styles.close_btn}>
                         X
                     </button>
                 ) : null}
                 {children}
-            </article>
+            </section>
         </section>
     );
 }

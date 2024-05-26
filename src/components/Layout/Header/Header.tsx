@@ -5,13 +5,13 @@ import styles from "./Header.module.css";
 
 type HeaderProps = {
     goBack?: () => void;
-    isFade?: boolean;
+    isBlur?: boolean;
 };
 
-function Header({ goBack, isFade = false }: HeaderProps) {
+function Header({ goBack, isBlur = false }: HeaderProps) {
     const { isLoggedIn, loading, currentUser } = useAuthContext();
-    const style = isFade ? styles.header_fade : styles.header;
-    const styleIcon = isFade ? styles.back_icon_fade : styles.back_icon;
+    const style = isBlur ? styles.header_fade : styles.header;
+    const styleIcon = isBlur ? styles.back_icon_fade : styles.back_icon;
 
     return (
         <section className={style}>

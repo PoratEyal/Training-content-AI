@@ -1,23 +1,19 @@
 import { motion } from "framer-motion";
-import styles from "./BlurEffect.module.css";
+import styles from "./FadeEffect.module.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
 
-type BlurEffectProps = {
-    hasBlur?: boolean;
-    height?: string | undefined;
-    maxHeight?: string | undefined;
+type FadeEffectProps = {
+    hasFade?: boolean;
     hasText?: boolean;
     children: React.ReactNode;
 };
 
-function BlurEffect({
-    hasBlur = true,
-    height,
-    maxHeight,
+function FadeEffect({
+    hasFade = true,
     hasText = false,
     children,
-}: BlurEffectProps) {
+}: FadeEffectProps) {
     const [reachBottom, setReachBottom] = useState(false);
 
     const handleScroll = (e) => {
@@ -29,29 +25,12 @@ function BlurEffect({
         } else if (reachBottom) setReachBottom(false);
     };
 
-    if (!hasBlur) {
-        return (
-            <section
-                style={{
-                    height: height ? height : "100vh",
-                    maxHeight: maxHeight ? maxHeight : "none",
-                }}
-                className={styles.section_contianer}
-            >
-                {children}
-            </section>
-        );
+    if (!hasFade) {
+        return <section className={styles.section_contianer}>{children}</section>;
     }
 
     return (
-        <section
-            className={styles.section_contianer}
-            style={{
-                height: height ? height : "100vh",
-                maxHeight: maxHeight ? maxHeight : "none",
-            }}
-            onScroll={handleScroll}
-        >
+        <section className={styles.section_contianer} onScroll={handleScroll}>
             {children}
             <motion.div
                 className={styles.blur_effect}
@@ -71,4 +50,4 @@ function BlurEffect({
     );
 }
 
-export default BlurEffect;
+export default FadeEffect;

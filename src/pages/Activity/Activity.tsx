@@ -3,8 +3,8 @@ import { useContentContext } from "../../context/ContentContext";
 import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import Header from "../../components/Layout/Header/Header";
-import { IoShareSocial } from "react-icons/io5";
+import route from "../../router/route.json";
+import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 
 function Activity() {
     const { data, clearPath } = useContentContext();
@@ -18,22 +18,17 @@ function Activity() {
 
     const goBack = () => {
         clearPath();
-        navigate("/choosePath");
+        navigate(route.choosePath);
     };
 
     return (
-        <section className={styles.container}>
-            <Header goBack={goBack} isFade />
-
+        <PageLayout path={route.activity} hasFade hasHeader={{ goBack, isBlur: true }}>
             {data?.movement?.path.map((path, i) => {
                 return path.activity ? (
                     <ActivityOutput key={i} index={i} movementPath={path} />
                 ) : null;
             })}
-
-        </section>
-
-
+        </PageLayout>
     );
 }
 

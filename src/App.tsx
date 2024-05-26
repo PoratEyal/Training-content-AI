@@ -5,13 +5,14 @@ import Details from "./pages/Details/Details";
 import ChoosePath from "./pages/ChoosePath/ChoosePath";
 import Activity from "./pages/Activity/Activity";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
-import PrivateRoutes from "./components/PrivateRoutes";
+import PrivateRoutes from "./router/PrivateRoutes";
 import { ErrorContextProvider } from "./context/ErrorContext";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import { HelmetProvider } from "react-helmet-async";
 import { ReactNotifications } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { AuthProvider } from "./context/AuthContext";
 import Home from "./pages/Home/Home";
+import route from "./router/route.json";
 import "./App.css";
 import Maintenance from "./pages/Maintenance/Maintenance";
 
@@ -25,93 +26,13 @@ function App() {
                         <Router>
                             <Routes>
                                 <Route element={<PrivateRoutes />}>
-                                    <Route
-                                        path="/"
-                                        element={
-                                            <>
-                                                <Helmet>
-                                                    <title>Activity Wiz - פעילויות</title>
-                                                    <meta
-                                                        name="description"
-                                                        content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
-                                                        מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
-                                                    />
-                                                    <link rel="canonical" href="/" />
-                                                </Helmet>
-                                                <Home />
-                                            </>
-                                        }
-                                    />
-                                    <Route
-                                        path="/details"
-                                        element={
-                                            <>
-                                                <Helmet>
-                                                    <title>Activity Wiz - פעילויות</title>
-                                                    <meta
-                                                        name="description"
-                                                        content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
-                                                        מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
-                                                    />
-                                                    <link rel="canonical" href="/details" />
-                                                </Helmet>
-                                                <Details />
-                                            </>
-                                        }
-                                    />
-                                    <Route
-                                        path="/choosePath"
-                                        element={
-                                            <>
-                                                <Helmet>
-                                                    <title>Activity Wiz - פעילויות</title>
-                                                    <meta
-                                                        name="description"
-                                                        content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
-                                                        מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
-                                                    />
-                                                    <link rel="canonical" href="/choosePath" />
-                                                </Helmet>
-                                                <ChoosePath />
-                                            </>
-                                        }
-                                    />
-                                    <Route
-                                        path="/activity"
-                                        element={
-                                            <>
-                                                <Helmet>
-                                                    <title>Activity Wiz - פעילויות</title>
-                                                    <meta
-                                                        name="description"
-                                                        content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
-                                                        מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
-                                                    />
-                                                    <link rel="canonical" href="/activity" />
-                                                </Helmet>
-                                                <Activity />
-                                            </>
-                                        }
-                                    />
+                                    <Route path={route.home} element={<Home />} />
+                                    <Route path={route.details} element={<Details />} />
+                                    <Route path={route.choosePath} element={<ChoosePath />} />
+                                    <Route path={route.activity} element={<Activity />} />
                                 </Route>
-                                <Route
-                                    path="/privacyPolicy"
-                                    element={
-                                        <>
-                                            <Helmet>
-                                                <title>Activity Wiz - פעילויות</title>
-                                                <meta
-                                                    name="description"
-                                                    content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
-                                                    מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
-                                                />
-                                                <link rel="canonical" href="/privacyPolicy" />
-                                            </Helmet>
-                                            <PrivacyPolicy />
-                                        </>
-                                    }
-                                />
-                                <Route path={"*"} element={<Navigate replace to="/" />} />
+                                <Route path={route.privacyPolicy} element={<PrivacyPolicy />} />
+                                <Route path={route.all} element={<Navigate replace to={route.home} />} />
                             </Routes>
                         </Router>
                     </ContentProvider>
