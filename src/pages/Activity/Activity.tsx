@@ -31,13 +31,6 @@ function Activity() {
                 ) : null;
             })}
 
-            {/* <div className={styles.btn_div}>
-                <div className={styles.shareBtn}>
-                    <label>הזמינו חברים</label>
-                    <IoShareSocial></IoShareSocial>
-                </div>
-            </div> */}
-
         </section>
 
 
