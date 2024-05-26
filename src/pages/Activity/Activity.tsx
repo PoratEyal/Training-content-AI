@@ -23,11 +23,16 @@ function Activity() {
 
     return (
         <PageLayout path={route.activity} hasFade hasHeader={{ goBack, isBlur: true }}>
-            {data?.movement?.path.map((path, i) => {
-                return path.activity ? (
-                    <ActivityOutput key={i} index={i} movementPath={path} />
-                ) : null;
-            })}
+        <h2 className={styles.h2}>הפעילות שלכם מוכנה</h2>
+            <div className={styles.activity_data_container}>
+                <div className={styles.activity_data}>
+                    {data?.movement?.path.map((path, i) => {
+                        return path.activity ? (
+                            <ActivityOutput key={i} index={i} movementPath={path} />
+                        ) : null;
+                    })}
+                </div>
+            </div>
         </PageLayout>
     );
 }
