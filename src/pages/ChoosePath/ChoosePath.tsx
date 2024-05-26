@@ -11,8 +11,7 @@ import Loading from "../../components/Loading/LoadingActivity/LoadingActivity";
 import { fetchUpdateUser } from "../../utils/fetch";
 import { VscLoading } from "react-icons/vsc";
 import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";
-import Header from "../../components/Layout/Header/Header";
-import { PAGE3_EFFECT_IMG, PATH_IMG } from "../../models/constants/img";
+import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 
 function ChoosePath() {
@@ -81,7 +80,7 @@ function ChoosePath() {
             try {
                 setClicked(true);
                 await Promise.allSettled(promises);
-                navigate("/activity");
+                navigate(route.activity);
             } catch (error) {
                 setClicked(false);
             }
@@ -90,19 +89,16 @@ function ChoosePath() {
 
     const goBack = () => {
         clearPath();
-        navigate("/details");
+        navigate(route.details);
     };
 
     return (
-        <section className={styles.choose_path_container}>
-            <div>
-                <Header goBack={goBack} />
-                <div className={styles.h2_div}>
-                    <label>
-                        בחרו את<br></br> נושא הפעילות
-                    </label>
-                    <img alt="Sparks effect" src={"page3_effect.svg"}></img>
-                </div>
+        <PageLayout path={route.choosePath} hasGreenBackground hasHeader={{ goBack }}>
+            <div className={styles.choose_path_title}>
+                <label>
+                    בחרו את<br></br> נושא הפעילות
+                </label>
+                <img alt="Sparks effect" src={"page3_effect.svg"}></img>
             </div>
 
             <div className={styles.path_form_container}>
@@ -133,7 +129,7 @@ function ChoosePath() {
                 </div>
                 {clicked && <Loading></Loading>}
             </div>
-        </section>
+        </PageLayout>
     );
 }
 

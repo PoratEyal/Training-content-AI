@@ -24,10 +24,12 @@
 
 .activity_close{
     color: var(--text-color);
+    margin-bottom: 30px;
 }
 
 .activity_open{
-    color: var(--primary-color)
+    color: var(--primary-color);
+    margin-bottom: 0;
 }
 
 .toggel_arrow_animation {
