@@ -86,12 +86,12 @@
   
   .words {
     overflow: hidden;
-    font-family: 'Fredoka', sans-serif;
+    font-family: var(--font-family);
   }
   
   .word {
     text-align: center;
-    font-family: 'Fredoka', sans-serif;
+    font-family: var(--font-family);
     font-weight: 500;
     display: block;
     height: 100%;

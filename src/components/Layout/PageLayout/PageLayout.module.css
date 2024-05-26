@@ -10,7 +10,7 @@
     max-width: 100vw;
     overflow-y: scroll;
     box-sizing: border-box;
-    font-family: 'Fredoka', sans-serif;
+    font-family: var(--font-family);
 }
 
 @media (min-width: 550px) {

@@ -39,6 +39,6 @@
     }
 
     body {
-        background-color: #ffe1a0 !important;
+        background-color: var(--desktop-background-color) !important;
     }
 }

@@ -2,7 +2,7 @@
 .main_btn_disabled {
     border: none;
     border-radius: 19px;
-    font-family: 'Fredoka', sans-serif;
+    font-family: var(--font-family);
     font-size: 18px;
     font-weight: 550;
     cursor: pointer;
@@ -42,7 +42,7 @@
 }
 
 .btn label {
-    color: #333335;
+    color: var(--text-color);
     cursor: pointer;
     position: relative;
     top: -1px;
@@ -51,7 +51,7 @@
 .btn_icon {
     width: 20px;
     height: 20px;
-    background-color: #708254;
+    background-color: var(--primary-color);
     border: none;
     border-radius: 100px;
     display: flex;

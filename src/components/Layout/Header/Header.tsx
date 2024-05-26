@@ -1,5 +1,5 @@
 import { useAuthContext } from "../../../context/AuthContext";
-import Profile from "../../auth/Profile/Profile";
+import Profile from "../../Profile/Profile";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import styles from "./Header.module.css";
 
