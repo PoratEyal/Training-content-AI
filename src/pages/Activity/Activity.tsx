@@ -37,7 +37,6 @@ function Activity() {
                 </div>
             </div>
 
-
         </section>
 
 

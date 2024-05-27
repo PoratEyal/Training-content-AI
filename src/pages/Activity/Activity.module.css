@@ -7,7 +7,7 @@
     font-family: 'Fredoka', sans-serif;
     width: 100%;
     background-color: var(--primary-color);
-    overflow: hidden;
+    overflow: hidden !important;
 }
 
 .h2{
@@ -22,7 +22,7 @@
     background-color: var(--background-color);
     border-top-left-radius: 37px;
     border-top-right-radius: 37px;
-    overflow: hidden;
+    overflow: hidden !important;
     position: relative;
     flex-grow: 1;
     display: flex;
@@ -34,7 +34,7 @@
     flex-grow: 1;
     overflow: scroll;
     margin-top: 20px;
-}
+} 
 
 @media (min-width: 550px) {
     .container {
