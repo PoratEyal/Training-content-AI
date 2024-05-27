@@ -16,6 +16,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import Header from "../../components/Layout/Header/Header";
 import { H2_PAGE2_IMG, LAMP_IMG } from "../../models/constants/img";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
+import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 
 function Details() {
     const { data, updateDetails, clearAll } = useContentContext();
@@ -79,7 +80,7 @@ function Details() {
                 <div className={styles.selects_btn}>
                     {loading ? (
                         <div className={styles.loading_mock_selection_container}>
-                            <VscLoading className={styles.loading_icon_magic} />
+                            <SmallLoading/>
                         </div>
                     ) : (
                         <div className={styles.selection_container}>

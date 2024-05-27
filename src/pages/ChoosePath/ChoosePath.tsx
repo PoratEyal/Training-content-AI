@@ -14,6 +14,7 @@ import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";
 import Header from "../../components/Layout/Header/Header";
 import { PAGE3_EFFECT_IMG, PATH_IMG } from "../../models/constants/img";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
+import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 
 function ChoosePath() {
     const { handleError } = useErrorContext();
@@ -114,7 +115,9 @@ function ChoosePath() {
                     ></img>
 
                     {loading ? (
-                        <VscLoading className={styles.loading_icon_magic} />
+                        <div className={styles.loading_mock_selection_container}>
+                            <SmallLoading />
+                        </div>
                     ) : (
                         <div className={styles.path_div}>
                             {path?.map((p, i) => (
