@@ -74,6 +74,7 @@
     bottom: -25px;
     right: 5px;
     text-align: right;
+    margin-bottom: 10px;
 }
 
 @media (min-width: 550px) {
