@@ -32,10 +32,9 @@
 
 .activity_data{
     flex-grow: 1;
-    overflow: auto;
-    margin-top: 30px;
+    overflow: scroll;
+    margin-top: 20px;
 }
-
 
 @media (min-width: 550px) {
     .container {
