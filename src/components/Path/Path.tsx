@@ -46,7 +46,10 @@ function Path({ index, path, setPath }: PathProps) {
         });
     }, [show, subject, time]);
 
-    const toggleShow = () => setShow((prev) => !prev);
+    const toggleShow = () => {
+        setShow((prev) => !prev);
+        setHasAlert(false);
+    }
 
     const checkboxStyle = show ? styles.checkbox_active : styles.checkbox_inactive;
 
@@ -77,10 +80,9 @@ function Path({ index, path, setPath }: PathProps) {
                 </div>
             ) : null}
 
-            {hasAlert ? (
+            {show && hasAlert ? (
                 <div className={styles.input_alert}>
-                    שימו לב! מקור הפעילויות הינו מערכת בינה מלאכותית, יכול להיות וחיפושים מסויימים
-                    עדיין לא התעדכנו במערכת
+שימו לב! הנתונים מגיעים ממערכת בינה מלאכותית. יתכן שתוצאות חיפושים מסוימים לא עדכניים          
                 </div>
             ) : null}
         </div>

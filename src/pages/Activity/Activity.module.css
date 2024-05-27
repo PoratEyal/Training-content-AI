@@ -11,10 +11,11 @@
 }
 
 .h2{
-    color: var(--background-color);
+    color: var(--secondary-color);
+    color: #efd670;
     font-size: 27px;
     font-weight: bold;
-    margin-top: -10px;
+    margin-top: -15px;
 }
 
 .activity_data_container{
@@ -42,24 +43,23 @@
         overflow-x: hidden;
         overflow-y: auto;
         height: 630px;
-        background-color: #F5F5DC;
         border-radius: 30px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         width: 400px;
     }
 
-    .container::-webkit-scrollbar-track {
+    .activity_data::-webkit-scrollbar-track {
         border-radius: 20px;
         background-color: transparent;
     }
 
-    .container::-webkit-scrollbar-thumb {
+    .activity_data::-webkit-scrollbar-thumb {
         border-radius: 20px;
         background-color: #dfdfdf00;
     }
 
     /* Set the scrollbar width */
-    .container::-webkit-scrollbar {
+    .activity_data::-webkit-scrollbar {
         width: 0px;
     }
 

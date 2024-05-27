@@ -46,10 +46,6 @@
     color: var(--text-color);
 }
 
-.spacer {
-    margin-top: 20px;
-}
-
 
 @media (min-width: 550px) {
     .activity_output_container{
