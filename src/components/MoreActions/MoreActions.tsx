@@ -6,12 +6,12 @@ import { fetchGetActivity } from "../../utils/fetch";
 import { AiOutlineLoading } from "react-icons/ai";
 import LikeBtns from "../LikeBtns/LikeBtns";
 import ShareBtns from "../ShareBtns/ShareBtns";
-import { MovementPath } from "../../models/types/movement";
+// import { MovementPath } from "../../models/types/movement";
 import { useAuthContext } from "../../context/AuthContext";
 
 type MoreActionsProps = {
     index: number;
-    movementPath: MovementPath;
+    movementPath: any;
 };
 
 function MoreActions({ index, movementPath }: MoreActionsProps) {
@@ -35,8 +35,8 @@ function MoreActions({ index, movementPath }: MoreActionsProps) {
 
             fetchGetActivity(updateMovementPath, index, {
                 fetchFrom: ["AI"],
-                path: name,
-                subject,
+                parts: name,
+                mainSubject: subject,
                 time,
                 amount,
                 grade,

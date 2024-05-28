@@ -15,10 +15,22 @@ export type Activity = {
 };
 
 export type ActivityDetails = {
-    subject: string;
+    mainSubject: string;
     time: string;
+    parts: PartStructure[];
     amount: string;
     grade: string;
     gender: string;
     place: string;
+}
+
+export type ActivityStructure = {
+    mainSubject: string | undefined;
+    time: string | undefined;
+    parts: PartStructure[];
+};
+
+export type PartStructure = {
+    name: string;
+    subject: string;
 }

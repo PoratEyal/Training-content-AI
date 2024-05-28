@@ -22,19 +22,19 @@ export const initActivityFromDB = (id: string, data: DocumentData, userId: strin
 };
 
 export const initActivityFromAI = (text: string, data: GetActivityRequest, userId: string) => {
-    const { path, subject, time, amount, grade, gender, place } = data;
+    const { parts, mainSubject, time, amount, grade, gender, place } = data;
     return {
         id: "",
         updatedAt: getUpdateAt(),
         fetchCount: 0,
         likes: 0,
         activity: text,
-        path,
+        path: parts[0].name,
         grade,
         amount,
         place,
         gender,
-        subject,
+        subject: mainSubject,
         time,
         userId,
     } as Activity;

@@ -23,8 +23,8 @@ function ChoosePath() {
         useAuthContext();
 
     const { movement } = data || {};
-    const { path } = movement || {};
-    const [optionsPath, setOptionsPath] = useState(new Array(path?.length || 1).fill(undefined));
+    // const { path } = movement || {};
+    // const [optionsPath, setOptionsPath] = useState(new Array(path?.length || 1).fill(undefined));
 
     const [clicked, setClicked] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
@@ -52,33 +52,33 @@ function ChoosePath() {
         if (lockRef.current) updateUser();
     }, []);
 
-    useEffect(() => {
-        if (loading) setIsDisabled(true);
-        else setIsDisabled(optionsPath.every((option) => option === undefined));
-    }, [optionsPath, loading]);
+    // useEffect(() => {
+    //     if (loading) setIsDisabled(true);
+    //     else setIsDisabled(optionsPath.every((option) => option === undefined));
+    // }, [optionsPath, loading]);
 
     const submitHandler = async () => {
         updateUnRegisterLimit();
         if (!reachUnRegisterLimit()) {
             const promises = [];
             const { amount, grade, gender, place } = data;
-            for (const option of optionsPath) {
-                if (option !== undefined) {
-                    const { subject, time, name, index } = option;
-                    promises.push(
-                        fetchGetActivity(updateMovementPath, index, {
-                            fetchFrom: ["AI", "DB"],
-                            path: name,
-                            subject,
-                            time,
-                            amount,
-                            grade,
-                            gender,
-                            place,
-                        }).catch((error) => handleError(error)),
-                    );
-                }
-            }
+            // for (const option of optionsPath) {
+            //     if (option !== undefined) {
+            //         const { subject, time, name, index } = option;
+            //         promises.push(
+            //             fetchGetActivity(updateMovementPath, index, {
+            //                 fetchFrom: ["AI", "DB"],
+            //                 path: name,
+            //                 subject,
+            //                 time,
+            //                 amount,
+            //                 grade,
+            //                 gender,
+            //                 place,
+            //             }).catch((error) => handleError(error)),
+            //         );
+            //     }
+            // }
             try {
                 setClicked(true);
                 await Promise.allSettled(promises);
@@ -114,7 +114,7 @@ function ChoosePath() {
                         src={"path.svg"}
                     ></img>
 
-                    {loading ? (
+                    {/* {loading ? (
                         <div className={styles.loading_mock_selection_container}>
                             <SmallLoading />
                         </div>
@@ -124,7 +124,7 @@ function ChoosePath() {
                                 <Path key={i} index={i} path={p} setPath={setOptionsPath} />
                             ))}
                         </div>
-                    )}
+                    )} */}
                 </div>
                 <div className={styles.btn_div}>
                     <MainBtn

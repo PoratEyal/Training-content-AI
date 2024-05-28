@@ -22,3 +22,15 @@ export type ActivityFunc = (
     gender: string,
     place: string,
 ) => Promise<any>;
+
+
+export type ActivityStructure = {
+    mainSubject: string | undefined;
+    time: string | undefined;
+    parts: PartStructure[];
+};
+
+export type PartStructure = {
+    name: string;
+    subject: string;
+}

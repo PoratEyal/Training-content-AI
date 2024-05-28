@@ -12,3 +12,18 @@ for later
 עוד כותרות לג׳יסון משחקים
 לעשות lazy loading
 לעשות אנימציות
+
+
+                    subject input
+                    time select
+
+                    + path (from the movement obj)
+                        - more details
+                        - time select
+
+
+                    one activity
+                    woth:
+                    gouls 
+                    body
+                    sammary

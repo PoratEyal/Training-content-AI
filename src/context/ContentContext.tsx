@@ -54,30 +54,30 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
     };
 
     const clearPath = () => {
-        if (data?.movement?.path.length === 0) return;
-        setData((prevData) => {
-            const updatedPath = prevData.movement.path.map((pathItem) => ({
-                ...pathItem,
-                activity: undefined,
-            }));
-            const updatedData: DataType = {
-                ...prevData,
-                movement: {
-                    ...prevData.movement,
-                    path: updatedPath,
-                },
-            };
-            Session.set("data", updatedData);
-            return updatedData;
-        });
+        // if (data?.movement?.path.length === 0) return;
+        // setData((prevData) => {
+        //     const updatedPath = prevData.movement.path.map((pathItem) => ({
+        //         ...pathItem,
+        //         activity: undefined,
+        //     }));
+        //     const updatedData: DataType = {
+        //         ...prevData,
+        //         movement: {
+        //             ...prevData.movement,
+        //             path: updatedPath,
+        //         },
+        //     };
+        //     Session.set("data", updatedData);
+        //     return updatedData;
+        // });
     };
 
     const updateMovementPath = (index: number, activity: Activity) => {
-        setData((prevData) => {
-            prevData.movement.path[index].activity = activity;
-            Session.set("data", { ...prevData });
-            return { ...prevData };
-        });
+        // setData((prevData) => {
+        //     prevData.movement.path[index].activity = activity;
+        //     Session.set("data", { ...prevData });
+        //     return { ...prevData };
+        // });
     };
 
     return (
