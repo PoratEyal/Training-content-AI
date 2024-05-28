@@ -1,7 +1,7 @@
 import styles from "./ActivityOutput.module.css";
 import ReactMarkdown from "react-markdown";
 import MoreActions from "../MoreActions/MoreActions";
-import { MovementPath } from "../../models/types/movement";
+// import { MovementPath } from "../../models/types/movement";
 import { IoIosArrowDown } from "react-icons/io";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -9,7 +9,7 @@ import "./Markdown.css";
 
 type ActivityOutputProps = {
     index: number;
-    movementPath: MovementPath;
+    movementPath: any;
     defualtOpen?: boolean;
 };
 

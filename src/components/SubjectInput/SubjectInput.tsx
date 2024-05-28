@@ -5,13 +5,14 @@ import { FaWandMagicSparkles } from "react-icons/fa6";
 import { isInBlackList } from "../../utils/blackList";
 
 type SubjectInputProps = {
+    placeholder?: string;
     subject: string;
     setSubject: React.Dispatch<React.SetStateAction<string>>;
     setHasAlert: React.Dispatch<React.SetStateAction<boolean>>;
-    magic: any[];
+    magic?: any[] | undefined;
 };
 
-function SubjectInput({ subject, setSubject, setHasAlert, magic }: SubjectInputProps) {
+function SubjectInput({ placeholder, subject, setSubject, setHasAlert, magic }: SubjectInputProps) {
     const [loadingMagic, setLoadingMagic] = useState(false);
 
     const handleInputChange = (event) => {
@@ -43,7 +44,7 @@ function SubjectInput({ subject, setSubject, setHasAlert, magic }: SubjectInputP
                 className={styles.input}
                 value={subject}
                 onChange={handleInputChange}
-                placeholder="נושא הפעילות"
+                placeholder={placeholder}
             />
             <span className={styles.magic_icon}>
                 {magic &&

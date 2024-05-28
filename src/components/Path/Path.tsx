@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import styles from "./Path.module.css";
 import SelectDetails from "../SelectDetails/SelectDetails";
 import { ActivityTimeOptions } from "../../models/resources/select";
-import { MovementPath } from "../../models/types/movement";
+// import { MovementPath } from "../../models/types/movement";
 import Hint from "../Hint/Hint";
 import SubjectInput from "../SubjectInput/SubjectInput";
 
 type PathProps = {
     index: number;
-    path: MovementPath;
+    path: any;
     setPath: React.Dispatch<React.SetStateAction<any[]>>;
 };
 

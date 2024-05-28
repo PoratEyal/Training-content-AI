@@ -1,13 +1,13 @@
-import { Activity } from "./activity";
+import { Activity, PartStructure } from "./activity";
 import { RawUser, User } from "./user";
 
 export type FetchFrom = "DB" | "AI";
 
 export type GetActivityRequest = {
     fetchFrom: FetchFrom[];
-    path: string;
-    subject: string;
+    mainSubject: string;
     time: string;
+    parts: PartStructure[]
     amount: string;
     grade: string;
     gender: string;

@@ -3,7 +3,7 @@ import { GetActivityRequest } from "../model/types/request";
 import * as admin from "firebase-admin";
 import { MIN_ACTIVITIES, NOT_REGISTERED } from "../model/constants";
 import { Activity } from "../model/types/activity";
-import { GeminiApiSet } from "../service/geminiAPI";
+import { mainActivity } from "../service/geminiAPI";
 import { initActivityFromAI, initActivityFromDB, updateActivityWithId } from "../utils/activity";
 import { getUpdateAt } from "../utils/time";
 import { CollectionDB } from "../model/enum/DB";
@@ -16,23 +16,12 @@ const getActivity = functions.https.onCall(
         data: GetActivityRequest,
         context: functions.https.CallableContext,
     ): Promise<GetActivityResponse> => {
-        const { fetchFrom, path, subject, time, amount, grade, gender, place } = data;
+        const { fetchFrom, mainSubject, time, parts, amount, grade, gender, place } = data;
         let userId = context.auth?.uid || NOT_REGISTERED;
-
-        // if (context.auth) {
-        //     const userId = context.auth.uid;
-        //     const userDoc = await db.collection(CollectionDB.USERS).doc(userId).get();
-        //     const userData = userDoc.data();
-        //     if (userDoc.exists && userData) {
-        //         if (userData.limit < NOT_REGISTER_LIMIT) {
-        //             return { result: "limit", message: "User reached the limit." };
-        //         }
-        //     }
-        // }
 
         let query: admin.firestore.Query = db.collection(CollectionDB.ACTIVITY);
 
-        query = query.where("subject", "==", subject);
+        query = query.where("subject", "==", mainSubject);
         query = query.where("time", "==", time);
         query = query.where("amount", "==", amount);
         query = query.where("grade", "==", grade);
@@ -55,11 +44,10 @@ const getActivity = functions.https.onCall(
                 await activityRef.update(updates);
                 return { result: "success", activity };
             } else if (fetchFrom.includes("AI")) {
-                const geminiAPI =
-                    GeminiApiSet[path as keyof typeof GeminiApiSet] || GeminiApiSet.activity;
-                const activityResult = await geminiAPI({
-                    subject,
+                const activityResult = await mainActivity({
+                    mainSubject,
                     time,
+                    parts,
                     amount,
                     grade,
                     gender,
