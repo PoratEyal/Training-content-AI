@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "./Path.module.css";
-import { FaWandMagicSparkles } from "react-icons/fa6";
 import SelectDetails from "../SelectDetails/SelectDetails";
 import { ActivityTimeOptions } from "../../models/resources/select";
 import { MovementPath } from "../../models/types/movement";
 import Hint from "../Hint/Hint";
-import SmallLoading from "../Loading/SmallLoading/SmallLoading";
+import SubjectInput from "../SubjectInput/SubjectInput";
 
 type PathProps = {
     index: number;
@@ -17,7 +16,7 @@ function Path({ index, path, setPath }: PathProps) {
     const [show, setShow] = useState(false);
     const [subject, setSubject] = useState("");
     const [time, setTime] = useState("");
-    const [loadingMagic, setLoadingMagic] = useState(false);
+    const [hasAlert, setHasAlert] = useState(false);
 
     const { name, title, hint, magic } = path;
 
@@ -47,28 +46,10 @@ function Path({ index, path, setPath }: PathProps) {
         });
     }, [show, subject, time]);
 
-    const toggleShow = () => setShow((prev) => !prev);
-
-    const handleInputChange = (event) => {
-        const newValue = event.target.value;
-        // Limit the value to 80 characters
-        if (newValue.length <= 80) {
-            setSubject(newValue);
-        }
-    };
-
-    const generateSubject = async () => {
-        if (magic && magic.length !== 0) {
-            setSubject("");
-            setLoadingMagic(true);
-            setTimeout(() => {
-                let activities = magic;
-                const randomIndex = Math.floor(Math.random() * activities.length);
-                setSubject(activities[randomIndex].name);
-                setLoadingMagic(false);
-            }, 500);
-        }
-    };
+    const toggleShow = () => {
+        setShow((prev) => !prev);
+        setHasAlert(false);
+    }
 
     const checkboxStyle = show ? styles.checkbox_active : styles.checkbox_inactive;
 
@@ -83,23 +64,12 @@ function Path({ index, path, setPath }: PathProps) {
 
             {show ? (
                 <div className={styles.inputs_div}>
-                    <div className={styles.input_and_icon}>
-                        <textarea
-                            className={styles.input}
-                            value={subject}
-                            onChange={handleInputChange}
-                            placeholder="נושא הפעילות"
-                        />
-                        <span className={styles.magic_icon}>
-                            {magic &&
-                                magic.length !== 0 &&
-                                (loadingMagic ? (
-                                    <SmallLoading />
-                                ) : (
-                                    <FaWandMagicSparkles onClick={() => generateSubject()} />
-                                ))}
-                        </span>
-                    </div>
+                    <SubjectInput
+                        subject={subject}
+                        setSubject={setSubject}
+                        setHasAlert={setHasAlert}
+                        magic={magic}
+                    />
 
                     <SelectDetails
                         data={ActivityTimeOptions}
@@ -107,6 +77,12 @@ function Path({ index, path, setPath }: PathProps) {
                         obj={time}
                         setObj={setTime}
                     />
+                </div>
+            ) : null}
+
+            {show && hasAlert ? (
+                <div className={styles.input_alert}>
+שימו לב! הנתונים מגיעים ממערכת בינה מלאכותית. יתכן שתוצאות חיפושים מסוימים לא עדכניים          
                 </div>
             ) : null}
         </div>
