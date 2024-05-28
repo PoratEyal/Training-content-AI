@@ -1,3 +1,19 @@
+.privacy{
+    overflow-y: scroll;
+    overflow: auto; /* Allows scrolling */
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+
+.privacy::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
 .h3_privacy{
     color: var(--primary-color);
     font-size: 18px;
@@ -14,15 +30,12 @@
 
 .btn_div{
     margin-top: 10px;
-    width: 95%;
+    width: 100%;
     direction: ltr;
 }
 
 @media (min-width: 550px) {
     .space_div {
         font-size: 11px;
-    }
-    .btn_div{
-        width: 380px;
     }
 }

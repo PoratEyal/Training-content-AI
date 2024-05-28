@@ -36,17 +36,15 @@ function ActivityOutput({ index, movementPath, defualtOpen = true }: ActivityOut
                 </motion.div>
                 <div>{title}</div>
             </div>
-            {isOpened ? (
+            {activity && isOpened ? (
                 <section className={styles.activity_contianer} id="markdown">
-                    {activity ? (
-                        <ReactMarkdown className={styles.activity_data}>
-                            {activity?.activity}
-                        </ReactMarkdown>
-                    ) : null}
+                    <ReactMarkdown className={styles.activity_data}>
+                        {activity?.activity}
+                    </ReactMarkdown>
                     <MoreActions index={index} movementPath={movementPath} />
                 </section>
             ) : null}
-            <div className={styles.spacer}></div>
+            <br/>
         </section>
     );
 }

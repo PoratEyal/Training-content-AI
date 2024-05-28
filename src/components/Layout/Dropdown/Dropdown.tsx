@@ -12,7 +12,8 @@ import { IoMdShare } from "react-icons/io";
 import { IoMailOpen } from "react-icons/io5";
 import policy from "../../../models/resources/policy.json";
 import { WEBSITE_URL } from "../../../models/constants";
-import { formatInviteFriend, formatWhatsUp } from "../../../utils/format";
+import { formatInviteFriend } from "../../../utils/format";
+import route from "../../../router/route.json";
 
 type DropdownProps = {
     handleClose: () => void;
@@ -37,12 +38,12 @@ function Dropdown({ handleClose }: DropdownProps) {
         },
         {
             title: "פרטיות",
-            path: "/privacyPolicy",
+            path: route.privacyPolicy,
             Icon: <MdOutlinePrivacyTip />,
         },
         {
             title: "התנתקות",
-            path: "/",
+            path: route.home,
             func: async () => {
                 await logout();
                 clearAll();

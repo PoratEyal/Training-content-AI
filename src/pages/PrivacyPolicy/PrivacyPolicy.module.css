@@ -1,13 +1,21 @@
-.privacyPolicyContainer{
+.privacy_article {
     padding: 25px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     font-size: 14px;
     line-height: 19px;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: column;
 }
 
-.space_div{
+.page_title {
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: 500;
+    width: 100%;
+    text-align: right;
+    margin-top: 0;
+}
+
+.space_div {
     margin-top: 7px;
 }
 
@@ -23,7 +31,7 @@
 
 .email a {
     margin-right: 4px;
-    color: #4088a7;
+    color: var(--email-color);
 }
 
 .back_icon {
@@ -40,30 +48,9 @@
     background-color: rgba(255, 255, 255, 0);
 }
 
-.page_title{
-    color: var(--primary-color);
-    font-size: 20px;
-    font-weight: 500;
-    width: 100%;
-    text-align: right;
-    margin-top: 25px;
-    margin-top: 35px;
-}
-
 @media (min-width: 550px) {
-    .privacyPolicyContainer {
-        margin-top: 50px;
-        width: 400px;
-        background-color: var(--background-color);
-        height: 630px;
-        border: none;
-        border-radius: 30px;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        position: relative;
-    } 
-
-    .privacyPolicyContainer article{
-        padding: 0 25px 25px 25px;
+    .privacy_article {
+        padding-top: 0;
     }
 
     .back_icon {
@@ -71,6 +58,6 @@
     }
 
     body {
-        background-color: #ffe1a0 !important;
+        background-color: var(--desktop-background-color) !important;
     }
 }

@@ -4,10 +4,11 @@ import MainBtn from "../../MainBtn/MainBtn";
 import { IoCloseOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import useSignIn from "../../../hooks/useSignIn";
+import route from "../../../router/route.json"
 
 function LimitRequest({ handleAccept }) {
     const navigate = useNavigate();
-    const handleStart = () => navigate("/details");
+    const handleStart = () => navigate(route.details);
     const { signInBtnText, signInDisabled, signInWithGoogle } = useSignIn(
         handleStart,
         "התחברות...",
