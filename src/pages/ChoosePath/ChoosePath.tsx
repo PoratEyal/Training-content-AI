@@ -9,7 +9,6 @@ import MainBtn from "../../components/MainBtn/MainBtn";
 import { useAuthContext } from "../../context/AuthContext";
 import Loading from "../../components/Loading/LoadingActivity/LoadingActivity";
 import { fetchUpdateUser } from "../../utils/fetch";
-import { VscLoading } from "react-icons/vsc";
 import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";
 import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";

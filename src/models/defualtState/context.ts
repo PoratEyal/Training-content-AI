@@ -24,4 +24,6 @@ export const defualtAuthContext = {
     setCookie: () => {},
     reachUnRegisterLimit: () => true,
     setUser: () => {},
+    setLimitCookie: () => {},
+    setConsentCookie: () => {},
 };
