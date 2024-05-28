@@ -13,6 +13,7 @@ import { VscLoading } from "react-icons/vsc";
 import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";
 import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
+import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 
 function ChoosePath() {
     const { handleError } = useErrorContext();
@@ -110,7 +111,9 @@ function ChoosePath() {
                     ></img>
 
                     {loading ? (
-                        <VscLoading className={styles.loading_icon_magic} />
+                        <div className={styles.loading_mock_selection_container}>
+                            <SmallLoading />
+                        </div>
                     ) : (
                         <div className={styles.path_div}>
                             {path?.map((p, i) => (
