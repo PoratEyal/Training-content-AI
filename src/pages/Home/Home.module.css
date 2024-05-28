@@ -49,6 +49,10 @@
     padding: 1px;
 }
 
+.test{
+    
+}
+
 @media (min-width: 550px) {
     .logo_text_div{
         margin-top: 14vh;

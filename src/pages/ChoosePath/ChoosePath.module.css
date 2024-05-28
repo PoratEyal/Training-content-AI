@@ -111,7 +111,7 @@
     }
 
     .path_form_container {
-        width: 400px;
+        width: 100%;
         border-bottom-left-radius: 30px;
         border-bottom-right-radius: 30px;
         scrollbar-width: none;
