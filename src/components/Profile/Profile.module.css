@@ -1,0 +1,16 @@
+.user_profile_img {
+    border: 1px solid var(--secondary-color);
+    border-radius: 100px;
+    width: 30px;
+    height: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.mock_img_div {
+    border: 1px solid var(--secondary-color);
+    border-radius: 100px;
+    width: 30px;
+    height: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: var(--loading-profile-color);
+}

@@ -13,8 +13,7 @@ import {
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import MainBtn from "../../components/MainBtn/MainBtn";
 import { useAuthContext } from "../../context/AuthContext";
-import Header from "../../components/Layout/Header/Header";
-import { H2_PAGE2_IMG, LAMP_IMG } from "../../models/constants/img";
+import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 
@@ -57,17 +56,20 @@ function Details() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         updateDetails(movement, classLevel, numberOfChildren, activityLocation, gender);
-        navigate("/choosePath");
+        navigate(route.choosePath);
     };
 
     const goBack = () => {
         clearAll();
-        navigate("/");
+        navigate(route.home);
     };
 
     return (
-        <div className={styles.container}>
-            <Header goBack={isLoggedIn ? undefined : goBack} />
+        <PageLayout
+            path={route.details}
+            hasGreenBackground
+            hasHeader={{ goBack: isLoggedIn ? undefined : goBack }}
+        >
             <img
                 className={styles.h2_img}
                 alt="Tell us about your group"
@@ -128,7 +130,7 @@ function Details() {
                     </div>
                 </div>
             </form>
-        </div>
+        </PageLayout>
     );
 }
 

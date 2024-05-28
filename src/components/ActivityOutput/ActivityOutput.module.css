@@ -6,6 +6,8 @@
     padding-top: 0px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .activity_close,
@@ -18,16 +20,18 @@
     align-items: center;
     gap: 7px;
     font-size: 18px;
-    font-family: 'Fredoka', sans-serif;
+    font-family: var(--font-family);
     font-weight: 500;
 }
 
 .activity_close{
     color: var(--text-color);
+    margin-bottom: 30px;
 }
 
 .activity_open{
-    color: var(--primary-color)
+    color: var(--primary-color);
+    margin-bottom: 0;
 }
 
 .toggel_arrow_animation {

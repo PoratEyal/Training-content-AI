@@ -20,7 +20,7 @@
     justify-content: center;
     gap: 5px;
     align-items: center;
-    font-family: 'Fredoka', sans-serif;
+    font-family: var(--font-family);
     border-radius: 60px;
     padding: 6px;
     color: var(--primary-color);
