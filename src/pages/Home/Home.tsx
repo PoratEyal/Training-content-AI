@@ -31,6 +31,8 @@ function Home() {
                     src={"homePageLogo.svg"}
                 ></img>
 
+                {/* <div className={styles.test}>מתקדמים</div> */}
+
                 <label className={styles.home_lable}>
                     <label>יצירת פעילויות: מותאם, פשוט ומהיר</label>
                     <img
