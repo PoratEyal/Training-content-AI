@@ -8,8 +8,14 @@ import { fetchGetUserById } from "../utils/fetch";
 import { useErrorContext } from "./ErrorContext";
 import { NOT_REGISTER_LIMIT } from "../models/constants";
 import { useCookies } from "react-cookie";
-import { forLongTime } from "../utils/time";
 import { addSessionData } from "../utils/movment";
+import {
+    COOKIE_LIMIT,
+    COOKIE_USER_CONSENT,
+    CookieOptions,
+    LIMIT_VALUE,
+    USER_CONSENT_VALUE,
+} from "../models/constants/cookie";
 
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
 
@@ -23,12 +29,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     // const [generateLimit, setGenerateLimit] = useState<number>(0);
     const [unRegisterLimit, setUnRegisterLimit] = useState<number | undefined>();
 
-    const [cookies, setCookie] = useCookies(["limit", "user-consent"]);
+    const [cookies, setCookie] = useCookies([COOKIE_LIMIT, COOKIE_USER_CONSENT]);
 
     const setStateFromSession = () => {
         try {
             if (unRegisterLimit === undefined) {
-                const cookieLimit = cookies["limit"];
+                const cookieLimit = cookies[COOKIE_LIMIT];
                 if (cookieLimit) {
                     setUnRegisterLimit(parseInt(cookieLimit));
                 }
@@ -43,7 +49,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }, []);
 
     const initializeUser = async (user) => {
-        console.log("initializeUser user", user)
         try {
             if (user && !currentUser) {
                 let resultUser;
@@ -84,21 +89,26 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
     };
 
+    const setLimitCookie = (data: string | number) => {
+        setCookie(COOKIE_LIMIT, JSON.stringify(data), CookieOptions);
+    };
+
+    const setConsentCookie = () => {
+        setCookie(COOKIE_USER_CONSENT, USER_CONSENT_VALUE, CookieOptions);
+    };
+
     const updateUnRegisterLimit = () => {
         setUnRegisterLimit((prev) => {
             const lim = prev ? prev + 1 : 1;
-            if (lim <= NOT_REGISTER_LIMIT) {
-                setCookie("limit", JSON.stringify(lim), {
-                    path: "/",
-                    expires: forLongTime,
-                });
-            }
+            if (lim <= NOT_REGISTER_LIMIT) setLimitCookie(lim);
             return lim;
         });
+        // return reachUnRegisterLimit();
     };
 
     const reachUnRegisterLimit = () => {
         if (isLoggedIn) return false;
+        if (cookies[COOKIE_LIMIT] === LIMIT_VALUE) return false;
         if (unRegisterLimit >= NOT_REGISTER_LIMIT) return true;
         return false;
     };
@@ -116,6 +126,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 cookies,
                 setCookie,
                 setUser,
+                setLimitCookie,
+                setConsentCookie,
             }}
         >
             {children}

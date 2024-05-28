@@ -4,13 +4,22 @@ import MainBtn from "../../MainBtn/MainBtn";
 import { IoCloseOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import useSignIn from "../../../hooks/useSignIn";
-import route from "../../../router/route.json"
+import route from "../../../router/route.json";
 
-function LimitRequest({ handleAccept }) {
+type LimitRequestProps = {
+    handleAccept: () => void;
+};
+
+function LimitRequest({ handleAccept }: LimitRequestProps) {
     const navigate = useNavigate();
-    const handleStart = () => navigate(route.details);
+
+    const handleSignIn = () => {
+        handleAccept();
+        navigate(route.home);
+    };
+    
     const { signInBtnText, signInDisabled, signInWithGoogle } = useSignIn(
-        handleStart,
+        handleSignIn,
         "התחברות...",
         "התחברות",
         "התחברות",
@@ -19,13 +28,13 @@ function LimitRequest({ handleAccept }) {
     return (
         <Popup>
             <IoCloseOutline onClick={handleAccept} className={styles.back_icon} />
-            <label className={styles.label}>
+            <p className={styles.limit_text_1}>
                 הגעתם למגבלת הפעולות, <br></br>כדי להמשיך ולהנות מפעולות ותכנים נוספים, התחברו בחינם
                 עכשיו
-            </label>
-            <label className={styles.label2}>וקבלו גישה מלאה!</label>
+            </p>
+            <h2 className={styles.limit_text_2}>וקבלו גישה מלאה!</h2>
 
-            <div className={styles.btn_div}>
+            <div className={styles.limit_sign_in_btn}>
                 <MainBtn
                     isDisabled={signInDisabled}
                     height={38}

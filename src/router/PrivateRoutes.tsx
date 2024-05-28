@@ -1,37 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
-import { NOT_REGISTER_LIMIT } from "../models/constants";
-import { forLongTime } from "../utils/time";
 import LimitRequest from "../components/popups/LimitRequests/LimitRequests";
 import TSCs from "../components/popups/TSCs/TSCs";
+import { COOKIE_USER_CONSENT, LIMIT_VALUE } from "../models/constants/cookie";
 
 const PrivateRoutes = () => {
-    const { cookies, setCookie, unRegisterLimit } = useAuthContext();
+    const { cookies, setConsentCookie, setLimitCookie, unRegisterLimit, reachUnRegisterLimit } =
+        useAuthContext();
     const [prevent, setPrevent] = useState(false);
     const [tscs, setTscs] = useState(false);
 
     useEffect(() => {
-        if (unRegisterLimit >= NOT_REGISTER_LIMIT) {
-            setPrevent(true);
-        }
+        setPrevent(reachUnRegisterLimit());
     }, [unRegisterLimit]);
 
     useEffect(() => {
-        if (cookies["user-consent"] === undefined) {
+        if (cookies[COOKIE_USER_CONSENT] === undefined) {
             setTscs(true);
         }
     }, [cookies]);
 
     const handleAcceptTerms = () => {
-        setCookie("user-consent", "accepted", {
-            path: "/",
-            expires: forLongTime,
-        });
+        setConsentCookie();
         setTscs(false);
     };
 
     const handleAcceptLimit = () => {
+        setLimitCookie(LIMIT_VALUE);
         setPrevent(false);
     };
 
