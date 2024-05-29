@@ -72,17 +72,29 @@ function Details() {
         >
             <img
                 className={styles.h2_img}
+                title="Tell us about your group"
                 alt="Tell us about your group"
                 src={"h2_page2.svg"}
+                loading="lazy"
+                width={190}
+                height={77.8}
             ></img>
 
             <form onSubmit={handleSubmit} className={styles.details_form}>
-                <img className={styles.lamp_img} alt="Yellow lamp" src={"lamp.svg"}></img>
+                <img
+                    className={styles.lamp_img}
+                    title="Yellow lamp"
+                    alt="Yellow lamp"
+                    src={"lamp.svg"}
+                    loading="lazy"
+                    width={135}
+                    height={139}
+                ></img>
 
                 <div className={styles.selects_btn}>
                     {loading ? (
                         <div className={styles.loading_mock_selection_container}>
-                            <SmallLoading/>
+                            <SmallLoading />
                         </div>
                     ) : (
                         <div className={styles.selection_container}>

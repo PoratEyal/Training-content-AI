@@ -33,9 +33,9 @@ function PageLayout({
                 <title>Activity Wiz - פעילויות</title>
                 <meta
                     name="description"
-                    content="צור פעולות מרתקות ומותאמות אישית, על ידי הזנת פרטים על הקבוצה שלך, באמצעות כלי בינה מלאכותית."
+                    content="צרו בקלות פעילויות מותאמות אישית תוך שימוש בבינה מלאכותית. מושלם לאירועי חברה, תנועות נוער, צופים, הנוער העובד, בני עקיבא ועוד. נסו עכשיו!"
                 />
-                <link rel="canonical" href={path} />
+                <link rel="canonical" href={`https://activitywiz.com${path}`} />
             </Helmet>
 
             <section

@@ -36,7 +36,7 @@ function MainBtn({
                 </div>
             ) : (
                 <div className={styles.btn}>
-                    <label style={{ opacity: isDisabled ? 0.5 : 1 }}>{text}</label>
+                    <span style={{ opacity: isDisabled ? 0.5 : 1 }}>{text}</span>
                     <div className={styles.btn_icon} style={{ opacity: isDisabled ? 0.5 : 1 }}>
                         <FiChevronsLeft className={styles.icon} />
                     </div>

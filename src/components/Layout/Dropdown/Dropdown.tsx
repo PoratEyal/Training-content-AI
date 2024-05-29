@@ -37,7 +37,7 @@ function Dropdown({ handleClose }: DropdownProps) {
             Icon: <IoMailOpen />,
         },
         {
-            title: "פרטיות",
+            title: "תנאי שירות",
             path: route.privacyPolicy,
             Icon: <MdOutlinePrivacyTip />,
         },
