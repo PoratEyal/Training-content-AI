@@ -24,13 +24,15 @@ function Activity() {
     return (
         <PageLayout path={route.activity} hasGreenBackground hasHeader={{ goBack }}>
             <h2 className={styles.activity_title}>הפעילות שלכם מוכנה</h2>
-            <div className={styles.activity_data_container}>
-                {data?.movement?.path.map((path, i) => {
-                    return path.activity ? (
-                        <ActivityOutput key={i} index={i} movementPath={path} />
-                    ) : null;
-                })}
-            </div>
+            <section className={styles.activity_data_container}>
+                <article>
+                    {data?.movement?.path.map((path, i) => {
+                        return path.activity ? (
+                            <ActivityOutput key={i} index={i} movementPath={path} />
+                        ) : null;
+                    })}
+                </article>
+            </section>
         </PageLayout>
     );
 }
