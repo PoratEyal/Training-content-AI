@@ -27,8 +27,12 @@ function Home() {
             <div className={styles.logo_text_div}>
 
                 <img
+                    title="home page logo - מתקדמים לפעילות ב - AI"
                     alt="home page logo - מתקדמים לפעילות ב - AI"
                     src={"homePageLogo.svg"}
+                    loading="lazy"
+                    width={251}
+                    height={95}
                 ></img>
 
                 {/* <div className={styles.test}>מתקדמים</div> */}
@@ -37,8 +41,12 @@ function Home() {
                     <label>יצירת פעילויות: מותאם, פשוט ומהיר</label>
                     <img
                         className={styles.hand_icon}
+                        title="I-L-Y Emoji hand"
                         alt="I-L-Y Emoji hand"
                         src={"hand_icon.svg"}
+                        loading="lazy"
+                        width={18}
+                        height={18}
                     ></img>
                 </label>
             </div>

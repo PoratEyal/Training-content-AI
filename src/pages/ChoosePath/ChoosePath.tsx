@@ -98,15 +98,26 @@ function ChoosePath() {
                 <label>
                     בחרו את<br></br> נושא הפעילות
                 </label>
-                <img alt="Sparks effect" src={"page3_effect.svg"}></img>
+                <img
+                    title="Sparks effect"
+                    alt="Sparks effect"
+                    src={"page3_effect.svg"}
+                    loading="lazy"
+                    width={23}
+                    height={24}
+                ></img>
             </div>
 
             <div className={styles.path_form_container}>
                 <div className={styles.contnet_path}>
                     <img
                         className={styles.path_img}
+                        title="Yellow sign with with heart"
                         alt="Yellow sign with with heart"
                         src={"path.svg"}
+                        loading="lazy"
+                        width={130}
+                        height={160}
                     ></img>
 
                     {loading ? (
@@ -129,7 +140,7 @@ function ChoosePath() {
                         func={submitHandler}
                     ></MainBtn>
                 </div>
-                {clicked ? <Loading/> : null}
+                {clicked ? <Loading /> : null}
             </div>
         </PageLayout>
     );

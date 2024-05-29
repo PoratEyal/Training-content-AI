@@ -67,7 +67,7 @@ function MoreActions({ index, movementPath }: MoreActionsProps) {
                     </div>
                 ) : (
                     <div className={styles.btn_content_div}>
-                        <label>פעילות אחרת</label>
+                        <span>פעילות אחרת</span>
                     </div>
                 )}
             </button>

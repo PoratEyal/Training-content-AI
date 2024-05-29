@@ -20,7 +20,7 @@
         {
             "src": "maintenance.png",
             "type": "image/png",
-            "sizes": "408x612"
+            "sizes": "612x408"
         },
         {
             "src": "icon.png",
@@ -35,12 +35,12 @@
         {
             "src": "bigLogo.svg",
             "type": "image/svg+xml",
-            "sizes": "95x251"
+            "sizes": "251x95"
         },
         {
             "src": "h2_page2.svg",
             "type": "image/svg+xml",
-            "sizes": "66x161"
+            "sizes": "161x66"
         },
         {
             "src": "hand_icon.svg",
@@ -50,12 +50,12 @@
         {
             "src": "homePageLogo.svg",
             "type": "image/svg+xml",
-            "sizes": "95x251"
+            "sizes": "251x95"
         },
         {
             "src": "lamp.svg",
             "type": "image/svg+xml",
-            "sizes": "139x135"
+            "sizes": "135x139"
         },
         {
             "src": "more.svg",
@@ -65,12 +65,12 @@
         {
             "src": "page3_effect.svg",
             "type": "image/svg+xml",
-            "sizes": "24x23"
+            "sizes": "23x24"
         },
         {
             "src": "path.svg",
             "type": "image/svg+xml",
-            "sizes": "150x122"
+            "sizes": "130x160"
         }
     ],
     "start_url": ".",
