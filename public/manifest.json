@@ -29,47 +29,47 @@
         },
         {
             "src": "ai.svg",
-            "type": "image/svg",
+            "type": "image/svg+xml",
             "sizes": "14x14"
         },
         {
             "src": "bigLogo.svg",
-            "type": "image/svg",
+            "type": "image/svg+xml",
             "sizes": "95x251"
         },
         {
             "src": "h2_page2.svg",
-            "type": "image/svg",
+            "type": "image/svg+xml",
             "sizes": "66x161"
         },
         {
             "src": "hand_icon.svg",
-            "type": "image/svg",
+            "type": "image/svg+xml",
             "sizes": "64x64"
         },
         {
             "src": "homePageLogo.svg",
-            "type": "image/svg",
+            "type": "image/svg+xml",
             "sizes": "95x251"
         },
         {
             "src": "lamp.svg",
-            "type": "image/svg",
+            "type": "image/svg+xml",
             "sizes": "139x135"
         },
         {
             "src": "more.svg",
-            "type": "image/svg",
+            "type": "image/svg+xml",
             "sizes": "14x14"
         },
         {
             "src": "page3_effect.svg",
-            "type": "image/svg",
+            "type": "image/svg+xml",
             "sizes": "24x23"
         },
         {
             "src": "path.svg",
-            "type": "image/svg",
+            "type": "image/svg+xml",
             "sizes": "150x122"
         }
     ],
@@ -77,4 +77,4 @@
     "display": "standalone",
     "theme_color": "#708254",
     "background_color": "#FAF6EE"
-  }
+}
