@@ -13,6 +13,7 @@ export type DataType = {
 export type ContentContextType = {
     data: DataType;
     setData: React.Dispatch<React.SetStateAction<DataType>>;
+    mainActivity: Activity | undefined;
     updateDetails: (
         movement: string,
         grade: string,
@@ -20,7 +21,7 @@ export type ContentContextType = {
         place: string,
         gender: string,
     ) => void;
-    updateMovementPath: (index: number, activity: Activity) => void;
+    updateMainActivity: (activity: Activity) => void;
     clearAll: () => void;
     clearPath: () => void;
 };

@@ -1,0 +1,12 @@
+.option_contianer{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 10px;
+}
+
+.option_title{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

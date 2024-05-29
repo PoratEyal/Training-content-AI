@@ -3,7 +3,7 @@ import { GetActivityRequest } from "../model/types/request";
 import * as admin from "firebase-admin";
 import { MIN_ACTIVITIES, NOT_REGISTERED } from "../model/constants";
 import { Activity } from "../model/types/activity";
-import { GeminiApiSet } from "../service/geminiAPI";
+import { mainActivity } from "../service/geminiAPI";
 import { initActivityFromAI, initActivityFromDB, updateActivityWithId } from "../utils/activity";
 import { getUpdateAt } from "../utils/time";
 import { CollectionDB } from "../model/enum/DB";
@@ -16,7 +16,7 @@ const getActivity = functions.https.onCall(
         data: GetActivityRequest,
         context: functions.https.CallableContext,
     ): Promise<GetActivityResponse> => {
-        const { fetchFrom, path, subject, time, amount, grade, gender, place } = data;
+        const { fetchFrom, parts, subject, time, amount, grade, gender, place } = data;
         let userId = context.auth?.uid || NOT_REGISTERED;
 
         // if (context.auth) {
@@ -30,7 +30,7 @@ const getActivity = functions.https.onCall(
         //     }
         // }
 
-        let query: admin.firestore.Query = db.collection(CollectionDB.ACTIVITY);
+        let query: admin.firestore.Query = db.collection(CollectionDB.TEST);
 
         query = query.where("subject", "==", subject);
         query = query.where("time", "==", time);
@@ -51,14 +51,13 @@ const getActivity = functions.https.onCall(
                     fetchCount: activity.fetchCount + 1,
                     updatedAt: getUpdateAt(),
                 };
-                const activityRef = db.collection(CollectionDB.ACTIVITY).doc(activity.id);
+                const activityRef = db.collection(CollectionDB.TEST).doc(activity.id);
                 await activityRef.update(updates);
                 return { result: "success", activity };
             } else if (fetchFrom.includes("AI")) {
-                const geminiAPI =
-                    GeminiApiSet[path as keyof typeof GeminiApiSet] || GeminiApiSet.activity;
-                const activityResult = await geminiAPI({
+                const activityResult = await mainActivity({
                     subject,
+                    parts,
                     time,
                     amount,
                     grade,
@@ -67,8 +66,8 @@ const getActivity = functions.https.onCall(
                 });
                 const activity = initActivityFromAI(activityResult, data, userId);
                 const { id, ...restActivity } = activity;
-                
-                const docRef = await db.collection(CollectionDB.ACTIVITY).add(restActivity);
+
+                const docRef = await db.collection(CollectionDB.TEST).add(restActivity);
                 const updateActivity = updateActivityWithId(docRef.id, activity);
                 return { result: "success", activity: updateActivity };
             }

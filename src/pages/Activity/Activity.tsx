@@ -7,18 +7,18 @@ import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 
 function Activity() {
-    const { data, clearPath } = useContentContext();
+    const { data, mainActivity, clearPath } = useContentContext();
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!data || !data.grade || !data.movement || data.movement.path.length === 0) {
+        if (!data || !data.grade || !data.movement || !mainActivity) {
             goBack();
         }
     }, []);
 
     const goBack = () => {
         clearPath();
-        navigate(route.choosePath);
+        navigate(route.build);
     };
 
     return (
@@ -26,11 +26,7 @@ function Activity() {
             <h2 className={styles.activity_title}>הפעילות שלכם מוכנה</h2>
             <section className={styles.activity_data_container}>
                 <article>
-                    {data?.movement?.path.map((path, i) => {
-                        return path.activity ? (
-                            <ActivityOutput key={i} index={i} movementPath={path} />
-                        ) : null;
-                    })}
+                    <ActivityOutput activity={mainActivity} />
                 </article>
             </section>
         </PageLayout>

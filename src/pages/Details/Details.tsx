@@ -56,7 +56,7 @@ function Details() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         updateDetails(movement, classLevel, numberOfChildren, activityLocation, gender);
-        navigate(route.choosePath);
+        navigate(route.build);
     };
 
     const goBack = () => {

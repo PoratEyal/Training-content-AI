@@ -14,6 +14,7 @@ export const useContentContext = () => useContext(ContentContext);
 export const ContentProvider = ({ children }: { children: React.ReactNode }) => {
     const { currentUser } = useAuthContext();
     const [data, setData] = useState<DataType | undefined>();
+    const [mainActivity, setMainActivity] = useState<Activity | undefined>();
 
     const setStateFromSession = () => {
         try {
@@ -21,6 +22,12 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
                 const sessionData: DataType | undefined = Session.get("data");
                 if (sessionData) {
                     setData(sessionData);
+                }
+            }
+            if (mainActivity === undefined) {
+                const sessionActivity: Activity | undefined = Session.get("activity");
+                if (sessionActivity) {
+                    setMainActivity(sessionActivity);
                 }
             }
         } catch (error) {}
@@ -53,31 +60,15 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
         setData(undefined);
     };
 
+    //TODO: change name
     const clearPath = () => {
-        if (data?.movement?.path.length === 0) return;
-        setData((prevData) => {
-            const updatedPath = prevData.movement.path.map((pathItem) => ({
-                ...pathItem,
-                activity: undefined,
-            }));
-            const updatedData: DataType = {
-                ...prevData,
-                movement: {
-                    ...prevData.movement,
-                    path: updatedPath,
-                },
-            };
-            Session.set("data", updatedData);
-            return updatedData;
-        });
+        setMainActivity(undefined);
+        Session.remove("activity");
     };
 
-    const updateMovementPath = (index: number, activity: Activity) => {
-        setData((prevData) => {
-            prevData.movement.path[index].activity = activity;
-            Session.set("data", { ...prevData });
-            return { ...prevData };
-        });
+    const updateMainActivity = (activity: Activity) => {
+        setMainActivity(activity);
+        Session.set("activity", activity);
     };
 
     return (
@@ -85,8 +76,9 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
             value={{
                 data,
                 setData,
+                mainActivity,
                 updateDetails,
-                updateMovementPath,
+                updateMainActivity,
                 clearAll,
                 clearPath,
             }}

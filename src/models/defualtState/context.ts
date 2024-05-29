@@ -1,8 +1,9 @@
 export const typeContext = {
     data: undefined,
     setData: () => {},
+    mainActivity: undefined,
     updateDetails: () => {},
-    updateMovementPath: () => {},
+    updateMainActivity: () => {},
     clearAll: () => {},
     clearPath: () => {},
 };

@@ -18,34 +18,18 @@ import msg from "../models/resources/errorMsg.json";
 import { Activity } from "../models/types/activity";
 
 export const fetchGetActivity = async (
-    contextUpdate: (index: number, activity: Activity) => void,
-    index: number,
     request: GetActivityRequest,
 ): Promise<GetActivityResponse> => {
     const getActivityFunc = httpsCallable(functions, "getActivity");
-
     const response = (await getActivityFunc(request)).data as GetActivityResponse;
-    if ((response.result === "success" || response.result === "safety") && response.activity) {
-        contextUpdate(index, response.activity);
-    } else {
-        throw new Error(msg.error.message);
-    }
     return response;
 };
 
 export const fetchUpdateActivityLikes = async (
-    contextUpdate: (index: number, activity: Activity) => void,
-    index: number,
     request: UpdateActivityLikesRequest,
 ): Promise<UpdateActivityLikesResponse> => {
     const updateActivityLikesFunc = httpsCallable(functions, "updateLikes");
-
     const response = (await updateActivityLikesFunc(request)).data as UpdateActivityLikesResponse;
-    if (response.result === "success" && response.activity) {
-        contextUpdate(index, response.activity);
-    } else {
-        throw new Error(msg.error.message);
-    }
     return response;
 };
 
@@ -68,7 +52,7 @@ export const fetchGetUserById = async (
     const getUserByIdFunc = httpsCallable(functions, "getUserById");
 
     const response = (await getUserByIdFunc(request)).data as GetUserByIdResponse;
-    if (response.result === "success" ) {
+    if (response.result === "success") {
         return response;
     } else {
         throw new Error(msg.error.message);
