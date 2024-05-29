@@ -1,0 +1,80 @@
+{
+    "short_name": "ActivityWiz",
+    "name": "Activity Wizard",
+    "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "64x64 32x32 24x24 16x16",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "logo192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "logo512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "maintenance.png",
+            "type": "image/png",
+            "sizes": "408x612"
+        },
+        {
+            "src": "icon.png",
+            "type": "image/png",
+            "sizes": "364x364"
+        },
+        {
+            "src": "ai.svg",
+            "type": "image/svg",
+            "sizes": "14x14"
+        },
+        {
+            "src": "bigLogo.svg",
+            "type": "image/svg",
+            "sizes": "95x251"
+        },
+        {
+            "src": "h2_page2.svg",
+            "type": "image/svg",
+            "sizes": "66x161"
+        },
+        {
+            "src": "hand_icon.svg",
+            "type": "image/svg",
+            "sizes": "64x64"
+        },
+        {
+            "src": "homePageLogo.svg",
+            "type": "image/svg",
+            "sizes": "95x251"
+        },
+        {
+            "src": "lamp.svg",
+            "type": "image/svg",
+            "sizes": "139x135"
+        },
+        {
+            "src": "more.svg",
+            "type": "image/svg",
+            "sizes": "14x14"
+        },
+        {
+            "src": "page3_effect.svg",
+            "type": "image/svg",
+            "sizes": "24x23"
+        },
+        {
+            "src": "path.svg",
+            "type": "image/svg",
+            "sizes": "150x122"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#708254",
+    "background_color": "#FAF6EE"
+  }
