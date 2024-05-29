@@ -35,9 +35,6 @@ function BuildActivity() {
 
     const [hasAlert, setHasAlert] = useState(false);
 
-
-    console.log("structure", structure)
-
     useEffect(() => {
         const updateUser = async () => {
             lockRef.current = false;
@@ -102,15 +99,15 @@ function BuildActivity() {
 
     return (
         <PageLayout path={route.build} hasGreenBackground hasHeader={{ goBack }}>
-            <div className={styles.choose_path_title}>
+            <div className={styles.build_activity_title}>
                 <label>
                     צרו את<br></br> הפעילות שלכם
                 </label>
                 <img alt="Sparks effect" src={"page3_effect.svg"}></img>
             </div>
 
-            <div className={styles.path_form_container}>
-                <div className={styles.contnet_path}>
+            <div className={styles.build_form_container}>
+                <div className={styles.build_content}>
                     <img
                         className={styles.path_img}
                         alt="Yellow sign with heart"
@@ -128,7 +125,7 @@ function BuildActivity() {
                                 setHasAlert={setHasAlert}
                             />
 
-                            <div>הוסיפו חלקים לפעולה</div>
+                            <div>{"הוסיפו חלקים לפעולה (לא חובה)"}</div>
                             {parts?.map((part, i) => (
                                 <PartOption
                                     key={i}

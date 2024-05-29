@@ -21,6 +21,7 @@ export const fetchGetActivity = async (
     request: GetActivityRequest,
 ): Promise<GetActivityResponse> => {
     const getActivityFunc = httpsCallable(functions, "getActivity");
+    console.log("fetchGetActivity request", request)
     const response = (await getActivityFunc(request)).data as GetActivityResponse;
     return response;
 };

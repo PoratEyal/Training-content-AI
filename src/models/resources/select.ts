@@ -14,18 +14,18 @@ export const MovmentsOptions: SelectOption[] = [
 ];
 
 export const GradeOptions: SelectOption[] = [
-    { value: "1", label: "כיתה א" },
-    { value: "2", label: "כיתה ב" },
-    { value: "3", label: "כיתה ג" },
-    { value: "4", label: "כיתה ד" },
-    { value: "5", label: "כיתה ה" },
-    { value: "6", label: "כיתה ו" },
-    { value: "7", label: "כיתה ז" },
-    { value: "8", label: "כיתה ח" },
-    { value: "9", label: "כיתה ט" },
-    { value: "10", label: "כיתה י" },
-    { value: "11", label: "כיתה יא" },
-    { value: "12", label: "כיתה יב" },
+    { value: "כיתה א", label: "כיתה א" },
+    { value: "כיתה ב", label: "כיתה ב" },
+    { value: "כיתה ג", label: "כיתה ג" },
+    { value: "כיתה ד", label: "כיתה ד" },
+    { value: "כיתה ה", label: "כיתה ה" },
+    { value: "כיתה ו", label: "כיתה ו" },
+    { value: "כיתה ז", label: "כיתה ז" },
+    { value: "כיתה ח", label: "כיתה ח" },
+    { value: "כיתה ט", label: "כיתה ט" },
+    { value: "כיתה י", label: "כיתה י" },
+    { value: "כיתה יא", label: "כיתה יא" },
+    { value: "כיתה יב", label: "כיתה יב" },
 ];
 
 export const AmountOptions: SelectOption[] = [
@@ -38,22 +38,22 @@ export const AmountOptions: SelectOption[] = [
 ];
 
 export const PlaceOptions: SelectOption[] = [
-    { value: "open", label: "במקום סגור" },
-    { value: "close", label: "במקום פתוח" },
-    { value: "all", label: "לא משנה" },
+    { value: "במקום סגור", label: "במקום סגור" },
+    { value: "במקום פתוח", label: "במקום פתוח" },
+    { value: "לא משנה", label: "לא משנה" },
 ];
 
 export const GenderOptions: SelectOption[] = [
-    { value: "man", label: "בנים" },
-    { value: "woman", label: "בנות" },
-    { value: "all", label: "מעורב" },
+    { value: "חניכים", label: "בנים" },
+    { value: "חניכות", label: "בנות" },
+    { value: "מעורב", label: "מעורב" },
 ];
 
 export const ActivityTimeOptions: SelectOption[] = [
-    { value: "20", label: "20 דקות" },
-    { value: "30", label: "חצי שעה" },
-    { value: "45", label: "45 דקות" },
-    { value: "60", label: "שעה" },
-    { value: "90", label: "שעה וחצי" },
-    { value: "180", label: "שעתיים" },
+    { value: "20 דקות", label: "20 דקות" },
+    { value: "חצי שעה", label: "חצי שעה" },
+    { value: "45 דקות", label: "45 דקות" },
+    { value: "שעה", label: "שעה" },
+    { value: "שעה וחצי", label: "שעה וחצי" },
+    { value: "שעתיים", label: "שעתיים" },
 ];

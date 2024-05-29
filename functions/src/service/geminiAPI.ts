@@ -13,10 +13,31 @@ async function generateContent(prompt: string): Promise<string> {
 }
 
 export async function mainActivity(activityDetials: ActivityDetails): Promise<string> {
-    const { subject, time, parts, amount, grade, gender, place } = activityDetials;
-    const prompt = `${subject}`
+    const { subject, parts, time, amount, grade, gender } = activityDetials;
+    const partsPrompt = parts.map(part => getPartPrompt(part.name, part.subject)).join("\n");
+    console.log(partsPrompt)
+    const prompt = `אתה מדריך צופים המעביר פעילות לחניכיו בתנועות הנוער ואני רוצה שתיצור פעילות על נושא ${subject} שתימשך ${time} מספר הילדים בפעילות הוא ${amount}, כיתתם היא ${grade} ומינם הוא ${gender} בתחילתה התשובה כתוב את שם הפעילות ואת משך הזמן שלה. בכל חלק של הפעילות, ציין את הזמן הנדרש בדקות. וודא כיסוי מלא של כל ההיבטים והוראות מפורטות לפעילות. תחזיר את התשובה בפורמט של markdown style. הבט לשקף תכנים ישירים כמו שמות וזמנים ללא שינוי, אך העשר את התיאור בפרטים  רלוונטיים נוספים להבנה טובה יותר. אל תכלול מצגת או וידאו בפעילות. התשובה צריכה להיות מפורטת ובעברית בלבד.`
     return await generateContent(prompt);
 }
+
+
+const getPartPrompt = (part: string, subject?: string | undefined) => {
+    switch (part) {
+        case "pointOfView":
+            return "פרומט בנושא נקודת מבט"
+        case "contentActivity":
+            return "פרומט בנושא פעילות תוכן"
+        case "scoutingTime":
+            return "פרומט בנושא זמן צופים"
+        case "playingTime":
+            return "פרומט בנושא זמן משחק"
+    
+        default:
+            return ""
+    }
+}
+
+
 
 // export async function getActivity(activityDetials: ActivityDetails): Promise<string> {
 //     const { subject, time, amount, grade, gender, place } = activityDetials;

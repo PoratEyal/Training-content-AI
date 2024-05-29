@@ -4,6 +4,7 @@ import Hint from "../Hint/Hint";
 import { ActivityStructure } from "../../models/types/activity";
 import { MovementPart } from "../../models/types/movement";
 import styles from "./PartOption.module.css";
+import { FaPlus } from "react-icons/fa";
 
 type PartOptionProps = {
     part: MovementPart;
@@ -50,22 +51,22 @@ function PartOption({ part, setStructure, setHasAlert }: PartOptionProps) {
     return (
         <div className={styles.option_contianer}>
             <div className={styles.option_title}>
-                <span onClick={toggleShow}>
-                    <span>+</span>
+                <span onClick={toggleShow} className={styles.option_title_click}>
+                    <span className={`${styles.click_plus} ${show && styles.click_plus_open}`}>
+                        <FaPlus />
+                    </span>
                     <span>{title}</span>
                 </span>
                 {hint ? <Hint hint={hint} /> : null}
             </div>
             {show ? (
-                <div>
-                    <SubjectInput
-                        subject={subject}
-                        setSubject={setSubject}
-                        setHasAlert={setHasAlert}
-                        magic={magic}
-                        placeholder="הוסף עוד מידע או נושא ספציפי"
-                    />
-                </div>
+                <SubjectInput
+                    subject={subject}
+                    setSubject={setSubject}
+                    setHasAlert={setHasAlert}
+                    magic={magic}
+                    placeholder={`הוסף עוד מידע או נושא ספציפי \n(לא חובה)`}
+                />
             ) : null}
         </div>
     );
