@@ -35,7 +35,7 @@ function PageLayout({
                     name="description"
                     content="צרו בקלות פעילויות מותאמות אישית תוך שימוש בבינה מלאכותית. מושלם לאירועי חברה, תנועות נוער, צופים, הנוער העובד, בני עקיבא ועוד. נסו עכשיו!"
                 />
-                <link rel="canonical" href={path} />
+                <link rel="canonical" href={`https://activitywiz.com${path}`} />
             </Helmet>
 
             <section
