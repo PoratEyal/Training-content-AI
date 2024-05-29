@@ -15,15 +15,15 @@ type ActivityOutputProps = {
 
 function ActivityOutput({ index, movementPath, defualtOpen = true }: ActivityOutputProps) {
     const { title, activity } = movementPath;
-    const [isOpened, setIsOpened] = useState(defualtOpen);
 
-    const handleOpen = () => {
-        setIsOpened((prev) => !prev);
-    };
+    // const [isOpened, setIsOpened] = useState(defualtOpen);
+    // const handleOpen = () => {
+    //     setIsOpened((prev) => !prev);
+    // };
 
     return (
         <section className={styles.activity_output_container}>
-            <div
+            {/* <div
                 onClick={handleOpen}
                 className={`${styles.activity_close} ${isOpened ? styles.activity_open : ""}`}
             >
@@ -43,8 +43,13 @@ function ActivityOutput({ index, movementPath, defualtOpen = true }: ActivityOut
                     </ReactMarkdown>
                     <MoreActions index={index} movementPath={movementPath} />
                 </section>
-            ) : null}
-            <br/>
+            ) : null} */}
+            <div className={styles.activity_open}>{title}</div>
+            <section className={styles.activity_contianer} id="markdown">
+                <ReactMarkdown className={styles.activity_data}>{activity?.activity}</ReactMarkdown>
+                <MoreActions index={index} movementPath={movementPath} />
+            </section>
+            <br />
         </section>
     );
 }
