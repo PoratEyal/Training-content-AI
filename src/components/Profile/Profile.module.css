@@ -1,3 +1,7 @@
+.user_profile{
+    cursor: pointer;
+}
+
 .user_profile_img {
     border: 1px solid var(--secondary-color);
     border-radius: 100px;
