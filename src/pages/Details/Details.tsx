@@ -70,15 +70,17 @@ function Details() {
             hasGreenBackground
             hasHeader={{ goBack: isLoggedIn ? undefined : goBack }}
         >
-            <img
-                className={styles.h2_img}
-                title="Tell us about your group"
-                alt="Tell us about your group"
-                src={"h2_page2.svg"}
-                loading="lazy"
-                width={190}
-                height={77.8}
-            ></img>
+            <div className={styles.title}>
+                <label>
+                    ספרו לנו על<br></br>הקבוצה שלכם
+                </label>
+                <img
+                    title="Yellow line image"
+                    alt="Yellow line image"
+                    src={"detailsLine.svg"}
+                    loading="lazy"
+                ></img>
+            </div>
 
             <form onSubmit={handleSubmit} className={styles.details_form}>
                 <img
