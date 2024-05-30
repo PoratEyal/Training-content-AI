@@ -23,7 +23,7 @@ function Activity() {
 
     return (
         <PageLayout path={route.activity} hasGreenBackground hasHeader={{ goBack }}>
-            <h2 className={styles.activity_title}>הפעילות שלכם מוכנה</h2>
+            <h2 className={styles.activity_title}>הפעילות מוכנה!</h2>
             <section className={styles.activity_data_container}>
                 <article>
                     {data?.movement?.path.map((path, i) => {

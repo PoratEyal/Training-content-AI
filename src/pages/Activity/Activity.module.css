@@ -6,7 +6,7 @@
     font-weight: bold;
     position: relative;
     line-height: 32px;
-    margin: 0;
+    margin-top: -10px;
 }
 
 .activity_data_container{
@@ -22,7 +22,7 @@
     left: 0;
     bottom: 0;
     width: 100vw;
-    height: 80%;
+    height: 84%;
     overflow: hidden;
     padding: 20px 0;
     box-sizing: border-box;
