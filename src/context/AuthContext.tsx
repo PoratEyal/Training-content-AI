@@ -18,6 +18,7 @@ import {
     USER_CONSENT_VALUE,
 } from "../models/constants/cookie";
 import { initRawUser } from "../utils/user";
+import msg from "../models/resources/errorMsg.json";
 
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
 
@@ -51,7 +52,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     useEffect(() => {
 
         if(cookies[COOKIE_LIMIT] === OLD_LIMIT_VALUE){
-            setLimitCookie(3);
+            setLimitCookie(NOT_REGISTER_LIMIT);
         }
 
         let unsubscribe: any;
@@ -63,7 +64,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         if (isMobile) handleRedirectResult();
         else unsubscribe = onAuthStateChanged(auth, initializeUser);
         return unsubscribe;
-    }, [isMobile, auth]);
+    }, [isMobile, auth, loading]);
 
     const initializeUser = async (user) => {
         try {
@@ -89,7 +90,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 setIsLoggedIn(false);
             }
         } catch (error) {
-            handleError(error);
+            handleError(msg.google.message);
         } finally {
             setLoading(false);
         }
@@ -113,9 +114,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setCookie(COOKIE_USER_CONSENT, USER_CONSENT_VALUE, CookieOptions);
     };
 
-    const updateGuestLimit = () => {
+    const isReachGuestLimit = () => {
         let limit = cookies[COOKIE_LIMIT];
-        if (isLoggedIn) return false;
+        if (isLoggedIn){
+            if(!cookies[COOKIE_LIMIT])
+                setLimitCookie(LIMIT_VALUE);
+            return false;
+        };
 
         if (!limit) {
             setGuestLimit(1);
@@ -123,6 +128,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             setReachLimit(false);
             return false;
         }
+
         if (limit === LIMIT_VALUE) {
             setReachLimit(false);
             return false;
@@ -153,7 +159,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 isLoggedIn,
                 loading,
                 logout,
-                updateGuestLimit,
+                isReachGuestLimit,
                 guestLimit,
                 cookies,
                 setCookie,

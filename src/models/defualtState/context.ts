@@ -19,7 +19,7 @@ export const defualtAuthContext = {
     loading: true,
     logout: async () => {},
     guestLimit: 0,
-    updateGuestLimit: () => true,
+    isReachGuestLimit: () => true,
     cookies: {},
     setCookie: () => {},
     setLimitCookie: () => {},

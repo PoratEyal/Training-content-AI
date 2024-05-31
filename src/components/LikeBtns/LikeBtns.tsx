@@ -6,6 +6,7 @@ import { Activity } from "../../models/types/activity";
 import { useErrorContext } from "../../context/ErrorContext";
 import { useContentContext } from "../../context/ContentContext";
 import { fetchUpdateActivityLikes } from "../../utils/fetch";
+import msg from "../../models/resources/errorMsg.json";
 
 type LikeBtnsProps = {
     index: number;
@@ -61,7 +62,7 @@ function LikeBtns({ index, activity, reset }: LikeBtnsProps) {
                 likesAmount,
             });
         } catch (error) {
-            handleError(error);
+            handleError(msg.error.message);
         }
     }, []);
 

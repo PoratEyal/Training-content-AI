@@ -25,7 +25,11 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
 
     useEffect(() => {
         if (!loading && isLoggedIn && currentUser) handleStart();
-        //TODO: lockSignInRef is false every time
+        // TODO
+        // console.log("loading", loading)
+        // console.log("isLoggedIn", isLoggedIn)
+        // console.log("currentUser", currentUser)
+        // console.log("--")
         if (!lockSignInRef.current) {
             setSignInBtnText(loading ? loadingText : isLoggedIn ? loggedInText : notLoggedInText);
             setSignInDisabled(loading ? true : false);
