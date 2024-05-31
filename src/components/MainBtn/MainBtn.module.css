@@ -41,7 +41,7 @@
     padding: 0 15px;
 }
 
-.btn label {
+.btn span {
     color: var(--text-color);
     cursor: pointer;
     position: relative;

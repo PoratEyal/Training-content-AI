@@ -41,6 +41,7 @@ function SubjectInput({ placeholder, subject, setSubject, setHasAlert, magic }: 
     return (
         <div className={styles.input_and_icon}>
             <textarea
+                content="width=device-width, initial-scale=1.0, user-scalable=no"
                 className={styles.input}
                 value={subject}
                 onChange={handleInputChange}

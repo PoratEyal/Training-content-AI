@@ -8,6 +8,7 @@ import LikeBtns from "../LikeBtns/LikeBtns";
 import ShareBtns from "../ShareBtns/ShareBtns";
 import { useAuthContext } from "../../context/AuthContext";
 import { Activity } from "../../models/types/activity";
+import msg from "../../models/resources/errorMsg.json";
 
 type MoreActionsProps = {
     activity: Activity;
@@ -16,7 +17,7 @@ type MoreActionsProps = {
 function MoreActions({ activity }: MoreActionsProps) {
     const { updateMainActivity } = useContentContext();
     const { handleError } = useErrorContext();
-    const { reachUnRegisterLimit, updateUnRegisterLimit } = useAuthContext();
+    const { isReachGuestLimit } = useAuthContext();
 
     const [loadingGenerate, setLoadingGenerate] = useState(false);
     const [reset, setReset] = useState(false);
@@ -26,8 +27,7 @@ function MoreActions({ activity }: MoreActionsProps) {
     const generateAgain = async () => {
         if (loadingGenerate) return;
 
-        updateUnRegisterLimit();
-        if (!reachUnRegisterLimit()) {
+        if (!isReachGuestLimit()) {
             setLoadingGenerate(true);
             setReset(true);
 

@@ -3,17 +3,11 @@ import { Outlet } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import LimitRequest from "../components/popups/LimitRequests/LimitRequests";
 import TSCs from "../components/popups/TSCs/TSCs";
-import { COOKIE_USER_CONSENT, LIMIT_VALUE } from "../models/constants/cookie";
+import { COOKIE_USER_CONSENT } from "../models/constants/cookie";
 
 const PrivateRoutes = () => {
-    const { cookies, setConsentCookie, setLimitCookie, unRegisterLimit, reachUnRegisterLimit } =
-        useAuthContext();
-    const [prevent, setPrevent] = useState(false);
+    const { cookies, setConsentCookie, reachLimit, setReachLimit } = useAuthContext();
     const [tscs, setTscs] = useState(false);
-
-    useEffect(() => {
-        setPrevent(reachUnRegisterLimit());
-    }, [unRegisterLimit]);
 
     useEffect(() => {
         if (cookies[COOKIE_USER_CONSENT] === undefined) {
@@ -26,14 +20,13 @@ const PrivateRoutes = () => {
         setTscs(false);
     };
 
-    const handleAcceptLimit = () => {
-        setLimitCookie(LIMIT_VALUE);
-        setPrevent(false);
+    const handleCloseLimit = () => {
+        setReachLimit(false);
     };
 
     return (
         <React.Fragment>
-            {prevent ? <LimitRequest handleAccept={handleAcceptLimit} /> : null}
+            {reachLimit ? <LimitRequest handleClose={handleCloseLimit} /> : null}
             {tscs ? <TSCs handleAccept={handleAcceptTerms} /> : null}
             <Outlet />
         </React.Fragment>
