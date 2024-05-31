@@ -7,16 +7,22 @@ import useSignIn from "../../../hooks/useSignIn";
 import route from "../../../router/route.json";
 
 type LimitRequestProps = {
-    handleAccept: () => void;
+    handleClose: () => void;
 };
 
-function LimitRequest({ handleAccept }: LimitRequestProps) {
+function LimitRequest({ handleClose }: LimitRequestProps) {
     const navigate = useNavigate();
 
     const handleSignIn = () => {
-        handleAccept();
+        handleClose();
         navigate(route.home);
     };
+
+    const handleSignInBtn = () => {
+        handleClose();
+        navigate(route.home);
+        signInWithGoogle()
+    }
     
     const { signInBtnText, signInDisabled, signInWithGoogle } = useSignIn(
         handleSignIn,
@@ -27,7 +33,7 @@ function LimitRequest({ handleAccept }: LimitRequestProps) {
 
     return (
         <Popup>
-            <IoCloseOutline onClick={handleAccept} className={styles.back_icon} />
+            <IoCloseOutline onClick={handleClose} className={styles.back_icon} />
             <p className={styles.limit_text_1}>
                 הגעתם למגבלת הפעולות, <br></br>כדי להמשיך ולהנות מפעולות ותכנים נוספים, התחברו בחינם
                 עכשיו
@@ -39,7 +45,7 @@ function LimitRequest({ handleAccept }: LimitRequestProps) {
                     isDisabled={signInDisabled}
                     height={38}
                     text={signInBtnText}
-                    func={signInWithGoogle}
+                    func={handleSignInBtn}
                 ></MainBtn>
             </div>
         </Popup>

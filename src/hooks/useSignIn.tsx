@@ -4,10 +4,7 @@ import {
     setPersistence,
     signInWithPopup,
     signInWithRedirect,
-    getRedirectResult,
 } from "firebase/auth";
-import { initRawUser } from "../utils/user";
-import { fetchCreateNewUser } from "../utils/fetch";
 import { useErrorContext } from "../context/ErrorContext";
 import errMsg from "../models/resources/errorMsg.json";
 import { auth } from "../config/firebase";
@@ -16,7 +13,7 @@ import { useEffect, useRef, useState } from "react";
 
 const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const { handleError } = useErrorContext();
-    const { isLoggedIn, loading, currentUser, setUser } = useAuthContext();
+    const { isLoggedIn, loading, currentUser } = useAuthContext();
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     const lockSignInRef = useRef<any>(false);
@@ -28,25 +25,13 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
 
     useEffect(() => {
         if (!loading && isLoggedIn && currentUser) handleStart();
+        //TODO: lockSignInRef is false every time
         if (!lockSignInRef.current) {
             setSignInBtnText(loading ? loadingText : isLoggedIn ? loggedInText : notLoggedInText);
             setSignInDisabled(loading ? true : false);
             setBtnLoading(loading ? true : false);
         }
-    }, [loading, isLoggedIn]);
-
-    useEffect(() => {
-        const handleRedirectResult = async () => {
-            try {
-                const userResult = await getRedirectResult(auth);
-                userResult && (await ifNewUserLoggedIn(userResult.user));
-            } catch (error) {
-                handleErrors(error);
-            }
-        };
-
-        isMobile && handleRedirectResult();
-    }, [isMobile, auth]);
+    }, [loading, isLoggedIn, currentUser]);
 
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
@@ -64,25 +49,20 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
                 await signInWithRedirect(auth, provider);
             } else {
                 const userResult = await signInWithPopup(auth, provider);
-                userResult && (await ifNewUserLoggedIn(userResult.user));
+                userResult && setBtnLoading(true);
             }
         } catch (error) {
             handleErrors(error);
         }
     };
 
-    const ifNewUserLoggedIn = async (user) => {
-        setBtnLoading(true);
-        const rawUser = initRawUser(user);
-        const response = await fetchCreateNewUser({ rawUser });
-        setUser(response.user);
-    };
-
     const handleErrors = (error) => {
         console.log("Error in signInWithGoogle: ", error);
         if (
-            (error as unknown as string).toString().includes(`(auth/popup-closed-by-user)`) === false &&
-            (error as unknown as string).toString().includes(`(auth/cancelled-popup-request)`) === false
+            (error as unknown as string).toString().includes(`(auth/popup-closed-by-user)`) ===
+                false &&
+            (error as unknown as string).toString().includes(`(auth/cancelled-popup-request)`) ===
+                false
         ) {
             handleError(errMsg.google.message);
         }
