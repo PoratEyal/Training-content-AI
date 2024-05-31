@@ -17,7 +17,7 @@ type MoreActionsProps = {
 function MoreActions({ index, movementPath }: MoreActionsProps) {
     const { updateMovementPath } = useContentContext();
     const { handleError } = useErrorContext();
-    const { reachUnRegisterLimit, updateUnRegisterLimit } = useAuthContext();
+    const { updateGuestLimit } = useAuthContext();
 
     const [loadingGenerate, setLoadingGenerate] = useState(false);
     const [reset, setReset] = useState(false);
@@ -28,8 +28,7 @@ function MoreActions({ index, movementPath }: MoreActionsProps) {
     const generateAgain = async () => {
         if (loadingGenerate) return;
 
-        updateUnRegisterLimit();
-        if (!reachUnRegisterLimit()) {
+        if (!updateGuestLimit()) {
             setLoadingGenerate(true);
             setReset(true);
 

@@ -6,11 +6,14 @@ import { useAuthContext } from "../../context/AuthContext";
 import route from "../../router/route.json";
 import useSignIn from "../../hooks/useSignIn";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
+import { COOKIE_LIMIT, LIMIT_VALUE } from "../../models/constants/cookie";
+import { useEffect, useState } from "react";
 
 function Home() {
-    const { isLoggedIn, loading, reachUnRegisterLimit } = useAuthContext();
+    const { isLoggedIn, loading, reachLimit, cookies } = useAuthContext();
     const navigate = useNavigate();
     const handleStart = () => navigate(route.details);
+    const [isLoggedInCookie, setIsLoggedInCookie] = useState(false);
 
     const { signInBtnText, signInDisabled, btnLoading, signInWithGoogle } = useSignIn(
         handleStart,
@@ -20,6 +23,10 @@ function Home() {
     );
 
     const btnFunc = isLoggedIn ? () => handleStart() : () => signInWithGoogle();
+
+    useEffect(()=>{
+        setIsLoggedInCookie(cookies[COOKIE_LIMIT] === LIMIT_VALUE)
+    },[reachLimit])
 
     return (
         <PageLayout path={route.home} hasFooter>
@@ -60,7 +67,7 @@ function Home() {
                     text={signInBtnText}
                 ></MainBtn>
 
-                {!isLoggedIn && !loading && !reachUnRegisterLimit() ? (
+                {!isLoggedIn && !loading && !reachLimit && !isLoggedInCookie ? (
                     <button onClick={handleStart} className={styles.home_login_btn}>
                         התחלה ללא חשבון
                     </button>

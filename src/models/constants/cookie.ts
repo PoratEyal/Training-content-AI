@@ -9,4 +9,5 @@ export const CookieOptions = {
 };
 
 export const USER_CONSENT_VALUE = "accepted";
-export const LIMIT_VALUE = "loggedIn";
+export const LIMIT_VALUE = "loggedin";
+export const OLD_LIMIT_VALUE = "loggedIn";

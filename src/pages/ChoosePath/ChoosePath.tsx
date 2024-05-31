@@ -17,8 +17,7 @@ import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 function ChoosePath() {
     const { handleError } = useErrorContext();
     const { data, updateMovementPath, clearPath } = useContentContext();
-    const { isLoggedIn, currentUser, loading, reachUnRegisterLimit, updateUnRegisterLimit } =
-        useAuthContext();
+    const { isLoggedIn, currentUser, loading, updateGuestLimit } = useAuthContext();
 
     const { movement } = data || {};
     const { path } = movement || {};
@@ -56,8 +55,7 @@ function ChoosePath() {
     }, [optionsPath, loading]);
 
     const submitHandler = async () => {
-        updateUnRegisterLimit();
-        if (!reachUnRegisterLimit()) {
+        if (!updateGuestLimit()) {
             const promises = [];
             const { amount, grade, gender, place } = data;
             for (const option of optionsPath) {

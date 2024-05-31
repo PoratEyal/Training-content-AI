@@ -28,9 +28,9 @@ const Circle = ({ percentage }) => {
 };
 
 function LimitIndicator() {
-    const { unRegisterLimit } = useAuthContext();
+    const { guestLimit } = useAuthContext();
     const constantNum = NOT_REGISTER_LIMIT * 10;
-    const num = NOT_REGISTER_LIMIT - unRegisterLimit || 0;
+    const num = NOT_REGISTER_LIMIT - guestLimit || 0;
     const pct = cleanPercentage(num * 10);
 
     return (
