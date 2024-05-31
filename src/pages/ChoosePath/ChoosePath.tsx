@@ -13,11 +13,12 @@ import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";
 import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
+import msg from "../../models/resources/errorMsg.json";
 
 function ChoosePath() {
     const { handleError } = useErrorContext();
     const { data, updateMovementPath, clearPath } = useContentContext();
-    const { isLoggedIn, currentUser, loading, updateGuestLimit } = useAuthContext();
+    const { isLoggedIn, currentUser, loading, isReachGuestLimit } = useAuthContext();
 
     const { movement } = data || {};
     const { path } = movement || {};
@@ -31,18 +32,22 @@ function ChoosePath() {
     useEffect(() => {
         const updateUser = async () => {
             lockRef.current = false;
-            if (isLoggedIn && currentUser) {
-                if (isGroupDetailsChanged(currentUser.movement, data)) {
-                    const updatedUser = updateUserMovement(
-                        currentUser,
-                        data.movement.name,
-                        data.grade,
-                        data.gender,
-                        data.amount,
-                        data.place,
-                    );
-                    await fetchUpdateUser({ user: updatedUser });
+            try {
+                if (isLoggedIn && currentUser) {
+                    if (isGroupDetailsChanged(currentUser.movement, data)) {
+                        const updatedUser = updateUserMovement(
+                            currentUser,
+                            data.movement.name,
+                            data.grade,
+                            data.gender,
+                            data.amount,
+                            data.place,
+                        );
+                        await fetchUpdateUser({ user: updatedUser });
+                    }
                 }
+            } catch (error) {
+                handleError(msg.error.message);
             }
         };
 
@@ -55,7 +60,7 @@ function ChoosePath() {
     }, [optionsPath, loading]);
 
     const submitHandler = async () => {
-        if (!updateGuestLimit()) {
+        if (!isReachGuestLimit()) {
             const promises = [];
             const { amount, grade, gender, place } = data;
             for (const option of optionsPath) {
@@ -71,7 +76,7 @@ function ChoosePath() {
                             grade,
                             gender,
                             place,
-                        }).catch((error) => handleError(error)),
+                        }).catch(() => handleError(msg.error.message)),
                     );
                 }
             }

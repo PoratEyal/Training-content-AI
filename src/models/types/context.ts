@@ -37,7 +37,7 @@ export type AuthContextType = {
     loading: boolean;
     logout: () => Promise<void>;
     guestLimit: number;
-    updateGuestLimit: () => boolean;
+    isReachGuestLimit: () => boolean;
     cookies: any;
     setCookie: (name: string, value: any, options?: any) => void;
     setLimitCookie: (data: string | number) => void;

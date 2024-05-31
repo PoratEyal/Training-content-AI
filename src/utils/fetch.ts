@@ -62,6 +62,7 @@ export const fetchCreateNewUser = async (
     }
 };
 
+//TODO: not in use
 export const fetchGetUserById = async (
     request: GetUserByIdRequest,
 ): Promise<GetUserByIdResponse> => {

@@ -11,10 +11,19 @@ function Activity() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!data || !data.grade || !data.movement || data.movement.path.length === 0) {
+        const hasActivities = data?.movement?.path.every((p) => {
+            return p.activity === undefined;
+        });
+        if (
+            !data ||
+            !data.grade ||
+            !data.movement ||
+            hasActivities ||
+            data.movement.path.length === 0
+        ) {
             goBack();
         }
-    }, []);
+    }, [data]);
 
     const goBack = () => {
         clearPath();

@@ -8,6 +8,7 @@ import LikeBtns from "../LikeBtns/LikeBtns";
 import ShareBtns from "../ShareBtns/ShareBtns";
 import { MovementPath } from "../../models/types/movement";
 import { useAuthContext } from "../../context/AuthContext";
+import msg from "../../models/resources/errorMsg.json";
 
 type MoreActionsProps = {
     index: number;
@@ -17,7 +18,7 @@ type MoreActionsProps = {
 function MoreActions({ index, movementPath }: MoreActionsProps) {
     const { updateMovementPath } = useContentContext();
     const { handleError } = useErrorContext();
-    const { updateGuestLimit } = useAuthContext();
+    const { isReachGuestLimit } = useAuthContext();
 
     const [loadingGenerate, setLoadingGenerate] = useState(false);
     const [reset, setReset] = useState(false);
@@ -28,7 +29,7 @@ function MoreActions({ index, movementPath }: MoreActionsProps) {
     const generateAgain = async () => {
         if (loadingGenerate) return;
 
-        if (!updateGuestLimit()) {
+        if (!isReachGuestLimit()) {
             setLoadingGenerate(true);
             setReset(true);
 
@@ -42,7 +43,7 @@ function MoreActions({ index, movementPath }: MoreActionsProps) {
                 gender,
                 place,
             })
-                .catch((error) => handleError(error))
+                .catch(() => handleError(msg.error.message))
                 .finally(() => {
                     setLoadingGenerate(false);
                     setReset(false);
