@@ -1,25 +1,3 @@
-.title {
-    width: 190px;
-    position: absolute;
-    top: 60px;
-    right: 50px;
-}
-
-.title label {
-    color: var(--background-color);
-    font-size: 27px;
-    font-weight: bold;
-    position: relative;
-    line-height: 32px;
-}
-
-.title img {
-    position: absolute;
-    top: 66px;
-    right: -3px;
-    width: 90px;
-}
-
 .lamp_img {
     z-index: 2;
     position: absolute;
