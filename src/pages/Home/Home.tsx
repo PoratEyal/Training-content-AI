@@ -1,4 +1,3 @@
-import Logo from "../../components/core/Logo/Logo";
 import MainBtn from "../../components/MainBtn/MainBtn";
 import styles from "./Home.module.css";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +7,7 @@ import useSignIn from "../../hooks/useSignIn";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import { COOKIE_LIMIT, LIMIT_VALUE } from "../../models/constants/cookie";
 import { useEffect, useState } from "react";
+import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI";
 
 function Home() {
     const { isLoggedIn, loading, reachLimit, cookies } = useAuthContext();
@@ -24,38 +24,16 @@ function Home() {
 
     const btnFunc = isLoggedIn ? () => handleStart() : () => signInWithGoogle();
 
-    useEffect(()=>{
-        setIsLoggedInCookie(cookies[COOKIE_LIMIT] === LIMIT_VALUE)
-    },[reachLimit])
+    useEffect(() => {
+        setIsLoggedInCookie(cookies[COOKIE_LIMIT] === LIMIT_VALUE);
+    }, [reachLimit]);
 
     return (
         <PageLayout path={route.home} hasFooter>
-            {/* <Logo /> */}
             <div className={styles.logo_text_div}>
+                <ContinueWithAI />
 
-                <img
-                    title="home page logo - מתקדמים לפעילות ב - AI"
-                    alt="home page logo - מתקדמים לפעילות ב - AI"
-                    src={"homePageLogo.svg"}
-                    loading="lazy"
-                    width={251}
-                    height={95}
-                ></img>
-
-                {/* <div className={styles.test}>מתקדמים</div> */}
-
-                <label className={styles.home_lable}>
-                    <label>יצירת פעילויות: מותאם, פשוט ומהיר</label>
-                    <img
-                        className={styles.hand_icon}
-                        title="I-L-Y Emoji hand"
-                        alt="I-L-Y Emoji hand"
-                        src={"hand_icon.svg"}
-                        loading="lazy"
-                        width={18}
-                        height={18}
-                    ></img>
-                </label>
+                <h1 className={styles.home_lable}>יצירת פעילויות: מותאם, פשוט ומהיר 🤟</h1>
             </div>
 
             <section className={styles.button_section}>

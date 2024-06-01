@@ -1,0 +1,11 @@
+.activity_title {
+    width: 100%;
+    text-align: center;
+    color: var(--background-color);
+    font-size: 27px;
+    font-weight: bold;
+    position: relative;
+    line-height: 32px;
+    margin-top: -10px;
+    -webkit-tap-highlight-color: transparent;
+}

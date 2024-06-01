@@ -1,0 +1,23 @@
+.tell_us_title {
+    width: 190px;
+    position: absolute;
+    top: 60px;
+    right: 50px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.tell_us_title h1 {
+    color: var(--background-color);
+    font-size: 27px;
+    font-weight: 600;
+    position: relative;
+    line-height: 32px;
+    margin: 0;
+    width: 160px;
+}
+
+.tell_us_title img {
+    position: absolute;
+    top: 66px;
+    right: -3px;
+}

@@ -7,13 +7,14 @@ import { useErrorContext } from "../../context/ErrorContext";
 import { fetchGetActivity } from "../../utils/fetch";
 import MainBtn from "../../components/MainBtn/MainBtn";
 import { useAuthContext } from "../../context/AuthContext";
-import Loading from "../../components/Loading/LoadingActivity/LoadingActivity";
+import LoadingActivity from "../../components/Loading/LoadingActivity/LoadingActivity";
 import { fetchUpdateUser } from "../../utils/fetch";
 import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";
 import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import msg from "../../models/resources/errorMsg.json";
+import ChooseActivitySubject from "../../components/titles/ChooseActivitySubject/ChooseActivitySubject";
 
 function ChoosePath() {
     const { handleError } = useErrorContext();
@@ -97,19 +98,7 @@ function ChoosePath() {
 
     return (
         <PageLayout path={route.choosePath} hasGreenBackground hasHeader={{ goBack }}>
-            <div className={styles.choose_path_title}>
-                <label>
-                    בחרו את<br></br> נושא הפעילות
-                </label>
-                <img
-                    title="Sparks effect"
-                    alt="Sparks effect"
-                    src={"page3_effect.svg"}
-                    loading="lazy"
-                    width={23}
-                    height={24}
-                ></img>
-            </div>
+            <ChooseActivitySubject />
 
             <div className={styles.path_form_container}>
                 <div className={styles.contnet_path}>
@@ -143,7 +132,7 @@ function ChoosePath() {
                         func={submitHandler}
                     ></MainBtn>
                 </div>
-                {clicked ? <Loading /> : null}
+                {clicked ? <LoadingActivity /> : null}
             </div>
         </PageLayout>
     );
