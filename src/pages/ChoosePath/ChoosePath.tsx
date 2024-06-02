@@ -19,7 +19,7 @@ import ChooseActivitySubject from "../../components/titles/ChooseActivitySubject
 function ChoosePath() {
     const { handleAlert } = useErrorContext();
     const { data, updateMovementPath, clearPath } = useContentContext();
-    const { isLoggedIn, currentUser, loading, isReachGuestLimit } = useAuthContext();
+    const { isLoggedIn, currentUser, loading } = useAuthContext();
 
     const { movement } = data || {};
     const { path } = movement || {};
@@ -61,33 +61,31 @@ function ChoosePath() {
     }, [optionsPath, loading]);
 
     const submitHandler = async () => {
-        if (!isReachGuestLimit()) {
-            const promises = [];
-            const { amount, grade, gender, place } = data;
-            for (const option of optionsPath) {
-                if (option !== undefined) {
-                    const { subject, time, name, index } = option;
-                    promises.push(
-                        fetchGetActivity(updateMovementPath, index, {
-                            fetchFrom: ["AI", "DB"],
-                            path: name,
-                            subject,
-                            time,
-                            amount,
-                            grade,
-                            gender,
-                            place,
-                        }).catch(() => handleAlert(msg.error.message)),
-                    );
-                }
+        const promises = [];
+        const { amount, grade, gender, place } = data;
+        for (const option of optionsPath) {
+            if (option !== undefined) {
+                const { subject, time, name, index } = option;
+                promises.push(
+                    fetchGetActivity(updateMovementPath, index, {
+                        fetchFrom: ["AI", "DB"],
+                        path: name,
+                        subject,
+                        time,
+                        amount,
+                        grade,
+                        gender,
+                        place,
+                    }).catch(() => handleAlert(msg.error.message)),
+                );
             }
-            try {
-                setClicked(true);
-                await Promise.allSettled(promises);
-                navigate(route.activity);
-            } catch (error) {
-                setClicked(false);
-            }
+        }
+        try {
+            setClicked(true);
+            await Promise.allSettled(promises);
+            navigate(route.activity);
+        } catch (error) {
+            setClicked(false);
         }
     };
 

@@ -5,15 +5,39 @@ import { useAuthContext } from "../../context/AuthContext";
 import route from "../../router/route.json";
 import useSignIn from "../../hooks/useSignIn";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import { COOKIE_LIMIT, LIMIT_VALUE } from "../../models/constants/cookie";
+import { COOKIE_LIMIT, GUEST_LIMIT_VALUE } from "../../models/constants/cookie";
 import { useEffect, useState } from "react";
 import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI";
+import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
 
 function Home() {
-    const { isLoggedIn, loading, reachLimit, cookies } = useAuthContext();
+    const { isLoggedIn, loading, cookies, setLimitCookie } = useAuthContext();
     const navigate = useNavigate();
     const handleStart = () => navigate(route.details);
-    const [isLoggedInCookie, setIsLoggedInCookie] = useState(false);
+    const [isGuest, setIsGuest] = useState(true);
+
+    useEffect(() => {
+        let limit = cookies[COOKIE_LIMIT];
+
+        if (limit) {
+            if (limit === GUEST_LIMIT_VALUE) {
+                setIsGuest(false);
+                return;
+            } else {
+                const isValid = isValidDateFormat(limit);
+                if (isValid) {
+                    const result = isMoreThanADayAfter(limit);
+                    if (result) {
+                        setLimitCookie(GUEST_LIMIT_VALUE);
+                        setIsGuest(false);
+                    }
+                    return;
+                }
+            }
+        }
+        setLimitCookie(new Date().toString());
+        setIsGuest(true);
+    }, []);
 
     const { signInBtnText, signInDisabled, btnLoading, signInWithGoogle } = useSignIn(
         handleStart,
@@ -23,10 +47,6 @@ function Home() {
     );
 
     const btnFunc = isLoggedIn ? () => handleStart() : () => signInWithGoogle();
-
-    useEffect(() => {
-        setIsLoggedInCookie(cookies[COOKIE_LIMIT] === LIMIT_VALUE);
-    }, [reachLimit]);
 
     return (
         <PageLayout path={route.home} hasFooter>
@@ -45,7 +65,7 @@ function Home() {
                     text={signInBtnText}
                 ></MainBtn>
 
-                {!isLoggedIn && !loading && !reachLimit && !isLoggedInCookie ? (
+                {!isLoggedIn && !loading && isGuest ? (
                     <button onClick={handleStart} className={styles.home_login_btn}>
                         התחלה ללא חשבון
                     </button>
