@@ -62,7 +62,7 @@ function LikeBtns({ index, activity, reset }: LikeBtnsProps) {
                 likesAmount,
             });
         } catch (error) {
-            handleError(msg.error.message);
+            console.error(error)
         }
     }, []);
 
