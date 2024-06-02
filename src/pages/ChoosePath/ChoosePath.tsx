@@ -17,7 +17,7 @@ import msg from "../../models/resources/errorMsg.json";
 import ChooseActivitySubject from "../../components/titles/ChooseActivitySubject/ChooseActivitySubject";
 
 function ChoosePath() {
-    const { handleError } = useErrorContext();
+    const { handleAlert } = useErrorContext();
     const { data, updateMovementPath, clearPath } = useContentContext();
     const { isLoggedIn, currentUser, loading, isReachGuestLimit } = useAuthContext();
 
@@ -48,7 +48,7 @@ function ChoosePath() {
                     }
                 }
             } catch (error) {
-                handleError(msg.error.message);
+                handleAlert(msg.error.message);
             }
         };
 
@@ -77,7 +77,7 @@ function ChoosePath() {
                             grade,
                             gender,
                             place,
-                        }).catch(() => handleError(msg.error.message)),
+                        }).catch(() => handleAlert(msg.error.message)),
                     );
                 }
             }

@@ -17,7 +17,7 @@ type MoreActionsProps = {
 
 function MoreActions({ index, movementPath }: MoreActionsProps) {
     const { updateMovementPath } = useContentContext();
-    const { handleError } = useErrorContext();
+    const { handleAlert } = useErrorContext();
     const { isReachGuestLimit } = useAuthContext();
 
     const [loadingGenerate, setLoadingGenerate] = useState(false);
@@ -43,7 +43,7 @@ function MoreActions({ index, movementPath }: MoreActionsProps) {
                 gender,
                 place,
             })
-                .catch(() => handleError(msg.error.message))
+                .catch(() => handleAlert(msg.error.message))
                 .finally(() => {
                     setLoadingGenerate(false);
                     setReset(false);
