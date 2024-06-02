@@ -7,7 +7,6 @@ import { AiOutlineLoading } from "react-icons/ai";
 import LikeBtns from "../LikeBtns/LikeBtns";
 import ShareBtns from "../ShareBtns/ShareBtns";
 import { MovementPath } from "../../models/types/movement";
-import { useAuthContext } from "../../context/AuthContext";
 import msg from "../../models/resources/errorMsg.json";
 
 type MoreActionsProps = {
@@ -18,7 +17,6 @@ type MoreActionsProps = {
 function MoreActions({ index, movementPath }: MoreActionsProps) {
     const { updateMovementPath } = useContentContext();
     const { handleAlert } = useErrorContext();
-    const { isReachGuestLimit } = useAuthContext();
 
     const [loadingGenerate, setLoadingGenerate] = useState(false);
     const [reset, setReset] = useState(false);
@@ -29,26 +27,24 @@ function MoreActions({ index, movementPath }: MoreActionsProps) {
     const generateAgain = async () => {
         if (loadingGenerate) return;
 
-        if (!isReachGuestLimit()) {
-            setLoadingGenerate(true);
-            setReset(true);
+        setLoadingGenerate(true);
+        setReset(true);
 
-            fetchGetActivity(updateMovementPath, index, {
-                fetchFrom: ["AI"],
-                path: name,
-                subject,
-                time,
-                amount,
-                grade,
-                gender,
-                place,
-            })
-                .catch(() => handleAlert(msg.error.message))
-                .finally(() => {
-                    setLoadingGenerate(false);
-                    setReset(false);
-                });
-        }
+        fetchGetActivity(updateMovementPath, index, {
+            fetchFrom: ["AI"],
+            path: name,
+            subject,
+            time,
+            amount,
+            grade,
+            gender,
+            place,
+        })
+            .catch(() => handleAlert(msg.error.message))
+            .finally(() => {
+                setLoadingGenerate(false);
+                setReset(false);
+            });
     };
 
     return (
