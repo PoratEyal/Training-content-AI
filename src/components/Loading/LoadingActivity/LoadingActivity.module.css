@@ -28,6 +28,7 @@
   width: 270px;
   text-align: center;
   color: var(--text-color);
+  margin-bottom: 40px;
 }
   
   .spinner {
