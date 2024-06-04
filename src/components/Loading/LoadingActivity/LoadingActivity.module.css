@@ -14,12 +14,25 @@
   background: #ffffff30;
   background: var(--secondary-color);
 }
-
+.gif {
+  animation: fadeIn 0.5s ease-in-out forwards;
+  opacity: 0;
+  position: absolute;
+  bottom: 360px;
+  width: 320px;
+}
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+  }
+}
 .h2{
   margin-top: 25px;
   font-size: 42px;
   font-weight: bold;
   color: var(--text-color);
+  position: absolute;
+  bottom: 320px;
 }
 .text{
   margin-top: 20px;
@@ -29,6 +42,8 @@
   text-align: center;
   color: var(--text-color);
   margin-bottom: 40px;
+  position: absolute;
+  bottom: 200px;
 }
   
   .spinner {

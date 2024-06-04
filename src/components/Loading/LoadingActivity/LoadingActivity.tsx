@@ -4,7 +4,7 @@ function LoadingActivity() {
     return (
         <div className={styles.spinnerContainer}>
             {/* <div className={styles.spinner}></div> */}
-            <img src="loading.gif" alt="loading gif" />
+            <img className={styles.gif} src="loading.gif" alt="loading gif" />
             <label className={styles.h2}>הפעילות בדרך</label>
             <label className={styles.text}>
                 שימו לב! מקור הפעילויות הינו מערכת בינה מלאכותית, ייתכן ותמצאו
