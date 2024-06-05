@@ -1,6 +1,7 @@
 .activity_output_container{
     position: relative;
     width: 100%;
+    margin-top: 5px;
 }
 
 .activity_close,
@@ -41,6 +42,8 @@
 
 .activity_data {
     color: var(--text-color);
+    line-height: 24px;
+    margin-bottom: 20px;
 }
 
 

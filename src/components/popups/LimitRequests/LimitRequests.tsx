@@ -2,28 +2,17 @@ import Popup from "../../core/Popup/Popup";
 import styles from "./LimitRequests.module.css";
 import MainBtn from "../../MainBtn/MainBtn";
 import { IoCloseOutline } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
 import useSignIn from "../../../hooks/useSignIn";
-import route from "../../../router/route.json";
 
 type LimitRequestProps = {
     handleClose: () => void;
 };
 
 function LimitRequest({ handleClose }: LimitRequestProps) {
-    const navigate = useNavigate();
-
     const handleSignIn = () => {
         handleClose();
-        navigate(route.home);
     };
 
-    const handleSignInBtn = () => {
-        handleClose();
-        navigate(route.home);
-        signInWithGoogle()
-    }
-    
     const { signInBtnText, signInDisabled, signInWithGoogle } = useSignIn(
         handleSignIn,
         "התחברות...",
@@ -45,7 +34,7 @@ function LimitRequest({ handleClose }: LimitRequestProps) {
                     isDisabled={signInDisabled}
                     height={38}
                     text={signInBtnText}
-                    func={handleSignInBtn}
+                    func={()=> signInWithGoogle()}
                 ></MainBtn>
             </div>
         </Popup>

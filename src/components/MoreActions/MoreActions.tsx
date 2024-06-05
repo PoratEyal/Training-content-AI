@@ -16,8 +16,7 @@ type MoreActionsProps = {
 
 function MoreActions({ activity }: MoreActionsProps) {
     const { updateMainActivity } = useContentContext();
-    const { handleError } = useErrorContext();
-    const { isReachGuestLimit } = useAuthContext();
+    const { handleAlert } = useErrorContext();
 
     const [loadingGenerate, setLoadingGenerate] = useState(false);
     const [reset, setReset] = useState(false);
@@ -27,33 +26,31 @@ function MoreActions({ activity }: MoreActionsProps) {
     const generateAgain = async () => {
         if (loadingGenerate) return;
 
-        if (!isReachGuestLimit()) {
-            setLoadingGenerate(true);
-            setReset(true);
+        setLoadingGenerate(true);
+        setReset(true);
 
-            try {
-                const response = await fetchGetActivity({
-                    fetchFrom: ["AI"],
-                    parts,
-                    subject,
-                    time,
-                    amount,
-                    grade,
-                    gender,
-                    place,
-                });
-                if (
-                    (response.result === "success" || response.result === "safety") &&
-                    response.activity
-                ) {
-                    updateMainActivity(response.activity);
-                }
-            } catch (error) {
-                handleError(error);
-            } finally {
-                setLoadingGenerate(false);
-                setReset(false);
+        try {
+            const response = await fetchGetActivity({
+                fetchFrom: ["AI"],
+                parts,
+                subject,
+                time,
+                amount,
+                grade,
+                gender,
+                place,
+            });
+            if (
+                (response.result === "success" || response.result === "safety") &&
+                response.activity
+            ) {
+                updateMainActivity(response.activity);
             }
+        } catch (error) {
+            handleAlert(msg.error.message);
+        } finally {
+            setLoadingGenerate(false);
+            setReset(false);
         }
     };
 

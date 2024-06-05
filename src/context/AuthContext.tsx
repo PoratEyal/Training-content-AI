@@ -13,8 +13,7 @@ import {
     COOKIE_LIMIT,
     COOKIE_USER_CONSENT,
     CookieOptions,
-    LIMIT_VALUE,
-    OLD_LIMIT_VALUE,
+    GUEST_LIMIT_VALUE,
     USER_CONSENT_VALUE,
 } from "../models/constants/cookie";
 import { initRawUser } from "../utils/user";
@@ -32,29 +31,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
     // const [generateLimit, setGenerateLimit] = useState<number>(0);
-    const [guestLimit, setGuestLimit] = useState<number | undefined>();
-    const [reachLimit, setReachLimit] = useState(false);
 
     const [cookies, setCookie] = useCookies([COOKIE_LIMIT, COOKIE_USER_CONSENT]);
 
-    const setStateFromSession = () => {
-        try {
-            if (guestLimit === undefined) {
-                const cookieLimit = cookies[COOKIE_LIMIT];
-                if (cookieLimit) {
-                    setGuestLimit(parseInt(cookieLimit));
-                }
-            }
-        } catch (error) {}
-    };
-    setStateFromSession();
-
     useEffect(() => {
-
-        if(cookies[COOKIE_LIMIT] === OLD_LIMIT_VALUE){
-            setLimitCookie(NOT_REGISTER_LIMIT);
-        }
-
         let unsubscribe: any;
         const handleRedirectResult = async () => {
             const userResult = await getRedirectResult(auth);
@@ -83,7 +63,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                     }
                     setCurrentUser(resultUser);
                     setIsLoggedIn(true);
-                    if (cookies[COOKIE_LIMIT] !== LIMIT_VALUE) setLimitCookie(LIMIT_VALUE);
+                    if (cookies[COOKIE_LIMIT] !== GUEST_LIMIT_VALUE)
+                        setLimitCookie(GUEST_LIMIT_VALUE);
                     return;
                 }
                 setCurrentUser(undefined);
@@ -114,44 +95,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setCookie(COOKIE_USER_CONSENT, USER_CONSENT_VALUE, CookieOptions);
     };
 
-    const isReachGuestLimit = () => {
-        let limit = cookies[COOKIE_LIMIT];
-        if (isLoggedIn){
-            if(!cookies[COOKIE_LIMIT])
-                setLimitCookie(LIMIT_VALUE);
-            return false;
-        };
-
-        if (!limit) {
-            setGuestLimit(1);
-            setLimitCookie(1);
-            setReachLimit(false);
-            return false;
-        }
-
-        if (limit === LIMIT_VALUE) {
-            setReachLimit(false);
-            return false;
-        } else {
-            limit = parseInt(limit);
-            //reach limit
-
-            if (limit >= NOT_REGISTER_LIMIT) {
-                setReachLimit(true);
-                return true;
-            }
-
-            //not reach limit
-            setGuestLimit((prev) => {
-                const lim = prev ? prev + 1 : 1;
-                if (lim <= NOT_REGISTER_LIMIT) setLimitCookie(lim);
-                return lim;
-            });
-            setReachLimit(false);
-            return false;
-        }
-    };
-
     return (
         <AuthContext.Provider
             value={{
@@ -159,14 +102,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 isLoggedIn,
                 loading,
                 logout,
-                isReachGuestLimit,
-                guestLimit,
                 cookies,
                 setCookie,
-                setLimitCookie,
                 setConsentCookie,
-                reachLimit,
-                setReachLimit,
+                setLimitCookie,
             }}
         >
             {children}

@@ -64,7 +64,7 @@ function LikeBtns({ activity, reset }: LikeBtnsProps) {
                 updateMainActivity(response.activity);
             }
         } catch (error) {
-            handleError(msg.error.message);
+            console.error(error)
         }
     }, []);
 

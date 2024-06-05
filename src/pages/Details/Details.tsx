@@ -16,6 +16,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
+import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
 
 function Details() {
     const { data, updateDetails, clearAll } = useContentContext();
@@ -70,17 +71,7 @@ function Details() {
             hasGreenBackground
             hasHeader={{ goBack: isLoggedIn ? undefined : goBack }}
         >
-            <div className={styles.title}>
-                <label>
-                    ספרו לנו על<br></br>הקבוצה שלכם
-                </label>
-                <img
-                    title="Yellow line image"
-                    alt="Yellow line image"
-                    src={"detailsLine.svg"}
-                    loading="lazy"
-                ></img>
-            </div>
+            <TellUsAboutYourGroup />
 
             <form onSubmit={handleSubmit} className={styles.details_form}>
                 <img

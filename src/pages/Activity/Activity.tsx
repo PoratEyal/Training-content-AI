@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
+import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 
 function Activity() {
     const { data, mainActivity, clearPath } = useContentContext();
@@ -23,7 +24,7 @@ function Activity() {
 
     return (
         <PageLayout path={route.activity} hasGreenBackground hasHeader={{ goBack }}>
-            <h2 className={styles.activity_title}>הפעילות מוכנה!</h2>
+            <ActivityReady />
             <section className={styles.activity_data_container}>
                 <article>
                     <ActivityOutput activity={mainActivity} />

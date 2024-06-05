@@ -23,6 +23,7 @@
     justify-content: center;
     align-items: center;
     gap: 5px;
+    margin: 0;
 }
 .hand_icon{
     width: 18px;
@@ -47,10 +48,6 @@
     cursor: pointer;
     font-weight: 550;
     padding: 1px;
-}
-
-.test{
-    
 }
 
 @media (min-width: 550px) {

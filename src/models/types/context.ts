@@ -37,12 +37,8 @@ export type AuthContextType = {
     isLoggedIn: boolean;
     loading: boolean;
     logout: () => Promise<void>;
-    guestLimit: number;
-    isReachGuestLimit: () => boolean;
     cookies: any;
     setCookie: (name: string, value: any, options?: any) => void;
     setLimitCookie: (data: string | number) => void;
     setConsentCookie: () => void;
-    reachLimit: boolean;
-    setReachLimit: React.Dispatch<React.SetStateAction<boolean>>;
 };

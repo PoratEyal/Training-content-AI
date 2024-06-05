@@ -1,4 +1,3 @@
-import Logo from "../../components/core/Logo/Logo";
 import MainBtn from "../../components/MainBtn/MainBtn";
 import styles from "./Home.module.css";
 import { useNavigate } from "react-router-dom";
@@ -6,14 +5,39 @@ import { useAuthContext } from "../../context/AuthContext";
 import route from "../../router/route.json";
 import useSignIn from "../../hooks/useSignIn";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import { COOKIE_LIMIT, LIMIT_VALUE } from "../../models/constants/cookie";
+import { COOKIE_LIMIT, GUEST_LIMIT_VALUE } from "../../models/constants/cookie";
 import { useEffect, useState } from "react";
+import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI";
+import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
 
 function Home() {
-    const { isLoggedIn, loading, reachLimit, cookies } = useAuthContext();
+    const { isLoggedIn, loading, cookies, setLimitCookie } = useAuthContext();
     const navigate = useNavigate();
     const handleStart = () => navigate(route.details);
-    const [isLoggedInCookie, setIsLoggedInCookie] = useState(false);
+    const [isGuest, setIsGuest] = useState(true);
+
+    useEffect(() => {
+        let limit = cookies[COOKIE_LIMIT];
+
+        if (limit) {
+            if (limit === GUEST_LIMIT_VALUE) {
+                setIsGuest(false);
+                return;
+            } else {
+                const isValid = isValidDateFormat(limit);
+                if (isValid) {
+                    const result = isMoreThanADayAfter(limit);
+                    if (result) {
+                        setLimitCookie(GUEST_LIMIT_VALUE);
+                        setIsGuest(false);
+                    }
+                    return;
+                }
+            }
+        }
+        setLimitCookie(new Date().toString());
+        setIsGuest(true);
+    }, []);
 
     const { signInBtnText, signInDisabled, btnLoading, signInWithGoogle } = useSignIn(
         handleStart,
@@ -24,38 +48,12 @@ function Home() {
 
     const btnFunc = isLoggedIn ? () => handleStart() : () => signInWithGoogle();
 
-    useEffect(()=>{
-        setIsLoggedInCookie(cookies[COOKIE_LIMIT] === LIMIT_VALUE)
-    },[reachLimit])
-
     return (
         <PageLayout path={route.home} hasFooter>
-            {/* <Logo /> */}
             <div className={styles.logo_text_div}>
+                <ContinueWithAI />
 
-                <img
-                    title="home page logo - מתקדמים לפעילות ב - AI"
-                    alt="home page logo - מתקדמים לפעילות ב - AI"
-                    src={"homePageLogo.svg"}
-                    loading="lazy"
-                    width={251}
-                    height={95}
-                ></img>
-
-                {/* <div className={styles.test}>מתקדמים</div> */}
-
-                <label className={styles.home_lable}>
-                    <label>יצירת פעילויות: מותאם, פשוט ומהיר</label>
-                    <img
-                        className={styles.hand_icon}
-                        title="I-L-Y Emoji hand"
-                        alt="I-L-Y Emoji hand"
-                        src={"hand_icon.svg"}
-                        loading="lazy"
-                        width={18}
-                        height={18}
-                    ></img>
-                </label>
+                <h1 className={styles.home_lable}>יצירת פעילויות: מותאם, פשוט ומהיר 🤟</h1>
             </div>
 
             <section className={styles.button_section}>
@@ -67,7 +65,7 @@ function Home() {
                     text={signInBtnText}
                 ></MainBtn>
 
-                {!isLoggedIn && !loading && !reachLimit && !isLoggedInCookie ? (
+                {!isLoggedIn && !loading && isGuest ? (
                     <button onClick={handleStart} className={styles.home_login_btn}>
                         התחלה ללא חשבון
                     </button>
