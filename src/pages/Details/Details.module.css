@@ -19,6 +19,10 @@
     height: 75%;
 }
 
+.selection_container {
+    margin-top: 10px;
+}
+
 .selects_btn {
     margin-top: 35px;
     position: absolute;
