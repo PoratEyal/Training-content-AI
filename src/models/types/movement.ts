@@ -14,13 +14,12 @@ export type MovementName =
 export type Movement = {
     name: MovementName;
     title: string;
-    path: MovementPath[];
+    parts: MovementPart[];
 };
 
-export type MovementPath = {
+export type MovementPart = {
     name: string;
     title: string;
-    activity: Activity | undefined;
     hint?: string;
     magic?: any[];
 };

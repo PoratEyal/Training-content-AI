@@ -8,27 +8,18 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 
 function Activity() {
-    const { data, clearPath } = useContentContext();
+    const { data, mainActivity, clearPath } = useContentContext();
     const navigate = useNavigate();
 
     useEffect(() => {
-        const hasActivities = data?.movement?.path.every((p) => {
-            return p.activity === undefined;
-        });
-        if (
-            !data ||
-            !data.grade ||
-            !data.movement ||
-            hasActivities ||
-            data.movement.path.length === 0
-        ) {
+        if (!data || !data.grade || !data.movement || !mainActivity) {
             goBack();
         }
     }, [data]);
 
     const goBack = () => {
         clearPath();
-        navigate(route.choosePath);
+        navigate(route.build);
     };
 
     return (
@@ -36,11 +27,7 @@ function Activity() {
             <ActivityReady />
             <section className={styles.activity_data_container}>
                 <article>
-                    {data?.movement?.path.map((path, i) => {
-                        return path.activity ? (
-                            <ActivityOutput key={i} index={i} movementPath={path} />
-                        ) : null;
-                    })}
+                    <ActivityOutput activity={mainActivity} />
                 </article>
             </section>
         </PageLayout>

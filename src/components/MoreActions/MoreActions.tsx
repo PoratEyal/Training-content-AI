@@ -6,23 +6,22 @@ import { fetchGetActivity } from "../../utils/fetch";
 import { AiOutlineLoading } from "react-icons/ai";
 import LikeBtns from "../LikeBtns/LikeBtns";
 import ShareBtns from "../ShareBtns/ShareBtns";
-import { MovementPath } from "../../models/types/movement";
+import { useAuthContext } from "../../context/AuthContext";
+import { Activity } from "../../models/types/activity";
 import msg from "../../models/resources/errorMsg.json";
 
 type MoreActionsProps = {
-    index: number;
-    movementPath: MovementPath;
+    activity: Activity;
 };
 
-function MoreActions({ index, movementPath }: MoreActionsProps) {
-    const { updateMovementPath } = useContentContext();
+function MoreActions({ activity }: MoreActionsProps) {
+    const { updateMainActivity } = useContentContext();
     const { handleAlert } = useErrorContext();
 
     const [loadingGenerate, setLoadingGenerate] = useState(false);
     const [reset, setReset] = useState(false);
 
-    const { name, activity } = movementPath;
-    const { activity: text, subject, time, amount, grade, gender, place } = activity || {};
+    const { activity: text, subject, parts, time, amount, grade, gender, place } = activity;
 
     const generateAgain = async () => {
         if (loadingGenerate) return;
@@ -30,28 +29,36 @@ function MoreActions({ index, movementPath }: MoreActionsProps) {
         setLoadingGenerate(true);
         setReset(true);
 
-        fetchGetActivity(updateMovementPath, index, {
-            fetchFrom: ["AI"],
-            path: name,
-            subject,
-            time,
-            amount,
-            grade,
-            gender,
-            place,
-        })
-            .catch(() => handleAlert(msg.error.message))
-            .finally(() => {
-                setLoadingGenerate(false);
-                setReset(false);
+        try {
+            const response = await fetchGetActivity({
+                fetchFrom: ["AI"],
+                parts,
+                subject,
+                time,
+                amount,
+                grade,
+                gender,
+                place,
             });
+            if (
+                (response.result === "success" || response.result === "safety") &&
+                response.activity
+            ) {
+                updateMainActivity(response.activity);
+            }
+        } catch (error) {
+            handleAlert(msg.error.message);
+        } finally {
+            setLoadingGenerate(false);
+            setReset(false);
+        }
     };
 
     return (
         <section className={styles.more_actions_container}>
             {activity ? (
                 <div className={styles.more_actions_left}>
-                    <LikeBtns index={index} activity={activity} reset={reset} />
+                    <LikeBtns activity={activity} reset={reset} />
                     <ShareBtns text={text} />
                 </div>
             ) : null}

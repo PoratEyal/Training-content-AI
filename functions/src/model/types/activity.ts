@@ -3,7 +3,7 @@ export type Activity = {
     updatedAt: string;
     fetchCount: number;
     likes: number;
-    path: string;
+    parts: PartStructure[];
     grade: string;
     amount: string;
     place: string;
@@ -16,9 +16,21 @@ export type Activity = {
 
 export type ActivityDetails = {
     subject: string;
+    parts: PartStructure[];
     time: string;
     amount: string;
     grade: string;
     gender: string;
     place: string;
-}
+};
+
+export type ActivityStructure = {
+    mainSubject: string | undefined;
+    time: string | undefined;
+    parts: PartStructure[];
+};
+
+export type PartStructure = {
+    name: string;
+    subject: string;
+};

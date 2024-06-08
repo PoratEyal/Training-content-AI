@@ -9,14 +9,13 @@ import { fetchUpdateActivityLikes } from "../../utils/fetch";
 import msg from "../../models/resources/errorMsg.json";
 
 type LikeBtnsProps = {
-    index: number;
     activity: Activity;
     reset: boolean;
 };
 
-function LikeBtns({ index, activity, reset }: LikeBtnsProps) {
+function LikeBtns({ activity, reset }: LikeBtnsProps) {
     const { handleError } = useErrorContext();
-    const { updateMovementPath } = useContentContext();
+    const { updateMainActivity } = useContentContext();
 
     const [action, setAction] = useState({ like: undefined, dislike: undefined });
     const [debouncedLiked, setDebouncedLiked] = useState(false);
@@ -32,7 +31,7 @@ function LikeBtns({ index, activity, reset }: LikeBtnsProps) {
         let likeTimeHandler: NodeJS.Timeout;
         let dislikeTimeHandler: NodeJS.Timeout;
         const { like, dislike } = action;
-        if(like === undefined && dislike === undefined) return;
+        if (like === undefined && dislike === undefined) return;
 
         if ((like || !like) && dislike === undefined) {
             likeTimeHandler = setTimeout(() => {
@@ -57,10 +56,13 @@ function LikeBtns({ index, activity, reset }: LikeBtnsProps) {
 
     const sendLikeStatusToServer = useCallback(async (likesAmount: number) => {
         try {
-            await fetchUpdateActivityLikes(updateMovementPath, index, {
+            const response = await fetchUpdateActivityLikes({
                 activity,
                 likesAmount,
             });
+            if (response.result === "success" && response.activity) {
+                updateMainActivity(response.activity);
+            }
         } catch (error) {
             console.error(error)
         }

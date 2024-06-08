@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { ContentProvider } from "./context/ContentContext";
 import Details from "./pages/Details/Details";
-import ChoosePath from "./pages/ChoosePath/ChoosePath";
 import Activity from "./pages/Activity/Activity";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import PrivateRoutes from "./router/PrivateRoutes";
@@ -15,6 +14,7 @@ import Home from "./pages/Home/Home";
 import route from "./router/route.json";
 import "./App.css";
 import Maintenance from "./pages/Maintenance/Maintenance";
+import BuildActivity from "./pages/BuildActivity/BuildActivity";
 
 function App() {
     return (
@@ -28,7 +28,7 @@ function App() {
                                 <Route element={<PrivateRoutes />}>
                                     <Route path={route.home} element={<Home />} />
                                     <Route path={route.details} element={<Details />} />
-                                    <Route path={route.choosePath} element={<ChoosePath />} />
+                                    <Route path={route.build} element={<BuildActivity />} />
                                     <Route path={route.activity} element={<Activity />} />
                                 </Route>
                                 <Route path={route.privacyPolicy} element={<PrivacyPolicy />} />
