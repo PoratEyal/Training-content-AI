@@ -1,4 +1,4 @@
-import { useEffect, createContext, useState, useContext } from "react";
+import { useEffect, createContext, useState, useContext, useRef } from "react";
 import { auth } from "../config/firebase";
 import { getRedirectResult, onAuthStateChanged } from "firebase/auth";
 import { AuthContextType } from "../models/types/context";
@@ -6,7 +6,6 @@ import { defualtAuthContext } from "../models/defualtState/context";
 import { GoogleUser, User } from "../models/types/user";
 import { fetchCreateNewUser } from "../utils/fetch";
 import { useErrorContext } from "./ErrorContext";
-import { NOT_REGISTER_LIMIT } from "../models/constants";
 import { useCookies } from "react-cookie";
 import { addSessionData } from "../utils/movment";
 import {
@@ -30,6 +29,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [currentUser, setCurrentUser] = useState<User | undefined>();
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
+
+    const signInRef = useRef<boolean>(false);
     // const [generateLimit, setGenerateLimit] = useState<number>(0);
 
     const [cookies, setCookie] = useCookies([COOKIE_LIMIT, COOKIE_USER_CONSENT]);
@@ -50,6 +51,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         try {
             if (user && (user as GoogleUser)?.uid) {
                 let resultUser: User | undefined = undefined;
+                signInRef.current = true;
 
                 const rawUser = initRawUser(user);
                 const response = await fetchCreateNewUser({ rawUser });
@@ -72,6 +74,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             }
         } catch (error) {
             handleError(msg.google.message);
+            signInRef.current = false;            
         } finally {
             setLoading(false);
         }
@@ -98,6 +101,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     return (
         <AuthContext.Provider
             value={{
+                signInRef,
                 currentUser,
                 isLoggedIn,
                 loading,
