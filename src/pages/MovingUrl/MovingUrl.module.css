@@ -1,0 +1,62 @@
+.container {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 50px;
+    border-radius: 100px;
+}
+
+.div {
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-color);
+    width: 240px;
+}
+.link{
+    margin-top: 40px;
+    line-height: 27px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 26px;
+    font-weight: 450;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.copy_btn{
+    width: 205px;
+    padding: 15px 15px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 18px;
+    font-weight: 550;
+    background-color: #FFD324;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    direction: rtl;
+    cursor: pointer;
+}
+.copy_btn label{
+    color: #333335;
+    cursor: pointer;
+}
+.icon{
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-right: 1px;
+}

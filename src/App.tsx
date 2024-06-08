@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { ContentProvider } from "./context/ContentContext";
 import Details from "./pages/Details/Details";
@@ -14,11 +14,10 @@ import { AuthProvider } from "./context/AuthContext";
 import Home from "./pages/Home/Home";
 import "./App.css";
 import Maintenance from "./pages/Maintenance/Maintenance";
+import MovingUrl from "./pages/MovingUrl/MovingUrl";
 
 function App() {
-    useEffect(() => {
-        window.location.href = "https://activitywiz.com/";
-    }, []);
+    const [isMovingUrl, setIsMovingUrl] = useState(true);
 
     return (
         <HelmetProvider>
@@ -28,94 +27,100 @@ function App() {
                         <ReactNotifications className="react-notifications" />
                         <Router>
                             <Routes>
-                                <Route element={<PrivateRoutes />}>
-                                    <Route
-                                        path="/"
-                                        element={
-                                            <>
-                                                <Helmet>
-                                                    <title>Activity Wiz - פעילויות</title>
-                                                    <meta
-                                                        name="description"
-                                                        content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
-                                                        מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
-                                                    />
-                                                    <link rel="canonical" href="/" />
-                                                </Helmet>
-                                                <Home />
-                                            </>
-                                        }
-                                    />
-                                    <Route
-                                        path="/details"
-                                        element={
-                                            <>
-                                                <Helmet>
-                                                    <title>בונה פעולות</title>
-                                                    <meta
-                                                        name="description"
-                                                        content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
-                                                        מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
-                                                    />
-                                                    <link rel="canonical" href="/details" />
-                                                </Helmet>
-                                                <Details />
-                                            </>
-                                        }
-                                    />
-                                    <Route
-                                        path="/choosePath"
-                                        element={
-                                            <>
-                                                <Helmet>
-                                                    <title>בונה פעולות</title>
-                                                    <meta
-                                                        name="description"
-                                                        content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
-                                                        מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
-                                                    />
-                                                    <link rel="canonical" href="/choosePath" />
-                                                </Helmet>
-                                                <ChoosePath />
-                                            </>
-                                        }
-                                    />
-                                    <Route
-                                        path="/activity"
-                                        element={
-                                            <>
-                                                <Helmet>
-                                                    <title>בונה פעולות</title>
-                                                    <meta
-                                                        name="description"
-                                                        content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
-                                                        מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
-                                                    />
-                                                    <link rel="canonical" href="/activity" />
-                                                </Helmet>
-                                                <Activity />
-                                            </>
-                                        }
-                                    />
-                                </Route>
-                                <Route
-                                    path="/privacyPolicy"
-                                    element={
-                                        <>
-                                            <Helmet>
-                                                <title>בונה פעולות</title>
-                                                <meta
-                                                    name="description"
-                                                    content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
-                                                    מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
-                                                />
-                                                <link rel="canonical" href="/privacyPolicy" />
-                                            </Helmet>
-                                            <PrivacyPolicy />
-                                        </>
-                                    }
-                                />
-                                <Route path={"*"} element={<Navigate replace to="/" />} />
+                                {isMovingUrl ? (
+                                    <Route path="*" element={<MovingUrl />} />
+                                ) : (
+                                    <>
+                                        <Route element={<PrivateRoutes />}>
+                                            <Route
+                                                path="/"
+                                                element={
+                                                    <>
+                                                        <Helmet>
+                                                            <title>Activity Wiz - פעולות</title>
+                                                            <meta
+                                                                name="description"
+                                                                content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
+                                                                מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
+                                                            />
+                                                            <link rel="canonical" href="/" />
+                                                        </Helmet>
+                                                        <Home />
+                                                    </>
+                                                }
+                                            />
+                                            <Route
+                                                path="/details"
+                                                element={
+                                                    <>
+                                                        <Helmet>
+                                                            <title>בונה פעולות</title>
+                                                            <meta
+                                                                name="description"
+                                                                content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
+                                                                מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
+                                                            />
+                                                            <link rel="canonical" href="/details" />
+                                                        </Helmet>
+                                                        <Details />
+                                                    </>
+                                                }
+                                            />
+                                            <Route
+                                                path="/choosePath"
+                                                element={
+                                                    <>
+                                                        <Helmet>
+                                                            <title>בונה פעולות</title>
+                                                            <meta
+                                                                name="description"
+                                                                content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
+                                                                מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
+                                                            />
+                                                            <link rel="canonical" href="/choosePath" />
+                                                        </Helmet>
+                                                        <ChoosePath />
+                                                    </>
+                                                }
+                                            />
+                                            <Route
+                                                path="/activity"
+                                                element={
+                                                    <>
+                                                        <Helmet>
+                                                            <title>בונה פעולות</title>
+                                                            <meta
+                                                                name="description"
+                                                                content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
+                                                                מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
+                                                            />
+                                                            <link rel="canonical" href="/activity" />
+                                                        </Helmet>
+                                                        <Activity />
+                                                    </>
+                                                }
+                                            />
+                                        </Route>
+                                        <Route
+                                            path="/privacyPolicy"
+                                            element={
+                                                <>
+                                                    <Helmet>
+                                                        <title>בונה פעולות</title>
+                                                        <meta
+                                                            name="description"
+                                                            content="צרו בקלות פעילויות מותאמות אישית באמצעות כלי בינה מלאכותית.
+                                                            מתאים לארועי חברה, לכל תנועות הנוער, פעולות צופים, הנוער העובד, בני עקיבא ועוד"
+                                                        />
+                                                        <link rel="canonical" href="/privacyPolicy" />
+                                                    </Helmet>
+                                                    <PrivacyPolicy />
+                                                </>
+                                            }
+                                        />
+                                        <Route path="*" element={<Navigate replace to="/" />} />
+                                    </>
+                                )}
                             </Routes>
                         </Router>
                     </ContentProvider>
