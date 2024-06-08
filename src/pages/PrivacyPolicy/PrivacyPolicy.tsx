@@ -18,6 +18,10 @@ function PrivacyPolicy() {
                     <h1 className={styles.page_title}>תנאי שירות</h1>
 
                     <div className={styles.space_div}>
+                        <label>{policy.p0.text}</label>
+                    </div>
+
+                    <div className={styles.space_div}>
                         <label>{policy.p1.label}</label> {policy.p1.text}
                     </div>
 
