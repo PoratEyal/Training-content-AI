@@ -9,14 +9,14 @@ import { useErrorContext } from "../context/ErrorContext";
 import errMsg from "../models/resources/errorMsg.json";
 import { auth } from "../config/firebase";
 import { useAuthContext } from "../context/AuthContext";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import Session from "../utils/sessionStorage";
 
 const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const { handleError } = useErrorContext();
     const { isLoggedIn, loading, currentUser } = useAuthContext();
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    const lockSignInRef = useRef<any>(false);
     const [signInBtnText, setSignInBtnText] = useState<string>(
         isLoggedIn ? loggedInText : notLoggedInText,
     );
@@ -24,8 +24,17 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const [signInDisabled, setSignInDisabled] = useState<boolean>(loading ? true : false);
 
     useEffect(() => {
-        if (!loading && isLoggedIn && currentUser) handleStart();
-        if (!lockSignInRef.current) {
+        if (!loading && isLoggedIn && currentUser){
+            Session.remove("signInRef");
+            handleStart();
+        };
+
+        const signInRef = Session.get("signInRef");
+        if(signInRef && (signInRef as boolean) === true){
+            setSignInBtnText(loadingText);
+            setSignInDisabled(true);
+            setBtnLoading(true);
+        } else {
             setSignInBtnText(loading ? loadingText : isLoggedIn ? loggedInText : notLoggedInText);
             setSignInDisabled(loading ? true : false);
             setBtnLoading(loading ? true : false);
@@ -37,20 +46,20 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
         try {
             setSignInBtnText(loadingText);
             setSignInDisabled(true);
-            lockSignInRef.current = true;
             if (!auth) {
                 console.error("Firebase auth not initialized");
                 return;
             }
-
             await setPersistence(auth, browserLocalPersistence);
             if (isMobile) {
+                Session.set("signInRef", true);
                 await signInWithRedirect(auth, provider);
             } else {
                 const userResult = await signInWithPopup(auth, provider);
                 userResult && setBtnLoading(true);
             }
         } catch (error) {
+            Session.remove("signInRef");   
             handleErrors(error);
         }
     };
@@ -68,7 +77,6 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
         setSignInBtnText(isLoggedIn ? loggedInText : notLoggedInText);
         setSignInDisabled(false);
         setBtnLoading(false);
-        lockSignInRef.current = false;
     };
 
     return { signInBtnText, signInDisabled, btnLoading, signInWithGoogle };
