@@ -13,10 +13,9 @@ import { useEffect, useRef, useState } from "react";
 
 const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const { handleError } = useErrorContext();
-    const { isLoggedIn, loading, currentUser } = useAuthContext();
+    const { isLoggedIn, loading, currentUser, signInRef } = useAuthContext();
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    const lockSignInRef = useRef<any>(false);
     const [signInBtnText, setSignInBtnText] = useState<string>(
         isLoggedIn ? loggedInText : notLoggedInText,
     );
@@ -24,25 +23,26 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const [signInDisabled, setSignInDisabled] = useState<boolean>(loading ? true : false);
 
     useEffect(() => {
-        if (!loading && isLoggedIn && currentUser) handleStart();
-        if (!lockSignInRef.current) {
+        if (!loading && isLoggedIn && currentUser) {
+            signInRef.current = false;
+            handleStart();
+        }
+        if (!signInRef.current) {
             setSignInBtnText(loading ? loadingText : isLoggedIn ? loggedInText : notLoggedInText);
             setSignInDisabled(loading ? true : false);
             setBtnLoading(loading ? true : false);
         }
-    }, [loading, isLoggedIn, currentUser]);
+    }, [loading, isLoggedIn, currentUser, signInRef.current]);
 
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
         try {
             setSignInBtnText(loadingText);
             setSignInDisabled(true);
-            lockSignInRef.current = true;
             if (!auth) {
                 console.error("Firebase auth not initialized");
                 return;
             }
-
             await setPersistence(auth, browserLocalPersistence);
             if (isMobile) {
                 await signInWithRedirect(auth, provider);
@@ -68,7 +68,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
         setSignInBtnText(isLoggedIn ? loggedInText : notLoggedInText);
         setSignInDisabled(false);
         setBtnLoading(false);
-        lockSignInRef.current = false;
+        signInRef.current = false;
     };
 
     return { signInBtnText, signInDisabled, btnLoading, signInWithGoogle };
