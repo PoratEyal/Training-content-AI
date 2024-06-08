@@ -20,7 +20,7 @@ import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/T
 
 function Details() {
     const { data, updateDetails, clearAll } = useContentContext();
-    const { isLoggedIn, currentUser, loading, signInRef } = useAuthContext();
+    const { isLoggedIn, currentUser, loading } = useAuthContext();
     const navigate = useNavigate();
 
     const [movement, setMovment] = useState(
@@ -44,12 +44,6 @@ function Details() {
     );
 
     const [isDisabled, setIsDisabled] = useState(true);
-
-    useEffect(() => {
-        if (!signInRef.current) {
-            signInRef.current = false;
-        }
-    }, []);
 
     useEffect(() => {
         if (loading) setIsDisabled(true);

@@ -10,10 +10,11 @@ import errMsg from "../models/resources/errorMsg.json";
 import { auth } from "../config/firebase";
 import { useAuthContext } from "../context/AuthContext";
 import { useEffect, useState } from "react";
+import Session from "../utils/sessionStorage";
 
 const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const { handleError } = useErrorContext();
-    const { isLoggedIn, loading, currentUser, signInRef } = useAuthContext();
+    const { isLoggedIn, loading, currentUser } = useAuthContext();
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     const [signInBtnText, setSignInBtnText] = useState<string>(
@@ -23,8 +24,13 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const [signInDisabled, setSignInDisabled] = useState<boolean>(loading ? true : false);
 
     useEffect(() => {
-        if (!loading && isLoggedIn && currentUser) handleStart();
-        if (signInRef.current) {
+        if (!loading && isLoggedIn && currentUser){
+            Session.remove("signInRef");
+            handleStart();
+        };
+
+        const signInRef = Session.get("signInRef");
+        if(signInRef && (signInRef as boolean) === true){
             setSignInBtnText(loadingText);
             setSignInDisabled(true);
             setBtnLoading(true);
@@ -33,7 +39,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
             setSignInDisabled(loading ? true : false);
             setBtnLoading(loading ? true : false);
         }
-    }, [loading, isLoggedIn, currentUser, signInRef.current]);
+    }, [loading, isLoggedIn, currentUser]);
 
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
@@ -46,12 +52,14 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
             }
             await setPersistence(auth, browserLocalPersistence);
             if (isMobile) {
+                Session.set("signInRef", true);
                 await signInWithRedirect(auth, provider);
             } else {
                 const userResult = await signInWithPopup(auth, provider);
                 userResult && setBtnLoading(true);
             }
         } catch (error) {
+            Session.remove("signInRef");   
             handleErrors(error);
         }
     };
@@ -66,7 +74,6 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
         ) {
             handleError(errMsg.google.message);
         }
-        signInRef.current = false;
         setSignInBtnText(isLoggedIn ? loggedInText : notLoggedInText);
         setSignInDisabled(false);
         setBtnLoading(false);

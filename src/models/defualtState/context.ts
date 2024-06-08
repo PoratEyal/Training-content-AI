@@ -14,7 +14,6 @@ export const defualtErrorContext = {
 };
 
 export const defualtAuthContext = {
-    signInRef: null,
     currentUser: null,
     isLoggedIn: false,
     loading: true,
