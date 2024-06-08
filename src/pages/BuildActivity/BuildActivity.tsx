@@ -20,8 +20,7 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 function BuildActivity() {
     const { handleError } = useErrorContext();
     const { data, updateMainActivity, clearPath } = useContentContext();
-    const { isLoggedIn, currentUser, loading, reachUnRegisterLimit, updateUnRegisterLimit } =
-        useAuthContext();
+    const { isLoggedIn, currentUser, loading } = useAuthContext();
 
     const { movement } = data || {};
     const { parts } = movement || {};
@@ -63,32 +62,29 @@ function BuildActivity() {
     }, [structure, loading]);
 
     const submitHandler = async () => {
-        updateUnRegisterLimit();
-        if (!reachUnRegisterLimit()) {
-            setClicked(true);
-            const { amount, grade, gender, place } = data;
-            try {
-                const response = await fetchGetActivity({
-                    fetchFrom: ["AI", "DB"],
-                    parts: structure?.parts || [],
-                    subject: structure?.mainSubject || "",
-                    time: structure?.time || ActivityTimeOptions[0].value,
-                    amount,
-                    grade,
-                    gender,
-                    place,
-                });
-                if (
-                    (response.result === "success" || response.result === "safety") &&
-                    response.activity
-                ) {
-                    updateMainActivity(response.activity);
-                    navigate(route.activity);
-                }
-            } catch (error) {
-                handleError(msg.error.message);
-                setClicked(false);
+        setClicked(true);
+        const { amount, grade, gender, place } = data;
+        try {
+            const response = await fetchGetActivity({
+                fetchFrom: ["AI", "DB"],
+                parts: structure?.parts || [],
+                subject: structure?.mainSubject || "",
+                time: structure?.time || ActivityTimeOptions[0].value,
+                amount,
+                grade,
+                gender,
+                place,
+            });
+            if (
+                (response.result === "success" || response.result === "safety") &&
+                response.activity
+            ) {
+                updateMainActivity(response.activity);
+                navigate(route.activity);
             }
+        } catch (error) {
+            handleError(msg.error.message);
+            setClicked(false);
         }
     };
 
