@@ -32,7 +32,6 @@ export type ErrorContextType = {
 };
 
 export type AuthContextType = {
-    signInRef: React.MutableRefObject<any>;
     currentUser: User | undefined;
     isLoggedIn: boolean;
     loading: boolean;

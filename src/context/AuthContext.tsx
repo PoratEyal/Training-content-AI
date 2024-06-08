@@ -30,7 +30,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
 
-    const signInRef = useRef<boolean>(false);
     // const [generateLimit, setGenerateLimit] = useState<number>(0);
 
     const [cookies, setCookie] = useCookies([COOKIE_LIMIT, COOKIE_USER_CONSENT]);
@@ -51,8 +50,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         try {
             if (user && (user as GoogleUser)?.uid) {
                 let resultUser: User | undefined = undefined;
-                signInRef.current = true;
-
                 const rawUser = initRawUser(user);
                 const response = await fetchCreateNewUser({ rawUser });
                 if (response.user) {
@@ -73,8 +70,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 setIsLoggedIn(false);
             }
         } catch (error) {
-            handleError(msg.google.message);
-            signInRef.current = false;            
+            handleError(msg.google.message);       
         } finally {
             setLoading(false);
         }
@@ -101,7 +97,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     return (
         <AuthContext.Provider
             value={{
-                signInRef,
                 currentUser,
                 isLoggedIn,
                 loading,
