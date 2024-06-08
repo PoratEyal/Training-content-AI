@@ -9,7 +9,7 @@ import { useErrorContext } from "../context/ErrorContext";
 import errMsg from "../models/resources/errorMsg.json";
 import { auth } from "../config/firebase";
 import { useAuthContext } from "../context/AuthContext";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const { handleError } = useErrorContext();
@@ -23,11 +23,12 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const [signInDisabled, setSignInDisabled] = useState<boolean>(loading ? true : false);
 
     useEffect(() => {
-        if (!loading && isLoggedIn && currentUser) {
-            signInRef.current = false;
-            handleStart();
-        }
-        if (!signInRef.current) {
+        if (!loading && isLoggedIn && currentUser) handleStart();
+        if (signInRef.current) {
+            setSignInBtnText(loadingText);
+            setSignInDisabled(true);
+            setBtnLoading(true);
+        } else {
             setSignInBtnText(loading ? loadingText : isLoggedIn ? loggedInText : notLoggedInText);
             setSignInDisabled(loading ? true : false);
             setBtnLoading(loading ? true : false);
@@ -65,10 +66,10 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
         ) {
             handleError(errMsg.google.message);
         }
+        signInRef.current = false;
         setSignInBtnText(isLoggedIn ? loggedInText : notLoggedInText);
         setSignInDisabled(false);
         setBtnLoading(false);
-        signInRef.current = false;
     };
 
     return { signInBtnText, signInDisabled, btnLoading, signInWithGoogle };
