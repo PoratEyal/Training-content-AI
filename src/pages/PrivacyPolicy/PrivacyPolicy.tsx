@@ -15,7 +15,7 @@ function PrivacyPolicy() {
         <PageLayout path={route.privacyPolicy} hasHeader={{ goBack, isBlur: true }} hasFade>
             <article className={styles.privacy_article}>
                 <section>
-                    <h1 className={styles.page_title}>תנאי שירות</h1>
+                    <h1 className={styles.page_title}>תנאי שירות ומדיניות פרטיות</h1>
 
                     <div className={styles.space_div}>
                         <label>{policy.p0.text}</label>
@@ -42,7 +42,7 @@ function PrivacyPolicy() {
                     </div>
 
                     <div className={styles.space_div}>
-                        <label>{policy.p6.label}</label> {policy.p6.text}
+                        <label></label> {policy.p6.text}
                     </div>
 
                     <div className={styles.space_div}>
