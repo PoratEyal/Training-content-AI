@@ -9,6 +9,7 @@ type SelectDetailsProps = {
 };
 
 function SelectDetails({ data, placeholder, obj, setObj }: SelectDetailsProps) {
+
     return (
         <div className={styles.input_div}>
             <select value={obj} onChange={(e) => setObj(e.target.value)} aria-label={placeholder}>

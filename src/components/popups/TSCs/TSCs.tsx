@@ -7,7 +7,7 @@ function TSCs({ handleAccept }) {
     return (
         <Popup>
             <article className={styles.privacy}>
-                <h3 className={styles.h3_privacy}>תנאי שירות</h3>
+                <h3 className={styles.h3_privacy}>תנאי שירות ומדיניות פרטיות</h3>
 
                 <div className={styles.space_div}>
                         <label>{policy.p0.text}</label>
@@ -34,7 +34,7 @@ function TSCs({ handleAccept }) {
                 </div>
 
                 <div className={styles.space_div}>
-                    <label>{policy.p6.label}</label> {policy.p6.text}
+                    <label></label> {policy.p6.text}
                 </div>
 
                 <div className={styles.space_div}>
