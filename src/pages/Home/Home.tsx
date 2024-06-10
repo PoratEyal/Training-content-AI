@@ -9,6 +9,7 @@ import { COOKIE_LIMIT, GUEST_LIMIT_VALUE } from "../../models/constants/cookie";
 import { useEffect, useState } from "react";
 import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI";
 import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
+import Session from "../../utils/sessionStorage";
 
 function Home() {
     const { isLoggedIn, loading, cookies, setLimitCookie } = useAuthContext();
@@ -18,9 +19,10 @@ function Home() {
 
     useEffect(() => {
         let limit = cookies[COOKIE_LIMIT];
+        const signInRef = Session.get("signInRef");
 
         if (limit) {
-            if (limit === GUEST_LIMIT_VALUE) {
+            if (limit === GUEST_LIMIT_VALUE || (signInRef as boolean) === true) {
                 setIsGuest(false);
                 return;
             } else {

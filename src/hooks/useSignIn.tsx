@@ -30,7 +30,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
         };
 
         const signInRef = Session.get("signInRef");
-        if(signInRef && (signInRef as boolean) === true){
+        if((signInRef as boolean) === true){
             setSignInBtnText(loadingText);
             setSignInDisabled(true);
             setBtnLoading(true);
@@ -52,7 +52,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
             }
             await setPersistence(auth, browserLocalPersistence);
             if (isMobile) {
-                Session.set("signInRef", true);
+                // Session.set("signInRef", true);
                 await signInWithRedirect(auth, provider);
             } else {
                 const userResult = await signInWithPopup(auth, provider);

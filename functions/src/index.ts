@@ -7,6 +7,7 @@ import updateActivityLikes from "./callableFunctions/updateActivityLikes"
 import createNewUser from "./callableFunctions/createNewUser"
 import getUserById from "./callableFunctions/getUserById"
 import updateUser from "./callableFunctions/updateUser"
+import formatUser from "./callableFunctions/formatUser"
 import * as admin from "firebase-admin";
 
 const app = express();
@@ -24,6 +25,8 @@ exports.updateLikes = updateActivityLikes;
 exports.createNewUser = createNewUser;
 exports.updateUser = updateUser
 exports.getUserById = getUserById;
+
+exports.formatUser = formatUser;
 
 exports.app = functions.https.onRequest(app);
 
