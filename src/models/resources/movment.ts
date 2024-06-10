@@ -2,6 +2,7 @@ import { Movement } from "../types/movement";
 import hints from "./hints.json";
 import PlayingTimeSubjects from "../../models/resources/playingTime.json";
 import ScoutingTimeSubjects from "../../models/resources/scoutesActivities.json";
+import ActivitiesIdeas from '../../models/resources/activitiesIdeas.json'
 
 export const Movements = {
     scout: {
@@ -13,12 +14,14 @@ export const Movements = {
                 title: "נקודת מבט",
                 hint: hints.scout.pointOfView,
                 activity: undefined,
+                magic: ActivitiesIdeas,
             },
             {
                 name: "contentActivity",
                 title: "פעילות תוכן",
                 hint: hints.scout.contentActivity,
                 activity: undefined,
+                magic: ActivitiesIdeas,
             },
             {
                 name: "scoutingTime",
@@ -45,6 +48,7 @@ export const Movements = {
                 title: "פעילות",
                 hint: hints.other.activity,
                 activity: undefined,
+                magic: ActivitiesIdeas,
             },
             {
                 name: "playingTime",
@@ -64,6 +68,7 @@ export const Movements = {
                 title: "פעילות תוכן",
                 hint: hints.akiva.contentActivity,
                 activity: undefined,
+                magic: ActivitiesIdeas,
             },
             {
                 name: "playingTime",
@@ -88,11 +93,13 @@ export const Movements = {
                 name: "pointOfView",
                 title: "מתודת הצפה",
                 activity: undefined,
+                magic: ActivitiesIdeas,
             },
             {
                 name: "contentActivity",
                 title: "מתודה מרכזית",
                 activity: undefined,
+                magic: ActivitiesIdeas,
             },
         ],
     } as Movement,
@@ -105,6 +112,7 @@ export const Movements = {
                 title: "פעילות",
                 hint: hints.other.activity,
                 activity: undefined,
+                magic: ActivitiesIdeas,
             },
             {
                 name: "playingTime",
@@ -124,6 +132,7 @@ export const Movements = {
                 title: "פעילות",
                 hint: hints.sayarut.activity,
                 activity: undefined,
+                magic: ActivitiesIdeas,
             },
             {
                 name: "scoutingTime",
@@ -150,6 +159,7 @@ export const Movements = {
                 title: "פעילות",
                 hint: hints.other.activity,
                 activity: undefined,
+                magic: ActivitiesIdeas,
             },
             {
                 name: "playingTime",
@@ -169,6 +179,7 @@ export const Movements = {
                 title: "פעילות",
                 hint: hints.other.activity,
                 activity: undefined,
+                magic: ActivitiesIdeas,
             },
             {
                 name: "playingTime",
@@ -188,6 +199,7 @@ export const Movements = {
                 title: "פעילות",
                 hint: hints.other.activity,
                 activity: undefined,
+                magic: ActivitiesIdeas,
             },
             {
                 name: "playingTime",
