@@ -37,3 +37,7 @@ export type GetUserByIdRequest = {
 export type UpdateUserRequest = {
     user: User;
 };
+
+export type FormatUserRequest = {
+    ids: string[];
+};

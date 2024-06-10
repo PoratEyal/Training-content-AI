@@ -11,6 +11,20 @@ export type User = {
     isAcceptTerms: boolean;
 };
 
+export type DbUser = {
+    name: string;
+    email: string;
+    image: string;
+    limit: number;
+    lastUpdate: string;
+    movement: string | null; //the en name
+    grade: string | null;
+    gender: string | null;
+    amount: string | null;
+    place: string | null;
+    isAcceptTerms: boolean;
+};
+
 export type RawUser = {
     uid: string;
     accessToken: string;

@@ -4,7 +4,7 @@ import { CreateNewUserResponse } from "../model/types/response";
 import { CreateNewUserRequest } from "../model/types/request";
 import { CollectionDB } from "../model/enum/DB";
 import { db } from "../index";
-import { initUser, initUserFromDB } from "../utils/user";
+import { initUserToDB, initUserFromDB, initUserFromReq } from "../utils/user";
 
 const createNewUser = functions.https.onCall(
     async (
@@ -21,10 +21,9 @@ const createNewUser = functions.https.onCall(
                 if (userDoc.exists && userData) {
                     return { result: "success", user: initUserFromDB(userId, userData) };
                 } else{
-                    const newUser = initUser(data.rawUser);
-                    const { id, ...restUser } = newUser;
-                    await db.collection(CollectionDB.USERS).doc(id).set(restUser);
-                    return { result: "success", user: newUser };
+                    const userDB = initUserToDB(data.rawUser);
+                    await db.collection(CollectionDB.USERS).doc(userId).set(userDB);
+                    return { result: "success", user: initUserFromReq(userId, userDB) };
                 }
             }
             return { result: "error", message: "User is not authenticated." };

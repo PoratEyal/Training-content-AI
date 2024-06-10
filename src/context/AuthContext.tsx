@@ -17,6 +17,7 @@ import {
 } from "../models/constants/cookie";
 import { initRawUser } from "../utils/user";
 import msg from "../models/resources/errorMsg.json";
+import Session from "../utils/sessionStorage";
 
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
 
@@ -38,7 +39,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         let unsubscribe: any;
         const handleRedirectResult = async () => {
             const userResult = await getRedirectResult(auth);
-            if (userResult) initializeUser(userResult);
+            if (userResult) {
+                Session.set("signInRef", true);
+                initializeUser(userResult)
+            }
             else unsubscribe = onAuthStateChanged(auth, initializeUser);
         };
         if (isMobile) handleRedirectResult();
