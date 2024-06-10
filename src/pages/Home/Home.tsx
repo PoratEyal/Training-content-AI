@@ -20,9 +20,13 @@ function Home() {
     useEffect(() => {
         let limit = cookies[COOKIE_LIMIT];
         const signInRef = Session.get("signInRef");
+        if (signInRef && (signInRef as boolean) === true) {
+            setIsGuest(false);
+            return;
+        }
 
         if (limit) {
-            if (limit === GUEST_LIMIT_VALUE || (signInRef as boolean) === true) {
+            if (limit === GUEST_LIMIT_VALUE) {
                 setIsGuest(false);
                 return;
             } else {
