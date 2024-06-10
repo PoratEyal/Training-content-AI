@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const handleRedirectResult = async () => {
             const userResult = await getRedirectResult(auth);
             if (userResult) {
-                Session.set("signInRef", true);
+                // Session.set("signInRef", true);
                 initializeUser(userResult)
             }
             else unsubscribe = onAuthStateChanged(auth, initializeUser);
