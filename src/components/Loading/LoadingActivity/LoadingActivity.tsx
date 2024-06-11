@@ -9,7 +9,9 @@ function LoadingActivity() {
                 שימו לב! מקור הפעילויות הינו מערכת בינה מלאכותית, ייתכן ותמצאו
                  אי דיוקים. אנא בדקו את התוכן לפני כל הפעלה
             </label>
-            <div className={styles.progressBar}></div>
+            <div className={styles.progressBarContainer}>
+                <div className={styles.progressBar}></div>
+            </div>
         </div>
     )
 }
