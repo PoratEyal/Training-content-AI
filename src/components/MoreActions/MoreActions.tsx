@@ -12,9 +12,11 @@ import msg from "../../models/resources/errorMsg.json";
 type MoreActionsProps = {
     index: number;
     movementPath: MovementPath;
+    newActivity: boolean;
+    setNewActivity: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function MoreActions({ index, movementPath }: MoreActionsProps) {
+function MoreActions({ index, movementPath, newActivity, setNewActivity }: MoreActionsProps) {
     const { updateMovementPath } = useContentContext();
     const { handleAlert } = useErrorContext();
 
@@ -43,6 +45,7 @@ function MoreActions({ index, movementPath }: MoreActionsProps) {
             .catch(() => handleAlert(msg.error.message))
             .finally(() => {
                 setLoadingGenerate(false);
+                setNewActivity(true);
                 setReset(false);
             });
     };
