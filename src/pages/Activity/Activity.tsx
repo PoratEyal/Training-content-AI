@@ -1,4 +1,5 @@
 import styles from "./Activity.module.css";
+import React, { useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import { useNavigate } from "react-router-dom";
@@ -38,7 +39,11 @@ function Activity() {
                 <article>
                     {data?.movement?.path.map((path, i) => {
                         return path.activity ? (
-                            <ActivityOutput key={i} index={i} movementPath={path} />
+                            <ActivityOutput 
+                                key={i}
+                                index={i}
+                                movementPath={path}
+                            />
                         ) : null;
                     })}
                 </article>
