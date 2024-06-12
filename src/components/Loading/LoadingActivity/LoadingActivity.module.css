@@ -48,15 +48,13 @@
   line-height: 24px;
 }
 
-.progressBarContainer {
-  width: 100%;
-  z-index: 999;
-}
-
 .progressBar {
+  position: absolute;
+  top: 80%;
+  z-index: 999;
   width: 100%;
   height: 8px;
-  background-color: rgb(64, 201, 80);
+  background-color: rgb(13, 130, 31);
 }
 
 /* .progressBar::before {
