@@ -41,7 +41,10 @@
     bottom: 7px;
     color: var(--primary-color);
     cursor: pointer;
-    font-size: 18px;
+    font-size: 19px;
+    padding: 7px;
+    padding-left: 2px;
+    padding-bottom: 0px;
 }
 
 @media (min-width: 550px) {
