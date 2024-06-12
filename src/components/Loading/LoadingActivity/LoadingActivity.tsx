@@ -3,9 +3,7 @@ import styles from './LoadingActivity.module.css';
 function LoadingActivity() {
     return (
         <div className={styles.spinnerContainer}>
-            <div className={styles.progressBarContainer}>
-                <div className={styles.progressBar}></div>
-            </div>
+            <div className={styles.progressBar}></div>
             <img className={styles.gif} src="loading.gif" alt="loading gif" />
             <label className={styles.h2}>הפעילות בדרך</label>
             <label className={styles.text}>
