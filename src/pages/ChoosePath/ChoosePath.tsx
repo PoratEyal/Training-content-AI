@@ -145,7 +145,7 @@ function ChoosePath() {
                         func={submitHandler}
                     ></MainBtn>
                 </div>
-                {clicked ? <LoadingActivity /> : null}
+                {!clicked ? <LoadingActivity /> : null}
             </div>
         </PageLayout>
     );
