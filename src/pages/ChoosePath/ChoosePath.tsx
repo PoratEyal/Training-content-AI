@@ -53,12 +53,27 @@ function ChoosePath() {
         };
 
         if (lockRef.current) updateUser();
-    }, []);
+    }, [currentUser, data, handleAlert, isLoggedIn]);
 
     useEffect(() => {
         if (loading) setIsDisabled(true);
-        else setIsDisabled(optionsPath.every((option) => option === undefined));
+        else checkValidity();
     }, [optionsPath, loading]);
+
+    const checkValidity = () => {
+        let allUndefined = true;
+
+        for (let option of optionsPath) {
+            if (option !== undefined) {
+                allUndefined = false;
+                if (option.isValid === false) {
+                    setIsDisabled(true)
+                    return;
+                }
+            }
+        }
+        return setIsDisabled(allUndefined);
+    };
 
     const submitHandler = async () => {
         const promises = [];
