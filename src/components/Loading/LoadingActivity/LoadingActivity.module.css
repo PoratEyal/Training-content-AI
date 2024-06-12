@@ -60,7 +60,7 @@
 }
 
 .progressBar::before {
-  content: "";
+  content: "הפעילות בדרך";
   position: absolute;
   top: 0px;
   height: 8px;
