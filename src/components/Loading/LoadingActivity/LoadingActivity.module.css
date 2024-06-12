@@ -70,6 +70,9 @@
   border-bottom-right-radius: 20px;
   background-color: var(--primary-color);
   -webkit-animation: progress 17s linear forwards;
+  animation: progress 17s linear forwards;
+  z-index: 1000; 
+  will-change: transform;	
 }
 
 @keyframes progress {
