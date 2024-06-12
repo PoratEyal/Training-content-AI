@@ -1,11 +1,8 @@
-/* LoadingActivity.module.css */
-
 .spinnerContainer {
   position: fixed;  
-  z-index: 999;  
+  z-index: 998;  
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   top: 50%;         
   left: 50%;      
@@ -47,17 +44,13 @@
   color: var(--text-color);
   margin-bottom: 40px;
   position: absolute;
-  bottom: 200px;
+  bottom: 185px;
+  line-height: 24px;
 }
 
 .progressBarContainer {
-  position: absolute;
-  top: 0;
   width: 100%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  z-index: 999;
 }
 
 .progressBar {
@@ -74,7 +67,7 @@
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   background-color: var(--primary-color);
-  animation: progress 17s linear forwards;
+  -webkit-animation: progress 17s linear forwards;
 }
 
 @keyframes progress {
@@ -83,5 +76,14 @@
   }
   100% {
       transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes progress {
+  0% {
+      -webkit-transform: translateX(-100%);
+  }
+  100% {
+      -webkit-transform: translateX(0);
   }
 }
