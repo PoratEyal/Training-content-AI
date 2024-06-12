@@ -34,14 +34,20 @@ function Path({ index, path, setPath }: PathProps) {
         if (!subject || !time || subject === "" || time === "") {
             setPath((prev) => {
                 const newPath = [...prev];
-                newPath[index] = undefined;
+                newPath[index] = {
+                    isValid: false,
+                    subject: undefined,
+                    time: undefined,
+                    name,
+                    index,
+                };
                 return newPath;
             });
             return;
         }
         setPath((prev) => {
             const newPath = [...prev];
-            newPath[index] = { subject, time, name, index };
+            newPath[index] = { isValid: true, subject, time, name, index };
             return newPath;
         });
     }, [show, subject, time]);
@@ -49,7 +55,7 @@ function Path({ index, path, setPath }: PathProps) {
     const toggleShow = () => {
         setShow((prev) => !prev);
         setHasAlert(false);
-    }
+    };
 
     const checkboxStyle = show ? styles.checkbox_active : styles.checkbox_inactive;
 
@@ -82,7 +88,8 @@ function Path({ index, path, setPath }: PathProps) {
 
             {show && hasAlert ? (
                 <div className={styles.input_alert}>
-שימו לב! הנתונים מגיעים ממערכת בינה מלאכותית. יתכן שתוצאות חיפושים מסוימים לא עדכניים          
+                    שימו לב! הנתונים מגיעים ממערכת בינה מלאכותית. יתכן שתוצאות חיפושים
+                    מסוימים לא עדכניים
                 </div>
             ) : null}
         </div>
