@@ -57,9 +57,7 @@
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  z-index: 1000; 
+  z-index: 1000;
 }
 
 .progressBar::before {
@@ -67,27 +65,15 @@
   height: 8px;
   display: block;
   background-color: var(--primary-color);
-  -webkit-animation: progress 17s linear forwards;
   animation: progress 17s linear forwards;
   border-radius: 16px;
   will-change: transform;
   width: 270px;
+  transform: translateX(-100%);
 }
 
 @keyframes progress {
-  0% {
-      transform: translateX(-98%);
-  }
   100% {
-      transform: translateX(0);
-  }
-}
-
-@-webkit-keyframes progress {
-  0% {
-      -webkit-transform: translateX(-98%);
-  }
-  100% {
-      -webkit-transform: translateX(0);
+    transform: translateX(0);
   }
 }
