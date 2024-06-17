@@ -38,7 +38,7 @@
     "start:server": "cd functions && npm run build && firebase emulators:start --only functions",
     "build": "cross-env NODE_ENV=production GENERATE_SOURCEMAP=false react-scripts build",
     "deploy": "cross-env NODE_ENV=production && npm run build && firebase deploy",
-    "deploy:prview": "firebase hosting:channel:deploy",
+    "deploy:staging": "firebase hosting:channel:deploy staging",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
