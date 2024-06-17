@@ -3,13 +3,17 @@ import styles from "./ContantUs.module.css";
 import { useNavigate } from "react-router-dom";
 import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
+import MainBtn from "../../components/MainBtn/MainBtn";
+import MsgInput from "../../components/MsgInput/MsgInput";
+import { fetchSendMsg } from "../../utils/fetch";
+import ContactWithUs from "../../components/titles/ContactWithUs/ContactWithUs";
 
 function ContantUs() {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        message: "",
-    });
+    const [isSent, setIsSent] = useState(false);
+
+    const [formData, setFormData] = useState("");
+    const [isDisabled, setIsDisabled] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -17,57 +21,81 @@ function ContantUs() {
         navigate(-1);
     };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+        setIsDisabled(true);
+
+        try {
+            await fetchSendMsg({ msg: formData });
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsLoading(false);
+            setIsDisabled(false);
+            setIsSent(true);
+        }
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission logic here (e.g., send the data to an API)
-        console.log("Form data submitted:", formData);
-    };
+    if (isSent) {
+        return (
+            <PageLayout path={route.contactUs} hasGreenBackground hasHeader={{ goBack }}>
+                <ContactWithUs />
+                <section className={styles.contact_thanks_container}>
+                    <img
+                        className={styles.lamp_img}
+                        title="Yellow lamp"
+                        alt="Yellow lamp"
+                        src={"lamp.svg"}
+                        loading="lazy"
+                        width={135}
+                        height={139}
+                    ></img>
+                    <p className={styles.contact_thanks}>
+                        התגובה שלכם התקבלה <br/> תודה שאתם עוזרים לנו להשתפר 🙏
+                    </p>
+                    <button className={styles.contact_back_btn} onClick={goBack}>חזרה למסך הראשי</button>
+                </section>
+            </PageLayout>
+        );
+    }
 
     return (
-        <PageLayout path={route.contactUs} hasHeader={{ goBack }}>
-            <h1>צרו איתנו קשר</h1>
+        <PageLayout path={route.contactUs} hasGreenBackground hasHeader={{ goBack }}>
+            <ContactWithUs />
             <form onSubmit={handleSubmit} className={styles.contact_form}>
-                <div className="form-group">
-                    <label htmlFor="name">Name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                    />
+                <img
+                    className={styles.lamp_img}
+                    title="Yellow lamp"
+                    alt="Yellow lamp"
+                    src={"lamp.svg"}
+                    loading="lazy"
+                    width={135}
+                    height={139}
+                ></img>
+
+                <p className={styles.contact_p}>
+                    אנחנו תמיד מחפשים דרכים לשפר את האתר. האם יש לכם רעיון לשיפור, שינוי או תיקון ?
+                </p>
+                <div className={styles.contact_btn}>
+                    <div className={styles.contact_inputs}>
+                        <MsgInput
+                            subject={formData}
+                            setSubject={setFormData}
+                            setIsDisabled={setIsDisabled}
+                        />
+                    </div>
+                    <div className={styles.btn_div}>
+                        <MainBtn
+                            type="submit"
+                            isDisabled={isDisabled}
+                            isLoading={isLoading}
+                            height={42}
+                            text="שלח"
+                            func={handleSubmit}
+                        ></MainBtn>
+                    </div>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="message">Message</label>
-                    <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                    ></textarea>
-                </div>
-                <button type="submit">Submit</button>
             </form>
         </PageLayout>
     );

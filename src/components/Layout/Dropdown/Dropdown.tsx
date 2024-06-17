@@ -10,7 +10,6 @@ import useClickOutside from "../../../hooks/useClickOutside";
 import { MdOutlinePrivacyTip } from "react-icons/md";
 import { IoMdShare } from "react-icons/io";
 import { IoMailOpen } from "react-icons/io5";
-import policy from "../../../models/resources/policy.json";
 import { WEBSITE_URL } from "../../../models/constants";
 import { formatInviteFriend } from "../../../utils/format";
 import route from "../../../router/route.json";

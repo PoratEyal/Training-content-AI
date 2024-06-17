@@ -41,3 +41,7 @@ export type UpdateUserRequest = {
 export type FormatUserRequest = {
     ids: string[];
 };
+
+export type SendMsgRequest = {
+    msg: string;
+};

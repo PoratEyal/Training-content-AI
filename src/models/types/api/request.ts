@@ -30,3 +30,7 @@ export type GetUserByIdRequest = {
 export type UpdateUserRequest = {
     user: User;
 };
+
+export type SendMsgRequest = {
+    msg: string;
+};

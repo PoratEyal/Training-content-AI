@@ -8,6 +8,7 @@ import createNewUser from "./callableFunctions/createNewUser"
 import getUserById from "./callableFunctions/getUserById"
 import updateUser from "./callableFunctions/updateUser"
 import formatUser from "./callableFunctions/formatUser"
+import sendMsg from "./callableFunctions/sendMsg"
 import * as admin from "firebase-admin";
 
 const app = express();
@@ -27,6 +28,7 @@ exports.updateUser = updateUser
 exports.getUserById = getUserById;
 
 exports.formatUser = formatUser;
+exports.sendMsg = sendMsg;
 
 exports.app = functions.https.onRequest(app);
 
