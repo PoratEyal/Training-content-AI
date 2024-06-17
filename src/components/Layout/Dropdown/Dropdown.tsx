@@ -33,7 +33,7 @@ function Dropdown({ handleClose }: DropdownProps) {
         },
         {
             title: "צרו קשר",
-            func: () => contactUs(),
+            path: route.contactUs,
             Icon: <IoMailOpen />,
         },
         {
@@ -51,12 +51,6 @@ function Dropdown({ handleClose }: DropdownProps) {
             Icon: <MdLogout />,
         },
     ];
-
-    const contactUs = () => {
-        const emailLink = document.createElement("a");
-        emailLink.href = `mailto:${policy.p9.email}`;
-        emailLink.click();
-    };
 
     const WhatsappOption = (option: DropdownOption) => (
         <li className={styles.navbar_option}>
