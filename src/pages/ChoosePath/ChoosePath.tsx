@@ -34,6 +34,7 @@ function ChoosePath() {
     const lockSurveyRef = useRef(true);
 
     useEffect(() => {
+        console.log("ChoosePath useEffect")
         if(lockSurveyRef.current && currentUser && movement) {
             if(currentUser.movement.movement !== movement.name) {
                 openSurveyMovement({ movement: movement.name });
