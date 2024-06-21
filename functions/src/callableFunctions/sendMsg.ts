@@ -16,8 +16,8 @@ const sendMsg = functions.https.onCall(
                 const userId = context.auth.uid;
                 await admin.auth().setCustomUserClaims(context.auth.uid, { canEditUsers: true });
 
-                const msgDB = initMsgToDB(data.msg, userId);
-                await db.collection(CollectionDB.MSG).doc(userId).set(msgDB);
+                const msgDB = initMsgToDB(data.msg, data.type, userId);
+                await db.collection(CollectionDB.MSG).add(msgDB);
                 return { result: "success" };
             }
             return { result: "error", message: "User is not authenticated." };

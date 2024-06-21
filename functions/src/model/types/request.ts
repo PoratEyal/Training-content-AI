@@ -43,5 +43,6 @@ export type FormatUserRequest = {
 };
 
 export type SendMsgRequest = {
+    type: string;
     msg: string;
 };

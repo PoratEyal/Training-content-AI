@@ -27,7 +27,7 @@ function ContantUs() {
         setIsDisabled(true);
 
         try {
-            await fetchSendMsg({ msg: formData });
+            await fetchSendMsg({ msg: formData, type: "contactUs" });
         } catch (error) {
             console.error(error);
         } finally {
