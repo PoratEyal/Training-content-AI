@@ -1,4 +1,5 @@
 import { Activity } from "../activity";
+import { SurveyCondition } from "../survey";
 import { RawUser, User } from "../user";
 
 export type FetchFrom = "DB" | "AI";
@@ -29,4 +30,9 @@ export type GetUserByIdRequest = {
 
 export type UpdateUserRequest = {
     user: User;
+};
+
+export type SendMsgRequest = {
+    type: SurveyCondition;
+    msg: string;
 };

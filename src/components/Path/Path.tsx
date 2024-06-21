@@ -5,6 +5,7 @@ import { ActivityTimeOptions } from "../../models/resources/select";
 import { MovementPath } from "../../models/types/movement";
 import Hint from "../Hint/Hint";
 import SubjectInput from "../SubjectInput/SubjectInput";
+import { useSurveyContext } from "../../context/SurveyContext";
 
 type PathProps = {
     index: number;
@@ -17,6 +18,8 @@ function Path({ index, path, setPath }: PathProps) {
     const [subject, setSubject] = useState("");
     const [time, setTime] = useState("");
     const [hasAlert, setHasAlert] = useState(false);
+    const { closeSurvey } = useSurveyContext();
+
 
     const { name, title, hint, magic } = path;
 
@@ -53,6 +56,7 @@ function Path({ index, path, setPath }: PathProps) {
     }, [show, subject, time]);
 
     const toggleShow = () => {
+        closeSurvey();
         setShow((prev) => !prev);
         setHasAlert(false);
     };

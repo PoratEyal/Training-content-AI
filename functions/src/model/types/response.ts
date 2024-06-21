@@ -56,3 +56,8 @@ export type DeleteUserResponse = {
     result: Resposne;
     message?: string;
 };
+
+export type SendMsgResponse = {
+    result: Resposne;
+    message?: string;
+};

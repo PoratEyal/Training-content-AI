@@ -2,6 +2,7 @@ import {
     CreateNewUserRequest,
     GetActivityRequest,
     GetUserByIdRequest,
+    SendMsgRequest,
     UpdateActivityLikesRequest,
     UpdateUserRequest,
 } from "../models/types/api/request";
@@ -9,6 +10,7 @@ import {
     CreateNewUserResponse,
     GetActivityResponse,
     GetUserByIdResponse,
+    SendMsgResponse,
     UpdateActivityLikesResponse,
     UpdateUserResponse,
 } from "../models/types/api/response";
@@ -86,3 +88,14 @@ export const fetchUpdateUser = async (request: UpdateUserRequest): Promise<Updat
         throw new Error(msg.error.message);
     }
 };
+
+export const fetchSendMsg = async (request: SendMsgRequest): Promise<boolean> => {
+    const sendMsgFunc = httpsCallable(functions, "sendMsg");
+
+    const response = (await sendMsgFunc(request)).data as SendMsgResponse;
+    if (response.result === "success") {
+        return true
+    } else {
+        throw new Error(msg.error.message);
+    }
+}

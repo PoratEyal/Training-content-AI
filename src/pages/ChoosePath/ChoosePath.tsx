@@ -15,11 +15,13 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import msg from "../../models/resources/errorMsg.json";
 import ChooseActivitySubject from "../../components/titles/ChooseActivitySubject/ChooseActivitySubject";
+import { useSurveyContext } from "../../context/SurveyContext";
 
 function ChoosePath() {
     const { handleAlert } = useErrorContext();
     const { data, updateMovementPath, clearPath } = useContentContext();
     const { isLoggedIn, currentUser, loading } = useAuthContext();
+    const { openSurveyMovement, closeSurvey } = useSurveyContext();
 
     const { movement } = data || {};
     const { path } = movement || {};
@@ -29,6 +31,16 @@ function ChoosePath() {
     const [isDisabled, setIsDisabled] = useState(true);
     const navigate = useNavigate();
     const lockRef = useRef(true);
+    const lockSurveyRef = useRef(true);
+
+    useEffect(() => {
+        if(lockSurveyRef.current && currentUser && movement) {
+            if(currentUser.movement.movement !== movement.name) {
+                openSurveyMovement({ movement: movement.name });
+                lockSurveyRef.current = false;
+            }
+        }
+    }, []);
 
     useEffect(() => {
         const updateUser = async () => {
@@ -67,7 +79,7 @@ function ChoosePath() {
             if (option !== undefined) {
                 allUndefined = false;
                 if (option.isValid === false) {
-                    setIsDisabled(true)
+                    setIsDisabled(true);
                     return;
                 }
             }
@@ -106,6 +118,7 @@ function ChoosePath() {
 
     const goBack = () => {
         clearPath();
+        closeSurvey();
         navigate(route.details);
     };
 

@@ -3,10 +3,8 @@ import styles from "./LikeBtns.module.css";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { Activity } from "../../models/types/activity";
-import { useErrorContext } from "../../context/ErrorContext";
 import { useContentContext } from "../../context/ContentContext";
 import { fetchUpdateActivityLikes } from "../../utils/fetch";
-import msg from "../../models/resources/errorMsg.json";
 
 type LikeBtnsProps = {
     index: number;
@@ -15,7 +13,6 @@ type LikeBtnsProps = {
 };
 
 function LikeBtns({ index, activity, reset }: LikeBtnsProps) {
-    const { handleError } = useErrorContext();
     const { updateMovementPath } = useContentContext();
 
     const [action, setAction] = useState({ like: undefined, dislike: undefined });

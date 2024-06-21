@@ -23,3 +23,12 @@ export const defualtAuthContext = {
     setLimitCookie: () => {},
     setConsentCookie: () => {},
 };
+
+export const defualtSurveyContext = {
+    survey: undefined,
+    openSurvey: () => {},
+    closeSurvey: () => {},
+    openSurveyMovement: () => {},
+    openSurveyNewActivity: () => {},
+    openSurveyContactUs: () => {},
+};

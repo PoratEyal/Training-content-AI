@@ -1,5 +1,6 @@
 import { Activity } from "./activity";
 import { Movement } from "./movement";
+import { ContactUsSurvey, MovementSurvey, NewActivitySurvey, SurveyCondition, TSurvey } from "./survey";
 import { User } from "./user";
 
 export type DataType = {
@@ -40,4 +41,13 @@ export type AuthContextType = {
     setCookie: (name: string, value: any, options?: any) => void;
     setLimitCookie: (data: string | number) => void;
     setConsentCookie: () => void;
+};
+
+export type SurveyContextType = {
+    survey: TSurvey | undefined;
+    openSurvey: (condition: SurveyCondition, data: any) => void;
+    closeSurvey: () => void;
+    openSurveyMovement: (data: MovementSurvey) => void;
+    openSurveyNewActivity: (data: NewActivitySurvey) => void;
+    openSurveyContactUs: (data: ContactUsSurvey) => void;
 };

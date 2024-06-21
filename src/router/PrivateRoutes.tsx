@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import TSCs from "../components/popups/TSCs/TSCs";
 import { COOKIE_USER_CONSENT } from "../models/constants/cookie";
+import Survey from "../components/popups/Survey/Survey";
 
 const PrivateRoutes = () => {
     const { cookies, setConsentCookie } = useAuthContext();
@@ -21,6 +22,7 @@ const PrivateRoutes = () => {
 
     return (
         <React.Fragment>
+            <Survey />
             {tscs ? <TSCs handleAccept={handleAcceptTerms} /> : null}
             <Outlet />
         </React.Fragment>

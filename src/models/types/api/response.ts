@@ -32,3 +32,8 @@ export type UpdateUserResponse = {
     user?: User;
     message?: string;
 };
+
+export type SendMsgResponse = {
+    result: Resposne;
+    message?: string;
+};
