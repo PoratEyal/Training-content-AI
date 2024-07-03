@@ -1,6 +1,8 @@
 import {
     CreateNewUserRequest,
     GetActivityRequest,
+    GetAllActivitiesRequest,
+    GetAllUsersRequest,
     GetUserByIdRequest,
     UpdateActivityLikesRequest,
     UpdateUserRequest,
@@ -11,6 +13,8 @@ import {
     GetUserByIdResponse,
     UpdateActivityLikesResponse,
     UpdateUserResponse,
+    getAllActivitiesResponse,
+    getAllUsersResponse,
 } from "../models/types/api/response";
 import { functions } from "../config/firebase";
 import { httpsCallable } from "firebase/functions";
@@ -86,3 +90,25 @@ export const fetchUpdateUser = async (request: UpdateUserRequest): Promise<Updat
         throw new Error(msg.error.message);
     }
 };
+
+export const fetchGetActivities = async (): Promise<getAllActivitiesResponse> => {
+    const getActivitiesFunc = httpsCallable(functions, "getAllActivities");
+
+    const response = (await getActivitiesFunc()).data as getAllActivitiesResponse;
+    if (response.result === "success") {
+        return response;
+    } else {
+        throw new Error(msg.error.message);
+    }
+}
+
+export const fetchGetUsers = async (): Promise<getAllUsersResponse> => {
+    const getUsersFunc = httpsCallable(functions, "getAllUsers");
+
+    const response = (await getUsersFunc()).data as getAllUsersResponse;
+    if (response.result === "success") {
+        return response;
+    } else {
+        throw new Error(msg.error.message);
+    }
+}

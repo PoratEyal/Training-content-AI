@@ -32,3 +32,15 @@ export type UpdateUserResponse = {
     user?: User;
     message?: string;
 };
+
+export type getAllActivitiesResponse = {
+    result: Resposne;
+    activities?: any;
+    message?: string;
+};
+
+export type getAllUsersResponse = {
+    result: Resposne;
+    users?: any;
+    message?: string;
+};

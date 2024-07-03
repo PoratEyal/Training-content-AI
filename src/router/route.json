@@ -4,5 +4,6 @@
     "choosePath": "/choosePath",
     "activity": "/activity",
     "privacyPolicy": "/privacyPolicy",
+    "status": "/status",
     "all": "*"
 }

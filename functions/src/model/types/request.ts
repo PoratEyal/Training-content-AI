@@ -41,3 +41,6 @@ export type UpdateUserRequest = {
 export type FormatUserRequest = {
     ids: string[];
 };
+
+export type GetAllActivitiesRequest = {}
+export type GetAllUsersRequest = {}
