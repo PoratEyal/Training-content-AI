@@ -15,6 +15,7 @@ import Home from "./pages/Home/Home";
 import route from "./router/route.json";
 import "./App.css";
 import Maintenance from "./pages/Maintenance/Maintenance";
+import Status from "./pages/Status/Status";
 
 function App() {
     return (
@@ -32,6 +33,7 @@ function App() {
                                     <Route path={route.activity} element={<Activity />} />
                                 </Route>
                                 <Route path={route.privacyPolicy} element={<PrivacyPolicy />} />
+                                {/* <Route path={route.status} element={<Status />} /> */}
                                 <Route path={route.all} element={<Navigate replace to={route.home} />} />
                             </Routes>
                         </Router>

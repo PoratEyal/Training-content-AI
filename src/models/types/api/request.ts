@@ -30,3 +30,6 @@ export type GetUserByIdRequest = {
 export type UpdateUserRequest = {
     user: User;
 };
+
+export type GetAllActivitiesRequest = {}
+export type GetAllUsersRequest = {}
