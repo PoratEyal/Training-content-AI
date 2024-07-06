@@ -14,18 +14,18 @@ export const MovmentsOptions: SelectOption[] = [
 ];
 
 export const GradeOptions: SelectOption[] = [
-    { value: "4-5", label: "כיתה א" },  
-    { value: "5-6", label: "כיתה ב" }, 
-    { value: "6-7", label: "כיתה ג" },  
-    { value: "7-8", label: "כיתה ד" },  
-    { value: "8-9", label: "כיתה ה" }, 
-    { value: "9-10", label: "כיתה ו" },
-    { value: "10-11", label: "כיתה ז" },
-    { value: "11-12", label: "כיתה ח" },
-    { value: "12-13", label: "כיתה ט" }, 
-    { value: "13-14", label: "כיתה י" }, 
-    { value: "14-15", label: "כיתה יא" }, 
-    { value: "15-16", label: "כיתה יב" }  
+    { value: "כיתה א", label: "כיתה א" },  
+    { value: "כיתה ב", label: "כיתה ב" }, 
+    { value: "כיתה ג", label: "כיתה ג" },  
+    { value: "כיתה ד", label: "כיתה ד" },  
+    { value: "כיתה ה", label: "כיתה ה" }, 
+    { value: "כיתה ו", label: "כיתה ו" },
+    { value: "כיתה ז", label: "כיתה ז" },
+    { value: "כיתה ח", label: "כיתה ח" },
+    { value: "כיתה ט", label: "כיתה ט" }, 
+    { value: "כיתה י", label: "כיתה י" }, 
+    { value: "כיתה יא", label: "כיתה יא" }, 
+    { value: "כיתה יב", label: "כיתה יב" }  
 ];
 
 
