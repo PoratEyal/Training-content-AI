@@ -8,6 +8,8 @@ import createNewUser from "./callableFunctions/createNewUser"
 import getUserById from "./callableFunctions/getUserById"
 import updateUser from "./callableFunctions/updateUser"
 import * as admin from "firebase-admin";
+import updateUserTest from "./callableFunctions/updateUserTest"
+import getActivityTest from "./callableFunctions/getActivityTest";
 // import formatUser from "./callableFunctions/formatUser"
 // import getAllActivities from "./callableFunctions/getAllActivities";
 // import getAllUsers from "./callableFunctions/getAllUsers";
@@ -32,6 +34,8 @@ exports.getUserById = getUserById;
 // exports.getAllActivities = getAllActivities;
 // exports.getAllUsers = getAllUsers;
 // exports.formatUser = formatUser;
+exports.getActivityTest = getActivityTest;
+exports.updateUserTest = updateUserTest;
 
 exports.app = functions.https.onRequest(app);
 

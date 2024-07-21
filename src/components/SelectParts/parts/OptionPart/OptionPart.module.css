@@ -1,0 +1,15 @@
+.part_option {
+    /* display: inline-block; */
+    padding: 5px 10px;
+    border-radius: 8px;
+    text-align: center;
+    height: fit-content;
+    margin: 4px 2px;
+    font-size: 12px;
+}
+
+@media (min-width: 550px) {
+    .part_option {
+        cursor: pointer;
+    }
+}

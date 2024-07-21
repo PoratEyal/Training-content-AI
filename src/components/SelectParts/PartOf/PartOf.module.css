@@ -1,0 +1,7 @@
+.part_of{
+    position: absolute;
+    bottom: 5px;
+    left: 7px;
+    font-size: 12px;
+    opacity: 0.5;
+}

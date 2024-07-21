@@ -21,14 +21,14 @@ export const updateUserMovement = (
     grade: string,
     gender: string,
     amount: string,
-    place: string,
+    time: string,
 ) => {
     const movement: UserMovementDetails = {
         movement: movementName,
         grade,
         gender,
         amount,
-        place,
+        time,
     };
     return { ...user, movement } as User;
 };
@@ -38,7 +38,7 @@ export const isGroupDetailsChanged = (movement: UserMovementDetails, data: DataT
         movement?.movement === data?.movement?.name &&
         movement?.grade === data?.grade &&
         movement?.amount === data?.amount &&
-        movement?.place === data?.place &&
+        movement?.time === data?.time &&
         movement?.gender === data?.gender
     )
         return false;

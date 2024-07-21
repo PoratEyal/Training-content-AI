@@ -1,11 +1,11 @@
-import { Activity } from "../activity";
+import { Activity, PartStructure } from "../activity";
 import { RawUser, User } from "../user";
 
 export type FetchFrom = "DB" | "AI";
 
 export type GetActivityRequest = {
     fetchFrom: FetchFrom[];
-    path: string;
+    parts: PartStructure[];
     subject: string;
     time: string;
     amount: string;
@@ -21,10 +21,6 @@ export type UpdateActivityLikesRequest = {
 
 export type CreateNewUserRequest = {
     rawUser: RawUser
-};
-
-export type GetUserByIdRequest = {
-    id: string;
 };
 
 export type UpdateUserRequest = {

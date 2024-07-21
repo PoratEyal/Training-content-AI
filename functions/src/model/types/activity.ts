@@ -3,7 +3,8 @@ export type Activity = {
     updatedAt: string;
     fetchCount: number;
     likes: number;
-    path: string;
+    parts: string;
+    path?: string; //lagacy
     grade: string;
     amount: string;
     place: string;
@@ -16,9 +17,17 @@ export type Activity = {
 
 export type ActivityDetails = {
     subject: string;
+    parts: PartStructure[];
     time: string;
     amount: string;
     grade: string;
     gender: string;
     place: string;
-}
+};
+
+export type Part = "contant" | "pointOfView" | "survival" | "playTime" | "creation";
+
+export type PartStructure = {
+    name: Part;
+    subject: string;
+};

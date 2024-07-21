@@ -1,5 +1,5 @@
 .input_div{
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -20,7 +20,7 @@
     font-family: var(--font-family);
     direction: rtl;
     background-color: var(--select-color);
-    color: var(--select-border-color);
+    color: var(--placeholder-color);
     -moz-appearance:none; /* Firefox */
     -webkit-appearance:none; /* Safari and Chrome */
     appearance:none;
@@ -32,7 +32,7 @@
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    color: var(--select-border-color);
+    color: var(--placeholder-color);
 }
 .input_div {
     position: relative;

@@ -1,5 +1,5 @@
 import styles from "./Activity.module.css";
-import React, { useState } from "react";
+import { useRef, useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import { useNavigate } from "react-router-dom";
@@ -7,46 +7,39 @@ import { useEffect } from "react";
 import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
+import MoreActions from "../../components/MoreActions/MoreActions";
 
 function Activity() {
-    const { data, clearPath } = useContentContext();
+    const { data, mainActivity } = useContentContext();
+    const [newActivity, setNewActivity] = useState(false);
+    const activityRef = useRef<HTMLElement>(null);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const hasActivities = data?.movement?.path.every((p) => {
-            return p.activity === undefined;
-        });
-        if (
-            !data ||
-            !data.grade ||
-            !data.movement ||
-            hasActivities ||
-            data.movement.path.length === 0
-        ) {
+        if (!data || !data.grade || !data.movement || !mainActivity) {
             goBack();
         }
     }, [data]);
 
+    useEffect(() => {
+        if (newActivity && activityRef.current) {
+            activityRef.current.scrollIntoView({ behavior: "smooth" });
+            setNewActivity(false);
+        }
+    }, [newActivity]);
+
     const goBack = () => {
-        clearPath();
-        navigate(route.choosePath);
+        navigate(route.build);
     };
 
     return (
         <PageLayout path={route.activity} hasGreenBackground hasHeader={{ goBack }}>
-            <ActivityReady />
+            <ActivityReady subject={data.movement.title} />
             <section className={styles.activity_data_container}>
                 <article>
-                    {data?.movement?.path.map((path, i) => {
-                        return path.activity ? (
-                            <ActivityOutput 
-                                key={i}
-                                index={i}
-                                movementPath={path}
-                            />
-                        ) : null;
-                    })}
+                    <ActivityOutput activity={mainActivity} activityRef={activityRef} />
                 </article>
+                <MoreActions setNewActivity={setNewActivity} activity={mainActivity} />
             </section>
         </PageLayout>
     );

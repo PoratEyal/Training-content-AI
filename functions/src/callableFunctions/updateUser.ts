@@ -23,7 +23,7 @@ const updateUser = functions.https.onCall(
                 grade: user.movement?.grade || null,
                 gender: user.movement?.gender || null,
                 amount: user.movement?.amount || null,
-                place: user.movement?.place || null,
+                // place: user.movement?.place || null,
             };
             const userRef = db.collection(CollectionDB.USERS).doc(user.id);
             await userRef.update(updates);

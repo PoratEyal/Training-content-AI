@@ -3,7 +3,7 @@ export type Activity = {
     updatedAt: string;
     fetchCount: number;
     likes: number;
-    path: string;
+    parts: PartStructure[];
     grade: string;
     amount: string;
     place: string;
@@ -22,3 +22,10 @@ export type ActivityFunc = (
     gender: string,
     place: string,
 ) => Promise<any>;
+
+export type Part = "contant" | "pointOfView" | "survival" | "playTime" | "creation";
+
+export type PartStructure = {
+    name: Part;
+    subject: string;
+};
