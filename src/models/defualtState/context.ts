@@ -1,10 +1,12 @@
+
 export const typeContext = {
     data: undefined,
+    mainActivity: undefined,
     setData: () => {},
     updateDetails: () => {},
-    updateMovementPath: () => {},
+    updateMainActivity: () => {},
     clearAll: () => {},
-    clearPath: () => {},
+    clearMainActivity: () => {},
 };
 
 export const defualtErrorContext = {

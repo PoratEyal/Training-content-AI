@@ -1,4 +1,5 @@
 import { SelectOption } from "../types/common";
+import { Category } from "../types/movement";
 import { Movements } from "./movment";
 
 export const MovmentsOptions: SelectOption[] = [
@@ -14,20 +15,19 @@ export const MovmentsOptions: SelectOption[] = [
 ];
 
 export const GradeOptions: SelectOption[] = [
-    { value: "כיתה א", label: "כיתה א" },  
-    { value: "כיתה ב", label: "כיתה ב" }, 
-    { value: "כיתה ג", label: "כיתה ג" },  
-    { value: "כיתה ד", label: "כיתה ד" },  
-    { value: "כיתה ה", label: "כיתה ה" }, 
+    { value: "כיתה א", label: "כיתה א" },
+    { value: "כיתה ב", label: "כיתה ב" },
+    { value: "כיתה ג", label: "כיתה ג" },
+    { value: "כיתה ד", label: "כיתה ד" },
+    { value: "כיתה ה", label: "כיתה ה" },
     { value: "כיתה ו", label: "כיתה ו" },
     { value: "כיתה ז", label: "כיתה ז" },
     { value: "כיתה ח", label: "כיתה ח" },
-    { value: "כיתה ט", label: "כיתה ט" }, 
-    { value: "כיתה י", label: "כיתה י" }, 
-    { value: "כיתה יא", label: "כיתה יא" }, 
-    { value: "כיתה יב", label: "כיתה יב" }  
+    { value: "כיתה ט", label: "כיתה ט" },
+    { value: "כיתה י", label: "כיתה י" },
+    { value: "כיתה יא", label: "כיתה יא" },
+    { value: "כיתה יב", label: "כיתה יב" },
 ];
-
 
 export const AmountOptions: SelectOption[] = [
     { value: "1-5", label: "1-5" },
@@ -58,3 +58,9 @@ export const ActivityTimeOptions: SelectOption[] = [
     { value: "שעה וחצי", label: "שעה וחצי" },
     { value: "שעתיים", label: "שעתיים" },
 ];
+
+export const CategoryOptions = (options: Category[]): SelectOption[] => {
+    return options.map((option) => {
+        return { value: option.name, label: option.title };
+    });
+};
