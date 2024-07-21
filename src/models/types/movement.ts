@@ -1,4 +1,4 @@
-import { Activity } from "./activity";
+import { Activity, Part } from "./activity";
 
 export type MovementName =
     | "scout"
@@ -14,15 +14,17 @@ export type MovementName =
 export type Movement = {
     name: MovementName;
     title: string;
-    path: MovementPath[];
+    parts: MovementPart[];
 };
 
-export type MovementPath = {
-    name: string;
+export type MovementPart = {
+    name: Part;
     title: string;
-    activity: Activity | undefined;
     hint?: string;
     magic?: any[];
+    color?: "#DCF5D8" | "#D8E0F5" | "#F5D8ED" | "#D8F0F5" | "#F5D8D8" | "#F5EED8";
+    isResize: boolean;
+    partSubject?: string;
 };
 
 export type UserMovementDetails = {
@@ -30,5 +32,5 @@ export type UserMovementDetails = {
     grade: string;
     gender: string;
     amount: string;
-    place: string;
+    time: string;
 };

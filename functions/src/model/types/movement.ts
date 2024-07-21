@@ -3,10 +3,10 @@ import { Activity } from "./activity";
 export type Movement = {
     name: string;
     title: string;
-    path: MovementPath[];
+    parts: MovementPart[];
 };
 
-export type MovementPath = {
+export type MovementPart = {
     name: string;
     title: string;
     activity: Activity | undefined;
@@ -18,5 +18,5 @@ export type UserMovementDetails = {
     grade: string;
     gender: string;
     amount: string;
-    place: string;
+    time: string;
 };

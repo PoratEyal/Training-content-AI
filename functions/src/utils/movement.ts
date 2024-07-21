@@ -5,7 +5,7 @@ export const initMovment = (name: string, title: string) => {
     return {
         name,
         title,
-        path: [],
+        parts: [],
     } as Movement;
 };
 
@@ -14,6 +14,6 @@ export const initMovmentFromDB = (id: string, data: DocumentData) => {
         id,
         name: data.name || "",
         title: data.title || "",
-        path: data.path || [],
+        parts: data.parts || [],
     } as Movement;
 };

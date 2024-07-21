@@ -4,30 +4,6 @@
     margin-top: 5px;
 }
 
-.activity_close,
-.activity_open {
-    width: 100%;
-    cursor: pointer;
-    position: relative;
-    -webkit-tap-highlight-color: transparent;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 18px;
-    font-family: var(--font-family);
-    font-weight: 500;
-}
-
-.activity_close{
-    color: var(--text-color);
-    margin-bottom: 30px;
-}
-
-.activity_open{
-    color: var(--primary-color);
-    margin-bottom: 0;
-}
-
 .toggel_arrow_animation {
     display: flex;
     align-items: center;

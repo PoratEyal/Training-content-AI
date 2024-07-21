@@ -21,7 +21,7 @@ export type DbUser = {
     grade: string | null;
     gender: string | null;
     amount: string | null;
-    place: string | null;
+    time: string | null;
     isAcceptTerms: boolean;
 };
 

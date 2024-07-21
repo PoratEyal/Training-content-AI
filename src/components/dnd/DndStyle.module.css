@@ -1,0 +1,9 @@
+.opt_part_placeholder {
+    color: var(--placeholder-color);
+    font-size: 12px;
+    margin-top: 3px;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: -105px;
+}

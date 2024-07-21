@@ -17,7 +17,6 @@ import {
 } from "../models/constants/cookie";
 import { initRawUser } from "../utils/user";
 import msg from "../models/resources/errorMsg.json";
-import Session from "../utils/sessionStorage";
 
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
 
@@ -39,8 +38,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         let unsubscribe: any;
         const handleRedirectResult = async () => {
             const userResult = await getRedirectResult(auth);
+            console.log("userResult", userResult);
             if (userResult) {
-                // Session.set("signInRef", true);
                 initializeUser(userResult)
             }
             else unsubscribe = onAuthStateChanged(auth, initializeUser);
@@ -52,17 +51,21 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const initializeUser = async (user) => {
         try {
+            console.log("----initializeUser---", user)
             if (user && (user as GoogleUser)?.uid) {
                 let resultUser: User | undefined = undefined;
                 const rawUser = initRawUser(user);
+                console.log("rawUser", rawUser);
                 const response = await fetchCreateNewUser({ rawUser });
+                console.log("response", response);
                 if (response.user) {
                     resultUser = response.user;
                 }
                 if (resultUser) {
                     if (resultUser.movement) {
-                        const { grade, amount, place, gender, movement } = resultUser.movement;
-                        addSessionData(movement, grade, amount, place, gender);
+                        console.log("resultUser.movement", resultUser.movement);
+                        const { grade, amount, time, gender, movement } = resultUser.movement;
+                        addSessionData(movement, grade, amount, time, gender);
                     }
                     setCurrentUser(resultUser);
                     setIsLoggedIn(true);

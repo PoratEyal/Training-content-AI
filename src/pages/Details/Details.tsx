@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./Details.module.css";
-import { VscLoading } from "react-icons/vsc";
 import {
     MovmentsOptions,
     GradeOptions,
     AmountOptions,
-    PlaceOptions,
     GenderOptions,
+    ActivityTimeOptions,
 } from "../../models/resources/select";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import MainBtn from "../../components/MainBtn/MainBtn";
@@ -35,12 +34,12 @@ function Details() {
         data ? data?.amount : currentUser?.movement ? currentUser?.movement?.amount : "",
     );
 
-    const [activityLocation, setActivityLocation] = useState(
-        data ? data?.place : currentUser?.movement ? currentUser?.movement?.place : "",
-    );
-
     const [gender, setGender] = useState(
         data ? data?.gender : currentUser?.movement ? currentUser?.movement?.gender : "",
+    );
+
+    const [time, setTime] = useState(
+        data ? data?.time : currentUser?.movement ? currentUser?.movement?.time : "",
     );
 
     const [isDisabled, setIsDisabled] = useState(true);
@@ -48,16 +47,16 @@ function Details() {
     useEffect(() => {
         if (loading) setIsDisabled(true);
         else {
-            if (movement && classLevel && numberOfChildren && activityLocation && gender) {
+            if (movement && classLevel && numberOfChildren && gender && time) {
                 setIsDisabled(false);
             }
         }
-    }, [movement, classLevel, numberOfChildren, activityLocation, gender, loading]);
+    }, [movement, classLevel, numberOfChildren, gender, time, loading]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        updateDetails(movement, classLevel, numberOfChildren, activityLocation, gender);
-        navigate(route.choosePath);
+        updateDetails(movement, classLevel, numberOfChildren, time, gender);
+        navigate(route.build);
     };
 
     const goBack = () => {
@@ -110,16 +109,16 @@ function Details() {
                                 setObj={setNumberOfChildren}
                             />
                             <SelectDetails
-                                data={PlaceOptions}
-                                placeholder={"מיקום הפעילות"}
-                                obj={activityLocation}
-                                setObj={setActivityLocation}
-                            />
-                            <SelectDetails
                                 data={GenderOptions}
                                 placeholder={"מין"}
                                 obj={gender}
                                 setObj={setGender}
+                            />
+                            <SelectDetails
+                                data={ActivityTimeOptions}
+                                placeholder="משך הפעילות"
+                                obj={time}
+                                setObj={setTime}
                             />
                         </div>
                     )}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Part } from "./activity";
 
 export type NavOption = {
     title: string;
@@ -17,4 +18,9 @@ export type SelectOption = {
     readonly value: string;
     readonly label: string;
     action?: () => any;
+}
+
+export type SelectPart = {
+    readonly value: Part;
+    readonly label: string;
 }
