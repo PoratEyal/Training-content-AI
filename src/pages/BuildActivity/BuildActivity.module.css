@@ -1,12 +1,25 @@
+.build_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    gap: 1.5em;
+    height: fit-content;
+}
+
+.build_container::-webkit-scrollbar {
+    display: none;
+}
+
 .path_img {
     z-index: 300;
     position: absolute;
     top: -120px;
-    left: 35px;
-    width: 130px;
+    left: 30px;
 }
 
-.path_form_container {
+.build_form_container {
     background-color: var(--background-color);
     border: none;
     display: flex;
@@ -22,42 +35,23 @@
     height: 75%;
 }
 
-.contnet_path {
+.build_content {
+    overflow: hidden;
     margin: 60px 0 0 0;
-    padding: 0 50px 230px 50px;
-    overflow-y: scroll;
+    padding: 0 50px;
     box-sizing: border-box;
     width: 100%;
-}
-
-.path_div {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    box-sizing: border-box;
-    height: fit-content;
-    overflow: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-.path_div::-webkit-scrollbar {
-    display: none;
+    height: 85%;
 }
 
 .btn_div {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    padding: 30px 40px 20px 50px;
+    position: relative;
+    margin-top: 1.5em;
     box-sizing: border-box;
     direction: ltr;
     display: flex;
     align-items: top;
     width: 100%;
-    background-color: var(--background-color);
-    height: 130px;
 }
 
 .loading_mock_selection_container {
@@ -69,19 +63,17 @@
     justify-content: center;
 }
 
-@media (min-width: 550px) {
-    .choose_path_container {
-        margin-top: 50px;
-        height: 630px;
-        width: 400px;
-        border: none;
-        border-radius: 30px;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        position: relative;
-        overflow: hidden;
-    }
+.input_alert {
+    position: absolute;
+    top: 40px;
+    color: var(--error-color);
+    font-size: 10px;
+    margin-top: 5px;
+    text-align: center;
+}
 
-    .path_form_container {
+@media (min-width: 550px) {
+    .build_form_container {
         width: 100%;
         border-bottom-left-radius: 30px;
         border-bottom-right-radius: 30px;
@@ -89,7 +81,7 @@
         -ms-overflow-style: none;
     }
 
-    .path_form_container::-webkit-scrollbar {
+    .build_form_container::-webkit-scrollbar {
         display: none;
     }
 

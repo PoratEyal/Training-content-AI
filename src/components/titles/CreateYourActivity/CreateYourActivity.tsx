@@ -1,11 +1,10 @@
-import React from "react";
-import styles from "./ChooseActivitySubject.module.css";
+import styles from "./CreateYourActivity.module.css";
 
-function ChooseActivitySubject() {
+function CreateYourActivity() {
     return (
-        <div className={styles.choose_activity_subject_title}>
+        <div className={styles.create_your_activity_title}>
             <h1>
-                בחרו את <br /> נושא הפעילות
+                צרו את<br></br> הפעולה שלכם
             </h1>
             <img
                 title="Sparks effect"
@@ -19,4 +18,4 @@ function ChooseActivitySubject() {
     );
 }
 
-export default ChooseActivitySubject;
+export default CreateYourActivity;

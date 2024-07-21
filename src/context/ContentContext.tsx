@@ -6,6 +6,7 @@ import { Activity } from "../models/types/activity";
 import { addSessionData } from "../utils/movment";
 import { useAuthContext } from "./AuthContext";
 import { Movements } from "../models/resources/movment";
+import { SessionKey } from "../models/enum/session";
 
 export const ContentContext = createContext<ContentContextType>(typeContext);
 
@@ -14,13 +15,20 @@ export const useContentContext = () => useContext(ContentContext);
 export const ContentProvider = ({ children }: { children: React.ReactNode }) => {
     const { currentUser } = useAuthContext();
     const [data, setData] = useState<DataType | undefined>();
+    const [mainActivity, setMainActivity] = useState<Activity | undefined>();
 
     const setStateFromSession = () => {
         try {
             if (data === undefined) {
-                const sessionData: DataType | undefined = Session.get("data");
+                const sessionData: DataType | undefined = Session.get(SessionKey.DATA);
                 if (sessionData) {
                     setData(sessionData);
+                }
+            }
+            if (mainActivity === undefined) {
+                const sessionActivity: Activity | undefined = Session.get(SessionKey.ACTIVITY);
+                if (sessionActivity) {
+                    setMainActivity(sessionActivity);
                 }
             }
         } catch (error) {}
@@ -29,21 +37,20 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
 
     useEffect(() => {
         if (!data && currentUser && currentUser.movement) {
-            const { grade, amount, place, gender, movement } = currentUser.movement;
+            const { grade, amount, gender, movement } = currentUser.movement;
             setData({
                 movement: Movements[movement],
                 grade: grade,
                 amount: amount,
-                place: place,
                 gender: gender,
             });
         }
     }, [currentUser]);
 
-    const updateDetails = (movement, grade, amount, place, gender) => {
+    const updateDetails = (movement, grade, amount, gender) => {
         setData((prevData) => {
-            const data = addSessionData(movement, grade, amount, place, gender);
-            Session.set("data", data);
+            const data = addSessionData(movement, grade, amount, gender);
+            Session.set(SessionKey.DATA, data);
             return data;
         });
     };
@@ -53,31 +60,15 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
         setData(undefined);
     };
 
-    const clearPath = () => {
-        if (data?.movement?.path.length === 0) return;
-        setData((prevData) => {
-            const updatedPath = prevData.movement.path.map((pathItem) => ({
-                ...pathItem,
-                activity: undefined,
-            }));
-            const updatedData: DataType = {
-                ...prevData,
-                movement: {
-                    ...prevData.movement,
-                    path: updatedPath,
-                },
-            };
-            Session.set("data", updatedData);
-            return updatedData;
-        });
+    const clearMainActivity = () => {
+        setMainActivity(undefined);
+        Session.remove(SessionKey.ACTIVITY);
+        Session.remove(SessionKey.PARTS);
     };
 
-    const updateMovementPath = (index: number, activity: Activity) => {
-        setData((prevData) => {
-            prevData.movement.path[index].activity = activity;
-            Session.set("data", { ...prevData });
-            return { ...prevData };
-        });
+    const updateMainActivity = (activity: Activity) => {
+        setMainActivity(activity);
+        Session.set(SessionKey.ACTIVITY, activity);
     };
 
     return (
@@ -85,10 +76,11 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
             value={{
                 data,
                 setData,
+                mainActivity,
                 updateDetails,
-                updateMovementPath,
+                updateMainActivity,
                 clearAll,
-                clearPath,
+                clearMainActivity,
             }}
         >
             {children}

@@ -11,6 +11,7 @@ import { auth } from "../config/firebase";
 import { useAuthContext } from "../context/AuthContext";
 import { useEffect, useState } from "react";
 import Session from "../utils/sessionStorage";
+import { SessionKey } from "../models/enum/session";
 
 const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
     const { handleError } = useErrorContext();
@@ -25,11 +26,11 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
 
     useEffect(() => {
         if (!loading && isLoggedIn && currentUser){
-            Session.remove("signInRef");
+            Session.remove(SessionKey.SIGNIN);
             handleStart();
         };
 
-        const signInRef = Session.get("signInRef");
+        const signInRef = Session.get(SessionKey.SIGNIN);
         if(signInRef && (signInRef as boolean) === true){
             setSignInBtnText(loadingText);
             setSignInDisabled(true);
@@ -52,14 +53,14 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
             }
             await setPersistence(auth, browserLocalPersistence);
             if (isMobile) {
-                Session.set("signInRef", true);
+                Session.set(SessionKey.SIGNIN, true);
                 await signInWithRedirect(auth, provider);
             } else {
                 const userResult = await signInWithPopup(auth, provider);
                 userResult && setBtnLoading(true);
             }
         } catch (error) {
-            Session.remove("signInRef");   
+            Session.remove(SessionKey.SIGNIN);   
             handleErrors(error);
         }
     };

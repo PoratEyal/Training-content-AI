@@ -9,7 +9,7 @@ import { GetActivityResponse } from "../model/types/response";
 import { handleGetActivityErrors } from "../utils/handleError";
 import { db } from "../index";
 
-const getActivity = functions.https.onCall(
+const getActivityTest = functions.https.onCall(
     async (
         data: GetActivityRequest,
         context: functions.https.CallableContext,
@@ -29,4 +29,4 @@ const getActivity = functions.https.onCall(
     },
 );
 
-export default getActivity;
+export default getActivityTest;

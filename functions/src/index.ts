@@ -2,11 +2,11 @@ import cors from "cors";
 import express from "express";
 import * as functions from "firebase-functions";
 import ping from './callableFunctions/ping';
-import getActivity from "./callableFunctions/getActivity"
+import getActivityTest from "./callableFunctions/getActivityTest"
 import updateActivityLikes from "./callableFunctions/updateActivityLikes"
 import createNewUser from "./callableFunctions/createNewUser"
 import getUserById from "./callableFunctions/getUserById"
-import updateUser from "./callableFunctions/updateUser"
+import updateUserTest from "./callableFunctions/updateUserTest"
 import * as admin from "firebase-admin";
 // import formatUser from "./callableFunctions/formatUser"
 // import getAllActivities from "./callableFunctions/getAllActivities";
@@ -22,11 +22,11 @@ export { db };
 exports.ping = ping;
 
 
-exports.getActivity = getActivity;
+exports.getActivityTest = getActivityTest;
 exports.updateLikes = updateActivityLikes;
 
 exports.createNewUser = createNewUser;
-exports.updateUser = updateUser
+exports.updateUserTest = updateUserTest
 exports.getUserById = getUserById;
 
 // exports.getAllActivities = getAllActivities;

@@ -16,19 +16,19 @@ function ShareBtns({ text }: ShareBtnsProps) {
 
     const handleCopy = () => {
         navigator.clipboard.writeText(formatCopy(text));
-        handleSuccess("הפעילות הועתקה בהצלחה");
+        handleSuccess("הפעולה הועתקה בהצלחה");
     };
 
     return (
         <div className={styles.share_btns}>
-            <div onClick={handleCopy} className={styles.copy_btn}>
-                <FaRegCopy />
-            </div>
             <WhatsappShareButton url={WEBSITE_URL} title={formatWhatsUp(text)}>
                 <div className={styles.whatsapp_btn}>
                     <FaWhatsapp />
                 </div>
             </WhatsappShareButton>
+            <div onClick={handleCopy} className={styles.copy_btn}>
+                <FaRegCopy />
+            </div>
         </div>
     );
 }

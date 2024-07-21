@@ -5,7 +5,7 @@ import { CollectionDB } from "../model/enum/DB";
 import { UpdateUserResponse } from "../model/types/response";
 import { db } from "../index";
 
-const updateUser = functions.https.onCall(
+const updateUserTest = functions.https.onCall(
     async (
         data: UpdateUserRequest,
         context: functions.https.CallableContext,
@@ -40,4 +40,4 @@ const updateUser = functions.https.onCall(
     },
 );
 
-export default updateUser;
+export default updateUserTest;

@@ -1,16 +1,14 @@
-import { Activity } from "./activity";
-
 export type Movement = {
     name: string;
     title: string;
-    path: MovementPath[];
+    categories: Category[];
 };
 
-export type MovementPath = {
-    name: string;
+export type CategoryName = "contant" | "pointOfView" | "survival" | "playTime";
+
+export type Category = {
+    name: CategoryName;
     title: string;
-    activity: Activity | undefined;
-    hint?: string;
 };
 
 export type UserMovementDetails = {
@@ -18,5 +16,4 @@ export type UserMovementDetails = {
     grade: string;
     gender: string;
     amount: string;
-    place: string;
 };
