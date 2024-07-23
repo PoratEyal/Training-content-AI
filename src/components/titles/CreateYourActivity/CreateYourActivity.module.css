@@ -1,23 +1,23 @@
-.choose_activity_subject_title {
+.create_your_activity_title {
     width: 190px;
     position: absolute;
     top: 60px;
     right: 50px;
     -webkit-tap-highlight-color: transparent;
 }
-
-.choose_activity_subject_title h1 {
+.create_your_activity_title h1 {
     color: var(--background-color);
     font-size: 27px;
     font-weight: 600;
     position: relative;
     line-height: 32px;
     margin: 0;
-    width: 160px;
+    width: 190px;
+    letter-spacing: 1px;
 }
 
-.choose_activity_subject_title img {
+.create_your_activity_title img {
     position: absolute;
     top: -10px;
-    right: -10px;
+    right: -15px;
 }

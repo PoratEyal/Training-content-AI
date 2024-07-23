@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI";
 import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
 import Session from "../../utils/sessionStorage";
+import { SessionKey } from "../../models/enum/session";
 
 function Home() {
     const { isLoggedIn, loading, cookies, setLimitCookie } = useAuthContext();
@@ -19,7 +20,7 @@ function Home() {
 
     useEffect(() => {
         let limit = cookies[COOKIE_LIMIT];
-        const signInRef = Session.get("signInRef");
+        const signInRef = Session.get(SessionKey.SIGNIN);
         if (signInRef && (signInRef as boolean) === true) {
             setIsGuest(false);
             return;

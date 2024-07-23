@@ -1,9 +1,11 @@
+import { CategoryName } from "./movement";
+
 export type Activity = {
     id: string;
     updatedAt: string;
     fetchCount: number;
     likes: number;
-    path: string;
+    category: string;
     grade: string;
     amount: string;
     place: string;
@@ -15,6 +17,7 @@ export type Activity = {
 };
 
 export type ActivityDetails = {
+    category: CategoryName;
     subject: string;
     time: string;
     amount: string;
