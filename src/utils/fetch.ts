@@ -19,7 +19,7 @@ import msg from "../models/resources/errorMsg.json";
 export const fetchGetActivity = async (
     request: GetActivityRequest,
 ): Promise<GetActivityResponse> => {
-    const getActivityFunc = httpsCallable(functions, "getActivityTest");
+    const getActivityFunc = httpsCallable(functions, "getActivity");
     const response = (await getActivityFunc(request)).data as GetActivityResponse;
     return response;
 };
@@ -46,7 +46,7 @@ export const fetchCreateNewUser = async (
 };
 
 export const fetchUpdateUser = async (request: UpdateUserRequest): Promise<UpdateUserResponse> => {
-    const updateUserFunc = httpsCallable(functions, "updateUserTest");
+    const updateUserFunc = httpsCallable(functions, "updateUser");
 
     const response = (await updateUserFunc(request)).data as UpdateUserResponse;
     if (response.result === "success") {
