@@ -1,12 +1,19 @@
 .activity_title {
-    width: 100%;
-    text-align: center;
     color: var(--background-color);
-    font-size: 27px;
+    font-size: 24px;
     font-weight: 600;
     position: relative;
     line-height: 32px;
-    margin-top: -20px;
+    margin-top: -40px;
     -webkit-tap-highlight-color: transparent;
     letter-spacing: 1px;
+
+    margin-right: auto;
+    margin-left: auto;
+    width: 330px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
 }

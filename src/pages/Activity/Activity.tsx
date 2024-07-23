@@ -34,7 +34,7 @@ function Activity() {
 
     return (
         <PageLayout path={route.activity} hasGreenBackground hasHeader={{ goBack }}>
-            <ActivityReady subject={data.movement.title} />
+            <ActivityReady subject={mainActivity.subject} />
             <section className={styles.activity_data_container}>
                 <article>
                     <ActivityOutput activity={mainActivity} activityRef={activityRef} />
