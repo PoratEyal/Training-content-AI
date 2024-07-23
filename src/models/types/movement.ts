@@ -14,15 +14,14 @@ export type MovementName =
 export type Movement = {
     name: MovementName;
     title: string;
-    path: MovementPath[];
+    categories: Category[];
 };
 
-export type MovementPath = {
-    name: string;
+export type CategoryName = "contant" | "pointOfView" | "survival" | "playTime";
+
+export type Category = {
+    name: CategoryName;
     title: string;
-    activity: Activity | undefined;
-    hint?: string;
-    magic?: any[];
 };
 
 export type UserMovementDetails = {
@@ -30,5 +29,4 @@ export type UserMovementDetails = {
     grade: string;
     gender: string;
     amount: string;
-    place: string;
 };

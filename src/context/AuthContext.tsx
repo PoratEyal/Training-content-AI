@@ -61,8 +61,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 }
                 if (resultUser) {
                     if (resultUser.movement) {
-                        const { grade, amount, place, gender, movement } = resultUser.movement;
-                        addSessionData(movement, grade, amount, place, gender);
+                        const { grade, amount, gender, movement } = resultUser.movement;
+                        addSessionData(movement, grade, amount, gender);
                     }
                     setCurrentUser(resultUser);
                     setIsLoggedIn(true);

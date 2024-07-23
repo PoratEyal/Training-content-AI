@@ -1,5 +1,5 @@
-.input_div{
-    margin-bottom: 20px;
+.input_div {
+    /* margin-bottom: 20px; */
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -12,7 +12,7 @@
     cursor: pointer;
     border: 1px solid var(--select-border-color);
     padding-right: 25px;
-    font-size: 15px;
+    font-size: 16px;
     border-radius: 30px;
     min-width: 70vw;
     width: 100%;
@@ -20,11 +20,14 @@
     font-family: var(--font-family);
     direction: rtl;
     background-color: var(--select-color);
-    color: var(--select-border-color);
-    -moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari and Chrome */
-    appearance:none;
+    color: var(--placeholder-color);
+    -moz-appearance: none;
+    /* Firefox */
+    -webkit-appearance: none;
+    /* Safari and Chrome */
+    appearance: none;
 }
+
 .input_div::after {
     content: '▼';
     position: absolute;
@@ -32,17 +35,19 @@
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    color: var(--select-border-color);
+    color: var(--placeholder-color);
 }
+
 .input_div {
     position: relative;
 }
+
 .input_div select:focus {
     outline: none;
 }
 
 @media (min-width: 550px) {
-    .input_div select{
+    .input_div select {
         min-width: 20px;
         max-width: 300px;
     }

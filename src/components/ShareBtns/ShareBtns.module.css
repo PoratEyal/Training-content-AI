@@ -1,7 +1,7 @@
 .share_btns {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .whatsapp_btn {

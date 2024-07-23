@@ -22,10 +22,10 @@ export const initUserToDB = (user: RawUser) => {
 export const initUserFromDB = (id: string, data: DocumentData) => {
     try {
         let movement: UserMovementDetails | null = null;
-        const { movement: m, grade, gender, amount, place } = data;
+        const { movement: m, grade, gender, amount } = data;
 
-        if (m !== null && grade !== null && gender !== null && amount !== null && place !== null) {
-            movement = { movement: m, grade, gender, amount, place };
+        if (m !== null && grade !== null && gender !== null && amount !== null) {
+            movement = { movement: m, grade, gender, amount };
         }
         return {
             id,
