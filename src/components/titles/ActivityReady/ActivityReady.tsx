@@ -6,7 +6,12 @@ type ActivityReadyProps = {
 };
 
 function ActivityReady({ subject }: ActivityReadyProps) {
-    return <h1 className={styles.activity_title}>פעולה ל{subject}</h1>;
+    return (
+        <h1 className={styles.activity_title}>
+            <div>פעולה בנושא</div>
+            {subject}
+        </h1>
+    );
 }
 
 export default ActivityReady;
