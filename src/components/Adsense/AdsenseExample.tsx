@@ -1,6 +1,5 @@
 import React from "react";
 import { Adsense } from "@ctrl/react-adsense";
-import "./css/AdsenseStylesheet.css";
 
 function AdsenseExample() {
     //console.log("Ads Shown")
@@ -10,6 +9,9 @@ function AdsenseExample() {
             client="ca-pub-1234"
             slot="2222222"
             adTest="on" //Dev Only
+            style={{ width: 500, height: 100, backgroundColor: "black" }}
+            layout="in-article"
+            format="fluid"
         />
     );
 }
