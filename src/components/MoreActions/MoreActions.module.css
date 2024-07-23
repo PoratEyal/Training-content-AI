@@ -4,6 +4,9 @@
     justify-content: space-between;
     width: 100%;
     direction: ltr;
+    box-sizing: border-box;
+    padding: 15px 10%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .more_actions_left{
