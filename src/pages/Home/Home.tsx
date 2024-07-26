@@ -52,7 +52,6 @@ function Home() {
         "מתחילים",
         "מתחברים ומתחילים",
     );
-
     const btnFunc = isLoggedIn ? () => handleStart() : () => signInWithGoogle();
 
     return (
