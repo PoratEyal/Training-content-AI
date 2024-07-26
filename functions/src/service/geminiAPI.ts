@@ -1,6 +1,15 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { ActivityDetails } from "../model/types/activity";
 import { defineString } from "firebase-functions/params";
+import { formatString } from "../utils/format";
+import { CONTANT_PROMPT_M } from "../model/prompts/contant_M";
+import { CONTANT_PROMPT_S } from "../model/prompts/contant_S";
+import { CONTANT_PROMPT_B } from "../model/prompts/contant_B";
+import { VIEW_PROMPT_S } from "../model/prompts/pointOfView_S";
+import { VIEW_PROMPT_M } from "../model/prompts/pointOfView_M";
+import { PLAY_PROMPT_M } from "../model/prompts/playTime_M";
+import { SURVIVAL_PROMPT_S } from "../model/prompts/survival_S";
+import { SURVIVAL_PROMPT_M } from "../model/prompts/survival_M";
 
 const genAI = new GoogleGenerativeAI(defineString("API_KEY").value() || "");
 
@@ -12,40 +21,46 @@ async function generateContent(prompt: string): Promise<string> {
     return text;
 }
 
-export async function getActivity(activityDetials: ActivityDetails): Promise<string> {
-    const { subject, time, amount, grade, gender, place } = activityDetials;
-    const prompt = `אתה מדריך צופים המעביר פעילות לחניכיו בתנועת הנוער, ואני רוצה שתיצור פעילות בנושא ${subject} שתימשך ${time}, מספר הילדים בפעילות הוא ${amount}, שכבת הגיל שלהם היא: ${grade} והמין שלהם הוא ${gender}. מקום הפעילות יהיה ${place}. (וודא שאין שגיאות כתיב )בתחילת התשובה תן שם לפעילות וציין את הזמן המיועד לה. בכל חלק מהפעילות, ציין את הזמן הנדרש בדקות. הקפד על כיסוי מלא של כל ההיבטים והוראות מפורטות לפעילות. התשובה צריכה להיות בפורמט של markdown style (תוודא שאתה לא מוסיף שפות אחרות) השתדל לשקף תוכן ישיר כמו שמות וזמנים ללא שינוי, אך העשיר את התיאור בפרטים רלוונטיים נוספים להבנה מוגברת. אל תכלול מצגת או וידאו בפעילות שלך. התשובה צריכה להיות מפורטת ובעברית בלבד.`;
-    return await generateContent(prompt);
+function promptPerGrade(grade: string, prompts: [string, string, string]): string {
+    switch (grade) {
+        case "כיתה א":
+        case "כיתה ב":
+        case "כיתה ג":
+        case "כיתה ד":
+            return prompts[0];
+        case "כיתה ה":
+        case "כיתה ו":
+        case "כיתה ז":
+        case "כיתה ח":
+            return prompts[1];
+        case "כיתה ט":
+        case "כיתה י":
+        case "כיתה יא":
+        case "כיתה יב":
+            return prompts[2];
+        default:
+            return "";
+    }
 }
 
-export async function getPointOfView(activityDetials: ActivityDetails): Promise<string> {
-    const { subject, time, amount, grade, gender, place } = activityDetials;
-    const prompt = `אתה מדריך צופים המעביר פעילות לחניכיו בתנועת הנוער ואני רוצה שתיצור פעילות בשם 'פעילות נקודת מבט' על הנושא ${subject} שתימשך ${time}, מספר הילדים בפעילות הוא ${amount}, כיתתם היא ${grade} ומינם הוא ${gender}. מקום הפעילות יהיה ב${place} .(וודא שאין שגיאות כתיב כלל) בתחילת התשובה כתוב את שם הפעילות ואת משך הזמן שלה. בכל חלק של הפעילות, ציין את הזמן הנדרש בדקות. וודא כיסוי מלא של כל ההיבטים והוראות מפורטות לפעילות. תחזיר את התשובה בפורמט של markdown style  (תוודא שאתה לא מוסיף שפות אחרות) הבט לשקף תכנים ישירים כמו שמות וזמנים ללא שינוי, אך העשר את התיאור בפרטים רלוונטיים נוספים להבנה טובה יותר. אל תכלול מצגת או וידאו בפעילות. התשובה צריכה להיות מפורטת ובעברית בלבד.`;
-    return await generateContent(prompt);
-}
+export async function getMainActivity(activityDetials: ActivityDetails): Promise<string> {
+    const { subject, category, time, amount, grade, gender, place } = activityDetials;
+    let promptOptions: [string, string, string] = ["", "", ""];
+    switch (category) {
+        case "contant":
+            promptOptions = [CONTANT_PROMPT_S, CONTANT_PROMPT_M, CONTANT_PROMPT_B];
+            break;
+        case "pointOfView":
+            promptOptions = [VIEW_PROMPT_S, VIEW_PROMPT_M, VIEW_PROMPT_M];
+            break;
+        case "survival":
+            promptOptions = [SURVIVAL_PROMPT_S, SURVIVAL_PROMPT_M, SURVIVAL_PROMPT_M];
+            break;
+        case "playTime":
+            promptOptions = [PLAY_PROMPT_M, PLAY_PROMPT_M, PLAY_PROMPT_M];
+    }
 
-export async function getContentActivity(activityDetials: ActivityDetails): Promise<string> {
-    const { subject, time, amount, grade, gender, place } = activityDetials;
-    const prompt = `אתה מדריך צופים המעביר פעילות לחניכיו בתנועת הנוער, ואני רוצה שתיצור פעילות בשם 'פעילות תוכן' בנושא ${subject} שתימשך ${time}, מספר הילדים בפעילות הוא ${amount}, שכבת הגיל שלהם היא: ${grade} והמין שלהם הוא ${gender}. מקום הפעילות יהיה ${place}. (וודא שאין שגיאות כתיב )בתחילת התשובה תן שם לפעילות וציין את הזמן המיועד לה. בכל חלק מהפעילות, ציין את הזמן הנדרש בדקות. הקפד על כיסוי מלא של כל ההיבטים והוראות מפורטות לפעילות. התשובה צריכה להיות בפורמט של markdown style (תוודא שאתה לא מוסיף שפות אחרות) השתדל לשקף תוכן ישיר כמו שמות וזמנים ללא שינוי, אך העשיר את התיאור בפרטים רלוונטיים נוספים להבנה מוגברת. אל תכלול מצגת או וידאו בפעילות שלך. התשובה צריכה להיות מפורטת ובעברית בלבד.`;
-    return await generateContent(prompt);
+    const prompt = promptPerGrade(grade, promptOptions);
+    const result = formatString(prompt, [time, subject, amount, grade, gender, place]);
+    return await generateContent(result);
 }
-
-export async function getScoutingTime(activityDetials: ActivityDetails): Promise<string> {
-    const { subject, time, amount, grade, gender, place } = activityDetials;
-    const prompt = `אתה מדריך צופים שמעביר פעילות למתאמנים בתנועת נוער, ואני רוצה שתיצור פעילות בשם 'זמן צופים' על נושא ${subject} שתימשך ${time}, מספר הילדים בפעילות הוא ${amount}, הגילאים שלהם הם: ${grade} ומינם הוא ${gender}. מקום הפעילות יהיה ב${place} .חשוב על שם מושך לפעילות. בתחילת התשובה כתוב את שם הפעילות והזמן שהיא תימשך. בכל חלק מהפעילות ציין את זמנו (בדקות). על הפעילות להתמקד בתרגול ולא בלימוד. הקפד על כיסוי מקיף של כל ההיבטים והוראות מפורטות לביצוע הפעילות. התשובה צריכה להיות בפורמט של markdown style שקף תוכן ישיר כמו שמות וזמנים ללא שינוי, אך עשיר את התיאור בפרטים רלוונטיים נוספים להבנה מעמיקה יותר. אל תכלול מצגת או וידאו בפעילות שלך, בנוסף וודא שאין שימוש בכלים מסוכנים בפעילות. התשובה צריכה להיות מפורטת ובעברית בלבד(וודא שאין שגיאות כתיב ושאתה לא מחזיר מילים בשפות אחרות!)..`;
-    return await generateContent(prompt);
-}
-
-export async function getPlayingTime(activityDetials: ActivityDetails): Promise<string> {
-    const { subject, time, amount, grade, gender, place } = activityDetials;
-    const prompt = `אתה מדריך חובב המעביר פעילות למתאמנים בתנועת נוער, ואני רוצה שתיצור פעילות "זמן משחק" הקשורה לנושא הזה: ${subject}, אך לא את אותה המשחק! הפעילות תימשך ${time}, מספר הילדים בפעילות הוא ${amount}, כיתתם היא: ${grade} ומינם הוא ${gender}. מקום הפעילות יהיה ${place}. תחשוב על שם יפה למשחק. בתחילת התשובה כתוב את שם המשחק ואת הזמן (בדקות). בכל חלק של הפעילות, תוסיף את זמנו (בדקות). הקפד על כיסוי מקיף של כל ההיבטים, והוראות מפורטות לפעילות. התשובה צריכה להיות בפורמט של markdown style השתדל לשמור על דיוק בכתיב ובשפה, מבלי להכליל הצגה או וידאו בתשובתך. התשובה צריכה להיות מפורטת ובעברית בלבד(וודא שאין שגיאות כתיב ושאתה לא מחזיר מילים בשפות אחרות!).`;
-    return await generateContent(prompt);
-}
-
-export const GeminiApiSet = {
-    activity: getActivity,
-    pointOfView: getPointOfView,
-    contentActivity: getContentActivity,
-    scoutingTime: getScoutingTime,
-    playingTime: getPlayingTime,
-};

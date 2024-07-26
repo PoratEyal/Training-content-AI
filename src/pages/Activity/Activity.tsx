@@ -1,37 +1,47 @@
 import styles from "./Activity.module.css";
+import { useRef, useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Header from "../../components/Layout/Header/Header";
-import BlurEffect from "../../components/BlurEffect/BlurEffect";
+import { useEffect } from "react";
+import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
+import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
+import MoreActions from "../../components/MoreActions/MoreActions";
 
 function Activity() {
-    const { data, clearPath } = useContentContext();
+    const { data, mainActivity } = useContentContext();
+    const [newActivity, setNewActivity] = useState(false);
+    const activityRef = useRef<HTMLElement>(null);
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!data || !data.grade || !data.movement || data.movement.path.length === 0) {
+        if (!data || !data.grade || !data.movement || !mainActivity) {
             goBack();
         }
-    }, []);
+    }, [data]);
+
+    useEffect(() => {
+        if (newActivity && activityRef.current) {
+            activityRef.current.scrollIntoView({ behavior: "smooth" });
+            setNewActivity(false);
+        }
+    }, [newActivity]);
 
     const goBack = () => {
-        clearPath();
-        navigate("/choosePath");
+        navigate(route.build);
     };
 
     return (
-        <div className={styles.container}>
-            <Header goBack={goBack} isFade />
-
-            {data?.movement?.path.map((path, i) => {
-                return path.activity ? (
-                    <ActivityOutput key={i} index={i} movementPath={path} />
-                ) : null;
-            })}
-        </div>
+        <PageLayout path={route.activity} hasGreenBackground hasHeader={{ goBack }}>
+            <ActivityReady subject={mainActivity.subject} />
+            <section className={styles.activity_data_container}>
+                <article>
+                    <ActivityOutput activity={mainActivity} activityRef={activityRef} />
+                </article>
+                <MoreActions setNewActivity={setNewActivity} activity={mainActivity} />
+            </section>
+        </PageLayout>
     );
 }
 

@@ -3,35 +3,30 @@ import styles from "./LikeBtns.module.css";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { Activity } from "../../models/types/activity";
-import { useErrorContext } from "../../context/ErrorContext";
 import { useContentContext } from "../../context/ContentContext";
 import { fetchUpdateActivityLikes } from "../../utils/fetch";
 
 type LikeBtnsProps = {
-    index: number;
     activity: Activity;
     reset: boolean;
 };
 
-function LikeBtns({ index, activity, reset }: LikeBtnsProps) {
-    const { handleError } = useErrorContext();
-    const { updateMovementPath } = useContentContext();
+function LikeBtns({ activity, reset }: LikeBtnsProps) {
+    const { updateMainActivity } = useContentContext();
 
     const [action, setAction] = useState({ like: undefined, dislike: undefined });
     const [debouncedLiked, setDebouncedLiked] = useState(false);
     const [debouncedDisliked, setDebouncedDisliked] = useState(false);
-
     useEffect(() => {
         if (reset) {
             setAction({ like: undefined, dislike: undefined });
         }
     }, [reset]);
-
     useEffect(() => {
         let likeTimeHandler: NodeJS.Timeout;
         let dislikeTimeHandler: NodeJS.Timeout;
         const { like, dislike } = action;
-        if(like === undefined && dislike === undefined) return;
+        if (like === undefined && dislike === undefined) return;
 
         if ((like || !like) && dislike === undefined) {
             likeTimeHandler = setTimeout(() => {
@@ -56,12 +51,15 @@ function LikeBtns({ index, activity, reset }: LikeBtnsProps) {
 
     const sendLikeStatusToServer = useCallback(async (likesAmount: number) => {
         try {
-            await fetchUpdateActivityLikes(updateMovementPath, index, {
+            const response = await fetchUpdateActivityLikes({
                 activity,
                 likesAmount,
             });
+            if (response.result === "success" && response.activity) {
+                updateMainActivity(response.activity);
+            }
         } catch (error) {
-            handleError(error);
+            console.error(error);
         }
     }, []);
 
@@ -70,13 +68,11 @@ function LikeBtns({ index, activity, reset }: LikeBtnsProps) {
             return { like: !prev.like, dislike: undefined };
         });
     };
-
     const handleClickDislike = async () => {
         setAction((prev) => {
             return { like: undefined, dislike: !prev.dislike };
         });
     };
-
     return (
         <div className={styles.linkBtns}>
             <AiOutlineLike

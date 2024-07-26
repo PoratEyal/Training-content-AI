@@ -4,6 +4,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { useErrorContext } from "../../context/ErrorContext";
 import { formatCopy, formatWhatsUp } from "../../utils/format";
 import { FaRegCopy } from "react-icons/fa6";
+import { WEBSITE_URL } from "../../models/constants";
 
 
 type ShareBtnsProps = {
@@ -15,19 +16,19 @@ function ShareBtns({ text }: ShareBtnsProps) {
 
     const handleCopy = () => {
         navigator.clipboard.writeText(formatCopy(text));
-        handleSuccess("הפעילות הועתקה בהצלחה");
+        handleSuccess("הפעולה הועתקה בהצלחה");
     };
 
     return (
         <div className={styles.share_btns}>
-            <div onClick={handleCopy} className={styles.copy_btn}>
-                <FaRegCopy />
-            </div>
-            <WhatsappShareButton url={"https://activitybuilders.com/"} title={formatWhatsUp(text)}>
+            <WhatsappShareButton url={WEBSITE_URL} title={formatWhatsUp(text)}>
                 <div className={styles.whatsapp_btn}>
                     <FaWhatsapp />
                 </div>
             </WhatsappShareButton>
+            <div onClick={handleCopy} className={styles.copy_btn}>
+                <FaRegCopy />
+            </div>
         </div>
     );
 }

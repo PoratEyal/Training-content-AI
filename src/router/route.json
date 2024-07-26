@@ -1,0 +1,9 @@
+{
+    "home": "/",
+    "details": "/details",
+    "build": "/build",
+    "activity": "/activity",
+    "privacyPolicy": "/privacyPolicy",
+    "status": "/status",
+    "all": "*"
+}

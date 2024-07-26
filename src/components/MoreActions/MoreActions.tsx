@@ -4,62 +4,49 @@ import { useErrorContext } from "../../context/ErrorContext";
 import styles from "./MoreActions.module.css";
 import { fetchGetActivity } from "../../utils/fetch";
 import { AiOutlineLoading } from "react-icons/ai";
-import LikeBtns from "../LikeBtns/LikeBtns";
 import ShareBtns from "../ShareBtns/ShareBtns";
-import { MovementPath } from "../../models/types/movement";
-import { useAuthContext } from "../../context/AuthContext";
+import msg from "../../models/resources/errorMsg.json";
+import { Activity } from "../../models/types/activity";
 
 type MoreActionsProps = {
-    index: number;
-    movementPath: MovementPath;
+    activity: Activity;
+    setNewActivity: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function MoreActions({ index, movementPath }: MoreActionsProps) {
-    const { updateMovementPath } = useContentContext();
-    const { handleError } = useErrorContext();
-    const { reachUnRegisterLimit, updateUnRegisterLimit } = useAuthContext();
+function MoreActions({ activity, setNewActivity }: MoreActionsProps) {
+    const { updateMainActivity } = useContentContext();
+    const { handleAlert } = useErrorContext();
 
     const [loadingGenerate, setLoadingGenerate] = useState(false);
     const [reset, setReset] = useState(false);
 
-    const { name, activity } = movementPath;
-    const { activity: text, subject, time, amount, grade, gender, place } = activity || {};
+    const { activity: text, ...detailsData } = activity;
 
     const generateAgain = async () => {
         if (loadingGenerate) return;
 
-        updateUnRegisterLimit();
-        if (!reachUnRegisterLimit()) {
-            setLoadingGenerate(true);
-            setReset(true);
-
-            fetchGetActivity(updateMovementPath, index, {
-                fetchFrom: ["AI"],
-                path: name,
-                subject,
-                time,
-                amount,
-                grade,
-                gender,
-                place,
-            })
-                .catch((error) => handleError(error))
-                .finally(() => {
-                    setLoadingGenerate(false);
-                    setReset(false);
-                });
+        setLoadingGenerate(true);
+        setReset(true);
+        try {
+            const response = await fetchGetActivity({ ...detailsData });
+            if (
+                (response.result === "success" || response.result === "safety") &&
+                response.activity
+            ) {
+                updateMainActivity(response.activity);
+            }
+        } catch (error) {
+            handleAlert(msg.error.message);
+        } finally {
+            setLoadingGenerate(false);
+            setNewActivity(true);
+            setReset(false);
         }
     };
 
     return (
         <section className={styles.more_actions_container}>
-            {activity ? (
-                <div className={styles.more_actions_left}>
-                    <LikeBtns index={index} activity={activity} reset={reset} />
-                    <ShareBtns text={text} />
-                </div>
-            ) : null}
-
+            
             <button onClick={generateAgain} className={styles.button}>
                 {loadingGenerate ? (
                     <div className={styles.btn_content_div}>
@@ -67,12 +54,16 @@ function MoreActions({ index, movementPath }: MoreActionsProps) {
                     </div>
                 ) : (
                     <div className={styles.btn_content_div}>
-                        <label>פעילות אחרת</label>
+                        <span>פעולה אחרת</span>
                     </div>
                 )}
             </button>
+            {activity ? (
+                <div className={styles.more_actions_left}>
+                    <ShareBtns text={text} />
+                </div>
+            ) : null}
         </section>
     );
 }
-
 export default MoreActions;

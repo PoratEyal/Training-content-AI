@@ -1,35 +1,22 @@
-import { useState } from "react";
+import React from "react";
 import styles from "./ActivityOutput.module.css";
 import ReactMarkdown from "react-markdown";
-import MoreActions from "../MoreActions/MoreActions";
-import { MovementPath } from "../../models/types/movement";
-import { IoIosArrowDown } from "react-icons/io";
-import { motion } from "framer-motion";
 import "./Markdown.css";
+import { Activity } from "../../models/types/activity";
 
 type ActivityOutputProps = {
-    index: number;
-    movementPath: MovementPath;
-    defualtOpen?: boolean;
+    activity: Activity;
+    activityRef: React.MutableRefObject<HTMLElement>
 };
 
-function ActivityOutput({ index, movementPath, defualtOpen = true }: ActivityOutputProps) {
-    const { title, activity } = movementPath;
-
+function ActivityOutput({ activity, activityRef }: ActivityOutputProps) {
     return (
-        <section>
-            <div className={styles.activity_title}>{title}</div>
-            <section className={styles.activity_contianer} id="markdown">
-                {activity ? (
-                    <ReactMarkdown className={styles.activity_data}>
-                        {activity?.activity}
-                    </ReactMarkdown>
-                ) : null}
-                <MoreActions index={index} movementPath={movementPath} />
+        <section className={styles.activity_output_container} ref={activityRef}>
+            <section className={styles.activity_container} id="markdown">
+                <ReactMarkdown className={styles.activity_data}>{activity?.activity}</ReactMarkdown>
             </section>
-            <div className={styles.spacer}></div>
+            <br />
         </section>
     );
 }
-
 export default ActivityOutput;

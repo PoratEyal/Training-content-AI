@@ -4,6 +4,9 @@
     justify-content: space-between;
     width: 100%;
     direction: ltr;
+    box-sizing: border-box;
+    padding: 15px 10%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .more_actions_left{
@@ -20,7 +23,7 @@
     justify-content: center;
     gap: 5px;
     align-items: center;
-    font-family: 'Fredoka', sans-serif;
+    font-family: var(--font-family);
     border-radius: 60px;
     padding: 6px;
     color: var(--primary-color);

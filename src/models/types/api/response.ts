@@ -21,14 +21,20 @@ export type CreateNewUserResponse = {
     message?: string;
 };
 
-export type GetUserByIdResponse = {
+export type UpdateUserResponse = {
     result: Resposne;
     user?: User;
     message?: string;
 };
 
-export type UpdateUserResponse = {
+export type getAllActivitiesResponse = {
     result: Resposne;
-    user?: User;
+    activities?: any;
+    message?: string;
+};
+
+export type getAllUsersResponse = {
+    result: Resposne;
+    users?: any;
     message?: string;
 };

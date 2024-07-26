@@ -16,8 +16,12 @@ export const ErrorContextProvider = ({ children }: { children: React.ReactNode }
         });
     };
 
-    const handleAlert = (message: string, duration?: number) => {
-        notification("", message, "info", { duration: duration || 3000, onScreen: true });
+    const handleAlert = (error: Error | string | undefined) => {
+        console.error(error);
+        notification("", error.toString().replace(/^Error:\s*/, ""), "info", {
+            duration: 6000,
+            onScreen: true,
+        });
     };
 
     const handleSuccess = (message: string) => {

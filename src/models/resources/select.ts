@@ -1,4 +1,5 @@
 import { SelectOption } from "../types/common";
+import { Category } from "../types/movement";
 import { Movements } from "./movment";
 
 export const MovmentsOptions: SelectOption[] = [
@@ -57,3 +58,9 @@ export const ActivityTimeOptions: SelectOption[] = [
     { value: "שעה וחצי", label: "שעה וחצי" },
     { value: "שעתיים", label: "שעתיים" },
 ];
+
+export const CategoryOptions = (options: Category[]): SelectOption[] => {
+    return options.map((option) => {
+        return { value: option.name, label: option.title };
+    });
+};

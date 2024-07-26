@@ -19,7 +19,10 @@ const updateUser = functions.https.onCall(
 
         try {
             const updates = {
-                movement: user.movement,
+                movement: user.movement?.movement || null,
+                grade: user.movement?.grade || null,
+                gender: user.movement?.gender || null,
+                amount: user.movement?.amount || null,
             };
             const userRef = db.collection(CollectionDB.USERS).doc(user.id);
             await userRef.update(updates);

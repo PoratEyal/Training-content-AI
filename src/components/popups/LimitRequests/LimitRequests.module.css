@@ -3,30 +3,33 @@
     top: 10px;
     left: 10px;
     background-color: var(--primary-color);
-    color: white;
+    color: var(--select-color);
     border-radius: 100px;
     font-size: 18px;
     padding: 3px;
     cursor: pointer;
 }
 
-.label{
+.limit_text_1{
     color: var(--text-color);
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
     text-align: center;
-    width: 240px;
     margin-top: 20px;
     line-height: 1.7;
 }
-.label2{
+
+.limit_text_2{
     color: var(--primary-color);
-    font-size: 25px;
-    font-weight: 600;
     margin-top: 5px;
-    text-align: center;
     margin-bottom: 10px;
+    text-align: center;
 }
 
+.limit_sign_in_btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 

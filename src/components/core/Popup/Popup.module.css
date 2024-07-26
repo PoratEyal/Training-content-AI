@@ -24,29 +24,16 @@
     max-height: 90vh;
     width: 85%;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    gap: 10px;
     text-align: right;
     border: 3px solid var(--secondary-color);
     color: var(--text-color);
-    overflow-y: scroll;
-    overflow: auto; /* Allows scrolling */
-    scrollbar-width: none; /* For Firefox */
-    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    overflow: auto;
 }
-
-.container::-webkit-scrollbar {
-    display: none; /* For Chrome, Safari, and Opera */
-}
-
 
 @media (min-width: 550px) {
     .container_popup {
         width: fit-content;
-        max-width: 430px;
+        max-width: 360px;
         max-height: 80vh;
     }
 }
