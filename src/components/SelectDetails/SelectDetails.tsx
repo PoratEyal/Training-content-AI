@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { SelectOption } from "../../models/types/common";
 import styles from "./SelectDetails.module.css";
 
@@ -9,9 +10,25 @@ type SelectDetailsProps = {
 };
 
 function SelectDetails({ data, placeholder, obj, setObj }: SelectDetailsProps) {
+    const [selected, setIsSelected] = useState(obj ? true : false);
+
+    useEffect(() => {
+        setIsSelected(obj ? true : false);
+    }, [obj]);
+
+    const handleChnage = (value: string) => {
+        setObj(value);
+        setIsSelected(value !== "" || obj ? true : false);
+    };
+
     return (
         <div className={styles.input_div}>
-            <select value={obj} onChange={(e) => setObj(e.target.value)} aria-label={placeholder}>
+            <select
+                style={{ color: selected ? "#333335" : "#8b8b8b" }}
+                value={obj}
+                onChange={(e) => handleChnage(e.target.value)}
+                aria-label={placeholder}
+            >
                 <option value="" disabled>
                     {placeholder}
                 </option>
@@ -24,5 +41,4 @@ function SelectDetails({ data, placeholder, obj, setObj }: SelectDetailsProps) {
         </div>
     );
 }
-
 export default SelectDetails;

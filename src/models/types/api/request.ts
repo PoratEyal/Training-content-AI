@@ -1,11 +1,11 @@
 import { Activity } from "../activity";
+import { CategoryName } from "../movement";
 import { RawUser, User } from "../user";
 
 export type FetchFrom = "DB" | "AI";
 
 export type GetActivityRequest = {
-    fetchFrom: FetchFrom[];
-    path: string;
+    category: CategoryName;
     subject: string;
     time: string;
     amount: string;
@@ -23,10 +23,9 @@ export type CreateNewUserRequest = {
     rawUser: RawUser
 };
 
-export type GetUserByIdRequest = {
-    id: string;
-};
-
 export type UpdateUserRequest = {
     user: User;
 };
+
+export type GetAllActivitiesRequest = {}
+export type GetAllUsersRequest = {}

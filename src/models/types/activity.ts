@@ -1,9 +1,11 @@
+import { CategoryName } from "./movement";
+
 export type Activity = {
     id: string;
     updatedAt: string;
     fetchCount: number;
     likes: number;
-    path: string;
+    category: CategoryName;
     grade: string;
     amount: string;
     place: string;
@@ -13,12 +15,3 @@ export type Activity = {
     activity: string;
     userId: string | undefined;
 };
-
-export type ActivityFunc = (
-    subject: string,
-    time: string,
-    amount: string,
-    age: string,
-    gender: string,
-    place: string,
-) => Promise<any>;

@@ -10,7 +10,7 @@
     max-width: 100vw;
     overflow-y: scroll;
     box-sizing: border-box;
-    font-family: 'Fredoka', sans-serif;
+    font-family: var(--font-family);
 }
 
 @media (min-width: 550px) {
@@ -20,7 +20,7 @@
         min-width: unset;
         width: 400px;
         background-color: var(--background-color);
-        height: 90vh;
+        height: 630px;
         border: none;
         border-radius: 30px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

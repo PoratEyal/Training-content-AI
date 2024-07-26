@@ -1,14 +1,14 @@
+import { SessionKey } from "../models/enum/session";
 import { Movements } from "../models/resources/movment";
 import Session from "./sessionStorage";
 
-export const addSessionData = (movement, grade, amount, place, gender) => {
+export const addSessionData = (movement, grade, amount, gender) => {
     const data = {
         movement: Movements[movement],
         grade: grade,
         amount: amount,
-        place: place,
         gender: gender,
     };
-    Session.set("data", data);
+    Session.set(SessionKey.DATA, data);
     return data;
-}
+};

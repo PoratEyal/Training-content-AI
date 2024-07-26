@@ -12,3 +12,18 @@ export const forLongTime = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30 * 6);
 export const delay = (ms: number) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
 };
+
+export const isMoreThanADayAfter = (givenTimeStr: string): boolean => {
+    const givenDate = new Date(givenTimeStr);
+    const currentDate = new Date();
+
+    const timeDifference = currentDate.getTime() - givenDate.getTime();
+    const dayDifference = timeDifference / (1000 * 60 * 60 * 24);
+
+    return dayDifference >= 1;
+};
+
+export const isValidDateFormat = (dateStr: string): boolean => {
+    const givenDate = new Date(dateStr);
+    return !isNaN(givenDate.getTime());
+};

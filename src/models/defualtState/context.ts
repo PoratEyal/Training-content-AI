@@ -1,10 +1,12 @@
+
 export const typeContext = {
     data: undefined,
+    mainActivity: undefined,
     setData: () => {},
     updateDetails: () => {},
-    updateMovementPath: () => {},
+    updateMainActivity: () => {},
     clearAll: () => {},
-    clearPath: () => {},
+    clearMainActivity: () => {},
 };
 
 export const defualtErrorContext = {
@@ -18,10 +20,8 @@ export const defualtAuthContext = {
     isLoggedIn: false,
     loading: true,
     logout: async () => {},
-    unRegisterLimit: 0,
-    updateUnRegisterLimit: () => {},
     cookies: {},
     setCookie: () => {},
-    reachUnRegisterLimit: () => true,
-    setUser: () => {},
+    setLimitCookie: () => {},
+    setConsentCookie: () => {},
 };

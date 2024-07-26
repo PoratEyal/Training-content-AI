@@ -1,32 +1,57 @@
-.home_start_btn{
-    width: fit-content;
-    padding: 0 15px;
+.main_btn,
+.main_btn_disabled {
     border: none;
     border-radius: 19px;
-    font-family: 'Fredoka', sans-serif;
+    font-family: var(--font-family);
     font-size: 18px;
     font-weight: 550;
-    background-color: #FFD324;
+    cursor: pointer;
+    min-width: 10px;
+    width: fit-content;
+}
+
+.main_btn {
+    background-color: var(--secondary-color);
+}
+
+.main_btn_disabled {
+    background-color: var(--secondary-color-disable);
+}
+
+.btn {
+    width: fit-content;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 8px;
     direction: rtl;
-    cursor: pointer;
-}
-.home_start_btn label{
-    color: #333335;
-    cursor: pointer;
-}
-.home_start_btn_disabled{
-    background-color: #ffd32467;
 }
 
-.btn_icon{
+.btn_loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    direction: rtl;
+    border-radius: 900px;
+    width: 31px;
+}
+
+.btn {
+    padding: 0 15px;
+}
+
+.btn span {
+    color: var(--text-color);
+    cursor: pointer;
+    position: relative;
+    top: -1px;
+}
+
+.btn_icon {
     width: 20px;
     height: 20px;
-    background-color: #708254;
+    background-color: var(--primary-color);
     border: none;
     border-radius: 100px;
     display: flex;
@@ -35,8 +60,7 @@
     align-items: center;
 }
 
-.icon{
-    color: #FFD324;
+.icon {
+    color: var(--secondary-color);
     font-size: 15px;
-    margin-right: 1px;
 }

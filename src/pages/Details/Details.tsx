@@ -2,20 +2,19 @@ import { useEffect, useState } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./Details.module.css";
-import { VscLoading } from "react-icons/vsc";
 import {
     MovmentsOptions,
     GradeOptions,
     AmountOptions,
-    PlaceOptions,
-    GenderOptions, 
+    GenderOptions,
 } from "../../models/resources/select";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import MainBtn from "../../components/MainBtn/MainBtn";
 import { useAuthContext } from "../../context/AuthContext";
-import Header from "../../components/Layout/Header/Header";
-import { H2_PAGE2_IMG, LAMP_IMG } from "../../models/constants/img";
+import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
+import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
+import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
 
 function Details() {
     const { data, updateDetails, clearAll } = useContentContext();
@@ -34,10 +33,6 @@ function Details() {
         data ? data?.amount : currentUser?.movement ? currentUser?.movement?.amount : "",
     );
 
-    const [activityLocation, setActivityLocation] = useState(
-        data ? data?.place : currentUser?.movement ? currentUser?.movement?.place : "",
-    );
-
     const [gender, setGender] = useState(
         data ? data?.gender : currentUser?.movement ? currentUser?.movement?.gender : "",
     );
@@ -47,39 +42,46 @@ function Details() {
     useEffect(() => {
         if (loading) setIsDisabled(true);
         else {
-            if (movement && classLevel && numberOfChildren && activityLocation && gender) {
+            if (movement && classLevel && numberOfChildren && gender) {
                 setIsDisabled(false);
             }
         }
-    }, [movement, classLevel, numberOfChildren, activityLocation, gender, loading]);
+    }, [movement, classLevel, numberOfChildren, gender, loading]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        updateDetails(movement, classLevel, numberOfChildren, activityLocation, gender);
-        navigate("/choosePath");
+        updateDetails(movement, classLevel, numberOfChildren, gender);
+        navigate(route.build);
     };
 
     const goBack = () => {
         clearAll();
-        navigate("/");
+        navigate(route.home);
     };
 
     return (
-        <div className={styles.container}>
-            <Header goBack={isLoggedIn ? undefined : goBack} />
-            <img
-                className={styles.h2_img}
-                alt="Tell us about your group"
-                src={"h2_page2.svg"}
-            ></img>
+        <PageLayout
+            path={route.details}
+            hasGreenBackground
+            hasHeader={{ goBack: isLoggedIn ? undefined : goBack }}
+        >
+            <TellUsAboutYourGroup />
 
             <form onSubmit={handleSubmit} className={styles.details_form}>
-                <img className={styles.lamp_img} alt="Yellow lamp" src={"lamp.svg"}></img>
+                <img
+                    className={styles.lamp_img}
+                    title="Yellow lamp"
+                    alt="Yellow lamp"
+                    src={"lamp.svg"}
+                    loading="lazy"
+                    width={135}
+                    height={139}
+                ></img>
 
                 <div className={styles.selects_btn}>
                     {loading ? (
                         <div className={styles.loading_mock_selection_container}>
-                            <VscLoading className={styles.loading_icon_magic} />
+                            <SmallLoading />
                         </div>
                     ) : (
                         <div className={styles.selection_container}>
@@ -102,12 +104,6 @@ function Details() {
                                 setObj={setNumberOfChildren}
                             />
                             <SelectDetails
-                                data={PlaceOptions}
-                                placeholder={"מיקום הפעילות"}
-                                obj={activityLocation}
-                                setObj={setActivityLocation}
-                            />
-                            <SelectDetails
                                 data={GenderOptions}
                                 placeholder={"מין"}
                                 obj={gender}
@@ -127,7 +123,7 @@ function Details() {
                     </div>
                 </div>
             </form>
-        </div>
+        </PageLayout>
     );
 }
 

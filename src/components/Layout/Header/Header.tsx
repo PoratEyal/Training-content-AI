@@ -1,27 +1,23 @@
 import { useAuthContext } from "../../../context/AuthContext";
-import Profile from "../../auth/Profile/Profile";
+import Profile from "../../Profile/Profile";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import styles from "./Header.module.css";
 
 type HeaderProps = {
     goBack?: () => void;
-    isFade?: boolean;
+    isBlur?: boolean;
 };
 
-function Header({ goBack, isFade = false }: HeaderProps) {
+function Header({ goBack, isBlur = false }: HeaderProps) {
     const { isLoggedIn, loading, currentUser } = useAuthContext();
-    const style = isFade ? styles.header_fade : styles.header;
-    const styleIcon = isFade ? styles.back_icon_fade : styles.back_icon;
+    const style = isBlur ? styles.header_fade : styles.header;
+    const styleIcon = isBlur ? styles.back_icon_fade : styles.back_icon;
 
     return (
         <section className={style}>
             {!loading ? (
                 <div className={styles.header_container}>
-                    {isLoggedIn ? (
-                        <Profile img={currentUser?.image || ""} name={currentUser?.name || ""} />
-                    ) : (
-                        <div />
-                    )}
+                    {isLoggedIn ? <Profile img={currentUser?.image} /> : <div />}
                     {goBack ? (
                         <IoMdArrowRoundBack
                             onClick={goBack}

@@ -3,21 +3,16 @@ import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
-//project-193920685822
-//https://activity-builder-45923.firebaseapp.com/__/auth/handler
-//https://activity-builder-45923.firebaseapp.com/__/auth/handler
-//authDomain: "activity-builder-45923.firebaseapp.com",
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
-    apiKey: "AIzaSyCwqgCEflWya7SDKG99vUDPE9LPOZoBv4s",
-    authDomain: "activity-builder-45923.firebaseapp.com",
-    projectId: "activity-builder-45923",
-    storageBucket: "activity-builder-45923.appspot.com",
-    messagingSenderId: "193920685822",
-    appId: "1:193920685822:web:31c34d66047ea8a027b7af",
-    measurementId: "G-QQL1B4VZRP",
+    apiKey: "AIzaSyBBsnHK7C2C5wKNoh_U96mK-HHqdLZ-8Bw",
+    authDomain: process.env.NODE_ENV === "development" ? "activity-wizard.firebaseapp.com" : "activitywiz.com",
+    projectId: "activity-wizard",
+    storageBucket: "activity-wizard.appspot.com",
+    messagingSenderId: "487708258594",
+    appId: "1:487708258594:web:b255d53c7cb5bfcb73757b",
+    measurementId: "G-Y7Z04778ES",
 };
 
 const app = initializeApp(firebaseConfig);

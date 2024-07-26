@@ -9,7 +9,7 @@ export const initActivityFromDB = (id: string, data: DocumentData, userId: strin
         updatedAt: data.updatedAt || "",
         fetchCount: data.fetchCount || 0,
         likes: data.likes || 0,
-        path: data.path || "",
+        category: data.category || "",
         grade: data.grade || "",
         amount: data.amount || "",
         place: data.place || "",
@@ -22,14 +22,14 @@ export const initActivityFromDB = (id: string, data: DocumentData, userId: strin
 };
 
 export const initActivityFromAI = (text: string, data: GetActivityRequest, userId: string) => {
-    const { path, subject, time, amount, grade, gender, place } = data;
+    const { category, subject, time, amount, grade, gender, place } = data;
     return {
         id: "",
         updatedAt: getUpdateAt(),
         fetchCount: 0,
         likes: 0,
         activity: text,
-        path,
+        category,
         grade,
         amount,
         place,

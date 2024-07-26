@@ -1,0 +1,5 @@
+.magic_icon {
+    position: absolute;
+    color: var(--primary-color);
+    cursor: pointer;
+}

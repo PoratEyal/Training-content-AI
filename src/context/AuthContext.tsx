@@ -1,75 +1,82 @@
-import { useEffect, createContext, useState, useContext } from "react";
+import { useEffect, createContext, useState, useContext, useRef } from "react";
 import { auth } from "../config/firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { getRedirectResult, onAuthStateChanged } from "firebase/auth";
 import { AuthContextType } from "../models/types/context";
 import { defualtAuthContext } from "../models/defualtState/context";
 import { GoogleUser, User } from "../models/types/user";
-import { fetchGetUserById } from "../utils/fetch";
+import { fetchCreateNewUser } from "../utils/fetch";
 import { useErrorContext } from "./ErrorContext";
-import { NOT_REGISTER_LIMIT } from "../models/constants";
 import { useCookies } from "react-cookie";
-import { forLongTime } from "../utils/time";
 import { addSessionData } from "../utils/movment";
+import {
+    COOKIE_LIMIT,
+    COOKIE_USER_CONSENT,
+    CookieOptions,
+    GUEST_LIMIT_VALUE,
+    USER_CONSENT_VALUE,
+} from "../models/constants/cookie";
+import { initRawUser } from "../utils/user";
+import msg from "../models/resources/errorMsg.json";
+import Session from "../utils/sessionStorage";
 
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
 
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
     const { handleError } = useErrorContext();
     const [currentUser, setCurrentUser] = useState<User | undefined>();
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
+
     // const [generateLimit, setGenerateLimit] = useState<number>(0);
-    const [unRegisterLimit, setUnRegisterLimit] = useState<number | undefined>();
 
-    const [cookies, setCookie] = useCookies(["limit", "user-consent"]);
-
-    const setStateFromSession = () => {
-        try {
-            if (unRegisterLimit === undefined) {
-                const cookieLimit = cookies["limit"];
-                if (cookieLimit) {
-                    setUnRegisterLimit(parseInt(cookieLimit));
-                }
-            }
-        } catch (error) {}
-    };
-    setStateFromSession();
+    const [cookies, setCookie] = useCookies([COOKIE_LIMIT, COOKIE_USER_CONSENT]);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, initializeUser);
+        let unsubscribe: any;
+        const handleRedirectResult = async () => {
+            const userResult = await getRedirectResult(auth);
+            if (userResult) {
+                // Session.set("signInRef", true);
+                initializeUser(userResult)
+            }
+            else unsubscribe = onAuthStateChanged(auth, initializeUser);
+        };
+        if (isMobile) handleRedirectResult();
+        else unsubscribe = onAuthStateChanged(auth, initializeUser);
         return unsubscribe;
-    }, []);
+    }, [isMobile, auth, loading]);
 
     const initializeUser = async (user) => {
         try {
-            if (user && !currentUser) {
-                let resultUser;
-                const response = await fetchGetUserById({ id: (user as GoogleUser).uid });
+            if (user && (user as GoogleUser)?.uid) {
+                let resultUser: User | undefined = undefined;
+                const rawUser = initRawUser(user);
+                const response = await fetchCreateNewUser({ rawUser });
                 if (response.user) {
                     resultUser = response.user;
                 }
-                setUser(resultUser);
+                if (resultUser) {
+                    if (resultUser.movement) {
+                        const { grade, amount, gender, movement } = resultUser.movement;
+                        addSessionData(movement, grade, amount, gender);
+                    }
+                    setCurrentUser(resultUser);
+                    setIsLoggedIn(true);
+                    if (cookies[COOKIE_LIMIT] !== GUEST_LIMIT_VALUE)
+                        setLimitCookie(GUEST_LIMIT_VALUE);
+                    return;
+                }
+                setCurrentUser(undefined);
+                setIsLoggedIn(false);
             }
         } catch (error) {
-            handleError(error);
+            handleError(msg.google.message);       
         } finally {
             setLoading(false);
-        }
-    };
-
-    const setUser = (user: User | undefined) => {
-        if (user) {
-            if (user.movement) {
-                const { grade, amount, place, gender, movement } = user.movement;
-                addSessionData(movement, grade, amount, place, gender);
-            }
-            setCurrentUser(user);
-            setIsLoggedIn(true);
-        } else {
-            setCurrentUser(undefined);
-            setIsLoggedIn(false);
         }
     };
 
@@ -83,23 +90,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
     };
 
-    const updateUnRegisterLimit = () => {
-        setUnRegisterLimit((prev) => {
-            const lim = prev ? prev + 1 : 1;
-            if (lim <= NOT_REGISTER_LIMIT) {
-                setCookie("limit", JSON.stringify(lim), {
-                    path: "/",
-                    expires: forLongTime,
-                });
-            }
-            return lim;
-        });
+    const setLimitCookie = (data: string | number) => {
+        setCookie(COOKIE_LIMIT, JSON.stringify(data), CookieOptions);
     };
 
-    const reachUnRegisterLimit = () => {
-        if (isLoggedIn) return false;
-        if (unRegisterLimit >= NOT_REGISTER_LIMIT) return true;
-        return false;
+    const setConsentCookie = () => {
+        setCookie(COOKIE_USER_CONSENT, USER_CONSENT_VALUE, CookieOptions);
     };
 
     return (
@@ -109,12 +105,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 isLoggedIn,
                 loading,
                 logout,
-                updateUnRegisterLimit,
-                reachUnRegisterLimit,
-                unRegisterLimit,
                 cookies,
                 setCookie,
-                setUser,
+                setConsentCookie,
+                setLimitCookie,
             }}
         >
             {children}
