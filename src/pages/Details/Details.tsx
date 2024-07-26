@@ -8,7 +8,7 @@ import {
     GradeOptions,
     AmountOptions,
     PlaceOptions,
-    GenderOptions,
+    GenderOptions, 
 } from "../../models/resources/select";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import MainBtn from "../../components/MainBtn/MainBtn";
