@@ -16,7 +16,14 @@ function Profile({ img }: ProfileProps) {
             <div className={styles.user_profile} onClick={handleOpen}>
                 {img ? (
                     <div className={styles.img_div}>
-                        <img className={styles.user_profile_img} src={img} alt="Profile image" />
+                        <img
+                            className={styles.user_profile_img}
+                            src={img}
+                            height={30}
+                            width={30}
+                            alt="Profile image"
+                            title="Profile image"
+                        />
                     </div>
                 ) : (
                     <div className={styles.mock_img_div} />

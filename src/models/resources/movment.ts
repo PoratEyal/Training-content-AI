@@ -74,7 +74,7 @@ export const Movements = {
         title: "השומר הצעיר",
         categories: [
             {
-                name: "activity",
+                name: "contant",
                 title: "פעילות",
             },
             {
@@ -88,7 +88,7 @@ export const Movements = {
         title: "חוגי סיירות",
         categories: [
             {
-                name: "activity",
+                name: "contant",
                 title: "פעילות",
             },
             {
@@ -106,7 +106,7 @@ export const Movements = {
         title: "ארגון המד״צים",
         categories: [
             {
-                name: "activity",
+                name: "contant",
                 title: "פעילות",
             },
             {
@@ -120,7 +120,7 @@ export const Movements = {
         title: "מדריכי של״ח צעירים",
         categories: [
             {
-                name: "activity",
+                name: "contant",
                 title: "פעילות",
             },
             {
@@ -134,7 +134,7 @@ export const Movements = {
         title: "אחר",
         categories: [
             {
-                name: "activity",
+                name: "contant",
                 title: "פעילות",
             },
             {
