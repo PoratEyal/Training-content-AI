@@ -10,6 +10,7 @@ import useClickOutside from "../../../hooks/useClickOutside";
 import { MdOutlinePrivacyTip } from "react-icons/md";
 import { IoMdShare } from "react-icons/io";
 import { IoMailOpen } from "react-icons/io5";
+import { VscOutput } from "react-icons/vsc";
 import policy from "../../../models/resources/policy.json";
 import { WEBSITE_URL } from "../../../models/constants";
 import { formatInviteFriend } from "../../../utils/format";
@@ -35,6 +36,11 @@ function Dropdown({ handleClose }: DropdownProps) {
             title: "צרו קשר",
             func: () => contactUs(),
             Icon: <IoMailOpen />,
+        },
+        {
+            title: "פעולות לדוגמא",
+            path: route.examplesActivities,
+            Icon: <VscOutput />,
         },
         {
             title: "תנאי שירות",

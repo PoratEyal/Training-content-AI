@@ -4,6 +4,7 @@ import { ContentProvider } from "./context/ContentContext";
 import Details from "./pages/Details/Details";
 import Activity from "./pages/Activity/Activity";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
+import ExamplesActivities from "./pages/ExamplesActivities/ExamplesActivities";
 import PrivateRoutes from "./router/PrivateRoutes";
 import { ErrorContextProvider } from "./context/ErrorContext";
 import { HelmetProvider } from "react-helmet-async";
@@ -33,6 +34,7 @@ function App() {
                                   <Route path={route.activity} element={<Activity />} />
                                 </Route>
                                 <Route path={route.privacyPolicy} element={<PrivacyPolicy />} />
+                                <Route path={route.examplesActivities} element={<ExamplesActivities />} />
                                 {/* <Route path={route.status} element={<Status />} /> */}
                                 <Route path={route.all} element={<Navigate replace to={route.home} />} />
                             </Routes>
