@@ -1,0 +1,16 @@
+{
+    "yellowLamp": {
+        "title": "Yellow Lamp",
+        "src": "lamp.svg",
+        "width": 135,
+        "height": 139,
+        "lazy": true
+    },
+    "yellowSign": {
+        "title": "Yellow sign with heart",
+        "src": "path.svg",
+        "width": 130,
+        "height": 160,
+        "lazy": false
+    }
+}
