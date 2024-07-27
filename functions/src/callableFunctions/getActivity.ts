@@ -20,7 +20,7 @@ const getActivity = functions.https.onCall(
             const activity = initActivityFromAI(activityResult, data, userId);
             const { id, ...restActivity } = activity;
 
-            const docRef = await db.collection(CollectionDB.TEST).add(restActivity);
+            const docRef = await db.collection(CollectionDB.ACTIVITY).add(restActivity);
             const updateActivity = updateActivityWithId(docRef.id, activity);
             return { result: "success", activity: updateActivity };
         } catch (error) {

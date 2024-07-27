@@ -18,7 +18,6 @@ function MoreActions({ activity, setNewActivity }: MoreActionsProps) {
     const { handleAlert } = useErrorContext();
 
     const [loadingGenerate, setLoadingGenerate] = useState(false);
-    const [reset, setReset] = useState(false);
 
     const { activity: text, ...detailsData } = activity;
 
@@ -26,7 +25,6 @@ function MoreActions({ activity, setNewActivity }: MoreActionsProps) {
         if (loadingGenerate) return;
 
         setLoadingGenerate(true);
-        setReset(true);
         try {
             const response = await fetchGetActivity({ ...detailsData });
             if (
@@ -40,7 +38,6 @@ function MoreActions({ activity, setNewActivity }: MoreActionsProps) {
         } finally {
             setLoadingGenerate(false);
             setNewActivity(true);
-            setReset(false);
         }
     };
 
