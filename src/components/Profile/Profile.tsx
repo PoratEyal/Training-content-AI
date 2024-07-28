@@ -3,7 +3,7 @@ import styles from "./Profile.module.css";
 import Dropdown from "../Layout/Dropdown/Dropdown";
 
 type ProfileProps = {
-    img: string | undefined;
+    img: string | React.ReactNode | undefined;
 };
 
 function Profile({ img }: ProfileProps) {
@@ -14,7 +14,7 @@ function Profile({ img }: ProfileProps) {
     return (
         <div style={{ position: "relative" }}>
             <div className={styles.user_profile} onClick={handleOpen}>
-                {img ? (
+                {typeof img === 'string' ? (
                     <div className={styles.img_div}>
                         <img
                             className={styles.user_profile_img}
@@ -26,7 +26,9 @@ function Profile({ img }: ProfileProps) {
                         />
                     </div>
                 ) : (
-                    <div className={styles.mock_img_div} />
+                    <div className={styles.img_div}>
+                        {img}
+                    </div>
                 )}
             </div>
             {isOpened ? <Dropdown handleClose={handleClose} /> : null}

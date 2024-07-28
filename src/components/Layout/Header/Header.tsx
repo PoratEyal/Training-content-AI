@@ -2,6 +2,7 @@ import { useAuthContext } from "../../../context/AuthContext";
 import Profile from "../../Profile/Profile";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import styles from "./Header.module.css";
+import { FaUserCircle } from "react-icons/fa";
 
 type HeaderProps = {
     goBack?: () => void;
@@ -15,19 +16,17 @@ function Header({ goBack, isBlur = false }: HeaderProps) {
 
     return (
         <section className={style}>
-            {!loading ? (
+            {!loading && (
                 <div className={styles.header_container}>
-                    {isLoggedIn ? <Profile img={currentUser?.image} /> : <div />}
-                    {goBack ? (
+                    <Profile img={isLoggedIn ? currentUser?.image : <FaUserCircle className={styles.user_icon}/>} />
+                    {goBack && (
                         <IoMdArrowRoundBack
                             onClick={goBack}
                             className={styleIcon}
-                        ></IoMdArrowRoundBack>
-                    ) : (
-                        <div />
+                        />
                     )}
                 </div>
-            ) : null}
+            )}
         </section>
     );
 }
