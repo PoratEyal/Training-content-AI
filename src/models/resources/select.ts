@@ -45,9 +45,9 @@ export const PlaceOptions: SelectOption[] = [
 ];
 
 export const GenderOptions: SelectOption[] = [
-    { value: "חניכים", label: "בנים" },
-    { value: "חניכות", label: "בנות" },
-    { value: "מעורב", label: "מעורב" },
+    { value: "חניכים", label: "קבוצת בנים" },
+    { value: "חניכות", label: "קבוצת בנות" },
+    { value: "מעורב", label: "קבוצה מעורבת" },
 ];
 
 export const ActivityTimeOptions: SelectOption[] = [

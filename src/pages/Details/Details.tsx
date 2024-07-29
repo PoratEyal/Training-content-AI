@@ -105,7 +105,7 @@ function Details() {
                             />
                             <SelectDetails
                                 data={GenderOptions}
-                                placeholder={"מין"}
+                                placeholder={"הרכב הקבוצה"}
                                 obj={gender}
                                 setObj={setGender}
                             />
