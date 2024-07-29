@@ -17,7 +17,6 @@ import {
 } from "../models/constants/cookie";
 import { initRawUser } from "../utils/user";
 import msg from "../models/resources/errorMsg.json";
-import Session from "../utils/sessionStorage";
 
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
 

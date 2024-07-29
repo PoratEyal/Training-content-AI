@@ -1,12 +1,21 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Profile.module.css";
 import Dropdown from "../Layout/Dropdown/Dropdown";
+import DropOptContactUs from "../dropdown/DropOptContactUs";
+import DropOptInviteFriends from "../dropdown/DropOptInviteFriends";
+import DropOptExample from "../dropdown/DropOptExample";
+import DropOptPrivacy from "../dropdown/DropOptPrivacy";
+import DropOptLogout from "../dropdown/DropOptLogout";
+import { useAuthContext } from "../../context/AuthContext";
+import { FaUserCircle } from "react-icons/fa";
+import DropOptSignIn from "../dropdown/DropOptSignIn";
 
 type ProfileProps = {
-    img: string | React.ReactNode | undefined;
+    img?: string;
 };
 
 function Profile({ img }: ProfileProps) {
+    const { isLoggedIn } = useAuthContext();
     const [isOpened, setIsOpened] = useState(false);
     const handleOpen = () => setIsOpened((prev) => !prev);
     const handleClose = () => setIsOpened(false);
@@ -14,8 +23,8 @@ function Profile({ img }: ProfileProps) {
     return (
         <div style={{ position: "relative" }}>
             <div className={styles.user_profile} onClick={handleOpen}>
-                {typeof img === 'string' ? (
-                    <div className={styles.img_div}>
+                <div className={styles.img_div}>
+                    {img ? (
                         <img
                             className={styles.user_profile_img}
                             src={img}
@@ -24,14 +33,24 @@ function Profile({ img }: ProfileProps) {
                             alt="Profile image"
                             title="Profile image"
                         />
-                    </div>
-                ) : (
-                    <div className={styles.img_div}>
-                        {img}
-                    </div>
-                )}
+                    ) : (
+                        <FaUserCircle className={styles.no_user_profile_img} />
+                    )}
+                </div>
             </div>
-            {isOpened ? <Dropdown handleClose={handleClose} /> : null}
+            {isOpened ? (
+                <Dropdown handleClose={handleClose}>
+                    <DropOptInviteFriends />
+                    <DropOptContactUs handleClose={handleClose} />
+                    <DropOptExample handleClose={handleClose} />
+                    <DropOptPrivacy handleClose={handleClose} />
+                    {isLoggedIn ? (
+                        <DropOptLogout handleClose={handleClose} />
+                    ) : (
+                        <DropOptSignIn handleClose={handleClose} />
+                    )}
+                </Dropdown>
+            ) : null}
         </div>
     );
 }
