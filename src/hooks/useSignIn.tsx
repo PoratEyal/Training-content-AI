@@ -29,7 +29,6 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
             Session.remove(SessionKey.SIGNIN);
             handleStart();
         };
-
         const signInRef = Session.get(SessionKey.SIGNIN);
         if(signInRef && (signInRef as boolean) === true){
             setSignInBtnText(loadingText);
@@ -48,7 +47,7 @@ const useSignIn = (handleStart, loadingText, loggedInText, notLoggedInText) => {
             setSignInBtnText(loadingText);
             setSignInDisabled(true);
             if (!auth) {
-                console.error("Firebase auth not initialized");
+                console.error("Auth not initialized");
                 return;
             }
             await setPersistence(auth, browserLocalPersistence);
