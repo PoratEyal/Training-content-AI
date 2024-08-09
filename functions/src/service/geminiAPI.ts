@@ -58,6 +58,10 @@ export async function getMainActivity(activityDetials: ActivityDetails): Promise
             break;
         case "playTime":
             promptOptions = [PLAY_PROMPT_M, PLAY_PROMPT_M, PLAY_PROMPT_M];
+            break;
+        default:
+            promptOptions = [CONTANT_PROMPT_S, CONTANT_PROMPT_M, CONTANT_PROMPT_B];
+            break;
     }
 
     const prompt = promptPerGrade(grade, promptOptions);

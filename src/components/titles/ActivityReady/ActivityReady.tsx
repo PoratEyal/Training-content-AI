@@ -8,8 +8,8 @@ type ActivityReadyProps = {
 function ActivityReady({ subject }: ActivityReadyProps) {
     return (
         <h1 className={styles.activity_title}>
-            <div>פעולה בנושא</div>
-            {subject}
+            <span>פעולה בנושא</span>
+            <div>{subject}</div>
         </h1>
     );
 }
