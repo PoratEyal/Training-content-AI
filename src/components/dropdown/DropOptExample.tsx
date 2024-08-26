@@ -18,7 +18,7 @@ function DropOptExample({ handleClose }: DropdownOption) {
 
     return (
         <span className={styles.text_and_icon} onClick={() => handleClick()}>
-            פעולות לדוגמא
+            פעולות נפוצות
             <VscOutput />
         </span>
     );
