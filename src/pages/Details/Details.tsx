@@ -15,6 +15,7 @@ import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
+import DiscoverActivitiesLink from "../../components/DiscoverActivitiesLink/DiscoverActivitiesLink";
 
 function Details() {
     const { data, updateDetails, clearAll } = useContentContext();
@@ -123,6 +124,8 @@ function Details() {
                     </div>
                 </div>
             </form>
+            
+            <DiscoverActivitiesLink></DiscoverActivitiesLink>
         </PageLayout>
     );
 }
