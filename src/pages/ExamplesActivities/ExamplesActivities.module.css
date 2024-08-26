@@ -112,7 +112,6 @@
 
     .input_div select {
         min-width: 20px;
-        max-width: 250px;
     }
     .input_div {
         display: flex;
@@ -121,6 +120,6 @@
         gap: 10px;
         position: relative;
         margin-bottom: 40px;
-        max-width: 250px;
+        max-width: 300px;
     }
 }

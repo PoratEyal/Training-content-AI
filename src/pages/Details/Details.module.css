@@ -52,7 +52,6 @@
     direction: ltr;
 }
 
-
 @media (min-width: 550px) {
     .details_form {
         width: 100%;

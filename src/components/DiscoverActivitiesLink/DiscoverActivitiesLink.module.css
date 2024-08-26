@@ -1,0 +1,25 @@
+.link_div {
+    width: 100%;
+    position: relative;
+}
+
+.btn {
+    border-bottom: 1.5px solid var(--primary-color);
+    cursor: pointer;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--primary-color);
+    text-align: center;
+    width: max-content;
+    padding-bottom: 3px;
+    z-index: 1000;
+}
+
+@media (min-width: 550px) {
+    .btn {
+    }
+}
+
