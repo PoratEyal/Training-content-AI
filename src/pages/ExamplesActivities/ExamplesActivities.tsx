@@ -17,7 +17,7 @@ function ExamplesActivities() {
         <PageLayout path={route.examplesActivities} hasHeader={{ goBack, isBlur: true }} hasFade>
             <article className={styles.privacy_article}>
                 <section id="markdown">
-                    <h1 className={styles.page_title}>פעולות לדוגמא</h1>
+                    <h1 className={styles.page_title}>פעולות נפוצות</h1>
                     {Activities.map((activity, index) => (
                         <div key={index}>
                             <ReactMarkdown>{activity}</ReactMarkdown>
