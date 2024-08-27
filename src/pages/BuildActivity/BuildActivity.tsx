@@ -176,7 +176,7 @@ function BuildActivity() {
                 {clicked ? <LoadingActivity /> : null}
             </div>
 
-            <DiscoverActivitiesLink></DiscoverActivitiesLink>
+            {/* <DiscoverActivitiesLink></DiscoverActivitiesLink> */}
         </PageLayout>
     );
 }
