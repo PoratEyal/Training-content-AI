@@ -125,7 +125,7 @@ function Details() {
                 </div>
             </form>
             
-            <DiscoverActivitiesLink></DiscoverActivitiesLink>
+            {/* <DiscoverActivitiesLink></DiscoverActivitiesLink> */}
         </PageLayout>
     );
 }
