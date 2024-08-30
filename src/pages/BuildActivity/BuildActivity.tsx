@@ -176,11 +176,11 @@ function BuildActivity() {
                 {clicked ? <LoadingActivity /> : null}
             </div>
             
-            {!clicked ?
+            {/* {!clicked ?
                 <div className={styles.moreExamples_div}>
                     <DiscoverActivitiesLink></DiscoverActivitiesLink>
                 </div>
-            : null}
+            : null} */}
         </PageLayout>
     );
 }
