@@ -52,6 +52,13 @@
     direction: ltr;
 }
 
+.moreExamples_div {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+}
+
 @media (min-width: 550px) {
     .details_form {
         width: 100%;
@@ -68,5 +75,9 @@
 
     .btn_div {
         width: 300px;
+    }
+
+    .moreExamples_div {
+        bottom: 15px;
     }
 }
