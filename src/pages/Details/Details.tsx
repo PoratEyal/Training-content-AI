@@ -125,7 +125,10 @@ function Details() {
                 </div>
             </form>
             
-            {/* <DiscoverActivitiesLink></DiscoverActivitiesLink> */}
+            <div className={styles.moreExamples_div}>
+                <DiscoverActivitiesLink></DiscoverActivitiesLink>
+            </div>
+
         </PageLayout>
     );
 }

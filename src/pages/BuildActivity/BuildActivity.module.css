@@ -72,6 +72,13 @@
     text-align: center;
 }
 
+.moreExamples_div {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+}
+
 @media (min-width: 550px) {
     .build_form_container {
         width: 100%;
@@ -87,5 +94,9 @@
 
     .btn_div {
         position: relative;
+    }
+
+    .moreExamples_div {
+        bottom: 15px;
     }
 }

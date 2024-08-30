@@ -175,8 +175,12 @@ function BuildActivity() {
 
                 {clicked ? <LoadingActivity /> : null}
             </div>
-
-            {/* <DiscoverActivitiesLink></DiscoverActivitiesLink> */}
+            
+            {!clicked ?
+                <div className={styles.moreExamples_div}>
+                    <DiscoverActivitiesLink></DiscoverActivitiesLink>
+                </div>
+            : null}
         </PageLayout>
     );
 }
