@@ -34,6 +34,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const [cookies, setCookie] = useCookies([COOKIE_LIMIT, COOKIE_USER_CONSENT]);
 
+    /**
+     * for make getRedirectResult on localhost
+     * https://stackoverflow.com/questions/77270210/firebase-onauthstatechanged-user-returns-null-when-on-localhost
+     * disable chrome://flags/#third-party-storage-partitioning (found it on default)
+     */
+
     useEffect(() => {
         let unsubscribe: any;
         const handleRedirectResult = async () => {

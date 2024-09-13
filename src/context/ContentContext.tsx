@@ -63,7 +63,6 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
     const clearMainActivity = () => {
         setMainActivity(undefined);
         Session.remove(SessionKey.ACTIVITY);
-        Session.remove(SessionKey.PARTS);
     };
 
     const updateMainActivity = (activity: Activity) => {

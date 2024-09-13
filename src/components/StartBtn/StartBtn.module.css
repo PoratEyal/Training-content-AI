@@ -1,0 +1,70 @@
+.main_btn,
+.main_btn_disabled {
+    border: none;
+    border-radius: 19px;
+    font-family: var(--font-family);
+    font-size: 18px;
+    font-weight: 550;
+    cursor: pointer;
+    min-width: 10px;
+    width: fit-content;
+    height: 48px;
+    padding: 0 15px;
+}
+
+.main_btn {
+    background-color: var(--secondary-color);
+}
+
+.main_btn_disabled {
+    background-color: var(--secondary-color-disable);
+}
+
+.btn {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    direction: rtl;
+}
+
+.btn_loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    direction: rtl;
+    border-radius: 900px;
+    width: 31px;
+}
+
+.btn {
+    padding: 0 15px;
+}
+
+.btn span {
+    color: var(--text-color);
+    cursor: pointer;
+    position: relative;
+    top: -1px;
+}
+
+.btn_icon {
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    font-size: 15px;
+    position: relative;
+    right: 0.4px;
+    color: var(--secondary-color);
+}

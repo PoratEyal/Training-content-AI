@@ -1,41 +1,40 @@
 import "../../components/ActivityOutput/Markdown.css";
 import styles from "./ExamplesActivities.module.css";
-import { useNavigate } from "react-router-dom";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import ReactMarkdown from "react-markdown";
 import { Activities } from "../../models/resources/activities";
 import { useState } from "react";
+import SelectDetails from "../../components/SelectDetails/SelectDetails";
+import { SelectOption } from "../../models/types/common";
 
 function ExamplesActivities() {
-    const navigate = useNavigate();
-    const [selectedIndex, setSelectedIndex] = useState(2); // Initial state is 2, third activity
+    const [selectedIndex, setSelectedIndex] = useState<string>("0");
+    const hasLink = { path: route.details, text: "צרו פעולה משלכם" };
 
-    const goBack = () => {
-        navigate(-1);
-    };
-
-    const handleSelectChange = (event) => {
-        setSelectedIndex(Number(event.target.value));
-    };
+    const options: SelectOption[] = Activities.map((activity, index) => {
+        return {
+            value: index.toString(),
+            label: activity.subject,
+        };
+    })
 
     return (
-        <PageLayout path={route.examplesActivities} hasHeader={{ goBack, isBlur: true }} hasFade>
+        <PageLayout path={route.examplesActivities} hasHeader={{ hasLink, isBlur: true }} hasFade>
             <article className={styles.privacy_article}>
-                <h1 className={styles.page_title}>פעולות נפוצות</h1>
-                <section id="dropdown" className={styles.input_div}>
-                    <select className={styles.select} onChange={handleSelectChange} value={selectedIndex}>
-                        {Activities.map((activity, index) => (
-                            <option key={index} value={index}>
-                                {activity.title}
-                            </option>
-                        ))}
-                    </select>
+                <h1 className={styles.page_title}>פעולות נפוצות לדוגמא</h1>
+                <section className={styles.input_div}>
+                    <SelectDetails
+                        data={options}
+                        placeholder={"נושא הפעולה"}
+                        obj={selectedIndex}
+                        setObj={setSelectedIndex}
+                    />
                 </section>
                 <section id="markdown">
                     {selectedIndex !== null && (
                         <div>
-                            <ReactMarkdown>{Activities[selectedIndex].content}</ReactMarkdown>
+                            <ReactMarkdown>{Activities[Number(selectedIndex)].content}</ReactMarkdown>
                         </div>
                     )}
                 </section>
