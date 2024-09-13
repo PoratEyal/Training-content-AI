@@ -8,7 +8,7 @@ function ContinueWithAI() {
                 <div className={styles.word_1_1}>מתקדמים</div>
                 <div className={styles.word_1_2}>מתקדמים</div>
             </div>
-            <div className={styles.word_2}>לפעילות</div>
+            <div className={styles.word_2}>לפעולות</div>
             <div className={styles.word_3}>
                 <div className={styles.word_3_1}>ב-</div>
                 <div className={styles.word_3_2}>ב-</div>

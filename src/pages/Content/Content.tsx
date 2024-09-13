@@ -1,5 +1,5 @@
 import "../../components/ActivityOutput/Markdown.css";
-import styles from "./ExamplesActivities.module.css";
+import styles from "./Content.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import ReactMarkdown from "react-markdown";
@@ -9,7 +9,7 @@ import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import { SelectOption } from "../../models/types/common";
 import { useNavigate } from "react-router-dom";
 
-function ExamplesActivities() {
+function Content() {
     const [selectedIndex, setSelectedIndex] = useState<string>("0");
     const navigate = useNavigate();
 
@@ -25,9 +25,9 @@ function ExamplesActivities() {
     })
 
     return (
-        <PageLayout path={route.examplesActivities} hasHeader={{ goBack, isBlur: true }} hasFade>
+        <PageLayout path={route.content} hasHeader={{ goBack, isBlur: true }} hasFade>
             <article className={styles.privacy_article}>
-                <h1 className={styles.page_title}>פעולות נפוצות לדוגמא</h1>
+                <h1 className={styles.page_title}>פעולות נפוצות</h1>
                 <section className={styles.input_div}>
                     <SelectDetails
                         data={options}
@@ -48,4 +48,4 @@ function ExamplesActivities() {
     );
 }
 
-export default ExamplesActivities;
+export default Content;

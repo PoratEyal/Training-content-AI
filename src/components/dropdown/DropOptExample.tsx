@@ -12,7 +12,7 @@ function DropOptExample({ handleClose }: DropdownOption) {
     const navigate = useNavigate();
 
     const handleClick = async () => {
-        navigate(route.examplesActivities);
+        navigate(route.content);
         handleClose();
     };
 

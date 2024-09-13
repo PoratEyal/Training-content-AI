@@ -1,6 +1,6 @@
 export const Activities = [
     {
-        subject: "פעילות היכרות",
+        subject: "פעולת היכרות",
         grade: "",
         place: "",
         time: "",
@@ -47,7 +47,7 @@ export const Activities = [
     },
 
     {
-        subject: "פעילות פתיחת שנה",
+        subject: "פעולת פתיחת שנה",
         grade: "",
         place: "",
         time: "",
