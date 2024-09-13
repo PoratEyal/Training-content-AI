@@ -8,6 +8,7 @@ export const MovmentsOptions: SelectOption[] = [
     { value: Movements.akiva.name, label: Movements.akiva.title },
     { value: Movements.maccabi.name, label: Movements.maccabi.title },
     { value: Movements.shomer.name, label: Movements.shomer.title },
+    { value: Movements.bitar.name, label: Movements.bitar.title },
     { value: Movements.medtchim.name, label: Movements.medtchim.title },
     { value: Movements.meshachim.name, label: Movements.meshachim.title },
     { value: Movements.sayarut.name, label: Movements.sayarut.title },

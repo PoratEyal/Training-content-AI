@@ -1,10 +1,9 @@
-import { Activity } from "./activity";
-
 export type MovementName =
     | "scout"
     | "maccabi"
     | "akiva"
     | "oved"
+    | "bitar"
     | "shomer"
     | "sayarut"
     | "medtchim"

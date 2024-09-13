@@ -1,4 +1,3 @@
-import MainBtn from "../../components/MainBtn/MainBtn";
 import styles from "./Home.module.css";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
@@ -6,53 +5,60 @@ import route from "../../router/route.json";
 import useSignIn from "../../hooks/useSignIn";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import { COOKIE_LIMIT, GUEST_LIMIT_VALUE } from "../../models/constants/cookie";
-import { useEffect, useState } from "react";
 import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI";
 import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
 import Session from "../../utils/sessionStorage";
 import { SessionKey } from "../../models/enum/session";
+import StartBtn from "../../components/StartBtn/StartBtn";
+import LinkBtn from "../../components/LinkBtn/LinkBtn";
+import { useState } from "react";
 
 function Home() {
-    const { isLoggedIn, loading, cookies, setLimitCookie } = useAuthContext();
+    const { cookies, setLimitCookie } = useAuthContext();
+    const [btnLoading, setBtnLoading] = useState<number>(0);
     const navigate = useNavigate();
-    const handleStart = () => navigate(route.details);
-    const [isGuest, setIsGuest] = useState(true);
 
-    useEffect(() => {
-        let limit = cookies[COOKIE_LIMIT];
-        const signInRef = Session.get(SessionKey.SIGNIN);
-        if (signInRef && (signInRef as boolean) === true) {
-            setIsGuest(false);
-            return;
-        }
+    const handleStart = () => {
+        const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
+        Session.remove(SessionKey.NAVIGATE);
+        navigateTo && navigate(navigateTo);
+    };
 
-        if (limit) {
-            if (limit === GUEST_LIMIT_VALUE) {
-                setIsGuest(false);
-                return;
+    const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart);
+
+    const navigateAndSetCookieDate = (navigateTo: string) => {
+        setLimitCookie(new Date().toString());
+        navigate(navigateTo);
+    };
+
+    const startAsGuestOrUser = (navigateTo: string) => {
+        Session.set(SessionKey.NAVIGATE, navigateTo);
+        let limitDate = cookies[COOKIE_LIMIT];
+
+        if (limitDate) {
+            if (limitDate === GUEST_LIMIT_VALUE) {
+                signInWithGoogle();
             } else {
-                const isValid = isValidDateFormat(limit);
-                if (isValid) {
-                    const result = isMoreThanADayAfter(limit);
-                    if (result) {
-                        setLimitCookie(GUEST_LIMIT_VALUE);
-                        setIsGuest(false);
-                    }
-                    return;
+                const isValidDate = isValidDateFormat(limitDate);
+                if (isValidDate) {
+                    const isMoreThanDay = isMoreThanADayAfter(limitDate);
+
+                    if (isMoreThanDay) signInWithGoogle();
+                    else navigateAndSetCookieDate(navigateTo);
                 }
             }
-        }
-        setLimitCookie(new Date().toString());
-        setIsGuest(true);
-    }, []);
+        } else navigateAndSetCookieDate(navigateTo);
+    };
 
-    const { signInBtnText, signInDisabled, btnLoading, signInWithGoogle } = useSignIn(
-        handleStart,
-        "התחברות...",
-        "מתחילים",
-        "מתחברים ומתחילים",
-    );
-    const btnFunc = isLoggedIn ? () => handleStart() : () => signInWithGoogle();
+    const handleClickCreateActivities = () => {
+        setBtnLoading(0);
+        startAsGuestOrUser(route.details);
+    };
+
+    const handleClickReadyActivities = () => {
+        setBtnLoading(1);
+        startAsGuestOrUser(route.examplesActivities);
+    };
 
     return (
         <PageLayout path={route.home} hasFooter>
@@ -63,19 +69,18 @@ function Home() {
             </div>
 
             <section className={styles.button_section}>
-                <MainBtn
-                    isLoading={btnLoading}
-                    isDisabled={signInDisabled}
-                    func={btnFunc}
-                    height={42}
-                    text={signInBtnText}
-                ></MainBtn>
-
-                {!isLoggedIn && !loading && isGuest ? (
-                    <button onClick={handleStart} className={styles.home_login_btn}>
-                        התחלה ללא חשבון
-                    </button>
-                ) : null}
+                <StartBtn
+                    text="צרו פעילות חדשה"
+                    onClick={handleClickCreateActivities}
+                    isDisabled={btnDisabled}
+                    isLoading={isLoading && btnLoading === 0}
+                />
+                <LinkBtn
+                    text="צפו בפעילויות מוכנות"
+                    onClick={handleClickReadyActivities}
+                    isDisabled={btnDisabled}
+                    isLoading={isLoading && btnLoading === 1}
+                />
             </section>
         </PageLayout>
     );

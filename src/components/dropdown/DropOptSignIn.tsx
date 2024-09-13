@@ -13,7 +13,7 @@ function DropOptSignIn({ handleClose }: DropOptSignInProps) {
     const navigate = useNavigate();
     const handleStart = () => navigate(route.details);
 
-    const { signInWithGoogle } = useSignIn(handleStart, "", "", "");
+    const { signInWithGoogle } = useSignIn(handleStart);
 
     const handleClick = () => {
         signInWithGoogle();

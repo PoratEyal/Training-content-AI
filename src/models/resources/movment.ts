@@ -1,5 +1,10 @@
 import { Movement } from "../types/movement";
 
+/**
+ * Dont forget to also update
+ * ./models/types/movement.ts for the new Movement type and 
+ * ./models/resources/select.ts for MovmentsOptions
+ */
 export const Movements = {
     scout: {
         name: "scout",
@@ -66,6 +71,20 @@ export const Movements = {
             {
                 name: "pointOfView",
                 title: "מתודת הצפה",
+            },
+        ],
+    } as Movement,
+    bitar: {
+        name: "bitar",
+        title: "נוער לאומי ביתר",
+        categories: [
+            {
+                name: "contant",
+                title: "פעילות",
+            },
+            {
+                name: "playTime",
+                title: "משחק",
             },
         ],
     } as Movement,

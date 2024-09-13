@@ -1,6 +1,5 @@
 export enum SessionKey {
-    SIGNIN = "signInRef",
+    NAVIGATE = "navigateTo",
     DATA = "data",
     ACTIVITY = "activity",
-    PARTS = "parts",
 }
