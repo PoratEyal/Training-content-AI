@@ -6,7 +6,7 @@ function DiscoverActivitiesLink({}) {
     const navigate = useNavigate();
 
     const handleClick = async () => {
-        navigate(route.examplesActivities);
+        navigate(route.content);
     };
 
     return (

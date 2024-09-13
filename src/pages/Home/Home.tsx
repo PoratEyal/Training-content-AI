@@ -22,7 +22,7 @@ function Home() {
         const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
         if (navigateTo) {
             if (navigateTo === route.details) setBtnLoading(1);
-            else if (navigateTo === route.examplesActivities) setBtnLoading(2);
+            else if (navigateTo === route.content) setBtnLoading(2);
         }
     }, []);
 
@@ -68,19 +68,19 @@ function Home() {
             <div className={styles.logo_text_div}>
                 <ContinueWithAI />
 
-                <h1 className={styles.home_lable}>יצירת פעילויות: מותאם, פשוט ומהיר 🤟</h1>
+                <h1 className={styles.home_lable}>יצירת פעולות: מותאם, פשוט ומהיר 🤟</h1>
             </div>
 
             <section className={styles.button_section}>
                 <StartBtn
-                    text="צרו פעילות חדשה"
+                    text="צרו פעולות חדשות"
                     onClick={() => startAsGuestOrUser(route.details)}
                     isLoading={isLoading && btnLoading === 1}
                     isDisabled={btnDisabled}
                 />
                 <LinkBtn
-                    text="צפו בפעילויות מוכנות"
-                    onClick={() => startAsGuestOrUser(route.examplesActivities)}
+                    text="צפו בפעולות מוכנות"
+                    onClick={() => startAsGuestOrUser(route.content)}
                     isLoading={isLoading && btnLoading === 2}
                     isDisabled={btnDisabled}
                 />

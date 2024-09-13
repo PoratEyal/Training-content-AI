@@ -4,7 +4,7 @@
     "build": "/build",
     "activity": "/activity",
     "privacyPolicy": "/privacyPolicy",
-    "examplesActivities": "/examplesActivities",
+    "content": "/content",
     "status": "/status",
     "all": "*"
 }
