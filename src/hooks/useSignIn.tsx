@@ -19,7 +19,7 @@ const useSignIn = (handleStart: ()=> void) => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     const [isLoading, setIsLoading] = useState<boolean>(loading ? true : false);
-    const [btnDisabled, setBtnDisabled] = useState<boolean>(loading ? true : false);
+    const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
 
     useEffect(() => {
         if (!loading && isLoggedIn && currentUser){

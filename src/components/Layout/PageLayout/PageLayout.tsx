@@ -11,7 +11,6 @@ type PageLayoutProps = {
     hasHeader?:
         | {
               goBack?: () => void;
-              hasLink?: { path: string; text: string };
               isBlur?: boolean;
           }
         | undefined;
@@ -45,11 +44,7 @@ function PageLayout({
             >
                 <FadeEffect hasFade={hasFade}>
                     {hasHeader ? (
-                        <Header
-                            goBack={hasHeader.goBack}
-                            hasLink={hasHeader.hasLink}
-                            isBlur={hasHeader.isBlur}
-                        />
+                        <Header goBack={hasHeader.goBack} isBlur={hasHeader.isBlur} />
                     ) : null}
 
                     {children}
