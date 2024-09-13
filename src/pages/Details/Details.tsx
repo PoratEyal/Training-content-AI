@@ -15,11 +15,10 @@ import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
-import DiscoverActivitiesLink from "../../components/DiscoverActivitiesLink/DiscoverActivitiesLink";
 
 function Details() {
     const { data, updateDetails, clearAll } = useContentContext();
-    const { isLoggedIn, currentUser, loading } = useAuthContext();
+    const { currentUser, loading } = useAuthContext();
     const navigate = useNavigate();
 
     const [movement, setMovment] = useState(
@@ -64,7 +63,7 @@ function Details() {
         <PageLayout
             path={route.details}
             hasGreenBackground
-            hasHeader={{ goBack: isLoggedIn ? undefined : goBack }}
+            hasHeader={{ goBack }}
         >
             <TellUsAboutYourGroup />
 
@@ -124,11 +123,6 @@ function Details() {
                     </div>
                 </div>
             </form>
-            
-            {/* <div className={styles.moreExamples_div}>
-                <DiscoverActivitiesLink></DiscoverActivitiesLink>
-            </div> */}
-
         </PageLayout>
     );
 }

@@ -7,10 +7,15 @@ import { Activities } from "../../models/resources/activities";
 import { useState } from "react";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import { SelectOption } from "../../models/types/common";
+import { useNavigate } from "react-router-dom";
 
 function ExamplesActivities() {
     const [selectedIndex, setSelectedIndex] = useState<string>("0");
-    const hasLink = { path: route.details, text: "צרו פעולה משלכם" };
+    const navigate = useNavigate();
+
+    const goBack = () => {
+        navigate(-1);
+    };
 
     const options: SelectOption[] = Activities.map((activity, index) => {
         return {
@@ -20,7 +25,7 @@ function ExamplesActivities() {
     })
 
     return (
-        <PageLayout path={route.examplesActivities} hasHeader={{ hasLink, isBlur: true }} hasFade>
+        <PageLayout path={route.examplesActivities} hasHeader={{ goBack, isBlur: true }} hasFade>
             <article className={styles.privacy_article}>
                 <h1 className={styles.page_title}>פעולות נפוצות לדוגמא</h1>
                 <section className={styles.input_div}>
