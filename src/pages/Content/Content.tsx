@@ -22,7 +22,7 @@ function Content() {
             value: index.toString(),
             label: activity.subject,
         };
-    })
+    });
 
     return (
         <PageLayout path={route.content} hasHeader={{ goBack, isBlur: true }} hasFade>
@@ -37,11 +37,12 @@ function Content() {
                     />
                 </section>
                 <section id="markdown">
-                    {selectedIndex !== null && (
-                        <div>
-                            <ReactMarkdown>{Activities[Number(selectedIndex)].content}</ReactMarkdown>
+                    {Activities[Number(selectedIndex)].Activities.map((activity, index) => (
+                        <div key={index}>
+                            <ReactMarkdown>{activity.content}</ReactMarkdown>
+                            <div className={styles.content_border}></div>
                         </div>
-                    )}
+                    ))}
                 </section>
             </article>
         </PageLayout>
