@@ -37,7 +37,7 @@ function Activity() {
             <ActivityReady subject={mainActivity.subject} />
             <section className={styles.activity_data_container}>
                 <article>
-                    <ActivityOutput activity={mainActivity} activityRef={activityRef} />
+                    <ActivityOutput activity={mainActivity.activity} activityRef={activityRef} />
                 </article>
                 <MoreActions setNewActivity={setNewActivity} activity={mainActivity} />
             </section>
