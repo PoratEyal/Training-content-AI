@@ -17,6 +17,7 @@ import "./App.css";
 import Maintenance from "./pages/Maintenance/Maintenance";
 import Status from "./pages/Status/Status";
 import BuildActivity from "./pages/BuildActivity/BuildActivity";
+import ContentActivity from "./pages/ContentActivity/ContentActivity";
 
 function App() {
     return (
@@ -35,6 +36,7 @@ function App() {
                                 </Route>
                                 <Route path={route.privacyPolicy} element={<PrivacyPolicy />} />
                                 <Route path={route.content} element={<Content />} />
+                                <Route path={route.contentActivity} element={<ContentActivity />} />
                                 {/* <Route path={route.status} element={<Status />} /> */}
                                 <Route path={route.all} element={<Navigate replace to={route.home} />} />
                             </Routes>

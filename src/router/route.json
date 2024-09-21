@@ -5,6 +5,7 @@
     "activity": "/activity",
     "privacyPolicy": "/privacyPolicy",
     "content": "/content",
+    "contentActivity": "/content/:activityId",
     "status": "/status",
     "all": "*"
 }

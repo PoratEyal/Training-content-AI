@@ -1,6 +1,14 @@
-export const Activities = [
-    {
-        subject: "פעולת היכרות",
+// export const Activities = [
+//     //  {
+//     //      subject: "",
+//     //      Activities: [{ grade: "", place: "", amount: "", content: "" }],
+//     //  },
+// ];
+
+export const Activities = {
+    intro: {
+        id: "intro",
+        subject: "היכרות",
         Activities: [
             {
                 grade: "קטנים",
@@ -87,9 +95,9 @@ export const Activities = [
             },
         ],
     },
-
-    {
-        subject: "פעולת פתיחת שנה",
+    opening: {
+        id: "opening",
+        subject: "פתיחת שנה",
         Activities: [
             {
                 grade: "קטנים",
@@ -138,8 +146,8 @@ export const Activities = [
             },
         ],
     },
-
-    {
+    friendship: {
+        id: "friendship",
         subject: "חברות",
         Activities: [
             {
@@ -177,8 +185,8 @@ export const Activities = [
             },
         ],
     },
-
-    {
+    responsibility: {
+        id: "responsibility",
         subject: "אחריות",
         Activities: [
             {
@@ -284,8 +292,8 @@ export const Activities = [
             },
         ],
     },
-
-    {
+    environmental: {
+        id: "environmental",
         subject: "איכות הסביבה",
         Activities: [
             {
@@ -375,8 +383,8 @@ export const Activities = [
             },
         ],
     },
-
-    {
+    movies: {
+        id: "movies",
         subject: "סרטים",
         Activities: [
             {
@@ -474,8 +482,8 @@ export const Activities = [
             },
         ],
     },
-
-    {
+    accident: {
+        id: "accident",
         subject: "זהירות בדרכים",
         Activities: [
             {
@@ -522,8 +530,8 @@ export const Activities = [
             },
         ],
     },
-
-    {
+    animals: {
+        id: "animals",
         subject: "בעלי חיים",
         Activities: [
             {
@@ -577,8 +585,8 @@ export const Activities = [
             },
         ],
     },
-
-    {
+    holidays: {
+        id: "holidays",
         subject: "חגים ומועדים",
         Activities: [
             {
@@ -667,8 +675,8 @@ export const Activities = [
             },
         ],
     },
-
-    {
+    teamwork: {
+        id: "teamwork",
         subject: "עבודת צוות",
         Activities: [
             {
@@ -715,8 +723,8 @@ export const Activities = [
             },
         ],
     },
-
-    {
+    superhero: {
+        id: "superhero",
         subject: "גיבורי על",
         Activities: [
             {
@@ -767,8 +775,8 @@ export const Activities = [
             },
         ],
     },
-
-    {
+    harassment: {
+        id: "harassment",
         subject: "הטרדה מינית",
         Activities: [
             {
@@ -819,9 +827,4 @@ export const Activities = [
             },
         ],
     },
-
-    //  {
-    //      subject: "",
-    //      Activities: [{ grade: "", place: "", amount: "", content: "" }],
-    //  },
-];
+};
