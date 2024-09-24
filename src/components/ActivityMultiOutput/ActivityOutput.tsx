@@ -18,6 +18,7 @@ function ActivityMultiOutput({ activities }: ActivityMultiOutputProps) {
                             {activity.content}
                         </ReactMarkdown>
                         <br />
+                        <div className={styles.border}/>
                         <br />
                     </span>
                 ))}
