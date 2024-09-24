@@ -9,18 +9,35 @@ type ActivityMultiOutputProps = {
 };
 
 function ActivityMultiOutput({ activities }: ActivityMultiOutputProps) {
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const handlePrev = () => {
-        setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-    };
-
-    const handleNext = () => {
-        setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, activities.length - 1));
-    };
-
     return (
         <section className={styles.activity_output_container}>
+            <section className={styles.activity_container} id="markdown">
+                {activities.map((activity, index) => (
+                    <span>
+                        <ReactMarkdown key={index} className={styles.activity_data}>
+                            {activity.content}
+                        </ReactMarkdown>
+                        <br />
+                        <br />
+                    </span>
+                ))}
+            </section>
+        </section>
+    );
+}
+export default ActivityMultiOutput;
+
+
+// const [currentIndex, setCurrentIndex] = useState(0);
+// const handlePrev = () => {
+//     setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+// };
+// const handleNext = () => {
+//     setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, activities.length - 1));
+// };
+
+{
+    /* <section className={styles.activity_output_container}>
             <section className={styles.activity_container} id="markdown">
                 <ReactMarkdown className={styles.activity_data}>
                     {activities[currentIndex].content}
@@ -48,7 +65,5 @@ function ActivityMultiOutput({ activities }: ActivityMultiOutputProps) {
                 </div>
             ) : null}
             <br />
-        </section>
-    );
+        </section> */
 }
-export default ActivityMultiOutput;
