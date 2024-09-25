@@ -34,6 +34,14 @@
       <priority>0.8</priority>
    </url>
    <url>
+      <loc>https://activitywiz.com/content/israelWar</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/content/sevenOct</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
       <loc>https://activitywiz.com/content/friendship</loc>
       <priority>0.8</priority>
    </url>
@@ -43,6 +51,10 @@
    </url>
    <url>
       <loc>https://activitywiz.com/content/environmental</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/content/seasons</loc>
       <priority>0.8</priority>
    </url>
    <url>
