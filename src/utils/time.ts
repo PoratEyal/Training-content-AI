@@ -23,6 +23,16 @@ export const isMoreThanADayAfter = (givenTimeStr: string): boolean => {
     return dayDifference >= 1;
 };
 
+export const isMoreThan3DaysAfter = (givenTimeStr: string): boolean => {
+    const givenDate = new Date(givenTimeStr);
+    const currentDate = new Date();
+    
+    const timeDifference = currentDate.getTime() - givenDate.getTime();
+    const dayDifference = timeDifference / (1000 * 60 * 60 * 24);
+    
+    return dayDifference > 3;
+};
+
 export const isMoreThanTwoMinutesAgo = (givenTimeStr: string): boolean => {
     const givenDate = new Date(givenTimeStr);
     const currentDate = new Date();

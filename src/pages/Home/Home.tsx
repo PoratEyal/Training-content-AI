@@ -6,7 +6,7 @@ import useSignIn from "../../hooks/useSignIn";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import { COOKIE_LIMIT, GUEST_LIMIT_VALUE } from "../../models/constants/cookie";
 import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI";
-import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
+import { isMoreThan3DaysAfter, isValidDateFormat } from "../../utils/time";
 import Session from "../../utils/sessionStorage";
 import { SessionKey } from "../../models/enum/session";
 import StartBtn from "../../components/StartBtn/StartBtn";
@@ -54,7 +54,7 @@ function Home() {
             } else {
                 const isValidDate = isValidDateFormat(limitDate);
                 if (isValidDate) {
-                    const isMoreThanDay = isMoreThanADayAfter(limitDate);
+                    const isMoreThanDay = isMoreThan3DaysAfter(limitDate);
 
                     if (isMoreThanDay) signInWithGoogle();
                     else navigateAndSetCookieDate(navigateTo);

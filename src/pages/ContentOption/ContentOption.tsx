@@ -1,11 +1,11 @@
-import styles from "./ContentActivity.module.css";
+import styles from "./ContentOption.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import { Activities } from "../../models/resources/activities";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import ActivityMultiOutput from "../../components/ActivityMultiOutput/ActivityOutput";
 
-function ContentActivity() {
+function ContentOption() {
     const { activityId } = useParams();
     const navigate = useNavigate();
 
@@ -31,4 +31,4 @@ function ContentActivity() {
     );
 }
 
-export default ContentActivity;
+export default ContentOption;

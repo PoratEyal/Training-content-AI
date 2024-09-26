@@ -5,7 +5,9 @@
     "activity": "/activity",
     "privacyPolicy": "/privacyPolicy",
     "content": "/content",
-    "contentActivity": "/content/:activityId",
+    "games": "content/games",
+    "contentOption": "/content/:activityId",
+    "contentGames": "/content/games/:gameId",
     "status": "/status",
     "all": "*"
 }
