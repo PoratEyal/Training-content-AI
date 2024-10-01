@@ -119,3 +119,11 @@
     height: 12px;
     width: 12px;
 }
+
+.banner{
+    font-size: 46px;
+    position: absolute;
+    top: 80px;
+    right: -10px;
+    z-index: 50;
+}

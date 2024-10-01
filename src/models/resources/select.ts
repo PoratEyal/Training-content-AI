@@ -12,6 +12,8 @@ export const MovmentsOptions: SelectOption[] = [
     { value: Movements.medtchim.name, label: Movements.medtchim.title },
     { value: Movements.meshachim.name, label: Movements.meshachim.title },
     { value: Movements.sayarut.name, label: Movements.sayarut.title },
+    { value: Movements.noam.name, label: Movements.noam.title },
+    { value: Movements.agricultural.name, label: Movements.agricultural.title },
     { value: Movements.other.name, label: Movements.other.title },
 ];
 

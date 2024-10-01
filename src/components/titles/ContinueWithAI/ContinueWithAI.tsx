@@ -4,6 +4,7 @@ import styles from "./ContinueWithAI.module.css";
 function ContinueWithAI() {
     return (
         <div className={styles.logo}>
+            <span className={styles.banner}>🎗</span>
             <div className={styles.word_1}>
                 <div className={styles.word_1_1}>מתקדמים</div>
                 <div className={styles.word_1_2}>מתקדמים</div>
@@ -18,8 +19,8 @@ function ContinueWithAI() {
                 <div className={styles.word_4_2}>AI</div>
             </div>
             <div className={styles.sparks}>
-                <div className={styles.small_spark}/>
-                <div className={styles.big_spark}/>
+                <div className={styles.small_spark} />
+                <div className={styles.big_spark} />
             </div>
         </div>
     );
