@@ -16,7 +16,6 @@ function Content() {
         <PageLayout path={route.content} hasHeader={{ goBack, isBlur: true }} hasFade>
             <article className={styles.content_article}>
                 <h1 className={styles.page_title}>פעולות נפוצות</h1>
-                <p className={styles.description}>בחרו נושא מתוך הרשימה</p>
                 <section className={styles.grid_container}>
                     {Object.entries(Activities).map(([key, value]) => (
                         <Link to={`/content/${value.id}`} key={key} className={styles.grid_item}>

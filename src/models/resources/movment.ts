@@ -148,6 +148,34 @@ export const Movements = {
             },
         ],
     } as Movement,
+    noam: {
+        name: "noam",
+        title: "נוע״ם",
+        categories: [
+            {
+                name: "contant",
+                title: "פעילות",
+            },
+            {
+                name: "playTime",
+                title: "משחק",
+            },
+        ],
+    } as Movement,
+    agricultural: {
+        name: "agricultural",
+        title: "האיחוד החקלאי",
+        categories: [
+            {
+                name: "contant",
+                title: "פעילות",
+            },
+            {
+                name: "playTime",
+                title: "משחק",
+            },
+        ],
+    } as Movement,
     other: {
         name: "other",
         title: "אחר",

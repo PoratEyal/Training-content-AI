@@ -8,6 +8,8 @@ export type MovementName =
     | "sayarut"
     | "medtchim"
     | "meshachim"
+    | "noam"
+    | "agricultural"
     | "other";
 
 export type Movement = {
