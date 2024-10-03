@@ -2,7 +2,7 @@
 
 # ActivityWiz
 
-ActivityWiz is a platform that enables the creation of custom activities using AI, tailored for all youth movements. The website, built in collaboration with Roy Porat, uses React, TypeScript, Firebase, and Google Gemini APIs. ActivityWiz now boasts over **10K active users**.
+ActivityWiz is a platform that enables the creation of custom activities using AI, tailored for all youth movements. The website, built in collaboration with Roy Porat, uses React, TypeScript, Firebase, and Google Gemini APIs. ActivityWiz now boasts over **45K active users**.
 
 ## Features
 
