@@ -12,11 +12,25 @@ import { SessionKey } from "../../models/enum/session";
 import StartBtn from "../../components/StartBtn/StartBtn";
 import LinkBtn from "../../components/LinkBtn/LinkBtn";
 import { useEffect, useState } from "react";
+import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 
 function Home() {
     const { currentUser, isLoggedIn, cookies, setLimitCookie } = useAuthContext();
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(true);
     const [btnLoading, setBtnLoading] = useState<number>(0);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            setIsUserLoggedIn(false);
+            return;
+        }
+        const timer = setTimeout(() => {
+            setIsUserLoggedIn(false);
+        }, 800);
+
+        return () => clearTimeout(timer);
+    }, [isLoggedIn]);
 
     useEffect(() => {
         const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
@@ -38,6 +52,10 @@ function Home() {
         setLimitCookie(new Date().toString());
         navigate(navigateTo);
     };
+
+    console.log("isLoggedIn", isLoggedIn);
+    console.log("currentUser", currentUser);
+    console.log("---");
 
     const startAsGuestOrUser = (navigateTo: string) => {
         if (currentUser && isLoggedIn) {
@@ -71,20 +89,26 @@ function Home() {
                 <h1 className={styles.home_lable}>יצירת פעולות: מותאם, פשוט ומהיר 🤟</h1>
             </div>
 
-            <section className={styles.button_section}>
-                <StartBtn
-                    text="צרו פעולות חדשות"
-                    onClick={() => startAsGuestOrUser(route.details)}
-                    isLoading={isLoading && btnLoading === 1}
-                    isDisabled={btnDisabled}
-                />
-                <LinkBtn
-                    text="צפו בפעולות מוכנות"
-                    onClick={() => startAsGuestOrUser(route.content)}
-                    isLoading={isLoading && btnLoading === 2}
-                    isDisabled={btnDisabled}
-                />
-            </section>
+            {isUserLoggedIn ? (
+                <div className={styles.button_section_loading}>
+                    <SmallLoading />
+                </div>
+            ) : (
+                <section className={styles.button_section}>
+                    <StartBtn
+                        text="צרו פעולות חדשות"
+                        onClick={() => startAsGuestOrUser(route.details)}
+                        isLoading={isLoading && btnLoading === 1}
+                        isDisabled={btnDisabled}
+                    />
+                    <LinkBtn
+                        text="צפו בפעולות מוכנות"
+                        onClick={() => startAsGuestOrUser(route.content)}
+                        isLoading={isLoading && btnLoading === 2}
+                        isDisabled={btnDisabled}
+                    />
+                </section>
+            )}
         </PageLayout>
     );
 }
