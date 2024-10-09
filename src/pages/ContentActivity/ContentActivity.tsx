@@ -19,8 +19,22 @@ function ContentActivity() {
         navigate(-1);
     };
 
+    const activity = Activities[activityId];
+
+    if (!activity) {
+        // Handle invalid activityId, e.g., redirect or show an error message
+        goBack();
+        return null;
+    }
+
     return (
-        <PageLayout path={`/content/${activityId}`} hasGreenBackground hasHeader={{ goBack }}>
+<PageLayout
+            path={`/content/${activityId}`}
+            hasGreenBackground
+            hasHeader={{ goBack }}
+            title={activity.metaTitle}
+            content={activity.metaContent}
+        >
             <ActivityReady subject={Activities[activityId].subject} />
             <section className={styles.activity_data_container}>
                 <article>

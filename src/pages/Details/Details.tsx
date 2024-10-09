@@ -64,6 +64,9 @@ function Details() {
             path={route.details}
             hasGreenBackground
             hasHeader={{ goBack }}
+            title="פעולות לתנועות נוער - הקבוצה"
+            content="צרו בקלות פעולות מותאמות אישית תוך שימוש בבינה מלאכותית AI. לפי תנועת נוער, כיתה, שכבת גיל, כמות ילדים בקבוצה, בנים, בנות"
+            noIndex={true}
         >
             <TellUsAboutYourGroup />
 

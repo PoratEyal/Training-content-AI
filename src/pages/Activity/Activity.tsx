@@ -33,7 +33,14 @@ function Activity() {
     };
 
     return (
-        <PageLayout path={route.activity} hasGreenBackground hasHeader={{ goBack }}>
+        <PageLayout 
+            path={route.activity}
+            hasGreenBackground
+            hasHeader={{ goBack }}
+            title="פעולות לתנועות נוער - פעולה"
+            content="פעולות מותאמות אישית תוך שימוש בבינה מלאכותית AI. מתאים לכל תנועות הנוער. פעולות לצופים, לנוער העובד, לבני עקיבא, השומר הצעיר, מדצים, מדריכי שלח, חוגי סיירות ועוד"
+            noIndex={true}
+        >
             <ActivityReady subject={mainActivity.subject} />
             <section className={styles.activity_data_container}>
                 <article>
