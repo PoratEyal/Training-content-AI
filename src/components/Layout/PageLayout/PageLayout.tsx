@@ -16,8 +16,12 @@ type PageLayoutProps = {
         | undefined;
     hasFade?: boolean;
     hasFooter?: boolean;
+    content?: string;
+    title?: string;
+    noIndex?: boolean; // Add this line
     children: React.ReactNode;
 };
+
 
 function PageLayout({
     path,
@@ -26,16 +30,17 @@ function PageLayout({
     hasHeader = undefined,
     hasFade = false,
     hasFooter = false,
+    content = '',
+    title = '',
+    noIndex = false
 }: PageLayoutProps) {
     return (
         <>
             <Helmet>
-                <title>פעולות לתנועות נוער</title>
-                <meta
-                    name="description"
-                    content="צרו בקלות פעולות מותאמות אישית תוך שימוש בבינה מלאכותית AI. מתאים לכל תנועות הנוער. פעולות לצופים, לנוער העובד, לבני עקיבא, השומר הצעיר, מדצים, מדריכי שלח, חוגי סיירות ועוד."
-                />
+                <title>{title}</title>
+                <meta name="description" content={content} />
                 <link rel="canonical" href={`https://activitywiz.com${path}`} />
+                {noIndex && <meta name="robots" content="noindex" />}
             </Helmet>
 
             <section

@@ -13,7 +13,13 @@ function Content() {
     };
 
     return (
-        <PageLayout path={route.content} hasHeader={{ goBack, isBlur: true }} hasFade>
+        <PageLayout 
+            path={route.content}
+            hasHeader={{ goBack, isBlur: true }}
+            hasFade
+            title="פעולות נפוצות"
+            content="פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, משחקים, פעולות חגים, חברות, אחריות, עונות השנה"
+        >
             <article className={styles.content_article}>
                 <h1 className={styles.page_title}>פעולות נפוצות</h1>
                 <section className={styles.grid_container}>

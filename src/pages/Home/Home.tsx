@@ -82,7 +82,12 @@ function Home() {
     };
 
     return (
-        <PageLayout path={route.home} hasFooter>
+        <PageLayout 
+            path={route.home}
+            hasFooter
+            title="פעולות לתנועות נוער"
+            content="צרו בקלות פעולות מותאמות אישית תוך שימוש בבינה מלאכותית AI. מתאים לכל תנועות הנוער. פעולות לצופים, לנוער העובד, לבני עקיבא, השומר הצעיר, מדצים, מדריכי שלח, חוגי סיירות ועוד"
+        >
             <div className={styles.logo_text_div}>
                 <ContinueWithAI />
 

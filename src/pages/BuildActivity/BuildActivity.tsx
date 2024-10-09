@@ -108,7 +108,14 @@ function BuildActivity() {
     };
 
     return (
-        <PageLayout path={route.build} hasGreenBackground hasHeader={{ goBack }}>
+        <PageLayout 
+            path={route.build}
+            hasGreenBackground
+            hasHeader={{ goBack }} 
+            title="פעולות לתנועות נוער - נושא" 
+            content="צרו בקלות פעולות מותאמות אישית תוך שימוש בבינה מלאכותית AI. פעילות תוכן, נקודת מבט, משחק, נושא, מיקום, זמן"
+            noIndex={true}
+        >
             <CreateYourActivity />
 
             <div className={styles.build_form_container}>

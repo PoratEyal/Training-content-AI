@@ -12,7 +12,14 @@ function PrivacyPolicy() {
     };
 
     return (
-        <PageLayout path={route.privacyPolicy} hasHeader={{ goBack, isBlur: true }} hasFade>
+        <PageLayout 
+            path={route.privacyPolicy}
+            hasHeader={{ goBack, isBlur: true }}
+            hasFade
+            title="פעולות לתנועות - תנאי שירות"
+            content="בונה פעולות ופעולות לתנועות נוער. רעיונות לפעילויות, משחקים, ופתרונות ייחודיים לנוער באתר פעולות שלנו"
+            noIndex={true}
+        >
             <article className={styles.privacy_article}>
                 <section>
                     <h1 className={styles.page_title}>תנאי שירות ומדיניות פרטיות</h1>
