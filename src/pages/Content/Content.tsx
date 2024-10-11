@@ -4,6 +4,7 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { Link, useNavigate } from "react-router-dom";
 import { Activities } from "../../models/resources/activities";
+import UnderBar from "../../components/UnderBar/UnderBar";
 
 function Content() {
     const navigate = useNavigate();
@@ -16,7 +17,6 @@ function Content() {
         <PageLayout 
             path={route.content}
             hasHeader={{ goBack, isBlur: true }}
-            hasFade
             title="פעולות נפוצות"
             content="פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, משחקים, פעולות חגים, חברות, אחריות, עונות השנה"
         >
@@ -30,6 +30,8 @@ function Content() {
                     ))}
                 </section>
             </article>
+
+            <UnderBar></UnderBar>
         </PageLayout>
     );
 }

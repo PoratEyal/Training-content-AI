@@ -15,6 +15,7 @@ import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
+import UnderBar from "../../components/UnderBar/UnderBar";
 
 function Details() {
     const { data, updateDetails, clearAll } = useContentContext();
@@ -126,6 +127,8 @@ function Details() {
                     </div>
                 </div>
             </form>
+
+            <UnderBar></UnderBar>
         </PageLayout>
     );
 }

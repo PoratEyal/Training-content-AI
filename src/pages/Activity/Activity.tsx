@@ -8,6 +8,7 @@ import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import MoreActions from "../../components/MoreActions/MoreActions";
+import UnderBar from "../../components/UnderBar/UnderBar";
 
 function Activity() {
     const { data, mainActivity } = useContentContext();
