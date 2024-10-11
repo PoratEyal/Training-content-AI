@@ -11,19 +11,23 @@ const UnderBar: React.FC = () => {
     const location = useLocation();
 
     const getIconClass = (path: string) => {
-        return location.pathname === path ? `${styles.icon} ${styles.activeIcon}` : styles.icon;
+        // Check for both route.details and route.build to apply the activeIcon class
+        if (location.pathname === path || (path === route.details && location.pathname === route.build)) {
+            return `${styles.icon} ${styles.activeIcon}`;
+        }
+        return styles.icon;
     };
 
     return (
         <div className={styles.underbar}>
-            <div onClick={() => navigate(route.details)} className={styles.underbarButton}>
-                <IoIosAddCircleOutline className={getIconClass(route.details)} />
-                <span>יצירת פעולות</span>
-            </div>
-
             <div onClick={() => navigate(route.home)} className={styles.underbarButton}>
                 <GoHome className={getIconClass(route.home)} />
                 <span>בית</span>
+            </div>
+
+            <div onClick={() => navigate(route.details)} className={styles.underbarButton}>
+                <IoIosAddCircleOutline className={getIconClass(route.details)} />
+                <span>יצירת פעולות</span>
             </div>
 
             <div onClick={() => navigate(route.content)} className={styles.underbarButton}>
