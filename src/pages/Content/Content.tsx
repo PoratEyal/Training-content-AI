@@ -9,7 +9,7 @@ function Content() {
     const navigate = useNavigate();
 
     const goBack = () => {
-        navigate(-1);
+        navigate(route.home);
     };
 
     return (

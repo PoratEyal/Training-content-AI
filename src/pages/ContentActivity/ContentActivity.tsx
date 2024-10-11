@@ -4,6 +4,7 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import { Activities } from "../../models/resources/activities";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import ActivityMultiOutput from "../../components/ActivityMultiOutput/ActivityOutput";
+import route from "../../router/route.json";
 
 function ContentActivity() {
     const { activityId } = useParams();
@@ -16,7 +17,7 @@ function ContentActivity() {
     // }, [activityId]);
 
     const goBack = () => {
-        navigate(-1);
+        navigate(route.content);
     };
 
     const activity = Activities[activityId];
