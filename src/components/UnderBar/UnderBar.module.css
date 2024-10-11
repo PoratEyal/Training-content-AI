@@ -9,12 +9,19 @@
   height: fit-content;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 95%;
   z-index: 1000;
+  background-color: var(--primary-color);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
 }
 
-.underbarButton {
-  padding: 15px;
+.underbarButton1{
+  padding: 10px;
+  padding-bottom: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,10 +29,29 @@
   color: #5D5D5D;
   cursor: pointer;
   transition: transform 0.3s ease;
+  color: white;
+  margin-right: 9px;
+}
+
+.underbarButton {
+  padding: 10px;
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: #5D5D5D;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  color: white;
 }
 
 .underbarButton:hover .icon {
   transform: scale(1.1); 
+}
+
+.activeIcon{
+  color: var(--secondary-color);
 }
 
 .icon {
@@ -33,10 +59,6 @@
   height: 24px;
   margin-bottom: 2px;
   transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.activeIcon {
-  color: var(--primary-color);
 }
 
 @media (max-height: 625px) {
@@ -55,5 +77,8 @@
     position: absolute;
     bottom: 0;
     height: 65px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    width: 100%;
   }
 }
