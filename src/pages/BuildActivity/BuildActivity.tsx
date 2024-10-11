@@ -20,7 +20,7 @@ import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import { ActivityTimeOptions, CategoryOptions, PlaceOptions } from "../../models/resources/select";
 import SubjectInput from "../../components/SubjectInput/SubjectInput";
 import { CategoryName } from "../../models/types/movement";
-import DiscoverActivitiesLink from "../../components/DiscoverActivitiesLink/DiscoverActivitiesLink";
+import UnderBar from "../../components/UnderBar/UnderBar";
 
 function BuildActivity() {
     const { handleError } = useErrorContext();
@@ -188,6 +188,8 @@ function BuildActivity() {
                     <DiscoverActivitiesLink></DiscoverActivitiesLink>
                 </div>
             : null} */}
+
+            <UnderBar></UnderBar>
         </PageLayout>
     );
 }
