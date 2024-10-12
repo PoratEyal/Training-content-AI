@@ -28,10 +28,10 @@ const UnderBar: React.FC<UnderBarProps> = ({ activityId }) => {
 
     return (
         <div className={styles.underbar}>
-            <div onClick={() => navigate(route.home)} className={styles.underbarButton1}>
+            {/* <div onClick={() => navigate(route.home)} className={styles.underbarButton1}>
                 <GoHome className={getIconClass(route.home)} />
                 <span>בית</span>
-            </div>
+            </div> */}
 
             <div onClick={() => navigate(route.details)} className={styles.underbarButton}>
                 <IoIosAddCircleOutline className={getIconClass(route.details)} />
