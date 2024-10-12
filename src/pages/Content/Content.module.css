@@ -14,8 +14,8 @@
     width: 100% !important;
     text-align: right !important;
     margin-top: -10px !important;
-    margin-bottom: 20px !important;
-    margin-right: 10px !important;
+    margin-bottom: 10px !important;
+    margin-right: 30px !important;
 }
 
 .description{
@@ -41,7 +41,7 @@
     border: 1.5px solid var(--primary-color);
     display: flex;
     flex-direction: row;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
     gap: 20px;
     height: 25px;
@@ -52,7 +52,7 @@
 }
 .icon{
     color: var(--primary-color);
-    font-size: 30px;
+    font-size: 25px;
 }
 .item_title {
     margin: 0;
@@ -61,4 +61,10 @@
     letter-spacing: 1px;
     color: #333;
     color: var(--primary-color);
+}
+
+@media (min-width: 550px) {
+    .content_article {
+        margin-bottom: 0px;
+    }
 }
