@@ -4,7 +4,7 @@
     -webkit-box-sizing: border-box;
     font-size: 14px;
     line-height: 26px;
-    margin-bottom: 40px;
+    margin-bottom: 35px;
 }
 
 .page_title {
@@ -32,23 +32,33 @@
 
 .grid_item {
     background-color: #ffffff;
-    border-radius: 8px;
+    border-radius: 7px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     text-decoration: none;
+    border: 1.5px solid var(--primary-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    gap: 20px;
+    height: 25px;
 }
-
 .grid_item:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
-
+.icon{
+    color: var(--primary-color);
+    font-size: 30px;
+}
 .item_title {
     margin: 0;
     font-size: 16px;
     font-weight: 550;
     letter-spacing: 1px;
     color: #333;
+    color: var(--primary-color);
 }

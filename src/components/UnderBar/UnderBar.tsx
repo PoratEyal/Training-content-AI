@@ -6,13 +6,21 @@ import route from "../../router/route.json";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./UnderBar.module.css";
 
-const UnderBar: React.FC = () => {
+interface UnderBarProps {
+    activityId?: string; // Define activityId as an optional prop
+}
+
+const UnderBar: React.FC<UnderBarProps> = ({ activityId }) => {
     const navigate = useNavigate();
     const location = useLocation();
 
     const getIconClass = (path: string) => {
-        // Check for both route.details and route.build to apply the activeIcon class
-        if (location.pathname === path || (path === route.details && location.pathname === route.build)) {
+        // Check for route.content or the specific activityId
+        if (
+            location.pathname === path || 
+            (path === route.details && location.pathname === route.build) || 
+            (path === route.content && location.pathname === `/content/${activityId}`)
+        ) {
             return `${styles.icon} ${styles.activeIcon}`;
         }
         return styles.icon;
@@ -20,7 +28,7 @@ const UnderBar: React.FC = () => {
 
     return (
         <div className={styles.underbar}>
-            <div onClick={() => navigate(route.home)} className={styles.underbarButton}>
+            <div onClick={() => navigate(route.home)} className={styles.underbarButton1}>
                 <GoHome className={getIconClass(route.home)} />
                 <span>בית</span>
             </div>

@@ -12,7 +12,7 @@ function DiscoverActivitiesLink({}) {
     return (
         <div className={styles.link_div}>
             <label className={styles.btn} onClick={() => handleClick()}>
-                לחצו בכדי לגלות פעולות נפוצות אצלנו  
+                לחצו בכדי לגלות פעולות מוכנות אצלנו  
             </label>
         </div>
     )
