@@ -80,4 +80,9 @@
     .moreExamples_div {
         bottom: 15px;
     }
+    .underBar{
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
 }

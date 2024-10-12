@@ -86,6 +86,7 @@
         border-bottom-right-radius: 30px;
         scrollbar-width: none;
         -ms-overflow-style: none;
+        margin-bottom: 10px;
     }
 
     .build_form_container::-webkit-scrollbar {
@@ -98,5 +99,11 @@
 
     .moreExamples_div {
         bottom: 15px;
+    }
+
+    .underBar{
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
     }
 }

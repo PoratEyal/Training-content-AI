@@ -126,9 +126,12 @@ function Details() {
                         ></MainBtn>
                     </div>
                 </div>
+                
             </form>
 
-            <UnderBar></UnderBar>
+            <div className={styles.underBar}>
+                <UnderBar />
+            </div>
         </PageLayout>
     );
 }

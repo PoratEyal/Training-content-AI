@@ -11,8 +11,9 @@ export const Activities = {
     sevenOct: {
         id: "sevenOct",
         subject: "השביעי באוקטובר 🎗",
+        icon: "",
         metaTitle:'פעולות בנושא השביעי באוקטובר',
-        metaContent: 'פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, השביעי באוקטובר, 7 באוקטובר, חרבות ברזל',
+        metaContent: 'פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, השביעי באוקטובר, 7 באוקטובר, חרבות ברזל',
         Activities: [
             {
                 grade: "גדולים",
@@ -187,8 +188,9 @@ export const Activities = {
     games: {
         id: "games",
         subject: "משחקים",
+        icon: "FaGamepad",
         metaTitle:'פעולות משחקים',
-        metaContent: 'פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, משחקים',
+        metaContent: 'פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, משחקים',
         Activities: [
         {
             grade: "",
@@ -444,9 +446,10 @@ export const Activities = {
     },
     holidays: {
         id: "holidays",
+        icon: "BsCalendar2DateFill",
         subject: "חגים ומועדים",
         metaTitle:'פעולות חגים ומועדים',
-        metaContent: 'פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, פעולות חגים ומועדים',
+        metaContent: 'פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, פעולות חגים ומועדים',
         Activities: [
         {
                 grade: "גדולים",
@@ -574,9 +577,10 @@ export const Activities = {
     }, //
     intro: {
         id: "intro",
+        icon: "FaHandsHelping",
         subject: "היכרות",
         metaTitle:'פעולות היכרות',
-        metaContent: 'פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, פעולות היכרות',
+        metaContent: 'פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, פעולות היכרות',
         Activities: [
             {
                 grade: "קטנים",
@@ -705,9 +709,10 @@ export const Activities = {
     },
     opening: {
         id: "opening",
+        icon: "FaBookOpen",
         subject: "פתיחת שנה",
         metaTitle:'פעולות פתיחת שנה',
-        metaContent: 'פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, פעולות פתיחת שנה',
+        metaContent: 'פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, פעולות פתיחת שנה',
         Activities: [
             {
                 grade: "קטנים",
@@ -758,9 +763,10 @@ export const Activities = {
     }, //
     friendship: {
         id: "friendship",
+        icon: "FaUserFriends",
         subject: "חברות",
         metaTitle:'פעולות בנושא חברות',
-        metaContent: 'פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, חברות',
+        metaContent: 'פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, חברות',
         Activities: [
             {
                 grade: "",
@@ -906,8 +912,9 @@ export const Activities = {
     responsibility: {
         id: "responsibility",
         subject: "אחריות",
+        icon: "FaListCheck",
         metaTitle:'פעולות בנושא אחריות',
-        metaContent: 'פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, אחריות',
+        metaContent: 'פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, אחריות',
         Activities: [
             {
                 grade: "",
@@ -1066,9 +1073,10 @@ export const Activities = {
     }, //
     environmental: {
         id: "environmental",
+        icon: "AiFillEnvironment",
         subject: "איכות הסביבה",
         metaTitle:'פעולות על איכות הסביבה',
-        metaContent: 'פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, איכות הסביבה',
+        metaContent: 'פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, איכות הסביבה',
         Activities: [
             {
                 grade: "",
@@ -1226,8 +1234,9 @@ export const Activities = {
     seasons: {
         id: "seasons",
         subject: "עונות השנה",
+        icon: "FaCloudSunRain",
         metaTitle:'פעולות על עונות השנה',
-        metaContent: 'פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, עונות השנה, קיץ, סתיו, חורף, אביב',
+        metaContent: 'פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, עונות השנה, קיץ, סתיו, חורף, אביב',
         Activities: [
             {
                 grade: "קטנים",
@@ -1320,8 +1329,9 @@ export const Activities = {
     movies: {
         id: "movies",
         subject: "סרטים",
+        icon: "BiSolidCameraMovie",
         metaTitle:'פעולות בנושא סרטים',
-        metaContent: 'פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, סרטים',
+        metaContent: 'פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, סרטים',
         Activities: [
             {
                 grade: "",
@@ -1421,8 +1431,9 @@ export const Activities = {
     traffic: {
         id: "traffic",
         subject: "זהירות בדרכים",
+        icon: "FaTrafficLight",
         metaTitle:'פעולות בנושא זהירות בדרכים',
-        metaContent: 'פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, זהירות בדרכים, תחבורה',
+        metaContent: 'פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, זהירות בדרכים, תחבורה',
         Activities: [
             {
                 grade: "",
@@ -1471,8 +1482,9 @@ export const Activities = {
     animals: {
         id: "animals",
         subject: "בעלי חיים",
+        icon: "FaDog",
         metaTitle:'פעולות בנושא בעלי חיים',
-        metaContent: 'פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, בעלי חיים, חיות',
+        metaContent: 'פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, בעלי חיים, חיות',
         Activities: [
             {
                 grade: "קטנים",
@@ -1528,8 +1540,9 @@ export const Activities = {
     teamwork: {
         id: "teamwork",
         subject: "עבודת צוות",
+        icon: "FaTrophy",
         metaTitle:'פעולות בנושא עבודת צוות',
-        metaContent: 'פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, עבודת צוות',
+        metaContent: 'פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, עבודת צוות',
         Activities: [
             {
                 grade: "",
@@ -1578,8 +1591,9 @@ export const Activities = {
     superhero: {
         id: "superhero",
         subject: "גיבורי על",
+        icon: "PiShootingStarFill",
         metaTitle:'פעולות על גיבורי על',
-        metaContent: 'פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, גיבורי על, סופרמן, באטמן',
+        metaContent: 'פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, גיבורי על, סופרמן, באטמן',
         Activities: [
             {
                 grade: "קטנים",
@@ -1632,8 +1646,9 @@ export const Activities = {
     harassment: {
         id: "harassment",
         subject: "הטרדה מינית",
+        icon: "MdOutlineSportsKabaddi",
         metaTitle:'פעולות בנושא הטרדה מינית',
-        metaContent: 'פעולות נפוצות לתנועות נוער. רעיונות לפעילויות יצירתיות, הטרדה מינית',
+        metaContent: 'פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, הטרדה מינית',
         Activities: [
             {
                 grade: "גדולים",

@@ -189,7 +189,12 @@ function BuildActivity() {
                 </div>
             : null} */}
 
-            <UnderBar></UnderBar>
+            {!clicked ?
+                <div className={styles.underBar}>
+                    <UnderBar />
+                </div>
+            : null}
+
         </PageLayout>
     );
 }
