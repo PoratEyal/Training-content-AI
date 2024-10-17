@@ -21,6 +21,7 @@ import { ActivityTimeOptions, CategoryOptions, PlaceOptions } from "../../models
 import SubjectInput from "../../components/SubjectInput/SubjectInput";
 import { CategoryName } from "../../models/types/movement";
 import UnderBar from "../../components/UnderBar/UnderBar";
+import helmet from "../../models/resources/helmet.json";
 
 function BuildActivity() {
     const { handleError } = useErrorContext();
@@ -108,13 +109,13 @@ function BuildActivity() {
     };
 
     return (
-        <PageLayout 
+        <PageLayout
             path={route.build}
             hasGreenBackground
-            hasHeader={{ goBack }} 
-            title="פעולות לתנועות נוער - נושא" 
-            content="צרו בקלות פעולות מותאמות אישית תוך שימוש בבינה מלאכותית AI. פעילות תוכן, נקודת מבט, משחק, נושא, מיקום, זמן"
-            noIndex={true}
+            hasHeader={{ goBack }}
+            title={helmet.build.title}
+            content={helmet.build.content}
+            noIndex
         >
             <CreateYourActivity />
 
@@ -173,8 +174,8 @@ function BuildActivity() {
                         ></MainBtn>
                         {hasAlert ? (
                             <div className={styles.input_alert}>
-                                שימו לב! מקור הפעולות הינו מערכת בינה מלאכותית, יכול להיות
-                                וחיפושים מסויימים עדיין לא התעדכנו במערכת
+                                שימו לב! מקור הפעולות הינו מערכת בינה מלאכותית, יכול להיות וחיפושים
+                                מסויימים עדיין לא התעדכנו במערכת
                             </div>
                         ) : null}
                     </div>
@@ -182,19 +183,18 @@ function BuildActivity() {
 
                 {clicked ? <LoadingActivity /> : null}
             </div>
-            
+
             {/* {!clicked ?
                 <div className={styles.moreExamples_div}>
                     <DiscoverActivitiesLink></DiscoverActivitiesLink>
                 </div>
             : null} */}
 
-            {!clicked ?
+            {!clicked ? (
                 <div className={styles.underBar}>
                     <UnderBar />
                 </div>
-            : null}
-
+            ) : null}
         </PageLayout>
     );
 }

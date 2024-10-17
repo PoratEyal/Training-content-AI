@@ -16,6 +16,7 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
 import UnderBar from "../../components/UnderBar/UnderBar";
+import helmet from "../../models/resources/helmet.json";
 
 function Details() {
     const { data, updateDetails, clearAll } = useContentContext();
@@ -65,9 +66,9 @@ function Details() {
             path={route.details}
             hasGreenBackground
             hasHeader={{ goBack }}
-            title="פעולות לתנועות נוער - הקבוצה"
-            content="צרו בקלות פעולות מותאמות אישית תוך שימוש בבינה מלאכותית AI. לפי תנועת נוער, כיתה, שכבת גיל, כמות ילדים בקבוצה, בנים, בנות"
-            noIndex={true}
+            title={helmet.details.title}
+            content={helmet.details.content}
+            noIndex
         >
             <TellUsAboutYourGroup />
 

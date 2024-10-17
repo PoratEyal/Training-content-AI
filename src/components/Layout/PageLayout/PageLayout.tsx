@@ -18,7 +18,7 @@ type PageLayoutProps = {
     hasFooter?: boolean;
     content?: string;
     title?: string;
-    noIndex?: boolean; // Add this line
+    noIndex?: boolean;
     children: React.ReactNode;
 };
 
@@ -40,7 +40,7 @@ function PageLayout({
                 <title>{title}</title>
                 <meta name="description" content={content} />
                 <link rel="canonical" href={`https://activitywiz.com${path}`} />
-                {noIndex && <meta name="robots" content="noindex" />}
+                {noIndex ? <meta name="robots" content="noindex" /> : null}
             </Helmet>
 
             <section

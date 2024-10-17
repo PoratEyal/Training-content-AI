@@ -9,7 +9,7 @@ import { useErrorContext } from "./ErrorContext";
 import { useCookies } from "react-cookie";
 import { addSessionData } from "../utils/movment";
 import {
-    COOKIE_LIMIT,
+    COOKIE_LIMIT_KEY,
     COOKIE_USER_CONSENT,
     CookieOptions,
     GUEST_LIMIT_VALUE,
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     // const [generateLimit, setGenerateLimit] = useState<number>(0);
 
-    const [cookies, setCookie] = useCookies([COOKIE_LIMIT, COOKIE_USER_CONSENT]);
+    const [cookies, setCookie] = useCookies([COOKIE_LIMIT_KEY, COOKIE_USER_CONSENT]);
 
     /**
      * for make getRedirectResult on localhost
@@ -45,7 +45,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const handleRedirectResult = async () => {
             const userResult = await getRedirectResult(auth);
             if (userResult) {
-                // Session.set("signInRef", true);
                 initializeUser(userResult)
             }
             else unsubscribe = onAuthStateChanged(auth, initializeUser);
@@ -71,7 +70,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                     }
                     setCurrentUser(resultUser);
                     setIsLoggedIn(true);
-                    if (cookies[COOKIE_LIMIT] !== GUEST_LIMIT_VALUE)
+                    if (cookies[COOKIE_LIMIT_KEY] !== GUEST_LIMIT_VALUE)
                         setLimitCookie(GUEST_LIMIT_VALUE);
                     return;
                 }
@@ -96,7 +95,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const setLimitCookie = (data: string | number) => {
-        setCookie(COOKIE_LIMIT, JSON.stringify(data), CookieOptions);
+        setCookie(COOKIE_LIMIT_KEY, JSON.stringify(data), CookieOptions);
     };
 
     const setConsentCookie = () => {
