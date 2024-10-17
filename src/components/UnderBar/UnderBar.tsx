@@ -1,10 +1,11 @@
 import React from 'react';
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { VscOutput } from "react-icons/vsc";
-import { GoHome } from "react-icons/go";
 import route from "../../router/route.json";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./UnderBar.module.css";
+import { IoMailOpenOutline } from "react-icons/io5";
+import policy from "../../models/resources/policy.json";
 
 interface UnderBarProps {
     activityId?: string; // Define activityId as an optional prop
@@ -26,12 +27,22 @@ const UnderBar: React.FC<UnderBarProps> = ({ activityId }) => {
         return styles.icon;
     };
 
+    const contactUs = () => {
+        const emailLink = document.createElement("a");
+        emailLink.href = `mailto:${policy.p9.email}`;
+        emailLink.click();
+    };
+
+    const handleClick = () => {
+        contactUs();
+    };
+
     return (
         <div className={styles.underbar}>
-            {/* <div onClick={() => navigate(route.home)} className={styles.underbarButton1}>
-                <GoHome className={getIconClass(route.home)} />
-                <span>בית</span>
-            </div> */}
+            <div onClick={() => handleClick()} className={styles.underbarButton1}>
+                <IoMailOpenOutline className={getIconClass(route.home)} />
+                <span>צרו קשר</span>
+            </div>
 
             <div onClick={() => navigate(route.details)} className={styles.underbarButton}>
                 <IoIosAddCircleOutline className={getIconClass(route.details)} />

@@ -1,20 +1,22 @@
 .content_article {
-    padding: 25px;
+    background-color: var(--background-color);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-top-left-radius: 37px;
+    border-top-right-radius: 37px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 85%;
+    overflow: hidden;
+    padding: 20px 0;
+    padding-bottom: 0px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    font-size: 14px;
-    line-height: 26px;
-    margin-bottom: 35px;
-}
-
-.page_title {
-    color: var(--primary-color) !important;
-    font-size: 20px !important;
-    font-weight: 500 !important;
-    width: 100% !important;
-    text-align: right !important;
-    margin-top: -10px !important;
-    margin-bottom: 10px !important;
 }
 
 .description{
@@ -23,27 +25,38 @@
 }
 
 .grid_container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 25px;
+    padding-top: 0px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 60px;
+    margin-top: 10px;
 }
 
 .grid_item {
     background-color: #ffffff;
     border-radius: 7px;
     padding: 20px;
-    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     text-decoration: none;
-    border: 1.5px solid var(--primary-color);
+    border: 0px solid var(--primary-color);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
     height: 25px;
+    width: 70%;
+    margin-bottom: 5px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 .grid_item:hover {
     transform: translateY(-5px);
@@ -63,7 +76,12 @@
 }
 
 @media (min-width: 550px) {
-    .content_article {
-        margin-bottom: 0px;
+    .underBar{
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
+    .content_article{
+        width: 100%;
     }
 }
