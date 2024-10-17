@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import policy from "../../models/resources/policy.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
+import helmet from "../../models/resources/helmet.json";
 
 function PrivacyPolicy() {
     const navigate = useNavigate();
@@ -12,13 +13,13 @@ function PrivacyPolicy() {
     };
 
     return (
-        <PageLayout 
+        <PageLayout
             path={route.privacyPolicy}
             hasHeader={{ goBack, isBlur: true }}
             hasFade
-            title="פעולות לתנועות - תנאי שירות"
-            content="בונה פעולות ופעולות לתנועות נוער. רעיונות לפעילויות, משחקים, ופתרונות ייחודיים לנוער באתר פעולות שלנו"
-            noIndex={true}
+            title={helmet.policy.title}
+            content={helmet.policy.content}
+            noIndex
         >
             <article className={styles.privacy_article}>
                 <section>

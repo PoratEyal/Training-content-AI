@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Activities } from "../../models/resources/activities";
 import UnderBar from "../../components/UnderBar/UnderBar";
 import ReadyContent from '../../components/titles/ReadyContent/ReadyContent';
-
+import helmet from "../../models/resources/helmet.json";
 import { FaGamepad } from "react-icons/fa";
 import { FaBookOpen } from "react-icons/fa";
 import { FaUserFriends } from "react-icons/fa";
@@ -53,9 +53,9 @@ function Content() {
         <PageLayout 
             path={route.content}
             hasHeader={{ goBack }}
-            title="פעולות מוכנות"
             hasGreenBackground
-            content="פעולות מוכנות לתנועות נוער. רעיונות לפעילויות יצירתיות, משחקים, פעולות חגים, חברות, אחריות, עונות השנה"
+            title={helmet.content.title}
+            content={helmet.content.content}
         >
             <ReadyContent></ReadyContent>
             

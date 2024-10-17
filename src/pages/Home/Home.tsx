@@ -4,7 +4,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import route from "../../router/route.json";
 import useSignIn from "../../hooks/useSignIn";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import { COOKIE_LIMIT, GUEST_LIMIT_VALUE } from "../../models/constants/cookie";
+import { COOKIE_LIMIT_KEY, GUEST_LIMIT_VALUE } from "../../models/constants/cookie";
 import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI";
 import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
 import Session from "../../utils/sessionStorage";
@@ -13,6 +13,7 @@ import StartBtn from "../../components/StartBtn/StartBtn";
 import LinkBtn from "../../components/LinkBtn/LinkBtn";
 import { useEffect, useState } from "react";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
+import helmet from "../../models/resources/helmet.json";
 
 function Home() {
     const { currentUser, isLoggedIn, cookies, setLimitCookie } = useAuthContext();
@@ -27,7 +28,7 @@ function Home() {
         }
         const timer = setTimeout(() => {
             setIsUserLoggedIn(false);
-        }, 800);
+        }, 1000);
 
         return () => clearTimeout(timer);
     }, [isLoggedIn]);
@@ -53,10 +54,6 @@ function Home() {
         navigate(navigateTo);
     };
 
-    console.log("isLoggedIn", isLoggedIn);
-    console.log("currentUser", currentUser);
-    console.log("---");
-
     const startAsGuestOrUser = (navigateTo: string) => {
         if (currentUser && isLoggedIn) {
             navigate(navigateTo);
@@ -64,7 +61,7 @@ function Home() {
         }
 
         Session.set(SessionKey.NAVIGATE, navigateTo);
-        let limitDate = cookies[COOKIE_LIMIT];
+        let limitDate = cookies[COOKIE_LIMIT_KEY];
 
         if (limitDate) {
             if (limitDate === GUEST_LIMIT_VALUE) {
@@ -82,11 +79,11 @@ function Home() {
     };
 
     return (
-        <PageLayout 
+        <PageLayout
             path={route.home}
             hasFooter
-            title="פעולות לתנועות נוער"
-            content="מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים, מדריכי שלח, חוגי סיירות ועוד"
+            title={helmet.home.title}
+            content={helmet.home.content}
         >
             <div className={styles.logo_text_div}>
                 <ContinueWithAI />
@@ -113,6 +110,11 @@ function Home() {
                         isDisabled={btnDisabled}
                     />
                 </section>
+            )}
+            {currentUser ? null : (
+                <div style={{ width: 5, height: 5, backgroundColor: "red", borderRadius: "50%" }}>
+                    .
+                </div>
             )}
         </PageLayout>
     );

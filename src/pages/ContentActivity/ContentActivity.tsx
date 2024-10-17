@@ -11,12 +11,6 @@ function ContentActivity() {
     const { activityId } = useParams();
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     if (!Activities[Number(activityId)]) {
-    //         goBack();
-    //     }
-    // }, [activityId]);
-
     const goBack = () => {
         navigate(route.content);
     };
@@ -30,7 +24,7 @@ function ContentActivity() {
     }
 
     return (
-<PageLayout
+        <PageLayout
             path={`/content/${activityId}`}
             hasGreenBackground
             hasHeader={{ goBack }}
@@ -45,7 +39,7 @@ function ContentActivity() {
             </section>
 
             <div className={styles.underBar}>
-                <UnderBar activityId={activityId}/>
+                <UnderBar activityId={activityId} />
             </div>
         </PageLayout>
     );

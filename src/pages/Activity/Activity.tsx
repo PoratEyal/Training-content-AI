@@ -9,6 +9,7 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import MoreActions from "../../components/MoreActions/MoreActions";
 import UnderBar from "../../components/UnderBar/UnderBar";
+import helmet from "../../models/resources/helmet.json";
 
 function Activity() {
     const { data, mainActivity } = useContentContext();
@@ -38,9 +39,9 @@ function Activity() {
             path={route.activity}
             hasGreenBackground
             hasHeader={{ goBack }}
-            title="פעולות לתנועות נוער - פעולה"
-            content="פעולות מותאמות אישית תוך שימוש בבינה מלאכותית AI. מתאים לכל תנועות הנוער. פעולות לצופים, לנוער העובד, לבני עקיבא, השומר הצעיר, מדצים, מדריכי שלח, חוגי סיירות ועוד"
-            noIndex={true}
+            title={helmet.activity.title}
+            content={helmet.activity.content}
+            noIndex
         >
             <ActivityReady subject={mainActivity.subject} />
             <section className={styles.activity_data_container}>

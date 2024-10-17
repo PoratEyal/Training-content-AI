@@ -3,7 +3,6 @@ import styles from "./Profile.module.css";
 import Dropdown from "../Layout/Dropdown/Dropdown";
 import DropOptContactUs from "../dropdown/DropOptContactUs";
 import DropOptInviteFriends from "../dropdown/DropOptInviteFriends";
-import DropOptExample from "../dropdown/DropOptExample";
 import DropOptPrivacy from "../dropdown/DropOptPrivacy";
 import DropOptLogout from "../dropdown/DropOptLogout";
 import { useAuthContext } from "../../context/AuthContext";
@@ -42,13 +41,13 @@ function Profile({ img }: ProfileProps) {
                 <Dropdown handleClose={handleClose}>
                     <DropOptInviteFriends />
                     <DropOptContactUs handleClose={handleClose} />
-                    <DropOptExample handleClose={handleClose} />
                     <DropOptPrivacy handleClose={handleClose} />
                     {isLoggedIn ? (
                         <DropOptLogout handleClose={handleClose} />
                     ) : (
                         <DropOptSignIn handleClose={handleClose} />
                     )}
+                    {/* <DropOptExample handleClose={handleClose} /> */}
                 </Dropdown>
             ) : null}
         </div>
