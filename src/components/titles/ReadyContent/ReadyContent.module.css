@@ -1,8 +1,9 @@
 .tell_us_title {
-    width: 190px;
+    width: 100%;
     position: absolute;
-    top: 60px;
-    right: 50px;
+    top: 34px;
+    display: flex;
+    justify-content: center; /* Horizontal centering */
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -13,12 +14,14 @@
     position: relative;
     line-height: 32px;
     margin: 0;
-    width: 190px;
+    width: 190px; 
+    text-align: center; 
     letter-spacing: 1px;
 }
 
 .tell_us_title img {
     position: absolute;
-    top: 66px;
-    right: -3px;
+    top: 33px;
+    width: 180px; 
+    height: 9.5px; 
 }

@@ -6,6 +6,7 @@ import route from "../../router/route.json";
 import { Link, useNavigate } from "react-router-dom";
 import { Activities } from "../../models/resources/activities";
 import UnderBar from "../../components/UnderBar/UnderBar";
+import ReadyContent from '../../components/titles/ReadyContent/ReadyContent';
 
 import { FaGamepad } from "react-icons/fa";
 import { FaBookOpen } from "react-icons/fa";
@@ -21,6 +22,7 @@ import { MdOutlineSportsKabaddi } from "react-icons/md";
 import { BsCalendar2DateFill } from "react-icons/bs";
 import { FaHandsHelping } from "react-icons/fa";
 import { FaListCheck } from "react-icons/fa6";
+import { FaRibbon } from "react-icons/fa";
 
 const iconMap = {
     FaGamepad: FaGamepad,
@@ -36,7 +38,8 @@ const iconMap = {
     FaDog: FaDog,
     FaTrophy: FaTrophy,
     PiShootingStarFill: PiShootingStarFill,
-    MdOutlineSportsKabaddi: MdOutlineSportsKabaddi
+    MdOutlineSportsKabaddi: MdOutlineSportsKabaddi,
+    FaRibbon: FaRibbon
 };
 
 function Content() {
@@ -49,12 +52,14 @@ function Content() {
     return (
         <PageLayout 
             path={route.content}
-            hasHeader={{ goBack, isBlur: true }}
+            hasHeader={{ goBack }}
             title="פעולות מוכנות"
+            hasGreenBackground
             content="פעולות מוכנות לתנועות נוער. רעיונות לפעילויות יצירתיות, משחקים, פעולות חגים, חברות, אחריות, עונות השנה"
         >
+            <ReadyContent></ReadyContent>
+            
             <article className={styles.content_article}>
-                <h1 className={styles.page_title}>פעולות מוכנות</h1>
                 <section className={styles.grid_container}>
                     {Object.entries(Activities).map(([key, value]) => (
                         <Link to={`/content/${value.id}`} key={key} className={styles.grid_item}>
@@ -67,7 +72,9 @@ function Content() {
                 </section>
             </article>
 
-            <UnderBar></UnderBar>
+            <div className={styles.underBar}>
+                <UnderBar/>
+            </div>
         </PageLayout>
     );
 }
