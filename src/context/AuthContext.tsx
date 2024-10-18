@@ -17,6 +17,8 @@ import {
 } from "../models/constants/cookie";
 import { initRawUser } from "../utils/user";
 import msg from "../models/resources/errorMsg.json";
+import Local from "../utils/localStorage";
+import { LocalKey } from "../models/enum/storage";
 
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
 
@@ -87,6 +89,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const logout = async () => {
         try {
             await auth.signOut();
+            Local.remove(LocalKey.REMEMBER_ME);
             setCurrentUser(undefined);
             setIsLoggedIn(false);
         } catch (error) {

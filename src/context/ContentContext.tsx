@@ -6,7 +6,7 @@ import { Activity } from "../models/types/activity";
 import { addSessionData } from "../utils/movment";
 import { useAuthContext } from "./AuthContext";
 import { Movements } from "../models/resources/movment";
-import { SessionKey } from "../models/enum/session";
+import { SessionKey } from "../models/enum/storage";
 
 export const ContentContext = createContext<ContentContextType>(typeContext);
 

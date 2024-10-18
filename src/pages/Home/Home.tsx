@@ -8,38 +8,25 @@ import { COOKIE_LIMIT_KEY, GUEST_LIMIT_VALUE } from "../../models/constants/cook
 import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI";
 import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
 import Session from "../../utils/sessionStorage";
-import { SessionKey } from "../../models/enum/session";
+import { LocalKey, SessionKey } from "../../models/enum/storage";
 import StartBtn from "../../components/StartBtn/StartBtn";
 import LinkBtn from "../../components/LinkBtn/LinkBtn";
 import { useEffect, useState } from "react";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import helmet from "../../models/resources/helmet.json";
+import Local from "../../utils/localStorage";
 
 function Home() {
     const { currentUser, isLoggedIn, cookies, setLimitCookie } = useAuthContext();
     const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(true);
-    const [btnLoading, setBtnLoading] = useState<number>(0);
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isLoggedIn) {
-            setIsUserLoggedIn(false);
-            return;
-        }
-        const timer = setTimeout(() => {
-            setIsUserLoggedIn(false);
-        }, 1000);
-
-        return () => clearTimeout(timer);
+        const isRememberMe: string | undefined = Local.get(LocalKey.REMEMBER_ME);
+        if (isRememberMe) {
+            isLoggedIn && setIsUserLoggedIn(false);
+        } else setIsUserLoggedIn(false);
     }, [isLoggedIn]);
-
-    useEffect(() => {
-        const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
-        if (navigateTo) {
-            if (navigateTo === route.details) setBtnLoading(1);
-            else if (navigateTo === route.content) setBtnLoading(2);
-        }
-    }, []);
 
     const handleStart = () => {
         const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
@@ -91,7 +78,7 @@ function Home() {
                 <h1 className={styles.home_lable}>יצירת פעולות: מותאם, פשוט ומהיר 🤟</h1>
             </div>
 
-            {isUserLoggedIn ? (
+            {isUserLoggedIn || isLoading ? (
                 <div className={styles.button_section_loading}>
                     <SmallLoading />
                 </div>
@@ -100,21 +87,14 @@ function Home() {
                     <StartBtn
                         text="צרו פעולות חדשות"
                         onClick={() => startAsGuestOrUser(route.details)}
-                        isLoading={isLoading && btnLoading === 1}
                         isDisabled={btnDisabled}
                     />
                     <LinkBtn
                         text="צפו בפעולות מוכנות"
                         onClick={() => startAsGuestOrUser(route.content)}
-                        isLoading={isLoading && btnLoading === 2}
                         isDisabled={btnDisabled}
                     />
                 </section>
-            )}
-            {currentUser ? null : (
-                <div style={{ width: 5, height: 5, backgroundColor: "red", borderRadius: "50%" }}>
-                    .
-                </div>
             )}
         </PageLayout>
     );
