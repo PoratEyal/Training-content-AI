@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";
 import { fetchGetActivity, fetchUpdateUser } from "../../utils/fetch";
 import { Activity } from "../../models/types/activity";
-import { SessionKey } from "../../models/enum/session";
+import { SessionKey } from "../../models/enum/storage";
 import Session from "../../utils/sessionStorage";
 import route from "../../router/route.json";
 import msg from "../../models/resources/errorMsg.json";

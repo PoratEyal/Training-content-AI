@@ -11,14 +11,15 @@ import { auth } from "../config/firebase";
 import { useAuthContext } from "../context/AuthContext";
 import { useEffect, useState } from "react";
 import { GUEST_LIMIT_VALUE } from "../models/constants/cookie";
+import Local from "../utils/localStorage";
+import { LocalKey } from "../models/enum/storage";
 
 
 const useSignIn = (handleStart: ()=> void) => {
     const { handleError } = useErrorContext();
     const { isLoggedIn, loading, currentUser, setLimitCookie } = useAuthContext();
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-    const [isLoading, setIsLoading] = useState<boolean>(loading ? true : false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
 
     useEffect(() => {
@@ -36,16 +37,18 @@ const useSignIn = (handleStart: ()=> void) => {
                 console.error("Auth not initialized");
                 return;
             }
+            setIsLoading(true);
             setBtnDisabled(true);
+            Local.set(LocalKey.REMEMBER_ME, "true");
             await setPersistence(auth, browserLocalPersistence);
             if (isMobile) {
                 await signInWithRedirect(auth, provider);
             } else {
-                const userResult = await signInWithPopup(auth, provider);
-                userResult && setIsLoading(true);
+                await signInWithPopup(auth, provider);
             }
         } catch (error) {
             handleErrors(error);
+            setIsLoading(false);
         }
     };
 
@@ -60,6 +63,7 @@ const useSignIn = (handleStart: ()=> void) => {
         ) {
             handleError(errMsg.google.message);
         }
+        Local.remove(LocalKey.REMEMBER_ME);
         setBtnDisabled(false);
         setIsLoading(false);
     };

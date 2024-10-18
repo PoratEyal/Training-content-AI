@@ -3,3 +3,7 @@ export enum SessionKey {
     DATA = "data",
     ACTIVITY = "activity",
 }
+
+export enum LocalKey {
+    REMEMBER_ME = "rememberMe",
+}
