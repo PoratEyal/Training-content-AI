@@ -1,6 +1,5 @@
 import styles from "./navbar.module.css";
 import route from "../../../router/route.json";
-import { IoIosAddCircleOutline } from "react-icons/io";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FaWandMagicSparkles } from "react-icons/fa6";
@@ -17,12 +16,6 @@ const NavOptBuild = () => {
             ? setIsSelected(true)
             : setIsSelected(false);
     },[location.pathname]);
-
-    const handleOnClick = () => {
-        if (!isSelected) {
-            navigate(route.details);
-        }
-    };
 
     return (
         <div

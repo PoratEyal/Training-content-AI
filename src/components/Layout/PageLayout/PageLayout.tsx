@@ -5,6 +5,7 @@ import FadeEffect from "../../FadeEffect/FadeEffect";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import UnderBar from "../../UnderBar/UnderBar";
+import { WEBSITE_URL } from "../../../models/constants";
 
 type PageLayoutProps = {
     path: string;
@@ -39,7 +40,7 @@ function PageLayout({
             <Helmet>
                 <title>{title}</title>
                 <meta name="description" content={content} />
-                <link rel="canonical" href={`https://activitywiz.com${path}`} />
+                <link rel="canonical" href={`${WEBSITE_URL}${path}`} />
                 {noIndex ? <meta name="robots" content="noindex" /> : null}
             </Helmet>
 
