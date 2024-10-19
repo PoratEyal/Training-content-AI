@@ -13,12 +13,6 @@ const NavOptContent = () => {
         setIsSelected(location.pathname.includes(route.content) ? true : false);
     }, [location.pathname]);
 
-    const handleOnClick = () => {
-        if (!isSelected) {
-            navigate(route.content);
-        }
-    };
-
     return (
         <div
             onClick={() => navigate(route.content)}
