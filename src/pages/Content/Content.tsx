@@ -5,7 +5,6 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { Link, useNavigate } from "react-router-dom";
 import { Activities } from "../../models/resources/activities";
-import UnderBar from "../../components/UnderBar/UnderBar";
 import ReadyContent from '../../components/titles/ReadyContent/ReadyContent';
 import helmet from "../../models/resources/helmet.json";
 import { FaGamepad } from "react-icons/fa";
@@ -53,6 +52,7 @@ function Content() {
         <PageLayout 
             path={route.content}
             hasHeader={{ goBack }}
+            hasNavBar
             hasGreenBackground
             title={helmet.content.title}
             content={helmet.content.content}
@@ -71,10 +71,6 @@ function Content() {
                     ))}
                 </section>
             </article>
-
-            <div className={styles.underBar}>
-                <UnderBar/>
-            </div>
         </PageLayout>
     );
 }

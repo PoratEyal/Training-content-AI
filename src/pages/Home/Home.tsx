@@ -24,7 +24,9 @@ function Home() {
     useEffect(() => {
         const isRememberMe: string | undefined = Local.get(LocalKey.REMEMBER_ME);
         if (isRememberMe) {
-            isLoggedIn && setIsUserLoggedIn(false);
+            if(isLoggedIn){
+                setIsUserLoggedIn(false);
+            }
         } else setIsUserLoggedIn(false);
     }, [isLoggedIn]);
 

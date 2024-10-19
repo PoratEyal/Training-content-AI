@@ -5,7 +5,6 @@ import { Activities } from "../../models/resources/activities";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import ActivityMultiOutput from "../../components/ActivityMultiOutput/ActivityOutput";
 import route from "../../router/route.json";
-import UnderBar from "../../components/UnderBar/UnderBar";
 
 function ContentActivity() {
     const { activityId } = useParams();
@@ -28,6 +27,7 @@ function ContentActivity() {
             path={`/content/${activityId}`}
             hasGreenBackground
             hasHeader={{ goBack }}
+            hasNavBar
             title={activity.metaTitle}
             content={activity.metaContent}
         >
@@ -37,10 +37,6 @@ function ContentActivity() {
                     <ActivityMultiOutput activities={Activities[activityId].Activities} />
                 </article>
             </section>
-
-            <div className={styles.underBar}>
-                <UnderBar activityId={activityId} />
-            </div>
         </PageLayout>
     );
 }
