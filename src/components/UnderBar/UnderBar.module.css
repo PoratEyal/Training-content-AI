@@ -1,103 +1,23 @@
-.underbar {
+.navbar_container {
   display: flex;
-  justify-content: center;
-  gap: 30px;
+  justify-content: space-evenly;
   align-items: center;
-  background-color: #FAF6EE;
+  background-color: var(--background-color);
   box-shadow: 0px -2px 4px 0px rgba(0, 0, 0, 0.02);
-  border-top: 1px solid #E7D8BA5E;
+  border-top: 1px solid var(--border-color);
   height: fit-content;
   position: fixed;
-  bottom: 0;
+  bottom: -1px;
   width: 100%;
-  z-index: 1000;
+  z-index: 997;
   margin: 0 auto;
-  left: 0;
-  right: 0;
+  padding: 8px 0;
 }
-
-.underbarButton1{
-  padding: 10px;
-  padding-bottom: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 12px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  color: #5D5D5D;
-  margin-right: 15px;
-}
-.underbarButton1:hover .icon {
-  transform: scale(1.1); 
-}
-
-.underbarButton {
-  padding: 10px;
-  padding-bottom: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 12px;
-  color: #5D5D5D;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.underbarButton:hover .icon {
-  transform: scale(1.1); 
-}
-
-.activeIcon{
-  color: #5D5D5D;
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
-  margin-bottom: 2px;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-@media (max-height: 625px) {
-  .underbarButton {
-    padding: 10px;
-  }
-  .icon {
-    width: 20px;
-    height: 20px;
-    margin-bottom: 2px;
-  }
-}
-
 
 @media (min-width: 550px) {
-  .underbar {
-    position: sticky; /* Ensure it's fixed to the bottom */
-    bottom: 0;
-    height: 65px;
+  .navbar_container {
+    position: absolute;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
-    width: 100%;
-    background-color: #FAF6EE;
-    z-index: 1000; /* Keeps it on top of other content */
-  }
-
-  .underbarButton1 {
-    color: #5D5D5D;
-  }
-
-  .underbarButton {
-    color: #5D5D5D;
-  }
-
-  .underbarButton:hover .icon {
-    transform: scale(1.2); 
-  }
-
-  .activeIcon {
-    color: #5D5D5D;
   }
 }
-
-

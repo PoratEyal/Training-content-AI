@@ -20,7 +20,6 @@ import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import { ActivityTimeOptions, CategoryOptions, PlaceOptions } from "../../models/resources/select";
 import SubjectInput from "../../components/SubjectInput/SubjectInput";
 import { CategoryName } from "../../models/types/movement";
-import UnderBar from "../../components/UnderBar/UnderBar";
 import helmet from "../../models/resources/helmet.json";
 
 function BuildActivity() {
@@ -115,6 +114,7 @@ function BuildActivity() {
             hasHeader={{ goBack }}
             title={helmet.build.title}
             content={helmet.build.content}
+            hasNavBar
             noIndex
         >
             <CreateYourActivity />
@@ -183,18 +183,6 @@ function BuildActivity() {
 
                 {clicked ? <LoadingActivity /> : null}
             </div>
-
-            {/* {!clicked ?
-                <div className={styles.moreExamples_div}>
-                    <DiscoverActivitiesLink></DiscoverActivitiesLink>
-                </div>
-            : null} */}
-
-            {!clicked ? (
-                <div className={styles.underBar}>
-                    <UnderBar />
-                </div>
-            ) : null}
         </PageLayout>
     );
 }

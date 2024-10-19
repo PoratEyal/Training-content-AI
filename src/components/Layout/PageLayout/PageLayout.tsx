@@ -4,6 +4,7 @@ import styles from "./PageLayout.module.css";
 import FadeEffect from "../../FadeEffect/FadeEffect";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import UnderBar from "../../UnderBar/UnderBar";
 
 type PageLayoutProps = {
     path: string;
@@ -14,25 +15,24 @@ type PageLayoutProps = {
               isBlur?: boolean;
           }
         | undefined;
-    hasFade?: boolean;
     hasFooter?: boolean;
+    hasNavBar?: boolean;
     content?: string;
     title?: string;
     noIndex?: boolean;
     children: React.ReactNode;
 };
 
-
 function PageLayout({
     path,
     children,
     hasGreenBackground = false,
     hasHeader = undefined,
-    hasFade = false,
     hasFooter = false,
-    content = '',
-    title = '',
-    noIndex = false
+    hasNavBar = false,
+    content = "",
+    title = "",
+    noIndex = false,
 }: PageLayoutProps) {
     return (
         <>
@@ -47,14 +47,11 @@ function PageLayout({
                 className={styles.page_container}
                 style={{ backgroundColor: hasGreenBackground ? "#708254" : "#FAF6EE" }}
             >
-                <FadeEffect hasFade={hasFade}>
-                    {hasHeader ? (
-                        <Header goBack={hasHeader.goBack} isBlur={hasHeader.isBlur} />
-                    ) : null}
+                {hasHeader ? <Header goBack={hasHeader.goBack} isBlur={hasHeader.isBlur} /> : null}
 
-                    {children}
-                    {hasFooter ? <Footer /> : null}
-                </FadeEffect>
+                {children}
+                {hasFooter ? <Footer /> : null}
+                {hasNavBar ? <UnderBar /> : null}
             </section>
         </>
     );
