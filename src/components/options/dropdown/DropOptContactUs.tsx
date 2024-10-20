@@ -1,6 +1,6 @@
 import { IoMailOpen } from "react-icons/io5";
 import styles from "./dropdown.module.css";
-import policy from "../../models/resources/policy.json";
+import policy from "../../../models/resources/policy.json";
 
 type ContactUsProps = {
     handleClose: () => void;

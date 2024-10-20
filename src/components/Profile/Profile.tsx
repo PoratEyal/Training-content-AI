@@ -1,14 +1,13 @@
 import { useState } from "react";
 import styles from "./Profile.module.css";
 import Dropdown from "../Layout/Dropdown/Dropdown";
-import DropOptContactUs from "../dropdown/DropOptContactUs";
-import DropOptInviteFriends from "../dropdown/DropOptInviteFriends";
-import DropOptExample from "../dropdown/DropOptExample";
-import DropOptPrivacy from "../dropdown/DropOptPrivacy";
-import DropOptLogout from "../dropdown/DropOptLogout";
+import DropOptContactUs from "../options/dropdown/DropOptContactUs";
+import DropOptInviteFriends from "../options/dropdown/DropOptInviteFriends";
+import DropOptPrivacy from "../options/dropdown/DropOptPrivacy";
+import DropOptLogout from "../options/dropdown/DropOptLogout";
 import { useAuthContext } from "../../context/AuthContext";
 import { FaUserCircle } from "react-icons/fa";
-import DropOptSignIn from "../dropdown/DropOptSignIn";
+import DropOptSignIn from "../options/dropdown/DropOptSignIn";
 
 type ProfileProps = {
     img?: string;
@@ -42,7 +41,6 @@ function Profile({ img }: ProfileProps) {
                 <Dropdown handleClose={handleClose}>
                     <DropOptInviteFriends />
                     <DropOptContactUs handleClose={handleClose} />
-                    <DropOptExample handleClose={handleClose} />
                     <DropOptPrivacy handleClose={handleClose} />
                     {isLoggedIn ? (
                         <DropOptLogout handleClose={handleClose} />

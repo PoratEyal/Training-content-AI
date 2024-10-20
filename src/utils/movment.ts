@@ -1,4 +1,4 @@
-import { SessionKey } from "../models/enum/session";
+import { SessionKey } from "../models/enum/storage";
 import { Movements } from "../models/resources/movment";
 import Session from "./sessionStorage";
 

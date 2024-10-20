@@ -4,41 +4,31 @@ import { useAuthContext } from "../../context/AuthContext";
 import route from "../../router/route.json";
 import useSignIn from "../../hooks/useSignIn";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import { COOKIE_LIMIT, GUEST_LIMIT_VALUE } from "../../models/constants/cookie";
+import { COOKIE_LIMIT_KEY, GUEST_LIMIT_VALUE } from "../../models/constants/cookie";
 import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI";
 import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
 import Session from "../../utils/sessionStorage";
-import { SessionKey } from "../../models/enum/session";
+import { LocalKey, SessionKey } from "../../models/enum/storage";
 import StartBtn from "../../components/StartBtn/StartBtn";
 import LinkBtn from "../../components/LinkBtn/LinkBtn";
 import { useEffect, useState } from "react";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
+import helmet from "../../models/resources/helmet.json";
+import Local from "../../utils/localStorage";
 
 function Home() {
     const { currentUser, isLoggedIn, cookies, setLimitCookie } = useAuthContext();
     const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(true);
-    const [btnLoading, setBtnLoading] = useState<number>(0);
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isLoggedIn) {
-            setIsUserLoggedIn(false);
-            return;
-        }
-        const timer = setTimeout(() => {
-            setIsUserLoggedIn(false);
-        }, 800);
-
-        return () => clearTimeout(timer);
+        const isRememberMe: string | undefined = Local.get(LocalKey.REMEMBER_ME);
+        if (isRememberMe) {
+            if(isLoggedIn){
+                setIsUserLoggedIn(false);
+            }
+        } else setIsUserLoggedIn(false);
     }, [isLoggedIn]);
-
-    useEffect(() => {
-        const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
-        if (navigateTo) {
-            if (navigateTo === route.details) setBtnLoading(1);
-            else if (navigateTo === route.content) setBtnLoading(2);
-        }
-    }, []);
 
     const handleStart = () => {
         const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
@@ -53,10 +43,6 @@ function Home() {
         navigate(navigateTo);
     };
 
-    console.log("isLoggedIn", isLoggedIn);
-    console.log("currentUser", currentUser);
-    console.log("---");
-
     const startAsGuestOrUser = (navigateTo: string) => {
         if (currentUser && isLoggedIn) {
             navigate(navigateTo);
@@ -64,7 +50,7 @@ function Home() {
         }
 
         Session.set(SessionKey.NAVIGATE, navigateTo);
-        let limitDate = cookies[COOKIE_LIMIT];
+        let limitDate = cookies[COOKIE_LIMIT_KEY];
 
         if (limitDate) {
             if (limitDate === GUEST_LIMIT_VALUE) {
@@ -82,11 +68,11 @@ function Home() {
     };
 
     return (
-        <PageLayout 
+        <PageLayout
             path={route.home}
             hasFooter
-            title="פעולות לתנועות נוער"
-            content="מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים, מדריכי שלח, חוגי סיירות ועוד"
+            title={helmet.home.title}
+            content={helmet.home.content}
         >
             <div className={styles.logo_text_div}>
                 <ContinueWithAI />
@@ -94,6 +80,7 @@ function Home() {
                 <h1 className={styles.home_lable}>יצירת פעולות: מותאם, פשוט ומהיר 🤟</h1>
             </div>
 
+<<<<<<< HEAD
             {/* <label className={styles.description}>
                 היא פלטפורמה ליצירת פעולות חינוכיות וערכיות לנוער.
                 תוכלו לבחור מתוך מאגר של פעולות מוכנות מראש או להשתמש בבינה מלאכותית ליצירת פעולות מותאמות אישית, המתאימות בדיוק לצרכים שלכם.
@@ -102,6 +89,9 @@ function Home() {
             </label> */}
 
             {isUserLoggedIn ? (
+=======
+            {isUserLoggedIn || isLoading ? (
+>>>>>>> 01661825321969582ff019ffb06605dfbd80a393
                 <div className={styles.button_section_loading}>
                     <SmallLoading />
                 </div>
@@ -110,13 +100,11 @@ function Home() {
                     <StartBtn
                         text="צרו פעולות חדשות"
                         onClick={() => startAsGuestOrUser(route.details)}
-                        isLoading={isLoading && btnLoading === 1}
                         isDisabled={btnDisabled}
                     />
                     <LinkBtn
                         text="צפו בפעולות מוכנות"
                         onClick={() => startAsGuestOrUser(route.content)}
-                        isLoading={isLoading && btnLoading === 2}
                         isDisabled={btnDisabled}
                     />
 

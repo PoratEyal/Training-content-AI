@@ -1,7 +1,7 @@
 import styles from "./TSCs.module.css";
-import policy from "../../../models/resources/policy.json";
-import Popup from "../../core/Popup/Popup";
-import MainBtn from "../../MainBtn/MainBtn";
+import policy from "../../models/resources/policy.json";
+import Popup from "../core/Popup/Popup";
+import MainBtn from "../MainBtn/MainBtn";
 
 function TSCs({ handleAccept }) {
     return (

@@ -1,9 +1,9 @@
 .tell_us_title {
-    width: 100%;
+    width: fit-content;
     position: absolute;
     top: 34px;
-    display: flex;
-    justify-content: center; /* Horizontal centering */
+    left: 50%;
+    transform: translateX(-50%);
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -21,7 +21,6 @@
 
 .tell_us_title img {
     position: absolute;
-    top: 33px;
-    width: 180px; 
-    height: 9.5px; 
+    top: 30px;
+    right: 45px;
 }

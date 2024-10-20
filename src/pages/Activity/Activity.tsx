@@ -7,8 +7,8 @@ import { useEffect } from "react";
 import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
-import MoreActions from "../../components/MoreActions/MoreActions";
-import UnderBar from "../../components/UnderBar/UnderBar";
+import helmet from "../../models/resources/helmet.json";
+import GenerateBtn from "../../components/GenerateBtn/GenerateBtn";
 
 function Activity() {
     const { data, mainActivity } = useContentContext();
@@ -24,7 +24,7 @@ function Activity() {
 
     useEffect(() => {
         if (newActivity && activityRef.current) {
-            activityRef.current.scrollIntoView({ behavior: "smooth" });
+            activityRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
             setNewActivity(false);
         }
     }, [newActivity]);
@@ -34,20 +34,21 @@ function Activity() {
     };
 
     return (
-        <PageLayout 
+        <PageLayout
             path={route.activity}
             hasGreenBackground
             hasHeader={{ goBack }}
-            title="פעולות לתנועות נוער - פעולה"
-            content="פעולות מותאמות אישית תוך שימוש בבינה מלאכותית AI. מתאים לכל תנועות הנוער. פעולות לצופים, לנוער העובד, לבני עקיבא, השומר הצעיר, מדצים, מדריכי שלח, חוגי סיירות ועוד"
-            noIndex={true}
+            title={helmet.activity.title}
+            content={helmet.activity.content}
+            hasNavBar
+            noIndex
         >
             <ActivityReady subject={mainActivity.subject} />
             <section className={styles.activity_data_container}>
                 <article>
                     <ActivityOutput activity={mainActivity.activity} activityRef={activityRef} />
                 </article>
-                <MoreActions setNewActivity={setNewActivity} activity={mainActivity} />
+                <GenerateBtn setNewActivity={setNewActivity} activity={mainActivity} />
             </section>
         </PageLayout>
     );

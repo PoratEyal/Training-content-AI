@@ -1,22 +1,21 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import styles from "./GenerateBtn.module.css";
+import { fetchGetActivity } from "../../utils/fetch";
+import { LuRefreshCcw } from "react-icons/lu";
 import { useContentContext } from "../../context/ContentContext";
 import { useErrorContext } from "../../context/ErrorContext";
-import styles from "./MoreActions.module.css";
-import { fetchGetActivity } from "../../utils/fetch";
-import { AiOutlineLoading } from "react-icons/ai";
-import ShareBtns from "../ShareBtns/ShareBtns";
 import msg from "../../models/resources/errorMsg.json";
 import { Activity } from "../../models/types/activity";
+import SmallLoading from "../Loading/SmallLoading/SmallLoading";
 
 type MoreActionsProps = {
     activity: Activity;
     setNewActivity: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function MoreActions({ activity, setNewActivity }: MoreActionsProps) {
+const GenerateBtn: React.FC<MoreActionsProps> = ({ activity, setNewActivity }) => {
     const { updateMainActivity } = useContentContext();
     const { handleAlert } = useErrorContext();
-
     const [loadingGenerate, setLoadingGenerate] = useState(false);
 
     const { activity: text, ...detailsData } = activity;
@@ -42,25 +41,10 @@ function MoreActions({ activity, setNewActivity }: MoreActionsProps) {
     };
 
     return (
-        <section className={styles.more_actions_container}>
-            
-            <button onClick={generateAgain} className={styles.button}>
-                {loadingGenerate ? (
-                    <div className={styles.btn_content_div}>
-                        <AiOutlineLoading className={styles.icon_more}></AiOutlineLoading>
-                    </div>
-                ) : (
-                    <div className={styles.btn_content_div}>
-                        <span>פעולה אחרת</span>
-                    </div>
-                )}
-            </button>
-            {activity ? (
-                <div className={styles.more_actions_left}>
-                    <ShareBtns text={text} />
-                </div>
-            ) : null}
-        </section>
+        <button onClick={generateAgain} className={styles.button}>
+            {loadingGenerate ? <SmallLoading /> : <LuRefreshCcw />}
+        </button>
     );
-}
-export default MoreActions;
+};
+
+export default GenerateBtn;
