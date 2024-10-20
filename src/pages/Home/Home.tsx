@@ -23,11 +23,21 @@ function Home() {
 
     useEffect(() => {
         const isRememberMe: string | undefined = Local.get(LocalKey.REMEMBER_ME);
+        let timeoutId: NodeJS.Timeout;
+
         if (isRememberMe) {
-            if(isLoggedIn){
+            if (isLoggedIn) {
                 setIsUserLoggedIn(false);
+            } else {
+                timeoutId = setTimeout(() => {
+                    setIsUserLoggedIn(false);
+                }, 4000);
             }
         } else setIsUserLoggedIn(false);
+
+        return () => {
+            if (timeoutId) clearTimeout(timeoutId);
+        };
     }, [isLoggedIn]);
 
     const handleStart = () => {
