@@ -44,6 +44,17 @@
     align-items: center;
 }
 
+.description{
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 @media (min-width: 550px) {
     .logo_text_div{
         margin-top: 14vh;
