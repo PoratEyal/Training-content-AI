@@ -106,8 +106,11 @@ function Home() {
                         onClick={() => startAsGuestOrUser(route.content)}
                         isDisabled={btnDisabled}
                     />
+
+                    
                 </section>
             )}
+
         </PageLayout>
     );
 }
