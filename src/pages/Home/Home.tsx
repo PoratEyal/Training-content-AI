@@ -94,6 +94,13 @@ function Home() {
                 <h1 className={styles.home_lable}>יצירת פעולות: מותאם, פשוט ומהיר 🤟</h1>
             </div>
 
+            {/* <label className={styles.description}>
+                היא פלטפורמה ליצירת פעולות חינוכיות וערכיות לנוער.
+                תוכלו לבחור מתוך מאגר של פעולות מוכנות מראש או להשתמש בבינה מלאכותית ליצירת פעולות מותאמות אישית, המתאימות בדיוק לצרכים שלכם.
+                האתר מיועד לתנועות נוער, מדריכים ומורים המחפשים דרכים חדשות ומעניינות להעשרת החוויה החינוכית והחברתית.
+                אל תהססו לפנות אלינו לכל שאלה, הצעה או רעיון דרך המייל או הרשתות החברתיות – אנחנו כאן בשבילכם!
+            </label> */}
+
             {isUserLoggedIn ? (
                 <div className={styles.button_section_loading}>
                     <SmallLoading />
@@ -112,8 +119,11 @@ function Home() {
                         isLoading={isLoading && btnLoading === 2}
                         isDisabled={btnDisabled}
                     />
+
+                    
                 </section>
             )}
+
         </PageLayout>
     );
 }
