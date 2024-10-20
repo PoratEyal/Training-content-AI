@@ -1,4 +1,5 @@
 .privacy{
+    contain: content;
     overflow-y: scroll;
     overflow: auto; /* Allows scrolling */
     scrollbar-width: none; /* For Firefox */
