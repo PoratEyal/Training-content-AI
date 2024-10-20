@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./dropdown.module.css";
 import { IoMdShare } from "react-icons/io";
 import { WhatsappShareButton } from "react-share";
-import { formatInviteFriend } from "../../utils/format";
-import { WEBSITE_URL } from "../../models/constants";
+import { formatInviteFriend } from "../../../utils/format";
+import { WEBSITE_URL } from "../../../models/constants";
 
 function DropOptInviteFriends() {
     return (

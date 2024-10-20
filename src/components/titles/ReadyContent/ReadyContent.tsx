@@ -12,7 +12,7 @@ function ReadyContent() {
                 src={"detailsLine.svg"}
                 loading="lazy"
                 width={180}
-                height={9.5}
+                height={5}
             ></img>
         </div>
     );
