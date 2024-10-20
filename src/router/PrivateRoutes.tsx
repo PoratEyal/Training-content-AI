@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
-import TSCs from "../components/popups/TSCs/TSCs";
+import TSCs from "../components/TSCs/TSCs";
 import { COOKIE_USER_CONSENT } from "../models/constants/cookie";
 
 const PrivateRoutes = () => {
