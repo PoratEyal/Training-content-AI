@@ -51,7 +51,7 @@ function PrivacyPolicy() {
                         </div>
 
                         <div className={styles.space_div}>
-                            <label></label> {policy.p6.text}
+                            <label>{policy.p6.label}</label> {policy.p6.text}
                         </div>
 
                         <div className={styles.space_div}>

@@ -8,6 +8,7 @@ import DropOptLogout from "../options/dropdown/DropOptLogout";
 import { useAuthContext } from "../../context/AuthContext";
 import { FaUserCircle } from "react-icons/fa";
 import DropOptSignIn from "../options/dropdown/DropOptSignIn";
+import useToggle from "../../hooks/useToggle";
 
 type ProfileProps = {
     img?: string;
@@ -15,13 +16,11 @@ type ProfileProps = {
 
 function Profile({ img }: ProfileProps) {
     const { isLoggedIn } = useAuthContext();
-    const [isOpened, setIsOpened] = useState(false);
-    const handleOpen = () => setIsOpened((prev) => !prev);
-    const handleClose = () => setIsOpened(false);
+    const [isOpen, toggle, close] = useToggle(false);
 
     return (
         <div style={{ position: "relative" }}>
-            <div className={styles.user_profile} onClick={handleOpen}>
+            <div className={styles.user_profile} onClick={toggle}>
                 <div className={styles.img_div}>
                     {img ? (
                         <img
@@ -37,15 +36,15 @@ function Profile({ img }: ProfileProps) {
                     )}
                 </div>
             </div>
-            {isOpened ? (
-                <Dropdown handleClose={handleClose}>
+            {isOpen ? (
+                <Dropdown handleClose={close}>
                     <DropOptInviteFriends />
-                    <DropOptContactUs handleClose={handleClose} />
-                    <DropOptPrivacy handleClose={handleClose} />
+                    <DropOptContactUs handleClose={close} />
+                    <DropOptPrivacy handleClose={close} />
                     {isLoggedIn ? (
-                        <DropOptLogout handleClose={handleClose} />
+                        <DropOptLogout handleClose={close} />
                     ) : (
-                        <DropOptSignIn handleClose={handleClose} />
+                        <DropOptSignIn handleClose={close} />
                     )}
                 </Dropdown>
             ) : null}
