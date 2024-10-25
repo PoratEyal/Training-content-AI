@@ -10,9 +10,9 @@ function TSCs({ handleAccept }) {
                 <h3 className={styles.h3_privacy}>תנאי שירות ומדיניות פרטיות</h3>
 
                 <div className={styles.space_div}>
-                        <label>{policy.p0.text}</label>
+                    <label>{policy.p0.text}</label>
                 </div>
-                
+
                 <div className={styles.space_div}>
                     <label>{policy.p1.label}</label> {policy.p1.text}
                 </div>
@@ -34,7 +34,7 @@ function TSCs({ handleAccept }) {
                 </div>
 
                 <div className={styles.space_div}>
-                    <label></label> {policy.p6.text}
+                    <label>{policy.p6.label}</label> {policy.p6.text}
                 </div>
 
                 <div className={styles.space_div}>

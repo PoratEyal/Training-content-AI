@@ -1,0 +1,13 @@
+.collapse {
+    overflow: hidden;
+    position: absolute;
+    bottom: 15px;
+    right: -140px;
+    width: 320px;
+}
+
+@media (min-width: 550px) {
+    .collapse {
+        bottom: 20px;
+    }
+}

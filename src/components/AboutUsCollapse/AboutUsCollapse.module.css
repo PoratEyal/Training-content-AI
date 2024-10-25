@@ -1,0 +1,40 @@
+.about_collapse_container {
+    display: inline-flex;
+    gap: 2px;
+    color: var(--text-color);
+}
+
+.about_container {
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--text-color);
+    cursor: pointer;
+    border-bottom: 1px solid var(--text-color);
+}
+
+.about_container label {
+    cursor: pointer;
+}
+
+.about_arrow{
+    height: 16px;
+    cursor: pointer;
+    width: fit-content;
+    position: relative;
+    top: 1px;
+}
+
+.collapse_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon_privacy {
+    font-size: 13px;
+}
