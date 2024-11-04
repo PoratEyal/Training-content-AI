@@ -70,6 +70,10 @@
       <priority>0.8</priority>
    </url>
    <url>
+      <loc>https://activitywiz.com/content/israel</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
       <loc>https://activitywiz.com/content/teamwork</loc>
       <priority>0.8</priority>
    </url>
