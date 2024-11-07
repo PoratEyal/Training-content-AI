@@ -59,7 +59,7 @@ function Content() {
             title={helmet.content.title}
             content={helmet.content.content}
         >
-            <ReadyContent></ReadyContent>
+            <ReadyContent/>
             
             <article className={styles.content_article}>
                 <section className={styles.grid_container}>

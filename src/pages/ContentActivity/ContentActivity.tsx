@@ -28,6 +28,7 @@ function ContentActivity() {
             hasGreenBackground
             hasHeader={{ goBack }}
             hasNavBar
+            hesAds
             title={activity.metaTitle}
             content={activity.metaContent}
         >
@@ -36,6 +37,7 @@ function ContentActivity() {
                 <article>
                     <ActivityMultiOutput activities={Activities[activityId].Activities} />
                 </article>
+                <div className={styles.padding} />
             </section>
         </PageLayout>
     );

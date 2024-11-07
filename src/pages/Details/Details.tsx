@@ -79,8 +79,8 @@ function Details() {
                     alt="Yellow lamp"
                     src={"lamp.svg"}
                     loading="lazy"
-                    width={135}
-                    height={139}
+                    width={105}
+                    height={109}
                 ></img>
 
                 <div className={styles.selects_btn}>
