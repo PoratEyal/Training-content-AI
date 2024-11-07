@@ -1,0 +1,12 @@
+.ads-loading-slot {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: block;
+    height: var(--ads-height);
+    width: 100vw;    
+    z-index: 997;
+    /* background-color: var(--background-color); */
+    background-color: #e7d8ba5e;
+    border-top: solid 1px #e7d8ba5e;
+}

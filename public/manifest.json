@@ -55,7 +55,7 @@
         {
             "src": "lamp.svg",
             "type": "image/svg+xml",
-            "sizes": "135x139"
+            "sizes": "105x109"
         },
         {
             "src": "more.svg",
@@ -70,7 +70,7 @@
         {
             "src": "path.svg",
             "type": "image/svg+xml",
-            "sizes": "130x160"
+            "sizes": "100x130"
         }
     ],
     "start_url": ".",

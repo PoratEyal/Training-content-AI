@@ -125,8 +125,8 @@ function BuildActivity() {
                     title="Yellow sign with heart"
                     alt="Yellow sign with heart"
                     src={"path.svg"}
-                    width={130}
-                    height={160}
+                    width={100}
+                    height={130}
                 ></img>
                 <div className={styles.build_content}>
                     {loading ? (

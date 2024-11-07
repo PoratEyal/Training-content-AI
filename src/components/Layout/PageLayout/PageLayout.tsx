@@ -6,6 +6,8 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import UnderBar from "../../UnderBar/UnderBar";
 import { WEBSITE_URL } from "../../../models/constants";
+import AdsSmall from "../../ads/AdsSmall/AdsSmall";
+
 
 type PageLayoutProps = {
     path: string;
@@ -17,6 +19,7 @@ type PageLayoutProps = {
           }
         | undefined;
     hasFooter?: boolean;
+    hesAds?: boolean;
     hasNavBar?: boolean;
     content?: string;
     title?: string;
@@ -30,6 +33,7 @@ function PageLayout({
     hasGreenBackground = false,
     hasHeader = undefined,
     hasFooter = false,
+    hesAds = false,
     hasNavBar = false,
     content = "",
     title = "",
@@ -52,6 +56,7 @@ function PageLayout({
 
                 {children}
                 {hasFooter ? <Footer /> : null}
+                {hesAds ? <AdsSmall /> : null}
                 {hasNavBar ? <UnderBar /> : null}
             </section>
         </>
