@@ -9,7 +9,7 @@ type ContactUsProps = {
 function DropOptContactUs({ handleClose }: ContactUsProps) {
     const contactUs = () => {
         const emailLink = document.createElement("a");
-        emailLink.href = `mailto:${policy.p9.email}`;
+        emailLink.href = `mailto:${policy.p10.email}`;
         emailLink.click();
     };
 
