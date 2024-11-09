@@ -409,7 +409,7 @@ content: `## שם הפעולה: כ"ט בנובמבר (יום היישוב היה
     personalities: {
     id: "personalities",
     subject: "אישים",
-    icon: "FaStarOfDavid",
+    icon: "MdEmojiPeople",
     metaTitle: "פעולות בנושא אישים ומנהיגים",
     metaContent: "פעולות לתנועות נוער. רעיונות לפעילויות יצירתיות, דמויות, אישים, מנהיגים",
     Activities: [
