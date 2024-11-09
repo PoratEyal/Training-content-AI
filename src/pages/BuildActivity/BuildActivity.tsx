@@ -79,6 +79,8 @@ function BuildActivity() {
     }, [loading, subject, place, time]);
 
     const submitHandler = async () => {
+        console.log("inside the submit");
+        
         setClicked(true);
         const { movement, ...detailsData } = data;
         try {
@@ -93,6 +95,7 @@ function BuildActivity() {
                 (response.result === "success" || response.result === "safety") &&
                 response.activity
             ) {
+                console.log(response.result);
                 updateMainActivity({ ...response.activity });
                 navigate(route.activity);
             }
