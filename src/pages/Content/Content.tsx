@@ -23,6 +23,7 @@ import { FaStarOfDavid } from "react-icons/fa";
 import { FaHandsHelping } from "react-icons/fa";
 import { FaListCheck } from "react-icons/fa6";
 import { FaRibbon } from "react-icons/fa";
+import { MdEmojiPeople } from "react-icons/md";
 
 const iconMap = {
     FaGamepad: FaGamepad,
@@ -40,7 +41,8 @@ const iconMap = {
     FaTrophy: FaTrophy,
     PiShootingStarFill: PiShootingStarFill,
     MdOutlineSportsKabaddi: MdOutlineSportsKabaddi,
-    FaRibbon: FaRibbon
+    FaRibbon: FaRibbon,
+    MdEmojiPeople: MdEmojiPeople
 };
 
 function Content() {
