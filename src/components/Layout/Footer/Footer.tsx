@@ -26,7 +26,7 @@ function Footer() {
             </AboutUsCollapse>
             <div className={styles.footer_contact}>
                 <IoMailOpen />
-                <a href={`mailto:${policy.p9.email}`}>{policy.p9.text4}</a>
+                <a href={`mailto:${policy.p10.email}`}>{policy.p10.text4}</a>
             </div>
         </footer>
     );

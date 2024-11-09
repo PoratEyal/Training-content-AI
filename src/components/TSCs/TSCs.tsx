@@ -44,6 +44,10 @@ function TSCs({ handleAccept }) {
                 <div className={styles.space_div}>
                     <label>{policy.p8.label}</label> {policy.p8.text}
                 </div>
+                
+                <div className={styles.space_div}>
+                    <label>{policy.p9.label}</label> {policy.p9.text}
+                </div>
 
                 <div className={styles.btn_div}>
                     <MainBtn
