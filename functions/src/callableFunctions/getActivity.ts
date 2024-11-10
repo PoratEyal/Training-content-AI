@@ -3,7 +3,7 @@ import { GetActivityRequest } from "../model/types/request";
 import { NOT_REGISTERED } from "../model/constants";
 import { ActivityDetails } from "../model/types/activity";
 import { getMainActivity } from "../service/geminiAPI";
-//import { getMainActivity } from "../service/claudeAPI";
+// import { getMainActivity } from "../service/claudeAPI";
 import { initActivityFromAI, updateActivityWithId } from "../utils/activity";
 import { CollectionDB } from "../model/enum/DB";
 import { GetActivityResponse } from "../model/types/response";
