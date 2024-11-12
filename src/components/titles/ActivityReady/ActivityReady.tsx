@@ -1,14 +1,14 @@
-import React from "react";
 import styles from "./ActivityReady.module.css";
 
 type ActivityReadyProps = {
     subject: string;
+    isMany?: boolean;
 };
 
-function ActivityReady({ subject }: ActivityReadyProps) {
+function ActivityReady({ subject, isMany = false }: ActivityReadyProps) {
     return (
         <h1 className={styles.activity_title}>
-            <span>פעולות בנושא</span>
+            {isMany ? <span>פעולות בנושא</span> : <span>פעולה בנושא</span>}
             <div>{subject}</div>
         </h1>
     );

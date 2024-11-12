@@ -1,19 +1,21 @@
-.spinnerContainer {
+.loading_activity {
   position: fixed;
+  top: 0;
+  left: 0;
   z-index: 998;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 100vw;
   height: 100vh;
   background: var(--secondary-color);
+}
+
+.loading_main{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .gif {
@@ -46,7 +48,7 @@
   line-height: 26px;
 }
 
-.progressBar {
+.progress_bar {
   width: 270px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.2);
@@ -56,7 +58,7 @@
   z-index: 1000;
 }
 
-.progressBar::before {
+.progress_bar::before {
   content: "";
   height: 8px;
   display: block;
