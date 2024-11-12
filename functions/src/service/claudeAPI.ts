@@ -13,27 +13,24 @@ import { SURVIVAL_PROMPT_M } from "../model/prompts/survival_M";
 
 async function generateContent(prompt: string): Promise<string> {
     const API_KEY = defineString("API_KEY_CLAUDE").value() || "";
-    
-    if (!API_KEY) {
-        throw new Error("Missing Claude API key");
-    }
 
     try {
-        const response = await axios.post('https://api.anthropic.com/v1/messages', {
-            messages: [{
-                role: "user",
-                content: prompt
-            }],
-            model: "claude-3.5-sonnet-20240229",
-            max_tokens: 1000,
-            temperature: 0.7,
-            top_p: 0.95
-        }, {
+        const response = await axios({
+            method: 'post',
+            url: 'https://api.anthropic.com/v1/messages',
             headers: {
-                'anthropic-version': '2023-06-01',
-                'x-api-key': API_KEY,
                 'Content-Type': 'application/json',
+                'x-api-key': API_KEY,
+                'anthropic-version': '2023-06-01'
             },
+            data: {
+                model: 'claude-3-sonnet-20240229',
+                max_tokens: 1024,
+                messages: [{
+                    role: 'user',
+                    content: prompt
+                }]
+            }
         });
 
         return response.data.content[0].text.trim();
@@ -89,12 +86,7 @@ export async function getMainActivity(activityDetails: ActivityDetails): Promise
             break;
     }
 
-    console.log(" - - - - - - EYAL CHECK - - - - - - - ");
-    
     const prompt = promptPerGrade(grade, promptOptions);
     const result = formatString(prompt, [time, subject, amount, grade, gender, place]);
-    const result1 = await generateContent(result)
-    console.log(`EYAL CHECK - - - - - - - - - - - ${result1}`);
-    return result1
-    //return await generateContent(result);
+    return await generateContent(result);
 }
