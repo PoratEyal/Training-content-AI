@@ -1,0 +1,19 @@
+.ads-tmp-slot {
+    position: fixed;
+    bottom: 55px;
+    left: 0;
+    display: block;
+    height: 80px;
+    width: 100vw;
+    z-index: 997;
+    background-color: var(--background-color);
+    /* background-color: #e7d8ba5e; */
+    border-top: solid 1px #e7d8ba5e;
+}
+
+@media (min-width: 550px) {
+    .ads-tmp-slot {
+        position: absolute;
+        width: 400px;
+    }
+}

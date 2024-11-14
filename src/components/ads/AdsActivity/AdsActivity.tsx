@@ -1,4 +1,6 @@
 import React from "react";
+import "./AdsActivity.css";
+import { Adsense } from "@ctrl/react-adsense";
 
 {
     /* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9858822058074702"
@@ -16,9 +18,13 @@ import React from "react";
 
 const AdsActivity = () => {
     return (
-        <div>
-            <h1>Ads Activity</h1>
-        </div>
+        <Adsense
+            className="ads-tmp-slot"
+            client="ca-pub-9858822058074702"
+            slot="7241259487"
+            layout="in-article"
+            format="repv"
+        />
     );
 };
 

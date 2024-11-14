@@ -24,8 +24,10 @@ async function generateContent(prompt: string): Promise<string> {
                 'anthropic-version': '2023-06-01'
             },
             data: {
-                model: 'claude-3-sonnet-20240229',
+                model: 'claude-3-5-haiku-20241022',
+                // model: 'claude-3-sonnet-20240229',
                 max_tokens: 1024,
+                temperature: 0.6,
                 messages: [{
                     role: 'user',
                     content: prompt
