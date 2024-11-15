@@ -1,20 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { useErrorContext } from "../../context/ErrorContext";
 import { useContentContext } from "../../context/ContentContext";
 import { useAuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { isGroupDetailsChanged, updateUserMovement } from "../../utils/user";
-import { fetchGetActivity, fetchUpdateUser } from "../../utils/fetch";
+import { fetchUpdateUser } from "../../utils/fetch";
 import { Activity } from "../../models/types/activity";
 import { SessionKey } from "../../models/enum/storage";
 import Session from "../../utils/sessionStorage";
 import route from "../../router/route.json";
-import msg from "../../models/resources/errorMsg.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import styles from "./BuildActivity.module.css";
 import MainBtn from "../../components/MainBtn/MainBtn";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
-import LoadingActivity from "../../components/Loading/LoadingActivity/LoadingActivity";
 import CreateYourActivity from "../../components/titles/CreateYourActivity/CreateYourActivity";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import { ActivityTimeOptions, CategoryOptions, PlaceOptions } from "../../models/resources/select";
@@ -23,8 +20,7 @@ import { CategoryName } from "../../models/types/movement";
 import helmet from "../../models/resources/helmet.json";
 
 function BuildActivity() {
-    const { handleError } = useErrorContext();
-    const { data, updateMainActivity, clearMainActivity } = useContentContext();
+    const { data, clearMainActivity } = useContentContext();
     const { isLoggedIn, currentUser, loading } = useAuthContext();
 
     const [category, setCategory] = useState(data.movement.categories[0].name as string);
@@ -32,7 +28,6 @@ function BuildActivity() {
     const [place, setPlace] = useState("");
     const [time, setTime] = useState("");
 
-    const [clicked, setClicked] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
     const navigate = useNavigate();
     const lockRef = useRef(true);
@@ -79,30 +74,7 @@ function BuildActivity() {
     }, [loading, subject, place, time]);
 
     const submitHandler = async () => {
-        console.log("inside the submit");
-        
-        setClicked(true);
-        const { movement, ...detailsData } = data;
-        try {
-            const response = await fetchGetActivity({
-                category: category as CategoryName,
-                ...detailsData,
-                subject,
-                time,
-                place,
-            });
-            if (
-                (response.result === "success" || response.result === "safety") &&
-                response.activity
-            ) {
-                console.log(response.result);
-                updateMainActivity({ ...response.activity });
-                navigate(route.activity);
-            }
-        } catch (error) {
-            handleError(msg.error.message);
-            setClicked(false);
-        }
+        navigate(`${route.generate}?c=${category}&s=${subject}&p=${place}&t=${time}`);
     };
 
     const goBack = () => {
@@ -183,8 +155,6 @@ function BuildActivity() {
                         ) : null}
                     </div>
                 </div>
-
-                {clicked ? <LoadingActivity /> : null}
             </div>
         </PageLayout>
     );
