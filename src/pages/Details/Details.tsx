@@ -68,6 +68,7 @@ function Details() {
             title={helmet.details.title}
             content={helmet.details.content}
             hasNavBar
+            hesAds
             noIndex
         >
             <TellUsAboutYourGroup />
