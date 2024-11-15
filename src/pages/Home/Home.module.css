@@ -5,7 +5,7 @@
     align-items: center;
     gap: 5vh;
     margin-top: 14vh;
-    margin-bottom: 20vh;
+    margin-bottom: 15vh;
 }
 
 .home_lable{
@@ -72,5 +72,11 @@
     }
     body {
         background-color: var(--desktop-background-color) !important;
+    }
+}
+
+@media (max-height: 605px) {
+    .logo_text_div{
+        margin-bottom: 10vh;
     }
 }
