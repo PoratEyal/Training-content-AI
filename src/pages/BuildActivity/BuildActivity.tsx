@@ -90,6 +90,7 @@ function BuildActivity() {
             title={helmet.build.title}
             content={helmet.build.content}
             hasNavBar
+            hesAds
             noIndex
         >
             <CreateYourActivity />
