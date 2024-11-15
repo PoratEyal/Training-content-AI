@@ -1,44 +1,24 @@
 import React from "react";
 import styles from "./GenerateBtn.module.css";
-import { fetchGetActivity } from "../../utils/fetch";
 import { LuRefreshCcw } from "react-icons/lu";
-import { useContentContext } from "../../context/ContentContext";
-import { useErrorContext } from "../../context/ErrorContext";
-import msg from "../../models/resources/errorMsg.json";
 import { Activity } from "../../models/types/activity";
+import { useNavigate } from "react-router-dom";
+import route from "../../router/route.json";
 
 type MoreActionsProps = {
     activity: Activity;
-    setLoadingGenerate: React.Dispatch<React.SetStateAction<boolean>>;
-    setNewActivity: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const GenerateBtn: React.FC<MoreActionsProps> = ({
     activity,
-    setLoadingGenerate,
-    setNewActivity,
 }) => {
-    const { updateMainActivity } = useContentContext();
-    const { handleAlert } = useErrorContext();
+    const navigate = useNavigate();
 
     const { activity: text, ...detailsData } = activity;
 
     const generateAgain = async () => {
-        setLoadingGenerate(true);
-        try {
-            const response = await fetchGetActivity({ ...detailsData });
-            if (
-                (response.result === "success" || response.result === "safety") &&
-                response.activity
-            ) {
-                updateMainActivity(response.activity);
-            }
-        } catch (error) {
-            handleAlert(msg.error.message);
-        } finally {
-            setLoadingGenerate(false);
-            setNewActivity(true);
-        }
+        const { category, subject, place, time } = detailsData;
+        navigate(`${route.generate}?c=${category}&s=${subject}&p=${place}&t=${time}`);
     };
 
     return (

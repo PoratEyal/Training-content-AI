@@ -9,16 +9,12 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import helmet from "../../models/resources/helmet.json";
 import GenerateBtn from "../../components/GenerateBtn/GenerateBtn";
-import LoadingActivity from "../../components/Loading/LoadingActivity/LoadingActivity";
 
 function Activity() {
     const { data, mainActivity } = useContentContext();
     const [newActivity, setNewActivity] = useState(false);
-    const [loadingGenerate, setLoadingGenerate] = useState(false);
     const activityRef = useRef<HTMLElement>(null);
     const navigate = useNavigate();
-
-    const randomKey = () => Math.floor(Math.random() * 1000000);
 
     useEffect(() => {
         if (!data || !data.grade || !data.movement || !mainActivity) {
@@ -52,14 +48,8 @@ function Activity() {
                 <article>
                     <ActivityOutput activity={mainActivity.activity} activityRef={activityRef} />
                 </article>
-                <GenerateBtn
-                    setNewActivity={setNewActivity}
-                    setLoadingGenerate={setLoadingGenerate}
-                    activity={mainActivity}
-                />
+                <GenerateBtn activity={mainActivity} />
             </section>
-
-            {loadingGenerate ? <LoadingActivity key={randomKey()} /> : null}
         </PageLayout>
     );
 }

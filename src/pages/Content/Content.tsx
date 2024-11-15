@@ -57,6 +57,7 @@ function Content() {
             path={route.content}
             hasHeader={{ goBack }}
             hasNavBar
+            noIndex
             hasGreenBackground
             title={helmet.content.title}
             content={helmet.content.content}

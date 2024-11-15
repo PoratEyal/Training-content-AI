@@ -93,4 +93,8 @@
       <loc>https://activitywiz.com/content/harassment</loc>
       <priority>0.8</priority>
    </url>
+   <url>
+      <loc>https://activitywiz.com/generate</loc>
+      <priority>0.6</priority>
+   </url>
 </urlset>

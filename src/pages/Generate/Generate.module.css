@@ -1,0 +1,77 @@
+.loading_activity {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 998;
+    width: 100vw;
+    height: 100vh;
+    background: var(--secondary-color);
+}
+
+.loading_main {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gif {
+    animation: fadeIn 0.5s ease-in-out forwards;
+    opacity: 0;
+    width: 320px;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.h2 {
+    margin-top: 25px;
+    font-size: 42px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.text {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 300;
+    width: 270px;
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 40px;
+    line-height: 26px;
+}
+
+.progress_bar {
+    width: 270px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+}
+
+.progress_bar::before {
+    content: "";
+    height: 8px;
+    display: block;
+    background-color: var(--primary-color);
+    animation: progress 20s linear forwards;
+    border-radius: 16px;
+    will-change: transform;
+    width: 270px;
+    transform: translateX(-100%);
+}
+
+@keyframes progress {
+    100% {
+        transform: translateX(0);
+    }
+}
