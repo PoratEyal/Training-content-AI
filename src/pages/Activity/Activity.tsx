@@ -9,12 +9,15 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import helmet from "../../models/resources/helmet.json";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
+import { useAuthContext } from "../../context/AuthContext";
+import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
 
 function Activity() {
     const { data, mainActivity } = useContentContext();
     const [newActivity, setNewActivity] = useState(false);
     const activityRef = useRef<HTMLElement>(null);
     const navigate = useNavigate();
+    const { isPopupVisible, handlePopupClose } = useAuthContext();
 
     useEffect(() => {
         if (!data || !data.grade || !data.movement || !mainActivity) {
@@ -34,7 +37,9 @@ function Activity() {
     };
 
     return (
-        <PageLayout
+        <>
+          {/* {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />} */}
+          <PageLayout
             path={route.activity}
             hasGreenBackground
             hasHeader={{ goBack }}
@@ -43,16 +48,17 @@ function Activity() {
             hesAds={ACTIVITY_AD_SLOT}
             hasNavBar
             noIndex
-        >
+          >
             <ActivityReady subject={mainActivity.subject} />
             <section className={styles.activity_data_container}>
-                <article>
-                    <ActivityOutput activity={mainActivity.activity} activityRef={activityRef} />
-                </article>
-                <div className={styles.padding} />
+              <article>
+                <ActivityOutput activity={mainActivity.activity} activityRef={activityRef} />
+              </article>
+              <div className={styles.padding} />
             </section>
-        </PageLayout>
-    );
+          </PageLayout>
+        </>
+      );      
 }
 
 export default Activity;

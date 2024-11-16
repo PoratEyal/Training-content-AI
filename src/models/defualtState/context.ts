@@ -24,4 +24,6 @@ export const defualtAuthContext = {
     setCookie: () => {},
     setLimitCookie: () => {},
     setConsentCookie: () => {},
+    isPopupVisible: false,
+    handlePopupClose: () => {},
 };

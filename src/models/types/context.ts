@@ -34,4 +34,6 @@ export type AuthContextType = {
     setCookie: (name: string, value: any, options?: any) => void;
     setLimitCookie: (data: string | number) => void;
     setConsentCookie: () => void;
+    isPopupVisible: boolean;
+    handlePopupClose: () => void;
 };
