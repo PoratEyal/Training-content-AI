@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { ContentProvider } from "./context/ContentContext";
 import Details from "./pages/Details/Details";
@@ -18,7 +17,6 @@ import Maintenance from "./pages/Maintenance/Maintenance";
 import Status from "./pages/Status/Status";
 import BuildActivity from "./pages/BuildActivity/BuildActivity";
 import ContentActivity from "./pages/ContentActivity/ContentActivity";
-import Generate from "./pages/Generate/Generate";
 
 function App() {
     return (
@@ -32,8 +30,7 @@ function App() {
                                 <Route element={<PrivateRoutes />}>
                                     <Route path={route.home} element={<Home />} />
                                     <Route path={route.details} element={<Details />} />
-                                    <Route path={route.build} element={<BuildActivity />} />  
-                                    <Route path={route.generate} element={<Generate />} />  
+                                    <Route path={route.build} element={<BuildActivity />} />
                                   <Route path={route.activity} element={<Activity />} />
                                 </Route>
                                 <Route path={route.privacyPolicy} element={<PrivacyPolicy />} />
