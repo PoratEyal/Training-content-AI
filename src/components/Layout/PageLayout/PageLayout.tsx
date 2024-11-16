@@ -19,7 +19,7 @@ type PageLayoutProps = {
           }
         | undefined;
     hasFooter?: boolean;
-    hesAds?: boolean;
+    hesAds?: string;
     hasNavBar?: boolean;
     content?: string;
     title?: string;
@@ -33,7 +33,7 @@ function PageLayout({
     hasGreenBackground = false,
     hasHeader = undefined,
     hasFooter = false,
-    hesAds = false,
+    hesAds = "",
     hasNavBar = false,
     content = "",
     title = "",
@@ -56,7 +56,7 @@ function PageLayout({
 
                 {children}
                 {hasFooter ? <Footer /> : null}
-                {hesAds ? <AdsSmall /> : null}
+                {hesAds != "" ? <AdsSmall slot={hesAds} /> : null}
                 {hasNavBar ? <UnderBar /> : null}
             </section>
         </>

@@ -1,4 +1,5 @@
-import AdsLoading from "../../ads/AdsLoading/AdsLoading";
+import { LOADING_AD_SLOT } from "../../../models/constants/adsSlot";
+import AdsBig from "../../ads/AdsBig/AdsBig";
 import styles from "./LoadingActivity.module.css";
 
 function LoadingActivity() {
@@ -14,7 +15,7 @@ function LoadingActivity() {
                 <div className={styles.progress_bar}></div>
             </div>
 
-            <AdsLoading />
+            <AdsBig slot={LOADING_AD_SLOT} />
         </section>
     );
 }

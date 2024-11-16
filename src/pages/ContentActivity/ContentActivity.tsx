@@ -5,6 +5,7 @@ import { Activities } from "../../models/resources/activities";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import ActivityMultiOutput from "../../components/ActivityMultiOutput/ActivityOutput";
 import route from "../../router/route.json";
+import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 
 function ContentActivity() {
     const { activityId } = useParams();
@@ -27,10 +28,10 @@ function ContentActivity() {
             path={`/content/${activityId}`}
             hasGreenBackground
             hasHeader={{ goBack }}
-            hasNavBar
-            hesAds
+            hesAds={CONTENT_ACTIVITY_AD_SLOT}
             title={activity.metaTitle}
             content={activity.metaContent}
+            hasNavBar
         >
             <ActivityReady subject={Activities[activityId].subject} isMany />
             <section className={styles.activity_data_container}>
