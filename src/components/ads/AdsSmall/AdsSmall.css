@@ -15,5 +15,6 @@
     .ads-small-slot {
         position: absolute;
         width: 400px;
+        height: calc(var(--ads-height) - 10px);
     }
 }

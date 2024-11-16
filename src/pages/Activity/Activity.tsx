@@ -8,16 +8,13 @@ import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import helmet from "../../models/resources/helmet.json";
-import LoadingActivity from "../../components/Loading/LoadingActivity/LoadingActivity";
+import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 
 function Activity() {
     const { data, mainActivity } = useContentContext();
     const [newActivity, setNewActivity] = useState(false);
-    const [loadingGenerate, setLoadingGenerate] = useState(false);
     const activityRef = useRef<HTMLElement>(null);
     const navigate = useNavigate();
-
-    const randomKey = () => Math.floor(Math.random() * 1000000);
 
     useEffect(() => {
         if (!data || !data.grade || !data.movement || !mainActivity) {
@@ -43,6 +40,7 @@ function Activity() {
             hasHeader={{ goBack }}
             title={helmet.activity.title}
             content={helmet.activity.content}
+            hesAds={ACTIVITY_AD_SLOT}
             hasNavBar
             noIndex
         >
@@ -51,9 +49,8 @@ function Activity() {
                 <article>
                     <ActivityOutput activity={mainActivity.activity} activityRef={activityRef} />
                 </article>
+                <div className={styles.padding} />
             </section>
-            
-            {loadingGenerate ? <LoadingActivity key={randomKey()} /> : null}
         </PageLayout>
     );
 }

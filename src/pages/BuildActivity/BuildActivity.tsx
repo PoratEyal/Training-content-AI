@@ -21,6 +21,7 @@ import helmet from "../../models/resources/helmet.json";
 import { useErrorContext } from "../../context/ErrorContext";
 import msg from "../../models/resources/errorMsg.json";
 import LoadingActivity from "../../components/Loading/LoadingActivity/LoadingActivity";
+import { BUILD_AD_SLOT } from "../../models/constants/adsSlot";
 
 function BuildActivity() {
     const { handleError } = useErrorContext();
@@ -115,8 +116,8 @@ function BuildActivity() {
             hasHeader={{ goBack }}
             title={helmet.build.title}
             content={helmet.build.content}
+            hesAds={BUILD_AD_SLOT}
             hasNavBar
-            hesAds
             noIndex
         >
             <CreateYourActivity />

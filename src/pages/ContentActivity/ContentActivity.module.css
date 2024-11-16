@@ -60,10 +60,4 @@
     body {
         background-color: var(--desktop-background-color) !important;
     }
-
-    .underBar{
-        position: absolute;
-        bottom: 0px;
-        width: 100%;
-    }
 }

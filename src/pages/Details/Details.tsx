@@ -16,6 +16,7 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
 import helmet from "../../models/resources/helmet.json";
+import { DETAILS_AD_SLOT } from "../../models/constants/adsSlot";
 
 function Details() {
     const { data, updateDetails, clearAll } = useContentContext();
@@ -67,8 +68,8 @@ function Details() {
             hasHeader={{ goBack }}
             title={helmet.details.title}
             content={helmet.details.content}
+            hesAds={DETAILS_AD_SLOT}
             hasNavBar
-            hesAds
             noIndex
         >
             <TellUsAboutYourGroup />
