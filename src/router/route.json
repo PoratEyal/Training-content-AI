@@ -6,7 +6,6 @@
     "privacyPolicy": "/privacyPolicy",
     "content": "/content",
     "contentActivity": "/content/:activityId",
-    "generate": "/generate",
     "status": "/status",
     "all": "*"
 }
