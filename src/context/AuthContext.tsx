@@ -14,6 +14,7 @@ import {
     CookieOptions,
     GUEST_LIMIT_VALUE,
     USER_CONSENT_VALUE,
+    POPUP_REVIEW
 } from "../models/constants/cookie";
 import { initRawUser } from "../utils/user";
 import msg from "../models/resources/errorMsg.json";
@@ -31,16 +32,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [currentUser, setCurrentUser] = useState<User | undefined>();
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
+    const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
 
     // const [generateLimit, setGenerateLimit] = useState<number>(0);
 
-    const [cookies, setCookie] = useCookies([COOKIE_LIMIT_KEY, COOKIE_USER_CONSENT]);
+    const [cookies, setCookie] = useCookies([COOKIE_LIMIT_KEY, COOKIE_USER_CONSENT, POPUP_REVIEW]);
 
     /**
      * for make getRedirectResult on localhost
      * https://stackoverflow.com/questions/77270210/firebase-onauthstatechanged-user-returns-null-when-on-localhost
      * disable chrome://flags/#third-party-storage-partitioning (found it on default)
      */
+
+    useEffect(() => {
+        if (!cookies[POPUP_REVIEW]) {
+            setIsPopupVisible(true);
+        }
+        }, []);
+      
 
     useEffect(() => {
         let unsubscribe: any;
@@ -97,6 +106,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
     };
 
+    const setPopupReviewCookie = () => {
+        setCookie(POPUP_REVIEW, true, CookieOptions);
+    };
+
+    const handlePopupClose = () => {
+        setIsPopupVisible(false);
+        setPopupReviewCookie();
+    };
+
+
     const setLimitCookie = (data: string | number) => {
         setCookie(COOKIE_LIMIT_KEY, JSON.stringify(data), CookieOptions);
     };
@@ -116,6 +135,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 setCookie,
                 setConsentCookie,
                 setLimitCookie,
+                isPopupVisible,
+                handlePopupClose
             }}
         >
             {children}
