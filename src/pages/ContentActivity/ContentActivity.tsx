@@ -33,7 +33,7 @@ function ContentActivity() {
             content={activity.metaContent}
             hasNavBar
         >
-            <ActivityReady subject={Activities[activityId].subject} isMany />
+            <ActivityReady subject={Activities[activityId].metaTitle} isMany />
             <section className={styles.activity_data_container}>
                 <article>
                     <ActivityMultiOutput activities={Activities[activityId].Activities} />

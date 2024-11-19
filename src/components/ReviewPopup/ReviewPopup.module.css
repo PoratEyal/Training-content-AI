@@ -1,3 +1,12 @@
+@keyframes slideUp {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 .popupOverlay {
   position: fixed;
   top: 0;
@@ -23,19 +32,27 @@
   height: fit-content;
   padding-top: 65px;
   border: 4px solid var(--secondary-color);
+
+  /* Animation styles */
+  transform: translateY(100vh);
+  transition: transform 0.5s ease-out;
 }
 
-.popupForm{
+.popupContentShow {
+  transform: translateY(0);
+}
+
+.popupForm {
   margin-bottom: 30px;
 }
 
-.closeButton{
+.closeButton {
   border: none;
   background-color: rgba(255, 255, 255, 0);
   color: var(--primary-color);
   position: absolute;
   top: 10px;
-  left:5px;
+  left: 5px;
   font-size: 22px;
 }
 
@@ -48,29 +65,31 @@
   margin-top: -10px;
   margin-bottom: 20px;
 }
+
 .popupText {
   margin-bottom: 15px;
 }
 
 .otherInput {
   width: 100%;
+  height: 70px;
   padding: 8px;
   margin-top: 8px;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-family: 'Fredoka', sans-serif;
+  resize: none;
 }
 
-
-
-
-.btn_div{
+.btn_div {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .submitButton {
   border: none;
   border-radius: 19px;
@@ -128,4 +147,10 @@
 .icon {
   color: var(--secondary-color);
   font-size: 15px;
+}
+
+@media (min-width: 550px) {
+  .popupContent {
+    width: fit-content;
+  }
 }
