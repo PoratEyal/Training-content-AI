@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./ReviewPopup.module.css";
 import { FiChevronsLeft } from "react-icons/fi";
 import { MdOutlineCancel } from "react-icons/md";
+import emailjs from 'emailjs-com';
+import SmallLoading from "../Loading/SmallLoading/SmallLoading";
 
 interface PopupComponentProps {
   onClose: (selectedOption?: string) => void;
@@ -11,27 +13,54 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [otherText, setOtherText] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showPopup, setShowPopup] = useState<boolean>(false);
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+  emailjs.init('ZWKebkgRROVgM8nEV');
+
+  useEffect(() => {
+    setShowPopup(true);
+  }, []);
+
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setIsLoading(true);
-
+  
     // Determine the final selection
     let finalSelection = selectedOption;
-    if (selectedOption === "option3") {
+    if (selectedOption === 'option3') {
       finalSelection = otherText;
     }
-
-    onClose(finalSelection);
-    setIsLoading(false);
-  };
+  
+    try {
+      // Send email using EmailJS
+      const templateParams = {
+        user_response: finalSelection,
+      };
+  
+      await emailjs.send(
+        'service_p5bim93',   // EmailJS Service ID
+        'template_diemfva',  // EmailJS Template ID
+        templateParams,
+        'ZWKebkgRROVgM8nEV'       // EmailJS User ID
+      );
+  
+      console.log('Email sent successfully');
+    } catch (error) {
+      console.error('Error sending email:', error);
+    } finally {
+      setIsLoading(false);
+      onClose(finalSelection);
+    }
+  };  
 
   // Disable the submit button if no option is selected, or if 'Other' is selected but the text input is empty
   const isDisabled = !selectedOption || (selectedOption === "option3" && !otherText);
 
   return (
     <div className={styles.popupOverlay}>
-      <div className={styles.popupContent}>
+      <div
+        className={`${styles.popupContent} ${showPopup ? styles.popupContentShow : ""}`}
+      >
         <button className={styles.closeButton} onClick={() => onClose()}>
           <MdOutlineCancel />
         </button>
@@ -43,8 +72,8 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
             <label>
               <input
                 type="radio"
-                value="option1"
-                checked={selectedOption === "option1"}
+                value="שמירת הפעולות שיצרתם"
+                checked={selectedOption === "שמירת הפעולות שיצרתם"}
                 onChange={(e) => {
                   setSelectedOption(e.target.value);
                   setOtherText("");
@@ -57,8 +86,8 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
             <label>
               <input
                 type="radio"
-                value="option2"
-                checked={selectedOption === "option2"}
+                value="הוספת פעולות ומשחקים מוכנים מראש"
+                checked={selectedOption === "הוספת פעולות ומשחקים מוכנים מראש"}
                 onChange={(e) => {
                   setSelectedOption(e.target.value);
                   setOtherText("");
@@ -78,8 +107,7 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
               אחר. אנא כתבו לנו בתיבת הטקסט
             </label>
             {selectedOption === "option3" && (
-              <input
-                type="text"
+              <textarea
                 value={otherText}
                 onChange={(e) => setOtherText(e.target.value)}
                 className={styles.otherInput}
@@ -100,7 +128,7 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
           >
             {isLoading ? (
               <div className={styles.btnLoading}>
-                {/* Include a loading spinner if desired */}
+                <SmallLoading></SmallLoading>
               </div>
             ) : (
               <div className={styles.buttonContent}>

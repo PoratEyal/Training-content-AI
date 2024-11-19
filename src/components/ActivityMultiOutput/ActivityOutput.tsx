@@ -1,7 +1,5 @@
-import { useState } from "react";
 import styles from "./ActivityMultiOutput.module.css";
 import ReactMarkdown from "react-markdown";
-import { IoMdArrowRoundForward, IoMdArrowRoundBack } from "react-icons/io";
 import "../ActivityOutput/Markdown.css";
 
 type ActivityMultiOutputProps = {

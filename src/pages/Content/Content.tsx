@@ -68,7 +68,7 @@ function Content() {
                 <section className={styles.grid_container}>
                     {Object.entries(Activities).map(([key, value]) => (
                         <Link to={`/content/${value.id}`} key={key} className={styles.grid_item}>
-                            <h2 className={styles.item_title}>{value.subject}</h2>
+                            <h2 className={styles.item_title}>{value.metaTitle}</h2>
                             <div className={styles.icon}>
                                 {iconMap[value.icon] && React.createElement(iconMap[value.icon], { className: styles.icon })}
                             </div>
