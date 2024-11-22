@@ -1,11 +1,10 @@
-import React from 'react';
+import React from "react";
 import "../../components/ActivityOutput/Markdown.css";
 import styles from "./Content.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { Link, useNavigate } from "react-router-dom";
-import { Activities } from "../../models/resources/activities";
-import ReadyContent from '../../components/titles/ReadyContent/ReadyContent';
+import ReadyContent from "../../components/titles/ReadyContent/ReadyContent";
 import helmet from "../../models/resources/helmet.json";
 import { FaGamepad } from "react-icons/fa";
 import { FaBookOpen } from "react-icons/fa";
@@ -24,6 +23,7 @@ import { FaHandsHelping } from "react-icons/fa";
 import { FaListCheck } from "react-icons/fa6";
 import { FaRibbon } from "react-icons/fa";
 import { MdEmojiPeople } from "react-icons/md";
+import { Activities } from "../../models/resources/activities";
 
 const iconMap = {
     FaGamepad: FaGamepad,
@@ -42,7 +42,7 @@ const iconMap = {
     PiShootingStarFill: PiShootingStarFill,
     MdOutlineSportsKabaddi: MdOutlineSportsKabaddi,
     FaRibbon: FaRibbon,
-    MdEmojiPeople: MdEmojiPeople
+    MdEmojiPeople: MdEmojiPeople,
 };
 
 function Content() {
@@ -53,7 +53,7 @@ function Content() {
     };
 
     return (
-        <PageLayout 
+        <PageLayout
             path={route.content}
             hasHeader={{ goBack }}
             hasNavBar
@@ -62,15 +62,18 @@ function Content() {
             title={helmet.content.title}
             content={helmet.content.content}
         >
-            <ReadyContent/>
-            
+            <ReadyContent />
+
             <article className={styles.content_article}>
                 <section className={styles.grid_container}>
                     {Object.entries(Activities).map(([key, value]) => (
-                        <Link to={`/content/${value.id}`} key={key} className={styles.grid_item}>
+                        <Link to={`${route.content}/${value.id}`} key={key} className={styles.grid_item}>
                             <h2 className={styles.item_title}>{value.metaTitle}</h2>
                             <div className={styles.icon}>
-                                {iconMap[value.icon] && React.createElement(iconMap[value.icon], { className: styles.icon })}
+                                {iconMap[value.icon] &&
+                                    React.createElement(iconMap[value.icon], {
+                                        className: styles.icon,
+                                    })}
                             </div>
                         </Link>
                     ))}

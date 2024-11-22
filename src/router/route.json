@@ -5,7 +5,8 @@
     "activity": "/activity",
     "privacyPolicy": "/privacyPolicy",
     "content": "/content",
-    "contentActivity": "/content/:activityId",
+    "contentActivities": "/content/:activityId",
+    "contentActivity": "/content/:activityId/:contentId",
     "status": "/status",
     "all": "*"
 }
