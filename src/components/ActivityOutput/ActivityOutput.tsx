@@ -5,7 +5,7 @@ import "./Markdown.css";
 
 type ActivityOutputProps = {
     activity: string;
-    activityRef: React.MutableRefObject<HTMLElement>
+    activityRef?: React.MutableRefObject<HTMLElement>
 };
 
 function ActivityOutput({ activity, activityRef }: ActivityOutputProps) {

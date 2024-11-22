@@ -15,3 +15,18 @@ export type Activity = {
     activity: string;
     userId: string | undefined;
 };
+
+export type SubjectListType = {
+    id: string;
+    icon: string;
+    metaTitle: string;
+    metaContent: string;
+    activities: object;
+};
+
+export type ActivityListType = {
+    id: string;
+    metaTitle: string;
+    metaContent: string;
+    content: string;
+};

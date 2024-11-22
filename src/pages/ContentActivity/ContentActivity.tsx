@@ -1,31 +1,27 @@
 import styles from "./ContentActivity.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import { Activities } from "../../models/resources/activities";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
-import ActivityMultiOutput from "../../components/ActivityMultiOutput/ActivityOutput";
 import route from "../../router/route.json";
 import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
+import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
+import { ActivityListType } from "../../models/types/activity";
+import { Activities } from "../../models/resources/activities";
 
 function ContentActivity() {
-    const { activityId } = useParams();
     const navigate = useNavigate();
+    const { activityId, contentId } = useParams();
+    const activity = Activities[activityId].activities[contentId] as ActivityListType;
 
     const goBack = () => {
-        navigate(route.content);
+        navigate(`${route.content}/${activityId}`);
     };
 
-    const activity = Activities[activityId];
-
-    if (!activity) {
-        // Handle invalid activityId, e.g., redirect or show an error message
-        goBack();
-        return null;
-    }
+    if (!activity) goBack();
 
     return (
         <PageLayout
-            path={`/content/${activityId}`}
+            path={`${route.content}/${activityId}/${contentId}`}
             hasGreenBackground
             hasHeader={{ goBack }}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
@@ -33,10 +29,10 @@ function ContentActivity() {
             content={activity.metaContent}
             hasNavBar
         >
-            <ActivityReady subject={Activities[activityId].metaTitle} isMany />
+            <ActivityReady subject={activity.metaTitle} />
             <section className={styles.activity_data_container}>
                 <article>
-                    <ActivityMultiOutput activities={Activities[activityId].Activities} />
+                    <ActivityOutput activity={activity.content} />
                 </article>
                 <div className={styles.padding} />
             </section>
