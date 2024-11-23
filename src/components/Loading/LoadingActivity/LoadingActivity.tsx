@@ -15,7 +15,7 @@ function LoadingActivity() {
                 <div className={styles.progress_bar}></div>
             </div>
 
-            <AdsBig slot={LOADING_AD_SLOT} />
+            {/* <AdsBig slot={LOADING_AD_SLOT} /> */}
         </section>
     );
 }

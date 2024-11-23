@@ -43,6 +43,12 @@
     margin-bottom: 60px;
     margin-top: 10px;
 }
+.grid_container > :first-child {
+    margin-top: 7px;
+}
+.grid_container > :last-child {
+    margin-bottom: 110px;
+}
 
 .grid_item {
     background-color: #ffffff;

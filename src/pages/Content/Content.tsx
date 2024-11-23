@@ -24,6 +24,7 @@ import { FaListCheck } from "react-icons/fa6";
 import { FaRibbon } from "react-icons/fa";
 import { MdEmojiPeople } from "react-icons/md";
 import { Activities } from "../../models/resources/activities";
+import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 
 const iconMap = {
     FaGamepad: FaGamepad,
@@ -57,6 +58,7 @@ function Content() {
             path={route.content}
             hasHeader={{ goBack }}
             hasNavBar
+            hesAds={ACTIVITY_AD_SLOT}
             noIndex
             hasGreenBackground
             title={helmet.content.title}

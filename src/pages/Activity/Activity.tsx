@@ -38,8 +38,7 @@ function Activity() {
 
     return (
         <>
-          {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />}
-          {/* <ReviewPopup onClose={handlePopupClose} /> */}
+          {/* {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />} */}
           <PageLayout
             path={route.activity}
             hasGreenBackground
