@@ -2058,7 +2058,7 @@ export const Activities = {
 
             animalProtection: {
                 id: "animalProtection",
-                metaTitle: "החיות הטרף",
+                metaTitle: "חיות הטרף",
                 metaContent:
                     "פעולה, חיות טרף, אקולוגיה, טבע, יצירה, רעיונות לפעילויות יצירתיות, משחקים",
                 content: `**זמן הפעולה:** 40 דקות\n
