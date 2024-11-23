@@ -3,9 +3,10 @@ import styles from "./ContentActivities.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import ReadyContent from "../../components/titles/ReadyContent/ReadyContent";
 import { SubjectListType } from "../../models/types/activity";
 import { Activities } from "../../models/resources/activities";
+import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
+import ReadyContentName from "../../components/titles/ReadyContentName/ReadyContentName";
 
 function ContentActivities() {
     const navigate = useNavigate();
@@ -25,8 +26,9 @@ function ContentActivities() {
             hasGreenBackground
             title={activities.metaTitle}
             content={activities.metaContent}
+            hesAds={CONTENT_ACTIVITY_AD_SLOT}
         >
-
+            <ReadyContentName isMany subject={activities.metaTitle} />
             <article className={styles.content_article}>
                 <section className={styles.grid_container}>
                     {Object.entries(activities.activities).map(([key, value]) => (

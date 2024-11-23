@@ -1,13 +1,11 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import styles from "./PageLayout.module.css";
-import FadeEffect from "../../FadeEffect/FadeEffect";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import UnderBar from "../../UnderBar/UnderBar";
 import { WEBSITE_URL } from "../../../models/constants";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
-
 
 type PageLayoutProps = {
     path: string;
