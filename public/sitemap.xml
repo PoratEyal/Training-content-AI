@@ -197,6 +197,18 @@
    </url>
    
    <url>
+      <loc>https://activitywiz.com/content/israel/idf</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/content/israel/AliyahToIsrael</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/content/israel/Entebbe</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
       <loc>https://activitywiz.com/content/israel/kaftet</loc>
       <priority>0.8</priority>
    </url>
