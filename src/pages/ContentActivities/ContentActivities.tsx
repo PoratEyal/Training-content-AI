@@ -12,6 +12,7 @@ function ContentActivities() {
     const navigate = useNavigate();
     const { activityId } = useParams();
     const activities: SubjectListType = Activities[activityId];
+    const contentActivitiesPath = route.contentActivities.replace(':activityId', activityId);
 
     const goBack = () => {
         navigate(route.content);
@@ -19,10 +20,9 @@ function ContentActivities() {
 
     return (
         <PageLayout
-            path={route.contentActivities}
+            path={contentActivitiesPath}
             hasHeader={{ goBack }}
             hasNavBar
-            noIndex
             hasGreenBackground
             title={activities.metaTitle}
             content={activities.metaContent}
