@@ -9,15 +9,12 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import helmet from "../../models/resources/helmet.json";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
-import { useAuthContext } from "../../context/AuthContext";
-import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
 
 function Activity() {
     const { data, mainActivity } = useContentContext();
     const [newActivity, setNewActivity] = useState(false);
     const activityRef = useRef<HTMLElement>(null);
     const navigate = useNavigate();
-    const { isPopupVisible, handlePopupClose } = useAuthContext();
 
     useEffect(() => {
         if (!data || !data.grade || !data.movement || !mainActivity) {
