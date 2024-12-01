@@ -61,9 +61,11 @@ function Content() {
         const getSubjects = async () => {
             try {
                 const response = await fetchStaticSubjects();
-
+    
                 if (response.result === "success" && response.data) {
-                    setSubjects(response.data);
+                    // Sort subjects by orderId in ascending order
+                    const sortedSubjects = response.data.sort((a, b) => a.orderId - b.orderId);
+                    setSubjects(sortedSubjects);
                 } else {
                     console.error("Error fetching static subjects:", response.message);
                 }
@@ -71,9 +73,10 @@ function Content() {
                 console.error("Error in getSubjects:", error);
             }
         };
-
+    
         getSubjects();
     }, []);
+    
 
     return (
         <PageLayout
