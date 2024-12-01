@@ -24,12 +24,14 @@ function ContentActivities() {
         const getActivities = async () => {
             try {
                 const response = await fetchStaticSubjects();
-
+    
                 if (response.result === "success" && response.data) {
                     // Find the subject that matches the activityId
                     const subject = response.data.find((subject) => subject.name === activityId);
                     if (subject) {
-                        setActivities(subject);
+                        // Sort activities by orderId in ascending order
+                        const sortedActivities = subject.activities.sort((a, b) => a.orderId - b.orderId);
+                        setActivities({ ...subject, activities: sortedActivities });
                     } else {
                         console.error("Subject not found for activityId:", activityId);
                         // Optionally set activities to an empty object or handle as needed
@@ -44,9 +46,10 @@ function ContentActivities() {
                 setIsLoading(false);
             }
         };
-
+    
         getActivities();
     }, [activityId]);
+    
 
     return (
         <PageLayout
