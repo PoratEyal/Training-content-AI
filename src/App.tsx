@@ -18,32 +18,35 @@ import Status from "./pages/Status/Status";
 import BuildActivity from "./pages/BuildActivity/BuildActivity";
 import ContentActivity from "./pages/ContentActivity/ContentActivity";
 import ContentActivities from "./pages/ContentActivities/ContentActivities";
+import { StaticContentProvider } from "./context/StaticContentContext";
 
 function App() {
     return (
         <HelmetProvider>
             <ErrorContextProvider>
-                <AuthProvider>
-                    <ContentProvider>
-                        <ReactNotifications className="react-notifications" />
-                        <Router>
-                            <Routes>
-                                <Route element={<PrivateRoutes />}>
-                                    <Route path={route.home} element={<Home />} />
-                                    <Route path={route.details} element={<Details />} />
-                                    <Route path={route.build} element={<BuildActivity />} />
-                                  <Route path={route.activity} element={<Activity />} />
-                                </Route>
-                                <Route path={route.privacyPolicy} element={<PrivacyPolicy />} />
-                                <Route path={route.content} element={<Content />} />
-                                <Route path={route.contentActivities} element={<ContentActivities />} />
-                                <Route path={route.contentActivity} element={<ContentActivity />} />
-                                {/* <Route path={route.status} element={<Status />} /> */}
-                                <Route path={route.all} element={<Navigate replace to={route.home} />} />
-                            </Routes>
-                        </Router>
-                    </ContentProvider>
-                </AuthProvider>
+                <StaticContentProvider>
+                    <AuthProvider>
+                        <ContentProvider>
+                            <ReactNotifications className="react-notifications" />
+                            <Router>
+                                <Routes>
+                                    <Route element={<PrivateRoutes />}>
+                                        <Route path={route.home} element={<Home />} />
+                                        <Route path={route.details} element={<Details />} />
+                                        <Route path={route.build} element={<BuildActivity />} />
+                                    <Route path={route.activity} element={<Activity />} />
+                                    </Route>
+                                    <Route path={route.privacyPolicy} element={<PrivacyPolicy />} />
+                                    <Route path={route.content} element={<Content />} />
+                                    <Route path={route.contentActivities} element={<ContentActivities />} />
+                                    <Route path={route.contentActivity} element={<ContentActivity />} />
+                                    {/* <Route path={route.status} element={<Status />} /> */}
+                                    <Route path={route.all} element={<Navigate replace to={route.home} />} />
+                                </Routes>
+                            </Router>
+                        </ContentProvider>
+                    </AuthProvider>
+                </StaticContentProvider>
             </ErrorContextProvider>
         </HelmetProvider>
     );
