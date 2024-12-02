@@ -9,6 +9,7 @@ import getUserById from "./callableFunctions/getUserById"
 import updateUser from "./callableFunctions/updateUser"
 import * as admin from "firebase-admin";
 import { getStaticSubjectsHttp } from './callableFunctions/getStaticSubject';
+import { incrementActivityDisplayCount } from "./callableFunctions/incrementActivityDisplayCount";
 
 const app = express();
 app.use(cors());
@@ -28,5 +29,6 @@ exports.updateUser = updateUser
 exports.getUserById = getUserById;
 
 exports.getStaticSubjectsHttp = getStaticSubjectsHttp;
+exports.incrementActivityDisplayCount = incrementActivityDisplayCount;
 
 exports.app = functions.https.onRequest(app);

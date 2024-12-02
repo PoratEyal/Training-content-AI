@@ -8,6 +8,7 @@ import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import ReadyContentName from "../../components/titles/ReadyContentName/ReadyContentName";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
+import { incrementActivityDisplayCountFetch } from "../../utils/staticActivitiesAPI";
 
 function ContentActivities() {
     const navigate = useNavigate();
@@ -31,6 +32,15 @@ function ContentActivities() {
             console.error("Subject not found for activityId:", activityId);
         }
     }
+
+    // Define the handleActivityClick function
+    const handleActivityClick = async (activityId: string) => {
+        try {
+            const response = await incrementActivityDisplayCountFetch(activityId);
+        } catch (error) {
+            console.error("Error incrementing activity display count:", error);
+        }
+    };
 
     return (
         <PageLayout
@@ -57,6 +67,7 @@ function ContentActivities() {
                                         to={`${route.content}/${activityId}/${activity.name}`}
                                         className={styles.grid_item}
                                         key={index}
+                                        onClick={() => handleActivityClick(activity.name)}
                                     >
                                         <h2 className={styles.item_title}>{activity.metaTitle}</h2>
                                     </Link>
