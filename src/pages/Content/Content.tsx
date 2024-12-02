@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../../components/ActivityOutput/Markdown.css";
 import styles from "./Content.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
@@ -25,9 +25,8 @@ import { FaRibbon } from "react-icons/fa";
 import { MdEmojiPeople } from "react-icons/md";
 import { GiPodium } from "react-icons/gi";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
-import { fetchStaticSubjects } from "../../utils/staticActivitiesAPI";
-import { StaticSubjects } from "../../models/interface/staticSubjects";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
+import { useStaticContentContext } from "../../context/StaticContentContext";
 
 const iconMap = {
     FaGamepad: FaGamepad,
@@ -51,32 +50,11 @@ const iconMap = {
 
 function Content() {
     const navigate = useNavigate();
-    const [subjects, setSubjects] = useState<StaticSubjects[]>([]);
+    const { subjects, isLoading, error } = useStaticContentContext();
 
     const goBack = () => {
         navigate(route.home);
     };
-
-    useEffect(() => {
-        const getSubjects = async () => {
-            try {
-                const response = await fetchStaticSubjects();
-    
-                if (response.result === "success" && response.data) {
-                    // Sort subjects by orderId in ascending order
-                    const sortedSubjects = response.data.sort((a, b) => a.orderId - b.orderId);
-                    setSubjects(sortedSubjects);
-                } else {
-                    console.error("Error fetching static subjects:", response.message);
-                }
-            } catch (error) {
-                console.error("Error in getSubjects:", error);
-            }
-        };
-    
-        getSubjects();
-    }, []);
-    
 
     return (
         <PageLayout
@@ -93,11 +71,17 @@ function Content() {
 
             <article className={styles.content_article}>
                 <section className={styles.grid_container}>
-                    {subjects.length === 0 ? (
-                        <SmallLoading></SmallLoading>
+                    {isLoading ? (
+                        <SmallLoading />
+                    ) : error ? (
+                        <div>Error: {error}</div>
                     ) : (
                         subjects.map((subject, index) => (
-                            <Link to={`${route.content}/${subject.name}`} key={index} className={styles.grid_item}>
+                            <Link
+                                to={`${route.content}/${subject.name}`}
+                                key={index}
+                                className={styles.grid_item}
+                            >
                                 <h2 className={styles.item_title}>{subject.metaTitle}</h2>
                                 <div className={styles.icon}>
                                     {iconMap[subject.icon] &&
