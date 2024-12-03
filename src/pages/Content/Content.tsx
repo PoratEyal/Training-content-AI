@@ -46,6 +46,7 @@ const iconMap = {
     MdOutlineSportsKabaddi: MdOutlineSportsKabaddi,
     FaRibbon: FaRibbon,
     MdEmojiPeople: MdEmojiPeople,
+    GiPodium: GiPodium,
 };
 
 function Content() {
@@ -70,29 +71,43 @@ function Content() {
             <ReadyContent />
 
             <article className={styles.content_article}>
-                <section className={styles.grid_container}>
-                    {isLoading ? (
-                        <SmallLoading />
-                    ) : error ? (
-                        <div>Error: {error}</div>
-                    ) : (
-                        subjects.map((subject, index) => (
-                            <Link
-                                to={`${route.content}/${subject.name}`}
-                                key={index}
-                                className={styles.grid_item}
-                            >
-                                <h2 className={styles.item_title}>{subject.metaTitle}</h2>
-                                <div className={styles.icon}>
-                                    {iconMap[subject.icon] &&
-                                        React.createElement(iconMap[subject.icon], {
-                                            className: styles.icon,
-                                        })}
-                                </div>
-                            </Link>
-                        ))
-                    )}
-                </section>
+            <section className={styles.grid_container}>
+                {isLoading ? (
+                    <SmallLoading />
+                ) : error ? (
+                    <div>Error: {error}</div>
+                ) : (
+                    <>
+                <Link
+                    to={route.popularActivities}
+                    className={styles.grid_item}
+                >
+                    <h2 className={styles.item_title}>10 הפעולות הפופלריות</h2>
+                    <div className={styles.icon}>
+                        {iconMap['GiPodium'] &&
+                            React.createElement(iconMap['GiPodium'], {
+                                className: styles.icon,
+                            })}
+                    </div>
+                </Link>
+                {subjects.map((subject, index) => (
+                    <Link
+                        to={`${route.content}/${subject.name}`}
+                        key={index}
+                        className={styles.grid_item}
+                    >
+                        <h2 className={styles.item_title}>{subject.metaTitle}</h2>
+                        <div className={styles.icon}>
+                            {iconMap[subject.icon] &&
+                                React.createElement(iconMap[subject.icon], {
+                                    className: styles.icon,
+                                })}
+                        </div>
+                    </Link>
+                ))}
+            </>
+        )}
+    </section>
             </article>
         </PageLayout>
     );

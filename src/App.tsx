@@ -19,6 +19,7 @@ import BuildActivity from "./pages/BuildActivity/BuildActivity";
 import ContentActivity from "./pages/ContentActivity/ContentActivity";
 import ContentActivities from "./pages/ContentActivities/ContentActivities";
 import { StaticContentProvider } from "./context/StaticContentContext";
+import PopularActivities from "./components/PopularActivities/PopularActivities.tsx";
 
 function App() {
     return (
@@ -38,6 +39,9 @@ function App() {
                                     </Route>
                                     <Route path={route.privacyPolicy} element={<PrivacyPolicy />} />
                                     <Route path={route.content} element={<Content />} />
+
+                                    <Route path={route.popularActivities} element={<PopularActivities />} />
+
                                     <Route path={route.contentActivities} element={<ContentActivities />} />
                                     <Route path={route.contentActivity} element={<ContentActivity />} />
                                     {/* <Route path={route.status} element={<Status />} /> */}

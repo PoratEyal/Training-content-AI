@@ -1,7 +1,7 @@
 import React from "react";
+import { useNavigate, useParams, useLocation } from "react-router-dom";  // Import useLocation
 import "../../components/ActivityOutput/Markdown.css";
 import styles from "./ContentActivity.module.css";
-import { useNavigate, useParams } from "react-router-dom";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import route from "../../router/route.json";
@@ -12,12 +12,20 @@ import { useStaticContentContext } from "../../context/StaticContentContext";
 
 function ContentActivity() {
     const navigate = useNavigate();
+    const location = useLocation();  // Use useLocation
     const { activityId, contentId } = useParams<{ activityId: string; contentId: string }>();
     const { subjects, isLoading, error } = useStaticContentContext();
     const contentActivityPath = `${route.content}/${activityId}/${contentId}`;
 
+    // Extract fromPopular from location.state
+    const { fromPopular } = location.state || {};
+
     const goBack = () => {
-        navigate(`${route.content}/${activityId}`);
+        if (fromPopular) {
+            navigate(route.popularActivities);
+        } else {
+            navigate(`${route.content}/${activityId}`);
+        }
     };
 
     let activity = null;
