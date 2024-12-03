@@ -82,7 +82,7 @@ function Content() {
                     to={route.popularActivities}
                     className={styles.grid_item}
                 >
-                    <h2 className={styles.item_title}>10 הפעולות הפופלריות</h2>
+                    <h2 className={styles.item_title}>10 הפעולות הפופולריות</h2>
                     <div className={styles.icon}>
                         {iconMap['GiPodium'] &&
                             React.createElement(iconMap['GiPodium'], {
