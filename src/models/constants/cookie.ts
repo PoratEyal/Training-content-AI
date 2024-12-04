@@ -13,4 +13,6 @@ export const GUEST_LIMIT_VALUE = "guest-block";
 
 export const POPUP_REVIEW = "popup_review";
 
+export const VISIT_COUNT_KEY = 'visitCount';
+
 

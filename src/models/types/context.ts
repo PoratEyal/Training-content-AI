@@ -1,6 +1,7 @@
 import { Activity } from "./activity";
 import { Movement } from "./movement";
 import { User } from "./user";
+import { Dispatch, SetStateAction } from "react";
 
 export type DataType = {
     movement: Movement | undefined;
@@ -36,4 +37,5 @@ export type AuthContextType = {
     setConsentCookie: () => void;
     isPopupVisible: boolean;
     handlePopupClose: () => void;
+    setIsPopupVisible: Dispatch<SetStateAction<boolean>>;
 };

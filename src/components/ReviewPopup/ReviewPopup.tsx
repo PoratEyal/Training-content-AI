@@ -4,16 +4,19 @@ import { FiChevronsLeft } from "react-icons/fi";
 import { MdOutlineCancel } from "react-icons/md";
 import emailjs from 'emailjs-com';
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
+import { FcIdea } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
+import route from "../../router/route.json";
 
 interface PopupComponentProps {
-  onClose: (selectedOption?: string) => void;
+  onClose: (userResponse?: string) => void;
 }
 
 const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
-  const [selectedOption, setSelectedOption] = useState<string>("");
-  const [otherText, setOtherText] = useState<string>("");
+  const [textInput, setTextInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPopup, setShowPopup] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   emailjs.init('ZWKebkgRROVgM8nEV');
 
@@ -24,37 +27,36 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setIsLoading(true);
-  
-    // Determine the final selection
-    let finalSelection = selectedOption;
-    if (selectedOption === 'option3') {
-      finalSelection = otherText;
-    }
-  
+
     try {
       // Send email using EmailJS
       const templateParams = {
-        user_response: finalSelection,
+        user_response: textInput,
       };
-  
+
       await emailjs.send(
         'service_p5bim93',   // EmailJS Service ID
         'template_diemfva',  // EmailJS Template ID
         templateParams,
-        'ZWKebkgRROVgM8nEV'       // EmailJS User ID
+        'ZWKebkgRROVgM8nEV'  // EmailJS User ID
       );
-  
+
       console.log('Email sent successfully');
     } catch (error) {
       console.error('Error sending email:', error);
     } finally {
       setIsLoading(false);
-      onClose(finalSelection);
+      onClose(textInput);
     }
-  };  
+  };
 
-  // Disable the submit button if no option is selected, or if 'Other' is selected but the text input is empty
-  const isDisabled = !selectedOption || (selectedOption === "option3" && !otherText);
+  // Disable the submit button if the text input is empty
+  const isDisabled = !textInput.trim();
+
+  const handleNavigation = () => {
+    navigate(route.popularActivities);
+    onClose();
+  };  
 
   return (
     <div className={styles.popupOverlay}>
@@ -65,54 +67,25 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
           <MdOutlineCancel />
         </button>
 
-        <h2 className={styles.popupTitle}>מה הכי חשוב לכם שנוסיף בגרסאות הבאות?</h2>
+        <div className={styles.popupTitle_div}>
+          <h3 className={styles.popupTitle}>מה חדש?</h3>
+          <FcIdea className={styles.icon_lamp}></FcIdea>
+        </div>
+
+        <div className={styles.text}>
+          הוספנו קטגוריה חדשה עם כל 10 הפעולות הנפוצות ביותר! רוצים לראות?
+        </div>
+        <button onClick={handleNavigation} className={styles.text_btn}>לחצו כאן וגלו</button>
 
         <form className={styles.popupForm}>
           <div className={styles.popupText}>
-            <label>
-              <input
-                type="radio"
-                value="שמירת הפעולות שיצרתם"
-                checked={selectedOption === "שמירת הפעולות שיצרתם"}
-                onChange={(e) => {
-                  setSelectedOption(e.target.value);
-                  setOtherText("");
-                }}
-              />
-              שמירת הפעולות שיצרתם
-            </label>
-          </div>
-          <div className={styles.popupText}>
-            <label>
-              <input
-                type="radio"
-                value="הוספת פעולות ומשחקים מוכנים מראש"
-                checked={selectedOption === "הוספת פעולות ומשחקים מוכנים מראש"}
-                onChange={(e) => {
-                  setSelectedOption(e.target.value);
-                  setOtherText("");
-                }}
-              />
-              הוספת פעולות ומשחקים מוכנים מראש
-            </label>
-          </div>
-          <div className={styles.popupText}>
-            <label>
-              <input
-                type="radio"
-                value="option3"
-                checked={selectedOption === "option3"}
-                onChange={(e) => setSelectedOption(e.target.value)}
-              />
-              אחר. אנא כתבו לנו בתיבת הטקסט
-            </label>
-            {selectedOption === "option3" && (
-              <textarea
-                value={otherText}
-                onChange={(e) => setOtherText(e.target.value)}
-                className={styles.otherInput}
-              />
-            )}
+            <div className={styles.text}>📢 יש לכם רעיון לשיפור? או סתם משהו לשתף?</div>
+            <textarea
+              value={textInput}
+              onChange={(e) => setTextInput(e.target.value)}
+              className={styles.otherInput}
+              placeholder="אנא כתבו לנו פה"
+            />
           </div>
         </form>
 
@@ -128,11 +101,14 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
           >
             {isLoading ? (
               <div className={styles.btnLoading}>
-                <SmallLoading></SmallLoading>
+                <SmallLoading />
               </div>
             ) : (
               <div className={styles.buttonContent}>
-                <span className={styles.buttonText} style={{ opacity: isDisabled ? 0.5 : 1 }}>
+                <span
+                  className={styles.buttonText}
+                  style={{ opacity: isDisabled ? 0.5 : 1 }}
+                >
                   שליחה
                 </span>
                 <div
