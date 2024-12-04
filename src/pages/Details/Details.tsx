@@ -18,12 +18,12 @@ import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/T
 import helmet from "../../models/resources/helmet.json";
 import { DETAILS_AD_SLOT } from "../../models/constants/adsSlot";
 import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
-import { useCookies } from "react-cookie"; 
+import { useCookies } from "react-cookie";
 import {
   POPUP_REVIEW,
   VISIT_COUNT_KEY,
   CookieOptions,
-} from "../../models/constants/cookie"; 
+} from "../../models/constants/cookie";
 
 function Details() {
   const { data, updateDetails, clearAll } = useContentContext();
@@ -36,7 +36,7 @@ function Details() {
   } = useAuthContext();
   const navigate = useNavigate();
 
-  const [cookies, setCookie] = useCookies([POPUP_REVIEW, VISIT_COUNT_KEY]); // Initialize useCookies
+  const [cookies, setCookie] = useCookies([POPUP_REVIEW, VISIT_COUNT_KEY]);
 
   const [movement, setMovment] = useState(
     data ? data?.movement?.name : currentUser?.movement ? currentUser?.movement?.movement : ""
@@ -73,8 +73,12 @@ function Details() {
     visitCount += 1;
     setCookie(VISIT_COUNT_KEY, visitCount.toString(), CookieOptions);
 
-    if (!cookies[POPUP_REVIEW] && visitCount >= 2) {
-      setIsPopupVisible(true);
+    if (!cookies[POPUP_REVIEW] && visitCount >= 5) {
+      const timer = setTimeout(() => {
+        setIsPopupVisible(true);
+      }, 5000); 
+
+      return () => clearTimeout(timer); 
     }
   }, []);
 

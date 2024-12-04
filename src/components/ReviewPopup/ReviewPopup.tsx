@@ -6,7 +6,6 @@ import emailjs from 'emailjs-com';
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
 import { FcIdea } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
-import route from "../../router/route.json";
 
 interface PopupComponentProps {
   onClose: (userResponse?: string) => void;
@@ -16,7 +15,6 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
   const [textInput, setTextInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPopup, setShowPopup] = useState<boolean>(false);
-  const navigate = useNavigate();
 
   emailjs.init('ZWKebkgRROVgM8nEV');
 
@@ -50,13 +48,7 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
     }
   };
 
-  // Disable the submit button if the text input is empty
   const isDisabled = !textInput.trim();
-
-  const handleNavigation = () => {
-    navigate(route.popularActivities);
-    onClose();
-  };  
 
   return (
     <div className={styles.popupOverlay}>
@@ -73,9 +65,8 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
         </div>
 
         <div className={styles.text}>
-          הוספנו קטגוריה חדשה עם כל 10 הפעולות הנפוצות ביותר! רוצים לראות?
+          הוספנו קטגוריה חדשה באזור הפעולות המוכנות הכוללת את 10 הפעולות הנפוצות ביותר
         </div>
-        <button onClick={handleNavigation} className={styles.text_btn}>לחצו כאן וגלו</button>
 
         <form className={styles.popupForm}>
           <div className={styles.popupText}>
