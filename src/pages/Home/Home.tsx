@@ -113,7 +113,7 @@ function Home() {
       title={helmet.home.title}
       content={helmet.home.content}
     >
-      {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />}
+      {/* {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />} */}
 
       <div className={styles.logo_text_div}>
         <ContinueWithAI />
