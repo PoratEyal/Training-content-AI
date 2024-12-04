@@ -52,9 +52,10 @@
   background-color: rgba(255, 255, 255, 0);
   color: var(--primary-color);
   position: absolute;
+  font-size: 24px;
   top: 10px;
   left: 5px;
-  font-size: 24px;
+  right: auto;
 }
 .popupTitle_div{
   display: flex;
@@ -114,6 +115,11 @@
   border-radius: 4px;
   font-family: 'Fredoka', sans-serif;
   resize: none;
+  touch-action: manipulation;
+}
+.otherInput:focus {
+  outline: none;
+  border: 1px solid #ccc;
 }
 
 .btn_div {

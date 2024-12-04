@@ -7,9 +7,7 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import {
   COOKIE_LIMIT_KEY,
   GUEST_LIMIT_VALUE,
-  POPUP_REVIEW,
-  VISIT_COUNT_KEY,
-  CookieOptions,
+  // Removed POPUP_REVIEW, VISIT_COUNT_KEY, CookieOptions imports
 } from "../../models/constants/cookie";
 import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI";
 import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
@@ -21,24 +19,16 @@ import { useEffect, useState } from "react";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import helmet from "../../models/resources/helmet.json";
 import Local from "../../utils/localStorage";
-import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
-import { useCookies } from "react-cookie";
 
 function Home() {
   const {
     currentUser,
     isLoggedIn,
     cookies: authCookies,
-    setCookie,
     setLimitCookie,
-    isPopupVisible,
-    handlePopupClose,
-    setIsPopupVisible,
   } = useAuthContext();
   const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(true);
   const navigate = useNavigate();
-
-  const [cookies, setLocalCookie] = useCookies([POPUP_REVIEW, VISIT_COUNT_KEY]);
 
   useEffect(() => {
     const isRememberMe: string | undefined = Local.get(LocalKey.REMEMBER_ME);
@@ -58,16 +48,6 @@ function Home() {
       if (timeoutId) clearTimeout(timeoutId);
     };
   }, [isLoggedIn]);
-
-  useEffect(() => {
-    let visitCount = parseInt(cookies[VISIT_COUNT_KEY] || "0", 10);
-    visitCount += 1;
-    setLocalCookie(VISIT_COUNT_KEY, visitCount.toString(), CookieOptions);
-
-    if (!cookies[POPUP_REVIEW] && visitCount >= 2) {
-      setIsPopupVisible(true);
-    }
-  }, []); 
 
   const handleStart = () => {
     const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
@@ -113,7 +93,6 @@ function Home() {
       title={helmet.home.title}
       content={helmet.home.content}
     >
-      {/* {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />} */}
 
       <div className={styles.logo_text_div}>
         <ContinueWithAI />
