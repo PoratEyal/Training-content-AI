@@ -37,20 +37,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     // const [generateLimit, setGenerateLimit] = useState<number>(0);
 
     const [cookies, setCookie] = useCookies([COOKIE_LIMIT_KEY, COOKIE_USER_CONSENT, POPUP_REVIEW]);
-
-    /**
-     * for make getRedirectResult on localhost
-     * https://stackoverflow.com/questions/77270210/firebase-onauthstatechanged-user-returns-null-when-on-localhost
-     * disable chrome://flags/#third-party-storage-partitioning (found it on default)
-     */
-
-    useEffect(() => {
-        if (!cookies[POPUP_REVIEW]) {
-            setIsPopupVisible(true);
-        }
-        }, []);
-      
-
+    
     useEffect(() => {
         let unsubscribe: any;
         const handleRedirectResult = async () => {
@@ -136,7 +123,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 setConsentCookie,
                 setLimitCookie,
                 isPopupVisible,
-                handlePopupClose
+                handlePopupClose,
+                setIsPopupVisible,
             }}
         >
             {children}
