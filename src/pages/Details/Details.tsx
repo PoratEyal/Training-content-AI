@@ -17,26 +17,11 @@ import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
 import helmet from "../../models/resources/helmet.json";
 import { DETAILS_AD_SLOT } from "../../models/constants/adsSlot";
-import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
-import { useCookies } from "react-cookie";
-import {
-  POPUP_REVIEW,
-  VISIT_COUNT_KEY,
-  CookieOptions,
-} from "../../models/constants/cookie";
 
 function Details() {
   const { data, updateDetails, clearAll } = useContentContext();
-  const {
-    currentUser,
-    loading,
-    isPopupVisible,
-    handlePopupClose,
-    setIsPopupVisible,
-  } = useAuthContext();
+  const { currentUser, loading } = useAuthContext();
   const navigate = useNavigate();
-
-  const [cookies, setCookie] = useCookies([POPUP_REVIEW, VISIT_COUNT_KEY]);
 
   const [movement, setMovment] = useState(
     data ? data?.movement?.name : currentUser?.movement ? currentUser?.movement?.movement : ""
@@ -65,23 +50,6 @@ function Details() {
     }
   }, [movement, classLevel, numberOfChildren, gender, loading]);
 
-  useEffect(() => {
-    let visitCount = parseInt(cookies[VISIT_COUNT_KEY] || "0", 10);
-    if (isNaN(visitCount)) {
-      visitCount = 0;
-    }
-    visitCount += 1;
-    setCookie(VISIT_COUNT_KEY, visitCount.toString(), CookieOptions);
-
-    if (!cookies[POPUP_REVIEW] && visitCount >= 5) {
-      const timer = setTimeout(() => {
-        setIsPopupVisible(true);
-      }, 5000); 
-
-      return () => clearTimeout(timer); 
-    }
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     updateDetails(movement, classLevel, numberOfChildren, gender);
@@ -104,8 +72,6 @@ function Details() {
       hasNavBar
       noIndex
     >
-      {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />}
-
       <TellUsAboutYourGroup />
 
       <form onSubmit={handleSubmit} className={styles.details_form}>
