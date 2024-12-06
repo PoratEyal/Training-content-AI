@@ -7,7 +7,6 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import {
   COOKIE_LIMIT_KEY,
   GUEST_LIMIT_VALUE,
-  // Removed POPUP_REVIEW, VISIT_COUNT_KEY, CookieOptions imports
 } from "../../models/constants/cookie";
 import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI";
 import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
@@ -92,6 +91,7 @@ function Home() {
       hasFooter
       title={helmet.home.title}
       content={helmet.home.content}
+      hasHeader={{}}
     >
 
       <div className={styles.logo_text_div}>
