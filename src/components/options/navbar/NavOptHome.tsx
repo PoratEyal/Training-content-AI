@@ -10,7 +10,7 @@ const NavOptHome = () => {
     const location = useLocation();
 
     useEffect(() => {
-        setIsSelected(location.pathname.includes(route.home) ? true : false);
+        setIsSelected(location.pathname === route.home);
     }, [location.pathname]);
 
     return (

@@ -80,3 +80,9 @@
         margin-bottom: 11vh;
     }
 }
+
+@media (max-height: 650px) {
+    .logo_text_div{
+        margin-bottom: 6vh;
+    }
+}
