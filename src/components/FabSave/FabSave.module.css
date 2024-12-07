@@ -1,0 +1,57 @@
+.bookmark {
+  cursor: pointer;
+  background-color: var(--secondary-color);
+  width: 45px;
+  height: 45px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  left: 20px;
+  bottom: 175px;
+  z-index: 999;
+}
+
+.svgIcon {
+  width: 15px;
+  height: auto;
+  color: var(--primary-color);
+}
+
+/* Initial path styling */
+.svgIcon path {
+  stroke: var(--primary-color);
+  stroke-width: 4;
+  fill: transparent;
+  stroke-dasharray: 200 0;
+  stroke-dashoffset: 0;
+  transition: fill 0.5s, stroke-dasharray 0.5s linear;
+}
+
+.checked .svgIcon path {
+  fill: var(--primary-color);
+  animation: bookmark 0.5s linear forwards;
+  transition-delay: 0.5s; 
+}
+
+@keyframes bookmark {
+  0% {
+      stroke-dasharray: 0 200;
+      stroke-dashoffset: 80;
+  }
+  100% {
+      stroke-dasharray: 200 0;
+  }
+}
+
+
+@media (min-width: 550px) {
+  .bookmark {
+    left: 30px;
+    bottom: 165px;
+  }
+}
