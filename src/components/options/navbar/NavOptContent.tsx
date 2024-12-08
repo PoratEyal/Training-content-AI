@@ -19,7 +19,7 @@ const NavOptContent = () => {
             className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
         >
             <VscOutput className={styles.icon} />
-            <span>פעולות מוכנות</span>
+            <span className={styles.text}>פעולות מוכנות</span>
         </div>
     );
 };

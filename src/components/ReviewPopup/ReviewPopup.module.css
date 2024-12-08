@@ -55,8 +55,6 @@
   font-size: 24px;
   top: 10px;
   left: 5px;
-  right: auto;
-  right: 5px;
 }
 .popupTitle_div{
   display: flex;
@@ -193,12 +191,5 @@
 @media (min-width: 550px) {
   .popupContent {
     width: fit-content;
-  }
-}
-
-@media screen and (max-width: 430px) and (max-height: 812px) {
-  .closeButton {
-    right: auto; 
-    left: 5px;
   }
 }

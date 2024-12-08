@@ -1,14 +1,16 @@
 import styles from "./UnderBar.module.css";
-import NavOptShare from "../options/navbar/NavOptShare";
 import NavOptBuild from "../options/navbar/NavOptBuild";
 import NavOptContent from "../options/navbar/NavOptContent";
+import NavOptHome from "../options/navbar/NavOptHome";
+import NavOptMyActivities from "../options/navbar/NavOptMyActivities";
 
 const UnderBar = ( ) => {
     return (
         <nav className={styles.navbar_container}>
-            <NavOptContent />
+            <NavOptHome />
             <NavOptBuild />
-            <NavOptShare />
+            <NavOptContent />
+            <NavOptMyActivities />
         </nav>
     );
 };
