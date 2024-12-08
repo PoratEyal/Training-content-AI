@@ -1,6 +1,6 @@
 import {
     GoogleAuthProvider,
-    browserLocalPersistence,
+    browserLocalPersistence as rememberMeSession,
     setPersistence,
     signInWithPopup,
     signInWithRedirect,
@@ -10,7 +10,7 @@ import errMsg from "../models/resources/errorMsg.json";
 import { auth } from "../config/firebase";
 import { useAuthContext } from "../context/AuthContext";
 import { useEffect, useState } from "react";
-import { GUEST_LIMIT_VALUE } from "../models/constants/cookie";
+import { NEED_TO_LOGIN } from "../models/constants/cookie";
 import Local from "../utils/localStorage";
 import { LocalKey } from "../models/enum/storage";
 
@@ -18,7 +18,7 @@ import { LocalKey } from "../models/enum/storage";
 const useSignIn = (handleStart: ()=> void) => {
     const { handleError } = useErrorContext();
     const { isLoggedIn, loading, currentUser, setLimitCookie } = useAuthContext();
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const isMobile = /iPhone|iPad|iPod|Android|BlackBerry|IEMobile|Opera Mini|Windows Phone|webOS|Kindle|Mobile|Tablet/i.test(navigator.userAgent);    
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
 
@@ -30,7 +30,7 @@ const useSignIn = (handleStart: ()=> void) => {
 
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
-        setLimitCookie(GUEST_LIMIT_VALUE);
+        setLimitCookie(NEED_TO_LOGIN);
         
         try {
             if (!auth) {
@@ -40,7 +40,7 @@ const useSignIn = (handleStart: ()=> void) => {
             setIsLoading(true);
             setBtnDisabled(true);
             Local.set(LocalKey.REMEMBER_ME, "true");
-            await setPersistence(auth, browserLocalPersistence);
+            await setPersistence(auth, rememberMeSession);
             if (isMobile) {
                 await signInWithRedirect(auth, provider);
             } else {

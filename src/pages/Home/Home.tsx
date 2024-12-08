@@ -6,7 +6,7 @@ import useSignIn from "../../hooks/useSignIn";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import {
   COOKIE_LIMIT_KEY,
-  GUEST_LIMIT_VALUE,
+  NEED_TO_LOGIN,
   // Removed POPUP_REVIEW, VISIT_COUNT_KEY, CookieOptions imports
 } from "../../models/constants/cookie";
 import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI";
@@ -33,7 +33,6 @@ function Home() {
   useEffect(() => {
     const isRememberMe: string | undefined = Local.get(LocalKey.REMEMBER_ME);
     let timeoutId: NodeJS.Timeout;
-
     if (isRememberMe) {
       if (isLoggedIn) {
         setIsUserLoggedIn(false);
@@ -62,6 +61,20 @@ function Home() {
     navigate(navigateTo);
   };
 
+  const guestSignInOrNavigate = (limitDate: string, navigateTo: string) => {
+    const isValidDate = isValidDateFormat(limitDate);
+    if (isValidDate) {
+      const isMoreThanDay = isMoreThanADayAfter(limitDate);
+
+      if (isMoreThanDay) {
+        signInWithGoogle();
+      }
+      else {
+        navigateAndSetCookieDate(navigateTo);
+      }
+    }
+  }
+
   const startAsGuestOrUser = (navigateTo: string) => {
     if (currentUser && isLoggedIn) {
       navigate(navigateTo);
@@ -70,20 +83,15 @@ function Home() {
 
     Session.set(SessionKey.NAVIGATE, navigateTo);
     let limitDate = authCookies[COOKIE_LIMIT_KEY];
-
     if (limitDate) {
-      if (limitDate === GUEST_LIMIT_VALUE) {
+      if (limitDate === NEED_TO_LOGIN) {
         signInWithGoogle();
       } else {
-        const isValidDate = isValidDateFormat(limitDate);
-        if (isValidDate) {
-          const isMoreThanDay = isMoreThanADayAfter(limitDate);
-
-          if (isMoreThanDay) signInWithGoogle();
-          else navigateAndSetCookieDate(navigateTo);
-        }
+        guestSignInOrNavigate(limitDate, navigateTo);
       }
-    } else navigateAndSetCookieDate(navigateTo);
+    } else {
+      navigateAndSetCookieDate(navigateTo)
+    };
   };
 
   return (
