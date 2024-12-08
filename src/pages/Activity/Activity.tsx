@@ -50,7 +50,7 @@ function Activity() {
         <ActivityReady subject={mainActivity.subject} />
         <section className={styles.activity_data_container}>
           <article>
-            {isLoggedIn ? <FabSave text={mainActivity.activity}></FabSave> : null}
+            {isLoggedIn ? <FabSave activity={mainActivity} /> : null}
             <ActivityOutput activity={mainActivity.activity} activityRef={activityRef} />
           </article>
           <div className={styles.padding} />

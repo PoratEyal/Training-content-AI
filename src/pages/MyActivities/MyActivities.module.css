@@ -68,8 +68,9 @@
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 .grid_item:hover {
     transform: translateY(-5px);
@@ -78,6 +79,16 @@
 .icon{
     color: var(--primary-color);
     font-size: 25px;
+}
+.delete_icon{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 20px;
+    color: white;
+    padding: 5px;
+    color: var(--primary-color);
 }
 .item_title {
     margin: 0;

@@ -21,6 +21,7 @@ import ContentActivities from "./pages/ContentActivities/ContentActivities";
 import { StaticContentProvider } from "./context/StaticContentContext";
 import PopularActivities from "./components/PopularActivities/PopularActivities.tsx";
 import MyActivities from "./pages/MyActivities/MyActivities";
+import MyActivityData from "./pages/MyActivityData/MyActivityData";
 
 function App() {
     return (
@@ -42,6 +43,7 @@ function App() {
                                     <Route path={route.content} element={<Content />} />
 
                                     <Route path={route.myActivities} element={<MyActivities />} />
+                                    <Route path={route.myActivityData} element={<MyActivityData />} />
 
                                     <Route path={route.popularActivities} element={<PopularActivities />} />
 
