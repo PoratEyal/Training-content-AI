@@ -9,6 +9,8 @@
     "popularActivities": "/content/popular",
     "contentActivities": "/content/:activityId",
     "contentActivity": "/content/:activityId/:contentId",
+    "myActivityData": "/myActivities/:subject",
     "status": "/status",
     "all": "*"
-}
+  }
+  

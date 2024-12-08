@@ -1,16 +1,63 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './FabSave.module.css';
+import { db } from '../../config/firebase';
+import { doc, updateDoc, arrayUnion, arrayRemove, getDoc } from "firebase/firestore";
+import { useAuthContext } from "../../context/AuthContext";
+import { useErrorContext } from "../../context/ErrorContext";
+import { Activity } from "../../models/types/activity";
 
 type Props = {
-    text?: string;
+    activity: Activity;
 };
 
-const FabSave: React.FC<Props> = ({ text }) => {
+const FabSave: React.FC<Props> = ({ activity }) => {
     const [checked, setChecked] = useState(false);
+    const { currentUser } = useAuthContext();
+    const { handleSuccess, handleError } = useErrorContext();
 
-    const handleClick = () => {
-        setChecked(prev => !prev);
-        console.log("Activity saved:", text);
+    useEffect(() => {
+        const checkIfActivitySaved = async () => {
+            if (!currentUser || !currentUser.id || !activity) return;
+            
+            const userDocRef = doc(db, "users", currentUser.id);
+            const userSnap = await getDoc(userDocRef);
+            
+            if (userSnap.exists()) {
+                const userData = userSnap.data();
+                const activities = userData.activities || [];
+
+                const isSaved = activities.some((act: Activity) => act.id === activity.id);
+                setChecked(isSaved);
+            }
+        };
+
+        checkIfActivitySaved();
+    }, [currentUser, activity]);
+
+    const handleClick = async () => {
+        if (!currentUser || !currentUser.id || !activity) return;
+
+        const userDocRef = doc(db, "users", currentUser.id);
+
+        try {
+            if (checked) {
+                // Activity is currently saved, remove it
+                await updateDoc(userDocRef, {
+                    activities: arrayRemove(activity)
+                });
+            } else {
+                // Activity is not currently saved, add it
+                await updateDoc(userDocRef, {
+                    activities: arrayUnion(activity)
+                });
+                // Show success message after successfully saving the activity
+                handleSuccess("שמרנו את הפעולה! תוכלו למצוא אותה באזור הפעולות שלי");
+            }
+
+            setChecked(prev => !prev);
+        } catch (error: any) {
+            handleError("הפעולה לא נשמרה, אנא נסו שנית");
+        }
     };
 
     return (
