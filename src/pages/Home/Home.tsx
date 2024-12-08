@@ -7,7 +7,9 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import {
   COOKIE_LIMIT_KEY,
   NEED_TO_LOGIN,
-  // Removed POPUP_REVIEW, VISIT_COUNT_KEY, CookieOptions imports
+  POPUP_REVIEW,
+  VISIT_COUNT_KEY,
+  CookieOptions,
 } from "../../models/constants/cookie";
 import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI";
 import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
@@ -19,6 +21,8 @@ import { useEffect, useState } from "react";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import helmet from "../../models/resources/helmet.json";
 import Local from "../../utils/localStorage";
+import { useCookies } from "react-cookie";
+import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
 
 function Home() {
   const {
@@ -26,9 +30,22 @@ function Home() {
     isLoggedIn,
     cookies: authCookies,
     setLimitCookie,
+    isPopupVisible,
+    handlePopupClose,
+    setIsPopupVisible,
   } = useAuthContext();
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(true);
+
   const navigate = useNavigate();
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(true);
+  const [cookies, setCookie] = useCookies([POPUP_REVIEW, VISIT_COUNT_KEY]);
+
+  const handleStart = () => {
+    const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
+    Session.remove(SessionKey.NAVIGATE);
+    if (navigateTo) navigate(navigateTo);
+  };
+
+  const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart);
 
   useEffect(() => {
     const isRememberMe: string | undefined = Local.get(LocalKey.REMEMBER_ME);
@@ -41,20 +58,33 @@ function Home() {
           setIsUserLoggedIn(false);
         }, 4000);
       }
-    } else setIsUserLoggedIn(false);
+    } else {
+      setIsUserLoggedIn(false);
+    }
 
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
     };
   }, [isLoggedIn]);
 
-  const handleStart = () => {
-    const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
-    Session.remove(SessionKey.NAVIGATE);
-    navigateTo && navigate(navigateTo);
-  };
+  // Run once to increment visit count and possibly show popup
+  useEffect(() => {
+    let visitCount = parseInt(cookies[VISIT_COUNT_KEY] || "0", 10);
+    if (isNaN(visitCount)) {
+      visitCount = 0;
+    }
 
-  const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart);
+    visitCount += 1;
+    setCookie(VISIT_COUNT_KEY, visitCount.toString(), CookieOptions);
+
+    if (!cookies[POPUP_REVIEW] && visitCount >= 5) {
+      const timer = setTimeout(() => {
+        setIsPopupVisible(true);
+      }, 1500);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const navigateAndSetCookieDate = (navigateTo: string) => {
     setLimitCookie(new Date().toString());
@@ -100,12 +130,15 @@ function Home() {
       hasFooter
       title={helmet.home.title}
       content={helmet.home.content}
+      hasHeader={{}}
     >
+      {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />}
 
       <div className={styles.logo_text_div}>
         <ContinueWithAI />
-
-        <h1 className={styles.home_lable}>יצירת פעולות: מותאם, פשוט ומהיר 🤟</h1>
+        <h1 className={styles.home_lable}>
+          יצירת פעולות: מותאם, פשוט ומהיר 🤟
+        </h1>
       </div>
 
       {isUserLoggedIn || isLoading ? (

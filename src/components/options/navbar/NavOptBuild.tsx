@@ -23,7 +23,7 @@ const NavOptBuild = () => {
             className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
         >
             <FaWandMagicSparkles className={styles.icon} />
-            <span>יצירת פעולות</span>
+            <span className={styles.text}>יצירת פעולות</span>
         </div>
     );
 };

@@ -10,6 +10,10 @@
     cursor: pointer;
 }
 
+.text{
+    font-size: 12px;
+}
+
 .navbar_icon {
     color: var(--nav-color) !important;
 }

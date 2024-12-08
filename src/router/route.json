@@ -4,10 +4,13 @@
     "build": "/build",
     "activity": "/activity",
     "privacyPolicy": "/privacyPolicy",
+    "myActivities": "/myActivities",
     "content": "/content",
     "popularActivities": "/content/popular",
     "contentActivities": "/content/:activityId",
     "contentActivity": "/content/:activityId/:contentId",
+    "myActivityData": "/myActivities/:subject",
     "status": "/status",
     "all": "*"
-}
+  }
+  
