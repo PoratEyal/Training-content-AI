@@ -9,7 +9,7 @@ export const CookieOptions = {
 };
 
 export const USER_CONSENT_VALUE = "accepted";
-export const GUEST_LIMIT_VALUE = "guest-block";
+export const NEED_TO_LOGIN = "guest-block";
 
 export const POPUP_REVIEW = "popup_review";
 

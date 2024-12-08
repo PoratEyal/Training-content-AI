@@ -12,7 +12,7 @@ import {
     COOKIE_LIMIT_KEY,
     COOKIE_USER_CONSENT,
     CookieOptions,
-    GUEST_LIMIT_VALUE,
+    NEED_TO_LOGIN,
     USER_CONSENT_VALUE,
     POPUP_REVIEW
 } from "../models/constants/cookie";
@@ -21,13 +21,19 @@ import msg from "../models/resources/errorMsg.json";
 import Local from "../utils/localStorage";
 import { LocalKey } from "../models/enum/storage";
 
+
+/**
+ * for make getRedirectResult on localhost
+ * https://stackoverflow.com/questions/77270210/firebase-onauthstatechanged-user-returns-null-when-on-localhost
+ * disable chrome://flags/#third-party-storage-partitioning (found it on default)
+*/
+
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
 
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
+    const isMobile = /iPhone|iPad|iPod|Android|BlackBerry|IEMobile|Opera Mini|Windows Phone|webOS|Kindle|Mobile|Tablet/i.test(navigator.userAgent);
     const { handleError } = useErrorContext();
     const [currentUser, setCurrentUser] = useState<User | undefined>();
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -68,8 +74,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                     }
                     setCurrentUser(resultUser);
                     setIsLoggedIn(true);
-                    if (cookies[COOKIE_LIMIT_KEY] !== GUEST_LIMIT_VALUE)
-                        setLimitCookie(GUEST_LIMIT_VALUE);
+                    if (cookies[COOKIE_LIMIT_KEY] !== NEED_TO_LOGIN)
+                        setLimitCookie(NEED_TO_LOGIN);
                     return;
                 }
                 setCurrentUser(undefined);
