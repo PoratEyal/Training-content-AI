@@ -24,7 +24,7 @@ export const initActivityFromDB = (id: string, data: DocumentData, userId: strin
 export const initActivityFromAI = (text: string, data: GetActivityRequest, userId: string) => {
     const { category, subject, time, amount, grade, gender, place } = data;
     return {
-        id: "",
+        id: "ID",
         updatedAt: getUpdateAt(),
         fetchCount: 0,
         likes: 0,

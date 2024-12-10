@@ -10,6 +10,7 @@ type ActivityOutputProps = {
     activityRef?: React.MutableRefObject<HTMLElement>;
 };
 
+//TODO: whats going on here?
 function ActivityOutput({ activity, activityRef }: ActivityOutputProps) {
     const activityParts = activity.split("\\n");
 

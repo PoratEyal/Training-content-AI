@@ -9,11 +9,12 @@ import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import helmet from "../../models/resources/helmet.json";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import { useAuthContext } from "../../context/AuthContext";
-import FabSave from "../../components/FabSave/FabSave";
+import SaveBtn from "../../components/SaveBtn/SaveBtn";
+
 
 function Activity() {
   const { data, mainActivity } = useContentContext();
-  const { isLoggedIn, loading, currentUser } = useAuthContext();
+  const { isLoggedIn } = useAuthContext();
   const [newActivity, setNewActivity] = useState(false);
   const activityRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
@@ -50,7 +51,7 @@ function Activity() {
         <ActivityReady subject={mainActivity.subject} />
         <section className={styles.activity_data_container}>
           <article>
-            {isLoggedIn ? <FabSave activity={mainActivity} /> : null}
+            {isLoggedIn ? <SaveBtn activity={mainActivity} /> : null}
             <ActivityOutput activity={mainActivity.activity} activityRef={activityRef} />
           </article>
           <div className={styles.padding} />

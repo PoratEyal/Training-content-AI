@@ -1,4 +1,4 @@
-import { Activity } from "./activity";
+import { Activity, StaticActivities } from "./activity";
 import { CategoryName } from "./movement";
 import { RawUser, User } from "./user";
 
@@ -11,6 +11,10 @@ export type GetActivityRequest = {
     gender: string;
     place: string;
 };
+
+export type SaveActivityRequest = {
+    activity: Activity;
+}
 
 export type UpdateActivityLikesRequest = {
     activity: Activity;
@@ -39,6 +43,24 @@ export type UpdateUserRequest = {
 export type FormatUserRequest = {
     ids: string[];
 };
+
+export type GetSavedActivitiesReqeust = {
+    userId: string;
+}
+
+export type RemoveSavedActivityRequest = {
+    activityId: string;
+    userId: string;
+}
+
+export type IsActivitySavedRequest = {
+    activityId: string;
+    userId: string;
+}
+
+export type IncrementActivityRequest = {
+    activity: StaticActivities;
+}
 
 export type GetAllActivitiesRequest = {}
 export type GetAllUsersRequest = {}

@@ -1,3 +1,5 @@
+import { StaticActivities } from "../../interface/StaticActivities";
+import { StaticSubjects } from "../../interface/staticSubjects";
 import { Activity } from "../activity";
 import { User } from "../user";
 
@@ -38,3 +40,32 @@ export type getAllUsersResponse = {
     users?: any;
     message?: string;
 };
+
+export type getSavedActivitiesResponse = {
+    result: Resposne;
+    activities?: Activity[];
+    message?: string;
+}
+
+export type saveActivityResponse = {
+    result: Resposne;
+    activity?: Activity;
+    message?: string;
+}
+
+export type removeActivityResponse = {
+    result: Resposne;
+    message?: string;
+}
+
+export type staticSubjectsResponse = {
+    result: Resposne;
+    subjects?: StaticSubjects[];
+    message?: string;
+}
+
+export type incrementActivityDisplayCountResponse = {
+    result: Resposne;
+    activity?: StaticActivities;
+    message?: string;
+}

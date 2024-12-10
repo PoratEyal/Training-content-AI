@@ -130,7 +130,6 @@ function Home() {
       hasFooter
       title={helmet.home.title}
       content={helmet.home.content}
-      hasHeader={{}}
     >
       {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />}
 

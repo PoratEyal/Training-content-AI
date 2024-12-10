@@ -8,35 +8,33 @@ import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import ReadyContentName from "../../components/titles/ReadyContentName/ReadyContentName";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
-import { incrementActivityDisplayCountFetch } from "../../utils/staticActivitiesAPI";
+import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
+import { StaticSubjects } from "../../models/interface/staticSubjects";
+import { StaticActivities } from "../../models/interface/StaticActivities";
+import { Activity } from "../../models/types/activity";
 
-function ContentActivities() {
+const ContentActivities: React.FC = () => {
     const navigate = useNavigate();
     const { activityId } = useParams<{ activityId: string }>();
-    const { subjects, isLoading, error } = useStaticContentContext();
-    const contentActivitiesPath = route.contentActivities.replace(':activityId', activityId);
+    const { subjects, isLoading } = useStaticContentContext();
+    const contentActivitiesPath = route.contentActivities.replace(":activityId", activityId);
 
     const goBack = () => {
         navigate(route.content);
     };
 
-    let subject = null;
-    let activities = null;
+    let subject: StaticSubjects = null;
+    let activities: StaticActivities[] = null;
 
-    if (!isLoading && !error && subjects) {
+    if (!isLoading && subjects) {
         subject = subjects.find((subj) => subj.name === activityId);
-        if (subject) {
-            // Sort activities by orderId in ascending order
-            activities = subject.activities.sort((a, b) => a.orderId - b.orderId);
-        } else {
-            console.error("Subject not found for activityId:", activityId);
-        }
+        // Sort activities by orderId in ascending order
+        activities = subject?.activities.sort((a, b) => a.orderId - b.orderId);
     }
 
-    // Define the handleActivityClick function
-    const handleActivityClick = async (activityId: string) => {
+    const handleActivityClick = async (activity: StaticActivities) => {
         try {
-            const response = await incrementActivityDisplayCountFetch(activityId);
+            await fetchIncrementActivityDisplayCount(activity);
         } catch (error) {
             console.error("Error incrementing activity display count:", error);
         }
@@ -48,39 +46,33 @@ function ContentActivities() {
             hasHeader={{ goBack }}
             hasNavBar
             hasGreenBackground
-            title={subject ? subject.metaTitle : ''}
-            content={subject ? subject.metaContent : ''}
+            title={subject ? subject.metaTitle : ""}
+            content={subject ? subject.metaDescription : ""}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
         >
-            {isLoading ? (
-                <SmallLoading />
-            ) : error ? (
-                <div>Error: {error}</div>
-            ) : subject ? (
-                <>
-                    <ReadyContentName isMany subject={subject.metaTitle} />
-                    <article className={styles.content_article}>
+            <ReadyContentName isMany subject={subject.metaTitle} />
+            <article className={styles.content_article}>
+                {isLoading ? (
+                    <SmallLoading />
+                ) : subject && activities && activities.length != 0 ? (
+                    <>
                         <section className={styles.grid_container}>
-                            {activities && activities.length > 0 ? (
-                                activities.map((activity, index) => (
-                                    <Link
-                                        to={`${route.content}/${activityId}/${activity.name}`}
-                                        className={styles.grid_item}
-                                        key={index}
-                                        onClick={() => handleActivityClick(activity.name)}
-                                    >
-                                        <h2 className={styles.item_title}>{activity.metaTitle}</h2>
-                                    </Link>
-                                ))
-                            ) : (
-                                <div>No activities found.</div>
-                            )}
+                            {activities.map((activity, index) => (
+                                <Link
+                                    to={`${route.content}/${activityId}/${activity.name}`}
+                                    className={styles.grid_item}
+                                    key={index}
+                                    onClick={() => handleActivityClick(activity)}
+                                >
+                                    <h2 className={styles.item_title}>{activity.metaTitle}</h2>
+                                </Link>
+                            ))}
                         </section>
-                    </article>
-                </>
-            ) : (
-                <div>Subject not found.</div>
-            )}
+                    </>
+                ) : (
+                    <div>לא נמצאו פעולות מתאימות</div>
+                )}
+            </article>
         </PageLayout>
     );
 }

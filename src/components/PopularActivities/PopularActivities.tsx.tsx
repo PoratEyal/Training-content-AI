@@ -4,13 +4,14 @@ import route from "../../router/route.json";
 import { Link, useNavigate } from "react-router-dom";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
-import { incrementActivityDisplayCountFetch } from "../../utils/staticActivitiesAPI";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import TopActivities from "../titles/TopActivities/TopActivities";
+import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
+import { StaticActivities } from "../../models/interface/StaticActivities";
 
 function PopularActivities() {
     const navigate = useNavigate();
-    const { subjects, isLoading, error } = useStaticContentContext();
+    const { subjects, isLoading } = useStaticContentContext();
 
     const goBack = () => {
         navigate(route.content);
@@ -18,7 +19,7 @@ function PopularActivities() {
 
     let topActivities = [];
 
-    if (!isLoading && !error && subjects) {
+    if (!isLoading && subjects) {
         let allActivities = [];
 
         subjects.forEach(subject => {
@@ -37,9 +38,9 @@ function PopularActivities() {
             .slice(0, 10);
     }
 
-    const handleActivityClick = async (activityId: string) => {
+    const handleActivityClick = async (activity: StaticActivities) => {
         try {
-            await incrementActivityDisplayCountFetch(activityId);
+            await fetchIncrementActivityDisplayCount(activity);
         } catch (error) {
             console.error("Error incrementing activity display count:", error);
         }
@@ -58,8 +59,6 @@ function PopularActivities() {
             <TopActivities />
             {isLoading ? (
                 <SmallLoading />
-            ) : error ? (
-                <div>Error: {error}</div>
             ) : (
                 <article className={styles.content_article}>
                     <section className={styles.grid_container}>
@@ -69,7 +68,7 @@ function PopularActivities() {
                             to={`${route.content}/${item.subjectName}/${item.activity.name}`}
                             className={styles.grid_item}
                             key={index}
-                            onClick={() => handleActivityClick(item.activity.name)}
+                            onClick={() => handleActivityClick(item.activity)}
                             state={{ fromPopular: true }}  // Pass state here
                         >
                             <h2 className={styles.item_title}>{item.activity.metaTitle}</h2>

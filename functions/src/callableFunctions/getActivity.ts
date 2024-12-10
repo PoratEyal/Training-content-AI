@@ -4,11 +4,9 @@ import { NOT_REGISTERED } from "../model/constants";
 import { ActivityDetails } from "../model/types/activity";
 import { getMainActivity } from "../service/geminiAPI";
 //import { getMainActivity } from "../service/claudeAPI";
-import { initActivityFromAI, updateActivityWithId } from "../utils/activity";
-import { CollectionDB } from "../model/enum/DB";
+import { initActivityFromAI } from "../utils/activity";
 import { GetActivityResponse } from "../model/types/response";
 import { handleGetActivityErrors } from "../utils/handleError";
-import { db } from "../index";
 
 const getActivity = functions.https.onCall(
     async (
@@ -19,11 +17,10 @@ const getActivity = functions.https.onCall(
         try {
             const activityResult = await getMainActivity({ ...data } as ActivityDetails);
             const activity = initActivityFromAI(activityResult, data, userId);
-            const { id, ...restActivity } = activity;
-
-            const docRef = await db.collection(CollectionDB.ACTIVITY).add(restActivity);
-            const updateActivity = updateActivityWithId(docRef.id, activity);
-            return { result: "success", activity: updateActivity };
+            // const { id, ...restActivity } = activity;
+            // const docRef = await db.collection(CollectionDB.ACTIVITY).add(restActivity);
+            // const updateActivity = updateActivityWithId(docRef.id, activity);
+            return { result: "success", activity: activity };
         } catch (error) {
             return handleGetActivityErrors(error, data, userId);
         }
