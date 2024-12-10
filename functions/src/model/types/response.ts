@@ -3,9 +3,15 @@ import { Activity } from "./activity";
 import { Movement } from "./movement";
 import { User } from "./user";
 
-export type Resposne = "success" | "notFound" | "safety" | "limit" | "error"
+export type Resposne = "success" | "notFound" | "safety" | "limit" | "error";
 
 export type GetActivityResponse = {
+    result: Resposne;
+    activity?: Activity;
+    message?: string;
+};
+
+export type SaveActivityResponse = {
     result: Resposne;
     activity?: Activity;
     message?: string;
@@ -21,7 +27,7 @@ export type AddMovmentResponse = {
     result: Resposne;
     movement?: Movement;
     message?: string;
-}
+};
 
 export type GetMovmentsResponse = {
     result: Resposne;
@@ -67,5 +73,22 @@ export type getAllActivitiesResponse = {
 export type getAllUsersResponse = {
     result: Resposne;
     users?: DocumentData;
+    message?: string;
+};
+
+export type GetSavedActivitiesResponse = {
+    result: Resposne;
+    activities?: Activity[];
+    message?: string;
+};
+
+export type RemoveSavedActivityResponse = {
+    result: Resposne;
+    message?: string;
+};
+
+export type IsActivitySavedResponse = {
+    result: Resposne;
+    exists: boolean;
     message?: string;
 };

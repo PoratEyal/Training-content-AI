@@ -10,12 +10,12 @@ const NavOptMyActivities = () => {
     const location = useLocation();
 
     useEffect(() => {
-        setIsSelected(location.pathname === route.myActivities);
+        setIsSelected(location.pathname === route.saved);
     }, [location.pathname]);
 
     return (
         <div
-            onClick={()=>navigate(route.myActivities)}
+            onClick={()=>navigate(route.saved)}
             className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
         >
             <CgProfile className={styles.icon} />

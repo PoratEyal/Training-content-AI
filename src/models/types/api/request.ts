@@ -27,5 +27,10 @@ export type UpdateUserRequest = {
     user: User;
 };
 
+export type RemoveActivityRequest = {
+    userId: string;
+    activityId: string;
+}
+
 export type GetAllActivitiesRequest = {}
 export type GetAllUsersRequest = {}

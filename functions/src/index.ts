@@ -8,8 +8,11 @@ import createNewUser from "./callableFunctions/createNewUser"
 import getUserById from "./callableFunctions/getUserById"
 import updateUser from "./callableFunctions/updateUser"
 import * as admin from "firebase-admin";
-import { getStaticSubjectsHttp } from './callableFunctions/getStaticSubject';
-import { incrementActivityDisplayCount } from "./callableFunctions/incrementActivityDisplayCount";
+import getSavedActivities from "./callableFunctions/getSavedActivities";
+import saveActivity from "./callableFunctions/saveActivity";
+import removeSavedActivity from "./callableFunctions/removeSavedActivity";
+import getStaticSubjectsHttp from "./callableFunctions/getStaticSubject";
+import incrementActivityDisplayCount from "./callableFunctions/incrementActivityDisplayCount";
 
 const app = express();
 app.use(cors());
@@ -30,5 +33,9 @@ exports.getUserById = getUserById;
 
 exports.getStaticSubjectsHttp = getStaticSubjectsHttp;
 exports.incrementActivityDisplayCount = incrementActivityDisplayCount;
+
+exports.getSavedActivities = getSavedActivities;
+exports.saveActivity = saveActivity;
+exports.removeSavedActivity = removeSavedActivity;
 
 exports.app = functions.https.onRequest(app);

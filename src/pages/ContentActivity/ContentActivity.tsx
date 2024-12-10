@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";  // Import useLocation
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "../../components/ActivityOutput/Markdown.css";
 import styles from "./ContentActivity.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
@@ -9,12 +9,14 @@ import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import ActivityOutputStatic from "../../components/ActivityOutput/ActivityOutputStatic";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
+import { StaticSubjects } from "../../models/interface/staticSubjects";
+import { StaticActivities } from "../../models/interface/StaticActivities";
 
 function ContentActivity() {
     const navigate = useNavigate();
-    const location = useLocation();  // Use useLocation
+    const location = useLocation();
     const { activityId, contentId } = useParams<{ activityId: string; contentId: string }>();
-    const { subjects, isLoading, error } = useStaticContentContext();
+    const { subjects, isLoading } = useStaticContentContext();
     const contentActivityPath = `${route.content}/${activityId}/${contentId}`;
 
     // Extract fromPopular from location.state
@@ -28,19 +30,12 @@ function ContentActivity() {
         }
     };
 
-    let activity = null;
-    let subject = null;
+    let subject: StaticSubjects = null;
+    let activity: StaticActivities = null;
 
-    if (!isLoading && !error && subjects) {
+    if (!isLoading && subjects) {
         subject = subjects.find((subj) => subj.name === activityId);
-        if (subject) {
-            activity = subject.activities.find((act) => act.name === contentId);
-            if (!activity) {
-                console.error(`Activity not found for contentId: ${contentId}`);
-            }
-        } else {
-            console.error(`Subject not found for activityId: ${activityId}`);
-        }
+        activity = subject?.activities.find((act) => act.name === contentId);
     }
 
     return (
@@ -53,27 +48,19 @@ function ContentActivity() {
             content={activity ? activity.metaDescription : ""}
             hasNavBar
         >
+            <ActivityReady subject={activity.metaTitle} />
             {isLoading ? (
                 <section className={styles.activity_data_container}>
                     <SmallLoading />
                 </section>
-            ) : error ? (
+            ) : (
                 <section className={styles.activity_data_container}>
-                    <div>Error: {error}</div>
-                </section>
-            ) : activity ? (
-                <>
-                    <ActivityReady subject={activity.metaTitle} />
-                    <section className={styles.activity_data_container}>
+                    {activity ? (
                         <article>
                             <ActivityOutputStatic activity={activity.content} />
                         </article>
-                        <div className={styles.padding} />
-                    </section>
-                </>
-            ) : (
-                <section className={styles.activity_data_container}>
-                    <div>Activity not found.</div>
+                    ) : null}
+                    <div className={styles.padding} />
                 </section>
             )}
         </PageLayout>

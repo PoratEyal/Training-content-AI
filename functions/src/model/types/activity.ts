@@ -24,4 +24,13 @@ export type ActivityDetails = {
     grade: string;
     gender: string;
     place: string;
-}
+};
+
+export type StaticActivities = {
+    name: string;
+    metaTitle: string;
+    metaDescription: string;
+    content: string;
+    displayCount: number;
+    orderId: number;
+};

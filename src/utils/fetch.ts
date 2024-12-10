@@ -1,6 +1,7 @@
 import {
     CreateNewUserRequest,
     GetActivityRequest,
+    RemoveActivityRequest,
     UpdateActivityLikesRequest,
     UpdateUserRequest,
 } from "../models/types/api/request";
@@ -11,10 +12,17 @@ import {
     UpdateUserResponse,
     getAllActivitiesResponse,
     getAllUsersResponse,
+    getSavedActivitiesResponse,
+    incrementActivityDisplayCountResponse,
+    removeActivityResponse,
+    saveActivityResponse,
+    staticSubjectsResponse,
 } from "../models/types/api/response";
 import { functions } from "../config/firebase";
 import { httpsCallable } from "firebase/functions";
 import msg from "../models/resources/errorMsg.json";
+import { Activity } from "../models/types/activity";
+import { StaticActivities } from "../models/interface/StaticActivities";
 
 export const fetchGetActivity = async (
     request: GetActivityRequest,
@@ -77,3 +85,75 @@ export const fetchGetUsers = async (): Promise<getAllUsersResponse> => {
         throw new Error(msg.error.message);
     }
 };
+
+export const fetchGetSavedActivities = async (
+    userId: string,
+): Promise<getSavedActivitiesResponse> => {
+    const getSavedActivitiesFunc = httpsCallable(functions, "getSavedActivities");
+
+    const response = (await getSavedActivitiesFunc({ userId })).data as getSavedActivitiesResponse;
+    if (response.result === "success") {
+        return response;
+    } else {
+        throw new Error(msg.error.message);
+    }
+};
+
+export const fetchSaveActivity = async (
+    activity: Activity,
+): Promise<saveActivityResponse> => {
+    const saveActivityFunc = httpsCallable(functions, "saveActivity");
+
+    const response = (await saveActivityFunc({ activity })).data as saveActivityResponse;
+    if (response.result === "success") {
+        return response;
+    } else {
+        throw new Error(msg.error.message);
+    }
+};
+
+export const fetchRemoveActivity = async (
+    request: RemoveActivityRequest,
+): Promise<removeActivityResponse> => {
+    const removeActivityFunc = httpsCallable(functions, "removeSavedActivity");
+
+    const response = (await removeActivityFunc(request)).data as removeActivityResponse;
+    if (response.result === "success") {
+        return response;
+    } else {
+        throw new Error(msg.error.message);
+    }
+};
+
+export const fetchStaticSubjects = async (): Promise<staticSubjectsResponse> => {
+    try {
+        const getStaticSubjectsFunc = httpsCallable(functions, "getStaticSubjectsHttp");
+        const response = (await getStaticSubjectsFunc()).data as staticSubjectsResponse;
+        if (response.result === "success" && response.subjects) {
+            return response;
+        } else {
+            throw new Error(msg.error.message);
+        }
+    } catch (error: any) {
+        throw new Error(msg.error.message);
+    }
+};
+
+export const fetchIncrementActivityDisplayCount =
+    async (activity: StaticActivities): Promise<incrementActivityDisplayCountResponse> => {
+        try {
+            const incrementActivityDisplayCountFunc = httpsCallable(
+                functions,
+                "incrementActivityDisplayCount",
+            );
+            const response = (await incrementActivityDisplayCountFunc({activity}))
+            .data as incrementActivityDisplayCountResponse;
+            if (response.result === "success") {
+                return response;
+            } else {
+                throw new Error(msg.error.message);
+            }
+        } catch (error: any) {
+            throw new Error(msg.error.message);
+        }
+    };

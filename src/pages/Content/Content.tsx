@@ -51,7 +51,7 @@ const iconMap = {
 
 function Content() {
     const navigate = useNavigate();
-    const { subjects, isLoading, error } = useStaticContentContext();
+    const { subjects, isLoading } = useStaticContentContext();
 
     const goBack = () => {
         navigate(route.home);
@@ -71,43 +71,44 @@ function Content() {
             <ReadyContent />
 
             <article className={styles.content_article}>
-            <section className={styles.grid_container}>
                 {isLoading ? (
-                    <SmallLoading />
-                ) : error ? (
-                    <div>Error: {error}</div>
+                    <section className={styles.grid_container}>
+                        <SmallLoading />
+                    </section>
                 ) : (
-                    <>
-                <Link
-                    to={route.popularActivities}
-                    className={styles.grid_item}
-                >
-                    <h2 className={styles.item_title}>10 הפעולות הפופולריות</h2>
-                    <div className={styles.icon}>
-                        {iconMap['GiPodium'] &&
-                            React.createElement(iconMap['GiPodium'], {
-                                className: styles.icon,
-                            })}
-                    </div>
-                </Link>
-                {subjects.map((subject, index) => (
-                    <Link
-                        to={`${route.content}/${subject.name}`}
-                        key={index}
-                        className={styles.grid_item}
-                    >
-                        <h2 className={styles.item_title}>{subject.metaTitle}</h2>
-                        <div className={styles.icon}>
-                            {iconMap[subject.icon] &&
-                                React.createElement(iconMap[subject.icon], {
-                                    className: styles.icon,
-                                })}
-                        </div>
-                    </Link>
-                ))}
-            </>
-        )}
-    </section>
+                    <section className={styles.grid_container}>
+                        {subjects.length > 0 ? (
+                            <>
+                                <Link to={route.popularActivities} className={styles.grid_item}>
+                                    <h2 className={styles.item_title}>10 הפעולות הפופולריות</h2>
+                                    <div className={styles.icon}>
+                                        {iconMap["GiPodium"] &&
+                                            React.createElement(iconMap["GiPodium"], {
+                                                className: styles.icon,
+                                            })}
+                                    </div>
+                                </Link>
+                                {subjects.map((subject, index) => (
+                                    <Link
+                                        to={`${route.content}/${subject.name}`}
+                                        key={index}
+                                        className={styles.grid_item}
+                                    >
+                                        <h2 className={styles.item_title}>{subject.metaTitle}</h2>
+                                        <div className={styles.icon}>
+                                            {iconMap[subject.icon] &&
+                                                React.createElement(iconMap[subject.icon], {
+                                                    className: styles.icon,
+                                                })}
+                                        </div>
+                                    </Link>
+                                ))}
+                            </>
+                        ) : (
+                            <div>לא נבחר נושא פעולה</div>
+                        )}
+                    </section>
+                )}
             </article>
         </PageLayout>
     );

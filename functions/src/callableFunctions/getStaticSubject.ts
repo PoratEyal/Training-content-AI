@@ -1,61 +1,84 @@
 import * as functions from "firebase-functions";
 import { db } from "../index";
-import { Request, Response } from "express";
-import cors from "cors";
 
-const corsHandler = cors({ origin: true });
+interface StaticSubjectActivity {
+    name: string;
+    metaTitle: string;
+    metaDescription: string;
+    content: string;
+    displayCount: number;
+    orderId: number;
+}
 
-export const getStaticSubjectsHttp = functions.https.onRequest((req: Request, res: Response) => {
-  corsHandler(req, res, async () => {
-    try {
-      const snapshot = await db.collection("staticSubjects").get();
+interface StaticSubject {
+    name: string;
+    metaTitle: string;
+    icon: string;
+    metaDescription: string;
+    orderId: number;
+    activities: StaticSubjectActivity[];
+}
 
-      const subjectsWithActivities = await Promise.all(
-        snapshot.docs.map(async (doc) => {
-          const docData = doc.data() || {};
-          console.log('Subject Document Data:', docData);
+interface GetStaticSubjectsResponse {
+    result: "success" | "error";
+    subjects?: StaticSubject[];
+    message?: string;
+}
 
-          // Resolve the references in the `activities` field
-          const activityReferences = docData.activities || [];
-          const activities = await Promise.all(
-            activityReferences.map(async (activityRef: string) => {
-              // Fetch the referenced document
-              const activitySnapshot = await db.doc(activityRef).get();
+const getStaticSubjectsHttp = functions.https.onCall(
+    async (
+        data: void,
+        context: functions.https.CallableContext
+    ): Promise<GetStaticSubjectsResponse> => {
+        try {
+            const snapshot = await db.collection("staticSubjects").get();
 
-              // Get the data from the activity document
-              const activityData = activitySnapshot.data();
-              console.log('Activity Document Data:', activityData);
+            const subjectsWithActivities = await Promise.all(
+                snapshot.docs.map(async (doc) => {
+                    const docData = doc.data() || {};
 
-              return {
-                name: activityData?.name || '',
-                metaTitle: activityData?.metaTitle || '',
-                metaDescription: activityData?.metaDescription || '',
-                content: activityData?.content || '',
-                displayCount: activityData?.displayCount || 0,
-                orderId: activityData?.orderId || 0,
-              };
-            })
-          );
+                    const activityReferences = docData.activities || [];
+                    const activities = await Promise.all(
+                        activityReferences.map(async (activityRef: string) => {
+                            const activitySnapshot = await db.doc(activityRef).get();
+                            const activityData = activitySnapshot.data();
+                            console.log('Activity Document Data:', activityData);
 
-          const subjectData = {
-            name: docData.name || '',
-            metaTitle: docData.metaTitle || '',
-            icon: docData.icon || '',
-            metaDescription: docData.metaDescription || '',
-            orderId: docData?.orderId || 0,
-            activities,
-          };
+                            return {
+                                name: activityData?.name || '',
+                                metaTitle: activityData?.metaTitle || '',
+                                metaDescription: activityData?.metaDescription || '',
+                                content: activityData?.content || '',
+                                displayCount: activityData?.displayCount || 0,
+                                orderId: activityData?.orderId || 0,
+                            };
+                        })
+                    );
 
-          return subjectData;
-        })
-      );
+                    return {
+                        name: docData.name || '',
+                        metaTitle: docData.metaTitle || '',
+                        icon: docData.icon || '',
+                        metaDescription: docData.metaDescription || '',
+                        orderId: docData?.orderId || 0,
+                        activities,
+                    };
+                })
+            );
 
-      console.log('Successfully fetched subjects and activities');
-      res.status(200).json({ result: 'success', data: subjectsWithActivities });
-    } catch (error) {
-      console.error('Error fetching static subjects:', error);
-      res.status(500).json({ error: 'Failed to fetch static subjects.' });
+            return {
+                result: "success",
+                subjects: subjectsWithActivities
+            };
+
+        } catch (error) {
+            console.error('Error fetching static subjects:', error);
+            return {
+                result: "error",
+                message: "Failed to fetch static subjects."
+            };
+        }
     }
-  });
-});
+);
 
+export default getStaticSubjectsHttp;
