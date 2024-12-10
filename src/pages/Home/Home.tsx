@@ -80,7 +80,7 @@ function Home() {
     if (!cookies[POPUP_REVIEW] && visitCount >= 5) {
       const timer = setTimeout(() => {
         setIsPopupVisible(true);
-      }, 1500);
+      }, 1000);
 
       return () => clearTimeout(timer);
     }

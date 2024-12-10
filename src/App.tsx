@@ -42,7 +42,7 @@ function App() {
                                     <Route path={route.privacyPolicy} element={<PrivacyPolicy />} />
                                     <Route path={route.content} element={<Content />} />
 
-                                    <Route path={route.saved} element={<SavedActivities />} />
+                                    <Route path={route.myRepository} element={<SavedActivities />} />
                                     <Route path={route.savedActivity} element={<SaveActivity />} />
 
                                     <Route path={route.popularActivities} element={<PopularActivities />} />
