@@ -5,7 +5,7 @@ import route from "../../router/route.json";
 import { useNavigate } from "react-router-dom";
 import MyActivitiesTitle from "../../components/titles/MyActivitiesTitle/MyActivitiesTitle";
 import helmet from "../../models/resources/helmet.json";
-import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
+import { MY_ACTIVITIES_AD_SLOT } from "../../models/constants/adsSlot";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useAuthContext } from "../../context/AuthContext";
 import { useState, useEffect } from "react";
@@ -69,7 +69,7 @@ const SavedActivities: React.FC = () => {
             path={route.content}
             hasHeader={{ goBack }}
             hasNavBar
-            hesAds={ACTIVITY_AD_SLOT}
+            hesAds={MY_ACTIVITIES_AD_SLOT}
             noIndex
             hasGreenBackground
             title={helmet.content.title}

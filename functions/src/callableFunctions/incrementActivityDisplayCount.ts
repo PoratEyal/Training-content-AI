@@ -2,12 +2,7 @@ import * as functions from "firebase-functions";
 import { db } from "../index";
 import { CollectionDB } from "../model/enum/DB";
 import { IncrementActivityRequest } from "../model/types/request";
-
-
-interface IncrementActivityResponse {
-    result: "success" | "error";
-    message?: string;
-}
+import { IncrementActivityResponse } from "../model/types/response";
 
 const incrementActivityDisplayCount = functions.https.onCall(
     async (

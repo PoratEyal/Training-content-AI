@@ -5,7 +5,7 @@ import styles from "./SavedActivity.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import route from "../../router/route.json";
-import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
+import { MY_ACTIVITIES_AD_SLOT } from "../../models/constants/adsSlot";
 import ActivityOutputStatic from "../../components/ActivityOutput/ActivityOutputStatic";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useAuthContext } from "../../context/AuthContext";
@@ -59,7 +59,7 @@ function SavedActivity() {
             path={`${route.saved}/${subject}`}
             hasGreenBackground
             hasHeader={{ goBack }}
-            hesAds={ACTIVITY_AD_SLOT}
+            hesAds={MY_ACTIVITIES_AD_SLOT}
             title={activity?.subject || ""}
             content={activity?.subject || ""}
             hasNavBar
