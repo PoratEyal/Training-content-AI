@@ -26,6 +26,15 @@ export type ActivityDetails = {
     place: string;
 };
 
+export type StaticSubject = {
+    name: string;
+    metaTitle: string;
+    icon: string;
+    metaDescription: string;
+    orderId: number;
+    activities: StaticActivities[];
+}
+
 export type StaticActivities = {
     name: string;
     metaTitle: string;

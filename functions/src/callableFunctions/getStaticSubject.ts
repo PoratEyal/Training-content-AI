@@ -1,29 +1,6 @@
 import * as functions from "firebase-functions";
 import { db } from "../index";
-
-interface StaticSubjectActivity {
-    name: string;
-    metaTitle: string;
-    metaDescription: string;
-    content: string;
-    displayCount: number;
-    orderId: number;
-}
-
-interface StaticSubject {
-    name: string;
-    metaTitle: string;
-    icon: string;
-    metaDescription: string;
-    orderId: number;
-    activities: StaticSubjectActivity[];
-}
-
-interface GetStaticSubjectsResponse {
-    result: "success" | "error";
-    subjects?: StaticSubject[];
-    message?: string;
-}
+import { GetStaticSubjectsResponse } from "../model/types/response";
 
 const getStaticSubjectsHttp = functions.https.onCall(
     async (
