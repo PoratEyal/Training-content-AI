@@ -130,6 +130,8 @@ function Home() {
       hasFooter
       title={helmet.home.title}
       content={helmet.home.content}
+      //{} show profile image
+      hasHeader={{}}
     >
       {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />}
 
@@ -140,7 +142,7 @@ function Home() {
         </h1>
       </div>
 
-      {isUserLoggedIn || isLoading ? (
+      {isUserLoggedIn || (isLoading && !isLoggedIn && !currentUser?.image) ? (
         <div className={styles.button_section_loading}>
           <SmallLoading />
         </div>
