@@ -138,12 +138,12 @@ function Home() {
 
       <div className={styles.logo_text_div}>
         <ContinueWithAI />
-        <h1 className={styles.home_lable}>
+        <h1 className={styles.home_lable}>      // Lior: Change to: מותאם, פשוט ומהיר 🤟
           יצירת פעולות: מותאם, פשוט ומהיר 🤟
         </h1>
       </div>
 
-      {isUserLoggedIn || (isLoading && !isLoggedIn && !currentUser?.image) ? (  // {isUserLoggedIn || isLoading || !currentUser?.image ? (   // Lior
+      {isUserLoggedIn || (isLoading && !isLoggedIn && !currentUser?.image) ? (  // {isUserLoggedIn || isLoading || !currentUser?.image ? (   // Lior: Replace with this line
         <div className={styles.button_section_loading}>
           <SmallLoading />
         </div>
