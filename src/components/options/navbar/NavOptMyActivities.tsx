@@ -10,12 +10,12 @@ const NavOptMyActivities = () => {
     const location = useLocation();
 
     useEffect(() => {
-        setIsSelected(location.pathname === route.myRepository);
+        setIsSelected(location.pathname === route.myactivities);
     }, [location.pathname]);
 
     return (
         <div
-            onClick={()=>navigate(route.myRepository)}
+            onClick={()=>navigate(route.myactivities)}
             className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
         >
             <CgProfile className={styles.icon} />
