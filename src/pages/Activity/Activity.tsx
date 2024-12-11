@@ -11,7 +11,6 @@ import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import { useAuthContext } from "../../context/AuthContext";
 import SaveBtn from "../../components/SaveBtn/SaveBtn";
 
-
 function Activity() {
   const { data, mainActivity } = useContentContext();
   const { isLoggedIn } = useAuthContext();
