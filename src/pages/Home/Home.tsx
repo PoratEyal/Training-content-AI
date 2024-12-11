@@ -46,6 +46,7 @@ function Home() {
   };
 
   const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart);
+  // const btnDisabled = isLoading || !currentUser?.image; // Lior: To add this line
 
   useEffect(() => {
     const isRememberMe: string | undefined = Local.get(LocalKey.REMEMBER_ME);
@@ -77,7 +78,7 @@ function Home() {
     visitCount += 1;
     setCookie(VISIT_COUNT_KEY, visitCount.toString(), CookieOptions);
 
-    if (!cookies[POPUP_REVIEW] && visitCount >= 5) {
+    if (!cookies[POPUP_REVIEW] && visitCount >= 5) {  // Lior: Please change to 3
       const timer = setTimeout(() => {
         setIsPopupVisible(true);
       }, 1000);
@@ -142,7 +143,7 @@ function Home() {
         </h1>
       </div>
 
-      {isUserLoggedIn || (isLoading && !isLoggedIn && !currentUser?.image) ? (
+      {isUserLoggedIn || (isLoading && !isLoggedIn && !currentUser?.image) ? (  // {isUserLoggedIn || isLoading || !currentUser?.image ? (   // Lior
         <div className={styles.button_section_loading}>
           <SmallLoading />
         </div>
