@@ -45,8 +45,7 @@ function Home() {
     if (navigateTo) navigate(navigateTo);
   };
 
-  const { signInWithGoogle, isLoading } = useSignIn(handleStart);
-  const btnDisabled = isLoading || !currentUser?.image;
+  const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart);
 
   useEffect(() => {
     const isRememberMe: string | undefined = Local.get(LocalKey.REMEMBER_ME);
@@ -130,6 +129,7 @@ function Home() {
       hasFooter
       title={helmet.home.title}
       content={helmet.home.content}
+      /** hasHeader={{}} -> show only the profile image **/ 
       hasHeader={{}}
     >
       {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />}
@@ -139,7 +139,7 @@ function Home() {
         <h1 className={styles.home_lable}>מותאם, פשוט ומהיר 🤟</h1>
       </div>
 
-      {isUserLoggedIn || isLoading || !currentUser?.image ? (
+      {isUserLoggedIn || (isLoading && !isLoggedIn && !currentUser?.image) ? (
         <div className={styles.button_section_loading}>
           <SmallLoading />
         </div>

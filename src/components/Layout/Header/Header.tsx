@@ -15,12 +15,12 @@ function Header({ goBack, isBlur = false }: HeaderProps) {
 
     return (
         <section className={style}>
-            {!loading && (
-                <div className={styles.header_container}>
-                    <Profile img={isLoggedIn ? currentUser?.image : undefined} />
-                    {goBack ? <IoMdArrowRoundBack onClick={goBack} className={styleIcon} /> : null}
-                </div>
-            )}
+            <div className={styles.header_container}>
+                {!loading ? <Profile img={isLoggedIn ? currentUser?.image : undefined} /> : null}
+                {!loading && goBack ? (
+                    <IoMdArrowRoundBack onClick={goBack} className={styleIcon} />
+                ) : null}
+            </div>
         </section>
     );
 }
