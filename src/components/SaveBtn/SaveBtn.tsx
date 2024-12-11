@@ -1,32 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./SaveBtn.module.css";
 import { useAuthContext } from "../../context/AuthContext";
 import { useErrorContext } from "../../context/ErrorContext";
 import { Activity } from "../../models/types/activity";
 import { fetchRemoveActivity, fetchSaveActivity } from "../../utils/fetch";
 import { RemoveActivityRequest } from "../../models/types/api/request";
+import { useQueryParam } from "../../hooks/useQueryParam";
 
 type SaveBtnProps = {
     activity: Activity;
 };
 
 const SaveBtn: React.FC<SaveBtnProps> = ({ activity }) => {
+    const { currentParam, updateParam } = useQueryParam();
     const { currentUser } = useAuthContext();
     const { handleSuccess, handleError } = useErrorContext();
     const [saved, setSaved] = useState<boolean>(false);
     const [activityId, setActivityId] = useState<string | undefined>();
-    //TODO: add queryparam if save or not insted of checking db
+ 
+    useEffect(()=>{
+        setSaved(currentParam.isSaved === "true" ? true : false);
+    },[currentParam])
 
     const handleSave = async () => {
         if (currentUser && currentUser.id && activity) {
             try {
-                setSaved(true);
+                updateParam(true);
                 handleSuccess("שמרנו את הפעולה! תוכלו למצוא אותה באזור הפעולות שלי");
                 const res = await fetchSaveActivity(activity);
                 setActivityId(res.activity.id);
             } catch (error) {
                 handleError("הפעולה לא נשמרה, אנא נסו שנית");
-                setSaved(false);
+                updateParam(false);
             }
         }
     };
@@ -34,7 +39,7 @@ const SaveBtn: React.FC<SaveBtnProps> = ({ activity }) => {
     const handleUnsave = async () => {
         if (currentUser && currentUser.id && activityId) {
             try {
-                setSaved(false);
+                updateParam(false);
                 handleSuccess("הפעולה הוסרה מאזור הפעולות שלי");
                 await fetchRemoveActivity({
                     userId: currentUser.id,
@@ -42,7 +47,7 @@ const SaveBtn: React.FC<SaveBtnProps> = ({ activity }) => {
                 } as RemoveActivityRequest);
             } catch (error) {
                 handleError("הפעולה לא נשמרה, אנא נסו שנית");
-                setSaved(false);
+                updateParam(true);
             }
         }
     };

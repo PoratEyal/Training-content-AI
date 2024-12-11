@@ -84,7 +84,7 @@ const SavedActivities: React.FC = () => {
                     </section>
                 ) : userActivities.length === 0 ? (
                     <section className={styles.grid_container}>
-                        <div>עדיין אין לך פעולות מוכנות</div>
+                        <div>עדיין אין לך פעולות שמורות</div>
                     </section>
                 ) : (
                     <section className={styles.grid_container}>
