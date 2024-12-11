@@ -45,7 +45,8 @@ function Home() {
     if (navigateTo) navigate(navigateTo);
   };
 
-  const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart);
+  const { signInWithGoogle, isLoading } = useSignIn(handleStart);
+  const btnDisabled = isLoading || !currentUser?.image;
 
   useEffect(() => {
     const isRememberMe: string | undefined = Local.get(LocalKey.REMEMBER_ME);
@@ -77,10 +78,10 @@ function Home() {
     visitCount += 1;
     setCookie(VISIT_COUNT_KEY, visitCount.toString(), CookieOptions);
 
-    if (!cookies[POPUP_REVIEW] && visitCount >= 5) {
+    if (!cookies[POPUP_REVIEW] && visitCount >= 3) {
       const timer = setTimeout(() => {
         setIsPopupVisible(true);
-      }, 1500);
+      }, 1000);
 
       return () => clearTimeout(timer);
     }
@@ -98,12 +99,11 @@ function Home() {
 
       if (isMoreThanDay) {
         signInWithGoogle();
-      }
-      else {
+      } else {
         navigateAndSetCookieDate(navigateTo);
       }
     }
-  }
+  };
 
   const startAsGuestOrUser = (navigateTo: string) => {
     if (currentUser && isLoggedIn) {
@@ -120,8 +120,8 @@ function Home() {
         guestSignInOrNavigate(limitDate, navigateTo);
       }
     } else {
-      navigateAndSetCookieDate(navigateTo)
-    };
+      navigateAndSetCookieDate(navigateTo);
+    }
   };
 
   return (
@@ -130,19 +130,16 @@ function Home() {
       hasFooter
       title={helmet.home.title}
       content={helmet.home.content}
-      //{} show profile image
       hasHeader={{}}
     >
       {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />}
 
       <div className={styles.logo_text_div}>
         <ContinueWithAI />
-        <h1 className={styles.home_lable}>
-          יצירת פעולות: מותאם, פשוט ומהיר 🤟
-        </h1>
+        <h1 className={styles.home_lable}>מותאם, פשוט ומהיר 🤟</h1>
       </div>
 
-      {isUserLoggedIn || (isLoading && !isLoggedIn && !currentUser?.image) ? (
+      {isUserLoggedIn || isLoading || !currentUser?.image ? (
         <div className={styles.button_section_loading}>
           <SmallLoading />
         </div>

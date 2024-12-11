@@ -73,7 +73,7 @@ const SavedActivities: React.FC = () => {
             noIndex
             hasGreenBackground
             title={helmet.content.title}
-            content={helmet.content.content}
+            content={helmet.home.content}
         >
             <MyActivitiesTitle />
 
@@ -89,17 +89,25 @@ const SavedActivities: React.FC = () => {
                 ) : (
                     <section className={styles.grid_container}>
                         {userActivities.map((activity, index) => (
-                            <div key={index} className={styles.grid_item}>
-                                <h2
-                                    className={styles.item_title}
-                                    onClick={() => navigate(`${route.saved}/${activity.subject}`)}
-                                >
+                            <div 
+                                key={index} 
+                                className={styles.grid_item}
+                                onClick={(e) => {
+                                    if (!(e.target as Element).closest('.delete_icon')) {
+                                        navigate(`${route.myactivities}/${activity.subject}`);
+                                    }
+                                }}
+                            >
+                                <h2 className={styles.item_title}>
                                     {activity.subject}
                                 </h2>
                                 <TiDelete
-                                    className={styles.delete_icon}
-                                    onClick={() => handleDeleteActivity(activity)}
-                                ></TiDelete>
+                                    className={`${styles.delete_icon} delete_icon`}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleDeleteActivity(activity);
+                                    }}
+                                />
                             </div>
                         ))}
                     </section>

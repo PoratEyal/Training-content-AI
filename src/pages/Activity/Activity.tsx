@@ -42,7 +42,7 @@ function Activity() {
         hasGreenBackground
         hasHeader={{ goBack }}
         title={helmet.activity.title}
-        content={helmet.activity.content}
+        content={helmet.home.content}
         hesAds={ACTIVITY_AD_SLOT}
         hasNavBar
         noIndex
