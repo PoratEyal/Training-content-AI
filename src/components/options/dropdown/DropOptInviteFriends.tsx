@@ -12,7 +12,7 @@ function DropOptInviteFriends() {
             url={WEBSITE_URL}
             title={formatInviteFriend()}
         >
-            הזמינו חברים
+            שתפו עם חברים
             <IoMdShare />
         </WhatsappShareButton>
     );
