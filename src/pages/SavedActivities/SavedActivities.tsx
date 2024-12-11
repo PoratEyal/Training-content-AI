@@ -15,6 +15,7 @@ import { fetchGetSavedActivities, fetchRemoveActivity } from "../../utils/fetch"
 import { useErrorContext } from "../../context/ErrorContext";
 import msg from "../../models/resources/errorMsg.json";
 import { RemoveActivityRequest } from "../../models/types/api/request";
+import DontHaveActivity from "../../components/DontHaveActivity/DontHaveActivity";
 
 const SavedActivities: React.FC = () => {
     const navigate = useNavigate();
@@ -84,7 +85,7 @@ const SavedActivities: React.FC = () => {
                     </section>
                 ) : userActivities.length === 0 ? (
                     <section className={styles.grid_container}>
-                        <div>עדיין אין לך פעולות שמורות</div>
+                        <DontHaveActivity />
                     </section>
                 ) : (
                     <section className={styles.grid_container}>
