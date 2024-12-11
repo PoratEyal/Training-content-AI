@@ -94,7 +94,7 @@ const SavedActivities: React.FC = () => {
                                 className={styles.grid_item}
                                 onClick={(e) => {
                                     if (!(e.target as Element).closest('.delete_icon')) {
-                                        navigate(`${route.myRepository}/${activity.subject}`);
+                                        navigate(`${route.myactivities}/${activity.subject}`);
                                     }
                                 }}
                             >
