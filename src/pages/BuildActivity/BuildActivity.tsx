@@ -115,7 +115,7 @@ function BuildActivity() {
             hasGreenBackground
             hasHeader={{ goBack }}
             title={helmet.build.title}
-            content={helmet.build.content}
+            content={helmet.home.content}
             hesAds={BUILD_AD_SLOT}
             hasNavBar
             noIndex

@@ -67,7 +67,7 @@ function Details() {
       hasGreenBackground
       hasHeader={{ goBack }}
       title={helmet.details.title}
-      content={helmet.details.content}
+      content={helmet.home.content}
       hesAds={DETAILS_AD_SLOT}
       hasNavBar
       noIndex

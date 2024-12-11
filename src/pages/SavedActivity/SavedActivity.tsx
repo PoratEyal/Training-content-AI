@@ -22,7 +22,7 @@ function SavedActivity() {
     const [activity, setActivity] = useState<Activity | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const goBack = () => {
-        navigate(route.saved);
+        navigate(route.myactivities);
     };
     
     const getActivities = async () => {
@@ -56,7 +56,7 @@ function SavedActivity() {
 
     return (
         <PageLayout
-            path={`${route.saved}/${subject}`}
+            path={`${route.myactivities}/${subject}`}
             hasGreenBackground
             hasHeader={{ goBack }}
             hesAds={MY_ACTIVITIES_AD_SLOT}
