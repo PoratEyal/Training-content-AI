@@ -30,3 +30,21 @@ export type ActivityListType = {
     metaContent: string;
     content: string;
 };
+
+export type StaticActivities = {
+    name: string;
+    metaTitle: string;
+    metaDescription: string;
+    content: string;
+    displayCount: number;
+    orderId: number;
+}
+
+export type StaticSubjects = {
+    name: string;
+    metaTitle: string;
+    icon: string;
+    metaDescription: string;
+    orderId: number;
+    activities: StaticActivities[];
+};

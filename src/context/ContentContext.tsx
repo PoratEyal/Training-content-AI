@@ -7,6 +7,9 @@ import { addSessionData } from "../utils/movment";
 import { useAuthContext } from "./AuthContext";
 import { Movements } from "../models/resources/movment";
 import { SessionKey } from "../models/enum/storage";
+import { fetchGetSavedActivities } from "../utils/fetch";
+import { useErrorContext } from "./ErrorContext";
+import msg from "../models/resources/errorMsg.json";
 
 export const ContentContext = createContext<ContentContextType>(typeContext);
 
@@ -14,7 +17,9 @@ export const useContentContext = () => useContext(ContentContext);
 
 export const ContentProvider = ({ children }: { children: React.ReactNode }) => {
     const { currentUser } = useAuthContext();
+    const { handleError } = useErrorContext();
     const [data, setData] = useState<DataType | undefined>();
+    const [savedActivity, setSavedActivity] = useState<Activity[] | undefined>();
     const [mainActivity, setMainActivity] = useState<Activity | undefined>();
 
     const setStateFromSession = () => {
@@ -46,6 +51,19 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
             });
         }
     }, [currentUser]);
+
+    const getSavedActivities = async () => {
+        if (currentUser && currentUser.id) {
+            try {
+                const response = await fetchGetSavedActivities(currentUser.id);
+                if (response.result === "success" && response.activities) {
+                    setSavedActivity(response.activities);
+                }
+            } catch (error) {
+                handleError(msg.error.message);
+            }
+        }
+    }
 
     const updateDetails = (movement, grade, amount, gender) => {
         setData((prevData) => {

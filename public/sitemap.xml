@@ -13,6 +13,10 @@
       <priority>0.5</priority>
    </url>
    <url>
+      <loc>https://activitywiz.com/myactivities</loc>
+      <priority>0.5</priority>
+   </url>
+   <url>
       <loc>https://activitywiz.com/activity</loc>
       <priority>0.5</priority>
    </url>
@@ -20,6 +24,8 @@
       <loc>https://activitywiz.com/privacyPolicy</loc>
       <priority>0.1</priority>
    </url>
+
+
 
    <url>
       <loc>https://activitywiz.com/content</loc>
