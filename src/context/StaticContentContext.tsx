@@ -33,7 +33,7 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
     };
 
     useEffect(() => {
-        if(subjects.length !== 0){
+        if(subjects.length === 0){
             fetchSubjects();
         }
     }, []);
