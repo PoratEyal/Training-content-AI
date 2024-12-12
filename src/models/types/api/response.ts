@@ -1,6 +1,4 @@
-import { StaticActivities } from "../../interface/StaticActivities";
-import { StaticSubjects } from "../../interface/staticSubjects";
-import { Activity } from "../activity";
+import { Activity, StaticActivities, StaticSubjects } from "../activity";
 import { User } from "../user";
 
 export type Resposne = "success" | "notFound" | "safety" | "error"

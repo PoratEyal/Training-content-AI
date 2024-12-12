@@ -131,12 +131,12 @@ function BuildActivity() {
                     width={100}
                     height={130}
                 ></img>
-                <div className={styles.build_content}>
-                    {loading ? (
-                        <section className={styles.loading_mock_selection_container}>
-                            <SmallLoading />
-                        </section>
-                    ) : (
+                {loading ? (
+                    <section className={styles.loading_mock_selection_container}>
+                        <SmallLoading />
+                    </section>
+                ) : (
+                    <div className={styles.build_content}>
                         <section className={styles.build_container}>
                             <SelectDetails
                                 placeholder="סוג הפעולה"
@@ -167,22 +167,22 @@ function BuildActivity() {
                                 data={ActivityTimeOptions}
                             />
                         </section>
-                    )}
-                    <div className={styles.btn_div}>
-                        <MainBtn
-                            isDisabled={isDisabled}
-                            height={42}
-                            text={"הצעה לפעולה"}
-                            func={submitHandler}
-                        ></MainBtn>
-                        {hasAlert ? (
-                            <div className={styles.input_alert}>
-                                שימו לב! מקור הפעולות הינו מערכת בינה מלאכותית, יכול להיות וחיפושים
-                                מסויימים עדיין לא התעדכנו במערכת
-                            </div>
-                        ) : null}
+                        <div className={styles.btn_div}>
+                            <MainBtn
+                                isDisabled={isDisabled}
+                                height={42}
+                                text={"הצעה לפעולה"}
+                                func={submitHandler}
+                            ></MainBtn>
+                            {hasAlert ? (
+                                <div className={styles.input_alert}>
+                                    שימו לב! מקור הפעולות הינו מערכת בינה מלאכותית, יכול להיות
+                                    וחיפושים מסויימים עדיין לא התעדכנו במערכת
+                                </div>
+                            ) : null}
+                        </div>
                     </div>
-                </div>
+                )}
                 {clicked ? <LoadingActivity /> : null}
             </div>
         </PageLayout>

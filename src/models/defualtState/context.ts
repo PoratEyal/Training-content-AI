@@ -28,3 +28,8 @@ export const defualtAuthContext = {
     handlePopupClose: () => {},
     setIsPopupVisible: () => {},
 };
+
+export const defualtStaticContentContext = {
+    subjects: [],
+    isLoading: true,
+};

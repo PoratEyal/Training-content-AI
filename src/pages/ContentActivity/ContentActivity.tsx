@@ -9,8 +9,7 @@ import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import ActivityOutputStatic from "../../components/ActivityOutput/ActivityOutputStatic";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
-import { StaticSubjects } from "../../models/interface/staticSubjects";
-import { StaticActivities } from "../../models/interface/StaticActivities";
+import { StaticActivities, StaticSubjects } from "../../models/types/activity";
 
 function ContentActivity() {
     const navigate = useNavigate();
