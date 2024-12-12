@@ -15,13 +15,11 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
     const [subjects, setSubjects] = useState<StaticSubjects[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
-    const fetchSubjects = async () => {
+    const fetchSubjectsData = async () => {
         setIsLoading(true);
         try {
             const response = await fetchStaticSubjects();
-
             if (response.result === "success" && response.subjects) {
-                // Sort subjects by orderId in ascending order
                 const sortedSubjects = response.subjects.sort((a, b) => a.orderId - b.orderId);
                 setSubjects(sortedSubjects);
             }
@@ -34,7 +32,7 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
 
     useEffect(() => {
         if(subjects.length === 0){
-            fetchSubjects();
+            fetchSubjectsData();
         }
     }, []);
 
