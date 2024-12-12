@@ -3,6 +3,8 @@ import route from "../../../router/route.json";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
+import { CiBookmark } from "react-icons/ci";
+import { IoBookmarkOutline } from "react-icons/io5";
 
 const NavOptMyActivities = () => {
     const [isSelected, setIsSelected] = useState<boolean>(false);
@@ -18,7 +20,7 @@ const NavOptMyActivities = () => {
             onClick={()=>navigate(route.myactivities)}
             className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
         >
-            <CgProfile className={styles.icon} />
+            <IoBookmarkOutline className={styles.icon} />
             <span className={styles.text}>הפעולות שלי</span>
         </div>
     );

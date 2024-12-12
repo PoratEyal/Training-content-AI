@@ -21,7 +21,7 @@ function DropOptSignIn({ handleClose }: DropOptSignInProps) {
 
     return (
         <span className={styles.text_and_icon} onClick={() => handleClick()}>
-            הרשמה
+            התחברות
             <RiLoginBoxFill />
         </span>
     );
