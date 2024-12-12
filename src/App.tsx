@@ -13,8 +13,6 @@ import { AuthProvider } from "./context/AuthContext";
 import Home from "./pages/Home/Home";
 import route from "./router/route.json";
 import "./App.css";
-import Maintenance from "./pages/Maintenance/Maintenance";
-import Status from "./pages/Status/Status";
 import BuildActivity from "./pages/BuildActivity/BuildActivity";
 import ContentActivity from "./pages/ContentActivity/ContentActivity";
 import ContentActivities from "./pages/ContentActivities/ContentActivities";
@@ -37,19 +35,16 @@ function App() {
                                         <Route path={route.home} element={<Home />} />
                                         <Route path={route.details} element={<Details />} />
                                         <Route path={route.build} element={<BuildActivity />} />
-                                    <Route path={route.activity} element={<Activity />} />
+                                        <Route path={route.activity} element={<Activity />} />
                                     </Route>
                                     <Route path={route.privacyPolicy} element={<PrivacyPolicy />} />
                                     <Route path={route.content} element={<Content />} />
-
                                     <Route path={route.myactivities} element={<SavedActivities />} />
                                     <Route path={route.savedActivity} element={<SaveActivity />} />
 
                                     <Route path={route.popularActivities} element={<PopularActivities />} />
-
                                     <Route path={route.contentActivities} element={<ContentActivities />} />
                                     <Route path={route.contentActivity} element={<ContentActivity />} />
-                                    {/* <Route path={route.status} element={<Status />} /> */}
                                     <Route path={route.all} element={<Navigate replace to={route.home} />} />
                                 </Routes>
                             </Router>

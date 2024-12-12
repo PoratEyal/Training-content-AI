@@ -25,7 +25,6 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
         setIsLoading(true);
         try {
             const response = await fetchStaticSubjects();
-
             if (response.result === "success" && response.subjects) {
                 // Sort subjects by orderId in ascending order
                 const sortedSubjects = response.subjects.sort((a, b) => a.orderId - b.orderId);
