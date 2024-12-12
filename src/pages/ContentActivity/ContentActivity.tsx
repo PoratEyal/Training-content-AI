@@ -19,7 +19,7 @@ function ContentActivity() {
     const contentActivityPath = `${route.content}/${activityId}/${contentId}`;
 
     // Extract fromPopular from location.state
-    const { fromPopular } = location.state || {};
+    const { fromPopular } = (location.state as { fromPopular?: boolean }) || {};
 
     const goBack = () => {
         if (fromPopular) {
@@ -29,12 +29,53 @@ function ContentActivity() {
         }
     };
 
-    let subject: StaticSubjects = null;
-    let activity: StaticActivities = null;
+    // המתנה לטעינת הנתונים:
+    if (isLoading) {
+        return (
+            <PageLayout
+                path={contentActivityPath}
+                hasGreenBackground
+                hasHeader={{ goBack }}
+                hesAds={CONTENT_ACTIVITY_AD_SLOT}
+                title=""
+                content=""
+                hasNavBar
+            >
+                <section className={styles.activity_data_container}>
+                    <SmallLoading />
+                </section>
+            </PageLayout>
+        );
+    }
 
-    if (!isLoading && subjects) {
+    // אם הגענו לכאן, הנתונים הנטענו. כעת נאתר את subject וה-activity
+    let subject: StaticSubjects | undefined;
+    let activity: StaticActivities | undefined;
+
+    if (subjects && subjects.length > 0) {
         subject = subjects.find((subj) => subj.name === activityId);
-        activity = subject?.activities.find((act) => act.name === contentId);
+        if (subject && subject.activities && subject.activities.length > 0) {
+            activity = subject.activities.find((act) => act.name === contentId);
+        }
+    }
+
+    // אם עדיין לא מצאנו subject או activity, נציג הודעה מתאימה
+    if (!subject || !activity) {
+        return (
+            <PageLayout
+                path={contentActivityPath}
+                hasGreenBackground
+                hasHeader={{ goBack }}
+                hesAds={CONTENT_ACTIVITY_AD_SLOT}
+                title=""
+                content=""
+                hasNavBar
+            >
+                <div className={styles.activity_data_container}>
+                    <p>לא נמצאה פעולה מתאימה.</p>
+                </div>
+            </PageLayout>
+        );
     }
 
     return (
@@ -43,25 +84,17 @@ function ContentActivity() {
             hasGreenBackground
             hasHeader={{ goBack }}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
-            title={activity ? activity.metaTitle : ""}
-            content={activity ? activity.metaDescription : ""}
+            title={activity.metaTitle}
+            content={activity.metaDescription}
             hasNavBar
         >
             <ActivityReady subject={activity.metaTitle} />
-            {isLoading ? (
-                <section className={styles.activity_data_container}>
-                    <SmallLoading />
-                </section>
-            ) : (
-                <section className={styles.activity_data_container}>
-                    {activity ? (
-                        <article>
-                            <ActivityOutputStatic activity={activity.content} />
-                        </article>
-                    ) : null}
-                    <div className={styles.padding} />
-                </section>
-            )}
+            <section className={styles.activity_data_container}>
+                <article>
+                    <ActivityOutputStatic activity={activity.content} />
+                </article>
+                <div className={styles.padding} />
+            </section>
         </PageLayout>
     );
 }
