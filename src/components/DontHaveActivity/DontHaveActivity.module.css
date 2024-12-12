@@ -1,0 +1,48 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.title{
+    font-weight: 500;
+}
+
+.mainText{
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+
+
+  .iconWrapper {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    pointer-events: none; /* Ensure it's non-clickable */
+  }
+  
+  /* SVG styling */
+  .svgIcon {
+    width: 13px;
+    height: auto;
+  }
+  
+  .svgIcon path {
+    stroke: var(--primary-color);
+    stroke-width: 4;
+    fill: transparent;
+  }
+  
