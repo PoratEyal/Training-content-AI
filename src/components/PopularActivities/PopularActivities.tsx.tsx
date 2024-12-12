@@ -7,7 +7,7 @@ import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import TopActivities from "../titles/TopActivities/TopActivities";
 import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
-import { StaticActivities } from "../../models/interface/StaticActivities";
+import { StaticActivities } from "../../models/types/activity";
 
 function PopularActivities() {
     const navigate = useNavigate();

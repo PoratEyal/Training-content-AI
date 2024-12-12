@@ -16,7 +16,7 @@ function Header({ goBack, isBlur = false }: HeaderProps) {
     return (
         <section className={style}>
             <div className={styles.header_container}>
-                {!loading ? <Profile img={isLoggedIn ? currentUser?.image : undefined} /> : null}
+                <Profile img={isLoggedIn ? currentUser?.image : undefined} isLoading={loading} />
                 {!loading && goBack ? (
                     <IoMdArrowRoundBack onClick={goBack} className={styleIcon} />
                 ) : null}

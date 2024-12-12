@@ -32,6 +32,7 @@
     direction: ltr;
     width: 100%;
     z-index: 2;
+    height: 30px;
 }
 
 .back_icon {

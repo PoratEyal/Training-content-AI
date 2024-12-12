@@ -9,9 +9,7 @@ import ReadyContentName from "../../components/titles/ReadyContentName/ReadyCont
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
-import { StaticSubjects } from "../../models/interface/staticSubjects";
-import { StaticActivities } from "../../models/interface/StaticActivities";
-import { Activity } from "../../models/types/activity";
+import { StaticActivities, StaticSubjects } from "../../models/types/activity";
 
 const ContentActivities: React.FC = () => {
     const navigate = useNavigate();
