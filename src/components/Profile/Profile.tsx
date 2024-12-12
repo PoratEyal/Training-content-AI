@@ -12,30 +12,40 @@ import useToggle from "../../hooks/useToggle";
 
 type ProfileProps = {
     img?: string;
+    isLoading: boolean;
 };
 
-function Profile({ img }: ProfileProps) {
+function Profile({ img, isLoading }: ProfileProps) {
     const { isLoggedIn } = useAuthContext();
     const [isOpen, toggle, close] = useToggle(false);
 
     return (
         <div style={{ position: "relative" }}>
-            <div className={styles.user_profile} onClick={toggle}>
-                <div className={styles.img_div}>
-                    {img ? (
-                        <img
-                            className={styles.user_profile_img}
-                            src={img}
-                            height={30}
-                            width={30}
-                            alt="Profile image"
-                            title="Profile image"
-                        />
-                    ) : (
+            {isLoading ? (
+                <div className={styles.user_profile}>
+                    <div className={styles.img_div}>
                         <FaUserCircle className={styles.no_user_profile_img} />
-                    )}
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <div className={styles.user_profile} onClick={toggle}>
+                    <div className={styles.img_div}>
+                        {img ? (
+                            <img
+                                className={styles.user_profile_img}
+                                src={img}
+                                height={30}
+                                width={30}
+                                alt="Profile image"
+                                title="Profile image"
+                            />
+                        ) : (
+                            <FaUserCircle className={styles.no_user_profile_img} />
+                        )}
+                    </div>
+                </div>
+            )}
+
             {isOpen ? (
                 <Dropdown handleClose={close}>
                     <DropOptInviteFriends />

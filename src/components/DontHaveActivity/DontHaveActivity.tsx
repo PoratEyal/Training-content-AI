@@ -17,7 +17,7 @@ function DontHaveActivity() {
                     </svg>
                 </div>
             </div>
-            <div>במסך יצירת פעולות</div>
+            <div>לאחר יצירת פעולת חדשה</div>
         </div>
     );
 }

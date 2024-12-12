@@ -5,11 +5,11 @@ import route from "../../router/route.json";
 import useSignIn from "../../hooks/useSignIn";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import {
-  COOKIE_LIMIT_KEY,
-  NEED_TO_LOGIN,
-  POPUP_REVIEW,
-  VISIT_COUNT_KEY,
-  CookieOptions,
+    COOKIE_LIMIT_KEY,
+    NEED_TO_LOGIN,
+    POPUP_REVIEW,
+    VISIT_COUNT_KEY,
+    CookieOptions,
 } from "../../models/constants/cookie";
 import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI";
 import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
@@ -25,140 +25,143 @@ import { useCookies } from "react-cookie";
 import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
 
 function Home() {
-  const {
-    currentUser,
-    isLoggedIn,
-    cookies: authCookies,
-    setLimitCookie,
-    isPopupVisible,
-    handlePopupClose,
-    setIsPopupVisible,
-  } = useAuthContext();
+    const {
+        currentUser,
+        isLoggedIn,
+        cookies: authCookies,
+        setLimitCookie,
+        isPopupVisible,
+        handlePopupClose,
+        setIsPopupVisible,
+    } = useAuthContext();
 
-  const navigate = useNavigate();
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(true);
-  const [cookies, setCookie] = useCookies([POPUP_REVIEW, VISIT_COUNT_KEY]);
+    const navigate = useNavigate();
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false);
+    const [cookies, setCookie] = useCookies([POPUP_REVIEW, VISIT_COUNT_KEY]);
 
-  const handleStart = () => {
-    const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
-    Session.remove(SessionKey.NAVIGATE);
-    if (navigateTo) navigate(navigateTo);
-  };
-
-  const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart);
-
-  useEffect(() => {
-    const isRememberMe: string | undefined = Local.get(LocalKey.REMEMBER_ME);
-    let timeoutId: NodeJS.Timeout;
-    if (isRememberMe) {
-      if (isLoggedIn) {
-        setIsUserLoggedIn(false);
-      } else {
-        timeoutId = setTimeout(() => {
-          setIsUserLoggedIn(false);
-        }, 4000);
-      }
-    } else {
-      setIsUserLoggedIn(false);
-    }
-
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId);
+    const handleStart = () => {
+        const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
+        Session.remove(SessionKey.NAVIGATE);
+        if (navigateTo) navigate(navigateTo);
     };
-  }, [isLoggedIn]);
 
-  // Run once to increment visit count and possibly show popup
-  useEffect(() => {
-    let visitCount = parseInt(cookies[VISIT_COUNT_KEY] || "0", 10);
-    if (isNaN(visitCount)) {
-      visitCount = 0;
-    }
+    const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart);
 
-    visitCount += 1;
-    setCookie(VISIT_COUNT_KEY, visitCount.toString(), CookieOptions);
+    useEffect(() => {
+        const isRememberMe: string | undefined = Local.get(LocalKey.REMEMBER_ME);
+        let timeoutId: NodeJS.Timeout;
 
-    if (!cookies[POPUP_REVIEW] && visitCount >= 3) {
-      const timer = setTimeout(() => {
-        setIsPopupVisible(true);
-      }, 1000);
+        if (isUserLoggedIn == false) {
+            if (isRememberMe) {
+                if (isLoggedIn && currentUser?.image) {
+                    setIsUserLoggedIn(true);
+                }
+                else {
+                    timeoutId = setTimeout(() => {
+                        setIsUserLoggedIn(true);
+                    }, 7000);
+                }
+            } else {
+                setIsUserLoggedIn(true);
+            }
+        }
 
-      return () => clearTimeout(timer);
-    }
-  }, []);
+        return () => {
+            if (timeoutId) clearTimeout(timeoutId);
+        };
+    }, [isLoggedIn, currentUser?.image]);
 
-  const navigateAndSetCookieDate = (navigateTo: string) => {
-    setLimitCookie(new Date().toString());
-    navigate(navigateTo);
-  };
+    // Run once to increment visit count and possibly show popup
+    useEffect(() => {
+        let visitCount = parseInt(cookies[VISIT_COUNT_KEY] || "0", 10);
+        if (isNaN(visitCount)) {
+            visitCount = 0;
+        }
 
-  const guestSignInOrNavigate = (limitDate: string, navigateTo: string) => {
-    const isValidDate = isValidDateFormat(limitDate);
-    if (isValidDate) {
-      const isMoreThanDay = isMoreThanADayAfter(limitDate);
+        visitCount += 1;
+        setCookie(VISIT_COUNT_KEY, visitCount.toString(), CookieOptions);
 
-      if (isMoreThanDay) {
-        signInWithGoogle();
-      } else {
-        navigateAndSetCookieDate(navigateTo);
-      }
-    }
-  };
+        if (!cookies[POPUP_REVIEW] && visitCount >= 3) {
+            const timer = setTimeout(() => {
+                setIsPopupVisible(true);
+            }, 1000);
 
-  const startAsGuestOrUser = (navigateTo: string) => {
-    if (currentUser && isLoggedIn) {
-      navigate(navigateTo);
-      return;
-    }
+            return () => clearTimeout(timer);
+        }
+    }, []);
 
-    Session.set(SessionKey.NAVIGATE, navigateTo);
-    let limitDate = authCookies[COOKIE_LIMIT_KEY];
-    if (limitDate) {
-      if (limitDate === NEED_TO_LOGIN) {
-        signInWithGoogle();
-      } else {
-        guestSignInOrNavigate(limitDate, navigateTo);
-      }
-    } else {
-      navigateAndSetCookieDate(navigateTo);
-    }
-  };
+    const navigateAndSetCookieDate = (navigateTo: string) => {
+        setLimitCookie(new Date().toString());
+        navigate(navigateTo);
+    };
 
-  return (
-    <PageLayout
-      path={route.home}
-      hasFooter
-      title={helmet.home.title}
-      content={helmet.home.content}
-      /** hasHeader={{}} -> show only the profile image **/ 
-      hasHeader={{}}
-    >
-      {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />}
+    const guestSignInOrNavigate = (limitDate: string, navigateTo: string) => {
+        const isValidDate = isValidDateFormat(limitDate);
+        if (isValidDate) {
+            const isMoreThanDay = isMoreThanADayAfter(limitDate);
 
-      <div className={styles.logo_text_div}>
-        <ContinueWithAI />
-        <h1 className={styles.home_lable}>מותאם, פשוט ומהיר 🤟</h1>
-      </div>
+            if (isMoreThanDay) {
+                signInWithGoogle();
+            } else {
+                navigateAndSetCookieDate(navigateTo);
+            }
+        }
+    };
 
-      {isUserLoggedIn || (isLoading && !isLoggedIn && !currentUser?.image) ? (
-        <div className={styles.button_section_loading}>
-          <SmallLoading />
-        </div>
-      ) : (
-        <section className={styles.button_section}>
-          <StartBtn
-            text="צרו פעולות חדשות"
-            onClick={() => startAsGuestOrUser(route.details)}
-            isDisabled={btnDisabled}
-          />
-          <LinkBtn
-            text="צפו בפעולות מוכנות"
-            onClick={() => startAsGuestOrUser(route.content)}
-            isDisabled={btnDisabled}
-          />
-        </section>
-      )}
-    </PageLayout>
-  );
+    const startAsGuestOrUser = (navigateTo: string) => {
+        if (currentUser && isLoggedIn) {
+            navigate(navigateTo);
+            return;
+        }
+
+        Session.set(SessionKey.NAVIGATE, navigateTo);
+        let limitDate = authCookies[COOKIE_LIMIT_KEY];
+        if (limitDate) {
+            if (limitDate === NEED_TO_LOGIN) {
+                signInWithGoogle();
+            } else {
+                guestSignInOrNavigate(limitDate, navigateTo);
+            }
+        } else {
+            navigateAndSetCookieDate(navigateTo);
+        }
+    };
+
+    return (
+        <PageLayout
+            path={route.home}
+            hasFooter
+            title={helmet.home.title}
+            content={helmet.home.content}
+            hasHeader={{}} /** -> show only the profile image **/
+        >
+            <div className={styles.logo_text_div}>
+                <ContinueWithAI />
+                <h1 className={styles.home_lable}>מותאם, פשוט ומהיר 🤟</h1>
+            </div>
+
+            {isUserLoggedIn || !isLoading || (isLoggedIn && currentUser?.image) ? (
+                <section className={styles.button_section}>
+                    <StartBtn
+                        text="צרו פעולות חדשות"
+                        onClick={() => startAsGuestOrUser(route.details)}
+                        isDisabled={btnDisabled}
+                    />
+                    <LinkBtn
+                        text="צפו בפעולות מוכנות"
+                        onClick={() => startAsGuestOrUser(route.content)}
+                        isDisabled={btnDisabled}
+                    />
+                </section>
+            ) : (
+                <div className={styles.button_section_loading}>
+                    <SmallLoading />
+                </div>
+            )}
+
+            {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />}
+        </PageLayout>
+    );
 }
 
 export default Home;

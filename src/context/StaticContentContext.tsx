@@ -1,18 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { StaticSubjects } from "../models/interface/staticSubjects";
 import { useErrorContext } from "./ErrorContext";
 import msg from "../models/resources/errorMsg.json";
 import { fetchStaticSubjects } from "../utils/fetch";
+import { StaticSubjects } from "../models/types/activity";
+import { StaticContentContextType } from "../models/types/context";
+import { defualtStaticContentContext } from "../models/defualtState/context";
 
-interface StaticContentContextType {
-    subjects: StaticSubjects[];
-    isLoading: boolean;
-}
-
-const StaticContentContext = createContext<StaticContentContextType>({
-    subjects: [],
-    isLoading: true,
-});
+const StaticContentContext = createContext<StaticContentContextType>(defualtStaticContentContext);
 
 export const useStaticContentContext = () => useContext(StaticContentContext);
 
@@ -29,12 +23,8 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
                 // Sort subjects by orderId in ascending order
                 const sortedSubjects = response.subjects.sort((a, b) => a.orderId - b.orderId);
                 setSubjects(sortedSubjects);
-            } else {
-                console.error("Error fetching static subjects:", response.message);
-                handleError(msg.error.message);
             }
         } catch (error: any) {
-            console.error("Error in fetchSubjects:", error);
             handleError(msg.error.message);
         } finally {
             setIsLoading(false);
@@ -42,7 +32,9 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
     };
 
     useEffect(() => {
-        fetchSubjects();
+        if(subjects.length !== 0){
+            fetchSubjects();
+        }
     }, []);
 
     return (

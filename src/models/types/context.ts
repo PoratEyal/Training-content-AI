@@ -1,4 +1,4 @@
-import { Activity } from "./activity";
+import { Activity, StaticSubjects } from "./activity";
 import { Movement } from "./movement";
 import { User } from "./user";
 import { Dispatch, SetStateAction } from "react";
@@ -39,3 +39,8 @@ export type AuthContextType = {
     handlePopupClose: () => void;
     setIsPopupVisible: Dispatch<SetStateAction<boolean>>;
 };
+
+export type StaticContentContextType = {
+    subjects: StaticSubjects[];
+    isLoading: boolean;
+}

@@ -7,7 +7,7 @@ import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import TopActivities from "../titles/TopActivities/TopActivities";
 import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
-import { StaticActivities } from "../../models/interface/StaticActivities";
+import { StaticActivities } from "../../models/types/activity";
 
 function PopularActivities() {
     const navigate = useNavigate();
@@ -52,8 +52,8 @@ function PopularActivities() {
             hasHeader={{ goBack }}
             hasNavBar
             hasGreenBackground
-            title="פעולות נפוצות"
-            content="הפעולות הנפוצות ביותר באתר"
+            title="הפעולות הפופולריות"
+            content="הפעולות הפופולריות ביותר - גלו את 10 הפעולות המובילות לפעילות קבוצתית, חינוכית ומהנה בתנועות נוער ובקבוצות שונות"
             hesAds={ACTIVITY_AD_SLOT}
         >
             <TopActivities />
@@ -75,7 +75,7 @@ function PopularActivities() {
                         </Link>
                         ))
                     ) : (
-                        <div>No activities found.</div>
+                        <div>אין כרגע פעולות זמינות ברשימה</div>
                     )}
                     </section>
                 </article>
