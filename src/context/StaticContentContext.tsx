@@ -15,7 +15,7 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
     const [subjects, setSubjects] = useState<StaticSubjects[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
-    const fetchSubjects = async () => {
+    const fetchSubjectsData = async () => {
         setIsLoading(true);
         try {
             const response = await fetchStaticSubjects();
@@ -23,18 +23,22 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
                 // Sort subjects by orderId in ascending order
                 const sortedSubjects = response.subjects.sort((a, b) => a.orderId - b.orderId);
                 setSubjects(sortedSubjects);
+            } else {
+                // If there's an error in the response but no exception
+                handleError(msg.error.message);
             }
         } catch (error: any) {
+            // On any error, handle it
             handleError(msg.error.message);
         } finally {
+            // Ensure loading is false after attempt
             setIsLoading(false);
         }
     };
 
     useEffect(() => {
-        if(subjects.length !== 0){
-            fetchSubjects();
-        }
+        // Always fetch subjects on mount, no condition needed
+        fetchSubjectsData();
     }, []);
 
     return (
