@@ -31,10 +31,6 @@ export type AuthContextType = {
     isLoggedIn: boolean;
     loading: boolean;
     logout: () => Promise<void>;
-    cookies: any;
-    setCookie: (name: string, value: any, options?: any) => void;
-    setLimitCookie: (data: string | number) => void;
-    setConsentCookie: () => void;
     isPopupVisible: boolean;
     handlePopupClose: () => void;
     setIsPopupVisible: Dispatch<SetStateAction<boolean>>;
@@ -43,4 +39,18 @@ export type AuthContextType = {
 export type StaticContentContextType = {
     subjects: StaticSubjects[];
     isLoading: boolean;
+}
+
+export type CookiesContextType = {
+    cookieLimit: string | undefined;
+    cookieUserConsent: string | undefined;
+    cookiePopupReview: string | undefined;
+    cookieVisitCount: string | undefined;
+    cookieRememberMe: string | undefined;
+    removeRememberMeCookie: () => void;
+    setRememberMeCookie: () => void;
+    setPopupReviewCookie: () => void;
+    setConsentCookie: () => void;
+    setLimitCookie: (data: string | number) => void;
+    setVisitCount: (visitCount: number) => void;
 }

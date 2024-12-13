@@ -15,4 +15,5 @@ export const POPUP_REVIEW = "popup_review";
 
 export const VISIT_COUNT_KEY = 'visitCount';
 
+export const REMEMEBER_ME_KEY = 'rememberMe';
 

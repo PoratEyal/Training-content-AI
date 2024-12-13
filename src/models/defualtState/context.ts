@@ -1,3 +1,4 @@
+import { AuthContextType, CookiesContextType } from "../types/context";
 
 export const typeContext = {
     data: undefined,
@@ -15,15 +16,11 @@ export const defualtErrorContext = {
     handleSuccess: () => {},
 };
 
-export const defualtAuthContext = {
+export const defualtAuthContext: AuthContextType = {
     currentUser: null,
     isLoggedIn: false,
     loading: true,
     logout: async () => {},
-    cookies: {},
-    setCookie: () => {},
-    setLimitCookie: () => {},
-    setConsentCookie: () => {},
     isPopupVisible: false,
     handlePopupClose: () => {},
     setIsPopupVisible: () => {},
@@ -33,3 +30,17 @@ export const defualtStaticContentContext = {
     subjects: [],
     isLoading: true,
 };
+
+export const defualtCookiesContext: CookiesContextType = {
+    cookieLimit: undefined,
+    cookieUserConsent: undefined,
+    cookiePopupReview: undefined,
+    cookieVisitCount: undefined,
+    cookieRememberMe: undefined,
+    removeRememberMeCookie: () => {},
+    setRememberMeCookie: () => {},
+    setPopupReviewCookie: () => {},
+    setConsentCookie: () => {},
+    setLimitCookie: () => {},
+    setVisitCount: () => {},
+}

@@ -1,4 +1,4 @@
-import { useEffect, createContext, useState, useContext, useRef } from "react";
+import { useEffect, createContext, useState, useContext } from "react";
 import { auth } from "../config/firebase";
 import { getRedirectResult, onAuthStateChanged } from "firebase/auth";
 import { AuthContextType } from "../models/types/context";
@@ -6,52 +6,42 @@ import { defualtAuthContext } from "../models/defualtState/context";
 import { GoogleUser, User } from "../models/types/user";
 import { fetchCreateNewUser } from "../utils/fetch";
 import { useErrorContext } from "./ErrorContext";
-import { useCookies } from "react-cookie";
 import { addSessionData } from "../utils/movment";
-import {
-    COOKIE_LIMIT_KEY,
-    COOKIE_USER_CONSENT,
-    CookieOptions,
-    NEED_TO_LOGIN,
-    USER_CONSENT_VALUE,
-    POPUP_REVIEW
-} from "../models/constants/cookie";
+import { NEED_TO_LOGIN } from "../models/constants/cookie";
 import { initRawUser } from "../utils/user";
 import msg from "../models/resources/errorMsg.json";
-import Local from "../utils/localStorage";
-import { LocalKey } from "../models/enum/storage";
-
+import { useCookiesContext } from "./CookiesContext";
 
 /**
  * for make getRedirectResult on localhost
  * https://stackoverflow.com/questions/77270210/firebase-onauthstatechanged-user-returns-null-when-on-localhost
  * disable chrome://flags/#third-party-storage-partitioning (found it on default)
-*/
+ */
 
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
 
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-    const isMobile = /iPhone|iPad|iPod|Android|BlackBerry|IEMobile|Opera Mini|Windows Phone|webOS|Kindle|Mobile|Tablet/i.test(navigator.userAgent);
+    const isMobile =
+        /iPhone|iPad|iPod|Android|BlackBerry|IEMobile|Opera Mini|Windows Phone|webOS|Kindle|Mobile|Tablet/i.test(
+            navigator.userAgent,
+        );
     const { handleError } = useErrorContext();
+    const { cookieLimit, setLimitCookie, setPopupReviewCookie, removeRememberMeCookie } =
+        useCookiesContext();
     const [currentUser, setCurrentUser] = useState<User | undefined>();
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
     const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
 
-    // const [generateLimit, setGenerateLimit] = useState<number>(0);
-
-    const [cookies, setCookie] = useCookies([COOKIE_LIMIT_KEY, COOKIE_USER_CONSENT, POPUP_REVIEW]);
-    
     useEffect(() => {
         let unsubscribe: any;
         const handleRedirectResult = async () => {
             const userResult = await getRedirectResult(auth);
             if (userResult) {
-                initializeUser(userResult)
-            }
-            else unsubscribe = onAuthStateChanged(auth, initializeUser);
+                initializeUser(userResult);
+            } else unsubscribe = onAuthStateChanged(auth, initializeUser);
         };
         if (isMobile) handleRedirectResult();
         else unsubscribe = onAuthStateChanged(auth, initializeUser);
@@ -74,15 +64,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                     }
                     setCurrentUser(resultUser);
                     setIsLoggedIn(true);
-                    if (cookies[COOKIE_LIMIT_KEY] !== NEED_TO_LOGIN)
-                        setLimitCookie(NEED_TO_LOGIN);
+                    if (cookieLimit !== NEED_TO_LOGIN) setLimitCookie(NEED_TO_LOGIN);
                     return;
                 }
                 setCurrentUser(undefined);
                 setIsLoggedIn(false);
             }
         } catch (error) {
-            handleError(msg.google.message);       
+            handleError(msg.google.message);
         } finally {
             setLoading(false);
         }
@@ -91,7 +80,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const logout = async () => {
         try {
             await auth.signOut();
-            Local.remove(LocalKey.REMEMBER_ME);
+            removeRememberMeCookie();
             setCurrentUser(undefined);
             setIsLoggedIn(false);
         } catch (error) {
@@ -99,22 +88,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
     };
 
-    const setPopupReviewCookie = () => {
-        setCookie(POPUP_REVIEW, true, CookieOptions);
-    };
-
     const handlePopupClose = () => {
         setIsPopupVisible(false);
         setPopupReviewCookie();
-    };
-
-
-    const setLimitCookie = (data: string | number) => {
-        setCookie(COOKIE_LIMIT_KEY, JSON.stringify(data), CookieOptions);
-    };
-
-    const setConsentCookie = () => {
-        setCookie(COOKIE_USER_CONSENT, USER_CONSENT_VALUE, CookieOptions);
     };
 
     return (
@@ -124,10 +100,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 isLoggedIn,
                 loading,
                 logout,
-                cookies,
-                setCookie,
-                setConsentCookie,
-                setLimitCookie,
                 isPopupVisible,
                 handlePopupClose,
                 setIsPopupVisible,

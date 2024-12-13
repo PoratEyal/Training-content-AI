@@ -11,13 +11,13 @@ import { auth } from "../config/firebase";
 import { useAuthContext } from "../context/AuthContext";
 import { useEffect, useState } from "react";
 import { NEED_TO_LOGIN } from "../models/constants/cookie";
-import Local from "../utils/localStorage";
-import { LocalKey } from "../models/enum/storage";
+import { useCookiesContext } from "../context/CookiesContext";
 
 
 const useSignIn = (handleStart: ()=> void) => {
     const { handleError } = useErrorContext();
-    const { isLoggedIn, loading, currentUser, setLimitCookie } = useAuthContext();
+    const { isLoggedIn, loading, currentUser } = useAuthContext();
+    const { setLimitCookie, setRememberMeCookie, removeRememberMeCookie } = useCookiesContext();
     const isMobile = /iPhone|iPad|iPod|Android|BlackBerry|IEMobile|Opera Mini|Windows Phone|webOS|Kindle|Mobile|Tablet/i.test(navigator.userAgent);    
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
@@ -39,7 +39,7 @@ const useSignIn = (handleStart: ()=> void) => {
             }
             setIsLoading(true);
             setBtnDisabled(true);
-            Local.set(LocalKey.REMEMBER_ME, "true");
+            setRememberMeCookie();
             await setPersistence(auth, rememberMeSession);
             if (isMobile) {
                 await signInWithRedirect(auth, provider);
@@ -63,7 +63,7 @@ const useSignIn = (handleStart: ()=> void) => {
         ) {
             handleError(errMsg.google.message);
         }
-        Local.remove(LocalKey.REMEMBER_ME);
+        removeRememberMeCookie();
         setBtnDisabled(false);
         setIsLoading(false);
     };

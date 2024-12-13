@@ -20,38 +20,62 @@ import { StaticContentProvider } from "./context/StaticContentContext";
 import PopularActivities from "./components/PopularActivities/PopularActivities.tsx";
 import SaveActivity from "./pages/SavedActivity/SavedActivity";
 import SavedActivities from "./pages/SavedActivities/SavedActivities";
+import { CookiesProvider } from "./context/CookiesContext";
 
 function App() {
     return (
         <HelmetProvider>
-            <ErrorContextProvider>
-                <StaticContentProvider>
-                    <AuthProvider>
-                        <ContentProvider>
-                            <ReactNotifications className="react-notifications" />
-                            <Router>
-                                <Routes>
-                                    <Route element={<PrivateRoutes />}>
-                                        <Route path={route.home} element={<Home />} />
-                                        <Route path={route.details} element={<Details />} />
-                                        <Route path={route.build} element={<BuildActivity />} />
-                                        <Route path={route.activity} element={<Activity />} />
-                                    </Route>
-                                    <Route path={route.privacyPolicy} element={<PrivacyPolicy />} />
-                                    <Route path={route.content} element={<Content />} />
-                                    <Route path={route.myactivities} element={<SavedActivities />} />
-                                    <Route path={route.savedActivity} element={<SaveActivity />} />
+            <CookiesProvider>
+                <ErrorContextProvider>
+                    <StaticContentProvider>
+                        <AuthProvider>
+                            <ContentProvider>
+                                <ReactNotifications className="react-notifications" />
+                                <Router>
+                                    <Routes>
+                                        <Route element={<PrivateRoutes />}>
+                                            <Route path={route.home} element={<Home />} />
+                                            <Route path={route.details} element={<Details />} />
+                                            <Route path={route.build} element={<BuildActivity />} />
+                                            <Route path={route.activity} element={<Activity />} />
+                                        </Route>
+                                        <Route
+                                            path={route.privacyPolicy}
+                                            element={<PrivacyPolicy />}
+                                        />
+                                        <Route path={route.content} element={<Content />} />
+                                        <Route
+                                            path={route.myactivities}
+                                            element={<SavedActivities />}
+                                        />
+                                        <Route
+                                            path={route.savedActivity}
+                                            element={<SaveActivity />}
+                                        />
 
-                                    <Route path={route.popularActivities} element={<PopularActivities />} />
-                                    <Route path={route.contentActivities} element={<ContentActivities />} />
-                                    <Route path={route.contentActivity} element={<ContentActivity />} />
-                                    <Route path={route.all} element={<Navigate replace to={route.home} />} />
-                                </Routes>
-                            </Router>
-                        </ContentProvider>
-                    </AuthProvider>
-                </StaticContentProvider>
-            </ErrorContextProvider>
+                                        <Route
+                                            path={route.popularActivities}
+                                            element={<PopularActivities />}
+                                        />
+                                        <Route
+                                            path={route.contentActivities}
+                                            element={<ContentActivities />}
+                                        />
+                                        <Route
+                                            path={route.contentActivity}
+                                            element={<ContentActivity />}
+                                        />
+                                        <Route
+                                            path={route.all}
+                                            element={<Navigate replace to={route.home} />}
+                                        />
+                                    </Routes>
+                                </Router>
+                            </ContentProvider>
+                        </AuthProvider>
+                    </StaticContentProvider>
+                </ErrorContextProvider>
+            </CookiesProvider>
         </HelmetProvider>
     );
 }
