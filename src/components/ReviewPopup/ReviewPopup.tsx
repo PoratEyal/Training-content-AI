@@ -60,17 +60,17 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
         </button>
 
         <div className={styles.popupTitle_div}>
-          <h3 className={styles.popupTitle}>מה חדש?</h3>
+          <h3 className={styles.popupTitle}>רגע! אל תסגרו אותי</h3>
           <FcIdea className={styles.icon_lamp}></FcIdea>
         </div>
 
         <div className={styles.text}>
-          הוספנו קטגוריה חדשה באזור הפעולות המוכנות הכוללת את 10 הפעולות הנפוצות ביותר
+          מה חדש? הוספנו יכולת חדשה לשמירת פעולות שיצרתם באזור אישי 🔖
         </div>
 
         <form className={styles.popupForm}>
           <div className={styles.popupText}>
-            <div className={styles.text}>📢 יש לכם רעיון לשיפור? או סתם משהו לשתף?</div>
+            <div className={styles.text}>יש לכם רעיון לשיפור? או סתם משהו לשתף?</div>
             <textarea
               value={textInput}
               onChange={(e) => setTextInput(e.target.value)}
