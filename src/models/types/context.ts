@@ -54,3 +54,10 @@ export type CookiesContextType = {
     setLimitCookie: (data: string | number) => void;
     setVisitCount: (visitCount: number) => void;
 }
+
+export type SaveContextType = {
+    savedActivity: Activity[];
+    isLoading: boolean;
+    getSavedActivities: () => void;
+    deleteActivity: (activityToDelete: Activity) => void;
+}

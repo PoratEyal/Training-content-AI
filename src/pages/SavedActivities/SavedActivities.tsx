@@ -8,62 +8,23 @@ import helmet from "../../models/resources/helmet.json";
 import { MY_ACTIVITIES_AD_SLOT } from "../../models/constants/adsSlot";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useAuthContext } from "../../context/AuthContext";
-import { useState, useEffect } from "react";
-import { Activity } from "../../models/types/activity";
+import { useEffect } from "react";
 import { TiDelete } from "react-icons/ti";
-import { fetchGetSavedActivities, fetchRemoveActivity } from "../../utils/fetch";
-import { useErrorContext } from "../../context/ErrorContext";
-import msg from "../../models/resources/errorMsg.json";
-import { RemoveActivityRequest } from "../../models/types/api/request";
 import DontHaveActivity from "../../components/DontHaveActivity/DontHaveActivity";
+import { useSaveContext } from "../../context/SavedContext";
 
 const SavedActivities: React.FC = () => {
     const navigate = useNavigate();
+    const { savedActivity, isLoading, getSavedActivities, deleteActivity } = useSaveContext()
     const { currentUser } = useAuthContext();
-    const { handleError } = useErrorContext();
-    const [userActivities, setUserActivities] = useState<Activity[]>([]);
-    const [loadingActivities, setLoadingActivities] = useState(true);
 
     const goBack = () => {
         navigate(route.home); //TODO: -1 or home
     };
 
-    const getActivities = async () => {
-        if (currentUser && currentUser.id) {
-            try {
-                setLoadingActivities(true);
-                const response = await fetchGetSavedActivities(currentUser.id);
-                if (response.result === "success" && response.activities) {
-                    setUserActivities(response.activities);
-                }
-            } catch (error) {
-                handleError(msg.error.message);
-            } finally {
-                setLoadingActivities(false);
-            }
-        }
-    };
-
     useEffect(() => {
-        getActivities();
+        getSavedActivities();
     }, [currentUser]);
-
-    const handleDeleteActivity = async (activityToDelete: Activity) => {
-        if (currentUser && currentUser.id) {
-            try {
-                setUserActivities((prevActivities) =>
-                    prevActivities.filter((act) => act !== activityToDelete),
-                );
-                //TODO: add alert that the activity was removed
-                await fetchRemoveActivity({
-                    userId: currentUser.id,
-                    activityId: activityToDelete.id,
-                } as RemoveActivityRequest);
-            } catch (error) {
-                // handleError("לא הצלחנו למחוק את הפעולה, אנא נסו שוב."); // TODO
-            }
-        }
-    };
 
     return (
         <PageLayout
@@ -79,17 +40,17 @@ const SavedActivities: React.FC = () => {
             <MyActivitiesTitle />
 
             <article className={styles.content_article}>
-                {loadingActivities ? (
+                {isLoading ? (
                     <section className={styles.grid_container}>
                         <SmallLoading />
                     </section>
-                ) : userActivities.length === 0 ? (
+                ) : savedActivity?.length === 0 ? (
                     <section className={styles.grid_container}>
                         <DontHaveActivity />
                     </section>
                 ) : (
                     <section className={styles.grid_container}>
-                        {userActivities.map((activity, index) => (
+                        {savedActivity?.map((activity, index) => (
                             <div 
                                 key={index} 
                                 className={styles.grid_item}
@@ -106,7 +67,7 @@ const SavedActivities: React.FC = () => {
                                     className={`${styles.delete_icon} delete_icon`}
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        handleDeleteActivity(activity);
+                                        deleteActivity(activity);
                                     }}
                                 />
                             </div>

@@ -1,4 +1,4 @@
-import { AuthContextType, CookiesContextType } from "../types/context";
+import { AuthContextType, CookiesContextType, SaveContextType } from "../types/context";
 
 export const typeContext = {
     data: undefined,
@@ -43,4 +43,11 @@ export const defualtCookiesContext: CookiesContextType = {
     setConsentCookie: () => {},
     setLimitCookie: () => {},
     setVisitCount: () => {},
+}
+
+export const defualtSaveContext: SaveContextType = {
+    savedActivity: [],
+    isLoading: false,
+    getSavedActivities: () => {},
+    deleteActivity: () => {},
 }

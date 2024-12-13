@@ -10,49 +10,29 @@ import ActivityOutputStatic from "../../components/ActivityOutput/ActivityOutput
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useAuthContext } from "../../context/AuthContext";
 import { Activity } from "../../models/types/activity";
-import { fetchGetSavedActivities } from "../../utils/fetch";
-import { useErrorContext } from "../../context/ErrorContext";
-import msg from "../../models/resources/errorMsg.json";
+import { useSaveContext } from "../../context/SavedContext";
 
-function SavedActivity() {
+const SavedActivity: React.FC = () => {
     const { subject } = useParams<{ subject: string }>();
     const navigate = useNavigate();
-    const { handleError } = useErrorContext();
     const { currentUser } = useAuthContext();
+    const {savedActivity, isLoading} = useSaveContext();
     const [activity, setActivity] = useState<Activity | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
+
     const goBack = () => {
         navigate(route.myactivities);
     };
-    
-    const getActivities = async () => {
-        if (currentUser && currentUser.id && subject) {
-            try {
-                setIsLoading(true);
-                const response = await fetchGetSavedActivities(currentUser.id);
-                if (
-                    (response.result === "success" || response.result === "safety") &&
-                    response.activities
-                ) {
-                    const foundActivity = response.activities.find(
-                        (act) => act.subject === subject,
-                    );
-                    if (foundActivity) {
-                        setActivity(foundActivity);
-                    }
-                }
-            } catch (error) {
-                handleError(msg.error.message);
-            } finally {
-                setIsLoading(false);
-            }
-        }
-    };
 
     useEffect(() => {
-        //TODO: calling another time to the DB to get the saved activities, need to come from the context
-        getActivities();
-    }, [currentUser, subject]);
+        if(savedActivity?.length > 0 && currentUser) {
+            const foundActivity = savedActivity.find(
+                (act) => act.subject === subject,
+            );
+            if (foundActivity) {
+                setActivity(foundActivity);
+            }
+        }
+    }, [savedActivity, currentUser, subject]);
 
     return (
         <PageLayout
