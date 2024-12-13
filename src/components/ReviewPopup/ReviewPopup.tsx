@@ -65,7 +65,7 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
         </div>
 
         <div className={styles.text}>
-          הוספנו קטגוריה חדשה באזור הפעולות המוכנות הכוללת את 10 הפעולות הפופולריות ביותר
+          מה חדש? הוספנו יכולת חדשה לשמירת פעולות שיצרתם באזור אישי 🔖
         </div>
 
         <form className={styles.popupForm}>
