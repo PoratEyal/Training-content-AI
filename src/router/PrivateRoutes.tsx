@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { useAuthContext } from "../context/AuthContext";
 import TSCs from "../components/TSCs/TSCs";
-import { COOKIE_USER_CONSENT } from "../models/constants/cookie";
+import { useCookiesContext } from "../context/CookiesContext";
 
 const PrivateRoutes = () => {
-    const { cookies, setConsentCookie } = useAuthContext();
+    const { cookieLimit, setConsentCookie } = useCookiesContext();
     const [tscs, setTscs] = useState(false);
 
     useEffect(() => {
-        if (cookies[COOKIE_USER_CONSENT] === undefined) {
+        if (cookieLimit === undefined) {
             setTscs(true);
         }
-    }, [cookies]);
+    }, [cookieLimit]);
 
     const handleAcceptTerms = () => {
         setConsentCookie();

@@ -4,7 +4,3 @@ export enum SessionKey {
     ACTIVITY = "activity",
     GENERATE = "generate",
 }
-
-export enum LocalKey {
-    REMEMBER_ME = "rememberMe",
-}
