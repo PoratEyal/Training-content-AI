@@ -31,7 +31,7 @@ function Home() {
     const navigate = useNavigate();
 
     const { currentUser, isLoggedIn, isPopupVisible, handlePopupClose, setIsPopupVisible } =
-    useAuthContext();
+        useAuthContext();
 
     const [rememberMe, setRememberMe] = useState<SignInStatus>(SignInStatus.NEW_ACCESS);
 
@@ -117,7 +117,10 @@ function Home() {
                 <h1 className={styles.home_lable}>מותאם, פשוט ומהיר 🤟</h1>
             </div>
 
-            {rememberMe == SignInStatus.REMEMBER && !isLoading && currentUser?.image ? (
+            {rememberMe == SignInStatus.REMEMBER &&
+            !isLoading &&
+            isLoggedIn &&
+            currentUser?.image ? (
                 <section className={styles.button_section}>
                     <StartBtn
                         text="צרו פעולות חדשות"
