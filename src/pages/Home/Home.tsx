@@ -10,7 +10,6 @@ import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
 import Session from "../../utils/sessionStorage";
 import { SessionKey } from "../../models/enum/storage";
 import StartBtn from "../../components/StartBtn/StartBtn";
-import LinkBtn from "../../components/LinkBtn/LinkBtn";
 import { useEffect, useState } from "react";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import helmet from "../../models/resources/helmet.json";
@@ -126,7 +125,7 @@ function Home() {
             currentUser?.image ? (
                 <section className={styles.button_section}>
                     <StartBtn
-                        text="צרו פעולות"
+                        text="יצירת פעולות"
                         onClick={() => startAsGuestOrUser(route.details)}
                         isDisabled={btnDisabled}
                     />
@@ -134,7 +133,7 @@ function Home() {
             ) : rememberMe == SignInStatus.NOT_REMEMBER && !isLoading && !isLoading ? (
                 <section className={styles.button_section}>
                     <StartBtn
-                        text="צרו פעולות"
+                        text="יצירת פעולות"
                         onClick={() => startAsGuestOrUser(route.details)}
                         isDisabled={btnDisabled}
                     />

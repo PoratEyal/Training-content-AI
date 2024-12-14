@@ -7,7 +7,7 @@
     left: 0;
     z-index: 953;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    width: 145px;
+    width: 150px;
 }
 
 .nav_container::after {
@@ -32,7 +32,7 @@
     color: var(--text-color);
     text-align: right;
     margin-left: -35px;
-    width: 130px;
+    width: 135px;
     margin-bottom: 16px;
     cursor: pointer;
 }

@@ -17,38 +17,44 @@ const SaveBtn: React.FC<SaveBtnProps> = ({ activity }) => {
     const { handleSuccess, handleError } = useErrorContext();
     const [saved, setSaved] = useState<boolean>(false);
     const [activityId, setActivityId] = useState<string | undefined>();
- 
-    useEffect(()=>{
-        setSaved(currentParam.isSaved === "true" ? true : false);
-    },[currentParam])
+
+    // Initialize saved state based on query parameter
+    useEffect(() => {
+        setSaved(currentParam.isSaved === "true");
+    }, [currentParam]);
 
     const handleSave = async () => {
-        if (currentUser && currentUser.id && activity) {
-            try {
-                updateParam(true);
-                handleSuccess(הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי");
-                const res = await fetchSaveActivity(activity);
-                setActivityId(res.activity.id);
-            } catch (error) {
-                handleError("הפעולה לא נשמרה, אנא נסו שנית");
-                updateParam(false);
-            }
+        if (!currentUser || !currentUser.id || !activity) return;
+
+        try {
+            updateParam(true);
+            handleSuccess("הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי");
+
+            const res = await fetchSaveActivity(activity);
+            setActivityId(res.activity.id);
+            setSaved(true);
+        } catch (error) {
+            handleError("הפעולה לא נשמרה, אנא נסו שנית");
+            updateParam(false);
         }
     };
 
     const handleUnsave = async () => {
-        if (currentUser && currentUser.id && activityId) {
-            try {
-                updateParam(false);
-                handleSuccess("הפעולה הוסרה מאזור הפעולות שלי");
-                await fetchRemoveActivity({
-                    userId: currentUser.id,
-                    activityId,
-                } as RemoveActivityRequest);
-            } catch (error) {
-                handleError("הפעולה לא נשמרה, אנא נסו שנית");
-                updateParam(true);
-            }
+        if (!currentUser || !currentUser.id || !activityId) return;
+
+        try {
+            updateParam(false);
+            handleSuccess("הפעולה הוסרה מאזור הפעולות שלי");
+
+            await fetchRemoveActivity({
+                userId: currentUser.id,
+                activityId,
+            } as RemoveActivityRequest);
+
+            setSaved(false);
+        } catch (error) {
+            handleError("הפעולה לא נשמרה, אנא נסו שנית");
+            updateParam(true);
         }
     };
 
@@ -65,7 +71,7 @@ const SaveBtn: React.FC<SaveBtnProps> = ({ activity }) => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
             >
-                <path d="M46 62.0085L46 3.88139L3.99609 3.88139L3.99609 62.0085L24.5 45.5L46 62.0085Z"></path>
+                <path d="M46 62.0085L46 3.88139L3.99609 3.88139L3.99609 62.0085L24.5 45.5L46 62.0085Z" />
             </svg>
         </div>
     );
