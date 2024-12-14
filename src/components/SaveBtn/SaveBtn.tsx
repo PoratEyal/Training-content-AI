@@ -26,7 +26,7 @@ const SaveBtn: React.FC<SaveBtnProps> = ({ activity }) => {
         if (currentUser && currentUser.id && activity) {
             try {
                 updateParam(true);
-                handleSuccess("שמרנו את הפעולה! תוכלו למצוא אותה באזור הפעולות שלי");
+                handleSuccess(הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי");
                 const res = await fetchSaveActivity(activity);
                 setActivityId(res.activity.id);
             } catch (error) {
