@@ -25,7 +25,7 @@ const AboutUsCollapse: React.FC<AboutUsCollapseProps> = ({ children }) => {
                 <section className={styles.collapse_form}>{children}</section>
             </Collapse>
             <span className={styles.about_container} onClick={handleCollapse}>
-                <HiUserGroup className={styles.icon_privacy} />
+                {/* <HiUserGroup className={styles.icon_privacy} /> */}
                 <label>אודות</label>
             </span>
         </div>

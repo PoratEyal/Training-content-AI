@@ -4,3 +4,4 @@ export const DETAILS_AD_SLOT = "5290759275";
 export const BUILD_AD_SLOT = "9038432592";
 export const CONTENT_ACTIVITY_AD_SLOT = "8738367503";
 export const MY_ACTIVITIES_AD_SLOT = "5975540586";
+export const HOME_AD_SLOT = "2045449142";
