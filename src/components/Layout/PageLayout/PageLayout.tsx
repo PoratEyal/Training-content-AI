@@ -22,7 +22,9 @@ type PageLayoutProps = {
     content?: string;
     title?: string;
     noIndex?: boolean;
-    children: React.ReactNode;
+    children: React.ReactNode;    
+    showAbout?: boolean;
+    showPrivacyAndContact?: boolean;
 };
 
 function PageLayout({
@@ -36,6 +38,8 @@ function PageLayout({
     content = "",
     title = "",
     noIndex = false,
+    showAbout = true,
+    showPrivacyAndContact = true,
 }: PageLayoutProps) {
     return (
         <>
@@ -53,7 +57,12 @@ function PageLayout({
                 {hasHeader ? <Header goBack={hasHeader.goBack} isBlur={hasHeader.isBlur} /> : null}
 
                 {children}
-                {hasFooter ? <Footer /> : null}
+                {hasFooter ? (
+                    <Footer
+                        showAbout={showAbout}
+                        showPrivacyAndContact={showPrivacyAndContact}
+                    />
+                ) : null}
                 {hesAds != "" ? <AdsSmall slot={hesAds} /> : null}
                 {hasNavBar ? <UnderBar /> : null}
             </section>

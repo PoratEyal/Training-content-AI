@@ -3,6 +3,7 @@ import route from "../../../router/route.json";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { GrHome } from "react-icons/gr";
+import { GoHome } from "react-icons/go";
 
 const NavOptHome = () => {
     const [isSelected, setIsSelected] = useState<boolean>(false);
@@ -18,7 +19,7 @@ const NavOptHome = () => {
             onClick={()=>navigate(route.home)}
             className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
         >
-            <GrHome className={styles.icon} />
+            <GoHome className={styles.icon} />
             <span className={styles.text}>מסך הבית</span>
         </div>
     );

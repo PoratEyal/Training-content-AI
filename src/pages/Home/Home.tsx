@@ -17,6 +17,8 @@ import helmet from "../../models/resources/helmet.json";
 import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
 import { useCookiesContext } from "../../context/CookiesContext";
 import { SignInStatus } from "../../models/enum/registrationStatus";
+import { HOME_AD_SLOT } from "../../models/constants/adsSlot";
+import AboutUsCollapse from "../../components/AboutUsCollapse/AboutUsCollapse";
 
 function Home() {
     const {
@@ -107,10 +109,11 @@ function Home() {
     return (
         <PageLayout
             path={route.home}
-            hasFooter
             title={helmet.home.title}
             content={helmet.home.content}
             hasHeader={{}} /** -> show only the profile image **/
+            hesAds={HOME_AD_SLOT}
+            hasNavBar
         >
             <div className={styles.logo_text_div}>
                 <ContinueWithAI />
@@ -123,26 +126,16 @@ function Home() {
             currentUser?.image ? (
                 <section className={styles.button_section}>
                     <StartBtn
-                        text="צרו פעולות חדשות"
+                        text="צרו פעולות"
                         onClick={() => startAsGuestOrUser(route.details)}
-                        isDisabled={btnDisabled}
-                    />
-                    <LinkBtn
-                        text="צפו בפעולות מוכנות"
-                        onClick={() => startAsGuestOrUser(route.content)}
                         isDisabled={btnDisabled}
                     />
                 </section>
             ) : rememberMe == SignInStatus.NOT_REMEMBER && !isLoading && !isLoading ? (
                 <section className={styles.button_section}>
                     <StartBtn
-                        text="צרו פעולות חדשות"
+                        text="צרו פעולות"
                         onClick={() => startAsGuestOrUser(route.details)}
-                        isDisabled={btnDisabled}
-                    />
-                    <LinkBtn
-                        text="צפו בפעולות מוכנות"
-                        onClick={() => startAsGuestOrUser(route.content)}
                         isDisabled={btnDisabled}
                     />
                 </section>
@@ -151,6 +144,17 @@ function Home() {
                     <SmallLoading />
                 </div>
             )}
+
+            <div className={styles.about_div}>
+                <AboutUsCollapse>
+                    <p>
+                        ActivityWiz הוא אתר ליצירת פעולות לנוער. תוכלו לבחור מתוך מאגר של פעולות מוכנות
+                        מראש או להשתמש בבינה מלאכותית ליצירת פעולות מותאמות אישית, המתאימות בדיוק לצרכים
+                        שלכם. האתר מיועד למדריכים המחפשים רעיונות ודרכים חדשות להעשרת החוויה החינוכית
+                        והחברתית.
+                    </p>
+                </AboutUsCollapse>
+            </div>
 
             {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />}
         </PageLayout>
