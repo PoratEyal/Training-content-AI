@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./dropdown.module.css";
 import { IoMdShare } from "react-icons/io";
 import { WhatsappShareButton } from "react-share";
@@ -12,7 +11,7 @@ function DropOptInviteFriends() {
             url={WEBSITE_URL}
             title={formatInviteFriend()}
         >
-            הזמינו חברים 
+            שתפו עם חברים 
             <IoMdShare />
         </WhatsappShareButton>
     );

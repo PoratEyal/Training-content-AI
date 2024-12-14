@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     gap: 5vh;
-    margin-top: 5vh;
+    margin-top: 3vh;
 }
 
 .home_lable{
@@ -34,7 +34,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 45px;
+    margin-top: 65px;
 }
 
 .button_section_loading{
@@ -42,6 +42,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 65px;
 }
 
 .about_div{
@@ -50,25 +51,21 @@
     right: 45vw;
 }
 
-/* @media (min-width: 550px) {
+@media (min-width: 550px) {
     .logo_text_div{
-        margin-top: 14vh;
-        margin-bottom: 7vh;
-    }
-
-    .logo_text_div{
-        margin-top: 35px;
+        margin-top: 0px;
     }
     .button_section{
-        margin-bottom: 100px;
-    }
-    .privacy_div{
-        bottom: 0px;
+        margin-top: 50px;
     }
     body {
         background-color: var(--desktop-background-color) !important;
     }
-} */
+    .about_div{
+        right: auto;
+        left: 48%;
+    }
+}
 
 /* @media (max-height: 710px) {
     .logo_text_div{
