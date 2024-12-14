@@ -25,7 +25,7 @@ export const ErrorContextProvider = ({ children }: { children: React.ReactNode }
     };
 
     const handleSuccess = (message: string) => {
-        notification("", message, "success", { duration: 2500, onScreen: false });
+        notification("", message, "success", { duration: 3500, onScreen: false });
     };
 
     return (
