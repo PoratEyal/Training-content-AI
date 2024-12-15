@@ -3,23 +3,37 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease, font-size 0.3s ease;
     width: 90px;
     font-size: 14px !important;
     text-align: center;
     cursor: pointer;
+    position: relative;
 }
 
-.text{
+.text {
     font-size: 12px;
+    transition: font-size 0.3s ease, color 0.3s ease;
 }
 
+/* מצב רגיל */
 .navbar_icon {
     color: var(--nav-color) !important;
 }
 
+/* מצב נבחר - שינויים בולטים */
 .navbar_icon_selected {
     color: var(--primary-color) !important;
+}
+
+.navbar_icon_selected .text {
+    font-size: 14px; /* יותר גדול מהרגיל */
+    color: var(--primary-color);
+}
+
+/* אנימציית popIn לאייקון */
+.navbar_icon_selected .icon {
+    animation: popIn 0.3s ease forwards;
 }
 
 .icon {
@@ -30,4 +44,17 @@
 
 .navbar_icon:hover .icon {
     transform: scale(1.1);
+}
+
+/* Keyframes לאנימציית popIn */
+@keyframes popIn {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(5deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
 }
