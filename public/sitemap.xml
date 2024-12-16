@@ -99,6 +99,10 @@
       <loc>https://activitywiz.com/content/harassment</loc>
       <priority>0.8</priority>
    </url>
+   <url>
+      <loc>https://activitywiz.com/content/peak</loc>
+      <priority>0.8</priority>
+   </url>
    
    <url>
       <loc>https://activitywiz.com/content/games/champion</loc>
@@ -270,10 +274,6 @@
    </url>
    
    <url>
-      <loc>https://activitywiz.com/content/friendship/survival</loc>
-      <priority>0.8</priority>
-   </url>
-   <url>
       <loc>https://activitywiz.com/content/friendship/friendsForever</loc>
       <priority>0.8</priority>
    </url>
@@ -405,7 +405,11 @@
       <loc>https://activitywiz.com/content/teamwork/commonJourney</loc>
       <priority>0.8</priority>
    </url>
-   
+   <url>
+      <loc>https://activitywiz.com/content/teamwork/survival</loc>
+      <priority>0.8</priority>
+   </url>
+
    <url>
       <loc>https://activitywiz.com/content/superhero/superhero</loc>
       <priority>0.8</priority>
@@ -432,4 +436,17 @@
       <priority>0.8</priority>
    </url>
 
+   <url>
+      <loc>https://activitywiz.com/content/peak/escape</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/content/peak/treasure</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/content/peak/skyline</loc>
+      <priority>0.8</priority>
+   </url>
+   
 </urlset>
