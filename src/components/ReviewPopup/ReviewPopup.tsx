@@ -5,7 +5,7 @@ import { MdOutlineCancel } from "react-icons/md";
 import emailjs from 'emailjs-com';
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
 import { FcIdea } from "react-icons/fc";
-import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext";
 
 interface PopupComponentProps {
   onClose: (userResponse?: string) => void;
@@ -15,6 +15,9 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
   const [textInput, setTextInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPopup, setShowPopup] = useState<boolean>(false);
+
+  // Access the current user information from AuthContext
+  const { currentUser } = useAuthContext();
 
   emailjs.init('ZWKebkgRROVgM8nEV');
 
@@ -30,6 +33,7 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
       // Send email using EmailJS
       const templateParams = {
         user_response: textInput,
+        user_email: currentUser?.email || "No email provided",
       };
 
       await emailjs.send(
@@ -52,9 +56,7 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
 
   return (
     <div className={styles.popupOverlay}>
-      <div
-        className={`${styles.popupContent} ${showPopup ? styles.popupContentShow : ""}`}
-      >
+      <div className={`${styles.popupContent} ${showPopup ? styles.popupContentShow : ""}`}>
         <button className={styles.closeButton} onClick={() => onClose()}>
           <MdOutlineCancel />
         </button>
@@ -85,9 +87,7 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
             type="button"
             onClick={handleSubmit}
             disabled={isDisabled}
-            className={`${styles.submitButton} ${
-              isDisabled ? styles.submitButtonDisabled : ""
-            }`}
+            className={`${styles.submitButton} ${isDisabled ? styles.submitButtonDisabled : ""}`}
             style={{ height: 40 }}
           >
             {isLoading ? (
@@ -96,16 +96,10 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
               </div>
             ) : (
               <div className={styles.buttonContent}>
-                <span
-                  className={styles.buttonText}
-                  style={{ opacity: isDisabled ? 0.5 : 1 }}
-                >
+                <span className={styles.buttonText} style={{ opacity: isDisabled ? 0.5 : 1 }}>
                   שליחה
                 </span>
-                <div
-                  className={styles.buttonIcon}
-                  style={{ opacity: isDisabled ? 0.5 : 1 }}
-                >
+                <div className={styles.buttonIcon} style={{ opacity: isDisabled ? 0.5 : 1 }}>
                   <FiChevronsLeft className={styles.icon} />
                 </div>
               </div>
