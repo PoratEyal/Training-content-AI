@@ -62,6 +62,15 @@ const ContentActivities: React.FC = () => {
         }
     };
 
+    const removeActivityWords = (title: string) => {
+        // מסיר ביטויים ספציפיים לפי הסדר, ואז מוריד רווחים מיותרים
+        return title
+          .replace("פעולה בנושא", "")
+          .replace("פעולה על", "")
+          .replace("פעולה", "")
+          .trim();
+    };
+
     // בדיקות לפני הצגה:
     if (!subject) {
         return (
@@ -95,16 +104,21 @@ const ContentActivities: React.FC = () => {
             <article className={styles.content_article}>
                 {activities && activities.length !== 0 ? (
                     <section className={styles.grid_container}>
-                        {activities.map((activity, index) => (
-                            <Link
-                                to={`${route.content}/${activityId}/${activity.name}`}
-                                className={styles.grid_item}
-                                key={index}
-                                onClick={() => handleActivityClick(activity)}
-                            >
-                                <h2 className={styles.item_title}>{activity.metaTitle}</h2>
-                            </Link>
-                        ))}
+                        {activities.map((activity, index) => {
+                            // מורידים מהמחרוזת את הביטויים הרצויים
+                            const cleanTitle = removeActivityWords(activity.metaTitle);
+
+                            return (
+                                <Link
+                                    to={`${route.content}/${activityId}/${activity.name}`}
+                                    className={styles.grid_item}
+                                    key={index}
+                                    onClick={() => handleActivityClick(activity)}
+                                >
+                                    <h2 className={styles.item_title}>{cleanTitle}</h2>
+                                </Link>
+                            );
+                        })}
                     </section>
                 ) : (
                     <div>לא נמצאו פעולות מתאימות</div>
