@@ -23,12 +23,13 @@
 
 /* מצב נבחר - שינויים בולטים */
 .navbar_icon_selected {
-    color: var(--primary-color) !important;
+    color: #789A56;
 }
 
 .navbar_icon_selected .text {
-    font-size: 14px; /* יותר גדול מהרגיל */
-    color: var(--primary-color);
+    font-size: 14px;
+    font-weight: 450;
+    color: #789A56;
 }
 
 /* אנימציית popIn לאייקון */

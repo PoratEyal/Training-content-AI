@@ -70,7 +70,7 @@ function Details() {
       content={helmet.home.content}
       hesAds={DETAILS_AD_SLOT}
       hasNavBar
-      noIndex
+      index={false}
     >
       <TellUsAboutYourGroup />
 

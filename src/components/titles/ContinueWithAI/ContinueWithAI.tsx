@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./ContinueWithAI.module.css";
 
 function ContinueWithAI() {
-    return (
-        <div className={styles.logo}>
+  return (
+        <h1 className={styles.logo}>
             <span className={styles.banner}>🎗</span>
             <div className={styles.word_1}>
                 <div className={styles.word_1_1}>מתקדמים</div>
@@ -22,7 +22,7 @@ function ContinueWithAI() {
                 <div className={styles.small_spark} />
                 <div className={styles.big_spark} />
             </div>
-        </div>
+        </h1>
     );
 }
 

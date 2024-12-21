@@ -32,7 +32,7 @@ const SavedActivities: React.FC = () => {
             hasHeader={{ goBack }}
             hasNavBar
             hesAds={MY_ACTIVITIES_AD_SLOT}
-            noIndex
+            index={false}
             hasGreenBackground
             title={helmet.content.title}
             content={helmet.home.content}

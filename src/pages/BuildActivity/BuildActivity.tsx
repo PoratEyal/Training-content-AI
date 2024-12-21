@@ -118,7 +118,7 @@ function BuildActivity() {
             content={helmet.home.content}
             hesAds={BUILD_AD_SLOT}
             hasNavBar
-            noIndex
+            index={false}
         >
             <CreateYourActivity />
 

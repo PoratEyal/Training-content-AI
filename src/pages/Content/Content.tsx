@@ -63,7 +63,7 @@ function Content() {
             hasHeader={{ goBack }}
             hasNavBar
             hesAds={ACTIVITY_AD_SLOT}
-            noIndex
+            index={false}
             hasGreenBackground
             title={helmet.content.title}
             content={helmet.content.content}
