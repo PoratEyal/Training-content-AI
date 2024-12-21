@@ -21,7 +21,7 @@ type PageLayoutProps = {
     hasNavBar?: boolean;
     content?: string;
     title?: string;
-    noIndex?: boolean;
+    index?: boolean;
     children: React.ReactNode;    
     showAbout?: boolean;
     showPrivacyAndContact?: boolean;
@@ -37,7 +37,7 @@ function PageLayout({
     hasNavBar = false,
     content = "",
     title = "",
-    noIndex = false,
+    index = true,
     showAbout = true,
     showPrivacyAndContact = true,
 }: PageLayoutProps) {
@@ -47,7 +47,11 @@ function PageLayout({
                 <title>{title}</title>
                 <meta name="description" content={content} />
                 <link rel="canonical" href={`${WEBSITE_URL}${path}`} />
-                {noIndex ? <meta name="robots" content="noindex" /> : null}
+                {index ? (
+                    <meta name="robots" content="index, follow" />
+                ) : (
+                    <meta name="robots" content="noindex, follow" />
+                )}
             </Helmet>
 
             <section

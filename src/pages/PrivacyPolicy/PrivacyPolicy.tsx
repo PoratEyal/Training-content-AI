@@ -19,7 +19,7 @@ function PrivacyPolicy() {
             hasHeader={{ goBack, isBlur: true }}
             title={helmet.policy.title}
             content={helmet.policy.content}
-            noIndex
+            index={false}
         >
             <FadeEffect hasFade>
                 <article className={styles.privacy_article}>

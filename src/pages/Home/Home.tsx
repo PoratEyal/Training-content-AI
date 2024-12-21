@@ -113,10 +113,11 @@ function Home() {
             hasHeader={{}} /** -> show only the profile image **/
             hesAds={HOME_AD_SLOT}
             hasNavBar
+            index={true}
         >
             <div className={styles.logo_text_div}>
                 <ContinueWithAI />
-                <h1 className={styles.home_lable}>מותאם, פשוט ומהיר 🤟</h1>
+                <h2 className={styles.home_lable}>מותאם, פשוט ומהיר 🤟</h2>
             </div>
 
             {rememberMe == SignInStatus.REMEMBER &&

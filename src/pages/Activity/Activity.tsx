@@ -45,7 +45,7 @@ function Activity() {
         content={helmet.home.content}
         hesAds={ACTIVITY_AD_SLOT}
         hasNavBar
-        noIndex
+        index={false}
       >
         <ActivityReady subject={mainActivity.subject} />
         <section className={styles.activity_data_container}>

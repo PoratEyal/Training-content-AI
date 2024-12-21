@@ -33,6 +33,7 @@ const ContentActivities: React.FC = () => {
                 title=""
                 content=""
                 hesAds={CONTENT_ACTIVITY_AD_SLOT}
+                index = {true}
             >
                 <div className={styles.content_article}>
                     <SmallLoading />

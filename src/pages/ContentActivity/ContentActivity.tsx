@@ -40,6 +40,7 @@ function ContentActivity() {
                 title=""
                 content=""
                 hasNavBar
+                index={true}
             >
                 <section className={styles.activity_data_container}>
                     <SmallLoading />

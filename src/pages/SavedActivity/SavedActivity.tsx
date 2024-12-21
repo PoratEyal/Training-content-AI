@@ -43,7 +43,7 @@ const SavedActivity: React.FC = () => {
             title={activity?.subject || ""}
             content={activity?.subject || ""}
             hasNavBar
-            noIndex
+            index={false}
         >
             <ActivityReady subject={activity?.subject} />
 
