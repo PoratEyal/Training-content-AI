@@ -28,7 +28,7 @@ const SavedActivities: React.FC = () => {
 
     return (
         <PageLayout
-            path={route.content}
+            path={route.myactivities}
             hasHeader={{ goBack }}
             hasNavBar
             hesAds={MY_ACTIVITIES_AD_SLOT}
