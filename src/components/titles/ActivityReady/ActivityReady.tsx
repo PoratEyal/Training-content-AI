@@ -8,7 +8,7 @@ type ActivityReadyProps = {
 function ActivityReady({ subject, isMany = false }: ActivityReadyProps) {
     return (
         <h1 className={styles.activity_title}>
-            {isMany ? <span>פעולות בנושא</span> : <span>פעולה בנושא</span>}
+            {isMany ? <span>פעולות בנושא</span> : null}
             <div>{subject}</div>
         </h1>
     );

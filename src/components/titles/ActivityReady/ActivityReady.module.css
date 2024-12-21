@@ -20,8 +20,11 @@
 }
 
 .activity_title div {
-    text-overflow: ellipsis;
-    white-space: nowrap;
     overflow: hidden;
-    width: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 230px;
+    height: 80px;
 }

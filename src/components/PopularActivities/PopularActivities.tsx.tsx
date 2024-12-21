@@ -17,6 +17,15 @@ function PopularActivities() {
         navigate(route.content);
     };
 
+    // פונקציה שמסירה את המילים הרצויות
+    const removeActivityWords = (title: string): string => {
+        return title
+            .replace("פעולה בנושא", "")
+            .replace("פעולה על", "")
+            .replace("פעולה", "")
+            .trim();
+    };
+
     let topActivities = [];
 
     if (!isLoading && subjects) {
@@ -62,21 +71,28 @@ function PopularActivities() {
             ) : (
                 <article className={styles.content_article}>
                     <section className={styles.grid_container}>
-                    {topActivities.length > 0 ? (
-                        topActivities.map((item, index) => (
-                        <Link
-                            to={`${route.content}/${item.subjectName}/${item.activity.name}`}
-                            className={styles.grid_item}
-                            key={index}
-                            onClick={() => handleActivityClick(item.activity)}
-                            state={{ fromPopular: true }}  // Pass state here
-                        >
-                            <h2 className={styles.item_title}>{item.activity.metaTitle}</h2>
-                        </Link>
-                        ))
-                    ) : (
-                        <div>אין כרגע פעולות זמינות ברשימה</div>
-                    )}
+                        {topActivities.length > 0 ? (
+                            topActivities.map((item, index) => {
+                                // הסרת הטקסט "פעולה בנושא", "פעולה על", "פעולה"
+                                const itemTitle = removeActivityWords(item.activity.metaTitle);
+
+                                return (
+                                    <Link
+                                        to={`${route.content}/${item.subjectName}/${item.activity.name}`}
+                                        className={styles.grid_item}
+                                        key={index}
+                                        onClick={() => handleActivityClick(item.activity)}
+                                        state={{ fromPopular: true }}
+                                    >
+                                        <h2 className={styles.item_title}>
+                                            {itemTitle}
+                                        </h2>
+                                    </Link>
+                                );
+                            })
+                        ) : (
+                            <div>אין כרגע פעולות זמינות ברשימה</div>
+                        )}
                     </section>
                 </article>
             )}
