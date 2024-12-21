@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import styles from "./AboutUsCollapse.module.css";
 import Collapse from "../core/Collapse/Collapse";
 import useToggle from "../../hooks/useToggle";
-import { HiUserGroup } from "react-icons/hi";
 import useClickOutside from "../../hooks/useClickOutside";
 
 type AboutUsCollapseProps = {
