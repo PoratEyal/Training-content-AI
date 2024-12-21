@@ -47,11 +47,11 @@ function PageLayout({
                 <title>{title}</title>
                 <meta name="description" content={content} />
                 <link rel="canonical" href={`${WEBSITE_URL}${path}`} />
-                {index ? (
-                    <meta name="robots" content="index, follow" />
-                ) : (
-                    <meta name="robots" content="noindex, follow" />
-                )}
+                <meta
+                    key="robots"
+                    name="robots"
+                    content={index ? "index, follow" : "noindex, follow"}
+                />
             </Helmet>
 
             <section
