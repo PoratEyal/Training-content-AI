@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "../../components/ActivityOutput/Markdown.css";
 import styles from "./ContentActivity.module.css";
@@ -89,7 +88,7 @@ function ContentActivity() {
             content={activity.metaDescription}
             hasNavBar
         >
-            <ActivityReady subject={activity.metaTitle} />
+            <ActivityReady subject={activity.title} />
             <section className={styles.activity_data_container}>
                 <article>
                     <ActivityOutputStatic activity={activity.content} />

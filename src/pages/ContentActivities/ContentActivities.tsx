@@ -103,7 +103,7 @@ const ContentActivities: React.FC = () => {
                                     key={index}
                                     onClick={() => handleActivityClick(activity)}
                                 >
-                                    <h2 className={styles.item_title}>{activity.metaTitle}</h2>
+                                    <h2 className={styles.item_title}>{activity.title}</h2>
                                 </Link>
                             );
                         })}
