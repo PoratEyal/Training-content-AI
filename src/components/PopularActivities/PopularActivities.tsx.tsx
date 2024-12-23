@@ -17,15 +17,6 @@ function PopularActivities() {
         navigate(route.content);
     };
 
-    // פונקציה שמסירה את המילים הרצויות
-    const removeActivityWords = (title: string): string => {
-        return title
-            .replace("פעולה בנושא", "")
-            .replace("פעולה על", "")
-            .replace("פעולה", "")
-            .trim();
-    };
-
     let topActivities = [];
 
     if (!isLoading && subjects) {
@@ -73,9 +64,6 @@ function PopularActivities() {
                     <section className={styles.grid_container}>
                         {topActivities.length > 0 ? (
                             topActivities.map((item, index) => {
-                                // הסרת הטקסט "פעולה בנושא", "פעולה על", "פעולה"
-                                const itemTitle = removeActivityWords(item.activity.metaTitle);
-
                                 return (
                                     <Link
                                         to={`${route.content}/${item.subjectName}/${item.activity.name}`}
@@ -85,7 +73,7 @@ function PopularActivities() {
                                         state={{ fromPopular: true }}
                                     >
                                         <h2 className={styles.item_title}>
-                                            {itemTitle}
+                                            {item.activity.metaTitle}
                                         </h2>
                                     </Link>
                                 );
