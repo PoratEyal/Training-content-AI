@@ -38,6 +38,7 @@ export type StaticActivities = {
     content: string;
     displayCount: number;
     orderId: number;
+    title?: string;
 }
 
 export type StaticSubjects = {

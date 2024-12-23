@@ -28,6 +28,7 @@ const getStaticSubjectsHttp = functions.https.onCall(
                                 content: activityData?.content || '',
                                 displayCount: activityData?.displayCount || 0,
                                 orderId: activityData?.orderId || 0,
+                                title: activityData?.title || '',
                             };
                         })
                     );

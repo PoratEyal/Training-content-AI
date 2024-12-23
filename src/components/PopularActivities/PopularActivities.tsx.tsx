@@ -73,7 +73,7 @@ function PopularActivities() {
                                         state={{ fromPopular: true }}
                                     >
                                         <h2 className={styles.item_title}>
-                                            {item.activity.metaTitle}
+                                            {item.activity.title}
                                         </h2>
                                     </Link>
                                 );
