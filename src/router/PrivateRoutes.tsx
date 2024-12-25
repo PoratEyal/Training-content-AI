@@ -4,14 +4,14 @@ import TSCs from "../components/TSCs/TSCs";
 import { useCookiesContext } from "../context/CookiesContext";
 
 const PrivateRoutes = () => {
-    const { cookieLimit, setConsentCookie } = useCookiesContext();
+    const { cookieUserConsent, setConsentCookie } = useCookiesContext();
     const [tscs, setTscs] = useState(false);
 
     useEffect(() => {
-        if (cookieLimit === undefined) {
+        if (cookieUserConsent === undefined) {
             setTscs(true);
         }
-    }, [cookieLimit]);
+    }, [cookieUserConsent]);
 
     const handleAcceptTerms = () => {
         setConsentCookie();

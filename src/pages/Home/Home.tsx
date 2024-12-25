@@ -127,7 +127,7 @@ function Home() {
                 <h2 className={styles.home_lable}>מותאם, פשוט ומהיר 🤟</h2>
             </div>
 
-            {rememberMe == SignInStatus.REMEMBER &&
+            {rememberMe === SignInStatus.REMEMBER &&
             !isLoading &&
             isLoggedIn &&
             currentUser?.image ? (
@@ -138,7 +138,7 @@ function Home() {
                         isDisabled={btnDisabled}
                     />
                 </section>
-            ) : rememberMe == SignInStatus.NOT_REMEMBER && !isLoading && !isLoading ? (
+            ) : rememberMe === SignInStatus.NOT_REMEMBER && !isLoading && !isLoading ? (
                 <section className={styles.button_section}>
                     <StartBtn
                         text="יצירת פעולות"

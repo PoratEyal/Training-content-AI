@@ -9,8 +9,9 @@ import ActivityOutputStatic from "../../components/ActivityOutput/ActivityOutput
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { StaticActivities } from "../../models/types/activity";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { fetchGetStaticActivity } from "../../utils/fetch";
+import helmet from "../../models/resources/helmet.json";
 
 function ContentActivity() {
     const navigate = useNavigate();
@@ -23,8 +24,8 @@ function ContentActivity() {
 
     const contentActivityPath = `${route.content}/${activityId}/${contentId}`;
 
-    // Extract fromPopular from location.state
-    const { fromPopular } = (location.state as { fromPopular?: boolean }) || {};
+    // Extract fromPopular with default value
+    const fromPopular = location.state?.fromPopular ?? false;
 
     const goBack = () => {
         if (fromPopular) {
@@ -34,23 +35,27 @@ function ContentActivity() {
         }
     };
 
-    useEffect(() => {
-        const fetchActivity = async () => {
+    const fetchActivity = useCallback(async () => {
+        try {
             setIsActivityLoading(true);
             const response = await fetchGetStaticActivity({ contentName: contentId });
             setActivity(response.activity);
+        } catch (error) {
+            console.error("Failed to fetch activity:", error);
+        } finally {
             setIsActivityLoading(false);
-        };
+        }
+    }, [contentId]);
+
+    useEffect(() => {
         if (subjects.length > 0) {
             const foundSubject = subjects.find((subj) => subj.name === activityId);
-            if (foundSubject?.activities?.length > 0) {
-                const foundActivity = foundSubject.activities.find((act) => act.name === contentId);
-                setActivity(foundActivity);
-            }
+            const foundActivity = foundSubject?.activities?.find((act) => act.name === contentId);
+            setActivity(foundActivity);
         } else {
             fetchActivity();
         }
-    }, [subjects, activityId, contentId]);
+    }, [subjects, activityId, contentId, fetchActivity]);
 
     useEffect(() => {
         setIsActivityLoading(isLoading);
@@ -62,11 +67,11 @@ function ContentActivity() {
             hasGreenBackground
             hasHeader={{ goBack }}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
-            title={activity?.metaTitle || ""}
-            content={activity?.metaDescription || ""}
+            title={activity?.metaTitle || helmet.contentActivity.title}
+            content={activity?.metaDescription || helmet.contentActivity.content}
             hasNavBar
         >
-            <ActivityReady subject={activity?.title} />
+            <ActivityReady subject={activity?.title || helmet.contentActivity.title} />
             {isActivityLoading ? (
                 <section className={styles.activity_data_container}>
                     <SmallLoading />

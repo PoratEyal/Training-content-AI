@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./Img.module.css";
 
 type ImgProps = {
     obj: any;
