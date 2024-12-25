@@ -7,24 +7,27 @@ import MyActivitiesTitle from "../../components/titles/MyActivitiesTitle/MyActiv
 import helmet from "../../models/resources/helmet.json";
 import { MY_ACTIVITIES_AD_SLOT } from "../../models/constants/adsSlot";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
-import { useAuthContext } from "../../context/AuthContext";
-import { useEffect } from "react";
 import { TiDelete } from "react-icons/ti";
 import DontHaveActivity from "../../components/DontHaveActivity/DontHaveActivity";
 import { useSaveContext } from "../../context/SavedContext";
+import { Activity } from "../../models/types/activity";
 
 const SavedActivities: React.FC = () => {
     const navigate = useNavigate();
-    const { savedActivity, isLoading, getSavedActivities, deleteActivity } = useSaveContext()
-    const { currentUser } = useAuthContext();
+    const { savedActivity, isLoading, useFetchSavedData, deleteActivity } = useSaveContext();
+    useFetchSavedData();
 
     const goBack = () => {
         navigate(route.home); //TODO: -1 or home
     };
 
-    useEffect(() => {
-        getSavedActivities();
-    }, [currentUser]);
+    const handleDelete = async (
+        e: React.MouseEvent<SVGElement, MouseEvent>,
+        activity: Activity,
+    ) => {
+        e.stopPropagation();
+        await deleteActivity(activity.id);
+    };
 
     return (
         <PageLayout
@@ -51,24 +54,19 @@ const SavedActivities: React.FC = () => {
                 ) : (
                     <section className={styles.grid_container}>
                         {savedActivity?.map((activity, index) => (
-                            <div 
-                                key={index} 
+                            <div
+                                key={index}
                                 className={styles.grid_item}
                                 onClick={(e) => {
-                                    if (!(e.target as Element).closest('.delete_icon')) {
+                                    if (!(e.target as Element).closest(".delete_icon")) {
                                         navigate(`${route.myactivities}/${activity.subject}`);
                                     }
                                 }}
                             >
-                                <h2 className={styles.item_title}>
-                                    {activity.subject}
-                                </h2>
+                                <h2 className={styles.item_title}>{activity.subject}</h2>
                                 <TiDelete
                                     className={`${styles.delete_icon} delete_icon`}
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        deleteActivity(activity);
-                                    }}
+                                    onClick={(e) => handleDelete(e, activity)}
                                 />
                             </div>
                         ))}

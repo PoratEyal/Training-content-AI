@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../components/ActivityOutput/Markdown.css";
 import styles from "./ContentActivities.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
@@ -15,34 +15,15 @@ import { StaticActivities } from "../../models/types/activity";
 const ContentActivities: React.FC = () => {
     const navigate = useNavigate();
     const { activityId } = useParams<{ activityId: string }>();
-    const { subjects, isLoading } = useStaticContentContext();
+    const { subjects, isLoading, useFetchSubjectsData } = useStaticContentContext();
+    useFetchSubjectsData();
     const contentActivitiesPath = route.contentActivities.replace(":activityId", activityId || "");
 
     const goBack = () => {
         navigate(route.content);
     };
 
-    if (isLoading) {
-        // אם עדיין טוען את הנתונים, מציגים טעינה
-        return (
-            <PageLayout
-                path={contentActivitiesPath}
-                hasHeader={{ goBack }}
-                hasNavBar
-                hasGreenBackground
-                title=""
-                content=""
-                hesAds={CONTENT_ACTIVITY_AD_SLOT}
-                index = {true}
-            >
-                <div className={styles.content_article}>
-                    <SmallLoading />
-                </div>
-            </PageLayout>
-        );
-    }
 
-    // לאחר שהסתיימה הטעינה, ננסה למצוא את ה-subject
     let subject: StaticSubjects | undefined;
     let activities: StaticActivities[] | undefined;
 
@@ -62,25 +43,6 @@ const ContentActivities: React.FC = () => {
         }
     };
 
-    // בדיקות לפני הצגה:
-    if (!subject) {
-        return (
-            <PageLayout
-                path={contentActivitiesPath}
-                hasHeader={{ goBack }}
-                hasNavBar
-                hasGreenBackground
-                title=""
-                content=""
-                hesAds={CONTENT_ACTIVITY_AD_SLOT}
-            >
-                <article className={styles.content_article}>
-                    <p>לא נמצאו נתונים עבור הנושא המבוקש.</p>
-                </article>
-            </PageLayout>
-        );
-    }
-
     return (
         <PageLayout
             path={contentActivitiesPath}
@@ -91,29 +53,39 @@ const ContentActivities: React.FC = () => {
             content={subject.metaDescription || ""}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
         >
-            <ReadyContentName isMany subject={subject.metaTitle} />
-            <article className={styles.content_article}>
-                {activities && activities.length !== 0 ? (
-                    <section className={styles.grid_container}>
-                        {activities.map((activity, index) => {
-                            return (
-                                <Link
-                                    to={`${route.content}/${activityId}/${activity.name}`}
-                                    className={styles.grid_item}
-                                    key={index}
-                                    onClick={() => handleActivityClick(activity)}
-                                >
-                                    <h2 className={styles.item_title}>{activity.title}</h2>
-                                </Link>
-                            );
-                        })}
-                    </section>
-                ) : (
-                    <div>לא נמצאו פעולות מתאימות</div>
-                )}
-            </article>
+            <ReadyContentName isMany subject={subject.metaTitle || ""} />
+            {isLoading ? (
+                <section className={styles.content_article}>
+                    <SmallLoading />
+                </section>
+            ) : subject ? (
+                <article className={styles.content_article}>
+                    {activities && activities.length !== 0 ? (
+                        <section className={styles.grid_container}>
+                            {activities.map((activity, index) => {
+                                return (
+                                    <Link
+                                        to={`${route.content}/${activityId}/${activity.name}`}
+                                        className={styles.grid_item}
+                                        key={index}
+                                        onClick={() => handleActivityClick(activity)}
+                                    >
+                                        <h2 className={styles.item_title}>{activity.title}</h2>
+                                    </Link>
+                                );
+                            })}
+                        </section>
+                    ) : (
+                        <div>לא נמצאו פעולות מתאימות</div>
+                    )}
+                </article>
+            ) : (
+                <article className={styles.content_article}>
+                    <p>לא נמצאו נתונים עבור הנושא המבוקש.</p>
+                </article>
+            )}
         </PageLayout>
     );
-}
+};
 
 export default ContentActivities;

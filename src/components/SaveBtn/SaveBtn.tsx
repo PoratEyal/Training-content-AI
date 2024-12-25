@@ -3,9 +3,9 @@ import styles from "./SaveBtn.module.css";
 import { useAuthContext } from "../../context/AuthContext";
 import { useErrorContext } from "../../context/ErrorContext";
 import { Activity } from "../../models/types/activity";
-import { fetchRemoveActivity, fetchSaveActivity } from "../../utils/fetch";
-import { RemoveActivityRequest } from "../../models/types/api/request";
+import { fetchSaveActivity } from "../../utils/fetch";
 import { useQueryParam } from "../../hooks/useQueryParam";
+import { useSaveContext } from "../../context/SavedContext";
 
 type SaveBtnProps = {
     activity: Activity;
@@ -15,6 +15,7 @@ const SaveBtn: React.FC<SaveBtnProps> = ({ activity }) => {
     const { currentParam, updateParam } = useQueryParam();
     const { currentUser } = useAuthContext();
     const { handleSuccess, handleError } = useErrorContext();
+    const { getSavedActivities, deleteActivity } = useSaveContext()
     const [saved, setSaved] = useState<boolean>(false);
     const [activityId, setActivityId] = useState<string | undefined>();
 
@@ -32,6 +33,7 @@ const SaveBtn: React.FC<SaveBtnProps> = ({ activity }) => {
 
             const res = await fetchSaveActivity(activity);
             setActivityId(res.activity.id);
+            await getSavedActivities();
             setSaved(true);
         } catch (error) {
             handleError("הפעולה לא נשמרה, אנא נסו שנית");
@@ -40,17 +42,13 @@ const SaveBtn: React.FC<SaveBtnProps> = ({ activity }) => {
     };
 
     const handleUnsave = async () => {
+        // TODO: if navigate back I dont have the activity id for delete
         if (!currentUser || !currentUser.id || !activityId) return;
-
+        
         try {
             updateParam(false);
             handleSuccess("הפעולה הוסרה מאזור הפעולות שלי");
-
-            await fetchRemoveActivity({
-                userId: currentUser.id,
-                activityId,
-            } as RemoveActivityRequest);
-
+            await deleteActivity(activityId);
             setSaved(false);
         } catch (error) {
             handleError("הפעולה לא נשמרה, אנא נסו שנית");

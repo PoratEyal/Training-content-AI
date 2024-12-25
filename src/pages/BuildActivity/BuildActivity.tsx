@@ -94,7 +94,6 @@ function BuildActivity() {
                 (response.result === "success" || response.result === "safety") &&
                 response.activity
             ) {
-                console.log(response.result);
                 updateMainActivity({ ...response.activity });
                 navigate(route.activity);
             }

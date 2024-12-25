@@ -164,7 +164,6 @@ export async function getPlayingTime(
     const response = await axios(
         request(playingTimePrompt(subject, time, amount, age, gender, place)),
     );
-    console.log("hello");
 
     const responseData = response.data.choices?.[0].message.content;
     return responseData;
