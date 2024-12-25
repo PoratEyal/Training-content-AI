@@ -13,6 +13,7 @@ import saveActivity from "./callableFunctions/saveActivity";
 import removeSavedActivity from "./callableFunctions/removeSavedActivity";
 import getStaticSubjectsHttp from "./callableFunctions/getStaticSubject";
 import incrementActivityDisplayCount from "./callableFunctions/incrementActivityDisplayCount";
+import getStaticActivityHttp from "./callableFunctions/getStaticActivity";
 
 const app = express();
 app.use(cors());
@@ -32,10 +33,12 @@ exports.updateUser = updateUser
 exports.getUserById = getUserById;
 
 exports.getStaticSubjectsHttp = getStaticSubjectsHttp;
+exports.getStaticActivity = getStaticActivityHttp;
 exports.incrementActivityDisplayCount = incrementActivityDisplayCount;
 
 exports.getSavedActivities = getSavedActivities;
 exports.saveActivity = saveActivity;
 exports.removeSavedActivity = removeSavedActivity;
+
 
 exports.app = functions.https.onRequest(app);

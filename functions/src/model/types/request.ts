@@ -62,5 +62,9 @@ export type IncrementActivityRequest = {
     activity: StaticActivities;
 }
 
+export type GetStaticActivityRequest = {
+    contentName: string;
+}
+
 export type GetAllActivitiesRequest = {}
 export type GetAllUsersRequest = {}

@@ -32,5 +32,9 @@ export type RemoveActivityRequest = {
     activityId: string;
 }
 
+export type GetStaticActivityRequest = {
+    contentName: string;
+}
+
 export type GetAllActivitiesRequest = {}
 export type GetAllUsersRequest = {}

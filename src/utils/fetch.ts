@@ -1,6 +1,7 @@
 import {
     CreateNewUserRequest,
     GetActivityRequest,
+    GetStaticActivityRequest,
     RemoveActivityRequest,
     UpdateActivityLikesRequest,
     UpdateUserRequest,
@@ -8,6 +9,7 @@ import {
 import {
     CreateNewUserResponse,
     GetActivityResponse,
+    GetStaticActivityResponse,
     UpdateActivityLikesResponse,
     UpdateUserResponse,
     getAllActivitiesResponse,
@@ -129,6 +131,22 @@ export const fetchStaticSubjects = async (): Promise<staticSubjectsResponse> => 
         const getStaticSubjectsFunc = httpsCallable(functions, "getStaticSubjectsHttp");
         const response = (await getStaticSubjectsFunc()).data as staticSubjectsResponse;
         if (response.result === "success" && response.subjects) {
+            return response;
+        } else {
+            throw new Error(msg.error.message);
+        }
+    } catch (error: any) {
+        throw new Error(msg.error.message);
+    }
+};
+
+export const fetchGetStaticActivity = async (
+    request: GetStaticActivityRequest,
+): Promise<GetStaticActivityResponse> => {
+    try {
+        const getStaticActivityFunc = httpsCallable(functions, "getStaticActivity");
+        const response = (await getStaticActivityFunc(request)).data as GetStaticActivityResponse;
+        if (response.result === "success" && response.activity) {
             return response;
         } else {
             throw new Error(msg.error.message);
