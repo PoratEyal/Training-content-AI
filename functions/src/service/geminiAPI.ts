@@ -10,6 +10,7 @@ import { VIEW_PROMPT_M } from "../model/prompts/pointOfView_M";
 import { PLAY_PROMPT_M } from "../model/prompts/playTime_M";
 import { SURVIVAL_PROMPT_S } from "../model/prompts/survival_S";
 import { SURVIVAL_PROMPT_M } from "../model/prompts/survival_M";
+import { PLAY_PROMPT_S } from "../model/prompts/playTime_S";
 
 const genAI = new GoogleGenerativeAI(defineString("API_KEY").value() || "");
 
@@ -57,7 +58,7 @@ export async function getMainActivity(activityDetials: ActivityDetails): Promise
             promptOptions = [SURVIVAL_PROMPT_S, SURVIVAL_PROMPT_M, SURVIVAL_PROMPT_M];
             break;
         case "playTime":
-            promptOptions = [PLAY_PROMPT_M, PLAY_PROMPT_M, PLAY_PROMPT_M];
+            promptOptions = [PLAY_PROMPT_S, PLAY_PROMPT_M, PLAY_PROMPT_M];
             break;
         default:
             promptOptions = [CONTANT_PROMPT_S, CONTANT_PROMPT_M, CONTANT_PROMPT_B];
