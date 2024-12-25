@@ -1,5 +1,5 @@
 import { DocumentData } from "firebase-admin/firestore";
-import { Activity, StaticSubject } from "./activity";
+import { Activity, StaticActivities, StaticSubject } from "./activity";
 import { Movement } from "./movement";
 import { User } from "./user";
 
@@ -101,5 +101,11 @@ export type IncrementActivityResponse = {
 export type GetStaticSubjectsResponse = {
     result: Resposne;
     subjects?: StaticSubject[];
+    message?: string;
+}
+
+export type GetStaticActivityResponse ={
+    result: Resposne;
+    activity?: StaticActivities;
     message?: string;
 }

@@ -62,6 +62,12 @@ export type staticSubjectsResponse = {
     message?: string;
 }
 
+export type GetStaticActivityResponse = {
+    result: Resposne;
+    activity?: StaticActivities;
+    message?: string;
+}
+
 export type incrementActivityDisplayCountResponse = {
     result: Resposne;
     activity?: StaticActivities;

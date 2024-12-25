@@ -8,7 +8,9 @@ import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import ActivityOutputStatic from "../../components/ActivityOutput/ActivityOutputStatic";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
-import { StaticActivities, StaticSubjects } from "../../models/types/activity";
+import { StaticActivities } from "../../models/types/activity";
+import { useEffect, useState } from "react";
+import { fetchGetStaticActivity } from "../../utils/fetch";
 
 function ContentActivity() {
     const navigate = useNavigate();
@@ -16,6 +18,8 @@ function ContentActivity() {
     const { activityId, contentId } = useParams<{ activityId: string; contentId: string }>();
     const { subjects, isLoading, useFetchSubjectsData } = useStaticContentContext();
     useFetchSubjectsData();
+    const [isActivityLoading, setIsActivityLoading] = useState<boolean>(isLoading);
+    const [activity, setActivity] = useState<StaticActivities | undefined>();
 
     const contentActivityPath = `${route.content}/${activityId}/${contentId}`;
 
@@ -30,15 +34,27 @@ function ContentActivity() {
         }
     };
 
-    let subject: StaticSubjects | undefined;
-    let activity: StaticActivities | undefined;
-
-    if (subjects && subjects.length > 0) {
-        subject = subjects.find((subj) => subj.name === activityId);
-        if (subject && subject.activities && subject.activities.length > 0) {
-            activity = subject.activities.find((act) => act.name === contentId);
+    useEffect(() => {
+        const fetchActivity = async () => {
+            setIsActivityLoading(true);
+            const response = await fetchGetStaticActivity({ contentName: contentId });
+            setActivity(response.activity);
+            setIsActivityLoading(false);
+        };
+        if (subjects.length > 0) {
+            const foundSubject = subjects.find((subj) => subj.name === activityId);
+            if (foundSubject?.activities?.length > 0) {
+                const foundActivity = foundSubject.activities.find((act) => act.name === contentId);
+                setActivity(foundActivity);
+            }
+        } else {
+            fetchActivity();
         }
-    }
+    }, [subjects, activityId, contentId]);
+
+    useEffect(() => {
+        setIsActivityLoading(isLoading);
+    }, [isLoading]);
 
     return (
         <PageLayout
@@ -51,11 +67,11 @@ function ContentActivity() {
             hasNavBar
         >
             <ActivityReady subject={activity?.title} />
-            {isLoading ? (
+            {isActivityLoading ? (
                 <section className={styles.activity_data_container}>
                     <SmallLoading />
                 </section>
-            ) : subject && activity ? (
+            ) : activity ? (
                 <section className={styles.activity_data_container}>
                     <article>
                         <ActivityOutputStatic activity={activity.content} />

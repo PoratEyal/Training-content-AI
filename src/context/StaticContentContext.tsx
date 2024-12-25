@@ -35,7 +35,7 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
             if (subjects.length === 0) {
                 fetchSubjectsData();
             }
-        }, [subjects]);
+        }, []);
     };
 
     return (
