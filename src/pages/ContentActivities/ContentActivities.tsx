@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../../components/ActivityOutput/Markdown.css";
 import styles from "./ContentActivities.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
@@ -9,8 +9,8 @@ import ReadyContentName from "../../components/titles/ReadyContentName/ReadyCont
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
-import { StaticSubjects } from "../../models/types/activity";
 import { StaticActivities } from "../../models/types/activity";
+import helmet from "../../models/resources/helmet.json";
 
 const ContentActivities: React.FC = () => {
     const navigate = useNavigate();
@@ -23,17 +23,14 @@ const ContentActivities: React.FC = () => {
         navigate(route.content);
     };
 
+    const { subject, activities } = React.useMemo(() => {
+        if (!subjects?.length) return { subject: undefined, activities: undefined };
 
-    let subject: StaticSubjects | undefined;
-    let activities: StaticActivities[] | undefined;
+        const foundSubject = subjects.find((subj) => subj.name === activityId);
+        const sortedActivities = foundSubject?.activities?.sort((a, b) => a.orderId - b.orderId);
 
-    if (subjects && subjects.length > 0) {
-        subject = subjects.find((subj) => subj.name === activityId);
-        if (subject && subject.activities) {
-            // Sort activities by orderId in ascending order
-            activities = subject.activities.sort((a, b) => a.orderId - b.orderId);
-        }
-    }
+        return { subject: foundSubject, activities: sortedActivities };
+    }, [subjects, activityId]);
 
     const handleActivityClick = async (activity: StaticActivities) => {
         try {
@@ -49,11 +46,11 @@ const ContentActivities: React.FC = () => {
             hasHeader={{ goBack }}
             hasNavBar
             hasGreenBackground
-            title={subject.metaTitle || ""}
-            content={subject.metaDescription || ""}
+            title={subject?.metaTitle || helmet.contentActivities.title}
+            content={subject?.metaDescription || helmet.contentActivities.content}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
         >
-            <ReadyContentName isMany subject={subject.metaTitle || ""} />
+            <ReadyContentName isMany subject={subject?.metaTitle || helmet.contentActivities.title} />
             {isLoading ? (
                 <section className={styles.content_article}>
                     <SmallLoading />

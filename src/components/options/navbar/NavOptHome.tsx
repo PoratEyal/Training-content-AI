@@ -2,7 +2,6 @@ import styles from "./navbar.module.css";
 import route from "../../../router/route.json";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { GrHome } from "react-icons/gr";
 import { GoHome } from "react-icons/go";
 
 const NavOptHome = () => {

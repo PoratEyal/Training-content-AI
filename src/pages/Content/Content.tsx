@@ -50,8 +50,8 @@ const iconMap = {
 };
 
 function Content() {
-    const navigate = useNavigate();
     const { subjects, isLoading, useFetchSubjectsData } = useStaticContentContext();
+    const navigate = useNavigate();
     useFetchSubjectsData();
     
     const goBack = () => {

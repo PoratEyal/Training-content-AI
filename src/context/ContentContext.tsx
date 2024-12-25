@@ -7,7 +7,6 @@ import { addSessionData } from "../utils/movment";
 import { useAuthContext } from "./AuthContext";
 import { Movements } from "../models/resources/movment";
 import { SessionKey } from "../models/enum/storage";
-import { useErrorContext } from "./ErrorContext";
 
 export const ContentContext = createContext<ContentContextType>(typeContext);
 
@@ -15,7 +14,6 @@ export const useContentContext = () => useContext(ContentContext);
 
 export const ContentProvider = ({ children }: { children: React.ReactNode }) => {
     const { currentUser } = useAuthContext();
-    const { handleError } = useErrorContext();
     const [data, setData] = useState<DataType | undefined>();
     const [mainActivity, setMainActivity] = useState<Activity | undefined>();
 
@@ -47,7 +45,7 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
                 gender: gender,
             });
         }
-    }, [currentUser]);
+    }, [currentUser, data]);
 
     const updateDetails = (movement, grade, amount, gender) => {
         setData((prevData) => {

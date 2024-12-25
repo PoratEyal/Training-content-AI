@@ -18,11 +18,15 @@ function Activity() {
   const activityRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
 
+  const goBack = () => {
+    navigate(route.build);
+  };
+
   useEffect(() => {
     if (!data || !data.grade || !data.movement || !mainActivity) {
       goBack();
     }
-  }, [data]);
+  }, [data, mainActivity]);
 
   useEffect(() => {
     if (newActivity && activityRef.current) {
@@ -30,10 +34,6 @@ function Activity() {
       setNewActivity(false);
     }
   }, [newActivity]);
-
-  const goBack = () => {
-    navigate(route.build);
-  };
 
   return (
     <>

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "./Profile.module.css";
 import Dropdown from "../Layout/Dropdown/Dropdown";
 import DropOptContactUs from "../options/dropdown/DropOptContactUs";
@@ -36,8 +35,8 @@ function Profile({ img, isLoading }: ProfileProps) {
                                 src={img}
                                 height={30}
                                 width={30}
-                                alt="Profile image"
-                                title="Profile image"
+                                alt="Profile"
+                                title="Profile"
                             />
                         ) : (
                             <FaUserCircle className={styles.no_user_profile_img} />

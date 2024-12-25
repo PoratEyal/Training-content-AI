@@ -2,8 +2,6 @@ import styles from "./navbar.module.css";
 import route from "../../../router/route.json";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { CgProfile } from "react-icons/cg";
-import { CiBookmark } from "react-icons/ci";
 import { IoBookmarkOutline } from "react-icons/io5";
 
 const NavOptMyActivities = () => {
