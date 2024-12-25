@@ -30,14 +30,16 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
         }
     };
 
-    useEffect(() => {
-        if(subjects.length === 0){
-            fetchSubjectsData();
-        }
-    }, []);
+    const useFetchSubjectsData = () => {
+        useEffect(() => {
+            if (subjects.length === 0) {
+                fetchSubjectsData();
+            }
+        }, [subjects]);
+    };
 
     return (
-        <StaticContentContext.Provider value={{ subjects, isLoading }}>
+        <StaticContentContext.Provider value={{ useFetchSubjectsData, subjects, isLoading }}>
             {children}
         </StaticContentContext.Provider>
     );

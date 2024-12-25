@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { SaveContextType } from "../models/types/context";
 import { defualtSaveContext } from "../models/defualtState/context";
 import { Activity } from "../models/types/activity";
@@ -16,7 +16,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
     const { currentUser } = useAuthContext();
     const { handleError } = useErrorContext();
     const [savedActivity, setSavedActivity] = useState<Activity[]>();
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const getSavedActivities = async () => {
         if (currentUser && currentUser.id) {
@@ -34,16 +34,16 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
         }
     };
 
-    const deleteActivity = async (activityToDelete: Activity) => {
+    const deleteActivity = async (activityIdToDelete: string) => {
         if (currentUser && currentUser.id) {
             try {
                 setSavedActivity((prevActivities) =>
-                    prevActivities.filter((act) => act !== activityToDelete),
+                    prevActivities.filter((act) => act.id !== activityIdToDelete),
                 );
                 //TODO: add alert that the activity was removed
                 await fetchRemoveActivity({
                     userId: currentUser.id,
-                    activityId: activityToDelete.id,
+                    activityId: activityIdToDelete,
                 } as RemoveActivityRequest);
             } catch (error) {
                 // handleError("לא הצלחנו למחוק את הפעולה, אנא נסו שוב."); // TODO
@@ -51,11 +51,20 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
         }
     };
 
+    const useFetchSavedData = () => {
+        useEffect(() => {
+            if (!savedActivity || savedActivity?.length === 0) {
+                getSavedActivities();
+            }
+        }, [currentUser]);
+    };
+
     return (
         <SaveContext.Provider
             value={{
                 savedActivity,
                 isLoading,
+                useFetchSavedData,
                 getSavedActivities,
                 deleteActivity,
             }}

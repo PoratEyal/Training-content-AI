@@ -15,7 +15,7 @@ export type ContentContextType = {
     mainActivity: Activity | undefined;
     setData: React.Dispatch<React.SetStateAction<DataType>>;
     updateDetails: (movement: string, grade: string, amount: string, gender: string) => void;
-    updateMainActivity: (activity: Activity) => void;    
+    updateMainActivity: (activity: Activity) => void;
     clearAll: () => void;
     clearMainActivity: () => void;
 };
@@ -37,9 +37,10 @@ export type AuthContextType = {
 };
 
 export type StaticContentContextType = {
+    useFetchSubjectsData: () => void;
     subjects: StaticSubjects[];
     isLoading: boolean;
-}
+};
 
 export type CookiesContextType = {
     cookieLimit: string | undefined;
@@ -53,11 +54,12 @@ export type CookiesContextType = {
     setConsentCookie: () => void;
     setLimitCookie: (data: string | number) => void;
     setVisitCount: (visitCount: number) => void;
-}
+};
 
 export type SaveContextType = {
     savedActivity: Activity[];
     isLoading: boolean;
-    getSavedActivities: () => void;
-    deleteActivity: (activityToDelete: Activity) => void;
-}
+    useFetchSavedData: () => void;
+    getSavedActivities: () => Promise<void>;
+    deleteActivity: (activityIdToDelete: string) => Promise<void>;
+};

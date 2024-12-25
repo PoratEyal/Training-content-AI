@@ -18,6 +18,8 @@ import { useCookiesContext } from "../../context/CookiesContext";
 import { SignInStatus } from "../../models/enum/registrationStatus";
 import { HOME_AD_SLOT } from "../../models/constants/adsSlot";
 import AboutUsCollapse from "../../components/AboutUsCollapse/AboutUsCollapse";
+import { useStaticContentContext } from "../../context/StaticContentContext";
+import { useSaveContext } from "../../context/SavedContext";
 
 function Home() {
     const {
@@ -33,6 +35,11 @@ function Home() {
 
     const { currentUser, isLoggedIn, isPopupVisible, handlePopupClose, setIsPopupVisible } =
         useAuthContext();
+
+    const { useFetchSubjectsData } = useStaticContentContext();
+    const {useFetchSavedData } = useSaveContext();
+    useFetchSubjectsData();
+    useFetchSavedData();
 
     const [rememberMe, setRememberMe] = useState<SignInStatus>(SignInStatus.NEW_ACCESS);
 
@@ -148,10 +155,10 @@ function Home() {
             <div className={styles.about_div}>
                 <AboutUsCollapse>
                     <p>
-                        ActivityWiz הוא אתר ליצירת פעולות לנוער. תוכלו לבחור מתוך מאגר של פעולות מוכנות
-                        מראש או להשתמש בבינה מלאכותית ליצירת פעולות מותאמות אישית, המתאימות בדיוק לצרכים
-                        שלכם. האתר מיועד למדריכים המחפשים רעיונות ודרכים חדשות להעשרת החוויה החינוכית
-                        והחברתית.
+                        ActivityWiz הוא אתר ליצירת פעולות לנוער. תוכלו לבחור מתוך מאגר של פעולות
+                        מוכנות מראש או להשתמש בבינה מלאכותית ליצירת פעולות מותאמות אישית, המתאימות
+                        בדיוק לצרכים שלכם. האתר מיועד למדריכים המחפשים רעיונות ודרכים חדשות להעשרת
+                        החוויה החינוכית והחברתית.
                     </p>
                 </AboutUsCollapse>
             </div>

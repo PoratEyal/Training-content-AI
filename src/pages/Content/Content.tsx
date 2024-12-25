@@ -51,8 +51,9 @@ const iconMap = {
 
 function Content() {
     const navigate = useNavigate();
-    const { subjects, isLoading } = useStaticContentContext();
-
+    const { subjects, isLoading, useFetchSubjectsData } = useStaticContentContext();
+    useFetchSubjectsData();
+    
     const goBack = () => {
         navigate(route.home);
     };
@@ -92,7 +93,7 @@ function Content() {
                                 key={index}
                                 className={styles.grid_item}
                             >
-                                <h2 className={styles.item_title}>{subject.metaTitle}</h2>
+                                <h2 className={styles.item_title}>{subject?.metaTitle}</h2>
                                 <div className={styles.icon}>
                                     {iconMap[subject.icon] &&
                                         React.createElement(iconMap[subject.icon], {

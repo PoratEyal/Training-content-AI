@@ -1,4 +1,4 @@
-import { AuthContextType, CookiesContextType, SaveContextType } from "../types/context";
+import { AuthContextType, CookiesContextType, SaveContextType, StaticContentContextType } from "../types/context";
 
 export const typeContext = {
     data: undefined,
@@ -26,7 +26,8 @@ export const defualtAuthContext: AuthContextType = {
     setIsPopupVisible: () => {},
 };
 
-export const defualtStaticContentContext = {
+export const defualtStaticContentContext: StaticContentContextType = {
+    useFetchSubjectsData: () => {},
     subjects: [],
     isLoading: true,
 };
@@ -48,6 +49,7 @@ export const defualtCookiesContext: CookiesContextType = {
 export const defualtSaveContext: SaveContextType = {
     savedActivity: [],
     isLoading: false,
-    getSavedActivities: () => {},
-    deleteActivity: () => {},
+    useFetchSavedData: () => {},
+    getSavedActivities: async () => {},
+    deleteActivity: async () => {},
 }
