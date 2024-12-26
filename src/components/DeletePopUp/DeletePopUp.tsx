@@ -42,7 +42,7 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
           <h3 className={styles.popupTitle}>מחיקת הפעולה</h3>
         </div>
         <p className={styles.message}>
-          האם למחוק את הפעולה בנושא: {activityName}?
+          האם למחוק את הפעולה {activityName}?
         </p>
         <div className={styles.btn_div}>
           <button
