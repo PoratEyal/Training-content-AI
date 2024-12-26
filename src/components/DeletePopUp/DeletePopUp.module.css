@@ -1,0 +1,114 @@
+@keyframes slideUp {
+    from {
+      transform: translateY(100vh);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.537);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popupContent {
+    background: #fff;
+    padding: 25px;
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 26px;
+    border-radius: 10px;
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    border: 4px solid var(--secondary-color);
+  
+    /* Animation styles */
+    transform: translateY(100vh);
+    transition: transform 0.5s ease-out;
+  }
+  
+  .popupContentShow {
+    transform: translateY(0);
+  }
+  
+  .popupTitle_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popupTitle {
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: -5px;
+  }
+  
+  .message {
+    font-size: 16px;
+    color: var(--primary-color);
+    line-height: 1.5;
+    margin-top: -10px;
+    margin-bottom: 30px;
+  }
+  
+  .btn_div {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    direction: ltr;
+  }
+  
+  .deleteButton {
+    background-color: var(--secondary-color);
+    background-color: rgb(255, 111, 111);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: var(--font-family);
+  }
+  
+  .cancelButton {
+    background-color: var(--primary-color);
+    background-color: rgb(133, 133, 133);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: var(--font-family);
+  }
+
+  .loading {
+    position: relative;
+    color: white;
+    animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+  

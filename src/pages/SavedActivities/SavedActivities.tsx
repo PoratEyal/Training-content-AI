@@ -7,74 +7,96 @@ import MyActivitiesTitle from "../../components/titles/MyActivitiesTitle/MyActiv
 import helmet from "../../models/resources/helmet.json";
 import { MY_ACTIVITIES_AD_SLOT } from "../../models/constants/adsSlot";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
-import { TiDelete } from "react-icons/ti";
 import DontHaveActivity from "../../components/DontHaveActivity/DontHaveActivity";
 import { useSaveContext } from "../../context/SavedContext";
 import { Activity } from "../../models/types/activity";
+import React, { useState } from "react";
+import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
 
 const SavedActivities: React.FC = () => {
-    const navigate = useNavigate();
-    const { savedActivity, isLoading, useFetchSavedData, deleteActivity } = useSaveContext();
-    useFetchSavedData();
+  const navigate = useNavigate();
+  const { savedActivity, isLoading, useFetchSavedData, deleteActivity } = useSaveContext();
+  useFetchSavedData();
 
-    const goBack = () => {
-        navigate(route.home); //TODO: -1 or home
-    };
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [activityToDelete, setActivityToDelete] = useState<Activity | null>(null);
 
-    const handleDelete = async (
-        e: React.MouseEvent<SVGElement, MouseEvent>,
-        activity: Activity,
-    ) => {
-        e.stopPropagation();
-        await deleteActivity(activity.id);
-    };
+  const goBack = () => {
+    navigate(route.home);
+  };
 
-    return (
-        <PageLayout
-            path={route.myactivities}
-            hasHeader={{ goBack }}
-            hasNavBar
-            hesAds={MY_ACTIVITIES_AD_SLOT}
-            index={false}
-            hasGreenBackground
-            title={helmet.content.title}
-            content={helmet.home.content}
-        >
-            <MyActivitiesTitle />
+  const openDeletePopup = (activity: Activity) => {
+    setActivityToDelete(activity);
+    setIsPopupOpen(true);
+  };
 
-            <article className={styles.content_article}>
-                {isLoading ? (
-                    <section className={styles.grid_container}>
-                        <SmallLoading />
-                    </section>
-                ) : savedActivity?.length === 0 ? (
-                    <section className={styles.grid_container}>
-                        <DontHaveActivity />
-                    </section>
-                ) : (
-                    <section className={styles.grid_container}>
-                        {savedActivity?.map((activity, index) => (
-                            <div
-                                key={index}
-                                className={styles.grid_item}
-                                onClick={(e) => {
-                                    if (!(e.target as Element).closest(".delete_icon")) {
-                                        navigate(`${route.myactivities}/${activity.subject}`);
-                                    }
-                                }}
-                            >
-                                <h2 className={styles.item_title}>{activity.subject}</h2>
-                                <TiDelete
-                                    className={`${styles.delete_icon} delete_icon`}
-                                    onClick={(e) => handleDelete(e, activity)}
-                                />
-                            </div>
-                        ))}
-                    </section>
-                )}
-            </article>
-        </PageLayout>
-    );
+  const closeDeletePopup = () => {
+    setIsPopupOpen(false);
+    setActivityToDelete(null);
+  };
+
+  const confirmDelete = async () => {
+    if (activityToDelete) {
+      await deleteActivity(activityToDelete.id);
+    }
+  };
+
+  return (
+    <PageLayout
+      path={route.myactivities}
+      hasHeader={{ goBack }}
+      hasNavBar
+      hesAds={MY_ACTIVITIES_AD_SLOT}
+      index={false}
+      hasGreenBackground
+      title={helmet.content.title}
+      content={helmet.home.content}
+    >
+      <MyActivitiesTitle />
+      <DeletePopUp
+        isOpen={isPopupOpen}
+        onClose={closeDeletePopup}
+        onDelete={confirmDelete}
+        activityName={activityToDelete?.subject || ""}
+      />
+      <article className={styles.content_article}>
+        {isLoading ? (
+          <section className={styles.grid_container}>
+            <SmallLoading />
+          </section>
+        ) : savedActivity?.length === 0 ? (
+          <section className={styles.grid_container}>
+            <DontHaveActivity />
+          </section>
+        ) : (
+          <section className={styles.grid_container}>
+            {savedActivity?.map((activity, index) => (
+              <div
+                key={index}
+                className={styles.grid_item}
+                onClick={(e) => {
+                  if (!(e.target as Element).closest(".delete_icon")) {
+                    navigate(`${route.myactivities}/${activity.subject}`);
+                  }
+                }}
+              >
+                <h2 className={styles.item_title}>{activity.subject}</h2>
+                <label
+                  className={`${styles.delete_icon} delete_icon`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openDeletePopup(activity);
+                  }}
+                >
+                  X
+                </label>
+              </div>
+            ))}
+          </section>
+        )}
+      </article>
+    </PageLayout>
+  );
 };
 
 export default SavedActivities;
