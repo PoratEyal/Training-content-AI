@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./SmallLoading.module.css";
-import { VscLoading } from "react-icons/vsc";
+import { Icons } from "../../Icons";
 
 function SmallLoading() {
-    return <VscLoading className={styles.loading} />;
+    return <Icons.loading className={styles.loading} />;
 }
 
 export default SmallLoading;

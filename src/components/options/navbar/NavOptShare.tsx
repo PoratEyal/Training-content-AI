@@ -1,11 +1,11 @@
 import styles from "./navbar.module.css";
-import { IoMdShare } from "react-icons/io";
 import { WhatsappShareButton } from "react-share";
 import { formatInviteFriend, formatWhatsUp } from "../../../utils/format";
 import { WEBSITE_URL } from "../../../models/constants";
 import { useLocation } from "react-router-dom";
 import route from "../../../router/route.json";
 import { useContentContext } from "../../../context/ContentContext";
+import { Icons } from "../../Icons";
 
 const NavOptShare = () => {
     const { mainActivity } = useContentContext();
@@ -20,7 +20,7 @@ const NavOptShare = () => {
 
     return (
         <WhatsappShareButton className={styles.navbar_icon} url={WEBSITE_URL} title={setMsg()}>
-            <IoMdShare className={styles.icon} />
+            <Icons.share className={styles.icon} />
             <span>שיתוף</span>
         </WhatsappShareButton>
     );

@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./MainBtn.module.css";
-import { FiChevronsLeft } from "react-icons/fi";
+
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
+import { Icons } from "../Icons";
 
 type MainBtnProps = {
     type?: "button" | "submit";
@@ -38,7 +39,7 @@ function MainBtn({
                 <div className={styles.btn}>
                     <span style={{ opacity: isDisabled ? 0.5 : 1 }}>{text}</span>
                     <div className={styles.btn_icon} style={{ opacity: isDisabled ? 0.5 : 1 }}>
-                        <FiChevronsLeft className={styles.icon} />
+                        <Icons.chevronsLeft className={styles.icon} />
                     </div>
                 </div>
             )}

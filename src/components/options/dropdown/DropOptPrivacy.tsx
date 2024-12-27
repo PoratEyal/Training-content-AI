@@ -1,8 +1,8 @@
 import React from "react";
-import { MdOutlinePrivacyTip } from "react-icons/md";
 import styles from "./dropdown.module.css";
 import { useNavigate } from "react-router-dom";
 import route from "../../../router/route.json";
+import { Icons } from "../../Icons";
 
 type DropdownOption = {
     handleClose: () => void;
@@ -19,7 +19,7 @@ function DropOptPrivacy({ handleClose }: DropdownOption) {
     return (
         <span className={styles.text_and_icon} onClick={() => handleClick()}>
             תנאי שירות
-            <MdOutlinePrivacyTip />
+            <Icons.privacyPolicy />
         </span>
     );
 }

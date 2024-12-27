@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./GenerateBtn.module.css";
-import { LuRefreshCcw } from "react-icons/lu";
 import { Activity } from "../../models/types/activity";
 import { useContentContext } from "../../context/ContentContext";
 import { useErrorContext } from "../../context/ErrorContext";
 import { fetchGetActivity } from "../../utils/fetch";
 import msg from "../../models/resources/errorMsg.json";
+import { Icons } from "../Icons";
 
 type MoreActionsProps = {
     setLoadingGenerate: React.Dispatch<React.SetStateAction<boolean>>;
@@ -43,7 +43,7 @@ const GenerateBtn: React.FC<MoreActionsProps> = ({
 
     return (
         <button onClick={generateAgain} className={styles.button}>
-            <LuRefreshCcw />
+            <Icons.refresh />
         </button>
     );
 };

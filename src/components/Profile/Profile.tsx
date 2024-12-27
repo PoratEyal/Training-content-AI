@@ -5,9 +5,9 @@ import DropOptInviteFriends from "../options/dropdown/DropOptInviteFriends";
 import DropOptPrivacy from "../options/dropdown/DropOptPrivacy";
 import DropOptLogout from "../options/dropdown/DropOptLogout";
 import { useAuthContext } from "../../context/AuthContext";
-import { FaUserCircle } from "react-icons/fa";
 import DropOptSignIn from "../options/dropdown/DropOptSignIn";
 import useToggle from "../../hooks/useToggle";
+import { Icons } from "../Icons";
 
 type ProfileProps = {
     img?: string;
@@ -23,7 +23,7 @@ function Profile({ img, isLoading }: ProfileProps) {
             {isLoading ? (
                 <div className={styles.user_profile}>
                     <div className={styles.img_div}>
-                        <FaUserCircle className={styles.no_user_profile_img} />
+                        <Icons.user className={styles.no_user_profile_img} />
                     </div>
                 </div>
             ) : (
@@ -39,7 +39,7 @@ function Profile({ img, isLoading }: ProfileProps) {
                                 title="Profile"
                             />
                         ) : (
-                            <FaUserCircle className={styles.no_user_profile_img} />
+                            <Icons.user className={styles.no_user_profile_img} />
                         )}
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import styles from "./FadeEffect.module.css";
-import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
+import { Icons } from "../Icons";
 
 type FadeEffectProps = {
     hasFade?: boolean;
@@ -40,7 +40,7 @@ function FadeEffect({
                 {hasText ? (
                     <div className={styles.blur_text}>
                         גלול למטה לאישור המדיניות
-                        <IoIosArrowDown />
+                        <Icons.arrowDown />
                     </div>
                 ) : (
                     <div className={styles.blur_no_text}>blur effect</div>

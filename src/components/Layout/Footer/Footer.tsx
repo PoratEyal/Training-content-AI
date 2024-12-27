@@ -1,9 +1,8 @@
 import styles from "./Footer.module.css";
 import AboutUsCollapse from "../../AboutUsCollapse/AboutUsCollapse";
-import { MdOutlinePrivacyTip } from "react-icons/md";
-import { IoMailOpen } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import route from "../../../router/route.json";
+import { Icons } from "../../Icons";
 
 function Footer({ showAbout = true, showPrivacyAndContact = true }) {
     const navigate = useNavigate();
@@ -12,7 +11,7 @@ function Footer({ showAbout = true, showPrivacyAndContact = true }) {
         <footer className={styles.footer}>
             {showPrivacyAndContact && (
                 <div onClick={() => navigate(route.privacyPolicy)} className={styles.footer_privacy}>
-                    <MdOutlinePrivacyTip />
+                    <Icons.privacyPolicy />
                     <label>תנאי שירות</label>
                 </div>
             )}
@@ -30,7 +29,7 @@ function Footer({ showAbout = true, showPrivacyAndContact = true }) {
 
             {showPrivacyAndContact && (
                 <div className={styles.footer_contact}>
-                    <IoMailOpen />
+                    <Icons.contactUs />
                     <a href={`mailto:info@example.com`}>Contact Us</a>
                 </div>
             )}
