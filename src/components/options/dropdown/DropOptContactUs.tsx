@@ -1,6 +1,6 @@
-import { IoMailOpen } from "react-icons/io5";
 import styles from "./dropdown.module.css";
 import policy from "../../../models/resources/policy.json";
+import { Icons } from "../../Icons";
 
 type ContactUsProps = {
     handleClose: () => void;
@@ -21,7 +21,7 @@ function DropOptContactUs({ handleClose }: ContactUsProps) {
     return (
         <span className={styles.text_and_icon} onClick={() => handleClick()}>
             צרו קשר
-            <IoMailOpen />
+            <Icons.contactUs />
         </span>
     );
 }

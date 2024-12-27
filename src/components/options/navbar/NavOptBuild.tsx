@@ -2,7 +2,7 @@ import styles from "./navbar.module.css";
 import route from "../../../router/route.json";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { FaWandMagicSparkles } from "react-icons/fa6";
+import { Icons } from "../../Icons";
 
 const NavOptBuild = () => {
     const [isSelected, setIsSelected] = useState<boolean>(false);
@@ -22,7 +22,7 @@ const NavOptBuild = () => {
             onClick={()=>navigate(route.details)}
             className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
         >
-            <FaWandMagicSparkles className={styles.icon} />
+            <Icons.magic className={styles.icon} />
             <span className={styles.text}>יצירת פעולות</span>
         </div>
     );

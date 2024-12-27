@@ -2,7 +2,7 @@ import styles from "./navbar.module.css";
 import route from "../../../router/route.json";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { IoBookmarkOutline } from "react-icons/io5";
+import { Icons } from "../../Icons";
 
 const NavOptMyActivities = () => {
     const [isSelected, setIsSelected] = useState<boolean>(false);
@@ -18,7 +18,7 @@ const NavOptMyActivities = () => {
             onClick={()=>navigate(route.myactivities)}
             className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
         >
-            <IoBookmarkOutline className={styles.icon} />
+            <Icons.bookmark className={styles.icon} />
             <span className={styles.text}>הפעולות שלי</span>
         </div>
     );

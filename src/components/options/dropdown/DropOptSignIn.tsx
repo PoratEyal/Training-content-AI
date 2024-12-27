@@ -2,7 +2,8 @@ import useSignIn from "../../../hooks/useSignIn";
 import { useNavigate } from "react-router-dom";
 import route from "../../../router/route.json";
 import styles from "./dropdown.module.css";
-import { RiLoginBoxFill } from "react-icons/ri";
+import { Icons } from "../../Icons";
+
 
 type DropOptSignInProps = {
     handleClose: () => void;
@@ -22,7 +23,7 @@ function DropOptSignIn({ handleClose }: DropOptSignInProps) {
     return (
         <span className={styles.text_and_icon} onClick={() => handleClick()}>
             התחברות
-            <RiLoginBoxFill />
+            <Icons.login />
         </span>
     );
 }

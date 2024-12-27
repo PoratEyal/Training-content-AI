@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./DeletePopUp.module.css";
-import { VscLoading } from "react-icons/vsc";
+import { Icons } from "../Icons";
 
 interface DeletePopUpProps {
   isOpen: boolean;
@@ -50,7 +50,7 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
             onClick={handleDelete}
             disabled={isDeleting}
           >
-            {isDeleting ? <VscLoading className={styles.loading}/> : "מחיקה"}
+            {isDeleting ? <Icons.loading className={styles.loading}/> : "מחיקה"}
           </button>
           <button
             className={styles.cancelButton}

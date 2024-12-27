@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./dropdown.module.css";
 import { useNavigate } from "react-router-dom";
 import route from "../../../router/route.json";
-import { VscOutput } from "react-icons/vsc";
+import { Icons } from "../../Icons";
 
 type DropdownOption = {
     handleClose: () => void;
@@ -19,7 +19,7 @@ function DropOptExample({ handleClose }: DropdownOption) {
     return (
         <span className={styles.text_and_icon} onClick={() => handleClick()}>
             פעולות מוכנות
-            <VscOutput />
+            <Icons.output />
         </span>
     );
 }

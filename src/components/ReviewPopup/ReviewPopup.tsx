@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./ReviewPopup.module.css";
-import { FiChevronsLeft } from "react-icons/fi";
-import { MdOutlineCancel } from "react-icons/md";
 import emailjs from 'emailjs-com';
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
-import { FcIdea } from "react-icons/fc";
 import { useAuthContext } from "../../context/AuthContext";
+import { Icons } from "../Icons";
 
 interface PopupComponentProps {
   onClose: (userResponse?: string) => void;
@@ -58,12 +56,12 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
     <div className={styles.popupOverlay}>
       <div className={`${styles.popupContent} ${showPopup ? styles.popupContentShow : ""}`}>
         <button className={styles.closeButton} onClick={() => onClose()}>
-          <MdOutlineCancel />
+          <Icons.cancel />
         </button>
 
         <div className={styles.popupTitle_div}>
           <h3 className={styles.popupTitle}>רגע! אל תסגרו אותי</h3>
-          <FcIdea className={styles.icon_lamp}></FcIdea>
+          <Icons.idea className={styles.icon_lamp}/>
         </div>
 
         <div className={styles.text}>
@@ -100,7 +98,7 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
                   שליחה
                 </span>
                 <div className={styles.buttonIcon} style={{ opacity: isDisabled ? 0.5 : 1 }}>
-                  <FiChevronsLeft className={styles.icon} />
+                  <Icons.chevronsLeft className={styles.icon} />
                 </div>
               </div>
             )}

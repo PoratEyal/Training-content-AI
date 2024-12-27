@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./StartBtn.module.css";
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
-import { FiChevronsLeft } from "react-icons/fi";
+import { Icons } from "../Icons";
 
 type StartBtnProps = {
     onClick: (e: any) => void;
@@ -27,7 +27,7 @@ function StartBtn({ onClick, text, isDisabled, isLoading = false }: StartBtnProp
                 <div className={styles.btn}>
                     <span style={{ opacity: isDisabled ? 0.5 : 1 }}>{text}</span>
                     <div className={styles.btn_icon} style={{ opacity: isDisabled ? 0.5 : 1 }}>
-                        <FiChevronsLeft className={styles.icon} />
+                        <Icons.chevronsLeft className={styles.icon} />
                     </div>
                 </div>
             )}

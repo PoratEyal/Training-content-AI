@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "./MagicBtn.module.css";
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
-import { FaWandMagicSparkles } from "react-icons/fa6";
+import { Icons } from "../Icons";
+
 
 type MagicBtnProps = {
     setSubject: (newSubject: string) => void;
@@ -30,7 +31,7 @@ function MagicBtn({ setSubject, options, size = 19, bottom = 7, left = 12 }: Mag
             {loadingMagic ? (
                 <SmallLoading />
             ) : (
-                <FaWandMagicSparkles onClick={() => generateSubject()} />
+                <Icons.magic onClick={() => generateSubject()} />
             )}
         </span>
     );
