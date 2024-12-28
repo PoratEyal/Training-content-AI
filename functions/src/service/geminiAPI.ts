@@ -11,6 +11,33 @@ import { PLAY_PROMPT_M } from "../model/prompts/playTime_M";
 import { SURVIVAL_PROMPT_S } from "../model/prompts/survival_S";
 import { SURVIVAL_PROMPT_M } from "../model/prompts/survival_M";
 import { PLAY_PROMPT_S } from "../model/prompts/playTime_S";
+import {
+    CONTANT_SECTION_20_IN,
+    CONTANT_SECTION_30_IN,
+    CONTANT_SECTION_45_IN,
+    CONTANT_SECTION_60_IN,
+    CONTANT_SECTION_90_IN,
+    CONTANT_SECTION_120_IN,
+    CONTANT_SECTION_20_OUT,
+    CONTANT_SECTION_30_OUT,
+    CONTANT_SECTION_45_OUT,
+    CONTANT_SECTION_60_OUT,
+    CONTANT_SECTION_90_OUT,
+    CONTANT_SECTION_120_OUT,
+    POINT_SECTION_20,
+    POINT_SECTION_30,
+    POINT_SECTION_45,
+    POINT_SECTION_60,
+    POINT_SECTION_90,
+    POINT_SECTION_120,
+    SURVIVAL_SECTION_20,
+    SURVIVAL_SECTION_30,
+    SURVIVAL_SECTION_45,
+    SURVIVAL_SECTION_60,
+    SURVIVAL_SECTION_90,
+    SURVIVAL_SECTION_120,
+    PLAY_SECTION
+} from "../model/prompts/sections";
 
 const genAI = new GoogleGenerativeAI(defineString("API_KEY").value() || "");
 
@@ -44,28 +71,89 @@ function promptPerGrade(grade: string, prompts: [string, string, string]): strin
     }
 }
 
+const sectionPerTime = (time: string, section: string[]) => {
+    switch (time) {
+        case "20 דקות":
+            return section[0];
+        case "חצי שעה":
+            return section[1];
+        case "45 דקות":
+            return section[2];
+        case "שעה":
+            return section[3];
+        case "שעה וחצי":
+            return section[4];
+        case "שעתיים":
+            return section[5];
+        default:
+            return "";
+    }
+};
+
 export async function getMainActivity(activityDetials: ActivityDetails): Promise<string> {
     const { subject, category, time, amount, grade, gender, place } = activityDetials;
     let promptOptions: [string, string, string] = ["", "", ""];
+    let section: string = "";
     switch (category) {
-        case "contant":
-            promptOptions = [CONTANT_PROMPT_S, CONTANT_PROMPT_M, CONTANT_PROMPT_B];
-            break;
         case "pointOfView":
             promptOptions = [VIEW_PROMPT_S, VIEW_PROMPT_M, VIEW_PROMPT_M];
+            section = sectionPerTime(time, [
+                POINT_SECTION_20,
+                POINT_SECTION_30,
+                POINT_SECTION_45,
+                POINT_SECTION_60,
+                POINT_SECTION_90,
+                POINT_SECTION_120,
+            ]);
             break;
         case "survival":
             promptOptions = [SURVIVAL_PROMPT_S, SURVIVAL_PROMPT_M, SURVIVAL_PROMPT_M];
+            section = sectionPerTime(time, [
+                SURVIVAL_SECTION_20,
+                SURVIVAL_SECTION_30,
+                SURVIVAL_SECTION_45,
+                SURVIVAL_SECTION_60,
+                SURVIVAL_SECTION_90,
+                SURVIVAL_SECTION_120,
+            ]);
             break;
         case "playTime":
             promptOptions = [PLAY_PROMPT_S, PLAY_PROMPT_M, PLAY_PROMPT_M];
+            section = sectionPerTime(time, [
+                PLAY_SECTION,
+                PLAY_SECTION,
+                PLAY_SECTION,
+                PLAY_SECTION,
+                PLAY_SECTION,
+                PLAY_SECTION,
+            ]);
             break;
-        default:
+        default: //contant
             promptOptions = [CONTANT_PROMPT_S, CONTANT_PROMPT_M, CONTANT_PROMPT_B];
+            section = sectionPerTime(
+                time,
+                place === "במקום פתוח"
+                    ? [
+                          CONTANT_SECTION_20_OUT,
+                          CONTANT_SECTION_30_OUT,
+                          CONTANT_SECTION_45_OUT,
+                          CONTANT_SECTION_60_OUT,
+                          CONTANT_SECTION_90_OUT,
+                          CONTANT_SECTION_120_OUT,
+                      ]
+                    : [
+                          CONTANT_SECTION_20_IN,
+                          CONTANT_SECTION_30_IN,
+                          CONTANT_SECTION_45_IN,
+                          CONTANT_SECTION_60_IN,
+                          CONTANT_SECTION_90_IN,
+                          CONTANT_SECTION_120_IN,
+                      ],
+            );
             break;
     }
 
     const prompt = promptPerGrade(grade, promptOptions);
-    const result = formatString(prompt, [time, subject, amount, grade, gender, place]);
+    const result = formatString(prompt, [time, subject, amount, grade, gender, place, section]);
     return await generateContent(result);
 }
