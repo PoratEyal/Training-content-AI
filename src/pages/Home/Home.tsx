@@ -20,6 +20,7 @@ import { HOME_AD_SLOT } from "../../models/constants/adsSlot";
 import AboutUsCollapse from "../../components/AboutUsCollapse/AboutUsCollapse";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { useSaveContext } from "../../context/SavedContext";
+import InstallButton from "../../components/InstallButton/InstallButton";
 
 function Home() {
     const {
@@ -151,6 +152,11 @@ function Home() {
                     <SmallLoading />
                 </div>
             )}
+
+            <div className={styles.install_button_div}>
+                <InstallButton />
+            </div>
+
 
             <div className={styles.about_div}>
                 <AboutUsCollapse>
