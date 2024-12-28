@@ -153,9 +153,9 @@ function Home() {
                 </div>
             )}
 
-            <div className={styles.install_button_div}>
+            {/* <div className={styles.install_button_div}>
                 <InstallButton />
-            </div>
+            </div> */}
 
 
             <div className={styles.about_div}>
