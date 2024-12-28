@@ -28,7 +28,7 @@
     line-height: 26px;
     border-radius: 10px;
     position: relative;
-    width: 90%;
+    width: 85%;
     max-width: 400px;
     text-align: center;
     border: 4px solid var(--secondary-color);
@@ -50,13 +50,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
+    gap: 4px;
+    margin-top: -25px;
   }
-  
+  .deleteIcon{
+    color: var(--primary-color);
+    font-size: 27px;
+    margin-bottom: 3px;
+  }
   .popupTitle {
     color: var(--primary-color);
     font-size: 20px;
     font-weight: 600;
-    margin-top: -5px;
   }
   
   .message {
@@ -76,7 +82,7 @@
   
   .deleteButton {
     background-color: var(--secondary-color);
-    background-color: rgb(255, 111, 111);
+    background-color: rgb(255, 128, 128);
     color: white;
     border: none;
     border-radius: 8px;
@@ -89,7 +95,7 @@
   
   .cancelButton {
     background-color: var(--primary-color);
-    background-color: rgb(133, 133, 133);
+    background-color: rgb(195, 195, 195);
     color: white;
     border: none;
     border-radius: 8px;
@@ -116,3 +122,9 @@
     }
 }
   
+
+@media (min-width: 550px) {
+  .popupContent{
+    width: 320px;
+  }
+}

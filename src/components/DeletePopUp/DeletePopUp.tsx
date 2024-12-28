@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./DeletePopUp.module.css";
 import { Icons } from "../Icons";
+import { MdDelete } from "react-icons/md";
 
 interface DeletePopUpProps {
   isOpen: boolean;
@@ -40,6 +41,7 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
       <div className={`${styles.popupContent} ${showPopup ? styles.popupContentShow : ""}`}>
         <div className={styles.popupTitle_div}>
           <h3 className={styles.popupTitle}>מחיקת הפעולה</h3>
+          <MdDelete className={styles.deleteIcon} />
         </div>
         <p className={styles.message}>
           האם למחוק את הפעולה {activityName}?
