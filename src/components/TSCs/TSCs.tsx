@@ -10,6 +10,10 @@ function TSCs({ handleAccept }) {
                 <h3 className={styles.h3_privacy}>תנאי שירות ומדיניות פרטיות</h3>
 
                 <div className={styles.space_div}>
+                    <label>{policy.p11.text}</label>
+                </div>
+
+                <div className={styles.space_div}>
                     <label>{policy.p0.text}</label>
                 </div>
 
@@ -45,11 +49,11 @@ function TSCs({ handleAccept }) {
                     <label>{policy.p8.label}</label> {policy.p8.text}
                 </div>
                 
-                <div className={styles.space_div}>
+                <div className={styles.space_div_end}>
                     <label>{policy.p9.label}</label> {policy.p9.text}
                 </div>
 
-                <div className={styles.btn_div}>
+                <div className={styles.fixed_btn}>
                     <MainBtn
                         type="submit"
                         isDisabled={false}
