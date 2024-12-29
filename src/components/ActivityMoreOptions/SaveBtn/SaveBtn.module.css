@@ -11,8 +11,7 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   transition: background-color 0.3s ease, transform 0.3s ease;
   position: absolute;
-  left: 20px;
-  bottom: 175px;
+  bottom: 225px;
   z-index: 999;
 }
 

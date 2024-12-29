@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./SaveBtn.module.css";
-import { useAuthContext } from "../../context/AuthContext";
-import { useErrorContext } from "../../context/ErrorContext";
-import { Activity } from "../../models/types/activity";
-import { fetchSaveActivity } from "../../utils/fetch";
-import { useQueryParam } from "../../hooks/useQueryParam";
-import { useSaveContext } from "../../context/SavedContext";
+import { useAuthContext } from "../../../context/AuthContext";
+import { useErrorContext } from "../../../context/ErrorContext";
+import { Activity } from "../../../models/types/activity";
+import { fetchSaveActivity } from "../../../utils/fetch";
+import { useQueryParam } from "../../../hooks/useQueryParam";
+import { useSaveContext } from "../../../context/SavedContext";
 
 type SaveBtnProps = {
     activity: Activity;
