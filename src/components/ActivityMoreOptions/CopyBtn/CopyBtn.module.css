@@ -1,0 +1,35 @@
+/* CopyBtn.module.css */
+.copyBtn {
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Ensure child icons are positioned correctly */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    bottom: 170px;
+    z-index: 999;
+  }
+  
+  .icon {
+    color: var(--primary-color);
+    font-size: 21px;
+    position: absolute; /* Overlay icons */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+  }
+  
+  .fadeIn {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .fadeOut {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  
