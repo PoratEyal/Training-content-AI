@@ -3,11 +3,11 @@ import styles from "./EditBtn.module.css";
 import { Activity } from "../../../models/types/activity";
 import { AiFillEdit } from "react-icons/ai";
 
-interface ShareBtnProps {
+interface EditBtnProps {
   activity: Activity;
 }
 
-const EditBtn: React.FC<ShareBtnProps> = ({ activity }) => {
+const EditBtn: React.FC<EditBtnProps> = ({ activity }) => {
 
   return (
     <div className={styles.EditBtn}>

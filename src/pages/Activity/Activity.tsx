@@ -9,7 +9,6 @@ import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import helmet from "../../models/resources/helmet.json";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import { useAuthContext } from "../../context/AuthContext";
-import SaveBtn from "../../components/ActivityMoreOptions/SaveBtn/SaveBtn";
 import MoreBtn from "../../components/ActivityMoreOptions/MoreBtn/MoreBtn";
 
 function Activity() {
@@ -52,7 +51,7 @@ function Activity() {
         <section className={styles.activity_data_container}>
           <article>
             <ActivityOutput activity={mainActivity.activity} activityRef={activityRef} />
-            {isLoggedIn ? <MoreBtn activity={mainActivity} /> : null}
+            {isLoggedIn ? <MoreBtn edit={true} save={true} activity={mainActivity} /> : null}
           </article>
           <div className={styles.padding} />
         </section>

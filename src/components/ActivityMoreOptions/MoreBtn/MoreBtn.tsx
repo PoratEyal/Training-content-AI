@@ -1,4 +1,3 @@
-// MoreBtn.tsx
 import React, { useState } from "react";
 import styles from "./MoreBtn.module.css";
 import SaveBtn from "../SaveBtn/SaveBtn";
@@ -7,12 +6,16 @@ import CopyBtn from "../CopyBtn/CopyBtn";
 import { FiMoreHorizontal } from "react-icons/fi";
 import ShareBtn from "../ShareBtn/ShareBtn";
 import EditBtn from "../EditBtn/EditBtn";
+import { StaticActivities } from "../../../models/types/activity";
 
 interface MoreBtnProps {
-  activity: Activity;
+  activity?: Activity ;
+  save: boolean;
+  staticActivity?: StaticActivities;
+  edit: boolean;
 }
 
-const MoreBtn: React.FC<MoreBtnProps> = ({ activity }) => {
+const MoreBtn: React.FC<MoreBtnProps> = ({ activity, save, staticActivity, edit }) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
@@ -26,17 +29,17 @@ const MoreBtn: React.FC<MoreBtnProps> = ({ activity }) => {
           className={`${styles.icon} ${
             isClicked ? styles.rotated : ""
           }`}
-          onClick={handleClick} // Attach onClick here
+          onClick={handleClick}
         />
         <div
           className={`${styles.saveBtnContainer} ${
             isClicked ? styles.showSaveBtn : ""
           }`}
         >
-          <SaveBtn activity={activity} />
+          {save ? <SaveBtn activity={activity} /> : null}
           <CopyBtn activity={activity} />
           <ShareBtn activity={activity} />
-          <EditBtn activity={activity} />
+          {edit ? <EditBtn activity={activity} /> : null}
         </div>
       </div>
     </div>

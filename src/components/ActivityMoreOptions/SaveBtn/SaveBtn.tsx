@@ -6,6 +6,7 @@ import { Activity } from "../../../models/types/activity";
 import { fetchSaveActivity } from "../../../utils/fetch";
 import { useQueryParam } from "../../../hooks/useQueryParam";
 import { useSaveContext } from "../../../context/SavedContext";
+import { StaticActivities } from "../../../models/types/activity";
 
 type SaveBtnProps = {
     activity: Activity;
