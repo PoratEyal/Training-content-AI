@@ -12,6 +12,7 @@ import { StaticActivities } from "../../models/types/activity";
 import { useCallback, useEffect, useState } from "react";
 import { fetchGetStaticActivity } from "../../utils/fetch";
 import helmet from "../../models/resources/helmet.json";
+import MoreBtn from "../../components/ActivityMoreOptions/MoreBtn/MoreBtn";
 
 function ContentActivity() {
     const navigate = useNavigate();
@@ -80,6 +81,7 @@ function ContentActivity() {
                 <section className={styles.activity_data_container}>
                     <article>
                         <ActivityOutputStatic activity={activity.content} />
+                        <MoreBtn edit={false} save={true} staticActivity={activity} />
                     </article>
                     <div className={styles.padding} />
                 </section>

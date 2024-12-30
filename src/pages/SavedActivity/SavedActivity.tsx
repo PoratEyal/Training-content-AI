@@ -11,6 +11,7 @@ import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useAuthContext } from "../../context/AuthContext";
 import { Activity } from "../../models/types/activity";
 import { useSaveContext } from "../../context/SavedContext";
+import MoreBtn from "../../components/ActivityMoreOptions/MoreBtn/MoreBtn";
 
 const SavedActivity: React.FC = () => {
     const { subject } = useParams<{ subject: string }>();
@@ -55,6 +56,7 @@ const SavedActivity: React.FC = () => {
                 <section className={styles.activity_data_container}>
                     <article>
                         <ActivityOutputStatic activity={activity.activity} />
+                        <MoreBtn edit={true} save={false} activity={activity} />
                     </article>
                     <div className={styles.padding} />
                 </section>
