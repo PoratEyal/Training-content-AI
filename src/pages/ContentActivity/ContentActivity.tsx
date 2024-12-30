@@ -13,6 +13,7 @@ import { useCallback, useEffect, useState } from "react";
 import { fetchGetStaticActivity } from "../../utils/fetch";
 import helmet from "../../models/resources/helmet.json";
 import MoreBtn from "../../components/ActivityMoreOptions/MoreBtn/MoreBtn";
+import { useAuthContext } from "../../context/AuthContext";
 
 function ContentActivity() {
     const navigate = useNavigate();
@@ -22,6 +23,7 @@ function ContentActivity() {
     useFetchSubjectsData();
     const [isActivityLoading, setIsActivityLoading] = useState<boolean>(isLoading);
     const [activity, setActivity] = useState<StaticActivities | undefined>();
+    const { isLoggedIn } =useAuthContext();
 
     const contentActivityPath = `${route.content}/${activityId}/${contentId}`;
 
@@ -81,7 +83,7 @@ function ContentActivity() {
                 <section className={styles.activity_data_container}>
                     <article>
                         <ActivityOutputStatic activity={activity.content} />
-                        <MoreBtn edit={false} save={true} staticActivity={activity} />
+                        <MoreBtn edit={false} save={isLoggedIn} activity={activity} />
                     </article>
                     <div className={styles.padding} />
                 </section>
