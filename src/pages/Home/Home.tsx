@@ -1,4 +1,4 @@
-import styles from "./Home.module.css";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import route from "../../router/route.json";
@@ -10,7 +10,6 @@ import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
 import Session from "../../utils/sessionStorage";
 import { SessionKey } from "../../models/enum/storage";
 import StartBtn from "../../components/StartBtn/StartBtn";
-import { useEffect, useState } from "react";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import helmet from "../../models/resources/helmet.json";
 import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
@@ -20,7 +19,18 @@ import { HOME_AD_SLOT } from "../../models/constants/adsSlot";
 import AboutUsCollapse from "../../components/AboutUsCollapse/AboutUsCollapse";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { useSaveContext } from "../../context/SavedContext";
+import styles from "./Home.module.css";
 import InstallButton from "../../components/InstallButton/InstallButton";
+
+const images = [
+    "/backgroundImages/image1.jpg",
+    "/backgroundImages/image2.jpg",
+    "/backgroundImages/image3.jpg",
+    "/backgroundImages/image4.jpg",
+    "/backgroundImages/image5.jpg",
+    "/backgroundImages/image6.jpg",
+  ];
+  
 
 function Home() {
     const {
@@ -33,24 +43,32 @@ function Home() {
     } = useCookiesContext();
 
     const navigate = useNavigate();
-
     const { currentUser, isLoggedIn, isPopupVisible, handlePopupClose, setIsPopupVisible } =
         useAuthContext();
 
     const { useFetchSubjectsData } = useStaticContentContext();
-    const {useFetchSavedData } = useSaveContext();
+    const { useFetchSavedData } = useSaveContext();
     useFetchSubjectsData();
     useFetchSavedData();
 
     const [rememberMe, setRememberMe] = useState<SignInStatus>(SignInStatus.NEW_ACCESS);
 
-    const handleStart = () => {
-        const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
+    const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart);
+
+    function handleStart() {
+        const navigateTo = Session.get(SessionKey.NAVIGATE);
         Session.remove(SessionKey.NAVIGATE);
         if (navigateTo) navigate(navigateTo);
-    };
+    }
 
-    const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart);
+    useEffect(() => {
+        const randomIndex = Math.floor(Math.random() * images.length);
+        const randomImage = images[randomIndex];
+      
+        document.body.style.background = `url('${randomImage}') no-repeat center center fixed`;
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundAttachment = "fixed";
+      }, []);  
 
     useEffect(() => {
         if (rememberMe === SignInStatus.NEW_ACCESS) {
@@ -64,7 +82,6 @@ function Home() {
         if (isNaN(visitCount)) {
             visitCount = 0;
         }
-
         visitCount += 1;
         setVisitCount(visitCount);
 
@@ -86,7 +103,6 @@ function Home() {
         const isValidDate = isValidDateFormat(limitDate);
         if (isValidDate) {
             const isMoreThanDay = isMoreThanADayAfter(limitDate);
-
             if (isMoreThanDay) {
                 signInWithGoogle();
             } else {
@@ -128,10 +144,7 @@ function Home() {
                 <h2 className={styles.home_lable}>מותאם, פשוט ומהיר 🤟</h2>
             </div>
 
-            {rememberMe === SignInStatus.REMEMBER &&
-            !isLoading &&
-            isLoggedIn &&
-            currentUser?.image ? (
+            {rememberMe === SignInStatus.REMEMBER && !isLoading && isLoggedIn && currentUser?.image ? (
                 <section className={styles.button_section}>
                     <StartBtn
                         text="יצירת פעולות"
@@ -139,7 +152,7 @@ function Home() {
                         isDisabled={btnDisabled}
                     />
                 </section>
-            ) : rememberMe === SignInStatus.NOT_REMEMBER && !isLoading && !isLoading ? (
+            ) : rememberMe === SignInStatus.NOT_REMEMBER && !isLoading ? (
                 <section className={styles.button_section}>
                     <StartBtn
                         text="יצירת פעולות"
@@ -156,7 +169,6 @@ function Home() {
             {/* <div className={styles.install_button_div}>
                 <InstallButton />
             </div> */}
-
 
             <div className={styles.about_div}>
                 <AboutUsCollapse>
