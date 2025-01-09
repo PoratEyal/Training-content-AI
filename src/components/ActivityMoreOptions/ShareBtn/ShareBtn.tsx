@@ -1,11 +1,12 @@
 // ShareBtn.tsx
 import React, { useState } from "react";
 import styles from "./ShareBtn.module.css";
-import { Activity } from "../../../models/types/activity";
+import { Activity, StaticActivities } from "../../../models/types/activity";
 import { FaShare } from "react-icons/fa";
+import { formatStaticActivity } from "../formatStaticActivity";
 
 interface ShareBtnProps {
-  activity: Activity;
+  activity: Activity | StaticActivities;
 }
 
 const ShareBtn: React.FC<ShareBtnProps> = ({ activity }) => {
@@ -14,9 +15,14 @@ const ShareBtn: React.FC<ShareBtnProps> = ({ activity }) => {
   const handleClick = async (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
 
+    const shareText =
+      "activity" in activity
+        ? activity.activity
+        : formatStaticActivity(activity.content);
+
     const shareData = {
       title: "Check out this activity!",
-      text: activity.activity,
+      text: shareText,
     };
 
     if (navigator.share) {
@@ -27,7 +33,7 @@ const ShareBtn: React.FC<ShareBtnProps> = ({ activity }) => {
         console.error("Error sharing:", error);
       }
     } else {
-      console.error("Error sharing:");
+      console.error("Share not supported by the browser");
     }
   };
 
