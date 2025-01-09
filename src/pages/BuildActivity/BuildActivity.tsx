@@ -167,7 +167,7 @@ function BuildActivity() {
                                 data={ActivityTimeOptions}
                             />
 
-                            <MoreOptionBtn/>
+                            {/* <MoreOptionBtn/> */}
 
                         </section>
                         <div className={styles.btn_div}>

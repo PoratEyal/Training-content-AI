@@ -51,7 +51,7 @@ function Activity() {
         <section className={styles.activity_data_container}>
           <article>
             <ActivityOutput activity={mainActivity.activity} activityRef={activityRef} />
-            {isLoggedIn ? <MoreBtn edit={true} save={true} activity={mainActivity} /> : null}
+            {isLoggedIn ? <MoreBtn edit={false} save={true} activity={mainActivity} /> : null}
           </article>
           <div className={styles.padding} />
         </section>
