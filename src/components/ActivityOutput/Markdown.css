@@ -5,23 +5,23 @@
 #markdown h1{
     font-size: 18px;
     font-weight: 500;
-    color: #000;
+    color: var(--text-color);
 }
 
 #markdown h2{
     font-size: 18px;
     font-weight: 500;
-    color: #000;
+    color: var(--text-color);
 }
 
 #markdown h3{
     font-size: 16px;
     font-weight: 500;
-    color: #000;
+    color: var(--text-color);
 }
 
 #markdown strong{
     font-size: 16px;
     font-weight: 500;
-    color: #000;
+    color: var(--text-color);
 }

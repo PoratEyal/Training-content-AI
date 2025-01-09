@@ -4,6 +4,7 @@
     --secondary-color: #FFD324;
     --text-color: #333335;
     --select-color: #fcfaf5;
+    --input-color: #ffffff;
 
     --select-border-color: #646464;
     --placeholder-color: #8b8b8b;
@@ -22,4 +23,5 @@
     --dislike-color: #e40505;
 
     --ads-height: 100px;
+    --navbar-height: 40px;
 }

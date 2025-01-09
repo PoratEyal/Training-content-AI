@@ -12,6 +12,7 @@
   z-index: 997;
   margin: 0 auto;
   padding: 8px 0;
+  height: var(--navbar-height);
 }
 
 @media (min-width: 550px) {
