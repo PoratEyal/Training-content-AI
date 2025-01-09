@@ -1,3 +1,10 @@
+.moreBtnWrapper {
+  position: absolute;
+  left: 20px;
+  bottom: 175px;
+  z-index: 999;
+}
+
 .moreBtnContainer {
   cursor: pointer;
   background-color: var(--secondary-color);
@@ -9,18 +16,9 @@
   justify-content: center;
   position: relative;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.moreBtnWrapper {
-  position: absolute;
-  left: 20px;
-  bottom: 175px;
-  z-index: 999;
-}
-
-.moreBtnContainer {
-  /* ...existing code... */
+  /* אפשר להשאיר will-change כאן */
+  will-change: transform; 
+  transition: transform 0.3s ease-in-out;
 }
 
 .saveBtnContainer {
@@ -36,39 +34,41 @@
 .saveBtnContainer > * {
   transform: scale(0.4) translateY(40px);
   opacity: 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* הפרד את transition ל־transform ו־opacity */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  will-change: transform, opacity;
   pointer-events: none;
 }
 
 .showSaveBtn {
-  pointer-events: all;
+  pointer-events: all; /* כדי לאפשר קליקים על הילדים */
 }
 
 .showSaveBtn > *:nth-child(1) {
   transform: scale(1) translateY(0);
   opacity: 1;
-  transition-delay: 0.1s;
+  transition-delay: 0.05s;
   pointer-events: all;
 }
 
 .showSaveBtn > *:nth-child(2) {
   transform: scale(1) translateY(0);
   opacity: 1;
-  transition-delay: 0.15s;
+  transition-delay: 0.1s;
   pointer-events: all;
 }
 
 .showSaveBtn > *:nth-child(3) {
   transform: scale(1) translateY(0);
   opacity: 1;
-  transition-delay: 0.2s;
+  transition-delay: 0.15s;
   pointer-events: all;
 }
 
 .showSaveBtn > *:nth-child(4) {
   transform: scale(1) translateY(0);
   opacity: 1;
-  transition-delay: 0.25s;
+  transition-delay: 0.2s;
   pointer-events: all;
 }
 
@@ -77,7 +77,7 @@
 }
 
 .icon {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease-in-out;
   font-size: 20px;
   color: var(--primary-color);
 }

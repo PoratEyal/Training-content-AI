@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import styles from "./MoreBtn.module.css";
 import SaveBtn from "../SaveBtn/SaveBtn";
 import CopyBtn from "../CopyBtn/CopyBtn";
-import { FiMoreHorizontal } from "react-icons/fi";
 import ShareBtn from "../ShareBtn/ShareBtn";
 import EditBtn from "../EditBtn/EditBtn";
-import { IoIosMore } from "react-icons/io";
 import { TfiMoreAlt } from "react-icons/tfi";
 
 interface MoreBtnProps {

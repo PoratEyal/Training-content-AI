@@ -93,8 +93,12 @@
     font-size: 16px;
     font-weight: 550;
     letter-spacing: 1px;
-    color: #333;
     color: var(--primary-color);
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 40px);
 }
 
 @media (min-width: 550px) {
