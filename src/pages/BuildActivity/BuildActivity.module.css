@@ -29,12 +29,13 @@
 
 .build_container::-webkit-scrollbar {
     display: none;
+
 }
 
 .path_img {
     z-index: 300;
     position: absolute;
-    top: -90px;
+    top: -100px;
     left: 50px;
 }
 

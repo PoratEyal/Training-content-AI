@@ -22,6 +22,7 @@ import { useErrorContext } from "../../context/ErrorContext";
 import msg from "../../models/resources/errorMsg.json";
 import LoadingActivity from "../../components/Loading/LoadingActivity/LoadingActivity";
 import { BUILD_AD_SLOT } from "../../models/constants/adsSlot";
+import MoreOptionBtn from "../../components/MoreOptionBtn/MoreOptionBtn";
 
 function BuildActivity() {
     const { handleError } = useErrorContext();
@@ -128,7 +129,7 @@ function BuildActivity() {
                     alt="Yellow sign with heart"
                     src={"path.svg"}
                     width={100}
-                    height={130}
+                    height={125}
                 ></img>
                 {loading ? (
                     <section className={styles.loading_mock_selection_container}>
@@ -165,6 +166,9 @@ function BuildActivity() {
                                 setObj={setTime}
                                 data={ActivityTimeOptions}
                             />
+
+                            {/* <MoreOptionBtn/> */}
+
                         </section>
                         <div className={styles.btn_div}>
                             <MainBtn

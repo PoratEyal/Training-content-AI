@@ -1,33 +1,31 @@
-// ShareBtn.tsx
-import React, { useState } from "react";
+import React from "react";
 import styles from "./ShareBtn.module.css";
 import { Activity } from "../../../models/types/activity";
 import { FaShare } from "react-icons/fa";
 
-interface ShareBtnProps {
+type ShareBtnProps = {
   activity: Activity;
 }
 
 const ShareBtn: React.FC<ShareBtnProps> = ({ activity }) => {
-  const [isShared, setIsShared] = useState(false);
-
   const handleClick = async (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
 
+    const shareText = activity.activity
+
     const shareData = {
       title: "Check out this activity!",
-      text: activity.activity,
+      text: shareText,
     };
 
     if (navigator.share) {
       try {
         await navigator.share(shareData);
-        setIsShared(true);
       } catch (error) {
         console.error("Error sharing:", error);
       }
     } else {
-      console.error("Error sharing:");
+      console.error("Share not supported by the browser");
     }
   };
 
