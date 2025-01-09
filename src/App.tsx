@@ -22,6 +22,7 @@ import SaveActivity from "./pages/SavedActivity/SavedActivity";
 import SavedActivities from "./pages/SavedActivities/SavedActivities";
 import { CookiesProvider } from "./context/CookiesContext";
 import { SavedProvider } from "./context/SavedContext";
+import Edit from "./pages/Edit/Edit";
 
 function App() {
     return (
@@ -45,6 +46,10 @@ function App() {
                                                 <Route
                                                     path={route.activity}
                                                     element={<Activity />}
+                                                />
+                                                <Route
+                                                    path={route.edit}
+                                                    element={<Edit />}
                                                 />
                                             </Route>
                                             <Route

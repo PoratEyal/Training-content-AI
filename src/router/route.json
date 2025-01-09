@@ -10,6 +10,7 @@
     "popularActivities": "/content/popular",
     "contentActivities": "/content/:activityId",
     "contentActivity": "/content/:activityId/:contentId",
+    "edit": "/edit",
     "status": "/status",
     "all": "*"
   }

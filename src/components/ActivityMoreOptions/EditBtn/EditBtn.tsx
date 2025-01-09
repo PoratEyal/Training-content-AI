@@ -1,18 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./EditBtn.module.css";
-import { Activity } from "../../../models/types/activity";
+import { Link } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
+import route from "../../../router/route.json";
 
-interface EditBtnProps {
-  activity: Activity;
-}
-
-const EditBtn: React.FC<EditBtnProps> = ({ activity }) => {
-
+const EditBtn: React.FC = () => {
   return (
-    <div className={styles.EditBtn}>
+    <Link to={route.edit} className={styles.editBtn}>
       <AiFillEdit className={styles.icon} />
-    </div>
+    </Link>
   );
 };
 
