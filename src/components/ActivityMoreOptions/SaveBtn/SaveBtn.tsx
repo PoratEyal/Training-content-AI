@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import styles from "./SaveBtn.module.css";
 import { useAuthContext } from "../../../context/AuthContext";
 import { useErrorContext } from "../../../context/ErrorContext";
-import { Activity } from "../../../models/types/activity";
-import { fetchSaveActivity } from "../../../utils/fetch";
 import { useQueryParam } from "../../../hooks/useQueryParam";
 import { useSaveContext } from "../../../context/SavedContext";
-import { StaticActivities } from "../../../models/types/activity";
+import { Activity } from "../../../models/types/activity";
+import { fetchSaveActivity } from "../../../utils/fetch";
 
 type SaveBtnProps = {
     activity: Activity;
@@ -16,17 +15,18 @@ const SaveBtn: React.FC<SaveBtnProps> = ({ activity }) => {
     const { currentParam, updateParam } = useQueryParam();
     const { currentUser } = useAuthContext();
     const { handleSuccess, handleError } = useErrorContext();
-    const { getSavedActivities, deleteActivity } = useSaveContext()
+    const { getSavedActivities, deleteActivity } = useSaveContext();
+
     const [saved, setSaved] = useState<boolean>(false);
     const [activityId, setActivityId] = useState<string | undefined>();
 
-    // Initialize saved state based on query parameter
+    // Initialize 'saved' state based on query parameter
     useEffect(() => {
         setSaved(currentParam.isSaved === "true");
     }, [currentParam]);
 
     const handleSave = async () => {
-        if (!currentUser || !currentUser.id || !activity) return;
+        if (!currentUser?.id) return;
 
         try {
             updateParam(true);
@@ -44,8 +44,8 @@ const SaveBtn: React.FC<SaveBtnProps> = ({ activity }) => {
 
     const handleUnsave = async () => {
         // TODO: if navigate back I dont have the activity id for delete
-        if (!currentUser || !currentUser.id || !activityId) return;
-        
+        if (!currentUser?.id || !activityId) return;
+
         try {
             updateParam(false);
             handleSuccess("הפעולה הוסרה מאזור הפעולות שלי");

@@ -66,8 +66,28 @@
         margin-top: 40px;
     }
     body {
-        background-color: var(--desktop-background-color) !important;
+        background-size: cover;
+        background-attachment: fixed;
+        min-height: 100vh;
+        width: 100%;
+        position: relative;
     }
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(9px);
+        background: linear-gradient(
+            rgba(109, 109, 109, 0.788),
+            rgba(143, 143, 143, 0.75)
+        );
+        /* Keep pointer-events to none and a higher z-index for the overlay */
+        pointer-events: none;
+    }
+    
     .about_div{
         right: auto;
         left: 48%;

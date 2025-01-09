@@ -22,12 +22,11 @@ const MoreBtn: React.FC<MoreBtnProps> = ({ activity, isSave, isEdit }) => {
 
   return (
     <div className={styles.moreBtnWrapper}>
-      <div className={styles.moreBtnContainer}>
+      <div className={styles.moreBtnContainer} onClick={handleClick}>
         <TfiMoreAlt
           className={`${styles.icon} ${
             isClicked ? styles.rotated : ""
           }`}
-          onClick={handleClick}
         />
         <div className={`${styles.saveBtnContainer} ${isClicked ? styles.showSaveBtn : ""}`}
         >
