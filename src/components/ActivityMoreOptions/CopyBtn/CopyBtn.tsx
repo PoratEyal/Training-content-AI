@@ -1,12 +1,13 @@
 // CopyBtn.tsx
 import React, { useState, useEffect } from "react";
 import styles from "./CopyBtn.module.css";
-import { Activity } from "../../../models/types/activity";
+import { Activity, StaticActivities } from "../../../models/types/activity";
 import { FaRegCopy, FaCopy } from "react-icons/fa6";
 import { useErrorContext } from "../../../context/ErrorContext";
+import { formatStaticActivity } from "../formatStaticActivity";
 
 interface CopyBtnProps {
-  activity: Activity;
+  activity: Activity | StaticActivities;
 }
 
 const CopyBtn: React.FC<CopyBtnProps> = ({ activity }) => {
@@ -26,8 +27,16 @@ const CopyBtn: React.FC<CopyBtnProps> = ({ activity }) => {
   }, [isCopied]);
 
   const handleClick = () => {
-    const textToCopy = activity.activity;
-    navigator.clipboard.writeText(textToCopy)
+    let textToCopy: string;
+
+    if ("activity" in activity) {
+      textToCopy = activity.activity;
+    } else {
+      textToCopy = formatStaticActivity(activity.content);
+    }
+
+    navigator.clipboard
+      .writeText(textToCopy)
       .then(() => {
         setIsCopied(true);
         handleSuccess("הפעולה הועתקה בהצלחה 🎉");
