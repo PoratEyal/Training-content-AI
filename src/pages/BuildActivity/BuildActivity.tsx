@@ -11,7 +11,7 @@ import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import styles from "./BuildActivity.module.css";
 import MainBtn from "../../components/MainBtn/MainBtn";
-import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
+import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import CreateYourActivity from "../../components/titles/CreateYourActivity/CreateYourActivity";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import { ActivityTimeOptions, CategoryOptions, PlaceOptions } from "../../models/resources/select";
@@ -133,7 +133,7 @@ function BuildActivity() {
                 ></img>
                 {loading ? (
                     <section className={styles.loading_mock_selection_container}>
-                        <SmallLoading />
+                        <PageLoading />
                     </section>
                 ) : (
                     <div className={styles.build_content}>

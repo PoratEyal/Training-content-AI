@@ -7,6 +7,7 @@ import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import route from "../../router/route.json";
 import { MY_ACTIVITIES_AD_SLOT } from "../../models/constants/adsSlot";
 import ActivityOutputStatic from "../../components/ActivityOutput/ActivityOutputStatic";
+import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useAuthContext } from "../../context/AuthContext";
 import { Activity } from "../../models/types/activity";
@@ -50,7 +51,7 @@ const SavedActivity: React.FC = () => {
 
             {isLoading ? (
                 <section className={styles.activity_data_container}>
-                    <SmallLoading />
+                    <PageLoading />
                 </section>
             ) : activity && activity.activity ? (
                 <section className={styles.activity_data_container}>
@@ -62,7 +63,7 @@ const SavedActivity: React.FC = () => {
                 </section>
             ) : (
                 <section className={styles.activity_data_container}>
-                    <div>הפעולה לא נמצאה</div>
+                    <SmallLoading/>
                 </section>
             )}
         </PageLayout>

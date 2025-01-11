@@ -7,6 +7,7 @@ import route from "../../router/route.json";
 import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import ActivityOutputStatic from "../../components/ActivityOutput/ActivityOutputStatic";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
+import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { StaticActivities } from "../../models/types/activity";
 import { useCallback, useEffect, useState } from "react";
@@ -77,7 +78,7 @@ function ContentActivity() {
             <ActivityReady subject={activity?.title || helmet.contentActivity.title} />
             {isActivityLoading ? (
                 <section className={styles.activity_data_container}>
-                    <SmallLoading />
+                    <PageLoading />
                 </section>
             ) : activity ? (
                 <section className={styles.activity_data_container}>
@@ -89,7 +90,7 @@ function ContentActivity() {
                 </section>
             ) : (
                 <section className={styles.activity_data_container}>
-                    <p>לא נמצאה פעולה מתאימה.</p>
+                    <SmallLoading />
                 </section>
             )}
         </PageLayout>
