@@ -61,13 +61,11 @@ function Home() {
     }
 
     useEffect(() => {
-        const randomIndex = Math.floor(Math.random() * images.length);
-        const randomImage = images[randomIndex];
-      
-        document.body.style.background = `url('${randomImage}') no-repeat center center fixed`;
+        const singleImage = images[0]; // Select the first image in the array
+        document.body.style.background = `url('${singleImage}') no-repeat center center fixed`;
         document.body.style.backgroundSize = "cover";
         document.body.style.backgroundAttachment = "fixed";
-      }, []);  
+    }, []);    
 
     useEffect(() => {
         if (rememberMe === SignInStatus.NEW_ACCESS) {
