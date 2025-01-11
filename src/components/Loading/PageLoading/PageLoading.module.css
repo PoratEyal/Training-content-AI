@@ -33,4 +33,11 @@
       left: unset;
     }
   }
+
+
+  @media (min-width: 550px) {
+    .loader{
+      width: 200px;
+    }
+  }
   
