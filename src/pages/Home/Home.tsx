@@ -10,7 +10,7 @@ import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
 import Session from "../../utils/sessionStorage";
 import { SessionKey } from "../../models/enum/storage";
 import StartBtn from "../../components/StartBtn/StartBtn";
-import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
+import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import helmet from "../../models/resources/helmet.json";
 import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
 import { useCookiesContext } from "../../context/CookiesContext";
@@ -162,7 +162,7 @@ function Home() {
                 </section>
             ) : (
                 <div className={styles.button_section_loading}>
-                    <SmallLoading />
+                    <PageLoading />
                 </div>
             )}
 
