@@ -28,7 +28,6 @@ const images = [
     "/backgroundImages/image3.jpg",
     "/backgroundImages/image4.jpg",
     "/backgroundImages/image5.jpg",
-    "/backgroundImages/image6.jpg",
   ];
   
 
