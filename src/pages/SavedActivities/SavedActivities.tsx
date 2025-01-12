@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import MyActivitiesTitle from "../../components/titles/MyActivitiesTitle/MyActivitiesTitle";
 import helmet from "../../models/resources/helmet.json";
 import { MY_ACTIVITIES_AD_SLOT } from "../../models/constants/adsSlot";
-import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
+import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import DontHaveActivity from "../../components/DontHaveActivity/DontHaveActivity";
 import { useSaveContext } from "../../context/SavedContext";
 import { Activity } from "../../models/types/activity";
@@ -62,7 +62,7 @@ const SavedActivities: React.FC = () => {
       <article className={styles.content_article}>
         {isLoading ? (
           <section className={styles.grid_container}>
-            <SmallLoading />
+            <PageLoading />
           </section>
         ) : savedActivity?.length === 0 ? (
           <section className={styles.grid_container}>

@@ -6,7 +6,7 @@ import route from "../../router/route.json";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import ReadyContentName from "../../components/titles/ReadyContentName/ReadyContentName";
-import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
+import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
 import { StaticActivities } from "../../models/types/activity";
@@ -53,7 +53,7 @@ const ContentActivities: React.FC = () => {
             <ReadyContentName isMany subject={subject?.metaTitle || helmet.contentActivities.title} />
             {isLoading ? (
                 <section className={styles.content_article}>
-                    <SmallLoading />
+                    <PageLoading />
                 </section>
             ) : subject ? (
                 <article className={styles.content_article}>
