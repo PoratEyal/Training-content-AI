@@ -10,7 +10,7 @@ import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time";
 import Session from "../../utils/sessionStorage";
 import { SessionKey } from "../../models/enum/storage";
 import StartBtn from "../../components/StartBtn/StartBtn";
-import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
+import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import helmet from "../../models/resources/helmet.json";
 import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
 import { useCookiesContext } from "../../context/CookiesContext";
@@ -27,7 +27,6 @@ const images = [
     "/backgroundImages/image3.jpg",
     "/backgroundImages/image4.jpg",
     "/backgroundImages/image5.jpg",
-    "/backgroundImages/image6.jpg",
   ];
   
 
@@ -62,13 +61,11 @@ function Home() {
     const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart);
     
     useEffect(() => {
-        const randomIndex = Math.floor(Math.random() * images.length);
-        const randomImage = images[randomIndex];
-      
-        document.body.style.background = `url('${randomImage}') no-repeat center center fixed`;
+        const singleImage = images[0]; // Select the first image in the array
+        document.body.style.background = `url('${singleImage}') no-repeat center center fixed`;
         document.body.style.backgroundSize = "cover";
         document.body.style.backgroundAttachment = "fixed";
-      }, []);  
+    }, []);    
 
     useEffect(() => {
         if (rememberMe === SignInStatus.NEW_ACCESS) {
@@ -162,7 +159,7 @@ function Home() {
                 </section>
             ) : (
                 <div className={styles.button_section_loading}>
-                    <SmallLoading />
+                    <PageLoading />
                 </div>
             )}
 

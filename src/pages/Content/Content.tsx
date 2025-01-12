@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ReadyContent from "../../components/titles/ReadyContent/ReadyContent";
 import helmet from "../../models/resources/helmet.json";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
-import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
+import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { Icons } from "../../components/Icons";
 
@@ -36,7 +36,7 @@ function Content() {
             <article className={styles.content_article}>
                 {isLoading ? (
                     <section className={styles.grid_container}>
-                        <SmallLoading />
+                        <PageLoading />
                     </section>
                 ) : subjects && subjects.length > 0 ? (
                     <section className={styles.grid_container}>

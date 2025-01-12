@@ -13,7 +13,7 @@ import MainBtn from "../../components/MainBtn/MainBtn";
 import { useAuthContext } from "../../context/AuthContext";
 import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
+import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
 import helmet from "../../models/resources/helmet.json";
 import { DETAILS_AD_SLOT } from "../../models/constants/adsSlot";
@@ -88,7 +88,7 @@ function Details() {
         <div className={styles.selects_btn}>
           {loading ? (
             <div className={styles.loading_mock_selection_container}>
-              <SmallLoading />
+              <PageLoading />
             </div>
           ) : (
             <div className={styles.selection_container}>
@@ -119,15 +119,18 @@ function Details() {
             </div>
           )}
 
-          <div className={styles.btn_div}>
-            <MainBtn
-              type="submit"
-              isDisabled={isDisabled}
-              height={42}
-              text="המשיכו"
-              func={handleSubmit}
-            ></MainBtn>
-          </div>
+          {loading ? null :
+            <div className={styles.btn_div}>
+              <MainBtn
+                type="submit"
+                isDisabled={isDisabled}
+                height={42}
+                text="המשיכו"
+                func={handleSubmit}
+              ></MainBtn>
+            </div>
+          }
+
         </div>
       </form>
     </PageLayout>

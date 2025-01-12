@@ -222,7 +222,15 @@
       <priority>0.8</priority>
    </url>
    <url>
+      <loc>https://activitywiz.com/content/holidays/tuBshvatGame</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
       <loc>https://activitywiz.com/content/holidays/purim</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/content/holidays/purimGames</loc>
       <priority>0.8</priority>
    </url>
    
