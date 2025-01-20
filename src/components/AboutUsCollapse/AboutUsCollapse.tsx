@@ -20,7 +20,7 @@ const AboutUsCollapse: React.FC<AboutUsCollapseProps> = ({ children }) => {
 
     return (
         <div ref={modalRef} className={styles.about_collapse_container}>
-            <Collapse isOpen={isOpen}>
+            <Collapse isOpen={isOpen} diraction="up">
                 <section className={styles.collapse_form}>{children}</section>
             </Collapse>
             <span className={styles.about_container} onClick={handleCollapse}>

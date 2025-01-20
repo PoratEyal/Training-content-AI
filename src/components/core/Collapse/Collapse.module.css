@@ -1,4 +1,15 @@
-.collapse {
+.collapse_container_absolute {
+    position: "relative"; 
+    font-size: 12px;
+}
+
+.collapse_container_relative {
+    position: "relative"; 
+    font-size: 16px;
+    width: "100%"; 
+}
+
+.collapse_absolute {
     overflow: hidden;
     position: absolute;
     bottom: 15px;
@@ -6,8 +17,16 @@
     width: 320px;
 }
 
+.collapse_relative {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+}
+
 @media (min-width: 550px) {
-    .collapse {
+    .collapse_absolute {
         bottom: 20px;
     }
 }

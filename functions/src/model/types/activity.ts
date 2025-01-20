@@ -14,6 +14,12 @@ export type Activity = {
     time: string;
     activity: string;
     userId: string | undefined;
+    
+    behavior?: string;
+    touch?: string;
+    contest?: string;
+    tools?: string;
+    info?: string;
 };
 
 export type ActivityDetails = {
@@ -24,6 +30,11 @@ export type ActivityDetails = {
     grade: string;
     gender: string;
     place: string;
+    behavior?: string;
+    touch?: string;
+    contest?: string;
+    tools?: string;
+    info?: string;
 };
 
 export type StaticSubject = {

@@ -22,8 +22,8 @@ function SubjectInput({
 }: SubjectInputProps) {
     const handleInputChange = (event) => {
         const newValue = event.target.value as string;
-        // Limit the value to 80 characters
-        if (newValue.length <= 80) {
+        // Limit the value to 60 characters
+        if (newValue.length <= 60) {
             const isBlackListed = isInBlackList(newValue);
             setHasAlert(isBlackListed);
             setSubject(newValue);

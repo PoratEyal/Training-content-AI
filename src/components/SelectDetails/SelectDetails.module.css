@@ -6,6 +6,7 @@
     align-items: center;
     gap: 10px;
     width: 100%;
+    max-width: 273px;
 }
 
 .input_div select {
@@ -47,6 +48,10 @@
 }
 
 @media (min-width: 550px) {
+    .input_div{
+        max-width: unset;
+    }
+
     .input_div select {
         min-width: 20px;
         max-width: 300px;
