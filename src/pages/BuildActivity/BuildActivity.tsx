@@ -14,7 +14,15 @@ import MainBtn from "../../components/MainBtn/MainBtn";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import CreateYourActivity from "../../components/titles/CreateYourActivity/CreateYourActivity";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
-import { ActivityTimeOptions, CategoryOptions, PlaceOptions } from "../../models/resources/select";
+import {
+    ActivityTimeOptions,
+    BehaviorOptions,
+    CategoryOptions,
+    ContestOptions,
+    PlaceOptions,
+    ToolsOptions,
+    TouchOptions,
+} from "../../models/resources/select";
 import SubjectInput from "../../components/SubjectInput/SubjectInput";
 import { CategoryName } from "../../models/types/movement";
 import helmet from "../../models/resources/helmet.json";
@@ -22,7 +30,8 @@ import { useErrorContext } from "../../context/ErrorContext";
 import msg from "../../models/resources/errorMsg.json";
 import LoadingActivity from "../../components/Loading/LoadingActivity/LoadingActivity";
 import { BUILD_AD_SLOT } from "../../models/constants/adsSlot";
-import MoreOptionBtn from "../../components/MoreOptionBtn/MoreOptionBtn";
+import MoreDetailsInput from "../../components/MoreDetailsInput/MoreDetailsInput";
+import MoreOptionsCollapse from "../../components/MoreOptionsCollapse/MoreOptionsCollapse";
 
 function BuildActivity() {
     const { handleError } = useErrorContext();
@@ -30,9 +39,14 @@ function BuildActivity() {
     const { isLoggedIn, currentUser, loading } = useAuthContext();
 
     const [category, setCategory] = useState(data.movement.categories[0].name as string);
-    const [subject, setSubject] = useState("");
-    const [place, setPlace] = useState("");
-    const [time, setTime] = useState("");
+    const [subject, setSubject] = useState<string>("");
+    const [place, setPlace] = useState<string>("");
+    const [time, setTime] = useState<string>("");
+    const [behavior, setBehavior] = useState<string>("");
+    const [touch, setTouch] = useState<string>("");
+    const [contest, setContest] = useState<string>("");
+    const [tools, setTools] = useState<string>("");
+    const [info, setInfo] = useState<string>("");
 
     const [clicked, setClicked] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
@@ -63,6 +77,12 @@ function BuildActivity() {
                         setSubject(sessionActivity.subject);
                         setPlace(sessionActivity.place);
                         setTime(sessionActivity.time);
+
+                        if (sessionActivity.behavior) setBehavior(sessionActivity.behavior);
+                        if (sessionActivity.touch) setTouch(sessionActivity.touch);
+                        if (sessionActivity.contest) setContest(sessionActivity.contest);
+                        if (sessionActivity.tools) setTools(sessionActivity.tools);
+                        if (sessionActivity.info) setInfo(sessionActivity.info);
                     }
                 }
             } catch (error) {}
@@ -90,6 +110,11 @@ function BuildActivity() {
                 subject,
                 time,
                 place,
+                behavior,
+                touch,
+                contest,
+                tools,
+                info,
             });
             if (
                 (response.result === "success" || response.result === "safety") &&
@@ -117,8 +142,8 @@ function BuildActivity() {
             title={helmet.build.title}
             content={helmet.home.content}
             hesAds={BUILD_AD_SLOT}
-            hasNavBar
             index={false}
+            hasNavBar
         >
             <CreateYourActivity />
 
@@ -131,61 +156,97 @@ function BuildActivity() {
                     width={100}
                     height={125}
                 ></img>
-                {loading ? (
-                    <section className={styles.loading_mock_selection_container}>
-                        <PageLoading />
-                    </section>
-                ) : (
-                    <div className={styles.build_content}>
-                        <section className={styles.build_container}>
-                            <SelectDetails
-                                placeholder="סוג הפעולה"
-                                obj={category}
-                                setObj={setCategory}
-                                data={CategoryOptions(data.movement.categories)}
-                            />
 
-                            <SubjectInput
-                                placeholder="נושא"
-                                setSubject={setSubject}
-                                subject={subject}
-                                category={category as CategoryName}
-                                setHasAlert={setHasAlert}
-                            />
-
-                            <SelectDetails
-                                placeholder="מיקום"
-                                obj={place}
-                                setObj={setPlace}
-                                data={PlaceOptions}
-                            />
-
-                            <SelectDetails
-                                placeholder="זמן"
-                                obj={time}
-                                setObj={setTime}
-                                data={ActivityTimeOptions}
-                            />
-
-                            {/* <MoreOptionBtn/> */}
-
+                <div className={styles.selects_btn}>
+                    {loading ? (
+                        <section className={styles.loading_mock_selection_container}>
+                            <PageLoading />
                         </section>
-                        <div className={styles.btn_div}>
-                            <MainBtn
-                                isDisabled={isDisabled}
-                                height={42}
-                                text={"הצעה לפעולה"}
-                                func={submitHandler}
-                            ></MainBtn>
-                            {hasAlert ? (
-                                <div className={styles.input_alert}>
-                                    שימו לב! מקור הפעולות הינו מערכת בינה מלאכותית, יכול להיות
-                                    וחיפושים מסויימים עדיין לא התעדכנו במערכת
+                    ) : (
+                        <section className={styles.build_container}>
+                            <section className={styles.build_content}>
+                                <SelectDetails
+                                    placeholder="סוג הפעולה"
+                                    obj={category}
+                                    setObj={setCategory}
+                                    data={CategoryOptions(data.movement.categories)}
+                                />
+
+                                <SubjectInput
+                                    placeholder="נושא"
+                                    setSubject={setSubject}
+                                    subject={subject}
+                                    category={category as CategoryName}
+                                    setHasAlert={setHasAlert}
+                                />
+
+                                <SelectDetails
+                                    placeholder="מיקום"
+                                    obj={place}
+                                    setObj={setPlace}
+                                    data={PlaceOptions}
+                                />
+
+                                <SelectDetails
+                                    placeholder="זמן"
+                                    obj={time}
+                                    setObj={setTime}
+                                    data={ActivityTimeOptions}
+                                />
+
+                                <MoreOptionsCollapse>
+                                    <SelectDetails
+                                        placeholder="אופי הקבוצה"
+                                        obj={behavior}
+                                        setObj={setBehavior}
+                                        data={BehaviorOptions}
+                                    />
+
+                                    <SelectDetails
+                                        placeholder="שימוש בציוד?"
+                                        obj={tools}
+                                        setObj={setTools}
+                                        data={ToolsOptions}
+                                    />
+
+                                    <SelectDetails
+                                        placeholder="האם יש תחרויות?"
+                                        obj={contest}
+                                        setObj={setContest}
+                                        data={ContestOptions}
+                                    />
+
+                                    <SelectDetails
+                                        placeholder="האם יש מגע?"
+                                        obj={touch}
+                                        setObj={setTouch}
+                                        data={TouchOptions}
+                                    />
+
+                                    <MoreDetailsInput
+                                        placeholder="מידע נוסף"
+                                        text={info}
+                                        setText={setInfo}
+                                    />
+                                </MoreOptionsCollapse>
+                                <div className={styles.btn_div}>
+                                    <MainBtn
+                                        isDisabled={isDisabled}
+                                        height={42}
+                                        text={"הצעה לפעולה"}
+                                        func={submitHandler}
+                                    ></MainBtn>
+                                    {hasAlert ? (
+                                        <div className={styles.input_alert}>
+                                            שימו לב! מקור הפעולות הינו מערכת בינה מלאכותית, יכול
+                                            להיות וחיפושים מסויימים עדיין לא התעדכנו במערכת
+                                        </div>
+                                    ) : null}
                                 </div>
-                            ) : null}
-                        </div>
-                    </div>
-                )}
+                            </section>
+                        </section>
+                    )}
+                </div>
                 {clicked ? <LoadingActivity /> : null}
             </div>
         </PageLayout>

@@ -5,14 +5,24 @@ import { m, LazyMotion, domAnimation } from "framer-motion";
 export type CollapseProps = {
     children: React.ReactNode | React.ReactNode[];
     isOpen: boolean;
+    diraction?: "up" | "down";
 };
 
-const Collapse: React.FC<CollapseProps> = ({ children, isOpen }) => {
-    const tweenAnimation = (isOpen: boolean) => {
+const Collapse: React.FC<CollapseProps> = ({ children, isOpen, diraction }) => {
+    const tweenAnimationUp = (isOpen: boolean) => {
         return {
             transition: { type: "tween" },
             height: isOpen ? "auto" : 0,
             opacity: isOpen ? 1 : 0.5,
+        };
+    };
+
+    const tweenAnimationDown = (isOpen: boolean) => {
+        return {
+            transition: { type: "tween" },
+            height: isOpen ? "auto" : 0,
+            opacity: isOpen ? 1 : 0.5,
+            y: isOpen ? 0 : -10,
         };
     };
 
@@ -21,13 +31,13 @@ const Collapse: React.FC<CollapseProps> = ({ children, isOpen }) => {
             <div
                 aria-expanded={isOpen}
                 data-timeout="auto"
-                style={{ position: "relative", fontSize: 12 }}
+                className={diraction === "up" ? styles.collapse_container_absolute : styles.collapse_container_relative}
             >
                 <m.div
-                    className={styles.collapse}
                     initial={{ height: 0, opacity: 1 }}
-                    animate={tweenAnimation(isOpen)}
-                    exit={{ height: 0, opacity: 1 }}
+                    className={diraction === "up" ? styles.collapse_absolute : styles.collapse_relative}
+                    animate={diraction === "up" ? tweenAnimationUp(isOpen) : tweenAnimationDown(isOpen)}
+                    exit={diraction === "up" ? tweenAnimationUp(isOpen) : tweenAnimationDown(isOpen)}
                 >
                     {children}
                 </m.div>

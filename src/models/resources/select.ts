@@ -61,6 +61,34 @@ export const ActivityTimeOptions: SelectOption[] = [
     { value: "שעה וחצי", label: "שעה וחצי" },
     { value: "שעתיים", label: "שעתיים" },
 ];
+  
+export const BehaviorOptions: SelectOption[] = [//התנהגות
+  { value: "רגוע", label: "רגוע" },
+  { value: "רועש", label: "רועש" },
+  { value: "שקט", label: "שקט" },
+  { value: "מתפזר", label: "מתפזר" },
+];
+
+export const TouchOptions: SelectOption[] = [//מגע
+    { value: "כן", label: "כן" },
+    { value: "לא", label: "לא" },
+    { value: "לא משנה", label: "לא משנה" },
+];
+
+export const ContestOptions: SelectOption[] = [//תחרות
+    { value: "כן", label: "כן" },
+    { value: "לא", label: "לא" },
+    { value: "לא משנה", label: "לא משנה" },
+];
+
+
+export const ToolsOptions: SelectOption[] = [//ציוד
+    { value: "כן", label: "כן" },
+    { value: "לא", label: "לא" },
+    { value: "לא משנה", label: "לא משנה" },
+];
+
+
 
 export const CategoryOptions = (options: Category[]): SelectOption[] => {
     return options.map((option) => {

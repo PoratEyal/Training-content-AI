@@ -2,8 +2,6 @@ import { Activity } from "../activity";
 import { CategoryName } from "../movement";
 import { RawUser, User } from "../user";
 
-export type FetchFrom = "DB" | "AI";
-
 export type GetActivityRequest = {
     category: CategoryName;
     subject: string;
@@ -12,6 +10,11 @@ export type GetActivityRequest = {
     grade: string;
     gender: string;
     place: string;
+    behavior?: string;
+    touch?: string;
+    contest?: string;
+    tools?: string;
+    info?: string;
 };
 
 export type UpdateActivityLikesRequest = {

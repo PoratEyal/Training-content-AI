@@ -14,6 +14,12 @@ export type Activity = {
     time: string;
     activity: string;
     userId: string | undefined;
+
+    behavior?: string;
+    touch?: string;
+    contest?: string;
+    tools?: string;
+    info?: string;
 };
 
 export type SubjectListType = {

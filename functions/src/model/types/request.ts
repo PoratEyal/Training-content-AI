@@ -10,6 +10,11 @@ export type GetActivityRequest = {
     grade: string;
     gender: string;
     place: string;
+    behavior?: string;
+    touch?: string;
+    contest?: string;
+    tools?: string;
+    info?: string;
 };
 
 export type SaveActivityRequest = {
