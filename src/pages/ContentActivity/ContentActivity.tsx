@@ -13,9 +13,9 @@ import { StaticActivities } from "../../models/types/activity";
 import { useCallback, useEffect, useState } from "react";
 import { fetchGetStaticActivity } from "../../utils/fetch";
 import helmet from "../../models/resources/helmet.json";
-import MoreBtn from "../../components/ActivityMoreOptions/MoreBtn/MoreBtn";
 import { useAuthContext } from "../../context/AuthContext";
 import { convertActivityType } from "../../utils/activity";
+import MoreOptionsBtn from "../../components/MoreOptionsBtn/MoreOptionsBtn";
 
 function ContentActivity() {
     const navigate = useNavigate();
@@ -85,10 +85,12 @@ function ContentActivity() {
                 <section className={styles.activity_data_container}>
                     <article>
                         <ActivityOutputStatic activity={activity.content} />
-                        <MoreBtn
-                            isSave={isLoggedIn}
-                            isEdit={false}
+                        <MoreOptionsBtn
                             activity={convertActivityType(activity)}
+                            hasSave={isLoggedIn}
+                            hasEdit
+                            hasCopy
+                            hasShare
                         />
                     </article>
                     <div className={styles.padding} />
