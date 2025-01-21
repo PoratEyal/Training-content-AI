@@ -47,6 +47,16 @@
     outline: none;
 }
 
+@media (min-width: 380px) {
+    .input_div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 400px;
+    }
+}
+
 @media (min-width: 550px) {
     .input_div{
         max-width: unset;

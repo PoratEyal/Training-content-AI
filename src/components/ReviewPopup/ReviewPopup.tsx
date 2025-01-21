@@ -60,12 +60,13 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
         </button>
 
         <div className={styles.popupTitle_div}>
-          <h3 className={styles.popupTitle}>רגע! אל תסגרו אותי</h3>
+          <h3 className={styles.popupTitle}>בקשתם? קבלתם!</h3>
           <Icons.idea className={styles.icon_lamp}/>
         </div>
 
         <div className={styles.text}>
-          מה חדש? הוספנו יכולת חדשה לשמירת פעולות שיצרתם באזור אישי 🔖
+          אנחנו מקשיבים לכם ❤‍🔥 ושדרגנו את המערכת עם יכולות חדשות שאתם ביקשתם.
+          שדות חדשים לדייק את הפעולות, אפשרויות נוחות להעתקה, לשמירה, שיתוף ועוד...
         </div>
 
         <form className={styles.popupForm}>
