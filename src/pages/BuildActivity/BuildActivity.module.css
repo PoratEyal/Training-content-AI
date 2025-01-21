@@ -65,6 +65,7 @@
     align-items: center;
     gap: 20px;
     width: unset;
+    padding-bottom: unset;
 }
 
 
@@ -102,5 +103,7 @@
 
     .build_content {
         width: 70%;
+        gap: 17px;
+        padding-bottom: 10px;
     }
 }

@@ -33,7 +33,7 @@ const MoreBtn: React.FC<MoreBtnProps> = ({ activity, isSave, isEdit }) => {
           <CopyBtn activity={activity} />
           <ShareBtn activity={activity} />
           {isSave && <SaveBtn activity={activity} />}
-          {isEdit && <EditBtn />}
+          {/* {isEdit && <EditBtn />} */}
         </div>
       </div>
     </div>

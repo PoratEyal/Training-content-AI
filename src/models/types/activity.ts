@@ -15,8 +15,7 @@ export type Activity = {
     activity: string;
     userId: string | undefined;
 
-    behavior?: string;
-    touch?: string;
+    religion?: string;
     contest?: string;
     tools?: string;
     info?: string;

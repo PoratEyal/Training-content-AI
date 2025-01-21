@@ -15,8 +15,7 @@ export type Activity = {
     activity: string;
     userId: string | undefined;
     
-    behavior?: string;
-    touch?: string;
+    religion?: string;
     contest?: string;
     tools?: string;
     info?: string;
@@ -30,8 +29,7 @@ export type ActivityDetails = {
     grade: string;
     gender: string;
     place: string;
-    behavior?: string;
-    touch?: string;
+    religion?: string;
     contest?: string;
     tools?: string;
     info?: string;
