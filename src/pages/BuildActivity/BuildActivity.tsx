@@ -16,12 +16,11 @@ import CreateYourActivity from "../../components/titles/CreateYourActivity/Creat
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import {
     ActivityTimeOptions,
-    BehaviorOptions,
     CategoryOptions,
     ContestOptions,
     PlaceOptions,
     ToolsOptions,
-    TouchOptions,
+    ReligionOptions,
 } from "../../models/resources/select";
 import SubjectInput from "../../components/SubjectInput/SubjectInput";
 import { CategoryName } from "../../models/types/movement";
@@ -42,8 +41,7 @@ function BuildActivity() {
     const [subject, setSubject] = useState<string>("");
     const [place, setPlace] = useState<string>("");
     const [time, setTime] = useState<string>("");
-    const [behavior, setBehavior] = useState<string>("");
-    const [touch, setTouch] = useState<string>("");
+    const [religion, setReligion] = useState<string>("");
     const [contest, setContest] = useState<string>("");
     const [tools, setTools] = useState<string>("");
     const [info, setInfo] = useState<string>("");
@@ -78,8 +76,7 @@ function BuildActivity() {
                         setPlace(sessionActivity.place);
                         setTime(sessionActivity.time);
 
-                        if (sessionActivity.behavior) setBehavior(sessionActivity.behavior);
-                        if (sessionActivity.touch) setTouch(sessionActivity.touch);
+                        if (sessionActivity.religion) setReligion(sessionActivity.religion);
                         if (sessionActivity.contest) setContest(sessionActivity.contest);
                         if (sessionActivity.tools) setTools(sessionActivity.tools);
                         if (sessionActivity.info) setInfo(sessionActivity.info);
@@ -110,8 +107,7 @@ function BuildActivity() {
                 subject,
                 time,
                 place,
-                behavior,
-                touch,
+                religion,
                 contest,
                 tools,
                 info,
@@ -196,13 +192,6 @@ function BuildActivity() {
 
                                 <MoreOptionsCollapse>
                                     <SelectDetails
-                                        placeholder="אופי הקבוצה"
-                                        obj={behavior}
-                                        setObj={setBehavior}
-                                        data={BehaviorOptions}
-                                    />
-
-                                    <SelectDetails
                                         placeholder="שימוש בציוד?"
                                         obj={tools}
                                         setObj={setTools}
@@ -217,10 +206,10 @@ function BuildActivity() {
                                     />
 
                                     <SelectDetails
-                                        placeholder="האם יש מגע?"
-                                        obj={touch}
-                                        setObj={setTouch}
-                                        data={TouchOptions}
+                                        placeholder="שמירת שבת?"
+                                        obj={religion}
+                                        setObj={setReligion}
+                                        data={ReligionOptions}
                                     />
 
                                     <MoreDetailsInput
@@ -229,6 +218,7 @@ function BuildActivity() {
                                         setText={setInfo}
                                     />
                                 </MoreOptionsCollapse>
+
                                 <div className={styles.btn_div}>
                                     <MainBtn
                                         isDisabled={isDisabled}
@@ -243,6 +233,7 @@ function BuildActivity() {
                                         </div>
                                     ) : null}
                                 </div>
+                                {/* <br/> */}
                             </section>
                         </section>
                     )}

@@ -10,8 +10,7 @@ export type GetActivityRequest = {
     grade: string;
     gender: string;
     place: string;
-    behavior?: string;
-    touch?: string;
+    religion?: string;
     contest?: string;
     tools?: string;
     info?: string;

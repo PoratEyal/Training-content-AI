@@ -62,18 +62,12 @@ export const ActivityTimeOptions: SelectOption[] = [
     { value: "שעתיים", label: "שעתיים" },
 ];
   
-export const BehaviorOptions: SelectOption[] = [//התנהגות
-  { value: "רגוע", label: "רגוע" },
-  { value: "רועש", label: "רועש" },
-  { value: "שקט", label: "שקט" },
-  { value: "מתפזר", label: "מתפזר" },
-];
-
-export const TouchOptions: SelectOption[] = [//מגע
-    { value: "כן", label: "כן" },
-    { value: "לא", label: "לא" },
-    { value: "לא משנה", label: "לא משנה" },
-];
+// export const BehaviorOptions: SelectOption[] = [//התנהגות
+//   { value: "רגוע", label: "רגוע" },
+//   { value: "רועש", label: "רועש" },
+//   { value: "שקט", label: "שקט" },
+//   { value: "מתפזר", label: "מתפזר" },
+// ];
 
 export const ContestOptions: SelectOption[] = [//תחרות
     { value: "כן", label: "כן" },
@@ -88,6 +82,11 @@ export const ToolsOptions: SelectOption[] = [//ציוד
     { value: "לא משנה", label: "לא משנה" },
 ];
 
+export const ReligionOptions: SelectOption[] = [//שומר שבת
+    { value: "שומר שבת", label: "שומר שבת" },
+    { value: "לא שומר שבת", label: "לא שומר שבת" },
+    { value: "לא משנה", label: "לא משנה" },
+];
 
 
 export const CategoryOptions = (options: Category[]): SelectOption[] => {

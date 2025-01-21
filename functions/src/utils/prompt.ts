@@ -194,28 +194,14 @@ export const getSection = (category: CategoryName, time: string, place: string )
     }
 };
 
-export const getBehavior = (behavior: string | undefined): string => {
-    switch (behavior) {
-        case "רגוע":
-            return "אופי הקבוצה: רגוע";
-        case "רועש":
-            return "אופי הקבוצה: רועש";
-        case "שקט":
-            return "אופי הקבוצה: שקט";
-        case "מתפזר":
-            return "אופי הקבוצה: מתפזר";
-        default:
-            return "";
-    }
-};
-
 export const getMoreInfo = (info: string | undefined): string => {
     if (!info || info === "") return "אין הערות נוספות";
     return info;
 };
 
-export const getTools = (category: CategoryName, tools: string | undefined): string => {
-    if (tools === "לא") return "**ציוד נדרש:** ללא ציוד!";
+export const getTools = (category: CategoryName, tools: string | undefined, religion: string | undefined): string => {
+    if (tools === "לא") return "**ציוד נדרש:** אסור להשתמש בציוד!";
+    else if (religion === "שומר שבת") return "**ציוד נדרש:** (אין להשתמש בחומרי גלם יקרים, מצגת, סרטון, טלפונים כלי עבודה או כלי נגינה)!";
     else {
         switch (category) {
             case "pointOfView":
@@ -227,7 +213,7 @@ export const getTools = (category: CategoryName, tools: string | undefined): str
             case "contant":
                 return "**ציוד נדרש:** (אם יש, אין להשתמש בחומרי גלם יקרים, מצגת או סרטון)";
             default:
-                return "**ציוד נדרש:** ללא ציוד!";
+                return "**ציוד נדרש:** אסור להשתמש בציוד!";
         }
     }
 };
@@ -235,16 +221,32 @@ export const getTools = (category: CategoryName, tools: string | undefined): str
 export const getSafty = (
     category: CategoryName,
     contest: string | undefined,
-    touch: string | undefined,
 ) => {
     if(category === "pointOfView") return "";
-    let safty: string = "- הימנעות מפעולות ומשחקים מסוכנים, הימנעות מתכנים אלימים. ";
-    if (touch === "לא") safty = safty + "אסור מגע בין הילדים! ";
-    if (contest === "לא") safty = safty + "אסור תחרות או קבוצות! ";
+    let safty: string = "- הפעולה חייבת להיות: ללא אלימות, ללא סיכונים";
+    // if (touch === "לא") safty = safty + "אסור מגע בין הילדים! ";
+    if (contest === "לא") safty = safty + ", ללא תחרויות וללא חלוקה לקבוצות.";
     return safty;
 };
 
-// ----------------------- //
+
+
+// export const getBehavior = (behavior: string | undefined): string => {
+//     switch (behavior) {
+//         case "רגוע":
+//             return "אופי הקבוצה: רגוע";
+//         case "רועש":
+//             return "אופי הקבוצה: רועש";
+//         case "שקט":
+//             return "אופי הקבוצה: שקט";
+//         case "מתפזר":
+//             return "אופי הקבוצה: מתפזר";
+//         default:
+//             return "";
+//     }
+// };
+
+// -------------------------------------------------------- //
 
 // const setPromptForPointOfView = (time: string): [[string, string, string], string] => {
 //     let promptOptions: [string, string, string] = ["", "", ""];

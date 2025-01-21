@@ -2,7 +2,14 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { ActivityDetails } from "../model/types/activity";
 import { defineString } from "firebase-functions/params";
 import { formatString } from "../utils/format";
-import { getBehavior, getMoreInfo, getPromptOptions, getSafty, getSection, getTools, promptPerGrade } from "../utils/prompt";
+import {
+    getMoreInfo,
+    getPromptOptions,
+    getSafty,
+    getSection,
+    getTools,
+    promptPerGrade,
+} from "../utils/prompt";
 
 const genAI = new GoogleGenerativeAI(defineString("API_KEY").value() || "");
 
@@ -16,28 +23,15 @@ async function generateContent(prompt: string): Promise<string> {
 
 const getPromptAndDetails = (activityDetials: ActivityDetails): [string, string[]] => {
     const { category, grade, time, subject, amount, gender, place } = activityDetials;
-    const { behavior: activityBehavior, touch, contest, tools: activityTools, info } = activityDetials;
+    const { religion, contest, tools: activityTools, info } = activityDetials;
 
-    const behavior = getBehavior(activityBehavior);
     const moreInfo = getMoreInfo(info);
-    const tools = getTools(category, activityTools);
+    const tools = getTools(category, activityTools, religion);
     const section = getSection(category, time, place);
-    const safty = getSafty(category, contest, touch);
+    const safty = getSafty(category, contest);
     const promptOptions = getPromptOptions(category);
     const prompt = promptPerGrade(grade, promptOptions);
-    const details = [
-        time,
-        subject,
-        amount,
-        grade,
-        gender,
-        place,
-        behavior,
-        moreInfo,
-        tools,
-        section,
-        safty,
-    ];
+    const details = [time, subject, amount, grade, gender, place, moreInfo, tools, section, safty];
     return [prompt, details];
 };
 

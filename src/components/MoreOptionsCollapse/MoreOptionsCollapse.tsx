@@ -20,7 +20,7 @@ const MoreOptionsCollapse: React.FC<MoreOptionsCollapseProps> = ({ children }) =
     return (
         <div className={styles.options_collapse_container}>
             <span className={styles.options_container} onClick={handleCollapse}>
-                <label className={styles.collapse_text}>לחצו לאפשרויות נוספות</label>
+                <label className={styles.collapse_text}>לאפשרויות נוספות</label>
                 <span className={styles.sizeMedium}>
                     <motion.div
                         className={styles.toggelArrowAnimation}
