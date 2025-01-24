@@ -26,18 +26,10 @@ const images = [
     "/backgroundImages/image3.jpg",
     "/backgroundImages/image4.jpg",
     "/backgroundImages/image5.jpg",
-  ];
-  
+];
 
 function Home() {
-    const {
-        cookieVisitCount,
-        setVisitCount,
-        cookiePopupReview,
-        cookieLimit,
-        setLimitCookie,
-        cookieRememberMe,
-    } = useCookiesContext();
+    const { cookieLimit, setLimitCookie, cookieRememberMe } = useCookiesContext();
 
     const navigate = useNavigate();
     const { currentUser, isLoggedIn } = useAuthContext();
@@ -49,21 +41,20 @@ function Home() {
 
     const [rememberMe, setRememberMe] = useState<SignInStatus>(SignInStatus.NEW_ACCESS);
 
-    
     const handleStart = () => {
         const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
         Session.remove(SessionKey.NAVIGATE);
         if (navigateTo) navigate(navigateTo);
-    }
-    
+    };
+
     const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart);
-    
+
     useEffect(() => {
         const singleImage = images[0]; // Select the first image in the array
         document.body.style.background = `url('${singleImage}') no-repeat center center fixed`;
         document.body.style.backgroundSize = "cover";
         document.body.style.backgroundAttachment = "fixed";
-    }, []);    
+    }, []);
 
     useEffect(() => {
         if (rememberMe === SignInStatus.NEW_ACCESS) {
@@ -121,7 +112,10 @@ function Home() {
                 <h2 className={styles.home_lable}>מותאם, פשוט ומהיר 🤟</h2>
             </div>
 
-            {rememberMe === SignInStatus.REMEMBER && !isLoading && isLoggedIn && currentUser?.image ? (
+            {rememberMe === SignInStatus.REMEMBER &&
+            !isLoading &&
+            isLoggedIn &&
+            currentUser?.image ? (
                 <section className={styles.button_section}>
                     <StartBtn
                         text="יצירת פעולות"
@@ -158,23 +152,3 @@ function Home() {
 }
 
 export default Home;
-
-
-
-    // Run once to increment visit count and possibly show popup
-    // useEffect(() => {
-    //     let visitCount = parseInt(cookieVisitCount || "0", 10);
-    //     if (isNaN(visitCount)) {
-    //         visitCount = 0;
-    //     }
-    //     visitCount += 1;
-    //     setVisitCount(visitCount);
-
-    //     if (!cookiePopupReview && visitCount >= 3) {
-    //         const timer = setTimeout(() => {
-    //             setIsPopupVisible(true);
-    //         }, 1000);
-
-    //         return () => clearTimeout(timer);
-    //     }
-    // }, []);

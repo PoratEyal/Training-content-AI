@@ -43,15 +43,11 @@ export type StaticContentContextType = {
 export type CookiesContextType = {
     cookieLimit: string | undefined;
     cookieUserConsent: string | undefined;
-    cookiePopupReview: string | undefined;
-    cookieVisitCount: string | undefined;
     cookieRememberMe: string | undefined;
     removeRememberMeCookie: () => void;
     setRememberMeCookie: () => void;
-    setPopupReviewCookie: () => void;
     setConsentCookie: () => void;
     setLimitCookie: (data: string | number) => void;
-    setVisitCount: (visitCount: number) => void;
 };
 
 export type SaveContextType = {

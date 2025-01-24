@@ -11,9 +11,5 @@ export const CookieOptions = {
 export const USER_CONSENT_VALUE = "accepted";
 export const NEED_TO_LOGIN = "guest-block";
 
-export const POPUP_REVIEW = "popup_review";
-
-export const VISIT_COUNT_KEY = 'visitCount';
-
 export const REMEMEBER_ME_KEY = 'rememberMe';
 
