@@ -14,8 +14,8 @@ function MoreDetailsInput({
 }: MoreDetailsInputProps) {
     const handleInputChange = (event) => {
         const newValue = event.target.value as string;
-        // Limit the value to 80 characters
-        if (newValue.length <= 80) {
+        // Limit the value to 40 characters
+        if (newValue.length <= 40) {
             setText(newValue);
         }
     };
