@@ -42,9 +42,9 @@ export const AmountOptions: SelectOption[] = [
 ];
 
 export const PlaceOptions: SelectOption[] = [
+    { value: "לא משנה", label: "לא משנה" },
     { value: "במקום סגור", label: "במקום סגור" },
     { value: "במקום פתוח", label: "במקום פתוח" },
-    { value: "לא משנה", label: "לא משנה" },
 ];
 
 export const GenderOptions: SelectOption[] = [
@@ -70,22 +70,20 @@ export const ActivityTimeOptions: SelectOption[] = [
 // ];
 
 export const ContestOptions: SelectOption[] = [//תחרות
-    { value: "כן", label: "כן" },
-    { value: "לא", label: "לא" },
     { value: "לא משנה", label: "לא משנה" },
+    { value: "עם חלוקה לקבוצות", label: "עם חלוקה לקבוצות" },
+    { value: "ללא חלוקה לקבוצות", label: "ללא חלוקה לקבוצות" },
 ];
 
 
 export const ToolsOptions: SelectOption[] = [//ציוד
-    { value: "כן", label: "כן" },
-    { value: "לא", label: "לא" },
     { value: "לא משנה", label: "לא משנה" },
+    { value: "ללא ציוד", label: "ללא ציוד" },
 ];
 
 export const ReligionOptions: SelectOption[] = [//שומר שבת
-    { value: "שומר שבת", label: "שומר שבת" },
-    { value: "לא שומר שבת", label: "לא שומר שבת" },
     { value: "לא משנה", label: "לא משנה" },
+    { value: "מותאם לשומרי שבת", label: "מותאם לשומרי שבת" },
 ];
 
 
