@@ -206,7 +206,7 @@ function BuildActivity() {
                                     />
 
                                     <SelectDetails
-                                        placeholder="שבת"
+                                        placeholder="מותאם לשומרי שבת"
                                         obj={religion}
                                         setObj={setReligion}
                                         data={ReligionOptions}
@@ -229,7 +229,7 @@ function BuildActivity() {
                                     {hasAlert ? (
                                         <div className={styles.input_alert}>
                                             שימו לב! מקור הפעולות הינו מערכת בינה מלאכותית, יכול
-                                            להיות וחיפושים מסויימים עדיין לא התעדכנו במערכת
+                                            להיות שנושאים מסויימים עדיין לא מעודכנים
                                         </div>
                                     ) : null}
                                 </div>
