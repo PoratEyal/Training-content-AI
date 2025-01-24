@@ -31,7 +31,8 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    height: 355px;
+    min-height: 355px;
+    height: calc(100% - 100px - var(--ads-height));
     width: 100%;
     overflow-y: scroll;
 }
