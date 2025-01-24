@@ -192,21 +192,21 @@ function BuildActivity() {
 
                                 <MoreOptionsCollapse>
                                     <SelectDetails
-                                        placeholder="האם יש שימוש בציוד"
+                                        placeholder="ציוד"
                                         obj={tools}
                                         setObj={setTools}
                                         data={ToolsOptions}
                                     />
 
                                     <SelectDetails
-                                        placeholder="האם לחלק לקבוצות"
+                                        placeholder="תחרות וקבוצות"
                                         obj={contest}
                                         setObj={setContest}
                                         data={ContestOptions}
                                     />
 
                                     <SelectDetails
-                                        placeholder="מותאם לשומרי שבת"
+                                        placeholder="שבת"
                                         obj={religion}
                                         setObj={setReligion}
                                         data={ReligionOptions}
@@ -233,7 +233,6 @@ function BuildActivity() {
                                         </div>
                                     ) : null}
                                 </div>
-                                {/* <br/> */}
                             </section>
                         </section>
                     )}
