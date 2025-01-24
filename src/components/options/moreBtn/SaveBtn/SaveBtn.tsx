@@ -7,14 +7,14 @@ import { useSaveContext } from "../../../../context/SavedContext";
 import { useQueryParam } from "../../../../hooks/useQueryParam";
 import { fetchSaveActivity } from "../../../../utils/fetch";
 import { motion } from "framer-motion";
+import { moreOptionsButtonVariants } from "../../../../utils/style";
 
 type SaveBtnProps = {
     index: number;
-    buttonVariants: any;
     activity: Activity;
 };
 
-const SaveBtn: React.FC<SaveBtnProps> = ({ index, buttonVariants, activity }) => {
+const SaveBtn: React.FC<SaveBtnProps> = ({ index, activity }) => {
     const { currentParam, updateParam } = useQueryParam();
     const { currentUser } = useAuthContext();
     const { handleSuccess, handleError } = useErrorContext();
@@ -66,7 +66,7 @@ const SaveBtn: React.FC<SaveBtnProps> = ({ index, buttonVariants, activity }) =>
             onClick={saved ? handleUnsave : handleSave}
             // custom={options.length - 1 - index}
             custom={4 - 1 - index}
-            variants={buttonVariants}
+            variants={moreOptionsButtonVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"

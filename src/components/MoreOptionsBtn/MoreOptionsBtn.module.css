@@ -7,6 +7,7 @@
 }
 
 .circleButton {
+  -webkit-tap-highlight-color: transparent;
   background-color: var(--secondary-color);
   position: relative;
   width: 45px;

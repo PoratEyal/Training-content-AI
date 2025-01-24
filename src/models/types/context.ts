@@ -30,6 +30,7 @@ export type AuthContextType = {
     currentUser: User | undefined;
     isLoggedIn: boolean;
     loading: boolean;
+    setIsSendMsg: () => void
     logout: () => Promise<void>;
     whatsNewMsg: string;
 };
