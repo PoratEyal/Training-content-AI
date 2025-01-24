@@ -192,14 +192,14 @@ function BuildActivity() {
 
                                 <MoreOptionsCollapse>
                                     <SelectDetails
-                                        placeholder="שימוש בציוד"
+                                        placeholder="האם יש שימוש בציוד"
                                         obj={tools}
                                         setObj={setTools}
                                         data={ToolsOptions}
                                     />
 
                                     <SelectDetails
-                                        placeholder="האם יש תחרויות"
+                                        placeholder="האם לחלק לקבוצות"
                                         obj={contest}
                                         setObj={setContest}
                                         data={ContestOptions}
