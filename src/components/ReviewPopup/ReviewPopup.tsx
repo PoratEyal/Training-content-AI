@@ -66,7 +66,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
         </button>
 
         <div className={styles.popupTitle_div}>
-          <h3 className={styles.popupTitle}>בקשתם? קבלתם!</h3>
+          <h3 className={styles.popupTitle}>ביקשתם? קבלתם!</h3>
           <Icons.idea className={styles.icon_lamp}/>
         </div>
 

@@ -4,14 +4,14 @@ import { Activity } from "../../../../models/types/activity";
 import { FaRegCopy, FaCopy } from "react-icons/fa6";
 import { useErrorContext } from "../../../../context/ErrorContext";
 import { motion } from "framer-motion";
+import { moreOptionsButtonVariants } from "../../../../utils/style";
 
 type CopyBtnProps = {
     index: number;
-    buttonVariants: any;
     activity: Activity;
 };
 
-const CopyBtn: React.FC<CopyBtnProps> = ({ index, buttonVariants, activity }) => {
+const CopyBtn: React.FC<CopyBtnProps> = ({ index, activity }) => {
     const [isCopied, setIsCopied] = useState(false);
     const { handleSuccess, handleError } = useErrorContext();
 
@@ -47,7 +47,7 @@ const CopyBtn: React.FC<CopyBtnProps> = ({ index, buttonVariants, activity }) =>
             onClick={handleClick}
             // custom={options.length - 1 - index}
             custom={4 - 1 - index}
-            variants={buttonVariants}
+            variants={moreOptionsButtonVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"

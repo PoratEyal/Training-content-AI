@@ -8,7 +8,7 @@ import { fetchUpdateIsMsg } from "../utils/fetch";
 
 const PrivateRoutes = () => {
     const { cookieUserConsent, setConsentCookie } = useCookiesContext();
-    const { whatsNewMsg, currentUser } = useAuthContext();
+    const { whatsNewMsg, setIsSendMsg, currentUser } = useAuthContext();
     const [tscs, setTscs] = useState<boolean>(false);
     const [whatsNew, setWhatsNew] = useState<boolean>(false);
 
@@ -20,7 +20,7 @@ const PrivateRoutes = () => {
 
     const blockRef = useRef<boolean>(true);
     useEffect(() => {
-        if (blockRef.current && whatsNewMsg !== "") {
+        if (blockRef.current && currentUser?.isSendMsg && whatsNewMsg !== "") {
             setWhatsNew(true);
             blockRef.current = false;
         }
@@ -32,8 +32,9 @@ const PrivateRoutes = () => {
     };
 
     const handleWhatsNewClose = async () => {
+        if (currentUser?.id) await fetchUpdateIsMsg(currentUser.id);
         setWhatsNew(false);
-        if(currentUser?.id) await fetchUpdateIsMsg(currentUser.id);
+        setIsSendMsg();
     };
 
     return (

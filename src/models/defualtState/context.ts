@@ -20,6 +20,7 @@ export const defualtAuthContext: AuthContextType = {
     currentUser: null,
     isLoggedIn: false,
     loading: true,
+    setIsSendMsg: () => {},
     logout: async () => {},
     whatsNewMsg: "",
 };

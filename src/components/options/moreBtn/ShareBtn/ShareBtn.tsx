@@ -3,14 +3,14 @@ import styles from "./ShareBtn.module.css";
 import { FaShare } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Activity } from "../../../../models/types/activity";
+import { moreOptionsButtonVariants } from "../../../../utils/style";
 
 type ShareBtnProps = {
     index: number;
-    buttonVariants: any;
     activity: Activity;
 };
 
-const ShareBtn: React.FC<ShareBtnProps> = ({ index, buttonVariants, activity }) => {
+const ShareBtn: React.FC<ShareBtnProps> = ({ index, activity }) => {
     const handleClick = async (event: React.MouseEvent<HTMLDivElement>) => {
         event.stopPropagation();
 
@@ -38,7 +38,7 @@ const ShareBtn: React.FC<ShareBtnProps> = ({ index, buttonVariants, activity }) 
             onClick={handleClick}
             // custom={options.length - 1 - index}
             custom={4 - 1 - index}
-            variants={buttonVariants}
+            variants={moreOptionsButtonVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"

@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 import { AiFillEdit } from "react-icons/ai";
 import route from "../../../../router/route.json";
 import { useNavigate } from "react-router-dom";
+import { moreOptionsButtonVariants } from "../../../../utils/style";
 
 type EditBtnProps = {
     index: number;
-    buttonVariants: any;
 };
 
-const EditBtn: React.FC<EditBtnProps> = ({ index, buttonVariants }) => {
+const EditBtn: React.FC<EditBtnProps> = ({ index }) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -23,7 +23,7 @@ const EditBtn: React.FC<EditBtnProps> = ({ index, buttonVariants }) => {
             onClick={handleClick}
             // custom={options.length - 1 - index}
             custom={4 - 1 - index}
-            variants={buttonVariants}
+            variants={moreOptionsButtonVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"

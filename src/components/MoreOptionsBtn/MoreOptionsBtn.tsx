@@ -20,45 +20,26 @@ const buildOptions = (props: MoreOptionsBtnProps): JSX.Element[] => {
     const Options: JSX.Element[] = [];
     const { activity } = props;
 
-    const buttonVariants = {
-        hidden: (index: number) => ({
-            y: 0,
-            opacity: 0,
-            transition: {
-                duration: 0.15,
-                delay: 0.1 * index,
-            },
-        }),
-        visible: (index: number) => ({
-            y: -15 * (index + 1),
-            opacity: 1,
-            transition: {
-                duration: 0.15,
-                delay: 0.1 * index,
-            },
-        }),
-    };
-
     if (props.hasSave) {
         Options.push(
-            <SaveBtn key={0} index={0} buttonVariants={buttonVariants} activity={activity} />,
+            <SaveBtn key={0} index={0} activity={activity} />,
         );
     }
 
     if (props.hasCopy) {
         Options.push(
-            <CopyBtn key={1} index={1} buttonVariants={buttonVariants} activity={activity} />,
+            <CopyBtn key={1} index={1} activity={activity} />,
         );
     }
 
     if (props.hasShare) {
         Options.push(
-            <ShareBtn key={2} index={2} buttonVariants={buttonVariants} activity={activity} />,
+            <ShareBtn key={2} index={2} activity={activity} />,
         );
     }
 
     if (props.hasEdit) {
-        Options.push(<EditBtn key={3} index={3} buttonVariants={buttonVariants} />);
+        Options.push(<EditBtn key={3} index={3} />);
     }
 
     return Options;

@@ -77,17 +77,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
     };
 
-    const logout = async () => {
-        try {
-            await auth.signOut();
-            removeRememberMeCookie();
-            setCurrentUser(undefined);
-            setIsLoggedIn(false);
-        } catch (error) {
-            handleError(error);
-        }
-    };
-
     const blockRef = useRef<boolean>(true);
     const checkIfNeedToSendMsg = async (user: User) => {
         if (user.isSendMsg && blockRef.current) {
@@ -99,6 +88,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
     }
 
+    const setIsSendMsg = () => {
+        setCurrentUser({
+            ...currentUser,
+            isSendMsg: false
+        });
+    }
+
+    const logout = async () => {
+        try {
+            await auth.signOut();
+            removeRememberMeCookie();
+            setCurrentUser(undefined);
+            setIsLoggedIn(false);
+        } catch (error) {
+            handleError(error);
+        }
+    };
+
     return (
         <AuthContext.Provider
             value={{
@@ -106,6 +113,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 isLoggedIn,
                 loading,
                 logout,
+                setIsSendMsg,
                 whatsNewMsg
             }}
         >
