@@ -33,15 +33,11 @@ export const defualtStaticContentContext: StaticContentContextType = {
 export const defualtCookiesContext: CookiesContextType = {
     cookieLimit: undefined,
     cookieUserConsent: undefined,
-    cookiePopupReview: undefined,
-    cookieVisitCount: undefined,
     cookieRememberMe: undefined,
     removeRememberMeCookie: () => {},
     setRememberMeCookie: () => {},
-    setPopupReviewCookie: () => {},
     setConsentCookie: () => {},
     setLimitCookie: () => {},
-    setVisitCount: () => {},
 }
 
 export const defualtSaveContext: SaveContextType = {
