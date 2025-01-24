@@ -57,7 +57,7 @@ const SavedActivity: React.FC = () => {
                 <section className={styles.activity_data_container}>
                     <article>
                         <ActivityOutputStatic activity={activity.activity} />
-                        <MoreOptionsBtn activity={activity} hasCopy hasShare hasEdit/>
+                        <MoreOptionsBtn activity={activity} hasCopy hasShare/>
                     </article>
                     <div className={styles.padding} />
                 </section>

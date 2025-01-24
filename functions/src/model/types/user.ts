@@ -9,6 +9,7 @@ export type User = {
     lastUpdate: string;
     movement: UserMovementDetails | null;
     isAcceptTerms: boolean;
+    isSendMsg: boolean;
 };
 
 export type DbUser = {
@@ -22,6 +23,7 @@ export type DbUser = {
     gender: string | null;
     amount: string | null;
     isAcceptTerms: boolean;
+    isSendMsg: boolean;
 };
 
 export type RawUser = {

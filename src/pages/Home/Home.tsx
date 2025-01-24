@@ -12,7 +12,6 @@ import { SessionKey } from "../../models/enum/storage";
 import StartBtn from "../../components/StartBtn/StartBtn";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import helmet from "../../models/resources/helmet.json";
-import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
 import { useCookiesContext } from "../../context/CookiesContext";
 import { SignInStatus } from "../../models/enum/registrationStatus";
 import { HOME_AD_SLOT } from "../../models/constants/adsSlot";
@@ -41,8 +40,7 @@ function Home() {
     } = useCookiesContext();
 
     const navigate = useNavigate();
-    const { currentUser, isLoggedIn, isPopupVisible, handlePopupClose, setIsPopupVisible } =
-        useAuthContext();
+    const { currentUser, isLoggedIn } = useAuthContext();
 
     const { useFetchSubjectsData } = useStaticContentContext();
     const { useFetchSavedData } = useSaveContext();
@@ -72,24 +70,6 @@ function Home() {
             setRememberMe(cookieRememberMe ? SignInStatus.REMEMBER : SignInStatus.NOT_REMEMBER);
         }
     }, [isLoggedIn, currentUser]);
-
-    // Run once to increment visit count and possibly show popup
-    useEffect(() => {
-        let visitCount = parseInt(cookieVisitCount || "0", 10);
-        if (isNaN(visitCount)) {
-            visitCount = 0;
-        }
-        visitCount += 1;
-        setVisitCount(visitCount);
-
-        if (!cookiePopupReview && visitCount >= 3) {
-            const timer = setTimeout(() => {
-                setIsPopupVisible(true);
-            }, 1000);
-
-            return () => clearTimeout(timer);
-        }
-    }, []);
 
     const navigateAndSetCookieDate = (navigateTo: string) => {
         setLimitCookie(new Date().toString());
@@ -163,10 +143,6 @@ function Home() {
                 </div>
             )}
 
-            {/* <div className={styles.install_button_div}>
-                <InstallButton />
-            </div> */}
-
             <div className={styles.about_div}>
                 <AboutUsCollapse>
                     <p>
@@ -177,10 +153,28 @@ function Home() {
                     </p>
                 </AboutUsCollapse>
             </div>
-
-            {isPopupVisible && <ReviewPopup onClose={handlePopupClose} />}
         </PageLayout>
     );
 }
 
 export default Home;
+
+
+
+    // Run once to increment visit count and possibly show popup
+    // useEffect(() => {
+    //     let visitCount = parseInt(cookieVisitCount || "0", 10);
+    //     if (isNaN(visitCount)) {
+    //         visitCount = 0;
+    //     }
+    //     visitCount += 1;
+    //     setVisitCount(visitCount);
+
+    //     if (!cookiePopupReview && visitCount >= 3) {
+    //         const timer = setTimeout(() => {
+    //             setIsPopupVisible(true);
+    //         }, 1000);
+
+    //         return () => clearTimeout(timer);
+    //     }
+    // }, []);

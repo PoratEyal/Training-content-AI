@@ -9,6 +9,7 @@ export type User = {
     lastUpdate: string;
     movement: UserMovementDetails | null;
     isAcceptTerms: boolean;
+    isSendMsg: boolean;
 };
 
 export type RawUser = {

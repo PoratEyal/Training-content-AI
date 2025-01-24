@@ -1,111 +1,104 @@
 import { DocumentData } from "firebase-admin/firestore";
 import { Activity, StaticActivities, StaticSubject } from "./activity";
-import { Movement } from "./movement";
 import { User } from "./user";
+import { MsgType } from "./msg";
 
-export type Resposne = "success" | "notFound" | "safety" | "limit" | "error";
+export type Response = "success" | "notFound" | "safety" | "limit" | "error";
 
 export type GetActivityResponse = {
-    result: Resposne;
+    result: Response;
     activity?: Activity;
     message?: string;
 };
 
 export type SaveActivityResponse = {
-    result: Resposne;
+    result: Response;
     activity?: Activity;
     message?: string;
 };
 
 export type UpdateActivityLikesResponse = {
-    result: Resposne;
+    result: Response;
     activity?: Activity;
     message?: string;
 };
 
-export type AddMovmentResponse = {
-    result: Resposne;
-    movement?: Movement;
-    message?: string;
-};
-
-export type GetMovmentsResponse = {
-    result: Resposne;
-    movements: Movement[];
-    message?: string;
-};
-
 export type CreateNewUserResponse = {
-    result: Resposne;
+    result: Response;
     user?: User;
     message?: string;
 };
 
 export type GetUserByIdResponse = {
-    result: Resposne;
+    result: Response;
     user?: User;
     message?: string;
 };
 
 export type UpdateUserResponse = {
-    result: Resposne;
+    result: Response;
     user?: User;
-    message?: string;
-};
-
-export type updateUserByIdResponse = {
-    result: Resposne;
-    user?: User;
-    message?: string;
-};
-
-export type DeleteUserResponse = {
-    result: Resposne;
     message?: string;
 };
 
 export type getAllActivitiesResponse = {
-    result: Resposne;
+    result: Response;
     activities?: DocumentData;
     message?: string;
 };
 
 export type getAllUsersResponse = {
-    result: Resposne;
+    result: Response;
     users?: DocumentData;
     message?: string;
 };
 
 export type GetSavedActivitiesResponse = {
-    result: Resposne;
+    result: Response;
     activities?: Activity[];
     message?: string;
 };
 
 export type RemoveSavedActivityResponse = {
-    result: Resposne;
+    result: Response;
     message?: string;
 };
 
 export type IsActivitySavedResponse = {
-    result: Resposne;
+    result: Response;
     exists: boolean;
     message?: string;
 };
 
 export type IncrementActivityResponse = {
-    result: Resposne;
+    result: Response;
     message?: string;
 }
 
 export type GetStaticSubjectsResponse = {
-    result: Resposne;
+    result: Response;
     subjects?: StaticSubject[];
     message?: string;
 }
 
 export type GetStaticActivityResponse ={
-    result: Resposne;
+    result: Response;
     activity?: StaticActivities;
+    message?: string;
+}
+
+export type SendMsgResponse = {
+    result: Response;
+    message?: string;
+}
+
+export type GetMsgResponse = {
+    result: Response;
+    msg?: MsgType;
+    message?: string;
+}
+
+export type UpdateIsMsgResponse = {
+    result: Response;
     message?: string;
 }

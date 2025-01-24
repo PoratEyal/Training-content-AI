@@ -59,7 +59,6 @@ function Activity() {
                                 activity={mainActivity}
                                 hasCopy
                                 hasShare
-                                hasEdit
                                 hasSave
                             />
                         ) : null}

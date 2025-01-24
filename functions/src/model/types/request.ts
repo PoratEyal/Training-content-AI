@@ -18,7 +18,7 @@ export type GetActivityRequest = {
 
 export type SaveActivityRequest = {
     activity: Activity;
-}
+};
 
 export type UpdateActivityLikesRequest = {
     activity: Activity;
@@ -33,7 +33,7 @@ export type AddMovmentRequest = {
 export type GetMovmentsRequest = {};
 
 export type CreateNewUserRequest = {
-    rawUser: RawUser
+    rawUser: RawUser;
 };
 
 export type GetUserByIdRequest = {
@@ -50,25 +50,35 @@ export type FormatUserRequest = {
 
 export type GetSavedActivitiesReqeust = {
     userId: string;
-}
+};
 
 export type RemoveSavedActivityRequest = {
     activityId: string;
     userId: string;
-}
+};
 
 export type IsActivitySavedRequest = {
     activityId: string;
     userId: string;
-}
+};
 
 export type IncrementActivityRequest = {
     activity: StaticActivities;
-}
+};
 
 export type GetStaticActivityRequest = {
     contentName: string;
-}
+};
 
-export type GetAllActivitiesRequest = {}
-export type GetAllUsersRequest = {}
+export type GetAllActivitiesRequest = {};
+export type GetAllUsersRequest = {};
+
+export type SendMsgRequest = {
+    password: string;
+};
+
+export type GetMsgRequest = {};
+
+export type UpdateIsMsgRequest = {
+    userId: string;
+};

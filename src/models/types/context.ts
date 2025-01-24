@@ -31,9 +31,7 @@ export type AuthContextType = {
     isLoggedIn: boolean;
     loading: boolean;
     logout: () => Promise<void>;
-    isPopupVisible: boolean;
-    handlePopupClose: () => void;
-    setIsPopupVisible: Dispatch<SetStateAction<boolean>>;
+    whatsNewMsg: string;
 };
 
 export type StaticContentContextType = {

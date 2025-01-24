@@ -23,6 +23,7 @@ import SavedActivities from "./pages/SavedActivities/SavedActivities";
 import { CookiesProvider } from "./context/CookiesContext";
 import { SavedProvider } from "./context/SavedContext";
 import Edit from "./pages/Edit/Edit";
+import Admin from "./pages/Admin/Admin";
 
 function App() {
     return (
@@ -82,6 +83,7 @@ function App() {
                                                 path={route.all}
                                                 element={<Navigate replace to={route.home} />}
                                             />
+                                            <Route path={route.admin} element={<Admin />} />
                                         </Routes>
                                     </Router>
                                 </SavedProvider>

@@ -12,6 +12,7 @@
     "contentActivity": "/content/:activityId/:contentId",
     "edit": "/edit",
     "status": "/status",
+    "admin": "/admin/msg",
     "all": "*"
   }
   

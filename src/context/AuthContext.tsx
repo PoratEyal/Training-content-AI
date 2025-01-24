@@ -1,10 +1,10 @@
-import { useEffect, createContext, useState, useContext } from "react";
+import { useEffect, createContext, useState, useContext, useRef } from "react";
 import { auth } from "../config/firebase";
 import { getRedirectResult, onAuthStateChanged } from "firebase/auth";
 import { AuthContextType } from "../models/types/context";
 import { defualtAuthContext } from "../models/defualtState/context";
 import { GoogleUser, User } from "../models/types/user";
-import { fetchCreateNewUser } from "../utils/fetch";
+import { fetchCreateNewUser, fetchGetMsg } from "../utils/fetch";
 import { useErrorContext } from "./ErrorContext";
 import { addSessionData } from "../utils/movment";
 import { NEED_TO_LOGIN } from "../models/constants/cookie";
@@ -28,12 +28,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             navigator.userAgent,
         );
     const { handleError } = useErrorContext();
-    const { cookieLimit, setLimitCookie, setPopupReviewCookie, removeRememberMeCookie } =
-        useCookiesContext();
+    const { cookieLimit, setLimitCookie, removeRememberMeCookie } = useCookiesContext();
     const [currentUser, setCurrentUser] = useState<User | undefined>();
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
-    const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
+    const [whatsNewMsg, setWhatsNewMsg] = useState<string>("");
 
     useEffect(() => {
         let unsubscribe: any;
@@ -63,6 +62,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                         addSessionData(movement, grade, amount, gender);
                     }
                     setCurrentUser(resultUser);
+                    await checkIfNeedToSendMsg(resultUser);
                     setIsLoggedIn(true);
                     if (cookieLimit !== NEED_TO_LOGIN) setLimitCookie(NEED_TO_LOGIN);
                     return;
@@ -88,10 +88,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
     };
 
-    const handlePopupClose = () => {
-        setIsPopupVisible(false);
-        setPopupReviewCookie();
-    };
+    const blockRef = useRef<boolean>(true);
+    const checkIfNeedToSendMsg = async (user: User) => {
+        if (user.isSendMsg && blockRef.current) {
+            const result = await fetchGetMsg();
+            if (result.result === "success") {
+                setWhatsNewMsg(result.msg.text);
+                blockRef.current = false;
+            }
+        }
+    }
 
     return (
         <AuthContext.Provider
@@ -100,9 +106,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 isLoggedIn,
                 loading,
                 logout,
-                isPopupVisible,
-                handlePopupClose,
-                setIsPopupVisible,
+                whatsNewMsg
             }}
         >
             {children}
