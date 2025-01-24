@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { AnimatePresence } from "framer-motion";
-import { TfiMoreAlt } from "react-icons/tfi";
 import styles from "./MoreOptionsBtn.module.css";
+import { TfiMoreAlt } from "react-icons/tfi";
 import { Activity } from "../../models/types/activity";
 import CopyBtn from "../options/moreBtn/CopyBtn/CopyBtn";
+import ShareBtn from "../options/moreBtn/ShareBtn/ShareBtn";
 import SaveBtn from "../options/moreBtn/SaveBtn/SaveBtn";
 import EditBtn from "../options/moreBtn/EditBtn/EditBtn";
-import ShareBtn from "../options/moreBtn/ShareBtn/ShareBtn";
 
 type MoreOptionsBtnProps = {
     activity: Activity;
@@ -16,52 +15,33 @@ type MoreOptionsBtnProps = {
     hasShare?: boolean;
 };
 
-const buildOptions = (props: MoreOptionsBtnProps): JSX.Element[] => {
-    const Options: JSX.Element[] = [];
-    const { activity } = props;
+const MoreOptionsBtn: React.FC<MoreOptionsBtnProps> = ({
+    activity,
+    hasSave,
+    hasEdit,
+    hasCopy,
+    hasShare,
+}) => {
+    const [isClicked, setIsClicked] = useState(false);
 
-    if (props.hasSave) {
-        Options.push(
-            <SaveBtn key={0} index={0} activity={activity} />,
-        );
-    }
-
-    if (props.hasCopy) {
-        Options.push(
-            <CopyBtn key={1} index={1} activity={activity} />,
-        );
-    }
-
-    if (props.hasShare) {
-        Options.push(
-            <ShareBtn key={2} index={2} activity={activity} />,
-        );
-    }
-
-    if (props.hasEdit) {
-        Options.push(<EditBtn key={3} index={3} />);
-    }
-
-    return Options;
-};
-
-export const MoreOptionsBtn: React.FC<MoreOptionsBtnProps> = (props) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleOptions = () => {
-        setIsOpen(!isOpen);
+    const handleClick = () => {
+        setIsClicked((prev) => !prev);
     };
 
-    const Options = buildOptions(props);
-
     return (
-        <div className={styles.buttonContainer}>
-            <AnimatePresence>{isOpen ? <>{Options.map((option) => option)}</> : null}</AnimatePresence>
-            <button className={styles.circleButton} onClick={toggleOptions}>
-                <TfiMoreAlt />
-            </button>
+        <div className={styles.moreBtnWrapper}>
+            <div className={styles.moreBtnContainer} onClick={handleClick}>
+                <TfiMoreAlt className={`${styles.icon} ${isClicked ? styles.rotated : ""}`} />
+                <div
+                    className={`${styles.saveBtnContainer} ${isClicked ? styles.showSaveBtn : ""}`}
+                >
+                    {hasCopy ? <CopyBtn activity={activity} /> : null}
+                    {hasShare ? <ShareBtn activity={activity} /> : null}
+                    {hasSave ? <SaveBtn activity={activity} /> : null}
+                    {hasEdit ? <EditBtn /> : null}
+                </div>
+            </div>
         </div>
     );
 };
-
 export default MoreOptionsBtn;

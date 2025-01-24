@@ -1,26 +1,20 @@
 import React from "react";
 import styles from "./ShareBtn.module.css";
-import { FaShare } from "react-icons/fa";
-import { motion } from "framer-motion";
 import { Activity } from "../../../../models/types/activity";
-import { moreOptionsButtonVariants } from "../../../../utils/style";
+import { FaShare } from "react-icons/fa";
 
 type ShareBtnProps = {
-    index: number;
     activity: Activity;
 };
 
-const ShareBtn: React.FC<ShareBtnProps> = ({ index, activity }) => {
+const ShareBtn: React.FC<ShareBtnProps> = ({ activity }) => {
     const handleClick = async (event: React.MouseEvent<HTMLDivElement>) => {
         event.stopPropagation();
-
         const shareText = activity.activity;
-
         const shareData = {
             title: "Check out this activity!",
             text: shareText,
         };
-
         if (navigator.share) {
             try {
                 await navigator.share(shareData);
@@ -33,19 +27,9 @@ const ShareBtn: React.FC<ShareBtnProps> = ({ index, activity }) => {
     };
 
     return (
-        <motion.div
-            className={styles.shareBtn}
-            onClick={handleClick}
-            // custom={options.length - 1 - index}
-            custom={4 - 1 - index}
-            variants={moreOptionsButtonVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-        >
+        <div className={styles.shareBtn} onClick={handleClick}>
             <FaShare className={styles.icon} />
-        </motion.div>
+        </div>
     );
 };
-
 export default ShareBtn;
