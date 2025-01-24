@@ -192,21 +192,21 @@ function BuildActivity() {
 
                                 <MoreOptionsCollapse>
                                     <SelectDetails
-                                        placeholder="שימוש בציוד?"
+                                        placeholder="שימוש בציוד"
                                         obj={tools}
                                         setObj={setTools}
                                         data={ToolsOptions}
                                     />
 
                                     <SelectDetails
-                                        placeholder="האם יש תחרויות?"
+                                        placeholder="האם יש תחרויות"
                                         obj={contest}
                                         setObj={setContest}
                                         data={ContestOptions}
                                     />
 
                                     <SelectDetails
-                                        placeholder="שמירת שבת?"
+                                        placeholder="שבת"
                                         obj={religion}
                                         setObj={setReligion}
                                         data={ReligionOptions}

@@ -18,3 +18,7 @@ export type SelectOption = {
     readonly label: string;
     action?: () => any;
 }
+
+export type MsgType = {
+    text: string;
+};

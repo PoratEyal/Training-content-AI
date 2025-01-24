@@ -16,6 +16,7 @@ export const initUserToDB = (user: RawUser) => {
         amount: null,
         place: null,
         isAcceptTerms: true,
+        isSendMsg: false,
     } as DbUser;
 };
 
@@ -36,6 +37,7 @@ export const initUserFromDB = (id: string, data: DocumentData) => {
             movement: movement,
             lastUpdate: data.lastUpdate || "",
             isAcceptTerms: data.isAcceptTerms || false,
+            isSendMsg: data.isSendMsg || false,
         } as User;
     } catch (error) {
         return {
@@ -47,6 +49,7 @@ export const initUserFromDB = (id: string, data: DocumentData) => {
             movement: null,
             lastUpdate: data.lastUpdate || "",
             isAcceptTerms: data.isAcceptTerms || false,
+            isSendMsg: data.isSendMsg || false,
         } as User;
     }
 };
@@ -61,5 +64,6 @@ export const initUserFromReq = (id: string, data: DbUser) => {
         movement: null,
         lastUpdate: data.lastUpdate || "",
         isAcceptTerms: data.isAcceptTerms || false,
+        isSendMsg: data.isSendMsg || false,
     } as User;
 };

@@ -21,9 +21,7 @@ export const defualtAuthContext: AuthContextType = {
     isLoggedIn: false,
     loading: true,
     logout: async () => {},
-    isPopupVisible: false,
-    handlePopupClose: () => {},
-    setIsPopupVisible: () => {},
+    whatsNewMsg: "",
 };
 
 export const defualtStaticContentContext: StaticContentContextType = {

@@ -4,12 +4,15 @@ import emailjs from 'emailjs-com';
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
 import { useAuthContext } from "../../context/AuthContext";
 import { Icons } from "../Icons";
+import { MsgType } from "../../models/types/common";
+import { fetchUpdateIsMsg } from "../../utils/fetch";
 
-interface PopupComponentProps {
-  onClose: (userResponse?: string) => void;
+type ReviewPopupProps = {
+  msg: string;
+  handleClose: () => Promise<void>;
 }
 
-const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
+const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
   const [textInput, setTextInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPopup, setShowPopup] = useState<boolean>(false);
@@ -25,13 +28,15 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    if(!currentUser || !currentUser.id) return;
+  
     setIsLoading(true);
 
     try {
       // Send email using EmailJS
       const templateParams = {
         user_response: textInput,
-        user_email: currentUser?.email || "No email provided",
+        user_email: currentUser.email || "No email provided",
       };
 
       await emailjs.send(
@@ -41,12 +46,13 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
         'ZWKebkgRROVgM8nEV'  // EmailJS User ID
       );
 
+      await fetchUpdateIsMsg(currentUser.id);
       console.log('Email sent successfully');
     } catch (error) {
       console.error('Error sending email:', error);
     } finally {
       setIsLoading(false);
-      onClose(textInput);
+      handleClose();
     }
   };
 
@@ -55,7 +61,7 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
   return (
     <div className={styles.popupOverlay}>
       <div className={`${styles.popupContent} ${showPopup ? styles.popupContentShow : ""}`}>
-        <button className={styles.closeButton} onClick={() => onClose()}>
+        <button className={styles.closeButton} onClick={handleClose}>
           <Icons.cancel />
         </button>
 
@@ -65,8 +71,7 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
         </div>
 
         <div className={styles.text}>
-          אנחנו מקשיבים לכם ❤‍🔥 ושדרגנו את המערכת עם יכולות חדשות שאתם ביקשתם.
-          שדות חדשים לדייק את הפעולות, אפשרויות נוחות להעתקה, לשמירה, שיתוף ועוד...
+          {msg}
         </div>
 
         <form className={styles.popupForm}>
@@ -110,4 +115,4 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ onClose }) => {
   );
 };
 
-export default PopupComponent;
+export default ReviewPopup;

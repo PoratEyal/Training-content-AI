@@ -14,6 +14,9 @@ import removeSavedActivity from "./callableFunctions/removeSavedActivity";
 import getStaticSubjectsHttp from "./callableFunctions/getStaticSubject";
 import incrementActivityDisplayCount from "./callableFunctions/incrementActivityDisplayCount";
 import getStaticActivityHttp from "./callableFunctions/getStaticActivity";
+import sendMsg from "./callableFunctions/sendMsg";
+import getMsg from "./callableFunctions/getMsg";
+import updateIsMsg from "./callableFunctions/updateIsMsg";
 
 const app = express();
 app.use(cors());
@@ -40,5 +43,8 @@ exports.getSavedActivities = getSavedActivities;
 exports.saveActivity = saveActivity;
 exports.removeSavedActivity = removeSavedActivity;
 
+exports.sendMsg = sendMsg;
+exports.getMsg = getMsg;
+exports.updateIsMsg = updateIsMsg;
 
 exports.app = functions.https.onRequest(app);

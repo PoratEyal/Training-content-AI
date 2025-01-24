@@ -1,75 +1,92 @@
 import { Activity, StaticActivities, StaticSubjects } from "../activity";
+import { MsgType } from "../common";
 import { User } from "../user";
 
-export type Resposne = "success" | "notFound" | "safety" | "error"
+export type Response = "success" | "notFound" | "safety" | "error";
 
 export type GetActivityResponse = {
-    result: Resposne;
+    result: Response;
     activity?: Activity;
     message?: string;
 };
 
 export type UpdateActivityLikesResponse = {
-    result: Resposne;
+    result: Response;
     activity?: Activity;
     message?: string;
 };
 
 export type CreateNewUserResponse = {
-    result: Resposne;
+    result: Response;
     user?: User;
     message?: string;
 };
 
 export type UpdateUserResponse = {
-    result: Resposne;
+    result: Response;
     user?: User;
     message?: string;
 };
 
 export type getAllActivitiesResponse = {
-    result: Resposne;
+    result: Response;
     activities?: any;
     message?: string;
 };
 
 export type getAllUsersResponse = {
-    result: Resposne;
+    result: Response;
     users?: any;
     message?: string;
 };
 
 export type getSavedActivitiesResponse = {
-    result: Resposne;
+    result: Response;
     activities?: Activity[];
     message?: string;
-}
+};
 
 export type saveActivityResponse = {
-    result: Resposne;
+    result: Response;
     activity?: Activity;
     message?: string;
-}
+};
 
 export type removeActivityResponse = {
-    result: Resposne;
+    result: Response;
     message?: string;
-}
+};
 
 export type staticSubjectsResponse = {
-    result: Resposne;
+    result: Response;
     subjects?: StaticSubjects[];
     message?: string;
-}
+};
 
 export type GetStaticActivityResponse = {
-    result: Resposne;
+    result: Response;
     activity?: StaticActivities;
     message?: string;
-}
+};
 
 export type incrementActivityDisplayCountResponse = {
-    result: Resposne;
+    result: Response;
     activity?: StaticActivities;
     message?: string;
-}
+};
+
+export type SendMsgResponse = {
+    result: Response;
+    message?: string;
+};
+
+export type GetMsgResponse = {
+    result: Response;
+    msg?: MsgType;
+    message?: string;
+};
+
+export type UpdateIsMsgResponse = {
+    result: Response;
+    message?: string;
+};

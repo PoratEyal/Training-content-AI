@@ -9,8 +9,11 @@ import {
 import {
     CreateNewUserResponse,
     GetActivityResponse,
+    GetMsgResponse,
     GetStaticActivityResponse,
+    SendMsgResponse,
     UpdateActivityLikesResponse,
+    UpdateIsMsgResponse,
     UpdateUserResponse,
     getAllActivitiesResponse,
     getAllUsersResponse,
@@ -100,9 +103,7 @@ export const fetchGetSavedActivities = async (
     }
 };
 
-export const fetchSaveActivity = async (
-    activity: Activity,
-): Promise<saveActivityResponse> => {
+export const fetchSaveActivity = async (activity: Activity): Promise<saveActivityResponse> => {
     const saveActivityFunc = httpsCallable(functions, "saveActivity");
 
     const response = (await saveActivityFunc({ activity })).data as saveActivityResponse;
@@ -156,21 +157,52 @@ export const fetchGetStaticActivity = async (
     }
 };
 
-export const fetchIncrementActivityDisplayCount =
-    async (activity: StaticActivities): Promise<incrementActivityDisplayCountResponse> => {
-        try {
-            const incrementActivityDisplayCountFunc = httpsCallable(
-                functions,
-                "incrementActivityDisplayCount",
-            );
-            const response = (await incrementActivityDisplayCountFunc({activity}))
+export const fetchIncrementActivityDisplayCount = async (
+    activity: StaticActivities,
+): Promise<incrementActivityDisplayCountResponse> => {
+    try {
+        const incrementActivityDisplayCountFunc = httpsCallable(
+            functions,
+            "incrementActivityDisplayCount",
+        );
+        const response = (await incrementActivityDisplayCountFunc({ activity }))
             .data as incrementActivityDisplayCountResponse;
-            if (response.result === "success") {
-                return response;
-            } else {
-                throw new Error(msg.error.message);
-            }
-        } catch (error: any) {
+        if (response.result === "success") {
+            return response;
+        } else {
             throw new Error(msg.error.message);
         }
-    };
+    } catch (error: any) {
+        throw new Error(msg.error.message);
+    }
+};
+
+export const fetchSendMsg = async (password: string): Promise<SendMsgResponse> => {
+    const sendMsgFunc = httpsCallable(functions, "sendMsg");
+    const response = (await sendMsgFunc({ password })).data as SendMsgResponse;
+    if (response.result === "success") {
+        return response;
+    } else {
+        throw new Error(msg.error.message);
+    }
+};
+
+export const fetchGetMsg = async (): Promise<GetMsgResponse> => {
+    const getMsgFunc = httpsCallable(functions, "getMsg");
+    const response = (await getMsgFunc()).data as GetMsgResponse;
+    if (response.result === "success") {
+        return response;
+    } else {
+        throw new Error(msg.error.message);
+    }
+};
+
+export const fetchUpdateIsMsg = async (userId: string): Promise<UpdateIsMsgResponse> => {
+    const updateIsMsgFunc = httpsCallable(functions, "updateIsMsg");
+    const response = (await updateIsMsgFunc({ userId })).data as UpdateIsMsgResponse;
+    if (response.result === "success") {
+        return response;
+    } else {
+        throw new Error(msg.error.message);
+    }
+};

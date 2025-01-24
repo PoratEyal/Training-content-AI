@@ -88,7 +88,6 @@ function ContentActivity() {
                         <MoreOptionsBtn
                             activity={convertActivityType(activity)}
                             hasSave={isLoggedIn}
-                            hasEdit
                             hasCopy
                             hasShare
                         />
