@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
 import styles from "./SaveBtn.module.css";
-import { Activity } from "../../../../models/types/activity";
 import { useAuthContext } from "../../../../context/AuthContext";
 import { useErrorContext } from "../../../../context/ErrorContext";
-import { useSaveContext } from "../../../../context/SavedContext";
 import { useQueryParam } from "../../../../hooks/useQueryParam";
+import { useSaveContext } from "../../../../context/SavedContext";
+import { Activity } from "../../../../models/types/activity";
 import { fetchSaveActivity } from "../../../../utils/fetch";
-import { motion } from "framer-motion";
-import { moreOptionsButtonVariants } from "../../../../utils/style";
 
 type SaveBtnProps = {
-    index: number;
     activity: Activity;
 };
 
-const SaveBtn: React.FC<SaveBtnProps> = ({ index, activity }) => {
+const SaveBtn: React.FC<SaveBtnProps> = ({ activity }) => {
     const { currentParam, updateParam } = useQueryParam();
     const { currentUser } = useAuthContext();
     const { handleSuccess, handleError } = useErrorContext();
@@ -61,15 +58,9 @@ const SaveBtn: React.FC<SaveBtnProps> = ({ index, activity }) => {
     };
 
     return (
-        <motion.div
+        <div
             className={`${styles.bookmark} ${saved ? styles.checked : ""}`}
             onClick={saved ? handleUnsave : handleSave}
-            // custom={options.length - 1 - index}
-            custom={4 - 1 - index}
-            variants={moreOptionsButtonVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
             role="button"
             aria-pressed={saved}
         >
@@ -81,7 +72,7 @@ const SaveBtn: React.FC<SaveBtnProps> = ({ index, activity }) => {
             >
                 <path d="M46 62.0085L46 3.88139L3.99609 3.88139L3.99609 62.0085L24.5 45.5L46 62.0085Z" />
             </svg>
-        </motion.div>
+        </div>
     );
 };
 
