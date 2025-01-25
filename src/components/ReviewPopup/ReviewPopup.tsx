@@ -4,7 +4,6 @@ import emailjs from 'emailjs-com';
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
 import { useAuthContext } from "../../context/AuthContext";
 import { Icons } from "../Icons";
-import { MsgType } from "../../models/types/common";
 import { fetchUpdateIsMsg } from "../../utils/fetch";
 
 type ReviewPopupProps = {
@@ -28,31 +27,33 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if(!currentUser || !currentUser.id) return;
+    if (!currentUser || !currentUser.id) return;
   
     setIsLoading(true);
-
+  
+    // סגור את הפופאפ מיד לאחר לחיצה על הכפתור
+    handleClose();
+  
     try {
-      // Send email using EmailJS
+      // הפעולה תמשיך לרוץ ברקע לאחר סגירת הפופאפ
       const templateParams = {
         user_response: textInput,
         user_email: currentUser.email || "No email provided",
       };
-
+  
       await emailjs.send(
         'service_p5bim93',   // EmailJS Service ID
         'template_diemfva',  // EmailJS Template ID
         templateParams,
         'ZWKebkgRROVgM8nEV'  // EmailJS User ID
       );
-
+  
       await fetchUpdateIsMsg(currentUser.id);
       console.log('Email sent successfully');
     } catch (error) {
       console.error('Error sending email:', error);
     } finally {
       setIsLoading(false);
-      handleClose();
     }
   };
 

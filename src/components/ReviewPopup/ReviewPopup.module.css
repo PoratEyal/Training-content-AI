@@ -55,6 +55,7 @@
   font-size: 24px;
   top: 10px;
   left: 5px;
+  cursor: pointer;
 }
 .popupTitle_div{
   display: flex;
@@ -190,6 +191,6 @@
 
 @media (min-width: 550px) {
   .popupContent {
-    width: fit-content;
+    width: 500px;
   }
 }

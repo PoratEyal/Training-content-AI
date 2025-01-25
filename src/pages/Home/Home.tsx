@@ -20,14 +20,6 @@ import { useStaticContentContext } from "../../context/StaticContentContext";
 import { useSaveContext } from "../../context/SavedContext";
 import styles from "./Home.module.css";
 
-const images = [
-    "/backgroundImages/image1.jpg",
-    "/backgroundImages/image2.jpg",
-    "/backgroundImages/image3.jpg",
-    "/backgroundImages/image4.jpg",
-    "/backgroundImages/image5.jpg",
-];
-
 function Home() {
     const { cookieLimit, setLimitCookie, cookieRememberMe } = useCookiesContext();
 
@@ -48,13 +40,6 @@ function Home() {
     };
 
     const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart);
-
-    useEffect(() => {
-        const singleImage = images[0]; // Select the first image in the array
-        document.body.style.background = `url('${singleImage}') no-repeat center center fixed`;
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundAttachment = "fixed";
-    }, []);
 
     useEffect(() => {
         if (rememberMe === SignInStatus.NEW_ACCESS) {

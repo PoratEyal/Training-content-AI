@@ -50,7 +50,11 @@ const ContentActivities: React.FC = () => {
             content={subject?.metaDescription || helmet.contentActivities.content}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
         >
-            <ReadyContentName isMany subject={subject?.metaTitle || helmet.contentActivities.title} />
+            <ReadyContentName 
+                isMany 
+                subject={subject?.metaTitle || helmet.contentActivities.title} 
+                isLoading={isLoading}
+            />
             {isLoading ? (
                 <section className={styles.content_article}>
                     <PageLoading />
