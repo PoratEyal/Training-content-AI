@@ -32,9 +32,9 @@ const PrivateRoutes = () => {
     };
 
     const handleWhatsNewClose = async () => {
-        if (currentUser?.id) await fetchUpdateIsMsg(currentUser.id);
         setWhatsNew(false);
         setIsSendMsg();
+        if (currentUser?.id) await fetchUpdateIsMsg(currentUser.id);
     };
 
     return (
