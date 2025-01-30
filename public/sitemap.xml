@@ -218,6 +218,10 @@
       <priority>0.8</priority>
    </url>
    <url>
+      <loc>https://activitywiz.com/content/holidays/valentine</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
       <loc>https://activitywiz.com/content/holidays/tuBshvat</loc>
       <priority>0.8</priority>
    </url>
