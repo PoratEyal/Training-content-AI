@@ -301,6 +301,14 @@
       <loc>https://activitywiz.com/content/friendship/journey</loc>
       <priority>0.8</priority>
    </url>
+   <url>
+      <loc>https://activitywiz.com/content/friendship/friendsGame</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/content/friendship/secretFriend</loc>
+      <priority>0.8</priority>
+   </url>
    
    <url>
       <loc>https://activitywiz.com/content/sevenOct/memory</loc>
