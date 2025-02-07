@@ -87,7 +87,7 @@ function ContentActivity() {
                         <ActivityOutputStatic activity={activity.content} />
                         <MoreOptionsBtn
                             activity={convertActivityType(activity)}
-                            hasSave={isLoggedIn}
+                            // hasSave={isLoggedIn}
                             hasCopy
                             hasShare
                         />

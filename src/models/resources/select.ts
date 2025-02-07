@@ -54,12 +54,12 @@ export const GenderOptions: SelectOption[] = [
 ];
 
 export const ActivityTimeOptions: SelectOption[] = [
-    { value: "20 דקות", label: "20 דקות" },
+    // { value: "20 דקות", label: "20 דקות" },
     { value: "חצי שעה", label: "חצי שעה" },
-    { value: "45 דקות", label: "45 דקות" },
+    // { value: "45 דקות", label: "45 דקות" },
     { value: "שעה", label: "שעה" },
     { value: "שעה וחצי", label: "שעה וחצי" },
-    { value: "שעתיים", label: "שעתיים" },
+    // { value: "שעתיים", label: "שעתיים" },
 ];
   
 // export const BehaviorOptions: SelectOption[] = [//התנהגות
