@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { Activity, StaticActivities } from "../models/types/activity";
 
-export const convertActivityType = (activity: StaticActivities): Activity => {
+export const convertActivityType = (activity: StaticActivities, userId?: string): Activity => {
     const tt: Activity = {
         id: uuidv4(),
         updatedAt: "",
@@ -12,10 +12,10 @@ export const convertActivityType = (activity: StaticActivities): Activity => {
         amount: "",
         place: "",
         gender: "",
-        subject: activity.name,
+        subject: activity.title,
         time: "",
         activity: activity.content,
-        userId: undefined,
+        userId,
     }
     return tt;
 }

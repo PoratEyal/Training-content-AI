@@ -25,7 +25,7 @@ function ContentActivity() {
     useFetchSubjectsData();
     const [isActivityLoading, setIsActivityLoading] = useState<boolean>(isLoading);
     const [activity, setActivity] = useState<StaticActivities | undefined>();
-    const { isLoggedIn } = useAuthContext();
+    const { isLoggedIn, currentUser } = useAuthContext();
 
     const contentActivityPath = `${route.content}/${activityId}/${contentId}`;
 
@@ -86,8 +86,8 @@ function ContentActivity() {
                     <article>
                         <ActivityOutputStatic activity={activity.content} />
                         <MoreOptionsBtn
-                            activity={convertActivityType(activity)}
-                            // hasSave={isLoggedIn}
+                            activity={convertActivityType(activity, currentUser?.id || undefined)}
+                            hasSave={isLoggedIn}
                             hasCopy
                             hasShare
                         />
