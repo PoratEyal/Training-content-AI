@@ -70,7 +70,7 @@
         {
             "src": "path.svg",
             "type": "image/svg+xml",
-            "sizes": "100x130"
+            "sizes": "95x120"
         }
     ],
     "start_url": "/",

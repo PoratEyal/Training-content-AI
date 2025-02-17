@@ -54,14 +54,12 @@ function Activity() {
                             activity={mainActivity.activity}
                             activityRef={activityRef}
                         />
-                        {isLoggedIn ? (
-                            <MoreOptionsBtn
-                                activity={mainActivity}
-                                hasCopy
-                                hasShare
-                                hasSave
-                            />
-                        ) : null}
+                        <MoreOptionsBtn
+                            activity={mainActivity}
+                            hasSave={isLoggedIn}
+                            hasShare
+                            hasCopy
+                        />
                     </article>
                     <div className={styles.padding} />
                 </section>

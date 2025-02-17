@@ -1,7 +1,7 @@
 
 .shareBtn {
     cursor: pointer;
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-color) !important;
     width: 45px;
     height: 45px;
     border-radius: 50%;
