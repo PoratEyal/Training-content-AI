@@ -1,6 +1,6 @@
 import styles from "./dropdown.module.css";
 import { WhatsappShareButton } from "react-share";
-import { formatInviteFriend, formatWhatsUp } from "../../../utils/format";
+import { formatWhatsUp } from "../../../utils/format";
 import { WEBSITE_URL } from "../../../models/constants";
 import { Icons } from "../../Icons";
 import { useContentContext } from "../../../context/ContentContext";
@@ -12,19 +12,14 @@ function DropOptInviteFriends() {
     const location = useLocation();
 
     const setMsg = () => {
-        if (location.pathname === route.activity && mainActivity?.activity) {
-            return formatWhatsUp(mainActivity.activity);
-        }
-        return formatInviteFriend();//TODO: why we have it?
+        return formatWhatsUp(
+            location.pathname === route.activity ? mainActivity?.activity : undefined,
+        );
     };
-    
+
     return (
-        <WhatsappShareButton
-            className={styles.text_and_icon}
-            url={WEBSITE_URL}
-            title={setMsg()}
-        >
-            שתפו עם חברים 
+        <WhatsappShareButton className={styles.text_and_icon} url={WEBSITE_URL} title={setMsg()}>
+            שתפו עם חברים
             <Icons.share />
         </WhatsappShareButton>
     );
