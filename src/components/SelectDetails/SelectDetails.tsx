@@ -11,6 +11,7 @@ type SelectDetailsProps = {
 
 function SelectDetails({ data, placeholder, obj, setObj }: SelectDetailsProps) {
     const [selected, setIsSelected] = useState(obj ? true : false);
+    const textColor = selected ? "#333335" : "#8b8b8b";
 
     useEffect(() => {
         setIsSelected(obj ? true : false);
@@ -24,7 +25,7 @@ function SelectDetails({ data, placeholder, obj, setObj }: SelectDetailsProps) {
     return (
         <div className={styles.input_div}>
             <select
-                style={{ color: selected ? "#333335" : "#8b8b8b" }}
+                style={{ color: textColor }}
                 value={obj}
                 onChange={(e) => handleChnage(e.target.value)}
                 aria-label={placeholder}

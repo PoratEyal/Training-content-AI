@@ -1,14 +1,11 @@
 import { WEBSITE_URL } from "../models/constants";
 
-export const formatWhatsUp = (text: string) => {
+export const formatWhatsUp = (text: string | undefined) => {
+    if (!text) return "מצאתי אתר שבונה פעולות בעזרת AI, כדאי לנסות!"
     const title = "יצרתי את הפעולה הזאת בעזרת:";
     const br = "\n";
     const result = text.replace(/\**\*/g, "*") + br + br + title;
     return result;
-};
-
-export const formatInviteFriend = () => {
-    return "מצאתי אתר שבונה פעולות בעזרת AI, כדאי לנסות!"
 };
 
 export const formatCopy = (text: string) => {
