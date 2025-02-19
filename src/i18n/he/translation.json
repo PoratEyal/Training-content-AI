@@ -1,0 +1,25 @@
+{
+  "home": {
+    "slogan": "מותאם, פשוט ומהיר 🤟",
+    "startAction": "יצירת פעולות",
+    "aboutText": "ActivityWiz הוא אתר ליצירת פעולות לנוער. תוכלו לבחור מתוך מאגר של פעולות מוכנות מראש או להשתמש בבינה מלאכותית ליצירת פעולות מותאמות אישית, המתאימות בדיוק לצרכים שלכם. האתר מיועד למדריכים המחפשים רעיונות ודרכים חדשות להעשרת החוויה החינוכית והחברתית."
+  },
+  "continueWithAI": {
+    "advanced1": "מתקדמים",
+    "advanced2": "מתקדמים",
+    "forActions": "לפעולות",
+    "withPrefix1": "ב-",
+    "withPrefix2": "ב-",
+    "ai1": "AI",
+    "ai2": "AI"
+  },
+  "AboutUsCollapse": {
+    "title": "אודות"
+  },
+  "navbar": {
+    "home": "מסך הבית",
+    "build": "יצירת פעולות",
+    "content": "תוכן",
+    "myActivities": "הפעולות שלי"
+  }
+}

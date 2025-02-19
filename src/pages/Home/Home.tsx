@@ -18,122 +18,127 @@ import { HOME_AD_SLOT } from "../../models/constants/adsSlot";
 import AboutUsCollapse from "../../components/AboutUsCollapse/AboutUsCollapse";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { useSaveContext } from "../../context/SavedContext";
+import LanguageSwitcherPopup from "../../components/LanguageSwitcherPopup/LanguageSwitcherPopup";
+import { useTranslation } from "react-i18next";
 import styles from "./Home.module.css";
 
 function Home() {
-    const { cookieLimit, setLimitCookie, cookieRememberMe } = useCookiesContext();
+  const { t } = useTranslation();
+  const { cookieLimit, setLimitCookie, cookieRememberMe } = useCookiesContext();
+  const navigate = useNavigate();
+  const { currentUser, isLoggedIn } = useAuthContext();
 
-    const navigate = useNavigate();
-    const { currentUser, isLoggedIn } = useAuthContext();
+  const { useFetchSubjectsData } = useStaticContentContext();
+  const { useFetchSavedData } = useSaveContext();
+  useFetchSubjectsData();
+  useFetchSavedData();
 
-    const { useFetchSubjectsData } = useStaticContentContext();
-    const { useFetchSavedData } = useSaveContext();
-    useFetchSubjectsData();
-    useFetchSavedData();
+  const [rememberMe, setRememberMe] = useState<SignInStatus>(SignInStatus.NEW_ACCESS);
 
-    const [rememberMe, setRememberMe] = useState<SignInStatus>(SignInStatus.NEW_ACCESS);
+  const handleStart = () => {
+    const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
+    Session.remove(SessionKey.NAVIGATE);
+    if (navigateTo) navigate(navigateTo);
+  };
 
-    const handleStart = () => {
-        const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE);
-        Session.remove(SessionKey.NAVIGATE);
-        if (navigateTo) navigate(navigateTo);
-    };
+  const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart);
 
-    const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart);
+  useEffect(() => {
+    if (rememberMe === SignInStatus.NEW_ACCESS) {
+      setRememberMe(cookieRememberMe ? SignInStatus.REMEMBER : SignInStatus.NOT_REMEMBER);
+    }
+  }, [isLoggedIn, currentUser]);
 
-    useEffect(() => {
-        if (rememberMe === SignInStatus.NEW_ACCESS) {
-            setRememberMe(cookieRememberMe ? SignInStatus.REMEMBER : SignInStatus.NOT_REMEMBER);
-        }
-    }, [isLoggedIn, currentUser]);
+  const navigateAndSetCookieDate = (navigateTo: string) => {
+    setLimitCookie(new Date().toString());
+    navigate(navigateTo);
+  };
 
-    const navigateAndSetCookieDate = (navigateTo: string) => {
-        setLimitCookie(new Date().toString());
-        navigate(navigateTo);
-    };
+  const guestSignInOrNavigate = (limitDate: string, navigateTo: string) => {
+    const isValidDate = isValidDateFormat(limitDate);
+    if (isValidDate) {
+      const isMoreThanDay = isMoreThanADayAfter(limitDate);
+      if (isMoreThanDay) {
+        signInWithGoogle();
+      } else {
+        navigateAndSetCookieDate(navigateTo);
+      }
+    }
+  };
 
-    const guestSignInOrNavigate = (limitDate: string, navigateTo: string) => {
-        const isValidDate = isValidDateFormat(limitDate);
-        if (isValidDate) {
-            const isMoreThanDay = isMoreThanADayAfter(limitDate);
-            if (isMoreThanDay) {
-                signInWithGoogle();
-            } else {
-                navigateAndSetCookieDate(navigateTo);
-            }
-        }
-    };
+  const startAsGuestOrUser = (navigateTo: string) => {
+    if (currentUser && isLoggedIn) {
+      navigate(navigateTo);
+      return;
+    }
 
-    const startAsGuestOrUser = (navigateTo: string) => {
-        if (currentUser && isLoggedIn) {
-            navigate(navigateTo);
-            return;
-        }
+    Session.set(SessionKey.NAVIGATE, navigateTo);
+    if (cookieLimit) {
+      if (cookieLimit === NEED_TO_LOGIN) {
+        signInWithGoogle();
+      } else {
+        guestSignInOrNavigate(cookieLimit, navigateTo);
+      }
+    } else {
+      navigateAndSetCookieDate(navigateTo);
+    }
+  };
 
-        Session.set(SessionKey.NAVIGATE, navigateTo);
-        if (cookieLimit) {
-            if (cookieLimit === NEED_TO_LOGIN) {
-                signInWithGoogle();
-            } else {
-                guestSignInOrNavigate(cookieLimit, navigateTo);
-            }
-        } else {
-            navigateAndSetCookieDate(navigateTo);
-        }
-    };
+  return (
+    <PageLayout
+      path={route.home}
+      title={helmet.home.title}
+      content={helmet.home.content}
+      hasHeader={{}} 
+      hesAds={HOME_AD_SLOT}
+      hasNavBar
+      index={true}
+    >
+      <div className={styles.languageSwitcher}>
+        <LanguageSwitcherPopup />
+      </div>
 
-    return (
-        <PageLayout
-            path={route.home}
-            title={helmet.home.title}
-            content={helmet.home.content}
-            hasHeader={{}} /** -> show only the profile image **/
-            hesAds={HOME_AD_SLOT}
-            hasNavBar
-            index={true}
-        >
-            <div className={styles.logo_text_div}>
-                <ContinueWithAI />
-                <h2 className={styles.home_lable}>מותאם, פשוט ומהיר 🤟</h2>
-            </div>
+      <div className={styles.logo_text_div}>
+        <ContinueWithAI />
+        <h2 className={styles.home_lable}>
+          {t("home.slogan", "מותאם, פשוט ומהיר 🤟")}
+        </h2>
+      </div>
 
-            {rememberMe === SignInStatus.REMEMBER &&
-            !isLoading &&
-            isLoggedIn &&
-            currentUser?.image ? (
-                <section className={styles.button_section}>
-                    <StartBtn
-                        text="יצירת פעולות"
-                        onClick={() => startAsGuestOrUser(route.details)}
-                        isDisabled={btnDisabled}
-                    />
-                </section>
-            ) : rememberMe === SignInStatus.NOT_REMEMBER && !isLoading ? (
-                <section className={styles.button_section}>
-                    <StartBtn
-                        text="יצירת פעולות"
-                        onClick={() => startAsGuestOrUser(route.details)}
-                        isDisabled={btnDisabled}
-                    />
-                </section>
-            ) : (
-                <div className={styles.button_section_loading}>
-                    <PageLoading />
-                </div>
+      {rememberMe === SignInStatus.REMEMBER && !isLoading && isLoggedIn && currentUser?.image ? (
+        <section className={styles.button_section}>
+          <StartBtn
+            text={t("home.startAction", "יצירת פעולות")}
+            onClick={() => startAsGuestOrUser(route.details)}
+            isDisabled={btnDisabled}
+          />
+        </section>
+      ) : rememberMe === SignInStatus.NOT_REMEMBER && !isLoading ? (
+        <section className={styles.button_section}>
+          <StartBtn
+            text={t("home.startAction", "יצירת פעולות")}
+            onClick={() => startAsGuestOrUser(route.details)}
+            isDisabled={btnDisabled}
+          />
+        </section>
+      ) : (
+        <div className={styles.button_section_loading}>
+          <PageLoading />
+        </div>
+      )}
+
+      <div className={styles.about_div}>
+        <AboutUsCollapse>
+          <p>
+            {t(
+              "home.aboutText",
+              "ActivityWiz הוא אתר ליצירת פעולות לנוער. תוכלו לבחור מתוך מאגר של פעולות מוכנות מראש או להשתמש בבינה מלאכותית ליצירת פעולות מותאמות אישית, המתאימות בדיוק לצרכים שלכם. האתר מיועד למדריכים המחפשים רעיונות ודרכים חדשות להעשרת החוויה החינוכית והחברתית."
             )}
-
-            <div className={styles.about_div}>
-                <AboutUsCollapse>
-                    <p>
-                        ActivityWiz הוא אתר ליצירת פעולות לנוער. תוכלו לבחור מתוך מאגר של פעולות
-                        מוכנות מראש או להשתמש בבינה מלאכותית ליצירת פעולות מותאמות אישית, המתאימות
-                        בדיוק לצרכים שלכם. האתר מיועד למדריכים המחפשים רעיונות ודרכים חדשות להעשרת
-                        החוויה החינוכית והחברתית.
-                    </p>
-                </AboutUsCollapse>
-            </div>
-        </PageLayout>
-    );
+          </p>
+        </AboutUsCollapse>
+      </div>
+    </PageLayout>
+  );
 }
 
 export default Home;
