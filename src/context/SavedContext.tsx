@@ -5,7 +5,6 @@ import { Activity } from "../models/types/activity";
 import { useAuthContext } from "./AuthContext";
 import { fetchGetSavedActivities, fetchRemoveActivity } from "../utils/fetch";
 import { useErrorContext } from "./ErrorContext";
-import msg from "../models/resources/errorMsg.json";
 import { RemoveActivityRequest } from "../models/types/api/request";
 
 export const SaveContext = createContext<SaveContextType>(defualtSaveContext);
@@ -14,7 +13,7 @@ export const useSaveContext = () => useContext(SaveContext);
 
 export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
     const { currentUser } = useAuthContext();
-    const { handleError } = useErrorContext();
+    const { handleSuccess, handleError } = useErrorContext();
     const [savedActivity, setSavedActivity] = useState<Activity[]>();
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -22,12 +21,13 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
         if (currentUser && currentUser.id) {
             try {
                 setIsLoading(true);
+                handleSuccess("הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי");
                 const response = await fetchGetSavedActivities(currentUser.id);
                 if (response.result === "success" && response.activities) {
                     setSavedActivity(response.activities);
                 }
             } catch (error) {
-                handleError(msg.error.message);
+                handleError("הפעולה לא נשמרה, אנא נסו שנית");
             } finally {
                 setIsLoading(false);
             }
