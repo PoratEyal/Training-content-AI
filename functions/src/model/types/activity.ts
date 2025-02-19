@@ -22,6 +22,7 @@ export type Activity = {
 };
 
 export type ActivityDetails = {
+    movement: string;
     category: CategoryName;
     subject: string;
     time: string;

@@ -24,21 +24,21 @@ const GenerateBtn: React.FC<MoreActionsProps> = ({
     const { activity: text, ...detailsData } = activity;
 
     const generateAgain = async () => {
-        setLoadingGenerate(true);
-        try {
-            const response = await fetchGetActivity({ ...detailsData });
-            if (
-                (response.result === "success" || response.result === "safety") &&
-                response.activity
-            ) {
-                updateMainActivity(response.activity);
-            }
-        } catch (error) {
-            handleAlert(msg.error.message);
-        } finally {
-            setLoadingGenerate(false);
-            setNewActivity(true);
-        }
+        // setLoadingGenerate(true);
+        // try {
+        //     const response = await fetchGetActivity({ ...detailsData });
+        //     if (
+        //         (response.result === "success" || response.result === "safety") &&
+        //         response.activity
+        //     ) {
+        //         updateMainActivity(response.activity);
+        //     }
+        // } catch (error) {
+        //     handleAlert(msg.error.message);
+        // } finally {
+        //     setLoadingGenerate(false);
+        //     setNewActivity(true);
+        // }
     };
 
     return (

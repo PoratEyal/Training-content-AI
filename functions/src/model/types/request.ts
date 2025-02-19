@@ -3,6 +3,7 @@ import { CategoryName } from "./movement";
 import { RawUser, User } from "./user";
 
 export type GetActivityRequest = {
+    movement: string;
     category: CategoryName;
     subject: string;
     time: string;

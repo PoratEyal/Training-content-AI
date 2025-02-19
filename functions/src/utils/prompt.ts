@@ -5,6 +5,10 @@ import { PLAY_PROMPT_M } from "../model/prompts/playTime_M";
 import { PLAY_PROMPT_S } from "../model/prompts/playTime_S";
 import { VIEW_PROMPT_M } from "../model/prompts/pointOfView_M";
 import { VIEW_PROMPT_S } from "../model/prompts/pointOfView_S";
+import { CONTANT_SPECIAL_PROMPT_M } from "../model/prompts/contant_special_M";
+import { CONTANT_SPECIAL_PROMPT_S } from "../model/prompts/contant_special_S";
+import { PLAY_SPECIAL_PROMPT_M } from "../model/prompts/playTime_special_M";
+import { PLAY_SPECIAL_PROMPT_S } from "../model/prompts/playTime_special_S";
 import {
     CONTANT_SECTION_120_IN,
     CONTANT_SECTION_120_OUT,
@@ -107,6 +111,18 @@ const setOptionsForContant = (): [string, string, string] => [
     CONTANT_PROMPT_B,
 ];
 
+const setOptionsForSpecialKidsContant = (): [string, string, string] => [
+    CONTANT_SPECIAL_PROMPT_S,
+    CONTANT_SPECIAL_PROMPT_M,
+    CONTANT_SPECIAL_PROMPT_M,
+];
+
+const setOptionsForSpecialKidsPlay = (): [string, string, string] => [
+    PLAY_SPECIAL_PROMPT_S,
+    PLAY_SPECIAL_PROMPT_M,
+    PLAY_SPECIAL_PROMPT_M,
+];
+
 const setSectionForPointOfView = (time: string): string =>
     sectionPerTime(time, [
         POINT_SECTION_20,
@@ -174,6 +190,17 @@ export const getPromptOptions = (category: CategoryName): [string, string, strin
             return setOptionsForPlayTime();
         case "contant":
             return setOptionsForContant();
+        default:
+            return ["", "", ""];
+    }
+};
+
+export const getSpecialPromptOptions = (category: CategoryName): [string, string, string] => {
+    switch (category) {
+        case "contant":
+            return setOptionsForSpecialKidsContant();
+        case "playTime":
+            return setOptionsForSpecialKidsPlay();
         default:
             return ["", "", ""];
     }

@@ -103,6 +103,7 @@ function BuildActivity() {
         try {
             const response = await fetchGetActivity({
                 category: category as CategoryName,
+                movement: movement.name,
                 ...detailsData,
                 subject,
                 time,

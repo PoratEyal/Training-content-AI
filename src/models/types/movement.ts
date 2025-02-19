@@ -3,6 +3,7 @@ export type MovementName =
     | "maccabi"
     | "akiva"
     | "oved"
+    | "krembo"
     | "bitar"
     | "shomer"
     | "sayarut"
