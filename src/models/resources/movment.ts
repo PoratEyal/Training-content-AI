@@ -76,7 +76,7 @@ export const Movements = {
     } as Movement,
     krembo: {
         name: "krembo",
-        title: "כנפיים של קרבמו",
+        title: "כנפיים של קרמבו",
         categories: [
             {
                 name: "contant",

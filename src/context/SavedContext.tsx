@@ -13,7 +13,7 @@ export const useSaveContext = () => useContext(SaveContext);
 
 export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
     const { currentUser } = useAuthContext();
-    const { handleSuccess, handleError } = useErrorContext();
+    const { handleError } = useErrorContext();
     const [savedActivity, setSavedActivity] = useState<Activity[]>();
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -21,7 +21,6 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
         if (currentUser && currentUser.id) {
             try {
                 setIsLoading(true);
-                handleSuccess("הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי");
                 const response = await fetchGetSavedActivities(currentUser.id);
                 if (response.result === "success" && response.activities) {
                     setSavedActivity(response.activities);

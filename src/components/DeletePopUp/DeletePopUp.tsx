@@ -27,10 +27,11 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
     const handleDelete = async () => {
         setIsDeleting(true);
         try {
+            setIsDeleting(false);
+            onClose();
             await onDelete();
         } catch (error) {
             handleError("הפעולה לא נמחקה, אנא נסו שוב מאוחר יותר");
-        } finally {
             setIsDeleting(false);
             onClose();
         }
