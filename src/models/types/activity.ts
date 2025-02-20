@@ -2,7 +2,8 @@ import { CategoryName } from "./movement";
 
 export type Activity = {
     id: string;
-    updatedAt: string;
+    createdAt: string;
+    savedAt: string;
     fetchCount: number;
     likes: number;
     category: CategoryName;

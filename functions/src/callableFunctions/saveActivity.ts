@@ -5,6 +5,7 @@ import { SaveActivityResponse } from "../model/types/response";
 import * as admin from "firebase-admin";
 import { CollectionDB } from "../model/enum/DB";
 import { updateActivityWithId } from "../utils/activity";
+import { getCurrentTime } from "../utils/time";
 
 const saveActivity = functions.https.onCall(
     async (
@@ -20,7 +21,11 @@ const saveActivity = functions.https.onCall(
 
         try {
             const { id, ...restActivity } = activity;
-            const docRef = await db.collection(CollectionDB.ACTIVITY).add(restActivity);
+            const activityWithTimestamp = {
+                ...restActivity,
+                savedAt: getCurrentTime()
+            };
+            const docRef = await db.collection(CollectionDB.ACTIVITY).add(activityWithTimestamp);
             const updateActivity = updateActivityWithId(docRef.id, activity);
             return { result: "success", activity: updateActivity };
         } catch (error) {

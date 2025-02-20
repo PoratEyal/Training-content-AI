@@ -1,6 +1,6 @@
 import { DocumentData } from "firebase-admin/firestore";
 import { DbUser, RawUser, User } from "../model/types/user";
-import { getUpdateAt } from "./time";
+import { getCurrentTime } from "./time";
 import { UserMovementDetails } from "../model/types/movement";
 
 export const initUserToDB = (user: RawUser) => {
@@ -9,7 +9,7 @@ export const initUserToDB = (user: RawUser) => {
         name: user.displayName,
         image: user.photoURL,
         limit: 0,
-        lastUpdate: getUpdateAt(),
+        lastUpdate: getCurrentTime(),
         movement: null,
         grade: null,
         gender: null,
