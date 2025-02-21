@@ -3,6 +3,6 @@ export enum CollectionDB {
     MOVMENT = "movement",
     USERS = "users",
     MSG = "messages",
-    STATIC = "staticActivities",
+    STATIC_ACTIVITY = "staticActivities",
     TEST = "test",
 }

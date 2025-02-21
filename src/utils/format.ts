@@ -106,3 +106,19 @@ export const convertHTMLToContent = (html: string) => {
 
     return html;
 }
+
+export const compareNormalizedStrings = (text1: string, text2: string): boolean => {
+    // Function to normalize a string by trimming and removing special characters
+    const normalizeString = (str: string): string => {
+        return str
+            .trim() // Remove leading/trailing whitespace
+            .replace(/[?!.,\/#!$%\^&\*;:{}=\-_`~()]/g, "") // Remove special characters
+            .replace(/\s+/g, ""); // Remove all whitespace
+    };
+
+    // Normalize both strings and compare them
+    const normalized1 = normalizeString(text1);
+    const normalized2 = normalizeString(text2);
+    
+    return normalized1 === normalized2;
+};
