@@ -7,6 +7,7 @@ import {
     UpdateUserRequest,
 } from "../models/types/api/request";
 import {
+    AddStaticActivityResponse,
     CreateNewUserResponse,
     GetActivityResponse,
     GetMsgResponse,
@@ -203,6 +204,23 @@ export const fetchUpdateIsMsg = async (userId: string): Promise<UpdateIsMsgRespo
     if (response.result === "success") {
         return response;
     } else {
+        throw new Error(msg.error.message);
+    }
+};
+
+export const fetchAddStaticActivity = async (
+    activityText: string,
+    activityId: string,
+): Promise<AddStaticActivityResponse> => {
+    try {
+        const addStaticActivityFunc = httpsCallable(functions, "addStaticActivity");
+        const response = (await addStaticActivityFunc({ activityText, activityId })).data as AddStaticActivityResponse;
+        if (response.result === "success") {
+            return response;
+        } else {
+            throw new Error(msg.error.message);
+        }
+    } catch (error: any) {
         throw new Error(msg.error.message);
     }
 };

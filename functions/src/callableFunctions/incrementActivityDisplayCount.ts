@@ -13,7 +13,7 @@ const incrementActivityDisplayCount = functions.https.onCall(
             const { activity } = data;
             // Query the staticActivities collection for the document with the given name
             const activityQuerySnapshot = await db
-                .collection(CollectionDB.STATIC)
+                .collection(CollectionDB.STATIC_ACTIVITY)
                 .where("name", "==", activity.name)
                 .limit(1)
                 .get();

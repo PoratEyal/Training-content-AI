@@ -8,10 +8,11 @@ import RichTextEditor from "../../components/RichTextEditor/RichTextEditor";
 import { SessionKey } from "../../models/enum/storage";
 import Session from "../../utils/sessionStorage";
 import { Activity } from "../../models/types/activity";
-
+import { useContentContext } from "../../context/ContentContext";
 
 const Edit: React.FC = () => {
     const navigate = useNavigate();
+    const { mainActivity } = useContentContext();
     const activity: Activity | undefined = Session.get(SessionKey.ACTIVITY);
 
     const goBack = () => {
@@ -28,7 +29,7 @@ const Edit: React.FC = () => {
             index={false}
             hasNavBar
         >
-            <RichTextEditor activity={activity}/>
+            <RichTextEditor activity={activity} />
         </PageLayout>
     );
 };
