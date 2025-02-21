@@ -6,6 +6,7 @@ import { useQueryParam } from "../../../../hooks/useQueryParam";
 import { useSaveContext } from "../../../../context/SavedContext";
 import { Activity } from "../../../../models/types/activity";
 import { fetchSaveActivity } from "../../../../utils/fetch";
+import { useContentContext } from "../../../../context/ContentContext";
 
 type SaveBtnProps = {
     activity: Activity;
@@ -14,6 +15,7 @@ type SaveBtnProps = {
 const SaveBtn: React.FC<SaveBtnProps> = ({ activity }) => {
     const { currentParam, updateParam } = useQueryParam();
     const { currentUser } = useAuthContext();
+    const { updateMainActivity } = useContentContext();
     const { handleSuccess, handleError } = useErrorContext();
     const { getSavedActivities, deleteActivity } = useSaveContext();
 
@@ -34,6 +36,7 @@ const SaveBtn: React.FC<SaveBtnProps> = ({ activity }) => {
 
             const res = await fetchSaveActivity(activity);
             setActivityId(res.activity.id);
+            updateMainActivity({ ...activity, id: res.activity.id } as Activity);
             await getSavedActivities();
             setSaved(true);
         } catch (error) {

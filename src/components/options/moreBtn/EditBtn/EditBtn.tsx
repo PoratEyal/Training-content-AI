@@ -5,7 +5,6 @@ import { AiFillEdit } from "react-icons/ai";
 import route from "../../../../router/route.json";
 import { Activity } from "../../../../models/types/activity";
 import { useContentContext } from "../../../../context/ContentContext";
-import userEvent from "@testing-library/user-event";
 
 type EditBtnProps = {
   activity: Activity;

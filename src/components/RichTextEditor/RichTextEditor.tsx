@@ -9,13 +9,17 @@ import { useSaveContext } from "../../context/SavedContext";
 import { Activity } from "../../models/types/activity";
 import { updateActivityWithContent } from "../../utils/activity";
 import "./RichTextEditor.css";
+import { useErrorContext } from "../../context/ErrorContext";
+import { useContentContext } from "../../context/ContentContext";
 
 type RichTextEditorProps = {
     activity: Activity | undefined;
 };
 
 const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
-    const { getSavedActivities } = useSaveContext()
+    const { getSavedActivities } = useSaveContext();
+    const { updateMainActivity } = useContentContext();
+    const { handleSuccess, handleError } = useErrorContext();
 
     const editor = useEditor({
         extensions: [StarterKit],
@@ -27,19 +31,26 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
         },
     });
 
-    const handleClick = async () => {
+    const handleClickSave = async () => {
         const htmlContent = editor?.getHTML();
         if (htmlContent) {
-            const convertedContent = convertHTMLToContent(htmlContent);
-            await fetchSaveActivity(updateActivityWithContent(activity, convertedContent));
-            await getSavedActivities();
+            try {
+                handleSuccess("הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי");
+                const convertedContent = convertHTMLToContent(htmlContent);
+                const newUpdatedActivity = updateActivityWithContent(activity, convertedContent);
+                await fetchSaveActivity(newUpdatedActivity);
+                updateMainActivity(newUpdatedActivity);
+                await getSavedActivities();
+            } catch (error) {
+                handleError("הפעולה לא נשמרה, אנא נסו שנית");
+            }
         }
     };
 
     return (
         <section className={styles.container}>
             <div className={styles.toolbar}>
-                <button onClick={handleClick} className={styles.saveButton} title="Save">
+                <button onClick={handleClickSave} className={styles.saveButton} title="Save">
                     שמירה לפעולות שלי
                 </button>
                 <div className={styles.separator}></div>

@@ -21,9 +21,27 @@ const saveActivity = functions.https.onCall(
 
         try {
             const { id, ...restActivity } = activity;
+
+            if (id !== "ID") {
+                const docRef = db.collection(CollectionDB.ACTIVITY).doc(id);
+                const existingActivity = await docRef.get();
+
+                if (existingActivity.exists) {
+                    // Update only activity and savedAt fields
+                    await docRef.update({
+                        activity: activity.activity,
+                        savedAt: getCurrentTime(),
+                    });
+                    return {
+                        result: "success",
+                        activity: { ...activity, savedAt: getCurrentTime() },
+                    };
+                }
+            }
+
             const activityWithTimestamp = {
                 ...restActivity,
-                savedAt: getCurrentTime()
+                savedAt: getCurrentTime(),
             };
             const docRef = await db.collection(CollectionDB.ACTIVITY).add(activityWithTimestamp);
             const updateActivity = updateActivityWithId(docRef.id, activity);
