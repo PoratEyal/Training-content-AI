@@ -2,14 +2,14 @@ import { WEBSITE_URL } from "../models/constants";
 
 export const formatWhatsUp = (text: string | undefined) => {
     if (!text) return "מצאתי אתר שבונה פעולות בעזרת AI, כדאי לנסות!"
-    const title = "יצרתי את הפעולה הזאת בעזרת:";
+    const title = "הפעולה נוצרה בעזרת:"
     const br = "\n";
     const result = text.replace(/\**\*/g, "*") + br + br + title;
     return result;
 };
 
 export const formatCopy = (text: string) => {
-    const title = "יצרתי את הפעולה הזאת בעזרת:";
+    const title = "הפעולה נוצרה בעזרת:"
     const br = "\n";
     const result = text.replace(/\**\*/g, "") + br + br + title + br + WEBSITE_URL;
     return result;
