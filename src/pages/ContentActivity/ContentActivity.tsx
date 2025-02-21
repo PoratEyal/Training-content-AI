@@ -5,7 +5,7 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import route from "../../router/route.json";
 import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
-import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
+import OutputTest from "../../components/ActivityOutput/OutputTest";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
@@ -84,7 +84,7 @@ function ContentActivity() {
             ) : activity ? (
                 <section className={styles.activity_data_container}>
                     <article>
-                        <ActivityOutput activity={activity.content} />
+                        <OutputTest activity={activity.content} />
                         <MoreOptionsBtn
                             activity={convertActivityType(activity, currentUser?.id || undefined)}
                             hasSave={isLoggedIn}
