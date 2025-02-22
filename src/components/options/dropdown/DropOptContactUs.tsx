@@ -1,20 +1,18 @@
 import styles from "./dropdown.module.css";
-import policy from "../../../models/resources/policy.json";
 import { Icons } from "../../Icons";
+import { useNavigate } from "react-router-dom";
+import route from "../../../router/route.json";
 
 type ContactUsProps = {
     handleClose: () => void;
 };
 
 function DropOptContactUs({ handleClose }: ContactUsProps) {
-    const contactUs = () => {
-        const emailLink = document.createElement("a");
-        emailLink.href = `mailto:${policy.p10.email}`;
-        emailLink.click();
-    };
+
+    const navigate = useNavigate();
 
     const handleClick = () => {
-        contactUs();
+        navigate(route.contactUs);
         handleClose();
     };
 
