@@ -24,6 +24,7 @@ import { CookiesProvider } from "./context/CookiesContext";
 import { SavedProvider } from "./context/SavedContext";
 import Edit from "./pages/Edit/Edit";
 import Admin from "./pages/Admin/Admin";
+import ContactUs from "./pages/ContactUs/ContactUs";
 
 function App() {
     return (
@@ -48,10 +49,7 @@ function App() {
                                                     path={route.activity}
                                                     element={<Activity />}
                                                 />
-                                                <Route
-                                                    path={route.edit}
-                                                    element={<Edit />}
-                                                />
+                                                <Route path={route.edit} element={<Edit />} />
                                             </Route>
                                             <Route
                                                 path={route.privacyPolicy}
@@ -79,6 +77,7 @@ function App() {
                                                 path={route.contentActivity}
                                                 element={<ContentActivity />}
                                             />
+                                            <Route path={route.contactUs} element={<ContactUs />} />
                                             <Route
                                                 path={route.all}
                                                 element={<Navigate replace to={route.home} />}
