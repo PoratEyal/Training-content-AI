@@ -66,6 +66,7 @@ export const  convertContentToHTML = (text: string) => {
     return `<div dir="rtl">\n${html.join('\n')}\n</div>`;
 }
 
+//TODO: handle / <command i>
 export const convertHTMLToContent = (html: string) => {
     // First normalize <br> tags and replace them with newlines
     html = html.replace(/<br\s*\/?>/gi, '\n');

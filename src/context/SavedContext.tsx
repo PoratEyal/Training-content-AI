@@ -23,7 +23,12 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                 setIsLoading(true);
                 const response = await fetchGetSavedActivities(currentUser.id);
                 if (response.result === "success" && response.activities) {
-                    setSavedActivity(response.activities);
+                    const sortedActivities = [...response.activities].sort((a, b) => {
+                        if (!a.savedAt) return 1;
+                        if (!b.savedAt) return -1;
+                        return new Date(b.savedAt).getTime() - new Date(a.savedAt).getTime();
+                    });
+                    setSavedActivity(sortedActivities);
                 }
             } catch (error) {
                 handleError("הפעולה לא נשמרה, אנא נסו שנית");
