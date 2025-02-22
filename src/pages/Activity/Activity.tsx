@@ -57,6 +57,7 @@ function Activity() {
                         <MoreOptionsBtn
                             activity={mainActivity}
                             hasSave={isLoggedIn}
+                            hasEdit={isLoggedIn}
                             hasShare
                             hasCopy
                         />
