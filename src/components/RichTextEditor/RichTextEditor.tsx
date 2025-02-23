@@ -23,7 +23,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
     const { handleSuccess, handleError } = useErrorContext();
     const [isLimitExceeded, setIsLimitExceeded] = useState<boolean>(false);
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
-    const MAX_CHARS = 2000;
+    const MAX_CHARS = 3000;
 
 
     const editor = useEditor({
