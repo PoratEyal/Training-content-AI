@@ -3,15 +3,16 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { Link, useNavigate } from "react-router-dom";
 import { useStaticContentContext } from "../../context/StaticContentContext";
-import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import TopActivities from "../titles/TopActivities/TopActivities";
 import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
 import { StaticActivities } from "../../models/types/activity";
+import PageLoading from "../Loading/PageLoading/PageLoading";
 
 function PopularActivities() {
     const navigate = useNavigate();
-    const { subjects, isLoading } = useStaticContentContext();
+    const { subjects, isLoading, useFetchSubjectsData } = useStaticContentContext();
+    useFetchSubjectsData();
 
     const goBack = () => {
         navigate(route.content);
@@ -22,9 +23,9 @@ function PopularActivities() {
     if (!isLoading && subjects) {
         let allActivities = [];
 
-        subjects.forEach(subject => {
+        subjects.forEach((subject) => {
             if (subject.activities) {
-                subject.activities.forEach(activity => {
+                subject.activities.forEach((activity) => {
                     allActivities.push({
                         activity: activity,
                         subjectName: subject.name,
@@ -58,7 +59,9 @@ function PopularActivities() {
         >
             <TopActivities />
             {isLoading ? (
-                <SmallLoading />
+                <section className={styles.content_article}>
+                    <PageLoading />
+                </section>
             ) : (
                 <article className={styles.content_article}>
                     <section className={styles.grid_container}>
@@ -72,9 +75,7 @@ function PopularActivities() {
                                         onClick={() => handleActivityClick(item.activity)}
                                         state={{ fromPopular: true }}
                                     >
-                                        <h2 className={styles.item_title}>
-                                            {item.activity.title}
-                                        </h2>
+                                        <h2 className={styles.item_title}>{item.activity.title}</h2>
                                     </Link>
                                 );
                             })

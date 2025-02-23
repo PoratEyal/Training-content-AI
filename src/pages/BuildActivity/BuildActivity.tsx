@@ -37,7 +37,7 @@ function BuildActivity() {
     const { data, clearMainActivity, updateMainActivity } = useContentContext();
     const { isLoggedIn, currentUser, loading } = useAuthContext();
 
-    const [category, setCategory] = useState(data.movement.categories[0].name as string);
+    const [category, setCategory] = useState((data?.movement?.categories[0].name as string) || "");
     const [subject, setSubject] = useState<string>("");
     const [place, setPlace] = useState<string>("");
     const [time, setTime] = useState<string>("");
@@ -84,6 +84,10 @@ function BuildActivity() {
                 }
             } catch (error) {}
         };
+
+        if (!data || !data.movement) {
+            navigate(route.home);
+        }
 
         if (lockRef.current) {
             updateUser();
@@ -166,7 +170,7 @@ function BuildActivity() {
                                     placeholder="סוג הפעולה"
                                     obj={category}
                                     setObj={setCategory}
-                                    data={CategoryOptions(data.movement.categories)}
+                                    data={CategoryOptions(data?.movement?.categories || [])}
                                 />
 
                                 <SubjectInput
