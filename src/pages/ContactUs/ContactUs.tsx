@@ -80,7 +80,7 @@ const ContactUs: React.FC = () => {
             hasNavBar
         >
             <section className={styles.header}>
-                <h3 className={styles.title}>צרו איתנו קשר</h3>
+                <h3 className={styles.title}>מה תרצו לספר לנו?</h3>
                 <p className={styles.subtitle}>לכל הצעה, בקשה או בעיה, דברו איתנו!</p>
             </section>
             <form onSubmit={handleSubmit} className={styles.contactForm}>
