@@ -6,15 +6,15 @@ import NavOptMyActivities from "../options/navbar/NavOptMyActivities";
 import { useAuthContext } from "../../context/AuthContext";
 
 const UnderBar = () => {
-    const { isLoggedIn } = useAuthContext();
-    return (
-        <nav className={styles.navbar_container}>
-            <NavOptHome />
-            <NavOptBuild />
-            <NavOptContent />
-            {isLoggedIn ? <NavOptMyActivities /> : null}
-        </nav>
-    );
+  const { isLoggedIn } = useAuthContext();
+  return (
+    <nav className={styles.navbar_container}>
+      <NavOptHome />
+      <NavOptBuild />
+      <NavOptContent />
+      {isLoggedIn ? <NavOptMyActivities /> : null}
+    </nav>
+  );
 };
 
 export default UnderBar;

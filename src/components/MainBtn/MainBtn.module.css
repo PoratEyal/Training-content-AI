@@ -23,8 +23,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
-    direction: rtl;
+    gap: 10px;
 }
 
 .btn_loading {
@@ -32,7 +31,6 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
-    direction: rtl;
     border-radius: 900px;
     width: 31px;
 }
