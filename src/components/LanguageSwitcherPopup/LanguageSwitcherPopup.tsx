@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdLanguage } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
+import * as Flags from 'country-flag-icons/react/3x2';
 import styles from './LanguageSwitcherPopup.module.css';
+import { Icons } from '../Icons';
 
 const LanguageSwitcherPopup: React.FC = () => {
   const { i18n } = useTranslation();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    if (isPopupOpen) {
+      setShowPopup(true);
+    }
+  }, [isPopupOpen]);
 
   const togglePopup = () => {
     setIsPopupOpen(prev => !prev);
@@ -24,12 +33,25 @@ const LanguageSwitcherPopup: React.FC = () => {
         className={styles.icon} 
       />
       {isPopupOpen && (
-        <div className={styles.overlay} onClick={() => setIsPopupOpen(false)}>
-          <div className={styles.popup} onClick={e => e.stopPropagation()}>
-            <h3>Select Language</h3>
-            <button onClick={() => changeLanguage('en')}>English</button>
-            <button onClick={() => changeLanguage('he')}>עברית</button>
-            {/* Add more languages as needed */}
+        <div className={styles.popupOverlay} onClick={() => setIsPopupOpen(false)}>
+          <div 
+            className={`${styles.popupContent} ${showPopup ? styles.popupContentShow : ""}`}
+            onClick={e => e.stopPropagation()}
+          >
+            <button className={styles.closeButton} onClick={() => setIsPopupOpen(false)}>
+              <Icons.cancel />
+            </button>
+
+            <div className={styles.buttonContainer}>
+              <button onClick={() => changeLanguage('he')} className={styles.languageButton}>
+                <Flags.IL title="Hebrew" className={styles.languageIcon} />
+                עברית
+              </button>
+              <button onClick={() => changeLanguage('en')} className={styles.languageButton}>
+                <Flags.US title="English" className={styles.languageIcon} />
+                English
+              </button>
+            </div>
           </div>
         </div>
       )}

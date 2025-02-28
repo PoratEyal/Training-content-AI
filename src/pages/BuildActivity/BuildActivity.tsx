@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useContentContext } from "../../context/ContentContext";
 import { useAuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -33,6 +34,7 @@ import MoreDetailsInput from "../../components/MoreDetailsInput/MoreDetailsInput
 import MoreOptionsCollapse from "../../components/MoreOptionsCollapse/MoreOptionsCollapse";
 
 function BuildActivity() {
+    const { t } = useTranslation();
     const { handleError } = useErrorContext();
     const { data, clearMainActivity, updateMainActivity } = useContentContext();
     const { isLoggedIn, currentUser, loading } = useAuthContext();
@@ -162,14 +164,14 @@ function BuildActivity() {
                         <section className={styles.build_container}>
                             <section className={styles.build_content}>
                                 <SelectDetails
-                                    placeholder="סוג הפעולה"
+                                    placeholder={t("buildActivity.category.label")}
                                     obj={category}
                                     setObj={setCategory}
                                     data={CategoryOptions(data.movement.categories)}
                                 />
 
                                 <SubjectInput
-                                    placeholder="נושא"
+                                    placeholder={t("buildActivity.subject.placeholder")}
                                     setSubject={setSubject}
                                     subject={subject}
                                     category={category as CategoryName}
@@ -177,43 +179,60 @@ function BuildActivity() {
                                 />
 
                                 <SelectDetails
-                                    placeholder="מיקום"
+                                    placeholder={t("buildActivity.place.label")}
                                     obj={place}
                                     setObj={setPlace}
-                                    data={PlaceOptions}
+                                    data={PlaceOptions.map((opt) => ({
+                                        label: t(`buildActivity.place.options.${opt.value}`),
+                                        value: opt.value,
+                                    }))}
                                 />
 
                                 <SelectDetails
-                                    placeholder="זמן"
+                                    placeholder={t("buildActivity.time.label")}
                                     obj={time}
                                     setObj={setTime}
-                                    data={ActivityTimeOptions}
+                                    data={ActivityTimeOptions.map((opt) => ({
+                                        label: t(`buildActivity.time.options.${opt.value}`),
+                                        value: opt.value,
+                                    }))}
                                 />
 
-                                <MoreOptionsCollapse>
+                                <MoreOptionsCollapse
+                                    text={t("buildActivity.moreOptions.title")}
+                                >
                                     <SelectDetails
-                                        placeholder="ציוד"
+                                        placeholder={t("buildActivity.tools.label")}
                                         obj={tools}
                                         setObj={setTools}
-                                        data={ToolsOptions}
+                                        data={ToolsOptions.map((opt) => ({
+                                            label: t(`buildActivity.tools.options.${opt.value}`),
+                                            value: opt.value,
+                                        }))}
                                     />
 
                                     <SelectDetails
-                                        placeholder="תחרות וקבוצות"
+                                        placeholder={t("buildActivity.contest.label")}
                                         obj={contest}
                                         setObj={setContest}
-                                        data={ContestOptions}
+                                        data={ContestOptions.map((opt) => ({
+                                            label: t(`buildActivity.contest.options.${opt.value}`),
+                                            value: opt.value,
+                                        }))}
                                     />
 
                                     <SelectDetails
-                                        placeholder="שבת"
+                                        placeholder={t("buildActivity.religion.label")}
                                         obj={religion}
                                         setObj={setReligion}
-                                        data={ReligionOptions}
+                                        data={ReligionOptions.map((opt) => ({
+                                            label: t(`buildActivity.religion.options.${opt.value}`),
+                                            value: opt.value,
+                                        }))}
                                     />
 
                                     <MoreDetailsInput
-                                        placeholder="מידע נוסף"
+                                        placeholder={t("buildActivity.moreDetails.placeholder")}
                                         text={info}
                                         setText={setInfo}
                                     />
@@ -223,13 +242,12 @@ function BuildActivity() {
                                     <MainBtn
                                         isDisabled={isDisabled}
                                         height={42}
-                                        text={"הצעה לפעולה"}
+                                        text={t("buildActivity.submit")}
                                         func={submitHandler}
                                     ></MainBtn>
                                     {hasAlert ? (
                                         <div className={styles.input_alert}>
-                                            שימו לב! מקור הפעולות הינו מערכת בינה מלאכותית, יכול
-                                            להיות שנושאים מסויימים עדיין לא מעודכנים
+                                            {t("buildActivity.alert")}
                                         </div>
                                     ) : null}
                                 </div>

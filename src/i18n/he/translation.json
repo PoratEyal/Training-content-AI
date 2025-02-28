@@ -21,5 +21,75 @@
     "build": "יצירת פעולות",
     "content": "תוכן",
     "myActivities": "הפעולות שלי"
+  },
+  "details": {
+    "title": "ספרו לנו על הקבוצה שלכם",
+    "youthMovement": "תנועת נוער",
+    "grade": "שכבת גיל",
+    "numberOfChildren": "מספר חניכים",
+    "gender": "מגדר",
+    "submit": "המשך",
+    "lampAlt": "מנורה צהובה"
+  },
+  "buildActivity": {
+    "createTitle": "צור את הפעילות שלך",
+    "subject": {
+      "label": "נושא הפעילות",
+      "placeholder": "הכנס את נושא הפעילות..."
+    },
+    "category": {
+      "label": "קטגוריה"
+    },
+    "place": {
+      "label": "מיקום",
+      "options": {
+        "inside": "בפנים",
+        "outside": "בחוץ",
+        "both": "שניהם"
+      }
+    },
+    "time": {
+      "label": "משך זמן",
+      "options": {
+        "short": "קצר (עד 45 דקות)",
+        "medium": "בינוני (45-90 דקות)",
+        "long": "ארוך (90+ דקות)"
+      }
+    },
+    "religion": {
+      "label": "רמת דתיות",
+      "options": {
+        "secular": "חילוני",
+        "religious": "דתי",
+        "both": "שניהם"
+      }
+    },
+    "contest": {
+      "label": "רמת תחרותיות",
+      "options": {
+        "none": "ללא",
+        "low": "נמוכה",
+        "high": "גבוהה"
+      }
+    },
+    "tools": {
+      "label": "ציוד נדרש",
+      "options": {
+        "none": "ללא",
+        "basic": "בסיסי",
+        "special": "מיוחד"
+      }
+    },
+    "moreDetails": {
+      "label": "פרטים נוספים",
+      "placeholder": "הוסף פרטים נוספים על הפעילות..."
+    },
+    "moreOptions": {
+      "title": "אפשרויות נוספות",
+      "description": "הגדרות נוספות לפעילות שלך"
+    },
+    "moreOptions": "אפשרויות נוספות",
+    "submit": "צור פעילות",
+    "loading": "יוצר את הפעילות שלך..."
   }
 }
