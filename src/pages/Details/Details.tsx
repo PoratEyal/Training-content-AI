@@ -17,8 +17,10 @@ import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
 import helmet from "../../models/resources/helmet.json";
 import { DETAILS_AD_SLOT } from "../../models/constants/adsSlot";
+import { useTranslation } from "react-i18next";
 
 function Details() {
+    const { t, i18n } = useTranslation();
     const { data, updateDetails, clearAll } = useContentContext();
     const { currentUser, loading } = useAuthContext();
     const navigate = useNavigate();
@@ -66,7 +68,7 @@ function Details() {
             path={route.details}
             hasGreenBackground
             hasHeader={{ goBack }}
-            title={helmet.details.title}
+            title={t("details.title")}
             content={helmet.home.content}
             hesAds={DETAILS_AD_SLOT}
             hasNavBar
@@ -74,16 +76,16 @@ function Details() {
         >
             <TellUsAboutYourGroup />
 
-            <form onSubmit={handleSubmit} className={styles.details_form_container}>
+            <form onSubmit={handleSubmit} className={styles.details_form_container} style={{ direction: i18n.dir() }}>
                 <img
-                    className={styles.lamp_img}
-                    title="Yellow lamp"
-                    alt="Yellow lamp"
+                    className={`${styles.lamp_img} ${i18n.dir() === 'rtl' ? styles.lamp_img_rtl : styles.lamp_img_ltr}`}
+                    title={t("details.lampAlt")}
+                    alt={t("details.lampAlt")}
                     src={"lamp.svg"}
                     loading="lazy"
                     width={105}
                     height={109}
-                ></img>
+                />
 
                 <div className={styles.selects_btn}>
                     {loading ? (
@@ -94,39 +96,37 @@ function Details() {
                         <div className={styles.details_content}>
                             <SelectDetails
                                 data={MovmentsOptions}
-                                placeholder={"תנועת נוער"}
+                                placeholder={t("details.youthMovement")}
                                 obj={movement}
                                 setObj={setMovment}
                             />
                             <SelectDetails
                                 data={GradeOptions}
-                                placeholder={"קבוצת גיל"}
+                                placeholder={t("details.grade")}
                                 obj={classLevel}
                                 setObj={setClassLevel}
                             />
                             <SelectDetails
                                 data={AmountOptions}
-                                placeholder={"מספר ילדים"}
+                                placeholder={t("details.numberOfChildren")}
                                 obj={numberOfChildren}
                                 setObj={setNumberOfChildren}
                             />
                             <SelectDetails
                                 data={GenderOptions}
-                                placeholder={"הרכב הקבוצה"}
+                                placeholder={t("details.gender")}
                                 obj={gender}
                                 setObj={setGender}
                             />
-                            <div className={styles.btn_div}>
-                                <MainBtn
-                                    type="submit"
-                                    isDisabled={isDisabled}
-                                    height={42}
-                                    text="המשיכו"
-                                    func={handleSubmit}
-                                ></MainBtn>
-                            </div>
                         </div>
                     )}
+                        <MainBtn
+                            text={t("details.submit")}
+                            isDisabled={isDisabled}
+                            type="submit"
+                            func={handleSubmit}
+                            height={42}
+                        />
                 </div>
             </form>
         </PageLayout>

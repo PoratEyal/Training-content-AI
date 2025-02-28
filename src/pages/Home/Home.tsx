@@ -23,7 +23,7 @@ import { useTranslation } from "react-i18next";
 import styles from "./Home.module.css";
 
 function Home() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { cookieLimit, setLimitCookie, cookieRememberMe } = useCookiesContext();
   const navigate = useNavigate();
   const { currentUser, isLoggedIn } = useAuthContext();
@@ -100,9 +100,9 @@ function Home() {
 
       <div className={styles.logo_text_div}>
         <ContinueWithAI />
-        <h2 className={styles.home_lable}>
-          {t("home.slogan", "מותאם, פשוט ומהיר 🤟")}
-        </h2>
+        <div className={styles.home_lable} style={{ direction: i18n.dir() }}>
+          <span>{t("home.slogan", "מותאם, פשוט ומהיר 🤟")}</span>
+        </div>
       </div>
 
       {rememberMe === SignInStatus.REMEMBER && !isLoading && isLoggedIn && currentUser?.image ? (

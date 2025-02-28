@@ -12,16 +12,15 @@ type AboutUsCollapseProps = {
 const AboutUsCollapse: React.FC<AboutUsCollapseProps> = ({ children }) => {
     const [isOpen, toggle, close] = useToggle(false);
     const modalRef = useRef<any>(null);
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     useClickOutside(modalRef, () => close());
 
     const handleCollapse = () => {
         toggle();
-        //TODO: add scrolling
     };
 
     return (
-        <div ref={modalRef} className={styles.about_collapse_container}>
+        <div ref={modalRef} className={styles.about_collapse_container} style={{ direction: i18n.dir() }}>
             <Collapse isOpen={isOpen} diraction="up">
                 <section className={styles.collapse_form}>{children}</section>
             </Collapse>

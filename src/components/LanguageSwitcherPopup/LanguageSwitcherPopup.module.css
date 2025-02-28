@@ -1,32 +1,111 @@
+@keyframes slideUp {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 .container {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .icon {
-    cursor: pointer;
-    font-size: 22px;
-    color: var(--text);
-  }
-  
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .popup {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    min-width: 200px;
-    text-align: center;
-  }
-  
+  position: relative;
+  display: inline-block;
+}
+
+.icon {
+  cursor: pointer;
+  font-size: 22px;
+  color: var(--text);
+}
+
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.537);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popupContent {
+  background: #fff;
+  padding: 25px;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 26px;
+  border-radius: 10px;
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  height: fit-content;
+  padding-top: 65px;
+  border: 4px solid var(--secondary-color);
+  transform: translateY(100vh);
+  transition: transform 0.5s ease-out;
+}
+
+.popupContentShow {
+  transform: translateY(0);
+}
+
+.popupTitle_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+  margin-top: -40px;
+  gap: 10px;
+  text-align: right;
+  width: 100%;
+  margin-right: 5px;
+}
+
+.popupTitle {
+  color: var(--primary-color);
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.icon_lang {
+  font-size: 60px;
+  rotate: -30deg;
+  color: var(--primary-color);
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.languageButton {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 20px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-size: 16px;
+  color: var(--primary-color);
+}
+
+.languageButton:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.languageIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}

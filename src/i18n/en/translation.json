@@ -2,7 +2,8 @@
   "home": {
     "slogan": "Tailored, Simple and Fast 🤟",
     "startAction": "Create Actions",
-    "aboutText": "ActivityWiz is a platform for creating youth activities. You can choose from a library of pre-made activities or use artificial intelligence to generate custom activities that perfectly fit your needs. The site is designed for educators seeking fresh ideas and innovative ways to enrich educational and social experiences."
+    "aboutText": "ActivityWiz is a platform for creating youth activities. You can choose from a library of pre-made activities or use artificial intelligence to generate custom activities that perfectly fit your needs. The site is designed for educators seeking fresh ideas and innovative ways to enrich educational and social experiences.",
+    "moreOptions": "More Options"
   },
   "continueWithAI": {
     "advanced1": "Advanced",
@@ -18,8 +19,77 @@
   },
   "navbar": {
     "home": "Home",
-    "build": "Create Actions",
+    "build": "Create Activity",
     "content": "Content",
     "myActivities": "My Activities"
+  },
+  "details": {
+    "title": "Tell Us About Your Group",
+    "youthMovement": "Youth Movement",
+    "grade": "Grade Level",
+    "numberOfChildren": "Number of Children",
+    "gender": "Gender",
+    "submit": "Continue",
+    "lampAlt": "Yellow lamp"
+  },
+  "buildActivity": {
+    "createTitle": "Create Your Activity",
+    "subject": {
+      "label": "Activity Subject",
+      "placeholder": "Enter the activity subject..."
+    },
+    "category": {
+      "label": "Category"
+    },
+    "place": {
+      "label": "Location",
+      "options": {
+        "inside": "Inside",
+        "outside": "Outside",
+        "both": "Both"
+      }
+    },
+    "time": {
+      "label": "Duration",
+      "options": {
+        "short": "Short (up to 45 min)",
+        "medium": "Medium (45-90 min)",
+        "long": "Long (90+ min)"
+      }
+    },
+    "religion": {
+      "label": "Religious Level",
+      "options": {
+        "secular": "Secular",
+        "religious": "Religious",
+        "both": "Both"
+      }
+    },
+    "contest": {
+      "label": "Competition Level",
+      "options": {
+        "none": "None",
+        "low": "Low",
+        "high": "High"
+      }
+    },
+    "tools": {
+      "label": "Required Equipment",
+      "options": {
+        "none": "None",
+        "basic": "Basic",
+        "special": "Special"
+      }
+    },
+    "moreDetails": {
+      "label": "Additional Details",
+      "placeholder": "Add any additional details about the activity..."
+    },
+    "moreOptions": {
+      "title": "More Options",
+      "description": "Additional settings for your activity"
+    },
+    "submit": "Create Activity",
+    "loading": "Creating your activity..."
   }
 }
