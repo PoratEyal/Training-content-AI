@@ -120,6 +120,13 @@ function Details() {
                             />
                         </div>
                     )}
+                    <div
+                        className={
+                            i18n.language === "he"
+                            ? styles.hebrewDir
+                            : styles.nonHebrewDir
+                        }
+                        >
                         <MainBtn
                             text={t("details.submit")}
                             isDisabled={isDisabled}
@@ -127,6 +134,7 @@ function Details() {
                             func={handleSubmit}
                             height={42}
                         />
+                    </div>
                 </div>
             </form>
         </PageLayout>

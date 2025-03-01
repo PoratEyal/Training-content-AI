@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { MdLanguage } from 'react-icons/md';
-import { useTranslation } from 'react-i18next';
-import * as Flags from 'country-flag-icons/react/3x2';
-import styles from './LanguageSwitcherPopup.module.css';
-import { Icons } from '../Icons';
+import React, { useState, useEffect } from "react";
+import { MdLanguage } from "react-icons/md";
+import { useTranslation } from "react-i18next";
+import * as Flags from "country-flag-icons/react/3x2";
+import styles from "./LanguageSwitcherPopup.module.css";
 
 const LanguageSwitcherPopup: React.FC = () => {
   const { i18n } = useTranslation();
@@ -17,7 +16,7 @@ const LanguageSwitcherPopup: React.FC = () => {
   }, [isPopupOpen]);
 
   const togglePopup = () => {
-    setIsPopupOpen(prev => !prev);
+    setIsPopupOpen((prev) => !prev);
   };
 
   const changeLanguage = (lang: string) => {
@@ -27,27 +26,33 @@ const LanguageSwitcherPopup: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <MdLanguage 
-        size={24} 
-        onClick={togglePopup} 
-        className={styles.icon} 
-      />
+      <MdLanguage size={24} onClick={togglePopup} className={styles.icon} />
+
       {isPopupOpen && (
-        <div className={styles.popupOverlay} onClick={() => setIsPopupOpen(false)}>
-          <div 
-            className={`${styles.popupContent} ${showPopup ? styles.popupContentShow : ""}`}
-            onClick={e => e.stopPropagation()}
+        <div
+          className={styles.popupOverlay}
+          onClick={() => setIsPopupOpen(false)}
+        >
+          <div
+            className={`${styles.popupContent} ${
+              showPopup ? styles.popupContentShow : ""
+            }`}
+            onClick={(e) => e.stopPropagation()}
           >
-            <button className={styles.closeButton} onClick={() => setIsPopupOpen(false)}>
-              <Icons.cancel />
-            </button>
+            {/* Removed the cancel button here */}
 
             <div className={styles.buttonContainer}>
-              <button onClick={() => changeLanguage('he')} className={styles.languageButton}>
+              <button
+                onClick={() => changeLanguage("he")}
+                className={styles.languageButton}
+              >
                 <Flags.IL title="Hebrew" className={styles.languageIcon} />
                 עברית
               </button>
-              <button onClick={() => changeLanguage('en')} className={styles.languageButton}>
+              <button
+                onClick={() => changeLanguage("en")}
+                className={styles.languageButton}
+              >
                 <Flags.US title="English" className={styles.languageIcon} />
                 English
               </button>
