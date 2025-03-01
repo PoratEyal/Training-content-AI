@@ -91,5 +91,10 @@
     },
     "submit": "Create Activity",
     "loading": "Creating your activity..."
+  },
+  "contentPage": {
+    "popularActivities": "10 Popular Activities",
+    "noSubjectSelected": "No subject selected",
+    "readyContentTitle": "Pre-made Activities"
   }
 }

@@ -90,5 +90,10 @@
     },
     "submit": "צור פעילות",
     "loading": "יוצר את הפעילות שלך..."
+  },
+  "contentPage": {
+    "popularActivities": "10 הפעולות הפופולריות",
+    "noSubjectSelected": "לא נבחר נושא פעולה",
+    "readyContentTitle": "פעולות מוכנות"
   }
 }
