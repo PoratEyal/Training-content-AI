@@ -60,6 +60,13 @@
     margin-bottom: 20px;
 }
 
+.hebrewDir {
+    direction: ltr;
+  }
+  .nonHebrewDir {
+    direction: rtl;
+  }  
+
 .btn_div {
     position: relative;
     box-sizing: border-box;
