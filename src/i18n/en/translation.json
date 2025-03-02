@@ -96,5 +96,24 @@
     "popularActivities": "10 Popular Activities",
     "noSubjectSelected": "No subject selected",
     "readyContentTitle": "Pre-made Activities"
+  },
+  "contentActivities": {
+    "noSuitableActivities": "No suitable activities found.",
+    "noSubjectData": "No data found for the requested subject.",
+    "readyContentName": {
+      "loading": "Loading activities...",
+      "many": "Activities about",
+      "single": "Activity about"
+    }
+  },
+  "savedActivities": {
+    "dontHaveActivity": {
+      "title": "You haven't saved any activities yet?",
+      "mainTextLine1": "To save your activities, click the button",
+      "mainTextLine2": "after creating a new activity"
+    },
+    "myActivities": {
+      "title": "My Activities"
+    }
   }
 }
