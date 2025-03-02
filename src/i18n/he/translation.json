@@ -95,5 +95,25 @@
     "popularActivities": "10 הפעולות הפופולריות",
     "noSubjectSelected": "לא נבחר נושא פעולה",
     "readyContentTitle": "פעולות מוכנות"
+  },
+  "contentActivities": {
+    "noSuitableActivities": "לא נמצאו פעולות מתאימות",
+    "noSubjectData": "לא נמצאו נתונים עבור הנושא המבוקש.",
+    "readyContentName": {
+      "loading": "פעולות בנושא בטעינה...",
+      "many": "פעולות בנושא",
+      "single": "פעולה בנושא"
+    }
+  },
+  "savedActivities": {
+    "dontHaveActivity": {
+      "title": "עדיין לא שמרתם פעולות?",
+      "mainTextLine1": "לשמירת הפעולות, לחצו על כפתור ה",
+      "mainTextLine2": "לאחר יצירת פעולת חדשה"
+    },
+    "myActivities": {
+      "title": "הפעולות שלי"
+    }
   }
+  
 }

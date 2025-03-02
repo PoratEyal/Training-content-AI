@@ -101,6 +101,10 @@
     max-width: calc(100% - 40px);
 }
 
+.ltr_item {
+    direction: ltr !important; 
+  }
+
 @media (min-width: 550px) {
     .underBar{
         position: absolute;

@@ -13,8 +13,16 @@ import { Activity } from "../../models/types/activity";
 import React, { useState } from "react";
 import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
 
+// 1) import i18n
+import { useTranslation } from "react-i18next";
+
 const SavedActivities: React.FC = () => {
   const navigate = useNavigate();
+
+  // 2) detect if Hebrew
+  const { i18n } = useTranslation();
+  const isHebrew = i18n.language === "he";
+
   const { savedActivity, isLoading, useFetchSavedData, deleteActivity } = useSaveContext();
   useFetchSavedData();
 
@@ -73,8 +81,14 @@ const SavedActivities: React.FC = () => {
             {savedActivity?.map((activity, index) => (
               <div
                 key={index}
-                className={styles.grid_item}
+                // 3) Conditionally add .ltr_item if NOT Hebrew
+                className={
+                  isHebrew
+                    ? styles.grid_item
+                    : `${styles.grid_item} ${styles.ltr_item}`
+                }
                 onClick={(e) => {
+                  // If user didn't click the delete icon, navigate
                   if (!(e.target as Element).closest(".delete_icon")) {
                     navigate(`${route.myactivities}/${activity.subject}`);
                   }
