@@ -1,12 +1,4 @@
-@keyframes slideUp {
-  from {
-    transform: translateY(100vh);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
+/* Container styles remain unchanged */
 .container {
   position: relative;
   display: inline-block;
@@ -31,6 +23,7 @@
   z-index: 1000;
 }
 
+/* Update popupContent: remove transform, add opacity and transition */
 .popupContent {
   background: #fff;
   font-size: 14px;
@@ -40,14 +33,15 @@
   width: fit-content;
   max-width: 400px;
   border: 4px solid var(--secondary-color);
-  transform: translateY(100vh);
-  transition: transform 0.5s ease-out;
   padding: 15px;
   direction: ltr;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
 }
 
+/* When shown, set opacity to 1 */
 .popupContentShow {
-  transform: translateY(0);
+  opacity: 1;
 }
 
 .popupTitle_div {
@@ -86,7 +80,6 @@
   border-bottom: 1px solid gainsboro;
   padding-bottom: 10px;
 }
-
 
 .languageButton {
   display: flex;
