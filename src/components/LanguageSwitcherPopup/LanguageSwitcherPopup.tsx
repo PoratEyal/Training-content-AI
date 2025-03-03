@@ -40,7 +40,6 @@ const LanguageSwitcherPopup: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Removed the cancel button here */}
-
             <div className={styles.buttonContainer}>
               <button
                 onClick={() => changeLanguage("he")}
