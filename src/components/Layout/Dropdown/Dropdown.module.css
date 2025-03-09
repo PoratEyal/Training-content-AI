@@ -1,43 +1,62 @@
 .nav_container {
-    background-color: var(--select-color);
-    border: none;
-    border-radius: 7px;
-    position: absolute;
-    top: 45px;
-    left: 0;
-    z-index: 953;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    width: 150px;
+  background-color: var(--select-color);
+  border: none;
+  border-radius: 7px;
+  position: absolute;
+  top: 45px;
+  left: 0;
+  z-index: 953;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  width: 165px;
 }
 
 .nav_container::after {
-    content: "";
-    position: absolute;
-    left: 12px;
-    top: 0px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid var(--select-color);
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    rotate: 270deg;
-    margin-top: -12px;
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 0px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid var(--select-color);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  rotate: 270deg;
+  margin-top: -12px;
 }
 
 .navbar_option {
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    margin-bottom: 4px;
-    color: var(--text-color);
-    text-align: right;
-    margin-left: -35px;
-    width: 135px;
-    margin-bottom: 16px;
-    cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  margin-bottom: 4px;
+  color: var(--text-color);
+  text-align: right;
+  margin-left: -35px;
+  width: 155px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+/* New override for non-Hebrew: remove left margin, add right margin and set direction to LTR */
+.ltr_navbar_option {
+  margin-left: 0 !important;
+  margin-right: -35px !important;
+  direction: ltr !important;
 }
 
 .ul {
-    text-align: right;
-    margin-bottom: -4px;
+  text-align: right;
+  margin-bottom: -4px;
+}
+
+/* Container override for non-Hebrew */
+.ltr_nav {
+  right: 0 !important;
+  left: auto !important;
+}
+
+.ltr_nav::after {
+  right: 12px !important;
+  left: auto !important;
 }

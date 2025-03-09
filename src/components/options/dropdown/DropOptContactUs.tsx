@@ -1,29 +1,32 @@
 import styles from "./dropdown.module.css";
 import policy from "../../../models/resources/policy.json";
 import { Icons } from "../../Icons";
+import { useTranslation } from "react-i18next";
 
 type ContactUsProps = {
-    handleClose: () => void;
+  handleClose: () => void;
 };
 
 function DropOptContactUs({ handleClose }: ContactUsProps) {
-    const contactUs = () => {
-        const emailLink = document.createElement("a");
-        emailLink.href = `mailto:${policy.p10.email}`;
-        emailLink.click();
-    };
+  const { t } = useTranslation();
 
-    const handleClick = () => {
-        contactUs();
-        handleClose();
-    };
+  const contactUs = () => {
+    const emailLink = document.createElement("a");
+    emailLink.href = `mailto:${policy.p10.email}`;
+    emailLink.click();
+  };
 
-    return (
-        <span className={styles.text_and_icon} onClick={() => handleClick()}>
-            צרו קשר
-            <Icons.contactUs />
-        </span>
-    );
+  const handleClick = () => {
+    contactUs();
+    handleClose();
+  };
+
+  return (
+    <span className={styles.text_and_icon} onClick={handleClick}>
+      {t("profile.dropOptContactUs.contact")}
+      <Icons.contactUs />
+    </span>
+  );
 }
 
 export default DropOptContactUs;

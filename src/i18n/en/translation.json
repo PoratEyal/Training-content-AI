@@ -115,5 +115,22 @@
     "myActivities": {
       "title": "My Activities"
     }
+  },
+  "profile": {
+      "dropOptInviteFriends": {
+        "invite": "Share with friends"
+      },
+      "dropOptContactUs": {
+        "contact": "Contact Us"
+      },
+      "dropOptLogout": {
+        "logout": "Logout"
+      },
+      "dropOptPrivacy": {
+        "policy": "Privacy Policy"
+      },
+      "dropOptSignIn": {
+        "signIn": "Sign In"
+      }
   }
 }
