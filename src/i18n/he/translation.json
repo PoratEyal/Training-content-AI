@@ -114,6 +114,22 @@
     "myActivities": {
       "title": "הפעולות שלי"
     }
+  },
+  "profile": {
+      "dropOptInviteFriends": {
+        "invite": "שתפו עם חברים"
+      },
+      "dropOptContactUs": {
+        "contact": "צרו קשר"
+      },
+      "dropOptLogout": {
+        "logout": "התנתקות"
+      },
+      "dropOptPrivacy": {
+        "policy": "תנאי שירות"
+      },
+      "dropOptSignIn": {
+        "signIn": "התחברות"
+      }
   }
-  
 }
