@@ -24,6 +24,7 @@ import styles from "./Home.module.css";
 
 function Home() {
   const { t, i18n } = useTranslation();
+  const isHebrew = i18n.language === "he";
   const { cookieLimit, setLimitCookie, cookieRememberMe } = useCookiesContext();
   const navigate = useNavigate();
   const { currentUser, isLoggedIn } = useAuthContext();
@@ -94,9 +95,16 @@ function Home() {
       hasNavBar
       index={true}
     >
-      <div className={styles.languageSwitcher}>
-        <LanguageSwitcherPopup />
-      </div>
+
+    <div
+      className={
+        isHebrew
+          ? styles.languageSwitcherHebrew
+          : styles.languageSwitcher
+      }
+    >
+      <LanguageSwitcherPopup />
+    </div>
 
       <div className={styles.logo_text_div}>
         <ContinueWithAI />
