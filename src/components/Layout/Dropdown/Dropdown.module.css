@@ -42,7 +42,8 @@
 .ltr_navbar_option {
   margin-left: 0 !important;
   margin-right: -35px !important;
-  direction: ltr !important;
+  direction: rtl !important;
+  justify-content: left !important;
 }
 
 .ul {

@@ -1,16 +1,18 @@
 import { LOADING_AD_SLOT } from "../../../models/constants/adsSlot";
 import AdsBig from "../../ads/AdsBig/AdsBig";
 import styles from "./LoadingActivity.module.css";
+import { useTranslation } from "react-i18next";
 
 function LoadingActivity() {
+    const { t } = useTranslation();
+
     return (
         <section className={styles.loading_activity}>
             <div className={styles.loading_main}>
                 <img className={styles.gif} src="loading.gif" alt="loading gif" />
-                <label className={styles.h2}>הפעולה בדרך</label>
+                <label className={styles.h2}>{t("buildActivity.loadingActivity.heading")}</label>
                 <label className={styles.text}>
-                    שימו לב! מקור הפעולות מבוסס על מערכת בינה מלאכותית, ייתכן ותמצאו אי דיוקים. אנא בדקו
-                    את התוכן לפני כל פעולה
+                    {t("buildActivity.loadingActivity.text")}
                 </label>
                 <div className={styles.progress_bar}></div>
             </div>
