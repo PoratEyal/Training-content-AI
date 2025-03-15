@@ -5,10 +5,10 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { Link, useNavigate } from "react-router-dom";
 import ReadyContent from "../../components/titles/ReadyContent/ReadyContent";
-import helmet from "../../models/resources/helmet.json";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
+import { getContent, getTitle } from "../../utils/helmet";
 import { Icons } from "../../components/Icons";
 import { useTranslation } from "react-i18next";
 
@@ -32,8 +32,8 @@ function Content() {
       hesAds={ACTIVITY_AD_SLOT}
       index={true}
       hasGreenBackground
-      title={helmet.content.title}
-      content={helmet.content.content}
+      title={getTitle("content", i18n.language)}
+      content={getContent("content", i18n.language)}
     >
       <ReadyContent />
 

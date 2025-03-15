@@ -9,32 +9,32 @@ import { Activity } from "../../models/types/activity";
 import { SessionKey } from "../../models/enum/storage";
 import Session from "../../utils/sessionStorage";
 import route from "../../router/route.json";
-import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import styles from "./BuildActivity.module.css";
-import MainBtn from "../../components/MainBtn/MainBtn";
-import PageLoading from "../../components/Loading/PageLoading/PageLoading";
-import CreateYourActivity from "../../components/titles/CreateYourActivity/CreateYourActivity";
-import SelectDetails from "../../components/SelectDetails/SelectDetails";
-import {
-  ActivityTimeOptions,
-  CategoryOptions,
-  ContestOptions,
-  PlaceOptions,
-  ToolsOptions,
-  ReligionOptions,
-} from "../../models/resources/select";
-import SubjectInput from "../../components/SubjectInput/SubjectInput";
 import { CategoryName } from "../../models/types/movement";
-import helmet from "../../models/resources/helmet.json";
 import { useErrorContext } from "../../context/ErrorContext";
 import msg from "../../models/resources/errorMsg.json";
-import LoadingActivity from "../../components/Loading/LoadingActivity/LoadingActivity";
+import styles from "./BuildActivity.module.css";
+import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import { BUILD_AD_SLOT } from "../../models/constants/adsSlot";
-import MoreDetailsInput from "../../components/MoreDetailsInput/MoreDetailsInput";
+import CreateYourActivity from "../../components/titles/CreateYourActivity/CreateYourActivity";
+import PageLoading from "../../components/Loading/PageLoading/PageLoading";
+import SelectDetails from "../../components/SelectDetails/SelectDetails";
+import {
+    ActivityTimeOptions,
+    CategoryOptions,
+    ContestOptions,
+    PlaceOptions,
+    ReligionOptions,
+    ToolsOptions,
+} from "../../models/resources/select";
+import SubjectInput from "../../components/SubjectInput/SubjectInput";
 import MoreOptionsCollapse from "../../components/MoreOptionsCollapse/MoreOptionsCollapse";
+import MoreDetailsInput from "../../components/MoreDetailsInput/MoreDetailsInput";
+import MainBtn from "../../components/MainBtn/MainBtn";
+import LoadingActivity from "../../components/Loading/LoadingActivity/LoadingActivity";
+import helmet from "../../models/resources/helmet.json";
+import { getContent, getTitle } from "../../utils/helmet";
 
 function BuildActivity() {
-  
     const { t, i18n } = useTranslation();
     const { handleError } = useErrorContext();
     const { data, clearMainActivity, updateMainActivity } = useContentContext();
@@ -55,10 +55,9 @@ function BuildActivity() {
     const lockRef = useRef(true);
 
     const [hasAlert, setHasAlert] = useState(false);
-          
-          
-  // This will be true if the current language is Hebrew, false otherwise
-  const isHebrew = i18n.language === "he";
+
+    // This will be true if the current language is Hebrew, false otherwise
+    const isHebrew = i18n.language === "he";
 
     useEffect(() => {
         const updateUser = async () => {
@@ -107,7 +106,6 @@ function BuildActivity() {
         setIsDisabled(subject === "" || place === "" || time === "" ? true : false);
     }, [loading, subject, place, time]);
 
-
     const submitHandler = async () => {
         setClicked(true);
         const { movement, ...detailsData } = data;
@@ -135,21 +133,20 @@ function BuildActivity() {
             handleError(msg.error.message);
             setClicked(false);
         }
-      }
     };
 
-  const goBack = () => {
-    clearMainActivity();
-    navigate(route.details);
-  };
+    const goBack = () => {
+        clearMainActivity();
+        navigate(route.details);
+    };
 
     return (
         <PageLayout
             path={route.build}
             hasGreenBackground
             hasHeader={{ goBack }}
-            title={helmet.build.title}
-            content={helmet.home.content}
+            title={getTitle("build", i18n.language)}
+            content={getContent("build", i18n.language)}
             hesAds={BUILD_AD_SLOT}
             index={false}
             hasNavBar
@@ -158,11 +155,7 @@ function BuildActivity() {
 
             <div className={styles.build_form_container}>
                 <img
-                              className={
-            isHebrew
-              ? styles.path_img
-              : `${styles.path_img} ${styles.ltr_path}`
-          }
+                    className={isHebrew ? styles.path_img : `${styles.path_img} ${styles.ltr_path}`}
                     title="Yellow sign with heart"
                     alt="Yellow sign with heart"
                     src={"path.svg"}
@@ -179,7 +172,7 @@ function BuildActivity() {
                         <section className={styles.build_container}>
                             <section className={styles.build_content}>
                                 <SelectDetails
-                  placeholder={t("buildActivity.category.label")}
+                                    placeholder={t("buildActivity.category.label")}
                                     obj={category}
                                     setObj={setCategory}
                                     data={CategoryOptions(data?.movement?.categories || [])}
@@ -237,12 +230,12 @@ function BuildActivity() {
                                 </MoreOptionsCollapse>
 
                                 <div
-                                                    className={
-                    isHebrew
-                      ? `${styles.btn_div} ${styles.rtl_btn}`
-                      : styles.btn_div
-                  }
-                                  >
+                                    className={
+                                        isHebrew
+                                            ? `${styles.btn_div} ${styles.rtl_btn}`
+                                            : styles.btn_div
+                                    }
+                                >
                                     <MainBtn
                                         isDisabled={isDisabled}
                                         height={42}
@@ -251,7 +244,7 @@ function BuildActivity() {
                                     ></MainBtn>
                                     {hasAlert ? (
                                         <div className={styles.input_alert}>
-{t("buildActivity.alert")}
+                                            {t("buildActivity.alert")}
                                         </div>
                                     ) : null}
                                 </div>
@@ -259,14 +252,10 @@ function BuildActivity() {
                         </section>
                     )}
                 </div>
-              </section>
-            </section>
-          )}
-        </div>
-        {clicked ? <LoadingActivity /> : null}
-      </div>
-    </PageLayout>
-  );
+            </div>
+            {clicked ? <LoadingActivity /> : null}
+        </PageLayout>
+    );
 }
 
 export default BuildActivity;

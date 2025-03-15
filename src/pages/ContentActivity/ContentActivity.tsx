@@ -16,6 +16,8 @@ import helmet from "../../models/resources/helmet.json";
 import { useAuthContext } from "../../context/AuthContext";
 import { convertActivityType } from "../../utils/activity";
 import MoreOptionsBtn from "../../components/MoreOptionsBtn/MoreOptionsBtn";
+import { getSubjectContent, getSubjectTitle } from "../../utils/helmet";
+import { useTranslation } from "react-i18next";
 
 function ContentActivity() {
     const navigate = useNavigate();
@@ -26,6 +28,7 @@ function ContentActivity() {
     const [isActivityLoading, setIsActivityLoading] = useState<boolean>(isLoading);
     const [activity, setActivity] = useState<StaticActivities | undefined>();
     const { isLoggedIn, currentUser } = useAuthContext();
+    const { i18n } = useTranslation();
 
     const contentActivityPath = `${route.content}/${activityId}/${contentId}`;
 
@@ -72,11 +75,11 @@ function ContentActivity() {
             hasGreenBackground
             hasHeader={{ goBack }}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
-            title={activity?.metaTitle || helmet.contentActivity.title}
-            content={activity?.metaDescription || helmet.contentActivity.content}
+            title={getSubjectTitle(activity?.metaTitle, i18n.language)}
+            content={getSubjectContent(activity?.metaDescription, i18n.language)}
             hasNavBar
         >
-            <ActivityReady subject={activity?.title || helmet.contentActivity.title} />
+            <ActivityReady subject={activity?.title || helmet.contentActivity.titleEn} />
             {isActivityLoading ? (
                 <section className={styles.activity_data_container}>
                     <PageLoading />

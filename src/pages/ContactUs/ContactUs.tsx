@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import helmet from "../../models/resources/helmet.json";
 import route from "../../router/route.json";
 import { useNavigate } from "react-router-dom";
 import { DETAILS_AD_SLOT } from "../../models/constants/adsSlot";
@@ -10,8 +9,11 @@ import { useErrorContext } from "../../context/ErrorContext";
 import emailjs from "emailjs-com";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { Icons } from "../../components/Icons";
+import { getContent, getTitle } from "../../utils/helmet";
+import { useTranslation } from "react-i18next";
 
 const ContactUs: React.FC = () => {
+    const { i18n } = useTranslation();
     const navigate = useNavigate();
     const { currentUser } = useAuthContext();
     const { handleSuccess } = useErrorContext();
@@ -74,8 +76,8 @@ const ContactUs: React.FC = () => {
         <PageLayout
             path={route.contactUs}
             hasHeader={{ goBack }}
-            title={helmet.contactUs.title}
-            content={helmet.contactUs.content}
+            title={getTitle("contactUs", i18n.language)}
+            content={getContent("contactUs", i18n.language)}
             hesAds={DETAILS_AD_SLOT}
             hasNavBar
         >

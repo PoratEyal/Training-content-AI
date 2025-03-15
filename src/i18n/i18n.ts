@@ -1,9 +1,5 @@
-// src/i18n/i18n.ts
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-
-// ייבוא של קבצי התרגום
 import translationEN from './en/translation.json';
 import translationHE from './he/translation.json';
 
@@ -20,8 +16,8 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'he',          // שפת ברירת מחדל
-    fallbackLng: 'en',  // שפה חלופית במקרה שאין מפתח תרגום
+    lng: 'he', // default language
+    fallbackLng: 'en',  // fallback language
     interpolation: {
       escapeValue: false
     }

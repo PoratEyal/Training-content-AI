@@ -1,42 +1,62 @@
 {
     "home": {
-        "title": "פעולות לתנועות נוער",
-        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד"
+        "titleHe": "פעולות לתנועות נוער",
+        "contentHe": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+        "titleEn": "Activities for youth",
+        "contentEn": "A variety of activities for youth, along with the option to create personalized activities using AI. Suitable for parents, working youth, people with disabilities, young caregivers, and more"
     },
     "details": {
-        "title": "פעולות לתנועות נוער - הקבוצה",
-        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד"
+        "titleHe": "פעולות לתנועות נוער - הקבוצה",
+        "contentHe": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+        "titleEn": "Activities for youth - group",
+        "contentEn": "A variety of activities for youth, along with the option to create personalized activities using AI. Suitable for parents, working youth, people with disabilities, young caregivers, and more"
     },
     "policy": {
-        "title": "פעולות לתנועות - תנאי שירות",
-        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד"
+        "titleHe": "פעולות לתנועות - תנאי שירות",
+        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+        "titleEn": "Activities for youth - terms of service",
+        "contentEn": "A variety of activities for youth, along with the option to create personalized activities using AI. Suitable for parents, working youth, people with disabilities, young caregivers, and more"
     },
     "content": {
-        "title": "פעולות מוכנות",
-        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד"
+        "titleHe": "פעולות מוכנות",
+        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+        "titleEn": "Activities for youth - available activities",
+        "contentEn": "A variety of activities for youth, along with the option to create personalized activities using AI. Suitable for parents, working youth, people with disabilities, young caregivers, and more"
     },
     "contentActivities": {
-        "title": "פעולות מוכנות",
-        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד"
+        "titleHe": "פעולות מוכנות",
+        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+        "titleEn": "Activities for youth - available activities",
+        "contentEn": "A variety of activities for youth, along with the option to create personalized activities using AI. Suitable for parents, working youth, people with disabilities, young caregivers, and more"
     },
     "contentActivity": {
-        "title": "פעולות מוכנות",
-        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד"
+        "titleHe": "פעולות מוכנות",
+        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+        "titleEn": "Activities for youth - available activities",
+        "contentEn": "A variety of activities for youth, along with the option to create personalized activities using AI. Suitable for parents, working youth, people with disabilities, young caregivers, and more"
     },
     "build": {
-        "title": "פעולות לתנועות נוער - נושא" ,
-        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד"
+        "titleHe": "פעולות לתנועות נוער - נושא" ,
+        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+        "titleEn": "Activities for youth - subject",
+        "contentEn": "A variety of activities for youth, along with the option to create personalized activities using AI. Suitable for parents, working youth, people with disabilities, young caregivers, and more"
     },
     "activity": {
-        "title": "פעולות לתנועות נוער - פעולה",
-        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד"
+        "titleHe": "פעולות לתנועות נוער - פעולה",
+        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+        "titleEn": "Activities for youth - activity",
+        "contentEn": "A variety of activities for youth, along with the option to create personalized activities using AI. Suitable for parents, working youth, people with disabilities, young caregivers, and more"
     },
     "edit": {
-        "title": "ערוך פעולה",
-        "content": "ערוך פעולה"
+        "titleHe": "ערוך פעולה",
+        "content": "ערוך פעולה",
+        "titleEn": "Edit activity",
+        "contentEn": "Edit activity"
     },
     "contactUs": {
-        "title": "פעולות לתנועות נוער - פעולה",
-        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד"
+        "titleHe": "פעולות לתנועות נוער - צרו קשר",
+        "content": "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+        "titleEn": "Activities for youth - contact us",
+        "contentEn": "A variety of activities for youth, along with the option to create personalized activities using AI. Suitable for parents, working youth, people with disabilities, young caregivers, and more"
     }
 }

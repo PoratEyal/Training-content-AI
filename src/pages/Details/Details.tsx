@@ -15,9 +15,9 @@ import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
-import helmet from "../../models/resources/helmet.json";
 import { DETAILS_AD_SLOT } from "../../models/constants/adsSlot";
 import { useTranslation } from "react-i18next";
+import { getContent, getTitle } from "../../utils/helmet";
 
 function Details() {
     const { t, i18n } = useTranslation();
@@ -68,8 +68,8 @@ function Details() {
             path={route.details}
             hasGreenBackground
             hasHeader={{ goBack }}
-            title={t("details.title")}
-            content={helmet.home.content}
+            title={getTitle("details", i18n.language)}
+            content={getContent("details", i18n.language)}
             hesAds={DETAILS_AD_SLOT}
             hasNavBar
             index={false}

@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import policy from "../../models/resources/policy.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
-import helmet from "../../models/resources/helmet.json";
 import FadeEffect from "../../components/FadeEffect/FadeEffect";
+import { getContent, getTitle } from "../../utils/helmet";
+import { useTranslation } from "react-i18next";
 
 function PrivacyPolicy() {
     const navigate = useNavigate();
+    const { i18n } = useTranslation();
 
     const goBack = () => {
         navigate(-1);
@@ -17,8 +19,8 @@ function PrivacyPolicy() {
         <PageLayout
             path={route.privacyPolicy}
             hasHeader={{ goBack, isBlur: true }}
-            title={helmet.policy.title}
-            content={helmet.policy.content}
+            title={getTitle("policy", i18n.language)}
+            content={getContent("policy", i18n.language)}
             index={false}
         >
             <FadeEffect hasFade>
