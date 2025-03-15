@@ -41,12 +41,12 @@ const SavedActivity: React.FC = () => {
 
     return (
         <PageLayout
+            id="savedActivity"
             path={`${route.myactivities}/${subject}`}
             hasGreenBackground
             hasHeader={{ goBack }}
             hesAds={MY_ACTIVITIES_AD_SLOT}
-            title={activity?.subject || ""}
-            content={activity?.subject || ""}
+            title={activity?.subject}
             hasNavBar
             index={false}
         >

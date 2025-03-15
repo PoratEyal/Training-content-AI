@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import helmet from "../../models/resources/helmet.json";
 import route from "../../router/route.json";
 import { useNavigate } from "react-router-dom";
 import { DETAILS_AD_SLOT } from "../../models/constants/adsSlot";
@@ -72,10 +71,9 @@ const ContactUs: React.FC = () => {
 
     return (
         <PageLayout
+            id="contactUs"
             path={route.contactUs}
             hasHeader={{ goBack }}
-            title={helmet.contactUs.title}
-            content={helmet.contactUs.content}
             hesAds={DETAILS_AD_SLOT}
             hasNavBar
         >

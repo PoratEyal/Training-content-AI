@@ -1,6 +1,5 @@
 import React from "react";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import helmet from "../../models/resources/helmet.json";
 import route from "../../router/route.json";
 import { useNavigate } from "react-router-dom";
 import { EDIT_AD_SLOT } from "../../models/constants/adsSlot";
@@ -17,10 +16,9 @@ const Edit: React.FC = () => {
 
     return (
         <PageLayout
+            id="edit"
             path={route.edit}
             hasHeader={{ goBack }}
-            title={helmet.edit.title}
-            content={helmet.edit.content}
             hesAds={EDIT_AD_SLOT}
             index={false}
             hasNavBar

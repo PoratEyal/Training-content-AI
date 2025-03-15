@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useContentContext } from "../../context/ContentContext";
 import { useAuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -8,31 +9,31 @@ import { Activity } from "../../models/types/activity";
 import { SessionKey } from "../../models/enum/storage";
 import Session from "../../utils/sessionStorage";
 import route from "../../router/route.json";
-import PageLayout from "../../components/Layout/PageLayout/PageLayout";
+import { CategoryName } from "../../models/types/movement";
+import { useErrorContext } from "../../context/ErrorContext";
+import msg from "../../models/resources/errorMsg.json";
 import styles from "./BuildActivity.module.css";
-import MainBtn from "../../components/MainBtn/MainBtn";
-import PageLoading from "../../components/Loading/PageLoading/PageLoading";
+import PageLayout from "../../components/Layout/PageLayout/PageLayout";
+import { BUILD_AD_SLOT } from "../../models/constants/adsSlot";
 import CreateYourActivity from "../../components/titles/CreateYourActivity/CreateYourActivity";
+import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import {
     ActivityTimeOptions,
     CategoryOptions,
     ContestOptions,
     PlaceOptions,
-    ToolsOptions,
     ReligionOptions,
+    ToolsOptions,
 } from "../../models/resources/select";
 import SubjectInput from "../../components/SubjectInput/SubjectInput";
-import { CategoryName } from "../../models/types/movement";
-import helmet from "../../models/resources/helmet.json";
-import { useErrorContext } from "../../context/ErrorContext";
-import msg from "../../models/resources/errorMsg.json";
-import LoadingActivity from "../../components/Loading/LoadingActivity/LoadingActivity";
-import { BUILD_AD_SLOT } from "../../models/constants/adsSlot";
-import MoreDetailsInput from "../../components/MoreDetailsInput/MoreDetailsInput";
 import MoreOptionsCollapse from "../../components/MoreOptionsCollapse/MoreOptionsCollapse";
+import MoreDetailsInput from "../../components/MoreDetailsInput/MoreDetailsInput";
+import MainBtn from "../../components/MainBtn/MainBtn";
+import LoadingActivity from "../../components/Loading/LoadingActivity/LoadingActivity";
 
 function BuildActivity() {
+    const { t, i18n } = useTranslation();
     const { handleError } = useErrorContext();
     const { data, clearMainActivity, updateMainActivity } = useContentContext();
     const { isLoggedIn, currentUser, loading } = useAuthContext();
@@ -52,6 +53,9 @@ function BuildActivity() {
     const lockRef = useRef(true);
 
     const [hasAlert, setHasAlert] = useState(false);
+
+    // This will be true if the current language is Hebrew, false otherwise
+    const isHebrew = i18n.language === "he";
 
     useEffect(() => {
         const updateUser = async () => {
@@ -96,7 +100,6 @@ function BuildActivity() {
     }, []);
 
     useEffect(() => {
-        //set disabled button
         if (loading) setIsDisabled(true);
         setIsDisabled(subject === "" || place === "" || time === "" ? true : false);
     }, [loading, subject, place, time]);
@@ -137,11 +140,10 @@ function BuildActivity() {
 
     return (
         <PageLayout
+            id="build"
             path={route.build}
             hasGreenBackground
             hasHeader={{ goBack }}
-            title={helmet.build.title}
-            content={helmet.home.content}
             hesAds={BUILD_AD_SLOT}
             index={false}
             hasNavBar
@@ -150,7 +152,7 @@ function BuildActivity() {
 
             <div className={styles.build_form_container}>
                 <img
-                    className={styles.path_img}
+                    className={isHebrew ? styles.path_img : `${styles.path_img} ${styles.ltr_path}`}
                     title="Yellow sign with heart"
                     alt="Yellow sign with heart"
                     src={"path.svg"}
@@ -167,14 +169,14 @@ function BuildActivity() {
                         <section className={styles.build_container}>
                             <section className={styles.build_content}>
                                 <SelectDetails
-                                    placeholder="סוג הפעולה"
+                                    placeholder={t("buildActivity.category.label")}
                                     obj={category}
                                     setObj={setCategory}
                                     data={CategoryOptions(data?.movement?.categories || [])}
                                 />
 
                                 <SubjectInput
-                                    placeholder="נושא"
+                                    placeholder={t("buildActivity.subject.placeholder")}
                                     setSubject={setSubject}
                                     subject={subject}
                                     category={category as CategoryName}
@@ -182,59 +184,64 @@ function BuildActivity() {
                                 />
 
                                 <SelectDetails
-                                    placeholder="מיקום"
+                                    placeholder={t("buildActivity.place.label")}
                                     obj={place}
                                     setObj={setPlace}
                                     data={PlaceOptions}
                                 />
 
                                 <SelectDetails
-                                    placeholder="זמן"
+                                    placeholder={t("buildActivity.time.label")}
                                     obj={time}
                                     setObj={setTime}
                                     data={ActivityTimeOptions}
                                 />
 
-                                <MoreOptionsCollapse>
+                                <MoreOptionsCollapse text={t("buildActivity.moreOptions.title")}>
                                     <SelectDetails
-                                        placeholder="ציוד"
+                                        placeholder={t("buildActivity.tools.label")}
                                         obj={tools}
                                         setObj={setTools}
                                         data={ToolsOptions}
                                     />
 
                                     <SelectDetails
-                                        placeholder="תחרות וקבוצות"
+                                        placeholder={t("buildActivity.contest.label")}
                                         obj={contest}
                                         setObj={setContest}
                                         data={ContestOptions}
                                     />
 
                                     <SelectDetails
-                                        placeholder="שבת"
+                                        placeholder={t("buildActivity.religion.label")}
                                         obj={religion}
                                         setObj={setReligion}
                                         data={ReligionOptions}
                                     />
 
                                     <MoreDetailsInput
-                                        placeholder="מידע נוסף"
+                                        placeholder={t("buildActivity.moreDetails.placeholder")}
                                         text={info}
                                         setText={setInfo}
                                     />
                                 </MoreOptionsCollapse>
 
-                                <div className={styles.btn_div}>
+                                <div
+                                    className={
+                                        isHebrew
+                                            ? `${styles.btn_div} ${styles.rtl_btn}`
+                                            : styles.btn_div
+                                    }
+                                >
                                     <MainBtn
                                         isDisabled={isDisabled}
                                         height={42}
-                                        text={"הצעה לפעולה"}
+                                        text={t("buildActivity.submit")}
                                         func={submitHandler}
                                     ></MainBtn>
                                     {hasAlert ? (
                                         <div className={styles.input_alert}>
-                                            שימו לב! מקור הפעולות הינו מערכת בינה מלאכותית, יכול
-                                            להיות שנושאים מסויימים עדיין לא מעודכנים
+                                            {t("buildActivity.alert")}
                                         </div>
                                     ) : null}
                                 </div>
@@ -242,8 +249,8 @@ function BuildActivity() {
                         </section>
                     )}
                 </div>
-                {clicked ? <LoadingActivity /> : null}
             </div>
+            {clicked ? <LoadingActivity /> : null}
         </PageLayout>
     );
 }

@@ -49,12 +49,11 @@ function PopularActivities() {
 
     return (
         <PageLayout
+            id="popularActivities"
             path={route.popularActivities}
             hasHeader={{ goBack }}
             hasNavBar
             hasGreenBackground
-            title="הפעולות הפופולריות"
-            content="הפעולות הפופולריות ביותר - גלו את 10 הפעולות המובילות לפעילות קבוצתית, חינוכית ומהנה בתנועות נוער ובקבוצות שונות"
             hesAds={ACTIVITY_AD_SLOT}
         >
             <TopActivities />
