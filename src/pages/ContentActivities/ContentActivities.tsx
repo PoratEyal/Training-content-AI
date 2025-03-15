@@ -10,9 +10,7 @@ import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
 import { StaticActivities } from "../../models/types/activity";
-import helmet from "../../models/resources/helmet.json";
 import { useTranslation } from "react-i18next";
-import { getSubjectContent, getSubjectTitle } from "../../utils/helmet";
 
 const ContentActivities: React.FC = () => {
   const navigate = useNavigate();
@@ -52,17 +50,17 @@ const ContentActivities: React.FC = () => {
 
   return (
     <PageLayout
+      id="contentActivities"
       path={contentActivitiesPath}
       hasHeader={{ goBack }}
       hasNavBar
       hasGreenBackground
-      title={getSubjectTitle(subject?.metaTitle, i18n.language)}
-      content={getSubjectContent(subject?.metaDescription, i18n.language)}
+      title={subject?.metaTitle}
       hesAds={CONTENT_ACTIVITY_AD_SLOT}
     >
       <ReadyContentName
         isMany
-        subject={subject?.metaTitle || helmet.contentActivities.titleHe}
+        subject={subject?.metaTitle || ""}
         isLoading={isLoading}
       />
 

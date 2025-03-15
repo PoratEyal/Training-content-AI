@@ -8,7 +8,6 @@ import ReadyContent from "../../components/titles/ReadyContent/ReadyContent";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
-import { getContent, getTitle } from "../../utils/helmet";
 import { Icons } from "../../components/Icons";
 import { useTranslation } from "react-i18next";
 
@@ -26,14 +25,13 @@ function Content() {
 
   return (
     <PageLayout
+      id="content"
       path={route.content}
       hasHeader={{ goBack }}
       hasNavBar
       hesAds={ACTIVITY_AD_SLOT}
       index={true}
       hasGreenBackground
-      title={getTitle("content", i18n.language)}
-      content={getContent("content", i18n.language)}
     >
       <ReadyContent />
 

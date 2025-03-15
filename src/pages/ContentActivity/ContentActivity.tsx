@@ -12,11 +12,9 @@ import { useStaticContentContext } from "../../context/StaticContentContext";
 import { StaticActivities } from "../../models/types/activity";
 import { useCallback, useEffect, useState } from "react";
 import { fetchGetStaticActivity } from "../../utils/fetch";
-import helmet from "../../models/resources/helmet.json";
 import { useAuthContext } from "../../context/AuthContext";
 import { convertActivityType } from "../../utils/activity";
 import MoreOptionsBtn from "../../components/MoreOptionsBtn/MoreOptionsBtn";
-import { getSubjectContent, getSubjectTitle } from "../../utils/helmet";
 import { useTranslation } from "react-i18next";
 
 function ContentActivity() {
@@ -71,15 +69,15 @@ function ContentActivity() {
 
     return (
         <PageLayout
+            id="contentActivity"
             path={contentActivityPath}
             hasGreenBackground
             hasHeader={{ goBack }}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
-            title={getSubjectTitle(activity?.metaTitle, i18n.language)}
-            content={getSubjectContent(activity?.metaDescription, i18n.language)}
+            title={activity?.metaTitle}
             hasNavBar
         >
-            <ActivityReady subject={activity?.title || helmet.contentActivity.titleEn} />
+            <ActivityReady subject={activity?.title || ""} />
             {isActivityLoading ? (
                 <section className={styles.activity_data_container}>
                     <PageLoading />

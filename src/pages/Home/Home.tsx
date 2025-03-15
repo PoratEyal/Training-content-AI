@@ -11,7 +11,6 @@ import Session from "../../utils/sessionStorage";
 import { SessionKey } from "../../models/enum/storage";
 import StartBtn from "../../components/StartBtn/StartBtn";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
-import helmet from "../../models/resources/helmet.json";
 import { useCookiesContext } from "../../context/CookiesContext";
 import { SignInStatus } from "../../models/enum/registrationStatus";
 import { HOME_AD_SLOT } from "../../models/constants/adsSlot";
@@ -88,13 +87,12 @@ function Home() {
 
     return (
         <PageLayout
+            id="home"
             path={route.home}
-            title={getTitle("home", i18n.language)}
-            content={getContent("home", i18n.language)}
-            hasHeader={{}}
+            hasHeader={{}} /** -> show only the profile image **/
             hesAds={HOME_AD_SLOT}
-            hasNavBar
             index={true}
+            hasNavBar
         >
             <div className={isHebrew ? styles.languageSwitcherHebrew : styles.languageSwitcher}>
                 <LanguageSwitcherPopup />

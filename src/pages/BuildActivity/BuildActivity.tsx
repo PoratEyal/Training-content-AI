@@ -31,8 +31,6 @@ import MoreOptionsCollapse from "../../components/MoreOptionsCollapse/MoreOption
 import MoreDetailsInput from "../../components/MoreDetailsInput/MoreDetailsInput";
 import MainBtn from "../../components/MainBtn/MainBtn";
 import LoadingActivity from "../../components/Loading/LoadingActivity/LoadingActivity";
-import helmet from "../../models/resources/helmet.json";
-import { getContent, getTitle } from "../../utils/helmet";
 
 function BuildActivity() {
     const { t, i18n } = useTranslation();
@@ -142,11 +140,10 @@ function BuildActivity() {
 
     return (
         <PageLayout
+            id="build"
             path={route.build}
             hasGreenBackground
             hasHeader={{ goBack }}
-            title={getTitle("build", i18n.language)}
-            content={getContent("build", i18n.language)}
             hesAds={BUILD_AD_SLOT}
             index={false}
             hasNavBar
