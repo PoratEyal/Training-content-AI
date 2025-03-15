@@ -5,7 +5,7 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import route from "../../router/route.json";
 import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
-import ActivityOutputStatic from "../../components/ActivityOutput/ActivityOutputStatic";
+import OutputTest from "../../components/ActivityOutput/OutputTest";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
@@ -25,7 +25,7 @@ function ContentActivity() {
     useFetchSubjectsData();
     const [isActivityLoading, setIsActivityLoading] = useState<boolean>(isLoading);
     const [activity, setActivity] = useState<StaticActivities | undefined>();
-    const { isLoggedIn } = useAuthContext();
+    const { isLoggedIn, currentUser } = useAuthContext();
 
     const contentActivityPath = `${route.content}/${activityId}/${contentId}`;
 
@@ -84,10 +84,11 @@ function ContentActivity() {
             ) : activity ? (
                 <section className={styles.activity_data_container}>
                     <article>
-                        <ActivityOutputStatic activity={activity.content} />
+                        <OutputTest activity={activity.content} />
                         <MoreOptionsBtn
-                            activity={convertActivityType(activity)}
-                            // hasSave={isLoggedIn}
+                            activity={convertActivityType(activity, currentUser?.id || undefined)}
+                            hasSave={isLoggedIn}
+                            hasEdit={isLoggedIn}
                             hasCopy
                             hasShare
                         />

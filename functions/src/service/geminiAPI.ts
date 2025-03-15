@@ -10,6 +10,7 @@ import {
     getTools,
     promptPerGrade,
 } from "../utils/prompt";
+import { getPromptAndDetailsForSpecialKids } from "../utils/specialKids";
 
 const genAI = new GoogleGenerativeAI(defineString("API_KEY").value() || "");
 
@@ -22,6 +23,9 @@ async function generateContent(prompt: string): Promise<string> {
 }
 
 const getPromptAndDetails = (activityDetials: ActivityDetails): [string, string[]] => {
+    if (activityDetials.movement === "krembo")
+        return getPromptAndDetailsForSpecialKids(activityDetials);
+
     const { category, grade, time, subject, amount, gender, place } = activityDetials;
     const { religion, contest, tools: activityTools, info } = activityDetials;
 

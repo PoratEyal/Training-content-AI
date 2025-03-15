@@ -74,6 +74,20 @@ export const Movements = {
             },
         ],
     } as Movement,
+    krembo: {
+        name: "krembo",
+        title: "כנפיים של קרמבו",
+        categories: [
+            {
+                name: "contant",
+                title: "פעילות",
+            },
+            {
+                name: "playTime",
+                title: "משחק",
+            },
+        ],
+    } as Movement,
     bitar: {
         name: "bitar",
         title: "נוער לאומי ביתר",

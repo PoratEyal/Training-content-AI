@@ -11,9 +11,10 @@ type SelectDetailsProps = {
 };
 
 function SelectDetails({ data, placeholder, obj, setObj }: SelectDetailsProps) {
-  const [selected, setIsSelected] = useState(!!obj);
+  const [selected, setIsSelected] = useState(obj ? true : false);
+  const textColor = selected ? "#333335" : "#8b8b8b";
   const { i18n } = useTranslation();
-  const isHebrew = i18n.language === "he"; // or i18n.dir() === "rtl"
+  const isHebrew = i18n.language === "he";
 
   useEffect(() => {
     setIsSelected(!!obj);
@@ -26,11 +27,10 @@ function SelectDetails({ data, placeholder, obj, setObj }: SelectDetailsProps) {
 
   return (
     <div
-      // Conditionally apply .ltr_div if not Hebrew
       className={!isHebrew ? `${styles.input_div} ${styles.ltr_div}` : styles.input_div}
     >
       <select
-        style={{ color: selected ? "#333335" : "#8b8b8b" }}
+        style={{ color: textColor }}
         value={obj}
         onChange={(e) => handleChange(e.target.value)}
         aria-label={placeholder}

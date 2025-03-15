@@ -47,21 +47,20 @@ function Activity() {
                 hasNavBar
                 index={false}
             >
-                <ActivityReady subject={mainActivity.subject} />
+                <ActivityReady subject={mainActivity?.subject} />
                 <section className={styles.activity_data_container}>
                     <article>
                         <ActivityOutput
-                            activity={mainActivity.activity}
+                            activity={mainActivity?.activity}
                             activityRef={activityRef}
                         />
-                        {isLoggedIn ? (
-                            <MoreOptionsBtn
-                                activity={mainActivity}
-                                hasCopy
-                                hasShare
-                                hasSave
-                            />
-                        ) : null}
+                        <MoreOptionsBtn
+                            activity={mainActivity}
+                            hasSave={isLoggedIn}
+                            hasEdit={isLoggedIn}
+                            hasShare
+                            hasCopy
+                        />
                     </article>
                     <div className={styles.padding} />
                 </section>

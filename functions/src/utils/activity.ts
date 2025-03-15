@@ -1,12 +1,13 @@
 import { Activity } from "../model/types/activity";
 import { GetActivityRequest } from "../model/types/request";
-import { getUpdateAt } from "./time";
+import { getCurrentTime } from "./time";
 
 export const initActivityFromAI = (text: string, data: GetActivityRequest, userId: string) => {
     const { category, subject, time, amount, grade, gender, place, religion, contest, tools, info } = data;
     return {
         id: "ID",
-        updatedAt: getUpdateAt(),
+        createdAt: getCurrentTime(),
+        savedAt: getCurrentTime(),
         fetchCount: 0,
         likes: 0,
         activity: text,

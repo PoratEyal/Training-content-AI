@@ -102,3 +102,9 @@ export type UpdateIsMsgResponse = {
     result: Response;
     message?: string;
 }
+
+export type AddStaticActivityResponse = {
+    result: Response;
+    activity?: any;
+    message?: string;
+};

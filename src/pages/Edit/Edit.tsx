@@ -3,16 +3,13 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import helmet from "../../models/resources/helmet.json";
 import route from "../../router/route.json";
 import { useNavigate } from "react-router-dom";
-import { DETAILS_AD_SLOT } from "../../models/constants/adsSlot";
+import { EDIT_AD_SLOT } from "../../models/constants/adsSlot";
 import RichTextEditor from "../../components/RichTextEditor/RichTextEditor";
-import { SessionKey } from "../../models/enum/storage";
-import Session from "../../utils/sessionStorage";
-import { Activity } from "../../models/types/activity";
-
+import { useContentContext } from "../../context/ContentContext";
 
 const Edit: React.FC = () => {
     const navigate = useNavigate();
-    const activity: Activity | undefined = Session.get(SessionKey.ACTIVITY);
+    const { mainActivity } = useContentContext();
 
     const goBack = () => {
         navigate(-1);
@@ -24,11 +21,11 @@ const Edit: React.FC = () => {
             hasHeader={{ goBack }}
             title={helmet.edit.title}
             content={helmet.edit.content}
-            hesAds={DETAILS_AD_SLOT}
+            hesAds={EDIT_AD_SLOT}
             index={false}
             hasNavBar
         >
-            <RichTextEditor activity={activity}/>
+            <RichTextEditor activity={mainActivity} />
         </PageLayout>
     );
 };

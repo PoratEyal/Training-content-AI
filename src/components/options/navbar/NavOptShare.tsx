@@ -1,6 +1,6 @@
 import styles from "./navbar.module.css";
 import { WhatsappShareButton } from "react-share";
-import { formatInviteFriend, formatWhatsUp } from "../../../utils/format";
+import { formatWhatsUp } from "../../../utils/format";
 import { WEBSITE_URL } from "../../../models/constants";
 import { useLocation } from "react-router-dom";
 import route from "../../../router/route.json";
@@ -15,7 +15,6 @@ const NavOptShare = () => {
         if (location.pathname === route.activity && mainActivity?.activity) {
             return formatWhatsUp(mainActivity.activity);
         }
-        return formatInviteFriend();
     };
 
     return (

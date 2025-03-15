@@ -2,7 +2,8 @@ import { CategoryName } from "./movement";
 
 export type Activity = {
     id: string;
-    updatedAt: string;
+    createdAt: string;
+    savedAt: string;
     fetchCount: number;
     likes: number;
     category: string;
@@ -22,6 +23,7 @@ export type Activity = {
 };
 
 export type ActivityDetails = {
+    movement: string;
     category: CategoryName;
     subject: string;
     time: string;

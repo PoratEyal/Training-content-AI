@@ -1,0 +1,1 @@
+export const SAVE_COOLDOWN = 500; // 0.5 seconds in milliseconds

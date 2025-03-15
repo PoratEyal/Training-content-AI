@@ -2,16 +2,15 @@ import React from "react";
 import styles from "./ActivityOutput.module.css";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import CustomBr from "./CustomBr";
 import "./Markdown.css";
 
-type ActivityOutputProps = {
+type OutputTestProps = {
     activity: string;
     activityRef?: React.MutableRefObject<HTMLElement>;
 };
 
-//TODO: whats going on here?
-function ActivityOutput({ activity, activityRef }: ActivityOutputProps) {
+//TODO: to delete
+function OutputTest({ activity, activityRef }: OutputTestProps) {
     const activityParts = activity.split("\\n");
 
     return (
@@ -25,7 +24,7 @@ function ActivityOutput({ activity, activityRef }: ActivityOutputProps) {
                         >
                             {part}
                         </ReactMarkdown>
-                        {index < activityParts.length - 1 && <CustomBr />}
+                        {index < activityParts.length - 1 && <div style={{ marginBottom: "5px" }} aria-hidden="true"></div>}
                     </React.Fragment>
                 ))}
             </section>
@@ -33,4 +32,4 @@ function ActivityOutput({ activity, activityRef }: ActivityOutputProps) {
     );
 }
 
-export default ActivityOutput;
+export default OutputTest;

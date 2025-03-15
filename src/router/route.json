@@ -11,6 +11,7 @@
     "contentActivities": "/content/:activityId",
     "contentActivity": "/content/:activityId/:contentId",
     "edit": "/edit",
+    "contactUs": "/contactUs",
     "status": "/status",
     "admin": "/admin/msg",
     "all": "*"
