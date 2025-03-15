@@ -20,7 +20,6 @@ import { useSaveContext } from "../../context/SavedContext";
 import LanguageSwitcherPopup from "../../components/LanguageSwitcherPopup/LanguageSwitcherPopup";
 import { useTranslation } from "react-i18next";
 import styles from "./Home.module.css";
-import { getContent, getTitle } from "../../utils/helmet";
 
 function Home() {
     const { t, i18n } = useTranslation();

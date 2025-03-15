@@ -4,10 +4,10 @@ import route from "../../router/route.json";
 import { Link, useNavigate } from "react-router-dom";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
-import TopActivities from "../titles/TopActivities/TopActivities";
+import TopActivities from "../../components/titles/TopActivities/TopActivities";
 import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
 import { StaticActivities } from "../../models/types/activity";
-import PageLoading from "../Loading/PageLoading/PageLoading";
+import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 
 function PopularActivities() {
     const navigate = useNavigate();

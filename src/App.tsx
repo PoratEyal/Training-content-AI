@@ -17,7 +17,7 @@ import BuildActivity from "./pages/BuildActivity/BuildActivity";
 import ContentActivity from "./pages/ContentActivity/ContentActivity";
 import ContentActivities from "./pages/ContentActivities/ContentActivities";
 import { StaticContentProvider } from "./context/StaticContentContext";
-import PopularActivities from "./components/PopularActivities/PopularActivities.tsx";
+import PopularActivities from "./pages/PopularActivities/PopularActivities.tsx";
 import SaveActivity from "./pages/SavedActivity/SavedActivity";
 import SavedActivities from "./pages/SavedActivities/SavedActivities";
 import { CookiesProvider } from "./context/CookiesContext";
