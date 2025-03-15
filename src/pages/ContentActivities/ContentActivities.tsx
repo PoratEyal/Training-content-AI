@@ -11,9 +11,8 @@ import { useStaticContentContext } from "../../context/StaticContentContext";
 import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
 import { StaticActivities } from "../../models/types/activity";
 import helmet from "../../models/resources/helmet.json";
-
-// 1) import the translation hook
 import { useTranslation } from "react-i18next";
+import { getSubjectContent, getSubjectTitle } from "../../utils/helmet";
 
 const ContentActivities: React.FC = () => {
   const navigate = useNavigate();
@@ -26,8 +25,7 @@ const ContentActivities: React.FC = () => {
     activityId || ""
   );
 
-  // 2) Destructure the translator
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const goBack = () => {
     navigate(route.content);
@@ -58,13 +56,13 @@ const ContentActivities: React.FC = () => {
       hasHeader={{ goBack }}
       hasNavBar
       hasGreenBackground
-      title={subject?.metaTitle || helmet.contentActivities.title}
-      content={subject?.metaDescription || helmet.contentActivities.content}
+      title={getSubjectTitle(subject?.metaTitle, i18n.language)}
+      content={getSubjectContent(subject?.metaDescription, i18n.language)}
       hesAds={CONTENT_ACTIVITY_AD_SLOT}
     >
       <ReadyContentName
         isMany
-        subject={subject?.metaTitle || helmet.contentActivities.title}
+        subject={subject?.metaTitle || helmet.contentActivities.titleHe}
         isLoading={isLoading}
       />
 

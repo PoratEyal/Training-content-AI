@@ -14,6 +14,7 @@ import React, { useState } from "react";
 import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
 import SavedActivityRow from "../../components/SavedActivityRow/SavedActivityRow";
 import { useTranslation } from "react-i18next";
+import { getContent, getTitle } from "../../utils/helmet";
 
 const SavedActivities: React.FC = () => {
   const navigate = useNavigate();
@@ -55,8 +56,8 @@ const SavedActivities: React.FC = () => {
             hesAds={MY_ACTIVITIES_AD_SLOT}
             index={false}
             hasGreenBackground
-            title={helmet.content.title}
-            content={helmet.home.content}
+            title={getTitle("home", i18n.language)}
+            content={getContent("home", i18n.language)}
         >
             <MyActivitiesTitle />
             <article className={styles.content_article}>
