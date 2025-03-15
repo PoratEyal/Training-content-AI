@@ -1,18 +1,15 @@
 {
   "home": {
     "slogan": "Tailored, Simple and Fast 🤟",
-    "startAction": "Create Actions",
+    "startAction": "Create Activity",
     "aboutText": "ActivityWiz is a platform for creating youth activities. You can choose from a library of pre-made activities or use artificial intelligence to generate custom activities that perfectly fit your needs. The site is designed for educators seeking fresh ideas and innovative ways to enrich educational and social experiences.",
     "moreOptions": "More Options"
   },
   "continueWithAI": {
-    "advanced1": "Advanced",
-    "advanced2": "Advanced",
-    "forActions": "for Actions",
-    "withPrefix1": "with",
-    "withPrefix2": "with",
-    "ai1": "AI",
-    "ai2": "AI"
+    "advanced": "Advancing",
+    "forActions": "to activities",
+    "withPrefix": "with",
+    "ai": "AI"
   },
   "AboutUsCollapse": {
     "title": "About Us"
