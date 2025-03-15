@@ -9,7 +9,6 @@ import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import { useAuthContext } from "../../context/AuthContext";
 import MoreOptionsBtn from "../../components/MoreOptionsBtn/MoreOptionsBtn";
-import { getContent, getTitle } from "../../utils/helmet";
 import { useTranslation } from "react-i18next";
 
 function Activity() {
@@ -40,11 +39,10 @@ function Activity() {
     return (
         <>
             <PageLayout
+                id="activity"
                 path={route.activity}
                 hasGreenBackground
                 hasHeader={{ goBack }}
-                title={getTitle("activity", i18n.language)}
-                content={getContent("activity", i18n.language)}
                 hesAds={ACTIVITY_AD_SLOT}
                 hasNavBar
                 index={false}

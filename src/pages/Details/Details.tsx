@@ -17,7 +17,6 @@ import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
 import { DETAILS_AD_SLOT } from "../../models/constants/adsSlot";
 import { useTranslation } from "react-i18next";
-import { getContent, getTitle } from "../../utils/helmet";
 
 function Details() {
     const { t, i18n } = useTranslation();
@@ -65,11 +64,10 @@ function Details() {
 
     return (
         <PageLayout
+            id="details"
             path={route.details}
             hasGreenBackground
             hasHeader={{ goBack }}
-            title={getTitle("details", i18n.language)}
-            content={getContent("details", i18n.language)}
             hesAds={DETAILS_AD_SLOT}
             hasNavBar
             index={false}

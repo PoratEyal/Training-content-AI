@@ -4,7 +4,6 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { useNavigate } from "react-router-dom";
 import MyActivitiesTitle from "../../components/titles/MyActivitiesTitle/MyActivitiesTitle";
-import helmet from "../../models/resources/helmet.json";
 import { MY_ACTIVITIES_AD_SLOT } from "../../models/constants/adsSlot";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import DontHaveActivity from "../../components/DontHaveActivity/DontHaveActivity";
@@ -13,14 +12,9 @@ import { Activity } from "../../models/types/activity";
 import React, { useState } from "react";
 import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
 import SavedActivityRow from "../../components/SavedActivityRow/SavedActivityRow";
-import { useTranslation } from "react-i18next";
-import { getContent, getTitle } from "../../utils/helmet";
 
 const SavedActivities: React.FC = () => {
   const navigate = useNavigate();
-
-  const { i18n } = useTranslation();
-  const isHebrew = i18n.language === "he";
 
   const { savedActivity, isLoading, useFetchSavedData, deleteActivity } = useSaveContext();
   useFetchSavedData();
@@ -50,14 +44,13 @@ const SavedActivities: React.FC = () => {
 
     return (
         <PageLayout
+            id="home"
             path={route.myactivities}
             hasHeader={{ goBack }}
             hasNavBar
             hesAds={MY_ACTIVITIES_AD_SLOT}
             index={false}
             hasGreenBackground
-            title={getTitle("home", i18n.language)}
-            content={getContent("home", i18n.language)}
         >
             <MyActivitiesTitle />
             <article className={styles.content_article}>

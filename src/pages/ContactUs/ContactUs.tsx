@@ -9,11 +9,8 @@ import { useErrorContext } from "../../context/ErrorContext";
 import emailjs from "emailjs-com";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { Icons } from "../../components/Icons";
-import { getContent, getTitle } from "../../utils/helmet";
-import { useTranslation } from "react-i18next";
 
 const ContactUs: React.FC = () => {
-    const { i18n } = useTranslation();
     const navigate = useNavigate();
     const { currentUser } = useAuthContext();
     const { handleSuccess } = useErrorContext();
@@ -74,10 +71,9 @@ const ContactUs: React.FC = () => {
 
     return (
         <PageLayout
+            id="contactUs"
             path={route.contactUs}
             hasHeader={{ goBack }}
-            title={getTitle("contactUs", i18n.language)}
-            content={getContent("contactUs", i18n.language)}
             hesAds={DETAILS_AD_SLOT}
             hasNavBar
         >
