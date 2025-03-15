@@ -1,7 +1,8 @@
 import styles from "./dropdown.module.css";
-import policy from "../../../models/resources/policy.json";
 import { Icons } from "../../Icons";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import route from "../../../router/route.json";
 
 type ContactUsProps = {
   handleClose: () => void;
@@ -10,15 +11,11 @@ type ContactUsProps = {
 function DropOptContactUs({ handleClose }: ContactUsProps) {
   const { t } = useTranslation();
 
-  const contactUs = () => {
-    const emailLink = document.createElement("a");
-    emailLink.href = `mailto:${policy.p10.email}`;
-    emailLink.click();
-  };
+  const navigate = useNavigate();
 
   const handleClick = () => {
-    contactUs();
-    handleClose();
+      navigate(route.contactUs);
+      handleClose();
   };
 
   return (

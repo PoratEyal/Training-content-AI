@@ -17,7 +17,6 @@ const MoreOptionsCollapse: React.FC<MoreOptionsCollapseProps> = ({ children, tex
 
     const handleCollapse = () => {
         toggle();
-        //TODO: add scrolling
     };
 
     return (

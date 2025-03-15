@@ -1,16 +1,17 @@
-export const formatWhatsUp = (text: string) => {
-    const title = "יצרתי את הפעולה הזאת בעזרת:";
+import { WEBSITE_URL } from "../models/constants";
+
+export const formatWhatsUp = (text: string | undefined) => {
+    if (!text) return "מצאתי אתר שבונה פעולות בעזרת AI, כדאי לנסות!"
+    const title = "הפעולה נוצרה בעזרת:"
     const br = "\n";
-    const result = text.replace(/\*\*/g, "*") + br + br + title;
+    const result = text.replace(/\**\*/g, "*") + br + br + title;
     return result;
 };
 
-export const formatInviteFriend = () => {
-    return "מצאתי אתר שבונה פעולות בעזרת AI, כדאי לנסות!"
-};
-
 export const formatCopy = (text: string) => {
-    const result = text.replace(/\**\*/g, "");
+    const title = "הפעולה נוצרה בעזרת:"
+    const br = "\n";
+    const result = text.replace(/\**\*/g, "") + br + br + title + br + WEBSITE_URL;
     return result;
 };
 
@@ -65,6 +66,7 @@ export const  convertContentToHTML = (text: string) => {
     return `<div dir="rtl">\n${html.join('\n')}\n</div>`;
 }
 
+//TODO: handle / <command i>
 export const convertHTMLToContent = (html: string) => {
     // First normalize <br> tags and replace them with newlines
     html = html.replace(/<br\s*\/?>/gi, '\n');
@@ -105,3 +107,19 @@ export const convertHTMLToContent = (html: string) => {
 
     return html;
 }
+
+export const compareNormalizedStrings = (text1: string, text2: string): boolean => {
+    // Function to normalize a string by trimming and removing special characters
+    const normalizeString = (str: string): string => {
+        return str
+            .trim() // Remove leading/trailing whitespace
+            .replace(/[?!.,\/#!$%\^&\*;:{}=\-_`~()]/g, "") // Remove special characters
+            .replace(/\s+/g, ""); // Remove all whitespace
+    };
+
+    // Normalize both strings and compare them
+    const normalized1 = normalizeString(text1);
+    const normalized2 = normalizeString(text2);
+    
+    return normalized1 === normalized2;
+};

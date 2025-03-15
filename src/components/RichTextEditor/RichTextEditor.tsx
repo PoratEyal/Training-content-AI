@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./RichTextEditor.module.css";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
@@ -8,14 +8,23 @@ import { fetchSaveActivity } from "../../utils/fetch";
 import { useSaveContext } from "../../context/SavedContext";
 import { Activity } from "../../models/types/activity";
 import { updateActivityWithContent } from "../../utils/activity";
+import { useErrorContext } from "../../context/ErrorContext";
+import { useContentContext } from "../../context/ContentContext";
 import "./RichTextEditor.css";
+import { SAVE_COOLDOWN } from "../../models/constants/time";
 
 type RichTextEditorProps = {
     activity: Activity | undefined;
 };
 
 const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
-    const { getSavedActivities } = useSaveContext()
+    const { getSavedActivities } = useSaveContext();
+    const { updateMainActivity } = useContentContext();
+    const { handleSuccess, handleError } = useErrorContext();
+    const [isLimitExceeded, setIsLimitExceeded] = useState<boolean>(false);
+    const [isDisabled, setIsDisabled] = useState<boolean>(false);
+    const MAX_CHARS = 3000;
+
 
     const editor = useEditor({
         extensions: [StarterKit],
@@ -24,22 +33,63 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
             attributes: {
                 class: styles.editorContent,
             },
+            handleKeyDown: (view, event) => {
+                const text = view.state.doc.textContent;
+                // Allow deletion and special keys
+                if (
+                    event.key === "Backspace" ||
+                    event.key === "Delete" ||
+                    event.key === "ArrowLeft" ||
+                    event.key === "ArrowRight" ||
+                    event.key === "ArrowUp" ||
+                    event.key === "ArrowDown" ||
+                    event.ctrlKey ||
+                    event.metaKey
+                ) {
+                    setIsLimitExceeded(false);
+                    return false;
+                }
+
+                if (text.length >= MAX_CHARS) {
+                    setIsLimitExceeded(true);
+                    return true; // Prevent input
+                }
+                setIsLimitExceeded(false);
+                return false; // Allow input
+            },
         },
     });
 
-    const handleClick = async () => {
+    const handleClickSave = async () => {
         const htmlContent = editor?.getHTML();
         if (htmlContent) {
-            const convertedContent = convertHTMLToContent(htmlContent);
-            await fetchSaveActivity(updateActivityWithContent(activity, convertedContent));
-            await getSavedActivities();
+            try {
+                setIsDisabled(true);
+                setTimeout(() => {
+                    // prevent DDoS attacks
+                    setIsDisabled(false);
+                }, SAVE_COOLDOWN);
+                handleSuccess("הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי");
+                const convertedContent = convertHTMLToContent(htmlContent);
+                const newUpdatedActivity = updateActivityWithContent(activity, convertedContent);
+                const res = await fetchSaveActivity(newUpdatedActivity);
+                updateMainActivity({ ...newUpdatedActivity, id: res.activity.id } as Activity);
+                await getSavedActivities();
+            } catch (error) {
+                handleError("הפעולה לא נשמרה, אנא נסו שנית");
+            }
         }
     };
 
     return (
         <section className={styles.container}>
             <div className={styles.toolbar}>
-                <button onClick={handleClick} className={styles.saveButton} title="Save">
+                <button
+                    onClick={handleClickSave}
+                    disabled={isDisabled}
+                    className={styles.saveButton}
+                    title="Save"
+                >
                     שמירה לפעולות שלי
                 </button>
                 <div className={styles.separator}></div>
@@ -67,6 +117,11 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
                 </button>
             </div>
             <EditorContent editor={editor} className={styles.editor} />
+            <div className={styles.charCounter}>
+                {isLimitExceeded ? (
+                    <span className={styles.charLimitWarning}>הגעת למגבלת התווים האפשרית</span>
+                ) : null}
+            </div>
         </section>
     );
 };

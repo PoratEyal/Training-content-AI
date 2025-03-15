@@ -38,7 +38,7 @@ const MoreOptionsBtn: React.FC<MoreOptionsBtnProps> = ({
                     {hasCopy ? <CopyBtn activity={activity} /> : null}
                     {hasShare ? <ShareBtn activity={activity} /> : null}
                     {hasSave ? <SaveBtn activity={activity} /> : null}
-                    {hasEdit ? <EditBtn /> : null}
+                    {hasEdit ? <EditBtn activity={activity} /> : null}
                 </div>
             </div>
         </div>

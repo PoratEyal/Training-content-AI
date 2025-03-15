@@ -3,6 +3,7 @@ import styles from "./CopyBtn.module.css";
 import { Activity } from "../../../../models/types/activity";
 import { FaRegCopy, FaCopy } from "react-icons/fa6";
 import { useErrorContext } from "../../../../context/ErrorContext";
+import { formatCopy } from "../../../../utils/format";
 
 type CopyBtnProps = {
     activity: Activity;
@@ -25,7 +26,7 @@ const CopyBtn: React.FC<CopyBtnProps> = ({ activity }) => {
     }, [isCopied]);
 
     const handleClick = () => {
-        const textToCopy = activity.activity;
+        const textToCopy = formatCopy(activity.activity);
         navigator.clipboard
             .writeText(textToCopy)
             .then(() => {
