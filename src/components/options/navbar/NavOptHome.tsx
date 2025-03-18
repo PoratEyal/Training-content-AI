@@ -6,24 +6,24 @@ import { Icons } from "../../Icons";
 import { useTranslation } from "react-i18next";
 
 const NavOptHome = () => {
-  const { t } = useTranslation();
-  const [isSelected, setIsSelected] = useState<boolean>(false);
-  const navigate = useNavigate();
-  const location = useLocation();
+    const { t } = useTranslation();
+    const [isSelected, setIsSelected] = useState<boolean>(false);
+    const navigate = useNavigate();
+    const location = useLocation();
 
-  useEffect(() => {
-    setIsSelected(location.pathname === route.home);
-  }, [location.pathname]);
+    useEffect(() => {
+        setIsSelected(location.pathname === route.home);
+    }, [location.pathname]);
 
-  return (
-    <div
-      onClick={() => navigate(route.home)}
-      className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
-    >
-      <Icons.home className={styles.icon} />
-      <span className={styles.text}>{t("navbar.home", "מסך הבית")}</span>
-    </div>
-  );
+    return (
+        <div
+            onClick={() => navigate(route.home)}
+            className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
+        >
+            <Icons.home className={styles.icon} />
+            <span className={styles.text}>{t("navbar.home")}</span>
+        </div>
+    );
 };
 
 export default NavOptHome;

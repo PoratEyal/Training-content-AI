@@ -21,7 +21,7 @@ const NavOptContent = () => {
             className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
         >
             <Icons.output className={styles.icon} />
-            <span className={styles.text}>{t("navbar.content", "פעולות מוכנות")}</span>
+            <span className={styles.text}>{t("navbar.content")}</span>
         </div>
     );
 };
