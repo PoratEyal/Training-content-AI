@@ -1,0 +1,20 @@
+.shareBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.icon {
+    font-size: 18px;
+    color: var(--primary-color);
+}
+
+.text {
+    font-size: 12px;
+    color: var(--primary-color);
+}
