@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import "../../components/ActivityOutput/Markdown.css";
 import styles from "./SavedActivity.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import route from "../../router/route.json";
 import { MY_ACTIVITIES_AD_SLOT } from "../../models/constants/adsSlot";
 import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
@@ -12,14 +11,14 @@ import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useAuthContext } from "../../context/AuthContext";
 import { Activity } from "../../models/types/activity";
 import { useSaveContext } from "../../context/SavedContext";
-import MoreOptionsBtn from "../../components/MoreOptionsBtn/MoreOptionsBtn";
 import { compareNormalizedStrings } from "../../utils/format";
+import ArticleOptions from "../../components/ArticleOptions/ArticleOptions";
 
 const SavedActivity: React.FC = () => {
     const { subject } = useParams<{ subject: string }>();
     const navigate = useNavigate();
     const { currentUser } = useAuthContext();
-    const {savedActivity, isLoading} = useSaveContext();
+    const { savedActivity, isLoading } = useSaveContext();
     const [activity, setActivity] = useState<Activity | null>(null);
 
     const goBack = () => {
@@ -27,12 +26,10 @@ const SavedActivity: React.FC = () => {
     };
 
     useEffect(() => {
-        if(savedActivity?.length > 0 && currentUser) {
-            const foundActivity = savedActivity.find(
-                (act) => {
-                    return compareNormalizedStrings(act.subject, subject);
-                },
-            );
+        if (savedActivity?.length > 0 && currentUser) {
+            const foundActivity = savedActivity.find((act) => {
+                return compareNormalizedStrings(act.subject, subject);
+            });
             if (foundActivity) {
                 setActivity(foundActivity);
             }
@@ -50,27 +47,25 @@ const SavedActivity: React.FC = () => {
             hasNavBar
             index={false}
         >
-            <ActivityReady subject={activity?.subject} />
-
             {isLoading ? (
                 <section className={styles.activity_data_container}>
                     <PageLoading />
                 </section>
             ) : activity && activity.activity ? (
                 <section className={styles.activity_data_container}>
+                    <ArticleOptions activity={activity} hasCopy hasEdit hasShare />
                     <article>
-                        <ActivityOutput activity={activity.activity} />
-                        <MoreOptionsBtn activity={activity} hasEdit hasCopy hasShare/>
+                        <ActivityOutput activity={activity.activity} title={activity.subject} />
                     </article>
                     <div className={styles.padding} />
                 </section>
             ) : (
                 <section className={styles.activity_data_container}>
-                    <SmallLoading/>
+                    <SmallLoading />
                 </section>
             )}
         </PageLayout>
     );
-}
+};
 
 export default SavedActivity;
