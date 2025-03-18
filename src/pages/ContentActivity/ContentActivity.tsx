@@ -2,10 +2,8 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "../../components/ActivityOutput/Markdown.css";
 import styles from "./ContentActivity.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import route from "../../router/route.json";
 import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
-import OutputTest from "../../components/ActivityOutput/OutputTest";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
@@ -13,9 +11,10 @@ import { StaticActivities } from "../../models/types/activity";
 import { useCallback, useEffect, useState } from "react";
 import { fetchGetStaticActivity } from "../../utils/fetch";
 import { useAuthContext } from "../../context/AuthContext";
+import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
+import ArticleOptions from "../../components/ArticleOptions/ArticleOptions";
 import { convertActivityType } from "../../utils/activity";
 import MoreOptionsBtn from "../../components/MoreOptionsBtn/MoreOptionsBtn";
-import { useTranslation } from "react-i18next";
 
 function ContentActivity() {
     const navigate = useNavigate();
@@ -77,21 +76,24 @@ function ContentActivity() {
             title={activity?.metaTitle}
             hasNavBar
         >
-            <ActivityReady subject={activity?.title || ""} />
+            <ActivityReady subject={activity?.title || helmet.contentActivity.title} />
             {isActivityLoading ? (
                 <section className={styles.activity_data_container}>
                     <PageLoading />
                 </section>
             ) : activity ? (
                 <section className={styles.activity_data_container}>
+                    <ArticleOptions
+                        activity={convertActivityType(activity, currentUser?.id || undefined)}
+                        hasCopy
+                        hasEdit
+                        hasShare
+                        hasSave
+                    />
                     <article>
-                        <OutputTest activity={activity.content} />
-                        <MoreOptionsBtn
-                            activity={convertActivityType(activity, currentUser?.id || undefined)}
-                            hasSave={isLoggedIn}
-                            hasEdit={isLoggedIn}
-                            hasCopy
-                            hasShare
+                        <ActivityOutput
+                            activity={activity.content}
+                            title={activity?.title || helmet.contentActivity.title}
                         />
                     </article>
                     <div className={styles.padding} />
