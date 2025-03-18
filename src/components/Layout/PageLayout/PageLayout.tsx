@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import styles from "./PageLayout.module.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import UnderBar from "../../UnderBar/UnderBar";
+import UnderBar from "../UnderBar/UnderBar";
 import { WEBSITE_URL } from "../../../models/constants";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
 import { useTranslation } from "react-i18next";
