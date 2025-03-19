@@ -1,7 +1,6 @@
 import { Activity, StaticSubjects } from "./activity";
 import { Movement } from "./movement";
 import { User } from "./user";
-import { Dispatch, SetStateAction } from "react";
 
 export type DataType = {
     movement: Movement | undefined;
@@ -57,4 +56,9 @@ export type SaveContextType = {
     useFetchSavedData: () => void;
     getSavedActivities: () => Promise<void>;
     deleteActivity: (activityIdToDelete: string) => Promise<void>;
+};
+
+export type ActivityContextType = {
+    isEdit: boolean;
+    setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
 };

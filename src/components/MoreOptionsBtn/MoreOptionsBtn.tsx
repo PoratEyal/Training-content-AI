@@ -5,7 +5,6 @@ import { Activity } from "../../models/types/activity";
 import CopyBtn from "../options/moreBtn/CopyBtn/CopyBtn";
 import ShareBtn from "../options/moreBtn/ShareBtn/ShareBtn";
 import SaveBtn from "../options/moreBtn/SaveBtn/SaveBtn";
-import EditBtn from "../options/moreBtn/EditBtn/EditBtn";
 
 type MoreOptionsBtnProps = {
     activity: Activity;
@@ -38,7 +37,6 @@ const MoreOptionsBtn: React.FC<MoreOptionsBtnProps> = ({
                     {hasCopy ? <CopyBtn activity={activity} /> : null}
                     {hasShare ? <ShareBtn activity={activity} /> : null}
                     {hasSave ? <SaveBtn activity={activity} /> : null}
-                    {hasEdit ? <EditBtn activity={activity} /> : null}
                 </div>
             </div>
         </div>

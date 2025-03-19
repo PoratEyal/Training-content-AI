@@ -5,14 +5,13 @@ import styles from "./SavedActivity.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { MY_ACTIVITIES_AD_SLOT } from "../../models/constants/adsSlot";
-import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
 import { useAuthContext } from "../../context/AuthContext";
 import { Activity } from "../../models/types/activity";
 import { useSaveContext } from "../../context/SavedContext";
 import { compareNormalizedStrings } from "../../utils/format";
-import ArticleOptions from "../../components/ArticleOptions/ArticleOptions";
+import ActivityArticle from "../../components/ActivityArticle/ActivityArticle";
 
 const SavedActivity: React.FC = () => {
     const { subject } = useParams<{ subject: string }>();
@@ -45,20 +44,15 @@ const SavedActivity: React.FC = () => {
             title={activity?.subject || ""}
             content={activity?.subject || ""}
             hasNavBar
+            allowEdit
             index={false}
         >
-            {isLoading ? (
-                <section className={styles.activity_data_container}>
+            {isLoading && !activity ? (
+                <section className={styles.activity_data_container_loading}>
                     <PageLoading />
                 </section>
             ) : activity && activity.activity ? (
-                <section className={styles.activity_data_container}>
-                    <ArticleOptions activity={activity} hasCopy hasEdit hasShare />
-                    <article>
-                        <ActivityOutput activity={activity.activity} title={activity.subject} />
-                    </article>
-                    <div className={styles.padding} />
-                </section>
+                <ActivityArticle activity={activity} hasCopy hasEdit hasShare />
             ) : (
                 <section className={styles.activity_data_container}>
                     <SmallLoading />

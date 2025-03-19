@@ -12,9 +12,8 @@ import { useCallback, useEffect, useState } from "react";
 import { fetchGetStaticActivity } from "../../utils/fetch";
 import helmet from "../../models/resources/helmet.json";
 import { useAuthContext } from "../../context/AuthContext";
-import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
-import ArticleOptions from "../../components/ArticleOptions/ArticleOptions";
 import { convertActivityType } from "../../utils/activity";
+import ActivityArticle from "../../components/ActivityArticle/ActivityArticle";
 
 function ContentActivity() {
     const navigate = useNavigate();
@@ -80,22 +79,12 @@ function ContentActivity() {
                     <PageLoading />
                 </section>
             ) : activity ? (
-                <section className={styles.activity_data_container}>
-                    <ArticleOptions
-                        activity={convertActivityType(activity, currentUser?.id || undefined)}
-                        hasCopy
-                        hasEdit
-                        hasShare
-                        hasSave
-                    />
-                    <article>
-                        <ActivityOutput
-                            activity={activity.content}
-                            title={activity?.title || helmet.contentActivity.title}
-                        />
-                    </article>
-                    <div className={styles.padding} />
-                </section>
+                <ActivityArticle
+                    activity={convertActivityType(activity, currentUser?.id || undefined)}
+                    hasCopy
+                    hasSave
+                    hasShare
+                />
             ) : (
                 <section className={styles.activity_data_container}>
                     <SmallLoading />

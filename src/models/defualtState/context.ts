@@ -1,4 +1,4 @@
-import { AuthContextType, CookiesContextType, SaveContextType, StaticContentContextType } from "../types/context";
+import { ActivityContextType, AuthContextType, CookiesContextType, SaveContextType, StaticContentContextType } from "../types/context";
 
 export const typeContext = {
     data: undefined,
@@ -48,3 +48,8 @@ export const defualtSaveContext: SaveContextType = {
     getSavedActivities: async () => {},
     deleteActivity: async () => {},
 }
+
+export const defualtActivityContext: ActivityContextType = {
+    isEdit: false,
+    setIsEdit: () => {},
+};

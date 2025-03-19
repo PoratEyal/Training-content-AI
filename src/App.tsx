@@ -22,7 +22,6 @@ import SaveActivity from "./pages/SavedActivity/SavedActivity";
 import SavedActivities from "./pages/SavedActivities/SavedActivities";
 import { CookiesProvider } from "./context/CookiesContext";
 import { SavedProvider } from "./context/SavedContext";
-import Edit from "./pages/Edit/Edit";
 import Admin from "./pages/Admin/Admin";
 import ContactUs from "./pages/ContactUs/ContactUs";
 
@@ -49,7 +48,6 @@ function App() {
                                                     path={route.activity}
                                                     element={<Activity />}
                                                 />
-                                                <Route path={route.edit} element={<Edit />} />
                                             </Route>
                                             <Route
                                                 path={route.privacyPolicy}
