@@ -1,8 +1,6 @@
 import { useEffect, createContext, useState, useContext, useRef } from "react";
 import { auth } from "../config/firebase";
 import { getRedirectResult, onAuthStateChanged } from "firebase/auth";
-import { AuthContextType } from "../models/types/context";
-import { defualtAuthContext } from "../models/defualtState/context";
 import { GoogleUser, User } from "../models/types/user";
 import { fetchCreateNewUser, fetchGetMsg } from "../utils/fetch";
 import { useErrorContext } from "./ErrorContext";
@@ -17,6 +15,24 @@ import { useCookiesContext } from "./CookiesContext";
  * https://stackoverflow.com/questions/77270210/firebase-onauthstatechanged-user-returns-null-when-on-localhost
  * disable chrome://flags/#third-party-storage-partitioning (found it on default)
  */
+
+export type AuthContextType = {
+    currentUser: User | undefined;
+    isLoggedIn: boolean;
+    loading: boolean;
+    setIsSendMsg: () => void
+    logout: () => Promise<void>;
+    whatsNewMsg: string;
+};
+
+export const defualtAuthContext: AuthContextType = {
+    currentUser: null,
+    isLoggedIn: false,
+    loading: true,
+    setIsSendMsg: () => {},
+    logout: async () => {},
+    whatsNewMsg: "",
+};
 
 export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
 

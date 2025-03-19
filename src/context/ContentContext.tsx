@@ -1,12 +1,31 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { ContentContextType, DataType } from "../models/types/context";
-import { typeContext } from "../models/defualtState/context";
 import Session from "../utils/sessionStorage";
 import { Activity } from "../models/types/activity";
 import { addSessionData } from "../utils/movment";
 import { useAuthContext } from "./AuthContext";
 import { Movements } from "../models/resources/movment";
 import { SessionKey } from "../models/enum/storage";
+import { DataType } from "../models/types/common";
+
+export type ContentContextType = {
+    data: DataType;
+    mainActivity: Activity | undefined;
+    setData: React.Dispatch<React.SetStateAction<DataType>>;
+    updateDetails: (movement: string, grade: string, amount: string, gender: string) => void;
+    updateMainActivity: (activity: Activity) => void;
+    clearAll: () => void;
+    clearMainActivity: () => void;
+};
+
+export const typeContext = {
+    data: undefined,
+    mainActivity: undefined,
+    setData: () => {},
+    updateDetails: () => {},
+    updateMainActivity: () => {},
+    clearAll: () => {},
+    clearMainActivity: () => {},
+};
 
 export const ContentContext = createContext<ContentContextType>(typeContext);
 

@@ -1,6 +1,14 @@
 import { createContext, useContext, useState } from "react";
-import { ActivityContextType } from "../models/types/context";
-import { defualtActivityContext } from "../models/defualtState/context";
+
+export type ActivityContextType = {
+    isEdit: boolean;
+    setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const defualtActivityContext: ActivityContextType = {
+    isEdit: false,
+    setIsEdit: () => {},
+};
 
 export const ActivityContext = createContext<ActivityContextType>(defualtActivityContext);
 

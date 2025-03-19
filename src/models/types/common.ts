@@ -1,4 +1,12 @@
 import React from "react";
+import { Movement } from "./movement";
+
+export type DataType = {
+    movement: Movement | undefined;
+    grade: string;
+    gender: string;
+    amount: string;
+};
 
 export type NavOption = {
     title: string;
