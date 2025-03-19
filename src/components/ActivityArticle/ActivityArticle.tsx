@@ -48,7 +48,7 @@ const ActivityArticle: React.FC<ActivityArticleProps> = ({
             <ArticleOptions Options={Options} />
             <article>
                 <ActivityOutput
-                    title={activity.subject}
+                    title={activity?.subject}
                     activity={activity?.activity}
                     activityRef={activityRef}
                 />
