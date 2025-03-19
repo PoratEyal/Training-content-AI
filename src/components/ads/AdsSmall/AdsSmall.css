@@ -8,7 +8,6 @@
     z-index: 997;
     background-color: var(--background-color);
     border-top: 0px solid black;
-    background-color: antiquewhite;
 }
 
 @media (min-width: 550px) {

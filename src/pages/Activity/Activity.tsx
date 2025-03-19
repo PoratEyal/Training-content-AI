@@ -1,13 +1,11 @@
-import styles from "./Activity.module.css";
 import { useRef, useState, useEffect } from "react";
 import { useContentContext } from "../../context/ContentContext";
-import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import { useNavigate } from "react-router-dom";
 import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import helmet from "../../models/resources/helmet.json";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
-import ArticleOptions from "../../components/ArticleOptions/ArticleOptions";
+import ActivityArticle from "../../components/ActivityArticle/ActivityArticle";
 
 function Activity() {
     const { data, mainActivity } = useContentContext();
@@ -42,19 +40,17 @@ function Activity() {
                 content={helmet.home.content}
                 hesAds={ACTIVITY_AD_SLOT}
                 hasNavBar
+                allowEdit
                 index={false}
             >
-                <section className={styles.activity_data_container}>
-                    <ArticleOptions activity={mainActivity} hasCopy hasEdit hasSave hasShare />
-                    <article>
-                        <ActivityOutput
-                            title={mainActivity.subject}
-                            activity={mainActivity?.activity}
-                            activityRef={activityRef}
-                        />
-                    </article>
-                    <div className={styles.padding} />
-                </section>
+                <ActivityArticle
+                    activityRef={activityRef}
+                    activity={mainActivity}
+                    hasCopy
+                    hasEdit
+                    hasSave
+                    hasShare
+                />
             </PageLayout>
         </>
     );

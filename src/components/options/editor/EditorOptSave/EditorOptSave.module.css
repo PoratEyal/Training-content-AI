@@ -1,0 +1,54 @@
+.bookmark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.svgIcon {
+    position: relative;
+    top: 1px;
+    width: 12px;
+    height: auto;
+    color: var(--primary-color);
+}
+
+/* Initial path styling */
+.svgIcon path {
+    stroke: var(--primary-color);
+    stroke-width: 4;
+    fill: transparent;
+    stroke-dasharray: 200 0;
+    stroke-dashoffset: 0;
+    transition: fill 0.5s, stroke-dasharray 0.5s linear;
+}
+
+.checked .svgIcon path {
+    fill: var(--primary-color);
+    animation: bookmark 0.5s linear forwards;
+    transition-delay: 0.5s;
+}
+
+.text {
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+@keyframes bookmark {
+    0% {
+        stroke-dasharray: 0 200;
+        stroke-dashoffset: 80;
+    }
+
+    100% {
+        stroke-dasharray: 200 0;
+    }
+}

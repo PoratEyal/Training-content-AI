@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import UnderBar from "../../UnderBar/UnderBar";
 import { WEBSITE_URL } from "../../../models/constants";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
+import { ActivityProvider } from "../../../context/ActivityContext";
 
 type PageLayoutProps = {
     path: string;
@@ -19,10 +20,11 @@ type PageLayoutProps = {
     hasFooter?: boolean;
     hesAds?: string;
     hasNavBar?: boolean;
+    allowEdit?: boolean;
     content?: string;
     title?: string;
     index?: boolean;
-    children: React.ReactNode;    
+    children: React.ReactNode;
     showAbout?: boolean;
     showPrivacyAndContact?: boolean;
 };
@@ -35,6 +37,7 @@ function PageLayout({
     hasFooter = false,
     hesAds = "",
     hasNavBar = false,
+    allowEdit = false,
     content = "",
     title = "",
     index = true,
@@ -60,12 +63,10 @@ function PageLayout({
             >
                 {hasHeader ? <Header goBack={hasHeader.goBack} isBlur={hasHeader.isBlur} /> : null}
 
-                {children}
+                {allowEdit ? <ActivityProvider>{children}</ActivityProvider> : children}
+
                 {hasFooter ? (
-                    <Footer
-                        showAbout={showAbout}
-                        showPrivacyAndContact={showPrivacyAndContact}
-                    />
+                    <Footer showAbout={showAbout} showPrivacyAndContact={showPrivacyAndContact} />
                 ) : null}
                 {hesAds != "" ? <AdsSmall slot={hesAds} /> : null}
                 {hasNavBar ? <UnderBar /> : null}
