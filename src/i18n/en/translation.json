@@ -115,6 +115,12 @@
     },
     "myActivities": {
       "title": "My Activities"
+    },
+    "deletePopup": {
+      "title": "Delete Activity",
+      "message": "Are you sure you want to delete the activity {{activityName}}?",
+      "deleteButton": "Delete",
+      "deleteError": "The activity was not deleted, please try again later"
     }
   },
   "profile": {
@@ -133,5 +139,22 @@
       "dropOptSignIn": {
         "signIn": "Sign In"
       }
+  },
+  "contactUs": {
+    "header": {
+      "title": "What would you like to tell us?",
+      "subtitle": "Any suggestion, request, or issue - we'd love to hear from you!"
+    },
+    "form": {
+      "emailPlaceholder": "Email",
+      "namePlaceholder": "Name",
+      "messagePlaceholder": "What would you like to tell us?",
+      "submitButton": "Send",
+      "successMessage": "Your message was sent successfully!"
+    }
+  },
+  "privacyPolicy": {
+    "title": "Terms of Service and Privacy Policy",
+    "acceptButton": "Accept"
   }
 }

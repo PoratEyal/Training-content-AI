@@ -14,7 +14,8 @@ import { useAuthContext } from "../../context/AuthContext";
 import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import ArticleOptions from "../../components/ArticleOptions/ArticleOptions";
 import { convertActivityType } from "../../utils/activity";
-import MoreOptionsBtn from "../../components/MoreOptionsBtn/MoreOptionsBtn";
+import { useTranslation } from "react-i18next";
+import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 
 function ContentActivity() {
     const navigate = useNavigate();
@@ -76,7 +77,7 @@ function ContentActivity() {
             title={activity?.metaTitle}
             hasNavBar
         >
-            <ActivityReady subject={activity?.title || helmet.contentActivity.title} />
+            <ActivityReady subject={activity?.title} />
             {isActivityLoading ? (
                 <section className={styles.activity_data_container}>
                     <PageLoading />
@@ -93,7 +94,7 @@ function ContentActivity() {
                     <article>
                         <ActivityOutput
                             activity={activity.content}
-                            title={activity?.title || helmet.contentActivity.title}
+                            title={activity?.title}
                         />
                     </article>
                     <div className={styles.padding} />
