@@ -117,6 +117,12 @@
     },
     "myActivities": {
       "title": "הפעולות שלי"
+    },
+    "deletePopup": {
+      "title": "מחיקת הפעולה",
+      "message": "האם למחוק את הפעולה {{activityName}}?",
+      "deleteButton": "מחיקה",
+      "deleteError": "הפעולה לא נמחקה, אנא נסו שוב מאוחר יותר"
     }
   },
   "profile": {
@@ -135,5 +141,22 @@
       "dropOptSignIn": {
         "signIn": "התחברות"
       }
+  },
+  "contactUs": {
+    "header": {
+      "title": "מה תרצו לספר לנו?",
+      "subtitle": "לכל הצעה, בקשה או בעיה, דברו איתנו!"
+    },
+    "form": {
+      "emailPlaceholder": "אימייל",
+      "namePlaceholder": "שם",
+      "messagePlaceholder": "מה תרצו לספר לנו?",
+      "submitButton": "שליחה",
+      "successMessage": "ההודעה נשלחה בהצלחה!"
+    }
+  },
+  "privacyPolicy": {
+    "title": "תנאי שירות ומדיניות פרטיות",
+    "acceptButton": "אישור"
   }
 }

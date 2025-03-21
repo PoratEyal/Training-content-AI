@@ -116,11 +116,11 @@
 .buttonContent {
     width: fit-content;
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 8px;
     direction: rtl;
     padding: 0 15px;
+
 }
 
 .btnLoading {

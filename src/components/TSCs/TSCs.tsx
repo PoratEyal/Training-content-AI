@@ -1,56 +1,69 @@
 import styles from "./TSCs.module.css";
-import policy from "../../models/resources/policy.json";
+import policy from "../../models/resources/policy.json"; // Hebrew
+import policyEn from "../../models/resources/policyEn.json"; // English
 import Popup from "../core/Popup/Popup";
 import MainBtn from "../MainBtn/MainBtn";
+import { useTranslation } from "react-i18next";
 
 function TSCs({ handleAccept }) {
+    const { t, i18n } = useTranslation();
+
+    // Determine direction based on language (RTL for Hebrew, LTR for English)
+    const isHebrew = i18n.language === "he";
+    const dir = isHebrew ? "rtl" : "ltr";
+
+    // Select policy based on language
+    const currentPolicy = isHebrew ? policy : policyEn;
+
     return (
         <Popup>
-            <article className={styles.privacy}>
-                <h3 className={styles.h3_privacy}>תנאי שירות ומדיניות פרטיות</h3>
+            <article className={styles.privacy} dir={dir}>
+                <h3 className={styles.h3_privacy}>
+                    {t("privacyPolicy.title")}
+                </h3>
 
                 <div className={styles.space_div}>
-                    <label>{policy.p11.text}</label>
+                    <label>{currentPolicy.p11.text}</label>
                 </div>
 
                 <div className={styles.space_div}>
-                    <label>{policy.p0.text}</label>
+                    <label>{currentPolicy.p0.text}</label>
                 </div>
 
                 <div className={styles.space_div}>
-                    <label>{policy.p1.label}</label> {policy.p1.text}
+                    <label>{currentPolicy.p1.label}</label> {currentPolicy.p1.text}
                 </div>
 
                 <div className={styles.space_div}>
-                    <label>{policy.p2.label}</label> {policy.p2.text}
+                    <label>{currentPolicy.p2.label}</label> {currentPolicy.p2.text}
                 </div>
 
                 <div className={styles.space_div}>
-                    <label>{policy.p3.label}</label> {policy.p3.text}
+                    <label>{currentPolicy.p3.label}</label> {currentPolicy.p3.text}
                 </div>
 
                 <div className={styles.space_div}>
-                    <label>{policy.p4.label}</label> {policy.p4.text}
+                    <label>{currentPolicy.p4.label}</label> {currentPolicy.p4.text}
                 </div>
 
                 <div className={styles.space_div}>
-                    <label>{policy.p5.label}</label> {policy.p5.text}
+                    <label>{currentPolicy.p5.label}</label> {currentPolicy.p5.text}
                 </div>
 
                 <div className={styles.space_div}>
-                    <label>{policy.p6.label}</label> {policy.p6.text}
+                    <label>{currentPolicy.p6.label}</label> {currentPolicy.p6.text}
                 </div>
 
                 <div className={styles.space_div}>
-                    <label>{policy.p7.label}</label> {policy.p7.text}
+                    <label>{currentPolicy.p7.label}</label> {currentPolicy.p7.text}
                 </div>
 
                 <div className={styles.space_div}>
-                    <label>{policy.p8.label}</label> {policy.p8.text}
+                    <label>{currentPolicy.p8.label}</label> {currentPolicy.p8.text}
                 </div>
-                
+
                 <div className={styles.space_div_end}>
-                    <label>{policy.p9.label}</label> {policy.p9.text}
+                    <label>{currentPolicy.p9.label}</label> {currentPolicy.p9.text}
                 </div>
 
                 <div className={styles.fixed_btn}>
@@ -58,9 +71,9 @@ function TSCs({ handleAccept }) {
                         type="submit"
                         isDisabled={false}
                         height={38}
-                        text={"אישור"}
+                        text={t("privacyPolicy.acceptButton")}
                         func={handleAccept}
-                    ></MainBtn>
+                    />
                 </div>
             </article>
         </Popup>
