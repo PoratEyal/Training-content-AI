@@ -1,15 +1,17 @@
 export type MovementName =
     | "scout"
-    | "maccabi"
-    | "akiva"
     | "oved"
-    | "krembo"
-    | "bitar"
+    | "akiva"
+    | "maccabi"
+    | "camps"
     | "shomer"
-    | "sayarut"
+    | "bitar"
+    | "hadasha"
     | "medtchim"
+    | "krembo"
     | "meshachim"
     | "noam"
+    | "sayarut"
     | "agricultural"
     | "other";
 
