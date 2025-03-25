@@ -2,20 +2,17 @@ import React from "react";
 import styles from "./ArtOptEdit.module.css";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { Activity } from "../../../../models/types/activity";
-import { useContentContext } from "../../../../context/ContentContext";
-import { useActivityContext } from "../../../../context/ActivityContext";
+import { useEditorContext } from "../../../../context/EditorContext";
 
 type ArtOptEditProps = {
     activity: Activity;
 };
 
 const ArtOptEdit: React.FC<ArtOptEditProps> = ({ activity }) => {
-    const { updateMainActivity } = useContentContext();
-    const { setIsEdit } = useActivityContext();
+    const { editMode } = useEditorContext();
 
     const handleChangeMainActivity = () => {
-        updateMainActivity(activity);
-        setIsEdit(true);
+        editMode(activity);
     };
 
     return (

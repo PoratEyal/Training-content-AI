@@ -45,10 +45,6 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
                 <button className={styles.closeButton} onClick={onClose}>
                     <Icons.cancel />
                 </button>
-                <div className={styles.popupTitle_div}>
-                    <h3 className={styles.popupTitle}>מחיקת הפעולה</h3>
-                    <MdDelete className={styles.deleteIcon} />
-                </div>
                 <p className={styles.message}>האם למחוק את הפעולה {activityName}?</p>
                 <button
                     className={styles.deleteButton}

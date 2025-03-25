@@ -6,7 +6,6 @@ import Footer from "../Footer/Footer";
 import UnderBar from "../UnderBar/UnderBar";
 import { WEBSITE_URL } from "../../../models/constants";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
-import { ActivityProvider } from "../../../context/ActivityContext";
 
 type PageLayoutProps = {
     path: string;
@@ -15,12 +14,12 @@ type PageLayoutProps = {
         | {
               goBack?: () => void;
               isBlur?: boolean;
+              hasTitle?: string;
           }
         | undefined;
     hasFooter?: boolean;
     hesAds?: string;
     hasNavBar?: boolean;
-    allowEdit?: boolean;
     content?: string;
     title?: string;
     index?: boolean;
@@ -37,7 +36,6 @@ function PageLayout({
     hasFooter = false,
     hesAds = "",
     hasNavBar = false,
-    allowEdit = false,
     content = "",
     title = "",
     index = true,
@@ -61,9 +59,15 @@ function PageLayout({
                 className={styles.page_container}
                 style={{ backgroundColor: hasGreenBackground ? "#708254" : "#FAF6EE" }}
             >
-                {hasHeader ? <Header goBack={hasHeader.goBack} isBlur={hasHeader.isBlur} /> : null}
+                {hasHeader ? (
+                    <Header
+                        goBack={hasHeader.goBack}
+                        isBlur={hasHeader.isBlur}
+                        hasTitle={hasHeader.hasTitle}
+                    />
+                ) : null}
 
-                {allowEdit ? <ActivityProvider>{children}</ActivityProvider> : children}
+                {children}
 
                 {hasFooter ? (
                     <Footer showAbout={showAbout} showPrivacyAndContact={showPrivacyAndContact} />

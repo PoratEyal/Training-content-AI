@@ -14,12 +14,15 @@ import helmet from "../../models/resources/helmet.json";
 import { useAuthContext } from "../../context/AuthContext";
 import { convertActivityType } from "../../utils/activity";
 import ActivityArticle from "../../components/ActivityArticle/ActivityArticle";
+import RichTextEditor from "../../components/RichTextEditor/RichTextEditor";
+import { useEditorContext } from "../../context/EditorContext";
 
 function ContentActivity() {
     const navigate = useNavigate();
     const location = useLocation();
     const { activityId, contentId } = useParams<{ activityId: string; contentId: string }>();
     const { subjects, isLoading, useFetchSubjectsData } = useStaticContentContext();
+    const { isEdit, readOnlyMode } = useEditorContext();
     useFetchSubjectsData();
     const [isActivityLoading, setIsActivityLoading] = useState<boolean>(isLoading);
     const [activity, setActivity] = useState<StaticActivities | undefined>();
@@ -31,10 +34,14 @@ function ContentActivity() {
     const fromPopular = location.state?.fromPopular ?? false;
 
     const goBack = () => {
-        if (fromPopular) {
-            navigate(route.popularActivities);
+        if (isEdit) {
+            readOnlyMode();
         } else {
-            navigate(`${route.content}/${activityId}`);
+            if (fromPopular) {
+                navigate(route.popularActivities);
+            } else {
+                navigate(`${route.content}/${activityId}`);
+            }
         }
     };
 
@@ -68,7 +75,7 @@ function ContentActivity() {
         <PageLayout
             path={contentActivityPath}
             hasGreenBackground
-            hasHeader={{ goBack }}
+            hasHeader={{ goBack, hasTitle: activity?.title || undefined }}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
             title={activity?.metaTitle || helmet.contentActivity.title}
             content={activity?.metaDescription || helmet.contentActivity.content}
@@ -79,12 +86,18 @@ function ContentActivity() {
                     <PageLoading />
                 </section>
             ) : activity ? (
-                <ActivityArticle
-                    activity={convertActivityType(activity, currentUser?.id || undefined)}
-                    hasCopy
-                    hasSave
-                    hasShare
-                />
+                isEdit ? (
+                    <RichTextEditor
+                        activity={convertActivityType(activity, currentUser?.id || undefined)}
+                    />
+                ) : (
+                    <ActivityArticle
+                        activity={convertActivityType(activity, currentUser?.id || undefined)}
+                        hasSave={isLoggedIn}
+                        hasCopy
+                        hasShare
+                    />
+                )
             ) : (
                 <section className={styles.activity_data_container}>
                     <SmallLoading />

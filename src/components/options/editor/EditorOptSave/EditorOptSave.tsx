@@ -30,15 +30,15 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
                     setIsDisabled(false);
                 }, SAVE_COOLDOWN);
                 handleSuccess("הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי");
+                setSaved(true);
                 const convertedContent = convertHTMLToContent(htmlContent);
                 const newUpdatedActivity = updateActivityWithContent(activity, convertedContent);
-                setSaved(true);
                 const res = await fetchSaveActivity(newUpdatedActivity);
                 updateMainActivity({ ...newUpdatedActivity, id: res.activity.id } as Activity);
                 await getSavedActivities();
                 setTimeout(() => {
                     setSaved(false);
-                }, 2000);
+                }, 1000);
             } catch (error) {
                 handleError("הפעולה לא נשמרה, אנא נסו שנית");
                 setSaved(false);
@@ -61,7 +61,7 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
             >
                 <path d="M46 62.0085L46 3.88139L3.99609 3.88139L3.99609 62.0085L24.5 45.5L46 62.0085Z" />
             </svg>
-            <span className={styles.text}>{saved ? "נשמר" : "שמירה"}</span>
+            <span className={styles.text}>{saved ? "נשמר בפעולות שלי" : "שמירה לפעולות שלי"}</span>
         </div>
     );
 };

@@ -29,6 +29,7 @@ import { PiShootingStarFill } from "react-icons/pi";
 import { MdOutlineSportsKabaddi } from "react-icons/md";
 import { BsCalendar2DateFill } from "react-icons/bs";
 import { FaStarOfDavid } from "react-icons/fa";
+import { TbConfetti } from "react-icons/tb";
 import { FaHandsHelping } from "react-icons/fa";
 import { FaListCheck } from "react-icons/fa6";
 import { FaRibbon } from "react-icons/fa";
@@ -58,6 +59,7 @@ export const Icons = {
     FaBookOpen: FaBookOpen,
     BsCalendar2DateFill: BsCalendar2DateFill,
     FaHandsHelping: FaHandsHelping,
+    TbConfetti: TbConfetti,
     FaUserFriends: FaUserFriends,
     AiFillEnvironment: AiFillEnvironment,
     FaListCheck: FaListCheck,
