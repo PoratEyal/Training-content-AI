@@ -11,7 +11,7 @@
     left: 0;
     bottom: 0;
     width: 100vw;
-    height: 90%;
+    height: 89%;
     overflow: hidden;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -42,7 +42,7 @@
 
     .activity_data_container {
         width: 100%;
-        height: 90%;
+        height: 89%;
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
