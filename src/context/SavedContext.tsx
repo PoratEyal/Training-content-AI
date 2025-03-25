@@ -1,11 +1,25 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { SaveContextType } from "../models/types/context";
-import { defualtSaveContext } from "../models/defualtState/context";
 import { Activity } from "../models/types/activity";
 import { useAuthContext } from "./AuthContext";
 import { fetchGetSavedActivities, fetchRemoveActivity } from "../utils/fetch";
 import { useErrorContext } from "./ErrorContext";
 import { RemoveActivityRequest } from "../models/types/api/request";
+
+export type SaveContextType = {
+    savedActivity: Activity[];
+    isLoading: boolean;
+    useFetchSavedData: () => void;
+    getSavedActivities: () => Promise<void>;
+    deleteActivity: (activityIdToDelete: string) => Promise<void>;
+};
+
+export const defualtSaveContext: SaveContextType = {
+    savedActivity: [],
+    isLoading: false,
+    useFetchSavedData: () => {},
+    getSavedActivities: async () => {},
+    deleteActivity: async () => {},
+}
 
 export const SaveContext = createContext<SaveContextType>(defualtSaveContext);
 

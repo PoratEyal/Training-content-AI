@@ -11,17 +11,19 @@ import { StaticActivities } from "../../models/types/activity";
 import { useCallback, useEffect, useState } from "react";
 import { fetchGetStaticActivity } from "../../utils/fetch";
 import { useAuthContext } from "../../context/AuthContext";
-import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
-import ArticleOptions from "../../components/ArticleOptions/ArticleOptions";
 import { convertActivityType } from "../../utils/activity";
 import { useTranslation } from "react-i18next";
 import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
+import ActivityArticle from "../../components/ActivityArticle/ActivityArticle";
+import RichTextEditor from "../../components/RichTextEditor/RichTextEditor";
+import { useEditorContext } from "../../context/EditorContext";
 
 function ContentActivity() {
     const navigate = useNavigate();
     const location = useLocation();
     const { activityId, contentId } = useParams<{ activityId: string; contentId: string }>();
     const { subjects, isLoading, useFetchSubjectsData } = useStaticContentContext();
+    const { isEdit, readOnlyMode } = useEditorContext();
     useFetchSubjectsData();
     const [isActivityLoading, setIsActivityLoading] = useState<boolean>(isLoading);
     const [activity, setActivity] = useState<StaticActivities | undefined>();
@@ -34,10 +36,14 @@ function ContentActivity() {
     const fromPopular = location.state?.fromPopular ?? false;
 
     const goBack = () => {
-        if (fromPopular) {
-            navigate(route.popularActivities);
+        if (isEdit) {
+            readOnlyMode();
         } else {
-            navigate(`${route.content}/${activityId}`);
+            if (fromPopular) {
+                navigate(route.popularActivities);
+            } else {
+                navigate(`${route.content}/${activityId}`);
+            }
         }
     };
 
@@ -72,7 +78,7 @@ function ContentActivity() {
             id="contentActivity"
             path={contentActivityPath}
             hasGreenBackground
-            hasHeader={{ goBack }}
+            hasHeader={{ goBack, hasTitle: activity?.title || undefined }}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
             title={activity?.metaTitle}
             hasNavBar
@@ -83,22 +89,18 @@ function ContentActivity() {
                     <PageLoading />
                 </section>
             ) : activity ? (
-                <section className={styles.activity_data_container}>
-                    <ArticleOptions
+                isEdit ? (
+                    <RichTextEditor
                         activity={convertActivityType(activity, currentUser?.id || undefined)}
-                        hasCopy
-                        hasEdit
-                        hasShare
-                        hasSave
                     />
-                    <article>
-                        <ActivityOutput
-                            activity={activity.content}
-                            title={activity?.title}
-                        />
-                    </article>
-                    <div className={styles.padding} />
-                </section>
+                ) : (
+                    <ActivityArticle
+                        activity={convertActivityType(activity, currentUser?.id || undefined)}
+                        hasSave={isLoggedIn}
+                        hasCopy
+                        hasShare
+                    />
+                )
             ) : (
                 <section className={styles.activity_data_container}>
                     <SmallLoading />

@@ -1,7 +1,17 @@
 import { createContext, useContext } from "react";
 import { notification } from "../utils/error";
-import { defualtErrorContext } from "../models/defualtState/context";
-import { ErrorContextType } from "../models/types/context";
+
+export type ErrorContextType = {
+    handleError: (error: Error | string | undefined) => void;
+    handleAlert: (message: string, duration?: number) => void;
+    handleSuccess: (message: string) => void;
+};
+
+export const defualtErrorContext = {
+    handleError: () => {},
+    handleAlert: () => {},
+    handleSuccess: () => {},
+};
 
 export const ErrorContext = createContext<ErrorContextType>(defualtErrorContext);
 

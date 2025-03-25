@@ -18,13 +18,14 @@ type PageLayoutProps = {
         | {
               goBack?: () => void;
               isBlur?: boolean;
+              hasTitle?: string;
           }
         | undefined;
     hasFooter?: boolean;
     hesAds?: string;
     hasNavBar?: boolean;
     index?: boolean;
-    children: React.ReactNode;    
+    children: React.ReactNode;
     showAbout?: boolean;
     showPrivacyAndContact?: boolean;
     title?: string;
@@ -63,14 +64,18 @@ function PageLayout({
                 className={styles.page_container}
                 style={{ backgroundColor: hasGreenBackground ? "#708254" : "#FAF6EE" }}
             >
-                {hasHeader ? <Header goBack={hasHeader.goBack} isBlur={hasHeader.isBlur} /> : null}
+                {hasHeader ? (
+                    <Header
+                        goBack={hasHeader.goBack}
+                        isBlur={hasHeader.isBlur}
+                        hasTitle={hasHeader.hasTitle}
+                    />
+                ) : null}
 
                 {children}
+
                 {hasFooter ? (
-                    <Footer
-                        showAbout={showAbout}
-                        showPrivacyAndContact={showPrivacyAndContact}
-                    />
+                    <Footer showAbout={showAbout} showPrivacyAndContact={showPrivacyAndContact} />
                 ) : null}
                 {hesAds != "" ? <AdsSmall slot={hesAds} /> : null}
                 {hasNavBar ? <UnderBar /> : null}

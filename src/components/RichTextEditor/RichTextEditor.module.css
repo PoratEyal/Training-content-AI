@@ -1,55 +1,19 @@
 .container {
-    width: 95%;
-    margin: 0 auto;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    width: 100%;
     position: relative;
-    height: calc(100% - var(--ads-height) - var(--navbar-height));
+    height: calc(102% - var(--ads-height));
     overflow: hidden;
-}
-
-.toolbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.25rem;
-    padding: 0.5rem;
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #dee2e6;
-}
-
-.toolbarButton {
-    padding: 0.5rem;
-    border: none;
-    background: none;
-    border-radius: 4px;
-    cursor: pointer;
-    color: #6c757d;
-    transition: all 0.2s ease;
-}
-
-.toolbarButton:hover {
-    background-color: #e9ecef;
-    color: #495057;
-}
-
-.toolbarButtonActive {
-    background-color: #e9ecef;
-    color: #495057;
-}
-
-.separator {
-    width: 1px;
-    height: 24px;
-    background-color: #dee2e6;
-    margin: 0 0.5rem;
+    background-color: var(--editor-color);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .editor {
-    width: 100%;
-    height: calc(100% - var(--ads-height));
+    width: 98%;
+    margin: 0 auto;
+    margin-top: 5px;
+    height: calc(100% - var(--ads-height) - 70px);
+    border: 0.8px solid var(--secondary-border-color);
     min-height: 300px;
     text-overflow: clip;
     white-space: pre-wrap;

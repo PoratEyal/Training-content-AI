@@ -237,6 +237,14 @@
       <loc>https://activitywiz.com/content/holidays/purimGames</loc>
       <priority>0.8</priority>
    </url>
+      <url>
+      <loc>https://activitywiz.com/content/holidays/pesah</loc>
+      <priority>0.8</priority>
+   </url>
+      <url>
+      <loc>https://activitywiz.com/content/holidays/pesah4sons</loc>
+      <priority>0.8</priority>
+   </url>
    
    <url>
       <loc>https://activitywiz.com/content/israel/idf</loc>

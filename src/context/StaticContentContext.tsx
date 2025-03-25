@@ -3,8 +3,18 @@ import { useErrorContext } from "./ErrorContext";
 import msg from "../models/resources/errorMsg.json";
 import { fetchStaticSubjects } from "../utils/fetch";
 import { StaticSubjects } from "../models/types/activity";
-import { StaticContentContextType } from "../models/types/context";
-import { defualtStaticContentContext } from "../models/defualtState/context";
+
+export type StaticContentContextType = {
+    useFetchSubjectsData: () => void;
+    subjects: StaticSubjects[];
+    isLoading: boolean;
+};
+
+export const defualtStaticContentContext: StaticContentContextType = {
+    useFetchSubjectsData: () => {},
+    subjects: [],
+    isLoading: true,
+};
 
 const StaticContentContext = createContext<StaticContentContextType>(defualtStaticContentContext);
 

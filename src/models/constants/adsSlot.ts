@@ -5,4 +5,4 @@ export const BUILD_AD_SLOT = "9038432592";
 export const CONTENT_ACTIVITY_AD_SLOT = "8738367503";
 export const MY_ACTIVITIES_AD_SLOT = "5975540586";
 export const HOME_AD_SLOT = "2045449142";
-export const EDIT_AD_SLOT = "7405458123";
+export const EDIT_AD_SLOT = "7405458123";// TODO: delete

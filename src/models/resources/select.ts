@@ -7,10 +7,12 @@ export const MovmentsOptions: SelectOption[] = [
     { value: Movements.oved.name, label: Movements.oved.title },
     { value: Movements.akiva.name, label: Movements.akiva.title },
     { value: Movements.maccabi.name, label: Movements.maccabi.title },
+    { value: Movements.camps.name, label: Movements.camps.title },
     { value: Movements.shomer.name, label: Movements.shomer.title },
-    // { value: Movements.krembo.name, label: Movements.krembo.title },
     { value: Movements.bitar.name, label: Movements.bitar.title },
+    { value: Movements.hadasha.name, label: Movements.hadasha.title },
     { value: Movements.medtchim.name, label: Movements.medtchim.title },
+    // { value: Movements.krembo.name, label: Movements.krembo.title },
     { value: Movements.meshachim.name, label: Movements.meshachim.title },
     { value: Movements.sayarut.name, label: Movements.sayarut.title },
     { value: Movements.noam.name, label: Movements.noam.title },
@@ -55,7 +57,7 @@ export const GenderOptions: SelectOption[] = [
 ];
 
 export const ActivityTimeOptions: SelectOption[] = [
-    // { value: "20 דקות", label: "20 דקות" },
+    { value: "20 דקות", label: "20 דקות" },
     { value: "חצי שעה", label: "חצי שעה" },
     // { value: "45 דקות", label: "45 דקות" },
     { value: "שעה", label: "שעה" },

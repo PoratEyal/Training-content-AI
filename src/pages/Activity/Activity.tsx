@@ -1,23 +1,30 @@
-import styles from "./Activity.module.css";
 import { useRef, useState, useEffect } from "react";
 import { useContentContext } from "../../context/ContentContext";
-import ActivityOutput from "../../components/ActivityOutput/ActivityOutput";
 import { useNavigate } from "react-router-dom";
 import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
-import ArticleOptions from "../../components/ArticleOptions/ArticleOptions";
 import { useTranslation } from "react-i18next";
+import ActivityArticle from "../../components/ActivityArticle/ActivityArticle";
+import { useAuthContext } from "../../context/AuthContext";
+import RichTextEditor from "../../components/RichTextEditor/RichTextEditor";
+import { useEditorContext } from "../../context/EditorContext";
 
 function Activity() {
     const { i18n } = useTranslation();
     const { data, mainActivity } = useContentContext();
+    const { isEdit, readOnlyMode } = useEditorContext();
+    const { isLoggedIn } = useAuthContext();
     const [newActivity, setNewActivity] = useState(false);
     const activityRef = useRef<HTMLElement>(null);
     const navigate = useNavigate();
 
     const goBack = () => {
-        navigate(route.build);
+        if (isEdit) {
+            readOnlyMode();
+        } else {
+            navigate(route.build);
+        }
     };
 
     useEffect(() => {
@@ -34,29 +41,29 @@ function Activity() {
     }, [newActivity]);
 
     return (
-        <>
-            <PageLayout
-                id="activity"
-                path={route.activity}
-                hasGreenBackground
-                hasHeader={{ goBack }}
-                hesAds={ACTIVITY_AD_SLOT}
-                hasNavBar
-                index={false}
-            >
-                <section className={styles.activity_data_container}>
-                    <ArticleOptions activity={mainActivity} hasCopy hasEdit hasSave hasShare />
-                    <article>
-                        <ActivityOutput
-                            title={mainActivity.subject}
-                            activity={mainActivity?.activity}
-                            activityRef={activityRef}
-                        />
-                    </article>
-                    <div className={styles.padding} />
-                </section>
-            </PageLayout>
-        </>
+        <PageLayout
+            id="activity"
+            path={route.activity}
+            hasGreenBackground
+            hasHeader={{ goBack, hasTitle: mainActivity?.subject || undefined }}
+            title={"helmet.activity.title"}
+            hesAds={ACTIVITY_AD_SLOT}
+            hasNavBar
+            index={false}
+        >
+            {isEdit ? (
+                <RichTextEditor activity={mainActivity} />
+            ) : (
+                <ActivityArticle
+                    activity={mainActivity}
+                    activityRef={activityRef}
+                    hasSave={isLoggedIn}
+                    hasEdit={isLoggedIn}
+                    hasCopy
+                    hasShare
+                />
+            )}
+        </PageLayout>
     );
 }
 

@@ -1,32 +1,39 @@
-import { useTranslation } from "react-i18next";
 import styles from "../ReadyContentName/ReadyContentName.module.css";
 
 type ActivityReadyProps = {
-  subject: string;
-  isMany?: boolean;
-  isLoading?: boolean;
+    subject: string;
+    type?: "many" | "one" | "none";
+    isLoading?: boolean;
 };
 
-function ReadyContentName({ subject, isMany = false, isLoading = false }: ActivityReadyProps) {
-  const { t } = useTranslation();
+const ReadyContentName: React.FC<ActivityReadyProps> = ({
+    subject,
+    type = "none",
+    isLoading = false,
+}) => {
+    const setAdditionSpan = (type: "many" | "one" | "none") => {
+        switch (type) {
+            case "many":
+                return <span>פעולות בנושא</span>;
+            case "one":
+                return <span>פעולה בנושא</span>;
+            default:
+                return null;
+        }
+    };
 
-  return (
-    <h1 className={styles.activity_title}>
-      {isLoading ? (
-        <span>{t("contentActivities.readyContentName.loading")}</span>
-      ) : (
-        <>
-          {isMany ? (
-            <span>{t("contentActivities.readyContentName.many")}</span>
-          ) : (
-            <span>{t("contentActivities.readyContentName.single")}</span>
-          )}
-
-          <div>{subject}</div>
-        </>
-      )}
-    </h1>
-  );
-}
+    return (
+        <h1 className={styles.activity_title}>
+            {isLoading ? (
+                <span>פעולות בנושא בטעינה...</span>
+            ) : (
+                <>
+                    {setAdditionSpan(type)}
+                    <div>{subject}</div>
+                </>
+            )}
+        </h1>
+    );
+};
 
 export default ReadyContentName;

@@ -1,34 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import styles from "./RichTextEditor.module.css";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { FaBold, FaListOl, FaListUl } from "react-icons/fa6";
-import { convertContentToHTML, convertHTMLToContent } from "../../utils/format";
-import { fetchSaveActivity } from "../../utils/fetch";
-import { useSaveContext } from "../../context/SavedContext";
+import { convertContentToHTML } from "../../utils/format";
 import { Activity } from "../../models/types/activity";
-import { updateActivityWithContent } from "../../utils/activity";
-import { useErrorContext } from "../../context/ErrorContext";
-import { useContentContext } from "../../context/ContentContext";
+import EditorOptSave from "../options/editor/EditorOptSave/EditorOptSave";
+import EditorOptStyle from "../options/editor/EditorOptStyle/EditorOptStyle";
+import ArticleOptions from "../ArticleOptions/ArticleOptions";
 import "./RichTextEditor.css";
-import { SAVE_COOLDOWN } from "../../models/constants/time";
+import { useEditorContext } from "../../context/EditorContext";
 
 type RichTextEditorProps = {
     activity: Activity | undefined;
 };
 
 const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
-    const { getSavedActivities } = useSaveContext();
-    const { updateMainActivity } = useContentContext();
-    const { handleSuccess, handleError } = useErrorContext();
+    const { updateActivity } = useEditorContext();
     const [isLimitExceeded, setIsLimitExceeded] = useState<boolean>(false);
-    const [isDisabled, setIsDisabled] = useState<boolean>(false);
+    const [debouncedHtml, setDebouncedHtml] = useState<string>("");
+    const [lastUpdateTime, setLastUpdateTime] = useState<number>(Date.now());
     const MAX_CHARS = 3000;
+    const DEBOUNCE_DELAY = 3000; // 3 seconds delay for inactivity
+    const MIN_UPDATE_INTERVAL = 5000; // Minimum 5 seconds between updates
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            if (debouncedHtml && activity) {
+                const now = Date.now();
+                if (now - lastUpdateTime >= MIN_UPDATE_INTERVAL) {
+                    updateActivity(activity, debouncedHtml);
+                    setLastUpdateTime(now);
+                }
+            }
+        }, DEBOUNCE_DELAY);
+
+        return () => clearTimeout(timer);
+    }, [debouncedHtml, activity, updateActivity, lastUpdateTime]);
 
     const editor = useEditor({
         extensions: [StarterKit],
         content: convertContentToHTML(activity?.activity || ""),
+        onUpdate: ({ editor }) => {
+            setDebouncedHtml(editor.getHTML());
+        },
         editorProps: {
             attributes: {
                 class: styles.editorContent,
@@ -60,62 +74,14 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
         },
     });
 
-    const handleClickSave = async () => {
-        const htmlContent = editor?.getHTML();
-        if (htmlContent) {
-            try {
-                setIsDisabled(true);
-                setTimeout(() => {
-                    // prevent DDoS attacks
-                    setIsDisabled(false);
-                }, SAVE_COOLDOWN);
-                handleSuccess("הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי");
-                const convertedContent = convertHTMLToContent(htmlContent);
-                const newUpdatedActivity = updateActivityWithContent(activity, convertedContent);
-                const res = await fetchSaveActivity(newUpdatedActivity);
-                updateMainActivity({ ...newUpdatedActivity, id: res.activity.id } as Activity);
-                await getSavedActivities();
-            } catch (error) {
-                handleError("הפעולה לא נשמרה, אנא נסו שנית");
-            }
-        }
-    };
+    const Options = [
+        <EditorOptStyle editor={editor} />,
+        <EditorOptSave activity={activity} htmlContent={editor?.getHTML()} />,
+    ].filter(Boolean);
 
     return (
         <section className={styles.container}>
-            <div className={styles.toolbar}>
-                <button
-                    onClick={handleClickSave}
-                    disabled={isDisabled}
-                    className={styles.saveButton}
-                    title="Save"
-                >
-                    שמירה לפעולות שלי
-                </button>
-                <div className={styles.separator}></div>
-                <button
-                    onClick={() => editor?.chain().focus().toggleBulletList().run()}
-                    className={`${styles.toolbarButton} ${editor?.isActive("bulletList") ? styles.toolbarButtonActive : ""}`}
-                    title="Bullet List"
-                >
-                    <FaListUl />
-                </button>
-                <button
-                    onClick={() => editor?.chain().focus().toggleOrderedList().run()}
-                    className={`${styles.toolbarButton} ${editor?.isActive("orderedList") ? styles.toolbarButtonActive : ""}`}
-                    title="Numbered List"
-                >
-                    <FaListOl />
-                </button>
-                <div className={styles.separator}></div>
-                <button
-                    onClick={() => editor?.chain().focus().toggleBold().run()}
-                    className={`${styles.toolbarButton} ${editor?.isActive("bold") ? styles.toolbarButtonActive : ""}`}
-                    title="Bold"
-                >
-                    <FaBold />
-                </button>
-            </div>
+            <ArticleOptions Options={Options} backgroundColor={"#FFFFFF"} />
             <EditorContent editor={editor} className={styles.editor} />
             <div className={styles.charCounter}>
                 {isLimitExceeded ? (

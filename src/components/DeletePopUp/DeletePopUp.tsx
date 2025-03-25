@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./DeletePopUp.module.css";
 import { Icons } from "../Icons";
-import { MdDelete } from "react-icons/md";
 import { useErrorContext } from "../../context/ErrorContext";
 import { useTranslation } from "react-i18next";
 
@@ -52,12 +51,6 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
                 >
                     <Icons.cancel />
                 </button>
-                <div className={styles.popupTitle_div}>
-                    <h3 className={styles.popupTitle}>
-                    {t("savedActivities.deletePopup.title")}
-                    </h3>
-                    <MdDelete className={styles.deleteIcon} />
-                </div>
                 <p className={styles.message}>
                     {t("savedActivities.deletePopup.message", { activityName })} 
                 </p>
