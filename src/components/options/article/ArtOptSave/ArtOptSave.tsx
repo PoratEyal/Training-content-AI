@@ -7,6 +7,7 @@ import { useSaveContext } from "../../../../context/SavedContext";
 import { Activity } from "../../../../models/types/activity";
 import { fetchSaveActivity } from "../../../../utils/fetch";
 import { useContentContext } from "../../../../context/ContentContext";
+import { SAVE_COOLDOWN } from "../../../../models/constants/time";
 
 type ArtOptSaveProps = {
     activity: Activity;
@@ -18,6 +19,7 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
     const { updateMainActivity } = useContentContext();
     const { handleSuccess, handleError } = useErrorContext();
     const { getSavedActivities, deleteActivity } = useSaveContext();
+    const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
     const [saved, setSaved] = useState<boolean>(false);
     const [activityId, setActivityId] = useState<string | undefined>();
@@ -31,6 +33,11 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
         if (!currentUser?.id) return;
 
         try {
+            setIsDisabled(true);
+            setTimeout(() => {
+                // prevent DDoS attacks
+                setIsDisabled(false);
+            }, SAVE_COOLDOWN);
             updateParam(true);
             handleSuccess("הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי");
 
@@ -50,6 +57,11 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
         if (!currentUser?.id || !activityId) return;
 
         try {
+            setIsDisabled(true);
+            setTimeout(() => {
+                // prevent DDoS attacks
+                setIsDisabled(false);
+            }, SAVE_COOLDOWN);
             updateParam(false);
             handleSuccess("הפעולה הוסרה מאזור הפעולות שלי");
             await deleteActivity(activityId);
@@ -63,9 +75,9 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
     return (
         <div
             className={`${styles.bookmark} ${saved ? styles.checked : ""}`}
-            onClick={saved ? handleUnsave : handleSave}
-            role="button"
+            onClick={isDisabled ? undefined : saved ? handleUnsave : handleSave}
             aria-pressed={saved}
+            role="button"
         >
             <svg
                 className={styles.svgIcon}
@@ -75,7 +87,7 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
             >
                 <path d="M46 62.0085L46 3.88139L3.99609 3.88139L3.99609 62.0085L24.5 45.5L46 62.0085Z" />
             </svg>
-            <span className={styles.text}>שמירה</span>
+            <span className={styles.text}>{saved ? "נשמר" : "שמירה"}</span>
         </div>
     );
 };

@@ -7,8 +7,26 @@ import {
     USER_CONSENT_VALUE,
     REMEMEBER_ME_KEY,
 } from "../models/constants/cookie";
-import { CookiesContextType } from "../models/types/context";
-import { defualtCookiesContext } from "../models/defualtState/context";
+
+export type CookiesContextType = {
+    cookieLimit: string | undefined;
+    cookieUserConsent: string | undefined;
+    cookieRememberMe: string | undefined;
+    removeRememberMeCookie: () => void;
+    setRememberMeCookie: () => void;
+    setConsentCookie: () => void;
+    setLimitCookie: (data: string | number) => void;
+};
+
+export const defualtCookiesContext: CookiesContextType = {
+    cookieLimit: undefined,
+    cookieUserConsent: undefined,
+    cookieRememberMe: undefined,
+    removeRememberMeCookie: () => {},
+    setRememberMeCookie: () => {},
+    setConsentCookie: () => {},
+    setLimitCookie: () => {},
+};
 
 export const CookiesContext = createContext<CookiesContextType>(defualtCookiesContext);
 

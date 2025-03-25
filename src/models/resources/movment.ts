@@ -28,34 +28,6 @@ export const Movements = {
             },
         ],
     } as Movement,
-    maccabi: {
-        name: "maccabi",
-        title: "מכבי צעיר",
-        categories: [
-            {
-                name: "contant",
-                title: "פעילות",
-            },
-            {
-                name: "playTime",
-                title: "משחק",
-            },
-        ],
-    } as Movement,
-    akiva: {
-        name: "akiva",
-        title: "בני עקיבא",
-        categories: [
-            {
-                name: "contant",
-                title: "פעילות",
-            },
-            {
-                name: "playTime",
-                title: "משחק",
-            },
-        ],
-    } as Movement,
     oved: {
         name: "oved",
         title: "הנוער העובד והלומד",
@@ -74,9 +46,9 @@ export const Movements = {
             },
         ],
     } as Movement,
-    krembo: {
-        name: "krembo",
-        title: "כנפיים של קרמבו",
+    akiva: {
+        name: "akiva",
+        title: "בני עקיבא",
         categories: [
             {
                 name: "contant",
@@ -88,9 +60,23 @@ export const Movements = {
             },
         ],
     } as Movement,
-    bitar: {
-        name: "bitar",
-        title: "נוער לאומי ביתר",
+    maccabi: {
+        name: "maccabi",
+        title: "מכבי צעיר",
+        categories: [
+            {
+                name: "contant",
+                title: "פעילות",
+            },
+            {
+                name: "playTime",
+                title: "משחק",
+            },
+        ],
+    } as Movement,
+    camps: {
+        name: "camps",
+        title: "המחנות העולים",
         categories: [
             {
                 name: "contant",
@@ -116,17 +102,27 @@ export const Movements = {
             },
         ],
     } as Movement,
-    sayarut: {
-        name: "sayarut",
-        title: "חוגי סיירות",
+    bitar: {
+        name: "bitar",
+        title: "נוער לאומי ביתר",
         categories: [
             {
                 name: "contant",
                 title: "פעילות",
             },
             {
-                name: "survival",
-                title: "הישרדות",
+                name: "playTime",
+                title: "משחק",
+            },
+        ],
+    } as Movement,
+    hadasha: {
+        name: "hadasha",
+        title: "התנועה החדשה",
+        categories: [
+            {
+                name: "contant",
+                title: "פעילות",
             },
             {
                 name: "playTime",
@@ -148,6 +144,20 @@ export const Movements = {
             },
         ],
     } as Movement,
+    krembo: {
+        name: "krembo",
+        title: "כנפיים של קרמבו",
+        categories: [
+            {
+                name: "contant",
+                title: "פעילות",
+            },
+            {
+                name: "playTime",
+                title: "משחק",
+            },
+        ],
+    } as Movement,
     meshachim: {
         name: "meshachim",
         title: "מדריכי של״ח צעירים",
@@ -155,6 +165,24 @@ export const Movements = {
             {
                 name: "contant",
                 title: "פעילות",
+            },
+            {
+                name: "playTime",
+                title: "משחק",
+            },
+        ],
+    } as Movement,
+    sayarut: {
+        name: "sayarut",
+        title: "חוגי סיירות",
+        categories: [
+            {
+                name: "contant",
+                title: "פעילות",
+            },
+            {
+                name: "survival",
+                title: "הישרדות",
             },
             {
                 name: "playTime",

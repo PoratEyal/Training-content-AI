@@ -1,4 +1,4 @@
-import { DataType } from "../models/types/context";
+import { DataType } from "../models/types/common";
 import { UserMovementDetails } from "../models/types/movement";
 import { GoogleUser, RawUser, User } from "../models/types/user";
 
