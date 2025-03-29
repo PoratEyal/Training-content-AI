@@ -11,7 +11,7 @@ import Session from "../../utils/sessionStorage";
 import route from "../../router/route.json";
 import { CategoryName } from "../../models/types/movement";
 import { useErrorContext } from "../../context/ErrorContext";
-import msg from "../../models/resources/errorMsg.json";
+import msg from "../../models/resources/he/errorMsg.json";
 import styles from "./BuildActivity.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import { BUILD_AD_SLOT } from "../../models/constants/adsSlot";
@@ -25,7 +25,7 @@ import {
     PlaceOptions,
     ReligionOptions,
     ToolsOptions,
-} from "../../models/resources/select";
+} from "../../models/resources/he/select";
 import SubjectInput from "../../components/SubjectInput/SubjectInput";
 import MoreOptionsCollapse from "../../components/MoreOptionsCollapse/MoreOptionsCollapse";
 import MoreDetailsInput from "../../components/MoreDetailsInput/MoreDetailsInput";

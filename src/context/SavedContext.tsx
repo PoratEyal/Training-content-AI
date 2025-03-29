@@ -4,6 +4,7 @@ import { useAuthContext } from "./AuthContext";
 import { fetchGetSavedActivities, fetchRemoveActivity } from "../utils/fetch";
 import { useErrorContext } from "./ErrorContext";
 import { RemoveActivityRequest } from "../models/types/api/request";
+import msg from "../models/resources/he/errorMsg.json";
 
 export type SaveContextType = {
     savedActivity: Activity[];
@@ -45,7 +46,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                     setSavedActivity(sortedActivities);
                 }
             } catch (error) {
-                handleError("הפעולה לא נשמרה, אנא נסו שנית");
+                handleError(msg.notSaved.message);
             } finally {
                 setIsLoading(false);
             }

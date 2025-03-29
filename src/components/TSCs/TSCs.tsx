@@ -1,6 +1,6 @@
 import styles from "./TSCs.module.css";
-import policy from "../../models/resources/policy.json"; // Hebrew
-import policyEn from "../../models/resources/policyEn.json"; // English
+import policyHe from "../../models/resources/he/policy.json";
+import policyEn from "../../models/resources/en/policy.json";
 import Popup from "../core/Popup/Popup";
 import MainBtn from "../MainBtn/MainBtn";
 import { useTranslation } from "react-i18next";
@@ -13,7 +13,7 @@ function TSCs({ handleAccept }) {
     const dir = isHebrew ? "rtl" : "ltr";
 
     // Select policy based on language
-    const currentPolicy = isHebrew ? policy : policyEn;
+    const currentPolicy = isHebrew ? policyHe : policyEn;
 
     return (
         <Popup>

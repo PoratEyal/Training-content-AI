@@ -26,7 +26,7 @@ import {
 } from "../models/types/api/response";
 import { functions } from "../config/firebase";
 import { httpsCallable } from "firebase/functions";
-import msg from "../models/resources/errorMsg.json";
+import msg from "../models/resources/he/errorMsg.json";
 import { Activity, StaticActivities } from "../models/types/activity";
 
 export const fetchGetActivity = async (

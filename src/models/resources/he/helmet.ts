@@ -1,4 +1,4 @@
-import { HelmetPage } from "../types/common";
+import { HelmetPage, Lng } from "../../types/common";
 
 type LanguageSection = {
     [K in HelmetPage]: {
@@ -7,7 +7,7 @@ type LanguageSection = {
     };
 };
 
-export const helmetJson: Record<"he" | "en", LanguageSection> = {
+export const helmetJson: Record<Lng, LanguageSection> = {
     he: {
         home: {
             title: "פעולות לתנועות נוער",

@@ -7,7 +7,7 @@ import {
     GradeOptions,
     AmountOptions,
     GenderOptions,
-} from "../../models/resources/select";
+} from "../../models/resources/he/select";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import MainBtn from "../../components/MainBtn/MainBtn";
 import { useAuthContext } from "../../context/AuthContext";
