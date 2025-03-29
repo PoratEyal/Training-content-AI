@@ -1,0 +1,18 @@
+{
+    "error": {
+        "title": "Error",
+        "message": "We could not find what you were looking for. Please try again"
+    },
+    "safety": {
+        "title": "Error",
+        "message": "The system has identified that the content you are searching for may be unsafe, and the search has been blocked. We suggest creating a different activity."
+    },
+    "google": {
+        "title": "Error",
+        "message": "The login failed. Please ensure you are connected to the internet and try again"
+    },
+    "notSaved": {
+        "title": "Error",
+        "message": "The action was not saved, please try again"
+    }
+}

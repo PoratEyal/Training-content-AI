@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./SubjectInput.module.css";
 import { isInBlackList } from "../../utils/blackList";
 import MagicBtn from "../MagicBtn/MagicBtn";
-import MagicEn from "../../models/resources/magicEn.json";
-import magic from "../../models/resources/magic.json";
+import magicEn from "../../models/resources/en/magic.json";
+import magicHe from "../../models/resources/he/magic.json";
 import { CategoryName } from "../../models/types/movement";
 import { useTranslation } from "react-i18next";
 
@@ -38,7 +38,7 @@ function SubjectInput({
     setSubject(newSubject);
   };
 
-  const magicOptions = isHebrew ? magic[category] : MagicEn[category];
+  const magicOptions = isHebrew ? magicHe[category] : magicEn[category];
 
   return (
     <div

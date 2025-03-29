@@ -1,4 +1,4 @@
-import { BlackList } from "../models/resources/blackList";
+import { BlackList } from "../models/resources/he/blackList";
 
 export const isInBlackList = (value: string): boolean => {
     if (value.length > 4 || value !== "") {

@@ -8,7 +8,7 @@ import { WEBSITE_URL } from "../../../models/constants";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
 import { useTranslation } from "react-i18next";
 import { HelmetPage } from "../../../models/types/common";
-import { getContent, getTitle } from "../../../models/resources/helmet";
+import { getContent, getTitle } from "../../../models/resources/he/helmet";
 
 type PageLayoutProps = {
     id: HelmetPage;
