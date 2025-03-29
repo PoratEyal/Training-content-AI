@@ -13,7 +13,7 @@
     font-size: 20px;
     font-weight: 500;
     width: 100%;
-    text-align: right;
+    text-align: inherit; /* Inherits from dir (RTL or LTR) */
     margin-top: -10px;
     margin-bottom: 20px;
 }
@@ -33,13 +33,13 @@
 }
 
 .email a {
-    margin-right: 4px;
+    margin-inline-end: 4px; /* Use logical property for RTL/LTR support */
     color: var(--email-color);
 }
 
 .back_icon {
     position: absolute;
-    right: 10px;
+    inset-inline-end: 10px; /* Logical property for right (RTL/LTR) */
     top: 10px;
     font-size: 24px;
     border: none;
@@ -60,7 +60,7 @@
         position: absolute;
     }
 
-    .page_title{
+    .page_title {
         margin-top: 10px;
     }
 

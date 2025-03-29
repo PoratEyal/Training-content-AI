@@ -9,6 +9,10 @@
     max-width: 273px;
 }
 
+.ltr_select {
+    direction: ltr !important;
+  }
+
 .input_div select {
     cursor: pointer;
     border: 1px solid var(--select-border-color);
@@ -46,6 +50,17 @@
 .input_div select:focus {
     outline: none;
 }
+
+.ltr_div select {
+    direction: ltr;
+    padding-left: 25px;
+  }
+  
+  /* Move arrow to left side in LTR */
+  .ltr_div::after {
+    right: 13px;
+    left: auto;
+  }
 
 @media (min-width: 380px) {
     .input_div{

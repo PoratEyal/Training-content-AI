@@ -1,14 +1,9 @@
 .privacy {
-    /* Remove contain: content; */
-    max-height: 50vh;          /* Limits the container's height so it can scroll */
+    max-height: 50vh; /* Limits the container's height so it can scroll */
     overflow-y: auto;
     overflow-x: hidden;
-
-    /* Hides scrollbars on Firefox and old IE/Edge */
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-
-    /* For spacing/layout */
+    scrollbar-width: none; /* Hides scrollbars on Firefox */
+    -ms-overflow-style: none; /* Hides scrollbars on old IE/Edge */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -24,7 +19,7 @@
     color: var(--primary-color);
     font-size: 18px;
     margin-top: -5px;
-    text-align: right;
+    text-align: inherit; /* Inherits from dir (RTL or LTR) */
     font-weight: 550;
     margin-bottom: 0;
     width: 100%;
@@ -33,6 +28,7 @@
 .space_div {
     font-size: 11px;
 }
+
 .space_div_end {
     font-size: 11px;
     margin-bottom: 40px;
@@ -41,7 +37,7 @@
 .fixed_btn {
     position: fixed;
     bottom: 25px;
-    left: 25px;
+    inset-inline-start: 25px; /* Logical property: left in LTR, right in RTL */
     z-index: 1000;
     color: white;
     border: none;

@@ -1,5 +1,5 @@
 import { SessionKey } from "../models/enum/storage";
-import { Movements } from "../models/resources/movment";
+import { Movements } from "../models/resources/he/movment";
 import Session from "./sessionStorage";
 
 export const addSessionData = (movement, grade, amount, gender) => {

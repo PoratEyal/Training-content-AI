@@ -26,7 +26,6 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    direction: rtl;
 }
 
 .btn_loading {
@@ -34,7 +33,6 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
-    direction: rtl;
     border-radius: 900px;
     width: 31px;
 }

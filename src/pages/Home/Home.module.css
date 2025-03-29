@@ -58,6 +58,21 @@
     align-items: center; 
 }
 
+.languageSwitcher {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+  }
+  
+  .languageSwitcherHebrew {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1100;
+  }
+  
+
 @media (min-width: 550px) {
     .logo_text_div{
         margin-top: 0px;
@@ -82,8 +97,7 @@
     }
     
     .about_div{
-        right: auto;
-        left: 48%;
+        right: 45%;
     }
 }
 

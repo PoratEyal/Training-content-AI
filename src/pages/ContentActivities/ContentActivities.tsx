@@ -10,14 +10,17 @@ import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
 import { StaticActivities } from "../../models/types/activity";
-import helmet from "../../models/resources/helmet.json";
+import { useTranslation } from "react-i18next";
 
 const ContentActivities: React.FC = () => {
     const navigate = useNavigate();
     const { activityId } = useParams<{ activityId: string }>();
     const { subjects, isLoading, useFetchSubjectsData } = useStaticContentContext();
     useFetchSubjectsData();
+
     const contentActivitiesPath = route.contentActivities.replace(":activityId", activityId || "");
+
+    const { t } = useTranslation();
 
     const goBack = () => {
         navigate(route.content);
@@ -25,7 +28,6 @@ const ContentActivities: React.FC = () => {
 
     const { subject, activities } = React.useMemo(() => {
         if (!subjects?.length) return { subject: undefined, activities: undefined };
-
         const foundSubject = subjects.find((subj) => subj.name === activityId);
         const sortedActivities = foundSubject?.activities?.sort((a, b) => a.orderId - b.orderId);
 
@@ -42,21 +44,29 @@ const ContentActivities: React.FC = () => {
 
     return (
         <PageLayout
+            id="contentActivities"
             path={contentActivitiesPath}
             hasHeader={{ goBack }}
             hasNavBar
             hasGreenBackground
-            title={subject?.metaTitle || helmet.contentActivities.title}
-            content={subject?.metaDescription || helmet.contentActivities.content}
+            title={subject?.metaTitle}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
         >
-            <div style={{marginTop: "-60px", marginRight: "auto", marginLeft: "auto", width: "230px"}}>
+            <div
+                style={{
+                    marginTop: "-60px",
+                    marginRight: "auto",
+                    marginLeft: "auto",
+                    width: "230px",
+                }}
+            >
                 <ReadyContentName
                     type="many"
-                    subject={subject?.metaTitle || helmet.contentActivities.title}
+                    subject={subject?.metaTitle || ""}
                     isLoading={isLoading}
                 />
             </div>
+
             {isLoading ? (
                 <section className={styles.content_article}>
                     <PageLoading />
@@ -79,12 +89,12 @@ const ContentActivities: React.FC = () => {
                             })}
                         </section>
                     ) : (
-                        <div>לא נמצאו פעולות מתאימות</div>
+                        <div>{t("contentActivities.noSuitableActivities")}</div>
                     )}
                 </article>
             ) : (
                 <article className={styles.content_article}>
-                    <p>לא נמצאו נתונים עבור הנושא המבוקש.</p>
+                    <p>{t("contentActivities.noSubjectData")}</p>
                 </article>
             )}
         </PageLayout>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./DeletePopUp.module.css";
 import { Icons } from "../Icons";
-import { MdDelete } from "react-icons/md";
 import { useErrorContext } from "../../context/ErrorContext";
+import { useTranslation } from "react-i18next";
 
 type DeletePopUpProps = {
     isOpen: boolean;
@@ -15,6 +15,7 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
     const { handleError } = useErrorContext();
     const [showPopup, setShowPopup] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
+    const { t, i18n } = useTranslation();
 
     useEffect(() => {
         if (isOpen) {
@@ -31,7 +32,7 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
             onClose();
             await onDelete();
         } catch (error) {
-            handleError("הפעולה לא נמחקה, אנא נסו שוב מאוחר יותר");
+            handleError(t("savedActivities.deletePopup.deleteError"));
             setIsDeleting(false);
             onClose();
         }
@@ -42,16 +43,27 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
     return (
         <div className={styles.popupOverlay}>
             <div className={`${styles.popupContent} ${showPopup ? styles.popupContentShow : ""}`}>
-                <button className={styles.closeButton} onClick={onClose}>
+                <button
+                    className={`${styles.closeButton} ${
+                        i18n.language === "en" ? styles.closeButtonLtr : styles.closeButtonRtl
+                    }`}
+                    onClick={onClose}
+                >
                     <Icons.cancel />
                 </button>
-                <p className={styles.message}>האם למחוק את הפעולה {activityName}?</p>
+                <p className={styles.message}>
+                    {t("savedActivities.deletePopup.message", { activityName })} 
+                </p>
                 <button
                     className={styles.deleteButton}
                     onClick={handleDelete}
                     disabled={isDeleting}
                 >
-                    {isDeleting ? <Icons.loading className={styles.loading} /> : "מחיקה"}
+                    {isDeleting ? (
+                        <Icons.loading className={styles.loading} />
+                    ) : (
+                        t("savedActivities.deletePopup.deleteButton")
+                    )}
                 </button>
             </div>
         </div>

@@ -3,7 +3,7 @@ import Session from "../utils/sessionStorage";
 import { Activity } from "../models/types/activity";
 import { addSessionData } from "../utils/movment";
 import { useAuthContext } from "./AuthContext";
-import { Movements } from "../models/resources/movment";
+import { Movements } from "../models/resources/he/movment";
 import { SessionKey } from "../models/enum/storage";
 import { DataType } from "../models/types/common";
 

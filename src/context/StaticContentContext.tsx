@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useErrorContext } from "./ErrorContext";
-import msg from "../models/resources/errorMsg.json";
+import msg from "../models/resources/he/errorMsg.json";
 import { fetchStaticSubjects } from "../utils/fetch";
 import { StaticSubjects } from "../models/types/activity";
 

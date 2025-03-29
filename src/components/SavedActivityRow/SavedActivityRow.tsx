@@ -3,6 +3,7 @@ import styles from "./SavedActivityRow.module.css";
 import { Activity } from "../../models/types/activity";
 import { useNavigate } from "react-router-dom";
 import route from "../../router/route.json";
+import { useTranslation } from "react-i18next";
 
 type SavedActivityRowProps = {
     activity: Activity;
@@ -11,6 +12,7 @@ type SavedActivityRowProps = {
 
 const SavedActivityRow: React.FC<SavedActivityRowProps> = ({ activity, openDeletePopup }) => {
     const navigate = useNavigate();
+    const { i18n } = useTranslation();
 
     const goToActivity = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if (!(e.target as Element).closest(".delete_icon")) {
@@ -29,7 +31,11 @@ const SavedActivityRow: React.FC<SavedActivityRowProps> = ({ activity, openDelet
     })}`;
 
     return (
-        <div className={styles.grid_item} onClick={(e) => goToActivity(e)}>
+        <div
+            className={styles.grid_item}
+            style={{ direction: i18n.language === "en" ? "ltr" : "rtl" }}
+            onClick={goToActivity}
+        >
             <div className={styles.content_section}>
                 <h2 className={styles.item_title}>{activity.subject}</h2>
                 {activity.savedAt && <span className={styles.saved_date}>{time}</span>}

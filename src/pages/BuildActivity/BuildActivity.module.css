@@ -22,7 +22,13 @@
     position: absolute;
     top: -95px;
     left: 50px;
-}
+  }
+  
+  .ltr_path {
+    left: auto;
+    right: 50px;
+  }
+ 
 
 .selects_btn {
     margin-top: 35px;
@@ -73,12 +79,15 @@
 .btn_div {
     position: relative;
     box-sizing: border-box;
-    direction: ltr;
+    direction: rtl;
     display: flex;
     width: 100%;
     -webkit-tap-highlight-color: transparent;
     margin-bottom: 8vh;
 }
+.rtl_btn {
+    direction: ltr;
+  }
 
 .input_alert {
     position: absolute;

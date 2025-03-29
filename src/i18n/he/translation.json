@@ -1,0 +1,162 @@
+{
+  "home": {
+    "slogan": "מותאם, פשוט ומהיר 🤟",
+    "startAction": "יצירת פעולות",
+    "aboutText": "ActivityWiz הוא אתר ליצירת פעולות לנוער. תוכלו לבחור מתוך מאגר של פעולות מוכנות מראש או להשתמש בבינה מלאכותית ליצירת פעולות מותאמות אישית, המתאימות בדיוק לצרכים שלכם. האתר מיועד למדריכים המחפשים רעיונות ודרכים חדשות להעשרת החוויה החינוכית והחברתית."
+  },
+  "continueWithAI": {
+    "advanced1": "מתקדמים",
+    "advanced2": "מתקדמים",
+    "forActions": "לפעולות",
+    "withPrefix1": "ב-",
+    "withPrefix2": "ב-",
+    "ai1": "AI",
+    "ai2": "AI"
+  },
+  "AboutUsCollapse": {
+    "title": "אודות"
+  },
+  "navbar": {
+    "home": "מסך הבית",
+    "build": "יצירת פעולות",
+    "content": "תוכן",
+    "myActivities": "הפעולות שלי"
+  },
+  "details": {
+    "title": "ספרו לנו על הקבוצה שלכם",
+    "youthMovement": "תנועת נוער",
+    "grade": "שכבת גיל",
+    "numberOfChildren": "מספר חניכים",
+    "gender": "מגדר",
+    "submit": "המשך",
+    "lampAlt": "מנורה צהובה"
+  },
+  "buildActivity": {
+    "createTitle": "צרו את הפעולות שלכם",
+    "subject": {
+      "label": "נושא הפעולה",
+      "placeholder": "הכנס את נושא הפעולה..."
+    },
+    "category": {
+      "label": "קטגוריה"
+    },
+    "place": {
+      "label": "מיקום",
+      "options": {
+        "inside": "בפנים",
+        "outside": "בחוץ",
+        "both": "שניהם"
+      }
+    },
+    "time": {
+      "label": "משך זמן",
+      "options": {
+        "short": "קצר (עד 45 דקות)",
+        "medium": "בינוני (45-90 דקות)",
+        "long": "ארוך (90+ דקות)"
+      }
+    },
+    "religion": {
+      "label": "רמת דתיות",
+      "options": {
+        "secular": "חילוני",
+        "religious": "דתי",
+        "both": "שניהם"
+      }
+    },
+    "contest": {
+      "label": "רמת תחרותיות",
+      "options": {
+        "none": "ללא",
+        "low": "נמוכה",
+        "high": "גבוהה"
+      }
+    },
+    "tools": {
+      "label": "ציוד נדרש",
+      "options": {
+        "none": "ללא",
+        "basic": "בסיסי",
+        "special": "מיוחד"
+      }
+    },
+    "moreDetails": {
+      "label": "פרטים נוספים",
+      "placeholder": "הוסף פרטים נוספים על הפעילות..."
+    },
+    "moreOptions": {
+      "title": "אפשרויות נוספות",
+      "description": "הגדרות נוספות לפעילות שלך"
+    },
+    "loadingActivity": {
+      "heading": "הפעולה בדרך",
+      "text": "שימו לב! מקור הפעולות מבוסס על מערכת בינה מלאכותית, ייתכן ותמצאו אי דיוקים. אנא בדקו את התוכן לפני כל פעולה"
+    },
+    "submit": "צור פעילות",
+    "loading": "יוצר את הפעילות שלך..."
+  },
+  "contentPage": {
+    "popularActivities": "10 הפעולות הפופולריות",
+    "noSubjectSelected": "לא נבחר נושא פעולה",
+    "readyContentTitle": "פעולות מוכנות"
+  },
+  "contentActivities": {
+    "noSuitableActivities": "לא נמצאו פעולות מתאימות",
+    "noSubjectData": "לא נמצאו נתונים עבור הנושא המבוקש.",
+    "readyContentName": {
+      "loading": "פעולות בנושא בטעינה...",
+      "many": "פעולות בנושא",
+      "single": "פעולה בנושא"
+    }
+  },
+  "savedActivities": {
+    "dontHaveActivity": {
+      "title": "עדיין לא שמרתם פעולות?",
+      "mainTextLine1": "לשמירת הפעולות, לחצו על כפתור ה",
+      "mainTextLine2": "לאחר יצירת פעולת חדשה"
+    },
+    "myActivities": {
+      "title": "הפעולות שלי"
+    },
+    "deletePopup": {
+      "title": "מחיקת הפעולה",
+      "message": "האם למחוק את הפעולה {{activityName}}?",
+      "deleteButton": "מחיקה",
+      "deleteError": "הפעולה לא נמחקה, אנא נסו שוב מאוחר יותר"
+    }
+  },
+  "profile": {
+      "dropOptInviteFriends": {
+        "invite": "שתפו עם חברים"
+      },
+      "dropOptContactUs": {
+        "contact": "צרו קשר"
+      },
+      "dropOptLogout": {
+        "logout": "התנתקות"
+      },
+      "dropOptPrivacy": {
+        "policy": "תנאי שירות"
+      },
+      "dropOptSignIn": {
+        "signIn": "התחברות"
+      }
+  },
+  "contactUs": {
+    "header": {
+      "title": "מה תרצו לספר לנו?",
+      "subtitle": "לכל הצעה, בקשה או בעיה, דברו איתנו!"
+    },
+    "form": {
+      "emailPlaceholder": "אימייל",
+      "namePlaceholder": "שם",
+      "messagePlaceholder": "מה תרצו לספר לנו?",
+      "submitButton": "שליחה",
+      "successMessage": "ההודעה נשלחה בהצלחה!"
+    }
+  },
+  "privacyPolicy": {
+    "title": "תנאי שירות ומדיניות פרטיות",
+    "acceptButton": "אישור"
+  }
+}
