@@ -237,12 +237,28 @@
       <loc>https://activitywiz.com/content/holidays/purimGames</loc>
       <priority>0.8</priority>
    </url>
-      <url>
+   <url>
       <loc>https://activitywiz.com/content/holidays/pesah</loc>
       <priority>0.8</priority>
    </url>
-      <url>
+   <url>
       <loc>https://activitywiz.com/content/holidays/pesah4sons</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/content/holidays/yomshoa</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/content/holidays/yomzikaron</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/content/holidays/yomazmaut</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/content/holidays/shavuot</loc>
       <priority>0.8</priority>
    </url>
    
