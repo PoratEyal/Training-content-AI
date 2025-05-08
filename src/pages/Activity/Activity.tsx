@@ -3,7 +3,6 @@ import { useContentContext } from "../../context/ContentContext";
 import { useNavigate } from "react-router-dom";
 import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import helmet from "../../models/resources/helmet.json";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import ActivityArticle from "../../components/ActivityArticle/ActivityArticle";
 import { useAuthContext } from "../../context/AuthContext";
@@ -41,11 +40,11 @@ function Activity() {
 
     return (
         <PageLayout
+            id="activity"
             path={route.activity}
             hasGreenBackground
             hasHeader={{ goBack, hasTitle: mainActivity?.subject || undefined }}
-            title={helmet.activity.title}
-            content={helmet.home.content}
+            title={"helmet.activity.title"}//TODO
             hesAds={ACTIVITY_AD_SLOT}
             hasNavBar
             index={false}

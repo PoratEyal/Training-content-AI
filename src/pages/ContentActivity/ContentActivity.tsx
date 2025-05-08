@@ -10,7 +10,6 @@ import { useStaticContentContext } from "../../context/StaticContentContext";
 import { StaticActivities } from "../../models/types/activity";
 import { useCallback, useEffect, useState } from "react";
 import { fetchGetStaticActivity } from "../../utils/fetch";
-import helmet from "../../models/resources/helmet.json";
 import { useAuthContext } from "../../context/AuthContext";
 import { convertActivityType } from "../../utils/activity";
 import ActivityArticle from "../../components/ActivityArticle/ActivityArticle";
@@ -73,12 +72,11 @@ function ContentActivity() {
 
     return (
         <PageLayout
+            id="contentActivity"
             path={contentActivityPath}
             hasGreenBackground
             hasHeader={{ goBack, hasTitle: activity?.title || undefined }}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
-            title={activity?.metaTitle || helmet.contentActivity.title}
-            content={activity?.metaDescription || helmet.contentActivity.content}
             hasNavBar
         >
             {isActivityLoading ? (

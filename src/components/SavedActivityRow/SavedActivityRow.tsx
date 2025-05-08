@@ -3,6 +3,7 @@ import styles from "./SavedActivityRow.module.css";
 import { Activity } from "../../models/types/activity";
 import { useNavigate } from "react-router-dom";
 import route from "../../router/route.json";
+import { useLanguage } from "../../i18n/useLanguage";
 
 type SavedActivityRowProps = {
     activity: Activity;
@@ -10,6 +11,7 @@ type SavedActivityRowProps = {
 };
 
 const SavedActivityRow: React.FC<SavedActivityRowProps> = ({ activity, openDeletePopup }) => {
+    const { dir } = useLanguage();
     const navigate = useNavigate();
 
     const goToActivity = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -29,7 +31,7 @@ const SavedActivityRow: React.FC<SavedActivityRowProps> = ({ activity, openDelet
     })}`;
 
     return (
-        <div className={styles.grid_item} onClick={(e) => goToActivity(e)}>
+        <div className={styles.grid_item} style={{ direction: dir }} onClick={goToActivity}>
             <div className={styles.content_section}>
                 <h2 className={styles.item_title}>{activity.subject}</h2>
                 {activity.savedAt && <span className={styles.saved_date}>{time}</span>}

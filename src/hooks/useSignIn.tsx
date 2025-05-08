@@ -6,7 +6,7 @@ import {
     signInWithRedirect,
 } from "firebase/auth";
 import { useErrorContext } from "../context/ErrorContext";
-import errMsg from "../models/resources/errorMsg.json";
+import errMsg from "../models/resources/he/errorMsg.json";
 import { auth } from "../config/firebase";
 import { useAuthContext } from "../context/AuthContext";
 import { useEffect, useState } from "react";

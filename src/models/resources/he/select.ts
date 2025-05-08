@@ -1,5 +1,5 @@
-import { SelectOption } from "../types/common";
-import { Category } from "../types/movement";
+import { SelectOption } from "../../types/common";
+import { Category } from "../../types/movement";
 import { Movements } from "./movment";
 
 export const MovmentsOptions: SelectOption[] = [

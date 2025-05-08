@@ -1,0 +1,166 @@
+{
+  "home": {
+    "slogan": "מותאם, פשוט ומהיר 🤟",
+    "startAction": "יצירת פעולות",
+    "aboutText": "ActivityWiz הוא אתר ליצירת פעולות לנוער. תוכלו לבחור מתוך מאגר של פעולות מוכנות מראש או להשתמש בבינה מלאכותית ליצירת פעולות מותאמות אישית, המתאימות בדיוק לצרכים שלכם. האתר מיועד למדריכים המחפשים רעיונות ודרכים חדשות להעשרת החוויה החינוכית והחברתית."
+  },
+  "continueWithAI": {
+    "advanced1": "מתקדמים",
+    "advanced2": "מתקדמים",
+    "forActions": "לפעולות",
+    "withPrefix1": "ב-",
+    "withPrefix2": "ב-",
+    "ai1": "AI",
+    "ai2": "AI"
+  },
+  "aboutUs": {
+    "title": "אודות"
+  },
+  "navbar": {
+    "home": "מסך הבית",
+    "build": "יצירת פעולות",
+    "content": "תוכן",
+    "myActivities": "הפעולות שלי"
+  },
+  "details": {
+    "title": "ספרו לנו על הקבוצה שלכם",
+    "youthMovement": "תנועת נוער",
+    "grade": "שכבת גיל",
+    "numberOfChildren": "מספר חניכים",
+    "gender": "מגדר",
+    "submit": "המשך",
+    "lampAlt": "מנורה צהובה"
+  },
+  "buildActivity": {
+    "createTitle": "צרו את הפעולות שלכם",
+    "category": {
+      "label": "קטגוריה"
+    },
+    "subject": {
+      "label": "נושא"
+    },
+    "place": {
+      "label": "מיקום"
+    },
+    "time": {
+      "label": "זמן"
+    },
+    "tools": {
+      "label": "ציוד"
+    },
+    "religion": {
+      "label": "שבת"
+    },
+    "contest": {
+      "label": "תחרות וקבוצות"
+    },
+    "moreDetails": {
+      "label": "מידע נוסף"
+    },
+    "moreOptions": {
+      "title": "אפשרויות נוספות"
+    },
+    "loadingActivity": {
+      "heading": "הפעולה בדרך",
+      "text": "שימו לב! מקור הפעולות מבוסס על מערכת בינה מלאכותית, ייתכן ותמצאו אי דיוקים. אנא בדקו את התוכן לפני כל פעולה"
+    },
+    "submit": "צור פעילות",
+    "loading": "יוצר את הפעילות שלך..."
+  },
+  "contentPage": {
+    "popularActivities": "10 הפעולות הפופולריות",
+    "noSubjectSelected": "לא נבחר נושא פעולה",
+    "readyContentTitle": "פעולות מוכנות"
+  },
+  "contentActivities": {
+    "noSuitableActivities": "לא נמצאו פעולות מתאימות",
+    "noSubjectData": "לא נמצאו נתונים עבור הנושא המבוקש.",
+    "readyContentName": {
+      "loading": "פעולות בנושא בטעינה...",
+      "many": "פעולות בנושא",
+      "single": "פעולה בנושא"
+    }
+  },
+  "savedActivities": {
+    "dontHaveActivity": {
+      "title": "עדיין לא שמרתם פעולות?",
+      "mainTextLine1": "לשמירת הפעולות, לחצו על כפתור ה",
+      "mainTextLine2": "לאחר יצירת פעולת חדשה"
+    },
+    "myActivities": {
+      "title": "הפעולות שלי"
+    },
+    "deletePopup": {
+      "title": "מחיקת הפעולה",
+      "message": "האם למחוק את הפעולה {{activityName}}?",
+      "deleteButton": "מחיקה",
+      "deleteError": "הפעולה לא נמחקה, אנא נסו שוב מאוחר יותר"
+    }
+  },
+  "profile": {
+      "dropOptInviteFriends": {
+        "invite": "שתפו עם חברים"
+      },
+      "dropOptContactUs": {
+        "contact": "צרו קשר"
+      },
+      "dropOptLogout": {
+        "logout": "התנתקות"
+      },
+      "dropOptPrivacy": {
+        "policy": "תנאי שירות"
+      },
+      "dropOptSignIn": {
+        "signIn": "התחברות"
+      }
+  },
+  "reviewPopup": {
+    "title": "מה חדש?!",
+    "shareIdea": "יש לכם רעיון לשיפור? או סתם משהו לשתף?",
+    "placeholder": "אנא כתבו לנו פה",
+    "submit": "שלח"
+  },
+  "articleOptions": {
+    "copy": {
+      "button": "העתקה",
+      "success": "הפעולה הועתקה בהצלחה 🎉",
+      "error": "העתקת הטקסט נכשלה."
+    },
+    "share": "שיתוף",
+    "save": {
+      "button": "שמירה",
+      "saved": "נשמר",
+      "saveSuccess": "הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי",
+      "saveError": "הפעולה לא נשמרה, אנא נסו שנית",
+      "removeSuccess": "הפעולה הוסרה מאזור הפעולות שלי",
+      "removeError": "הפעולה לא נשמרה, אנא נסו שנית"
+    },
+    "edit": "עריכה"
+  },
+  "editor": {
+    "save": {
+      "saveToMyActivities": "שמירה לפעולות שלי",
+      "savedToMyActivities": "נשמר בפעולות שלי",
+      "saveSuccess": "הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי",
+      "saveError": "הפעולה לא נשמרה, אנא נסו שנית"
+    },
+    "charLimitWarning": "הגעת למגבלת התווים האפשרית"
+  },
+  "contactUs": {
+    "header": {
+      "title": "מה תרצו לספר לנו?",
+      "subtitle": "לכל הצעה, בקשה או בעיה, דברו איתנו!"
+    },
+    "form": {
+      "emailPlaceholder": "אימייל",
+      "namePlaceholder": "שם",
+      "messagePlaceholder": "מה תרצו לספר לנו?",
+      "submitButton": "שליחה",
+      "successMessage": "ההודעה נשלחה בהצלחה!"
+    }
+  },
+  "privacyPolicy": {
+    "title": "תנאי שירות ומדיניות פרטיות",
+    "acceptButton": "אישור"
+  }
+}

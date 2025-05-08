@@ -3,8 +3,10 @@ import route from "../../../router/route.json";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Icons } from "../../Icons";
+import { useLanguage } from "../../../i18n/useLanguage";
 
 const NavOptMyActivities = () => {
+    const { t } = useLanguage();
     const [isSelected, setIsSelected] = useState<boolean>(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -15,11 +17,11 @@ const NavOptMyActivities = () => {
 
     return (
         <div
-            onClick={()=>navigate(route.myactivities)}
+            onClick={() => navigate(route.myactivities)}
             className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
         >
             <Icons.bookmark className={styles.icon} />
-            <span className={styles.text}>הפעולות שלי</span>
+            <span className={styles.text}>{t("navbar.myActivities")}</span>
         </div>
     );
 };

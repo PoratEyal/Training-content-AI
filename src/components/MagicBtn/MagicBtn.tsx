@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./MagicBtn.module.css";
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
 import { Icons } from "../Icons";

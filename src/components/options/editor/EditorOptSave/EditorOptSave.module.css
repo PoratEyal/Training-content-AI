@@ -13,6 +13,18 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+.rtl .svgIcon {
+    transform: scaleX(-1);
+}
+
+.rtl {
+    direction: rtl;
+}
+
+.ltr {
+    direction: ltr;
+}
+
 .svgIcon {
     position: relative;
     top: 1px;

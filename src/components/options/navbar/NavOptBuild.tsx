@@ -3,8 +3,10 @@ import route from "../../../router/route.json";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Icons } from "../../Icons";
+import { useLanguage } from "../../../i18n/useLanguage";
 
 const NavOptBuild = () => {
+    const { t } = useLanguage();
     const [isSelected, setIsSelected] = useState<boolean>(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -15,15 +17,15 @@ const NavOptBuild = () => {
         location.pathname === route.activity
             ? setIsSelected(true)
             : setIsSelected(false);
-    },[location.pathname]);
+    }, [location.pathname]);
 
     return (
         <div
-            onClick={()=>navigate(route.details)}
+            onClick={() => navigate(route.details)}
             className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
         >
             <Icons.magic className={styles.icon} />
-            <span className={styles.text}>יצירת פעולות</span>
+            <span className={styles.text}>{t("navbar.build")}</span>
         </div>
     );
 };

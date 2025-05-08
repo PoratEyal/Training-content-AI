@@ -7,7 +7,7 @@ import { useErrorContext } from "./ErrorContext";
 import { addSessionData } from "../utils/movment";
 import { NEED_TO_LOGIN } from "../models/constants/cookie";
 import { initRawUser } from "../utils/user";
-import msg from "../models/resources/errorMsg.json";
+import msg from "../models/resources/he/errorMsg.json";
 import { useCookiesContext } from "./CookiesContext";
 
 /**

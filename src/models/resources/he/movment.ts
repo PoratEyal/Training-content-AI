@@ -1,9 +1,9 @@
-import { Movement } from "../types/movement";
+import { Movement } from "../../types/movement";
 
 /**
  * Dont forget to also update
  * ./models/types/movement.ts for the new Movement type and 
- * ./models/resources/select.ts for MovmentsOptions
+ * ./models/resources/he/select.ts for MovmentsOptions
  */
 export const Movements = {
     scout: {

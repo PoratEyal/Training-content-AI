@@ -1,3 +1,5 @@
+
+
 export type MovementName =
     | "scout"
     | "oved"
@@ -13,7 +15,9 @@ export type MovementName =
     | "noam"
     | "sayarut"
     | "agricultural"
-    | "other";
+    | "other"
+//English
+    | "movement";
 
 export type Movement = {
     name: MovementName;

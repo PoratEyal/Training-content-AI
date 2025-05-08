@@ -3,19 +3,18 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    direction: rtl;
     position: relative;
     width: 100%;
-}
-
-.input {
+    direction: rtl; /* default for Hebrew */
+  }
+  
+  .input {
     padding: 15px 25px;
     box-sizing: border-box;
-    -webkit-box-sizing: border-box;
     border: none;
     border-radius: 14px;
     font-family: var(--font-family);
-    text-align: right;
+    text-align: right; /* default for Hebrew */
     background-color: var(--select-color);
     border: 1px solid var(--select-border-color);
     color: var(--text-color);
@@ -27,37 +26,52 @@
     min-height: 50px;
     overflow: hidden;
     font-size: 16px;
-    height: 38px;
-}
-
-.input::placeholder {
-    color: var(--placeholder-color);
-    font-weight: 400;
-    font-size: 16px;
-}
-
-.magic_icon {
+  }
+  
+  /* 
+    Two new classes to position the MagicBtn absolutely in the parent 
+    (the .input_and_icon div).
+  */
+  .magic_btn_rtl {
     position: absolute;
-    left: 12px;
-    bottom: 7px;
-    color: var(--primary-color);
-    cursor: pointer;
-    font-size: 19px;
-    padding: 7px;
-    padding-left: 2px;
-    padding-bottom: 0px;
-}
-
-@media (min-width: 550px) {
+    left: 5px;
+    bottom: 0px;
+  }
+  
+  .magic_btn_ltr {
+    position: absolute;
+    right: 45px;
+    bottom: 0px;
+  }
+  
+  /* 
+    If you want to flip the entire container to LTR for non-Hebrew,
+    add an .ltr override. 
+  */
+  .ltr {
+    direction: ltr !important;
+  }
+  
+  .ltr textarea {
+    text-align: left !important;
+  }
+  
+  /* 
+    If you had .magic_icon rules from before, 
+    they won’t affect the separate MagicBtn unless it uses .magic_icon 
+    or is nested in a container referencing that class. 
+  */
+  
+  /* Responsive tweaks */
+  @media (min-width: 550px) {
     .input_and_icon {
-        width: 100%;
+      width: 100%;
     }
-
     .input {
-        min-width: 100%;
-        width: 100%;
-        height: 60px;
-        min-height: 50px;
+      min-width: 100%;
+      width: 100%;
+      height: 60px;
+      min-height: 50px;
     }
-
-}
+  }
+  
