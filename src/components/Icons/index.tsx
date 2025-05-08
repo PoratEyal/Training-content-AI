@@ -2,6 +2,7 @@ import { VscLoading } from "react-icons/vsc";
 import { VscOutput } from "react-icons/vsc";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { IoMdArrowRoundForward } from "react-icons/io";
 import { LuRefreshCcw } from "react-icons/lu";
 import { MdOutlinePrivacyTip } from "react-icons/md";
 import { IoMailOpen } from "react-icons/io5";
@@ -40,6 +41,7 @@ export const Icons = {
     loading: VscLoading,
     arrowDown: IoIosArrowDown,
     arrowBack: IoMdArrowRoundBack,
+    arrowForward: IoMdArrowRoundForward,
     refresh: LuRefreshCcw,
     privacyPolicy: MdOutlinePrivacyTip,
     contactUs: IoMailOpen,

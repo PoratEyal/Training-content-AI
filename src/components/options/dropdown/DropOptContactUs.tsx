@@ -1,15 +1,15 @@
 import styles from "./dropdown.module.css";
 import { Icons } from "../../Icons";
-import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import route from "../../../router/route.json";
+import { useLanguage } from "../../../i18n/useLanguage";
 
 type ContactUsProps = {
   handleClose: () => void;
 };
 
 function DropOptContactUs({ handleClose }: ContactUsProps) {
-  const { t } = useTranslation();
+  const { t } = useLanguage();
 
   const navigate = useNavigate();
 

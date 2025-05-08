@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { useContentContext } from "../../context/ContentContext";
 import { useAuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -31,9 +30,10 @@ import MoreOptionsCollapse from "../../components/MoreOptionsCollapse/MoreOption
 import MoreDetailsInput from "../../components/MoreDetailsInput/MoreDetailsInput";
 import MainBtn from "../../components/MainBtn/MainBtn";
 import LoadingActivity from "../../components/Loading/LoadingActivity/LoadingActivity";
+import { useLanguage } from "../../i18n/useLanguage";
 
 function BuildActivity() {
-    const { t, i18n } = useTranslation();
+    const { t, isHebrew } = useLanguage();
     const { handleError } = useErrorContext();
     const { data, clearMainActivity, updateMainActivity } = useContentContext();
     const { isLoggedIn, currentUser, loading } = useAuthContext();
@@ -53,9 +53,6 @@ function BuildActivity() {
     const lockRef = useRef(true);
 
     const [hasAlert, setHasAlert] = useState(false);
-
-    // This will be true if the current language is Hebrew, false otherwise
-    const isHebrew = i18n.language === "he";
 
     useEffect(() => {
         const updateUser = async () => {
@@ -176,7 +173,7 @@ function BuildActivity() {
                                 />
 
                                 <SubjectInput
-                                    placeholder={t("buildActivity.subject.placeholder")}
+                                    placeholder={t("buildActivity.subject.label")}
                                     setSubject={setSubject}
                                     subject={subject}
                                     category={category as CategoryName}
@@ -212,15 +209,17 @@ function BuildActivity() {
                                         data={ContestOptions}
                                     />
 
-                                    <SelectDetails
-                                        placeholder={t("buildActivity.religion.label")}
-                                        obj={religion}
-                                        setObj={setReligion}
-                                        data={ReligionOptions}
-                                    />
+                                    {isHebrew ? (
+                                        <SelectDetails
+                                            placeholder={t("buildActivity.religion.label")}
+                                            obj={religion}
+                                            setObj={setReligion}
+                                            data={ReligionOptions}
+                                        />
+                                    ) : null}
 
                                     <MoreDetailsInput
-                                        placeholder={t("buildActivity.moreDetails.placeholder")}
+                                        placeholder={t("buildActivity.moreDetails.label")}
                                         text={info}
                                         setText={setInfo}
                                     />

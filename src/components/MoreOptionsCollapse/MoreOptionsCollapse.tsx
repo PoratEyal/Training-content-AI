@@ -4,7 +4,7 @@ import styles from "./MoreOptionsCollapse.module.css";
 import Collapse from "../core/Collapse/Collapse";
 import useToggle from "../../hooks/useToggle";
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../i18n/useLanguage";
 
 type MoreOptionsCollapseProps = {
     children: React.ReactNode | React.ReactNode[];
@@ -12,8 +12,8 @@ type MoreOptionsCollapseProps = {
 };
 
 const MoreOptionsCollapse: React.FC<MoreOptionsCollapseProps> = ({ children, text }) => {
+    const { t } = useLanguage();
     const [isOpen, toggle] = useToggle(false);
-    const { t } = useTranslation();
 
     const handleCollapse = () => {
         toggle();

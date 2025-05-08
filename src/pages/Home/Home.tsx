@@ -18,12 +18,11 @@ import AboutUsCollapse from "../../components/AboutUsCollapse/AboutUsCollapse";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { useSaveContext } from "../../context/SavedContext";
 import LanguageSwitcherPopup from "../../components/LanguageSwitcherPopup/LanguageSwitcherPopup";
-import { useTranslation } from "react-i18next";
 import styles from "./Home.module.css";
+import { useLanguage } from "../../i18n/useLanguage";
 
 function Home() {
-    const { t, i18n } = useTranslation();
-    const isHebrew = i18n.language === "he";
+    const { t, isHebrew, dir } = useLanguage();
     const { cookieLimit, setLimitCookie, cookieRememberMe } = useCookiesContext();
     const navigate = useNavigate();
     const { currentUser, isLoggedIn } = useAuthContext();
@@ -99,8 +98,8 @@ function Home() {
 
             <div className={styles.logo_text_div}>
                 <ContinueWithAI />
-                <div className={styles.home_lable} style={{ direction: i18n.dir() }}>
-                    <span>{t("home.slogan", "מותאם, פשוט ומהיר 🤟")}</span>
+                <div className={styles.home_lable} style={{ direction: dir }}>
+                    <span>{t("home.slogan")}</span>
                 </div>
             </div>
 
@@ -110,7 +109,7 @@ function Home() {
             currentUser?.image ? (
                 <section className={styles.button_section}>
                     <StartBtn
-                        text={t("home.startAction", "יצירת פעולות")}
+                        text={t("home.startAction")}
                         onClick={() => startAsGuestOrUser(route.details)}
                         isDisabled={btnDisabled}
                     />
@@ -118,7 +117,7 @@ function Home() {
             ) : rememberMe === SignInStatus.NOT_REMEMBER && !isLoading ? (
                 <section className={styles.button_section}>
                     <StartBtn
-                        text={t("home.startAction", "יצירת פעולות")}
+                        text={t("home.startAction")}
                         onClick={() => startAsGuestOrUser(route.details)}
                         isDisabled={btnDisabled}
                     />
@@ -131,12 +130,7 @@ function Home() {
 
             <div className={styles.about_div}>
                 <AboutUsCollapse>
-                    <p>
-                        {t(
-                            "home.aboutText",
-                            "ActivityWiz הוא אתר ליצירת פעולות לנוער. תוכלו לבחור מתוך מאגר של פעולות מוכנות מראש או להשתמש בבינה מלאכותית ליצירת פעולות מותאמות אישית, המתאימות בדיוק לצרכים שלכם. האתר מיועד למדריכים המחפשים רעיונות ודרכים חדשות להעשרת החוויה החינוכית והחברתית.",
-                        )}
-                    </p>
+                    <p>{t("home.aboutText")}</p>
                 </AboutUsCollapse>
             </div>
         </PageLayout>

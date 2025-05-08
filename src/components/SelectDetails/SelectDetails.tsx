@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SelectOption } from "../../models/types/common";
 import styles from "./SelectDetails.module.css";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../i18n/useLanguage";
 
 type SelectDetailsProps = {
   data: SelectOption[];
@@ -11,10 +11,9 @@ type SelectDetailsProps = {
 };
 
 function SelectDetails({ data, placeholder, obj, setObj }: SelectDetailsProps) {
+  const { isEnglish } = useLanguage();
   const [selected, setIsSelected] = useState(obj ? true : false);
   const textColor = selected ? "#333335" : "#8b8b8b";
-  const { i18n } = useTranslation();
-  const isHebrew = i18n.language === "he";
 
   useEffect(() => {
     setIsSelected(!!obj);
@@ -27,7 +26,7 @@ function SelectDetails({ data, placeholder, obj, setObj }: SelectDetailsProps) {
 
   return (
     <div
-      className={!isHebrew ? `${styles.input_div} ${styles.ltr_div}` : styles.input_div}
+      className={isEnglish ? `${styles.input_div} ${styles.ltr_div}` : styles.input_div}
     >
       <select
         style={{ color: textColor }}

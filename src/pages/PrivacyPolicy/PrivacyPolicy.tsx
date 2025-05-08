@@ -1,26 +1,21 @@
 import styles from "./PrivacyPolicy.module.css";
 import { useNavigate } from "react-router-dom";
-import policy from "../../models/resources/policy.json"; // Hebrew
-import policyEn from "../../models/resources/policyEn.json"; // English
+import policyHe from "../../models/resources/he/policy.json";
+import policyEn from "../../models/resources/en/policy.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import FadeEffect from "../../components/FadeEffect/FadeEffect";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../i18n/useLanguage";
 
 function PrivacyPolicy() {
+    const { t, isHebrew, dir } = useLanguage();
     const navigate = useNavigate();
-    const { t, i18n } = useTranslation();
 
     const goBack = () => {
         navigate(-1);
     };
 
-    // Determine direction based on language (RTL for Hebrew, LTR for English)
-    const isRtl = i18n.language === "he";
-    const dir = isRtl ? "rtl" : "ltr";
-
-    // Select policy based on language
-    const currentPolicy = i18n.language === "he" ? policy : policyEn;
+    const currentPolicy = isHebrew ? policyHe : policyEn;
 
     return (
         <PageLayout

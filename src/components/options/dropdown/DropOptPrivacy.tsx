@@ -1,9 +1,8 @@
-import React from "react";
 import styles from "./dropdown.module.css";
 import { useNavigate } from "react-router-dom";
 import route from "../../../router/route.json";
 import { Icons } from "../../Icons";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../../i18n/useLanguage";
 
 type DropdownOption = {
   handleClose: () => void;
@@ -11,7 +10,7 @@ type DropdownOption = {
 
 function DropOptPrivacy({ handleClose }: DropdownOption) {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t } = useLanguage();
 
   const handleClick = async () => {
     navigate(route.privacyPolicy);

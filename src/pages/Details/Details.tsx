@@ -16,10 +16,10 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
 import { DETAILS_AD_SLOT } from "../../models/constants/adsSlot";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../i18n/useLanguage";
 
 function Details() {
-    const { t, i18n } = useTranslation();
+    const { t, isHebrew, dir } = useLanguage();
     const { data, updateDetails, clearAll } = useContentContext();
     const { currentUser, loading } = useAuthContext();
     const navigate = useNavigate();
@@ -74,9 +74,13 @@ function Details() {
         >
             <TellUsAboutYourGroup />
 
-            <form onSubmit={handleSubmit} className={styles.details_form_container} style={{ direction: i18n.dir() }}>
+            <form
+                onSubmit={handleSubmit}
+                className={styles.details_form_container}
+                style={{ direction: dir }}
+            >
                 <img
-                    className={`${styles.lamp_img} ${i18n.dir() === 'rtl' ? styles.lamp_img_rtl : styles.lamp_img_ltr}`}
+                    className={`${styles.lamp_img} ${isHebrew ? styles.lamp_img_rtl : styles.lamp_img_ltr}`}
                     title={t("details.lampAlt")}
                     alt={t("details.lampAlt")}
                     src={"lamp.svg"}
@@ -118,13 +122,7 @@ function Details() {
                             />
                         </div>
                     )}
-                    <div
-                        className={
-                            i18n.language === "he"
-                            ? styles.hebrewDir
-                            : styles.nonHebrewDir
-                        }
-                        >
+                    <div className={isHebrew ? styles.hebrewDir : styles.nonHebrewDir}>
                         <MainBtn
                             text={t("details.submit")}
                             isDisabled={isDisabled}

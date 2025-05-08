@@ -22,13 +22,13 @@
     position: absolute;
     top: -95px;
     left: 50px;
-  }
-  
-  .ltr_path {
+}
+
+.ltr_path {
     left: auto;
-    right: 50px;
-  }
- 
+    right: 65px;
+}
+
 
 .selects_btn {
     margin-top: 35px;
@@ -85,9 +85,10 @@
     -webkit-tap-highlight-color: transparent;
     margin-bottom: 8vh;
 }
+
 .rtl_btn {
     direction: ltr;
-  }
+}
 
 .input_alert {
     position: absolute;

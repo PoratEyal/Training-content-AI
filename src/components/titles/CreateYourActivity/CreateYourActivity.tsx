@@ -1,10 +1,9 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import styles from "./CreateYourActivity.module.css";
+import { useLanguage } from "../../../i18n/useLanguage";
 
 function CreateYourActivity() {
-  const { t, i18n } = useTranslation(); // uses the default namespace "translation"
-  const isEnglish = i18n.language === "en";
+  const { isEnglish, t } = useLanguage();
 
   return (
     <div
@@ -14,7 +13,6 @@ function CreateYourActivity() {
           : styles.create_your_activity_title
       }
     >
-      {/* Pulls the text from createYourActivity.title */}
       <h1>{t("buildActivity.createTitle")}</h1>
 
       <img

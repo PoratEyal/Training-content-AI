@@ -5,17 +5,17 @@ import { useAuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import route from "../../../router/route.json";
 import { Icons } from "../../Icons";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../../i18n/useLanguage";
 
 type DropdownOption = {
   handleClose: () => void;
 };
 
 function DropOptLogout({ handleClose }: DropdownOption) {
+  const { t } = useLanguage();
   const { clearAll } = useContentContext();
   const { logout } = useAuthContext();
   const navigate = useNavigate();
-  const { t } = useTranslation();
 
   const handleLogout = async () => {
     await logout();

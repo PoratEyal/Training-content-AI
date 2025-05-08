@@ -1,12 +1,10 @@
-// src/components/ContinueWithAI/ContinueWithAI.tsx
-
-import { useTranslation } from "react-i18next";
 import styles from "./ContinueWithAI.module.css";
+import { useLanguage } from "../../../i18n/useLanguage";
 
 function ContinueWithAI() {
-    const { t, i18n } = useTranslation();
+    const { t, isHebrew } = useLanguage();
 
-    if (i18n.language === "he") {
+    if (isHebrew) {
         return (
             <h1 className={styles.logo}>
                 <span className={styles.banner}>🎗</span>

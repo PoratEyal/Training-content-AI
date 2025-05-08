@@ -14,9 +14,6 @@
   padding: 8px 0;
   height: var(--navbar-height);
 }
-.ltr_nav {
-  direction: ltr;
-}
 
 @media (min-width: 550px) {
   .navbar_container {

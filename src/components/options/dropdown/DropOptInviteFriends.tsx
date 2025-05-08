@@ -4,15 +4,15 @@ import { WhatsappShareButton } from "react-share";
 import { formatWhatsUp } from "../../../utils/format";
 import { WEBSITE_URL } from "../../../models/constants";
 import { Icons } from "../../Icons";
-import { useTranslation } from "react-i18next";
 import { useContentContext } from "../../../context/ContentContext";
 import { useLocation } from "react-router-dom";
 import route from "../../../router/route.json";
+import { useLanguage } from "../../../i18n/useLanguage";
 
 function DropOptInviteFriends() {
+    const { t } = useLanguage();
     const { mainActivity } = useContentContext();
     const location = useLocation();
-    const { t } = useTranslation();
 
     const setMsg = () => {
         return formatWhatsUp(

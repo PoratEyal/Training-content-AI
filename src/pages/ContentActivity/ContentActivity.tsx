@@ -12,8 +12,6 @@ import { useCallback, useEffect, useState } from "react";
 import { fetchGetStaticActivity } from "../../utils/fetch";
 import { useAuthContext } from "../../context/AuthContext";
 import { convertActivityType } from "../../utils/activity";
-import { useTranslation } from "react-i18next";
-import ActivityReady from "../../components/titles/ActivityReady/ActivityReady";
 import ActivityArticle from "../../components/ActivityArticle/ActivityArticle";
 import RichTextEditor from "../../components/RichTextEditor/RichTextEditor";
 import { useEditorContext } from "../../context/EditorContext";
@@ -28,7 +26,6 @@ function ContentActivity() {
     const [isActivityLoading, setIsActivityLoading] = useState<boolean>(isLoading);
     const [activity, setActivity] = useState<StaticActivities | undefined>();
     const { isLoggedIn, currentUser } = useAuthContext();
-    const { i18n } = useTranslation();
 
     const contentActivityPath = `${route.content}/${activityId}/${contentId}`;
 
@@ -80,10 +77,8 @@ function ContentActivity() {
             hasGreenBackground
             hasHeader={{ goBack, hasTitle: activity?.title || undefined }}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
-            title={activity?.metaTitle}
             hasNavBar
         >
-            <ActivityReady subject={activity?.title} />
             {isActivityLoading ? (
                 <section className={styles.activity_data_container}>
                     <PageLoading />

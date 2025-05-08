@@ -5,7 +5,7 @@ import MagicBtn from "../MagicBtn/MagicBtn";
 import magicEn from "../../models/resources/en/magic.json";
 import magicHe from "../../models/resources/he/magic.json";
 import { CategoryName } from "../../models/types/movement";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../i18n/useLanguage";
 
 type SubjectInputProps = {
   placeholder?: string;
@@ -22,8 +22,7 @@ function SubjectInput({
   setSubject,
   setHasAlert,
 }: SubjectInputProps) {
-  const { i18n } = useTranslation();
-  const isHebrew = i18n.language === "he";
+  const { isHebrew } = useLanguage();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value;
