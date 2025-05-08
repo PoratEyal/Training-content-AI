@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./RichTextEditor.module.css";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
@@ -9,12 +9,14 @@ import EditorOptStyle from "../options/editor/EditorOptStyle/EditorOptStyle";
 import ArticleOptions from "../ArticleOptions/ArticleOptions";
 import "./RichTextEditor.css";
 import { useEditorContext } from "../../context/EditorContext";
+import { useLanguage } from "../../i18n/useLanguage";
 
 type RichTextEditorProps = {
     activity: Activity | undefined;
 };
 
 const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
+    const { t } = useLanguage();
     const { updateActivity } = useEditorContext();
     const [isLimitExceeded, setIsLimitExceeded] = useState<boolean>(false);
     const [debouncedHtml, setDebouncedHtml] = useState<string>("");
@@ -85,7 +87,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
             <EditorContent editor={editor} className={styles.editor} />
             <div className={styles.charCounter}>
                 {isLimitExceeded ? (
-                    <span className={styles.charLimitWarning}>הגעת למגבלת התווים האפשרית</span>
+                    <span className={styles.charLimitWarning}>{t('editor.charLimitWarning')}</span>
                 ) : null}
             </div>
         </section>

@@ -4,21 +4,17 @@ import NavOptContent from "../../options/navbar/NavOptContent";
 import NavOptHome from "../../options/navbar/NavOptHome";
 import NavOptMyActivities from "../../options/navbar/NavOptMyActivities";
 import { useAuthContext } from "../../../context/AuthContext";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../../i18n/useLanguage";
 
 const UnderBar = () => {
+    const { isHebrew } = useLanguage();
     const { isLoggedIn } = useAuthContext();
-    const { i18n } = useTranslation();
-    const isHebrew = i18n.language === "he";
+
     return (
-        <nav
-            className={
-                isHebrew ? styles.navbar_container : `${styles.navbar_container} ${styles.ltr_nav}`
-            }
-        >
+        <nav className={styles.navbar_container}>
             <NavOptHome />
             <NavOptBuild />
-            <NavOptContent />
+            {isHebrew ? <NavOptContent /> : null}
             {isLoggedIn ? <NavOptMyActivities /> : null}
         </nav>
     );

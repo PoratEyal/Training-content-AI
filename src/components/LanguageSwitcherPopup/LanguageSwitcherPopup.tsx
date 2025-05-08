@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { MdLanguage } from "react-icons/md";
-import { useTranslation } from "react-i18next";
 import * as Flags from "country-flag-icons/react/3x2";
 import styles from "./LanguageSwitcherPopup.module.css";
+import { useLanguage } from "../../i18n/useLanguage";
 
 const LanguageSwitcherPopup: React.FC = () => {
-  const { i18n } = useTranslation();
+  const { changeLang } = useLanguage();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -20,7 +20,7 @@ const LanguageSwitcherPopup: React.FC = () => {
   };
 
   const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang);
+    changeLang(lang);
     setIsPopupOpen(false);
   };
 
@@ -39,7 +39,6 @@ const LanguageSwitcherPopup: React.FC = () => {
             }`}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Removed the cancel button here */}
             <div className={styles.buttonContainer}>
               <button
                 onClick={() => changeLanguage("he")}

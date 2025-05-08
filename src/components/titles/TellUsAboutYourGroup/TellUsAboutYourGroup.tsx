@@ -1,14 +1,13 @@
+import { useLanguage } from "../../../i18n/useLanguage";
 import styles from "./TellUsAboutYourGroup.module.css";
-import { useTranslation } from "react-i18next";
 
 function TellUsAboutYourGroup() {
-    const { t, i18n } = useTranslation();
-    const isRTL = i18n.dir() === "rtl";
+    const { dir, t } = useLanguage();
     
     return (
         <div 
-            className={`${styles.tell_us_title} ${isRTL ? styles.tell_us_title_rtl : styles.tell_us_title_ltr}`}
-            style={{ direction: i18n.dir() }}
+            className={`${styles.tell_us_title} ${dir === "rtl" ? styles.tell_us_title_rtl : styles.tell_us_title_ltr}`}
+            style={{ direction: dir }}
         >
             <h1>
                 {t("details.title")}

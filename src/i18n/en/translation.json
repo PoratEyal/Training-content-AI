@@ -11,13 +11,13 @@
     "withPrefix": "with",
     "ai": "AI"
   },
-  "AboutUsCollapse": {
+  "aboutUs": {
     "title": "About Us"
   },
   "navbar": {
     "home": "Home",
     "build": "Create Activity",
-    "content": "Ready activities",
+    "content": "Content",
     "myActivities": "My Activities"
   },
   "details": {
@@ -31,60 +31,32 @@
   },
   "buildActivity": {
     "createTitle": "Create Your Activity",
-    "subject": {
-      "label": "Activity Subject",
-      "placeholder": "Enter the activity subject..."
-    },
     "category": {
       "label": "Category"
     },
+    "subject": {
+      "label": "Activity Subject"
+    },
     "place": {
-      "label": "Location",
-      "options": {
-        "inside": "Inside",
-        "outside": "Outside",
-        "both": "Both"
-      }
+      "label": "Location"
     },
     "time": {
-      "label": "Duration",
-      "options": {
-        "short": "Short (up to 45 min)",
-        "medium": "Medium (45-90 min)",
-        "long": "Long (90+ min)"
-      }
+      "label": "Duration"
     },
     "religion": {
-      "label": "Religious Level",
-      "options": {
-        "secular": "Secular",
-        "religious": "Religious",
-        "both": "Both"
-      }
+      "label": "Religious"
     },
     "contest": {
-      "label": "Competition Level",
-      "options": {
-        "none": "None",
-        "low": "Low",
-        "high": "High"
-      }
+      "label": "Competition"
     },
     "tools": {
-      "label": "Required Equipment",
-      "options": {
-        "none": "None",
-        "basic": "Basic",
-        "special": "Special"
-      }
+      "label": "Equipment"
     },
     "moreDetails": {
-      "label": "Additional Details",
-      "placeholder": "Add any additional details about the activity..."
+      "label": "Additional Details"
     },
     "moreOptions": {
-      "title": "More Options",
-      "description": "Additional settings for your activity"
+      "title": "More Options"
     },
     "loadingActivity": {
       "heading": "The activity is on its way",
@@ -139,6 +111,38 @@
       "dropOptSignIn": {
         "signIn": "Sign In"
       }
+  },
+  "reviewPopup": {
+    "title": "What's New?!",
+    "shareIdea": "Do you have an idea for improvement? Or just something to share?",
+    "placeholder": "Please write to us here",
+    "submit": "Submit"
+  },
+  "articleOptions": {
+    "copy": {
+      "button": "Copy",
+      "success": "Activity copied successfully 🎉",
+      "error": "Failed to copy text."
+    },
+    "share": "Share",
+    "save": {
+      "button": "Save",
+      "saved": "Saved",
+      "saveSuccess": "Activity saved successfully! You can find it in My Activities",
+      "saveError": "Activity was not saved, please try again",
+      "removeSuccess": "Activity removed from My Activities",
+      "removeError": "Failed to remove activity, please try again"
+    },
+    "edit": "Edit"
+  },
+  "editor": {
+    "save": {
+      "saveToMyActivities": "Save to My Activities",
+      "savedToMyActivities": "Saved to My Activities",
+      "saveSuccess": "Activity saved successfully! You can find it in My Activities section",
+      "saveError": "Failed to save activity, please try again"
+    },
+    "charLimitWarning": "Character limit reached"
   },
   "contactUs": {
     "header": {

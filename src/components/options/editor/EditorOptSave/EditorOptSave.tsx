@@ -8,6 +8,7 @@ import { fetchSaveActivity } from "../../../../utils/fetch";
 import { useErrorContext } from "../../../../context/ErrorContext";
 import { useContentContext } from "../../../../context/ContentContext";
 import { useSaveContext } from "../../../../context/SavedContext";
+import { useLanguage } from "../../../../i18n/useLanguage";
 
 type EditorOptSaveProps = {
     activity: Activity;
@@ -15,6 +16,7 @@ type EditorOptSaveProps = {
 };
 
 const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) => {
+    const { t, dir } = useLanguage();
     const { updateMainActivity } = useContentContext();
     const { handleSuccess, handleError } = useErrorContext();
     const { getSavedActivities } = useSaveContext();
@@ -29,7 +31,7 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
                     // prevent DDoS attacks
                     setIsDisabled(false);
                 }, SAVE_COOLDOWN);
-                handleSuccess("הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי");
+                handleSuccess(t("editor.save.saveSuccess"));
                 setSaved(true);
                 const convertedContent = convertHTMLToContent(htmlContent);
                 const newUpdatedActivity = updateActivityWithContent(activity, convertedContent);
@@ -40,7 +42,7 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
                     setSaved(false);
                 }, 1000);
             } catch (error) {
-                handleError("הפעולה לא נשמרה, אנא נסו שנית");
+                handleError(t("editor.save.saveError"));
                 setSaved(false);
             }
         }
@@ -48,7 +50,7 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
 
     return (
         <div
-            className={`${styles.bookmark} ${saved ? styles.checked : ""}`}
+            className={`${styles.bookmark} ${saved ? styles.checked : ""} ${dir === "rtl" ? styles.rtl : styles.ltr}`}
             onClick={isDisabled || !htmlContent ? undefined : handleSave}
             aria-pressed={saved}
             role="button"
@@ -61,7 +63,9 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
             >
                 <path d="M46 62.0085L46 3.88139L3.99609 3.88139L3.99609 62.0085L24.5 45.5L46 62.0085Z" />
             </svg>
-            <span className={styles.text}>{saved ? "נשמר בפעולות שלי" : "שמירה לפעולות שלי"}</span>
+            <span className={styles.text}>
+                {saved ? t("editor.save.savedToMyActivities") : t("editor.save.saveToMyActivities")}
+            </span>
         </div>
     );
 };

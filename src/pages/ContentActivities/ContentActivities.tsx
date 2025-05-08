@@ -10,17 +10,13 @@ import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
 import { StaticActivities } from "../../models/types/activity";
-import { useTranslation } from "react-i18next";
 
 const ContentActivities: React.FC = () => {
     const navigate = useNavigate();
     const { activityId } = useParams<{ activityId: string }>();
     const { subjects, isLoading, useFetchSubjectsData } = useStaticContentContext();
     useFetchSubjectsData();
-
     const contentActivitiesPath = route.contentActivities.replace(":activityId", activityId || "");
-
-    const { t } = useTranslation();
 
     const goBack = () => {
         navigate(route.content);
@@ -28,6 +24,7 @@ const ContentActivities: React.FC = () => {
 
     const { subject, activities } = React.useMemo(() => {
         if (!subjects?.length) return { subject: undefined, activities: undefined };
+
         const foundSubject = subjects.find((subj) => subj.name === activityId);
         const sortedActivities = foundSubject?.activities?.sort((a, b) => a.orderId - b.orderId);
 
@@ -49,7 +46,6 @@ const ContentActivities: React.FC = () => {
             hasHeader={{ goBack }}
             hasNavBar
             hasGreenBackground
-            title={subject?.metaTitle}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
         >
             <div
@@ -62,11 +58,10 @@ const ContentActivities: React.FC = () => {
             >
                 <ReadyContentName
                     type="many"
-                    subject={subject?.metaTitle || ""}
+                    subject={subject?.metaTitle || ""} // TODO: helmet.contentActivities.title
                     isLoading={isLoading}
                 />
             </div>
-
             {isLoading ? (
                 <section className={styles.content_article}>
                     <PageLoading />
@@ -89,12 +84,12 @@ const ContentActivities: React.FC = () => {
                             })}
                         </section>
                     ) : (
-                        <div>{t("contentActivities.noSuitableActivities")}</div>
+                        <div>לא נמצאו פעולות מתאימות</div>
                     )}
                 </article>
             ) : (
                 <article className={styles.content_article}>
-                    <p>{t("contentActivities.noSubjectData")}</p>
+                    <p>לא נמצאו נתונים עבור הנושא המבוקש.</p>
                 </article>
             )}
         </PageLayout>

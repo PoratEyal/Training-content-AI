@@ -1,8 +1,7 @@
-import React from "react";
 import styles from "./MainBtn.module.css";
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
 import { Icons } from "../Icons";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../i18n/useLanguage";
 
 type MainBtnProps = {
     type?: "button" | "submit";
@@ -21,8 +20,7 @@ function MainBtn({
     isDisabled,
     type = "button",
 }: MainBtnProps) {
-    const { i18n } = useTranslation();
-    const isRTL = i18n.dir() === "rtl";
+    const { isHebrew, dir } = useLanguage();
     const btnClassName = `${styles.main_btn} ${isDisabled ? styles.main_btn_disabled : ""}`;
 
     return (
@@ -38,12 +36,12 @@ function MainBtn({
                     <SmallLoading />
                 </div>
             ) : (
-                <div className={styles.btn} style={{ direction: i18n.dir() }}>
+                <div className={styles.btn} style={{ direction: dir }}>
                     <span style={{ opacity: isDisabled ? 0.5 : 1 }}>{text}</span>
                     <div className={styles.btn_icon} style={{ opacity: isDisabled ? 0.5 : 1 }}>
-                        <Icons.chevronsLeft 
-                            className={styles.icon} 
-                            style={{ transform: isRTL ? "none" : "rotate(180deg)" }} 
+                        <Icons.chevronsLeft
+                            className={styles.icon}
+                            style={{ transform: isHebrew ? "none" : "rotate(180deg)" }}
                         />
                     </div>
                 </div>

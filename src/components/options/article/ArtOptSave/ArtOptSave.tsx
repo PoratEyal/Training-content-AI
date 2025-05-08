@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ArtOptSave.module.css";
-import { useAuthContext } from "../../../../context/AuthContext";
-import { useErrorContext } from "../../../../context/ErrorContext";
-import { useQueryParam } from "../../../../hooks/useQueryParam";
-import { useSaveContext } from "../../../../context/SavedContext";
 import { Activity } from "../../../../models/types/activity";
-import { fetchSaveActivity } from "../../../../utils/fetch";
+import { useAuthContext } from "../../../../context/AuthContext";
 import { useContentContext } from "../../../../context/ContentContext";
+import { useErrorContext } from "../../../../context/ErrorContext";
+import { useSaveContext } from "../../../../context/SavedContext";
+import { useQueryParam } from "../../../../hooks/useQueryParam";
+import { fetchSaveActivity } from "../../../../utils/fetch";
 import { SAVE_COOLDOWN } from "../../../../models/constants/time";
+import { useLanguage } from "../../../../i18n/useLanguage";
 
 type ArtOptSaveProps = {
     activity: Activity;
 };
 // TODO: handle unsave whan save from edit page
 const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
+    const { t, dir } = useLanguage();
     const { currentParam, updateParam } = useQueryParam();
     const { currentUser } = useAuthContext();
     const { updateMainActivity } = useContentContext();
@@ -39,7 +41,7 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
                 setIsDisabled(false);
             }, SAVE_COOLDOWN);
             updateParam(true);
-            handleSuccess("הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי");
+            handleSuccess(t('articleOptions.save.saveSuccess'));
 
             const res = await fetchSaveActivity(activity);
             setActivityId(res.activity.id);
@@ -47,7 +49,7 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
             await getSavedActivities();
             setSaved(true);
         } catch (error) {
-            handleError("הפעולה לא נשמרה, אנא נסו שנית");
+            handleError(t('articleOptions.save.saveError'));
             updateParam(false);
         }
     };
@@ -63,18 +65,18 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
                 setIsDisabled(false);
             }, SAVE_COOLDOWN);
             updateParam(false);
-            handleSuccess("הפעולה הוסרה מאזור הפעולות שלי");
+            handleSuccess(t('articleOptions.save.removeSuccess'));
             await deleteActivity(activityId);
             setSaved(false);
         } catch (error) {
-            handleError("הפעולה לא נשמרה, אנא נסו שנית");
+            handleError(t('articleOptions.save.removeError'));
             updateParam(true);
         }
     };
 
     return (
         <div
-            className={`${styles.bookmark} ${saved ? styles.checked : ""}`}
+            className={`${styles.bookmark} ${saved ? styles.checked : ""} ${styles[dir]}`}
             onClick={isDisabled ? undefined : saved ? handleUnsave : handleSave}
             aria-pressed={saved}
             role="button"
@@ -87,7 +89,7 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
             >
                 <path d="M46 62.0085L46 3.88139L3.99609 3.88139L3.99609 62.0085L24.5 45.5L46 62.0085Z" />
             </svg>
-            <span className={styles.text}>{saved ? "נשמר" : "שמירה"}</span>
+            <span className={styles.text}>{saved ? t('articleOptions.save.saved') : t('articleOptions.save.button')}</span>
         </div>
     );
 };

@@ -5,8 +5,17 @@
     gap: 5px;
     cursor: pointer;
     color: var(--primary-color);
-    text-decoration: none;
     transition: color 0.3s ease;
+    text-decoration: none;
+    direction: inherit;
+}
+
+.ltr {
+    direction: ltr;
+}
+
+.rtl {
+    direction: rtl;
 }
 
 .icon {

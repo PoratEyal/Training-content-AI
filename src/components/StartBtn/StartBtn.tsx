@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./StartBtn.module.css";
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
 import { Icons } from "../Icons";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../i18n/useLanguage";
 
 type StartBtnProps = {
     onClick: (e: any) => void;
@@ -12,9 +12,9 @@ type StartBtnProps = {
 };
 
 function StartBtn({ onClick, text, isDisabled, isLoading = false }: StartBtnProps) {
-    const { i18n } = useTranslation();
+    const { dir, isHebrew } = useLanguage();
+
     const btnClassName = `${styles.main_btn} ${isDisabled ? styles.main_btn_disabled : ""}`;
-    const isRTL = i18n.dir() === "rtl";
 
     return (
         <button
@@ -27,10 +27,13 @@ function StartBtn({ onClick, text, isDisabled, isLoading = false }: StartBtnProp
                     <SmallLoading />
                 </div>
             ) : (
-                <div className={styles.btn} style={{ direction: isRTL ? "rtl" : "ltr" }}>
+                <div className={styles.btn} style={{ direction: dir }}>
                     <span style={{ opacity: isDisabled ? 0.5 : 1 }}>{text}</span>
                     <div className={styles.btn_icon} style={{ opacity: isDisabled ? 0.5 : 1 }}>
-                        <Icons.chevronsLeft className={styles.icon} style={{ transform: isRTL ? "none" : "rotate(180deg)" }} />
+                        <Icons.chevronsLeft
+                            className={styles.icon}
+                            style={{ transform: isHebrew ? "none" : "rotate(180deg)" }}
+                        />
                     </div>
                 </div>
             )}

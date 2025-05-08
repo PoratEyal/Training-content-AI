@@ -3,10 +3,10 @@ import route from "../../../router/route.json";
 import styles from "./navbar.module.css";
 import { useEffect, useState } from "react";
 import { Icons } from "../../Icons";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../../i18n/useLanguage";
 
 const NavOptContent = () => {
-    const { t } = useTranslation();
+    const { t } = useLanguage();
     const [isSelected, setIsSelected] = useState<boolean>(false);
     const navigate = useNavigate();
     const location = useLocation();

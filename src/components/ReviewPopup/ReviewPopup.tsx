@@ -5,6 +5,7 @@ import SmallLoading from "../Loading/SmallLoading/SmallLoading";
 import { useAuthContext } from "../../context/AuthContext";
 import { Icons } from "../Icons";
 import { fetchUpdateIsMsg } from "../../utils/fetch";
+import { useLanguage } from "../../i18n/useLanguage";
 
 type ReviewPopupProps = {
   msg: string;
@@ -12,6 +13,7 @@ type ReviewPopupProps = {
 }
 
 const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
+  const { t } = useLanguage();
   const [textInput, setTextInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPopup, setShowPopup] = useState<boolean>(false);
@@ -30,12 +32,9 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
     if (!currentUser || !currentUser.id) return;
   
     setIsLoading(true);
-  
-    // סגור את הפופאפ מיד לאחר לחיצה על הכפתור
     handleClose();
   
     try {
-      // הפעולה תמשיך לרוץ ברקע לאחר סגירת הפופאפ
       const templateParams = {
         user_response: textInput,
         user_email: currentUser.email || "No email provided",
@@ -67,7 +66,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
         </button>
 
         <div className={styles.popupTitle_div}>
-          <h3 className={styles.popupTitle}>מה חדש?!</h3>
+          <h3 className={styles.popupTitle}>{t('reviewPopup.title')}</h3>
           <Icons.idea className={styles.icon_lamp}/>
         </div>
 
@@ -77,12 +76,12 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
 
         <form className={styles.popupForm}>
           <div className={styles.popupText}>
-            <div className={styles.text}>יש לכם רעיון לשיפור? או סתם משהו לשתף?</div>
+            <div className={styles.text}>{t('reviewPopup.shareIdea')}</div>
             <textarea
               value={textInput}
               onChange={(e) => setTextInput(e.target.value)}
               className={styles.otherInput}
-              placeholder="אנא כתבו לנו פה"
+              placeholder={t('reviewPopup.placeholder')}
             />
           </div>
         </form>

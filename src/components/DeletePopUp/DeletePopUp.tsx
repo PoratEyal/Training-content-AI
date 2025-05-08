@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./DeletePopUp.module.css";
 import { Icons } from "../Icons";
 import { useErrorContext } from "../../context/ErrorContext";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../i18n/useLanguage";
 
 type DeletePopUpProps = {
     isOpen: boolean;
@@ -12,10 +12,10 @@ type DeletePopUpProps = {
 };
 
 const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, activityName }) => {
+    const { t, isEnglish } = useLanguage();
     const { handleError } = useErrorContext();
     const [showPopup, setShowPopup] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
-    const { t, i18n } = useTranslation();
 
     useEffect(() => {
         if (isOpen) {
@@ -45,14 +45,14 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
             <div className={`${styles.popupContent} ${showPopup ? styles.popupContentShow : ""}`}>
                 <button
                     className={`${styles.closeButton} ${
-                        i18n.language === "en" ? styles.closeButtonLtr : styles.closeButtonRtl
+                        isEnglish ? styles.closeButtonLtr : styles.closeButtonRtl
                     }`}
                     onClick={onClose}
                 >
                     <Icons.cancel />
                 </button>
                 <p className={styles.message}>
-                    {t("savedActivities.deletePopup.message", { activityName })} 
+                    {t("savedActivities.deletePopup.message", { activityName })}
                 </p>
                 <button
                     className={styles.deleteButton}
