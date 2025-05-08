@@ -18,14 +18,11 @@ import sendMsg from "./callableFunctions/sendMsg";
 import getMsg from "./callableFunctions/getMsg";
 import updateIsMsg from "./callableFunctions/updateIsMsg";
 import addStaticActivity from "./callableFunctions/addStaticActivity";
-import serviceAccount from '../activityWiz.json';
 
 const app = express();
 app.use(cors());
 
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
-  });
+admin.initializeApp();
 const db = admin.firestore();
 export { db };
 
