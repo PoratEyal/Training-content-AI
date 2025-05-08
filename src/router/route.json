@@ -13,10 +13,6 @@
     "contactUs": "/contactUs",
     "status": "/status",
     "admin": "/admin/msg",
-<<<<<<< HEAD
-=======
-    "edit": "/edit",
->>>>>>> d1ff204286df86a9e32b6b36dcc3caaba496fb5c
     "all": "*"
   }
   
