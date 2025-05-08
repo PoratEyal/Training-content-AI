@@ -13,6 +13,10 @@
     direction: ltr !important;
 }
 
+.ltr_select {
+    direction: ltr !important;
+  }
+
 .input_div select {
     cursor: pointer;
     border: 1px solid var(--select-border-color);

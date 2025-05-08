@@ -24,7 +24,6 @@ const ContentActivities: React.FC = () => {
 
     const { subject, activities } = React.useMemo(() => {
         if (!subjects?.length) return { subject: undefined, activities: undefined };
-
         const foundSubject = subjects.find((subj) => subj.name === activityId);
         const sortedActivities = foundSubject?.activities?.sort((a, b) => a.orderId - b.orderId);
 
