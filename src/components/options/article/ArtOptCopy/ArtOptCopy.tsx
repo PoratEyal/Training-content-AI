@@ -4,6 +4,7 @@ import { Activity } from "../../../../models/types/activity";
 import { FaRegCopy } from "react-icons/fa6";
 import { useErrorContext } from "../../../../context/ErrorContext";
 import { formatCopy } from "../../../../utils/format";
+import { useTranslation } from "react-i18next";
 
 type ArtOptCopyProps = {
     activity: Activity;
@@ -11,23 +12,24 @@ type ArtOptCopyProps = {
 
 const ArtOptCopy: React.FC<ArtOptCopyProps> = ({ activity }) => {
     const { handleSuccess, handleError } = useErrorContext();
+    const { t } = useTranslation();
 
     const handleClick = () => {
         const textToCopy = formatCopy(activity.activity);
         navigator.clipboard
             .writeText(textToCopy)
             .then(() => {
-                handleSuccess("הפעולה הועתקה בהצלחה 🎉");
+                handleSuccess(t("activity.copy.success"));
             })
             .catch((error) => {
-                handleError("העתקת הטקסט נכשלה.");
+                handleError(t("activity.copy.error"));
             });
     };
 
     return (
         <div className={styles.copyBtn} onClick={handleClick}>
             <FaRegCopy className={styles.icon} />
-            <span className={styles.text}>העתקה</span>
+            <span className={styles.text}>{t("activity.copy.button")}</span>
         </div>
     );
 };

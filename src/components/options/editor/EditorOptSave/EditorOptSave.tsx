@@ -8,6 +8,7 @@ import { fetchSaveActivity } from "../../../../utils/fetch";
 import { useErrorContext } from "../../../../context/ErrorContext";
 import { useContentContext } from "../../../../context/ContentContext";
 import { useSaveContext } from "../../../../context/SavedContext";
+import { useTranslation } from 'react-i18next';
 
 type EditorOptSaveProps = {
     activity: Activity;
@@ -20,6 +21,7 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
     const { getSavedActivities } = useSaveContext();
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
     const [saved, setSaved] = useState<boolean>(false);
+    const { t } = useTranslation();
 
     const handleSave = async () => {
         if (htmlContent && !isDisabled) {
@@ -29,7 +31,7 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
                     // prevent DDoS attacks
                     setIsDisabled(false);
                 }, SAVE_COOLDOWN);
-                handleSuccess("הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי");
+                handleSuccess(t('activity.saveSuccess'));
                 setSaved(true);
                 const convertedContent = convertHTMLToContent(htmlContent);
                 const newUpdatedActivity = updateActivityWithContent(activity, convertedContent);
@@ -40,7 +42,7 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
                     setSaved(false);
                 }, 1000);
             } catch (error) {
-                handleError("הפעולה לא נשמרה, אנא נסו שנית");
+                handleError(t('activity.saveError'));
                 setSaved(false);
             }
         }
@@ -61,7 +63,7 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
             >
                 <path d="M46 62.0085L46 3.88139L3.99609 3.88139L3.99609 62.0085L24.5 45.5L46 62.0085Z" />
             </svg>
-            <span className={styles.text}>{saved ? "נשמר בפעולות שלי" : "שמירה לפעולות שלי"}</span>
+            <span className={styles.text}>{saved ? t('activity.saved') : t('activity.save')}</span>
         </div>
     );
 };

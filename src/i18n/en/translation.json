@@ -156,5 +156,20 @@
   "privacyPolicy": {
     "title": "Terms of Service and Privacy Policy",
     "acceptButton": "Accept"
+  },
+  "activity": {
+    "edit": "Edit",
+    "save": "Save",
+    "saved": "Saved",
+    "saveSuccess": "Activity saved successfully! You can find it in My Activities",
+    "saveError": "Activity was not saved, please try again",
+    "removeSuccess": "Activity was removed from My Activities",
+    "removeError": "Activity was not removed, please try again",
+    "share": "Share",
+    "copy": {
+      "button": "Copy",
+      "success": "Activity copied successfully 🎉",
+      "error": "Failed to copy text."
+    }
   }
 }

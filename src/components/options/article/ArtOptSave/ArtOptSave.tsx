@@ -8,6 +8,7 @@ import { Activity } from "../../../../models/types/activity";
 import { fetchSaveActivity } from "../../../../utils/fetch";
 import { useContentContext } from "../../../../context/ContentContext";
 import { SAVE_COOLDOWN } from "../../../../models/constants/time";
+import { useTranslation } from 'react-i18next';
 
 type ArtOptSaveProps = {
     activity: Activity;
@@ -24,6 +25,8 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
     const [saved, setSaved] = useState<boolean>(false);
     const [activityId, setActivityId] = useState<string | undefined>();
 
+    const { t } = useTranslation();
+
     // Initialize 'saved' state based on query parameter
     useEffect(() => {
         setSaved(currentParam.isSaved === "true");
@@ -39,7 +42,7 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
                 setIsDisabled(false);
             }, SAVE_COOLDOWN);
             updateParam(true);
-            handleSuccess("הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי");
+            handleSuccess(t('activity.saveSuccess'));
 
             const res = await fetchSaveActivity(activity);
             setActivityId(res.activity.id);
@@ -47,7 +50,7 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
             await getSavedActivities();
             setSaved(true);
         } catch (error) {
-            handleError("הפעולה לא נשמרה, אנא נסו שנית");
+            handleError(t('activity.saveError'));
             updateParam(false);
         }
     };
@@ -63,11 +66,11 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
                 setIsDisabled(false);
             }, SAVE_COOLDOWN);
             updateParam(false);
-            handleSuccess("הפעולה הוסרה מאזור הפעולות שלי");
+            handleSuccess(t('activity.removeSuccess'));
             await deleteActivity(activityId);
             setSaved(false);
         } catch (error) {
-            handleError("הפעולה לא נשמרה, אנא נסו שנית");
+            handleError(t('activity.saveError'));
             updateParam(true);
         }
     };
@@ -87,7 +90,7 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
             >
                 <path d="M46 62.0085L46 3.88139L3.99609 3.88139L3.99609 62.0085L24.5 45.5L46 62.0085Z" />
             </svg>
-            <span className={styles.text}>{saved ? "נשמר" : "שמירה"}</span>
+            <span className={styles.text}>{saved ? t('activity.saved') : t('activity.save')}</span>
         </div>
     );
 };

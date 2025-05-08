@@ -1,7 +1,7 @@
 import styles from "./PrivacyPolicy.module.css";
 import { useNavigate } from "react-router-dom";
-import policy from "../../models/resources/policy.json"; // Hebrew
-import policyEn from "../../models/resources/policyEn.json"; // English
+import policy from "../../models/resources/he/policy.json"; // Hebrew
+import policyEn from "../../models/resources/en/policy.json"; // English
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import FadeEffect from "../../components/FadeEffect/FadeEffect";

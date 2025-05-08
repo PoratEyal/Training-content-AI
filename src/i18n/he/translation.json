@@ -158,5 +158,20 @@
   "privacyPolicy": {
     "title": "תנאי שירות ומדיניות פרטיות",
     "acceptButton": "אישור"
+  },
+  "activity": {
+    "edit": "עריכה",
+    "save": "שמירה",
+    "saved": "נשמר",
+    "saveSuccess": "הפעולה נשמרה בהצלחה! תוכלו למצוא אותה באזור הפעולות שלי",
+    "saveError": "הפעולה לא נשמרה, אנא נסו שנית",
+    "removeSuccess": "הפעולה הוסרה מאזור הפעולות שלי",
+    "removeError": "הפעולה לא נשמרה, אנא נסו שנית",
+    "share": "שיתוף",
+    "copy": {
+      "button": "העתקה",
+      "success": "הפעולה הועתקה בהצלחה 🎉",
+      "error": "העתקת הטקסט נכשלה."
+    }
   }
 }
