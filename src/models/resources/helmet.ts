@@ -1,4 +1,4 @@
-import { HelmetPage, Lng } from "../../types/common";
+import { HelmetPage, Lng } from "../types/common";
 
 type LanguageSection = {
     [K in HelmetPage]: {

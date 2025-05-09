@@ -32,12 +32,12 @@ async function generateContent(prompt: string): Promise<string> {
     return text;
 }
 
-const getPromptAndDetails = (activityDetials: ActivityDetails, lang: Lang): [string, string[]] => {
-    if (activityDetials.movement === "krembo")
-        return getPromptAndDetailsForSpecialKids(activityDetials, lang);
+const getPromptAndDetails = (activityDetails: ActivityDetails, lang: Lang): [string, string[]] => {
+    if (activityDetails.movement === "krembo")
+        return getPromptAndDetailsForSpecialKids(activityDetails, lang);
 
-    const { category, grade, time, subject, amount, gender, place } = activityDetials;
-    const { religion, contest, tools: activityTools, info } = activityDetials;
+    const { category, grade, time, subject, amount, gender, place } = activityDetails;
+    const { religion, contest, tools: activityTools, info } = activityDetails;
 
     let moreInfo, tools, section, safty, promptOptions, prompt;
     if (lang === "he") {
@@ -62,8 +62,8 @@ const getPromptAndDetails = (activityDetials: ActivityDetails, lang: Lang): [str
 
 export async function getMainActivity(data: GetActivityRequest): Promise<string> {
     const { lang, ...restData } = data;
-    const activityDetials = restData as ActivityDetails;
-    const [prompt, details] = getPromptAndDetails(activityDetials, lang);
+    const activityDetails = restData as ActivityDetails;
+    const [prompt, details] = getPromptAndDetails(activityDetails, lang);
     const result = formatString(prompt, details);
     return await generateContent(result);
 }

@@ -227,7 +227,7 @@ export const getMoreInfo = (info: string | undefined): string => {
 };
 
 export const getTools = (category: CategoryName, tools: string | undefined, religion: string | undefined): string => {
-    if (tools === "ללא ציוד") return "**Equipment Required:** Do not use equipment!";
+    if (tools === "without tools") return "**Equipment Required:** Do not use equipment!";
     else {
         switch (category) {
             case "pointOfView":
@@ -250,6 +250,6 @@ export const getSafty = (
 ) => {
     if(category === "pointOfView") return "";
     let safty: string = "- The activity must be: without violence, without danger";
-    if (contest === "without group division") safty = safty + ", without competitions and without group division.";
+    if (contest === "without groups") safty = safty + ", without competitions and without group division.";
     return safty;
 };

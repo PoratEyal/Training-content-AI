@@ -1,9 +1,10 @@
 import { useTranslation } from "react-i18next";
+import { Lng } from "../models/types/common";
 
 export const useLanguage = () => {
     const { t, i18n } = useTranslation();
     
-    const lang = i18n.language;
+    const lang = i18n.language as Lng;
     const isHebrew = lang === "he";
     const isEnglish = lang === "en";
     const dir = isHebrew ? "rtl" : "ltr" as "rtl" | "ltr";
