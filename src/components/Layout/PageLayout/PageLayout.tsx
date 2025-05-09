@@ -6,7 +6,7 @@ import UnderBar from "../UnderBar/UnderBar";
 import { WEBSITE_URL } from "../../../models/constants";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
 import { HelmetPage } from "../../../models/types/common";
-import { getContent, getTitle } from "../../../models/resources/he/helmet";
+import { getContent, getTitle } from "../../../models/resources/helmet";
 import { useLanguage } from "../../../i18n/useLanguage";
 
 type PageLayoutProps = {

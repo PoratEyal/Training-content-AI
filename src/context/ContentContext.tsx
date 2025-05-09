@@ -3,9 +3,10 @@ import Session from "../utils/sessionStorage";
 import { Activity } from "../models/types/activity";
 import { addSessionData } from "../utils/movment";
 import { useAuthContext } from "./AuthContext";
-import { Movements } from "../models/resources/he/movment";
+import { Movements } from "../models/resources/movment";
 import { SessionKey } from "../models/enum/storage";
 import { DataType } from "../models/types/common";
+import { useLanguage } from "../i18n/useLanguage";
 
 export type ContentContextType = {
     data: DataType;
@@ -35,6 +36,7 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
     const { currentUser } = useAuthContext();
     const [data, setData] = useState<DataType | undefined>();
     const [mainActivity, setMainActivity] = useState<Activity | undefined>();
+    const { lang } = useLanguage();
 
     const setStateFromSession = () => {
         try {
@@ -58,17 +60,17 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
         if (!data && currentUser && currentUser.movement) {
             const { grade, amount, gender, movement } = currentUser.movement;
             setData({
-                movement: Movements[movement],
+                movement: Movements[lang][movement],
                 grade: grade,
                 amount: amount,
                 gender: gender,
             });
         }
-    }, [currentUser, data]);
+    }, [currentUser, data, lang]);
 
-    const updateDetails = (movement, grade, amount, gender) => {
+    const updateDetails = (movement: string, grade: string, amount: string, gender: string) => {
         setData((prevData) => {
-            const data = addSessionData(movement, grade, amount, gender);
+            const data = addSessionData(lang, movement, grade, amount, gender);
             Session.set(SessionKey.DATA, data);
             return data;
         });

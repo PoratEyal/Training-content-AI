@@ -24,7 +24,7 @@ import {
     PlaceOptions,
     ReligionOptions,
     ToolsOptions,
-} from "../../models/resources/he/select";
+} from "../../models/resources/select";
 import SubjectInput from "../../components/SubjectInput/SubjectInput";
 import MoreOptionsCollapse from "../../components/MoreOptionsCollapse/MoreOptionsCollapse";
 import MoreDetailsInput from "../../components/MoreDetailsInput/MoreDetailsInput";
@@ -33,7 +33,7 @@ import LoadingActivity from "../../components/Loading/LoadingActivity/LoadingAct
 import { useLanguage } from "../../i18n/useLanguage";
 
 function BuildActivity() {
-    const { t, isHebrew } = useLanguage();
+    const { t, isHebrew, lang } = useLanguage();
     const { handleError } = useErrorContext();
     const { data, clearMainActivity, updateMainActivity } = useContentContext();
     const { isLoggedIn, currentUser, loading } = useAuthContext();
@@ -116,6 +116,7 @@ function BuildActivity() {
                 contest,
                 tools,
                 info,
+                lang,
             });
             if (
                 (response.result === "success" || response.result === "safety") &&
@@ -184,14 +185,14 @@ function BuildActivity() {
                                     placeholder={t("buildActivity.place.label")}
                                     obj={place}
                                     setObj={setPlace}
-                                    data={PlaceOptions}
+                                    data={PlaceOptions[lang]}
                                 />
 
                                 <SelectDetails
                                     placeholder={t("buildActivity.time.label")}
                                     obj={time}
                                     setObj={setTime}
-                                    data={ActivityTimeOptions}
+                                    data={ActivityTimeOptions[lang]}
                                 />
 
                                 <MoreOptionsCollapse text={t("buildActivity.moreOptions.title")}>
@@ -199,14 +200,14 @@ function BuildActivity() {
                                         placeholder={t("buildActivity.tools.label")}
                                         obj={tools}
                                         setObj={setTools}
-                                        data={ToolsOptions}
+                                        data={ToolsOptions[lang]}
                                     />
 
                                     <SelectDetails
                                         placeholder={t("buildActivity.contest.label")}
                                         obj={contest}
                                         setObj={setContest}
-                                        data={ContestOptions}
+                                        data={ContestOptions[lang]}
                                     />
 
                                     {isHebrew ? (
@@ -214,7 +215,7 @@ function BuildActivity() {
                                             placeholder={t("buildActivity.religion.label")}
                                             obj={religion}
                                             setObj={setReligion}
-                                            data={ReligionOptions}
+                                            data={ReligionOptions[lang]}
                                         />
                                     ) : null}
 

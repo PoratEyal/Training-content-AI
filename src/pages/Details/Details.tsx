@@ -7,7 +7,7 @@ import {
     GradeOptions,
     AmountOptions,
     GenderOptions,
-} from "../../models/resources/he/select";
+} from "../../models/resources/select";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import MainBtn from "../../components/MainBtn/MainBtn";
 import { useAuthContext } from "../../context/AuthContext";
@@ -19,7 +19,7 @@ import { DETAILS_AD_SLOT } from "../../models/constants/adsSlot";
 import { useLanguage } from "../../i18n/useLanguage";
 
 function Details() {
-    const { t, isHebrew, dir } = useLanguage();
+    const { t, isHebrew, dir, lang } = useLanguage();
     const { data, updateDetails, clearAll } = useContentContext();
     const { currentUser, loading } = useAuthContext();
     const navigate = useNavigate();
@@ -97,25 +97,25 @@ function Details() {
                     ) : (
                         <div className={styles.details_content}>
                             <SelectDetails
-                                data={MovmentsOptions}
+                                data={MovmentsOptions[lang]}
                                 placeholder={t("details.youthMovement")}
                                 obj={movement}
                                 setObj={setMovment}
                             />
                             <SelectDetails
-                                data={GradeOptions}
+                                data={GradeOptions[lang]}
                                 placeholder={t("details.grade")}
                                 obj={classLevel}
                                 setObj={setClassLevel}
                             />
                             <SelectDetails
-                                data={AmountOptions}
+                                data={AmountOptions[lang]}
                                 placeholder={t("details.numberOfChildren")}
                                 obj={numberOfChildren}
                                 setObj={setNumberOfChildren}
                             />
                             <SelectDetails
-                                data={GenderOptions}
+                                data={GenderOptions[lang]}
                                 placeholder={t("details.gender")}
                                 obj={gender}
                                 setObj={setGender}

@@ -22,12 +22,12 @@ function SubjectInput({
   setSubject,
   setHasAlert,
 }: SubjectInputProps) {
-  const { isHebrew } = useLanguage();
+  const { isHebrew, lang } = useLanguage();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value;
     if (newValue.length <= 30) {
-      const isBlackListed = isInBlackList(newValue);
+      const isBlackListed = isInBlackList(newValue, lang);
       setHasAlert(isBlackListed);
       setSubject(newValue);
     }

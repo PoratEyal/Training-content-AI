@@ -9,6 +9,7 @@ import { NEED_TO_LOGIN } from "../models/constants/cookie";
 import { initRawUser } from "../utils/user";
 import msg from "../models/resources/he/errorMsg.json";
 import { useCookiesContext } from "./CookiesContext";
+import { useLanguage } from "../i18n/useLanguage";
 
 /**
  * for make getRedirectResult on localhost
@@ -49,6 +50,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
     const [whatsNewMsg, setWhatsNewMsg] = useState<string>("");
+    const { lang } = useLanguage();
 
     useEffect(() => {
         let unsubscribe: any;
@@ -75,7 +77,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 if (resultUser) {
                     if (resultUser.movement) {
                         const { grade, amount, gender, movement } = resultUser.movement;
-                        addSessionData(movement, grade, amount, gender);
+                        addSessionData(lang, movement, grade, amount, gender);
                     }
                     setCurrentUser(resultUser);
                     await checkIfNeedToSendMsg(resultUser);
