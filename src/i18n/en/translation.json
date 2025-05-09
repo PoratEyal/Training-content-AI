@@ -110,6 +110,9 @@
       },
       "dropOptSignIn": {
         "signIn": "Sign In"
+      },
+      "dropOptLang": {
+        "lang": "Language"
       }
   },
   "reviewPopup": {

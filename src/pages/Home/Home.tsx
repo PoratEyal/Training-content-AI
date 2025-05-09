@@ -17,12 +17,11 @@ import { HOME_AD_SLOT } from "../../models/constants/adsSlot";
 import AboutUsCollapse from "../../components/AboutUsCollapse/AboutUsCollapse";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { useSaveContext } from "../../context/SavedContext";
-import LanguageSwitcherPopup from "../../components/LanguageSwitcherPopup/LanguageSwitcherPopup";
 import styles from "./Home.module.css";
 import { useLanguage } from "../../i18n/useLanguage";
 
 function Home() {
-    const { t, isHebrew, dir } = useLanguage();
+    const { t, dir } = useLanguage();
     const { cookieLimit, setLimitCookie, cookieRememberMe } = useCookiesContext();
     const navigate = useNavigate();
     const { currentUser, isLoggedIn } = useAuthContext();
@@ -92,10 +91,6 @@ function Home() {
             index={true}
             hasNavBar
         >
-            <div className={isHebrew ? styles.languageSwitcherHebrew : styles.languageSwitcher}>
-                <LanguageSwitcherPopup />
-            </div>
-
             <div className={styles.logo_text_div}>
                 <ContinueWithAI />
                 <div className={styles.home_lable} style={{ direction: dir }}>

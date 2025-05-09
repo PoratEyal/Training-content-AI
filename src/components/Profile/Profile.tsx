@@ -6,15 +6,17 @@ import DropOptPrivacy from "../options/dropdown/DropOptPrivacy";
 import DropOptLogout from "../options/dropdown/DropOptLogout";
 import { useAuthContext } from "../../context/AuthContext";
 import DropOptSignIn from "../options/dropdown/DropOptSignIn";
+import DropOptLang from "../options/dropdown/DropOptLang";
 import useToggle from "../../hooks/useToggle";
 import { Icons } from "../Icons";
 
 type ProfileProps = {
     img?: string;
     isLoading: boolean;
+    openLangPopup: () => void;
 };
 
-function Profile({ img, isLoading }: ProfileProps) {
+function Profile({ img, isLoading, openLangPopup }: ProfileProps) {
     const { isLoggedIn } = useAuthContext();
     const [isOpen, toggle, close] = useToggle(false);
 
@@ -50,6 +52,7 @@ function Profile({ img, isLoading }: ProfileProps) {
                     <DropOptInviteFriends />
                     <DropOptContactUs handleClose={close} />
                     <DropOptPrivacy handleClose={close} />
+                    <DropOptLang handleClose={close} openLangPopup={openLangPopup} />
                     {isLoggedIn ? (
                         <DropOptLogout handleClose={close} />
                     ) : (

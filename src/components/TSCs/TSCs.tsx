@@ -3,14 +3,10 @@ import policyHe from "../../models/resources/he/policy.json";
 import policyEn from "../../models/resources/en/policy.json";
 import Popup from "../core/Popup/Popup";
 import MainBtn from "../MainBtn/MainBtn";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../i18n/useLanguage";
 
 function TSCs({ handleAccept }) {
-    const { t, i18n } = useTranslation();
-
-    // Determine direction based on language (RTL for Hebrew, LTR for English)
-    const isHebrew = i18n.language === "he";
-    const dir = isHebrew ? "rtl" : "ltr";
+    const {isHebrew, dir, t} = useLanguage()
 
     // Select policy based on language
     const currentPolicy = isHebrew ? policyHe : policyEn;
