@@ -2,10 +2,7 @@ import { VscLoading } from "react-icons/vsc";
 import { VscOutput } from "react-icons/vsc";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoMdArrowRoundBack } from "react-icons/io";
-<<<<<<< HEAD
 import { IoMdArrowRoundForward } from "react-icons/io";
-=======
->>>>>>> d1ff204286df86a9e32b6b36dcc3caaba496fb5c
 import { LuRefreshCcw } from "react-icons/lu";
 import { MdOutlinePrivacyTip } from "react-icons/md";
 import { IoMailOpen } from "react-icons/io5";
@@ -19,6 +16,7 @@ import { IoBookmarkOutline } from "react-icons/io5";
 import { FaUserCircle } from "react-icons/fa";
 import { MdOutlineCancel } from "react-icons/md";
 import { FcIdea } from "react-icons/fc";
+import { MdLanguage } from "react-icons/md";
 
 import { FaGamepad } from "react-icons/fa";
 import { FaBookOpen } from "react-icons/fa";
@@ -59,7 +57,7 @@ export const Icons = {
     user: FaUserCircle,
     cancel: MdOutlineCancel,
     idea: FcIdea,
-
+    language: MdLanguage,
     FaGamepad: FaGamepad,
     FaBookOpen: FaBookOpen,
     BsCalendar2DateFill: BsCalendar2DateFill,

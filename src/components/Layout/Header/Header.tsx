@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthContext } from "../../../context/AuthContext";
 import { Icons } from "../../Icons";
 import Profile from "../../Profile/Profile";
 import ReadyContentName from "../../titles/ReadyContentName/ReadyContentName";
 import styles from "./Header.module.css";
 import { useLanguage } from "../../../i18n/useLanguage";
+import LangPopup from "../../LangPopup/LangPopup";
 
 type HeaderProps = {
     goBack?: () => void;
@@ -18,6 +19,10 @@ const Header: React.FC<HeaderProps> = ({ goBack, hasTitle = undefined, isBlur = 
     const style = isBlur ? styles.header_fade : styles.header;
     const styleIcon = isBlur ? styles.back_icon_fade : styles.back_icon;
 
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const close = () => setIsPopupOpen(false);
+    const openLangPopup = () => setIsPopupOpen(true);
+
     return (
         <section className={style}>
             <div
@@ -25,7 +30,11 @@ const Header: React.FC<HeaderProps> = ({ goBack, hasTitle = undefined, isBlur = 
                     isHebrew ? styles.header_container : `${styles.header_container} ${styles.rtl}`
                 }
             >
-                <Profile img={isLoggedIn ? currentUser?.image : undefined} isLoading={loading} />
+                <Profile
+                    img={isLoggedIn ? currentUser?.image : undefined}
+                    isLoading={loading}
+                    openLangPopup={openLangPopup}
+                />
                 {hasTitle ? <ReadyContentName type="none" subject={hasTitle} /> : null}
                 {!loading && goBack ? (
                     isHebrew ? (
@@ -35,6 +44,7 @@ const Header: React.FC<HeaderProps> = ({ goBack, hasTitle = undefined, isBlur = 
                     )
                 ) : null}
             </div>
+            {isPopupOpen ? <LangPopup handleClose={close} /> : null}
         </section>
     );
 };

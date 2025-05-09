@@ -1,18 +1,10 @@
 import React from "react";
 import styles from "./ArtOptCopy.module.css";
-<<<<<<< HEAD
 import { FaRegCopy } from "react-icons/fa";
 import { Activity } from "../../../../models/types/activity";
 import { formatCopy } from "../../../../utils/format";
 import { useErrorContext } from "../../../../context/ErrorContext";
 import { useLanguage } from "../../../../i18n/useLanguage";
-=======
-import { Activity } from "../../../../models/types/activity";
-import { FaRegCopy } from "react-icons/fa6";
-import { useErrorContext } from "../../../../context/ErrorContext";
-import { formatCopy } from "../../../../utils/format";
-import { useTranslation } from "react-i18next";
->>>>>>> d1ff204286df86a9e32b6b36dcc3caaba496fb5c
 
 type ArtOptCopyProps = {
     activity: Activity;

@@ -112,6 +112,9 @@
       },
       "dropOptSignIn": {
         "signIn": "התחברות"
+      },
+      "dropOptLang": {
+        "lang": "שפה"
       }
   },
   "reviewPopup": {
