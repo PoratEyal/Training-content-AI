@@ -8,7 +8,6 @@ import { useLanguage } from "../../i18n/useLanguage";
 function TSCs({ handleAccept }) {
     const {isHebrew, dir, t} = useLanguage()
 
-    // Select policy based on language
     const currentPolicy = isHebrew ? policyHe : policyEn;
 
     return (

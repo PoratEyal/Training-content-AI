@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useErrorContext } from "./ErrorContext";
-import msg from "../models/resources/he/errorMsg.json";
+import msg from "../models/resources/errorMsg.json";
 import { fetchStaticSubjects } from "../utils/fetch";
 import { StaticSubjects } from "../models/types/activity";
+import { useLanguage } from "../i18n/useLanguage";
 
 export type StaticContentContextType = {
     useFetchSubjectsData: () => void;
@@ -24,6 +25,7 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
     const { handleError } = useErrorContext();
     const [subjects, setSubjects] = useState<StaticSubjects[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const { lang } = useLanguage();
 
     const fetchSubjectsData = async () => {
         setIsLoading(true);
@@ -34,7 +36,7 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
                 setSubjects(sortedSubjects);
             }
         } catch (error: any) {
-            handleError(msg.error.message);
+            handleError(msg[lang].error.message);
         } finally {
             setIsLoading(false);
         }

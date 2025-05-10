@@ -10,6 +10,7 @@ import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
 import { StaticActivities } from "../../models/types/activity";
+import { helmetJson } from "../../models/resources/helmet";
 
 const ContentActivities: React.FC = () => {
     const navigate = useNavigate();
@@ -57,7 +58,7 @@ const ContentActivities: React.FC = () => {
             >
                 <ReadyContentName
                     type="many"
-                    subject={subject?.metaTitle || ""} // TODO: helmet.contentActivities.title
+                    subject={subject?.metaTitle || helmetJson["he"].contentActivities.title}
                     isLoading={isLoading}
                 />
             </div>

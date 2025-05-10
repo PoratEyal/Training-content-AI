@@ -8,6 +8,8 @@ import ActivityArticle from "../../components/ActivityArticle/ActivityArticle";
 import { useAuthContext } from "../../context/AuthContext";
 import RichTextEditor from "../../components/RichTextEditor/RichTextEditor";
 import { useEditorContext } from "../../context/EditorContext";
+import { helmetJson } from "../../models/resources/helmet";
+import { useLanguage } from "../../i18n/useLanguage";
 
 function Activity() {
     const { data, mainActivity } = useContentContext();
@@ -16,6 +18,7 @@ function Activity() {
     const [newActivity, setNewActivity] = useState(false);
     const activityRef = useRef<HTMLElement>(null);
     const navigate = useNavigate();
+    const { lang } = useLanguage();
 
     const goBack = () => {
         if (isEdit) {
@@ -44,7 +47,7 @@ function Activity() {
             path={route.activity}
             hasGreenBackground
             hasHeader={{ goBack, hasTitle: mainActivity?.subject || undefined }}
-            title={"helmet.activity.title"}//TODO
+            title={helmetJson[lang].activity.title}
             hesAds={ACTIVITY_AD_SLOT}
             hasNavBar
             index={false}

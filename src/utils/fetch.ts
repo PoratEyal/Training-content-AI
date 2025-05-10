@@ -26,8 +26,9 @@ import {
 } from "../models/types/api/response";
 import { functions } from "../config/firebase";
 import { httpsCallable } from "firebase/functions";
-import msg from "../models/resources/he/errorMsg.json";
+import msg from "../models/resources/errorMsg.json";
 import { Activity, StaticActivities } from "../models/types/activity";
+import { Lng } from "../models/types/common";
 
 export const fetchGetActivity = async (
     request: GetActivityRequest,
@@ -47,6 +48,7 @@ export const fetchUpdateActivityLikes = async (
 
 export const fetchCreateNewUser = async (
     request: CreateNewUserRequest,
+    lang: Lng,
 ): Promise<CreateNewUserResponse> => {
     const createNewUserFunc = httpsCallable(functions, "createNewUser");
 
@@ -54,7 +56,7 @@ export const fetchCreateNewUser = async (
     if (response.result === "success" && response.user) {
         return response;
     } else {
-        throw new Error(msg.error.message);
+        throw new Error(msg[lang].error.message);
     }
 };
 
@@ -64,8 +66,6 @@ export const fetchUpdateUser = async (request: UpdateUserRequest): Promise<Updat
     const response = (await updateUserFunc(request)).data as UpdateUserResponse;
     if (response.result === "success") {
         return response;
-    } else {
-        throw new Error(msg.error.message);
     }
 };
 
@@ -76,7 +76,7 @@ export const fetchGetActivities = async (): Promise<getAllActivitiesResponse> =>
     if (response.result === "success") {
         return response;
     } else {
-        throw new Error(msg.error.message);
+        throw new Error(msg.en.error.message);
     }
 };
 
@@ -87,7 +87,7 @@ export const fetchGetUsers = async (): Promise<getAllUsersResponse> => {
     if (response.result === "success") {
         return response;
     } else {
-        throw new Error(msg.error.message);
+        throw new Error(msg.en.error.message);
     }
 };
 
@@ -100,7 +100,7 @@ export const fetchGetSavedActivities = async (
     if (response.result === "success") {
         return response;
     } else {
-        throw new Error(msg.error.message);
+        throw new Error(msg.en.error.message);
     }
 };
 
@@ -111,7 +111,7 @@ export const fetchSaveActivity = async (activity: Activity): Promise<saveActivit
     if (response.result === "success") {
         return response;
     } else {
-        throw new Error(msg.error.message);
+        throw new Error(msg.en.error.message);
     }
 };
 
@@ -123,8 +123,6 @@ export const fetchRemoveActivity = async (
     const response = (await removeActivityFunc(request)).data as removeActivityResponse;
     if (response.result === "success") {
         return response;
-    } else {
-        throw new Error(msg.error.message);
     }
 };
 
@@ -135,10 +133,10 @@ export const fetchStaticSubjects = async (): Promise<staticSubjectsResponse> => 
         if (response.result === "success" && response.subjects) {
             return response;
         } else {
-            throw new Error(msg.error.message);
+            throw new Error(msg.en.error.message);
         }
     } catch (error: any) {
-        throw new Error(msg.error.message);
+        throw new Error(msg.en.error.message);
     }
 };
 
@@ -151,10 +149,10 @@ export const fetchGetStaticActivity = async (
         if (response.result === "success" && response.activity) {
             return response;
         } else {
-            throw new Error(msg.error.message);
+            throw new Error(msg.he.error.message);
         }
     } catch (error: any) {
-        throw new Error(msg.error.message);
+        throw new Error(msg.he.error.message);
     }
 };
 
@@ -171,10 +169,10 @@ export const fetchIncrementActivityDisplayCount = async (
         if (response.result === "success") {
             return response;
         } else {
-            throw new Error(msg.error.message);
+            throw new Error(msg.he.error.message);
         }
     } catch (error: any) {
-        throw new Error(msg.error.message);
+        throw new Error(msg.he.error.message);
     }
 };
 
@@ -184,17 +182,17 @@ export const fetchSendMsg = async (password: string): Promise<SendMsgResponse> =
     if (response.result === "success") {
         return response;
     } else {
-        throw new Error(msg.error.message);
+        throw new Error(msg.en.error.message);
     }
 };
 
-export const fetchGetMsg = async (): Promise<GetMsgResponse> => {
+export const fetchGetMsg = async (lang: Lng): Promise<GetMsgResponse> => {
     const getMsgFunc = httpsCallable(functions, "getMsg");
     const response = (await getMsgFunc()).data as GetMsgResponse;
     if (response.result === "success") {
         return response;
     } else {
-        throw new Error(msg.error.message);
+        throw new Error(msg[lang].error.message);
     }
 };
 
@@ -203,8 +201,6 @@ export const fetchUpdateIsMsg = async (userId: string): Promise<UpdateIsMsgRespo
     const response = (await updateIsMsgFunc({ userId })).data as UpdateIsMsgResponse;
     if (response.result === "success") {
         return response;
-    } else {
-        throw new Error(msg.error.message);
     }
 };
 
@@ -218,9 +214,9 @@ export const fetchAddStaticActivity = async (
         if (response.result === "success") {
             return response;
         } else {
-            throw new Error(msg.error.message);
+            throw new Error(msg.en.error.message);
         }
     } catch (error: any) {
-        throw new Error(msg.error.message);
+        throw new Error(msg.en.error.message);
     }
 };
