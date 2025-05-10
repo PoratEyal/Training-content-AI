@@ -10,7 +10,7 @@ import Session from "../../utils/sessionStorage";
 import route from "../../router/route.json";
 import { CategoryName } from "../../models/types/movement";
 import { useErrorContext } from "../../context/ErrorContext";
-import msg from "../../models/resources/he/errorMsg.json";
+import msg from "../../models/resources/errorMsg.json";
 import styles from "./BuildActivity.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import { BUILD_AD_SLOT } from "../../models/constants/adsSlot";
@@ -126,7 +126,7 @@ function BuildActivity() {
                 navigate(route.activity);
             }
         } catch (error) {
-            handleError(msg.error.message);
+            handleError(msg[lang].error.message);
             setClicked(false);
         }
     };

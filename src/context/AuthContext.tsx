@@ -7,7 +7,7 @@ import { useErrorContext } from "./ErrorContext";
 import { addSessionData } from "../utils/movment";
 import { NEED_TO_LOGIN } from "../models/constants/cookie";
 import { initRawUser } from "../utils/user";
-import msg from "../models/resources/he/errorMsg.json";
+import msg from "../models/resources/errorMsg.json";
 import { useCookiesContext } from "./CookiesContext";
 import { useLanguage } from "../i18n/useLanguage";
 
@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             if (user && (user as GoogleUser)?.uid) {
                 let resultUser: User | undefined = undefined;
                 const rawUser = initRawUser(user);
-                const response = await fetchCreateNewUser({ rawUser });
+                const response = await fetchCreateNewUser({ rawUser }, lang);
                 if (response.user) {
                     resultUser = response.user;
                 }
@@ -89,7 +89,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 setIsLoggedIn(false);
             }
         } catch (error) {
-            handleError(msg.google.message);
+            handleError(msg[lang].google.message);
         } finally {
             setLoading(false);
         }
@@ -98,7 +98,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const blockRef = useRef<boolean>(true);
     const checkIfNeedToSendMsg = async (user: User) => {
         if (user.isSendMsg && blockRef.current) {
-            const result = await fetchGetMsg();
+            const result = await fetchGetMsg(lang);
             if (result.result === "success") {
                 setWhatsNewMsg(result.msg.text);
                 blockRef.current = false;
