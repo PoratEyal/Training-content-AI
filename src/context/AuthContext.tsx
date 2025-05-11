@@ -99,12 +99,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const checkIfNeedToSendMsg = async (user: User) => {
         if (user.isSendMsg && blockRef.current) {
             const result = await fetchGetMsg(lang);
-            if (result.result === "success") {
-                setWhatsNewMsg(result.msg.text);
+    
+            if (result.result === "success" && result.msg) {
+                const localizedMsg =
+                    lang === "en" ? result.msg.textEn : result.msg.textHe;
+    
+                setWhatsNewMsg(localizedMsg);
                 blockRef.current = false;
             }
         }
-    }
+    };    
 
     const setIsSendMsg = () => {
         setCurrentUser({

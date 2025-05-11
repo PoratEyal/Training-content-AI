@@ -16,7 +16,7 @@ type RichTextEditorProps = {
 };
 
 const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
-    const { t } = useLanguage();
+    const { t, lang } = useLanguage();
     const { updateActivity } = useEditorContext();
     const [isLimitExceeded, setIsLimitExceeded] = useState<boolean>(false);
     const [debouncedHtml, setDebouncedHtml] = useState<string>("");
@@ -47,7 +47,8 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
         },
         editorProps: {
             attributes: {
-                class: styles.editorContent,
+                class: `${styles.editorContent} ${lang === 'he' ? styles.rtl : styles.ltr}`,
+                dir: lang === 'he' ? 'rtl' : 'ltr',
             },
             handleKeyDown: (view, event) => {
                 const text = view.state.doc.textContent;
@@ -84,7 +85,10 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
     return (
         <section className={styles.container}>
             <ArticleOptions Options={Options} backgroundColor={"#FFFFFF"} />
-            <EditorContent editor={editor} className={styles.editor} />
+            <EditorContent 
+                editor={editor} 
+                className={`${styles.editor} ${lang === 'he' ? styles.rtl : styles.ltr}`}
+            />
             <div className={styles.charCounter}>
                 {isLimitExceeded ? (
                     <span className={styles.charLimitWarning}>{t('editor.charLimitWarning')}</span>
