@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./ReviewPopup.module.css";
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
 import { useAuthContext } from "../../context/AuthContext";
 import { Icons } from "../Icons";
@@ -10,18 +10,22 @@ import { useLanguage } from "../../i18n/useLanguage";
 type ReviewPopupProps = {
   msg: string;
   handleClose: () => Promise<void>;
-}
+};
 
 const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();         
+  const isEnglish = lang === "en";    
+
   const [textInput, setTextInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPopup, setShowPopup] = useState<boolean>(false);
 
-  // Access the current user information from AuthContext
   const { currentUser } = useAuthContext();
 
-  emailjs.init('ZWKebkgRROVgM8nEV');
+  // initialise EmailJS once
+  useEffect(() => {
+    emailjs.init("ZWKebkgRROVgM8nEV");
+  }, []);
 
   useEffect(() => {
     setShowPopup(true);
@@ -29,28 +33,28 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (!currentUser || !currentUser.id) return;
-  
+    if (!currentUser?.id) return;
+
     setIsLoading(true);
-    handleClose();
-  
+    await handleClose();
+
     try {
       const templateParams = {
         user_response: textInput,
         user_email: currentUser.email || "No email provided",
       };
-  
+
       await emailjs.send(
-        'service_p5bim93',   // EmailJS Service ID
-        'template_diemfva',  // EmailJS Template ID
+        "service_p5bim93",
+        "template_diemfva",
         templateParams,
-        'ZWKebkgRROVgM8nEV'  // EmailJS User ID
+        "ZWKebkgRROVgM8nEV"
       );
-  
+
       await fetchUpdateIsMsg(currentUser.id);
-      console.log('Email sent successfully');
+      console.log("Email sent successfully");
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error("Error sending email:", error);
     } finally {
       setIsLoading(false);
     }
@@ -59,29 +63,33 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
   const isDisabled = !textInput.trim();
 
   return (
-    <div className={styles.popupOverlay}>
-      <div className={`${styles.popupContent} ${showPopup ? styles.popupContentShow : ""}`}>
+    <div
+      className={`${styles.popupOverlay} ${isEnglish ? styles.ltr : ""}`}
+    >
+      <div
+        className={`${styles.popupContent} ${
+          showPopup ? styles.popupContentShow : ""
+        }`}
+      >
         <button className={styles.closeButton} onClick={handleClose}>
           <Icons.cancel />
         </button>
 
         <div className={styles.popupTitle_div}>
-          <h3 className={styles.popupTitle}>{t('reviewPopup.title')}</h3>
-          <Icons.idea className={styles.icon_lamp}/>
+          <h3 className={styles.popupTitle}>{t("reviewPopup.title")}</h3>
+          <Icons.idea className={styles.icon_lamp} />
         </div>
 
-        <div className={styles.text}>
-          {msg}
-        </div>
+        <div className={styles.text}>{msg}</div>
 
         <form className={styles.popupForm}>
           <div className={styles.popupText}>
-            <div className={styles.text}>{t('reviewPopup.shareIdea')}</div>
+            <div className={styles.text}>{t("reviewPopup.shareIdea")}</div>
             <textarea
               value={textInput}
               onChange={(e) => setTextInput(e.target.value)}
               className={styles.otherInput}
-              placeholder={t('reviewPopup.placeholder')}
+              placeholder={t("reviewPopup.placeholder")}
             />
           </div>
         </form>
@@ -91,7 +99,9 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
             type="button"
             onClick={handleSubmit}
             disabled={isDisabled}
-            className={`${styles.submitButton} ${isDisabled ? styles.submitButtonDisabled : ""}`}
+            className={`${styles.submitButton} ${
+              isDisabled ? styles.submitButtonDisabled : ""
+            }`}
             style={{ height: 40 }}
           >
             {isLoading ? (
@@ -100,10 +110,16 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
               </div>
             ) : (
               <div className={styles.buttonContent}>
-                <span className={styles.buttonText} style={{ opacity: isDisabled ? 0.5 : 1 }}>
-                  שליחה
+                <span
+                  className={styles.buttonText}
+                  style={{ opacity: isDisabled ? 0.5 : 1 }}
+                >
+                  {t("reviewPopup.submit")}
                 </span>
-                <div className={styles.buttonIcon} style={{ opacity: isDisabled ? 0.5 : 1 }}>
+                <div
+                  className={styles.buttonIcon}
+                  style={{ opacity: isDisabled ? 0.5 : 1 }}
+                >
                   <Icons.chevronsLeft className={styles.icon} />
                 </div>
               </div>

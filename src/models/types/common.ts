@@ -30,7 +30,8 @@ export type SelectOption = {
 };
 
 export type MsgType = {
-    text: string;
+    textEn: string;
+    textHe: string;
 };
 
 export type HelmetPage =
