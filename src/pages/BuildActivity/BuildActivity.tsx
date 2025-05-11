@@ -215,7 +215,7 @@ function BuildActivity() {
                                             placeholder={t("buildActivity.religion.label")}
                                             obj={religion}
                                             setObj={setReligion}
-                                            data={ReligionOptions[lang]}
+                                            data={ReligionOptions}
                                         />
                                     ) : null}
 
