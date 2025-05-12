@@ -21,8 +21,12 @@ export const MovmentsOptions = {
         { value: Movements.he.other.name, label: Movements.he.other.title },
     ] as SelectOption[],
     en: [
-        { value: Movements.en.scout.name, label: Movements.en.scout.title },
+        { value: Movements.en.h4.name, label: Movements.en.h4.title },
         { value: Movements.en.other.name, label: Movements.en.other.title },
+        { value: Movements.en.BGCA.name, label: Movements.en.BGCA.title },
+        { value: Movements.en.girlScoutsOfTheUSA.name, label: Movements.en.girlScoutsOfTheUSA.title },
+        { value: Movements.en.boysScoutsOfTheUSA.name, label: Movements.en.boysScoutsOfTheUSA.title },
+        { value: Movements.en.ffa.name, label: Movements.en.ffa.title },
     ] as SelectOption[],
 };
 

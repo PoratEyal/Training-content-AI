@@ -238,28 +238,6 @@ export const Movements = {
             ],
         } as Movement,
     }, en: {
-        scout: {
-            name: "scout",
-            title: "Scout",
-            categories: [
-                {
-                    name: "contant",
-                    title: "Contant",
-                },
-                {
-                    name: "pointOfView",
-                    title: "Point of View",
-                },
-                {
-                    name: "survival",
-                    title: "Survival",
-                },
-                {
-                    name: "playTime",
-                    title: "Play Time",
-                },
-            ],
-        } as Movement,
         other: {
             name: "other",
             title: "Other",
@@ -271,10 +249,76 @@ export const Movements = {
                 {
                     name: "playTime",
                     title: "Play Time",
+                }
+            ],
+        } as Movement,
+        h4: {
+            name: "h4",
+            title: "H-4",
+            categories: [
+                {
+                    name: "contant",
+                    title: "Contant",
                 },
                 {
-                    name: "survival",
-                    title: "Survival",
+                    name: "playTime",
+                    title: "Play Time",
+                },
+            ],
+        } as Movement,
+        BGCA: {
+            name: "BGCA",
+            title: "Scouting America",
+            categories: [
+                {
+                    name: "contant",
+                    title: "Contant",
+                },
+                {
+                    name: "playTime",
+                    title: "Play Time",
+                },
+            ],
+        } as Movement,
+        girlScoutsOfTheUSA: {
+            name: "girlScoutsOfTheUSA",
+            title: "Girl Scouts",
+            categories: [
+                {
+                    name: "contant",
+                    title: "Contant",
+                },
+                {
+                    name: "playTime",
+                    title: "Play Time",
+                },
+            ],
+        } as Movement,
+         boysScoutsOfTheUSA: {
+            name: "boysScoutsOfTheUSA",
+            title: "BGCA",
+            categories: [
+                {
+                    name: "contant",
+                    title: "Contant",
+                },
+                {
+                    name: "playTime",
+                    title: "Play Time",
+                },
+            ],
+        } as Movement,
+         ffa: {
+            name: "ffa",
+            title: "FFA",
+            categories: [
+                {
+                    name: "contant",
+                    title: "Contant",
+                },
+                {
+                    name: "playTime",
+                    title: "Play Time",
                 },
             ],
         } as Movement,

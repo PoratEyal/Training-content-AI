@@ -28,7 +28,7 @@ import { functions } from "../config/firebase";
 import { httpsCallable } from "firebase/functions";
 import msg from "../models/resources/errorMsg.json";
 import { Activity, StaticActivities } from "../models/types/activity";
-import { Lng } from "../models/types/common";
+import { Lng as Lang } from "../models/types/common";
 
 export const fetchGetActivity = async (
     request: GetActivityRequest,
@@ -48,7 +48,7 @@ export const fetchUpdateActivityLikes = async (
 
 export const fetchCreateNewUser = async (
     request: CreateNewUserRequest,
-    lang: Lng,
+    lang: Lang,
 ): Promise<CreateNewUserResponse> => {
     const createNewUserFunc = httpsCallable(functions, "createNewUser");
 
@@ -104,10 +104,10 @@ export const fetchGetSavedActivities = async (
     }
 };
 
-export const fetchSaveActivity = async (activity: Activity): Promise<saveActivityResponse> => {
+export const fetchSaveActivity = async (activity: Activity, lang: Lang): Promise<saveActivityResponse> => {
     const saveActivityFunc = httpsCallable(functions, "saveActivity");
 
-    const response = (await saveActivityFunc({ activity })).data as saveActivityResponse;
+    const response = (await saveActivityFunc({ activity, lang })).data as saveActivityResponse;
     if (response.result === "success") {
         return response;
     } else {
@@ -186,7 +186,7 @@ export const fetchSendMsg = async (password: string): Promise<SendMsgResponse> =
     }
 };
 
-export const fetchGetMsg = async (lang: Lng): Promise<GetMsgResponse> => {
+export const fetchGetMsg = async (lang: Lang): Promise<GetMsgResponse> => {
     const getMsgFunc = httpsCallable(functions, "getMsg");
     const response = (await getMsgFunc()).data as GetMsgResponse;
     if (response.result === "success") {

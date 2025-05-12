@@ -21,6 +21,7 @@ export type GetActivityRequest = {
 
 export type SaveActivityRequest = {
     activity: Activity;
+    lang: Lang;         
 };
 
 export type UpdateActivityLikesRequest = {
