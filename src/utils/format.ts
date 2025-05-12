@@ -1,15 +1,21 @@
 import { WEBSITE_URL } from "../models/constants";
+import i18n from "i18next";
 
 export const formatWhatsUp = (text: string | undefined) => {
-    if (!text) return "מצאתי אתר שבונה פעולות בעזרת AI, כדאי לנסות!"
-    const title = "הפעולה נוצרה בעזרת:"
+    if (!text) {
+        return i18n.t("articleOptions.share.defaultMessage", 
+            "I found a website that builds activities using AI, worth trying!");
+    }
+    const title = i18n.t("articleOptions.share.createdBy", 
+        "Activity created by:");
     const br = "\n";
     const result = text.replace(/\**\*/g, "*") + br + br + title;
     return result;
 };
 
 export const formatCopy = (text: string) => {
-    const title = "הפעולה נוצרה בעזרת:"
+    const title = i18n.t("articleOptions.share.createdBy", 
+        "Activity created by:");
     const br = "\n";
     const result = text.replace(/\**\*/g, "") + br + br + title + br + WEBSITE_URL;
     return result;
@@ -60,10 +66,9 @@ export const  convertContentToHTML = (text: string) => {
     // Close any remaining list
     if (currentList.length > 0) {
         html.push('<ul>\n' + currentList.join('\n') + '\n</ul>');
-    }
-
-    // Wrap everything in a RTL div for Hebrew text
-    return `<div dir="rtl">\n${html.join('\n')}\n</div>`;
+    }    // Wrap everything in a div with appropriate direction based on language
+    const dir = i18n.language === "he" ? "rtl" : "ltr";
+    return `<div dir="${dir}">\n${html.join('\n')}\n</div>`;
 }
 
 //TODO: handle / <command i>

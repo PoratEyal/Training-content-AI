@@ -120,14 +120,17 @@
     "shareIdea": "Do you have an idea for improvement? Or just something to share?",
     "placeholder": "Please write to us here",
     "submit": "Submit"
-  },
-  "articleOptions": {
+  },  "articleOptions": {
     "copy": {
       "button": "Copy",
       "success": "Activity copied successfully 🎉",
       "error": "Failed to copy text."
     },
-    "share": "Share",
+    "share": {
+      "title": "Share",
+      "defaultMessage": "I found a website that builds activities using AI, worth trying!",
+      "createdBy": "Activity created by:"
+    },
     "save": {
       "button": "Save",
       "saved": "Saved",
