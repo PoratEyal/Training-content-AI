@@ -38,7 +38,7 @@ function BuildActivity() {
     const { data, clearMainActivity, updateMainActivity } = useContentContext();
     const { isLoggedIn, currentUser, loading } = useAuthContext();
 
-    const [category, setCategory] = useState((data?.movement?.categories[0].name as string) || "");
+    const [category, setCategory] = useState("");
     const [subject, setSubject] = useState<string>("");
     const [place, setPlace] = useState<string>("");
     const [time, setTime] = useState<string>("");
@@ -55,9 +55,15 @@ function BuildActivity() {
     const [hasAlert, setHasAlert] = useState(false);
 
     useEffect(() => {
+        if (data?.movement?.categories && data.movement.categories.length > 0) {
+            setCategory(data.movement.categories[0].name);
+        }
+    }, [data]);
+
+    useEffect(() => {
         const updateUser = async () => {
             lockRef.current = false;
-            if (isLoggedIn && currentUser) {
+            if (isLoggedIn && currentUser && data?.movement) {
                 if (isGroupDetailsChanged(currentUser.movement, data)) {
                     const { movement, grade, gender, amount } = data;
                     const { name } = movement;
