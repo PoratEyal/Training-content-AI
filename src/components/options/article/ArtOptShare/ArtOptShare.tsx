@@ -20,7 +20,7 @@ const ArtOptShare: React.FC<ArtOptShareProps> = ({ activity }) => {
             title={formatWhatsUp(activity?.activity)}
         >
             <FaShare className={styles.icon} />
-            <span className={styles.text}>{t('articleOptions.share')}</span>
+            <span className={styles.text}>{t('articleOptions.share.title')}</span>
         </WhatsappShareButton>
     );
 };

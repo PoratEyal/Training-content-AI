@@ -128,8 +128,11 @@
       "button": "העתקה",
       "success": "הפעולה הועתקה בהצלחה 🎉",
       "error": "העתקת הטקסט נכשלה."
+    },    "share": {
+      "title": "שיתוף",
+      "defaultMessage": "מצאתי אתר שבונה פעולות בעזרת AI, כדאי לנסות!",
+      "createdBy": "הפעולה נוצרה בעזרת:"
     },
-    "share": "שיתוף",
     "save": {
       "button": "שמירה",
       "saved": "נשמר",
