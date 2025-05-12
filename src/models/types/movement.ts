@@ -19,7 +19,12 @@ export type MovementName =
     | "sayarut"
     | "agricultural"
     //English
-    | "movement";
+    | "h4"
+    | "BGCA"
+    | "girlScoutsOfTheUSA"
+    | "boysScoutsOfTheUSA"
+    | "ffa"
+
 
 export type Movement = {
     name: MovementName;

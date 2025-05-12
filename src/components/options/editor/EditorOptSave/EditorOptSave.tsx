@@ -16,7 +16,7 @@ type EditorOptSaveProps = {
 };
 
 const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) => {
-    const { t, dir } = useLanguage();
+    const { t, dir, lang } = useLanguage();
     const { updateMainActivity } = useContentContext();
     const { handleSuccess, handleError } = useErrorContext();
     const { getSavedActivities } = useSaveContext();
@@ -35,7 +35,7 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
                 setSaved(true);
                 const convertedContent = convertHTMLToContent(htmlContent);
                 const newUpdatedActivity = updateActivityWithContent(activity, convertedContent);
-                const res = await fetchSaveActivity(newUpdatedActivity);
+                const res = await fetchSaveActivity(newUpdatedActivity, lang);
                 updateMainActivity({ ...newUpdatedActivity, id: res.activity.id } as Activity);
                 await getSavedActivities();
                 setTimeout(() => {

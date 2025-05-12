@@ -15,7 +15,7 @@ type ArtOptSaveProps = {
 };
 // TODO: handle unsave whan save from edit page
 const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
-    const { t, dir } = useLanguage();
+    const { t, dir, lang } = useLanguage();
     const { currentParam, updateParam } = useQueryParam();
     const { currentUser } = useAuthContext();
     const { updateMainActivity } = useContentContext();
@@ -40,10 +40,9 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
                 // prevent DDoS attacks
                 setIsDisabled(false);
             }, SAVE_COOLDOWN);
-            updateParam(true);
-            handleSuccess(t('articleOptions.save.saveSuccess'));
+            updateParam(true);            handleSuccess(t('articleOptions.save.saveSuccess'));
 
-            const res = await fetchSaveActivity(activity);
+            const res = await fetchSaveActivity(activity, lang);
             setActivityId(res.activity.id);
             updateMainActivity({ ...activity, id: res.activity.id } as Activity);
             await getSavedActivities();
