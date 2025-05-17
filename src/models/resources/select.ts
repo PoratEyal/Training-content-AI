@@ -46,18 +46,18 @@ export const GradeOptions = {
         { value: "כיתה יב", label: "כיתה יב" },
     ] as SelectOption[],
     en: [
-        { value: "grade 1", label: "grade 1" },
-        { value: "grade 2", label: "grade 2" },
-        { value: "grade 3", label: "grade 3" },
-        { value: "grade 4", label: "grade 4" },
-        { value: "grade 5", label: "grade 5" },
-        { value: "grade 6", label: "grade 6" },
-        { value: "grade 7", label: "grade 7" },
-        { value: "grade 8", label: "grade 8" },
-        { value: "grade 9", label: "grade 9" },
-        { value: "grade 10", label: "grade 10" },
-        { value: "grade 11", label: "grade 11" },
-        { value: "grade 12", label: "grade 12" },
+        { value: "grade 1", label: "Grade 1" },
+        { value: "grade 2", label: "Grade 2" },
+        { value: "grade 3", label: "Grade 3" },
+        { value: "grade 4", label: "Grade 4" },
+        { value: "grade 5", label: "Grade 5" },
+        { value: "grade 6", label: "Grade 6" },
+        { value: "grade 7", label: "Grade 7" },
+        { value: "grade 8", label: "Grade 8" },
+        { value: "grade 9", label: "Grade 9" },
+        { value: "grade 10", label: "Grade 10" },
+        { value: "grade 11", label: "Grade 11" },
+        { value: "grade 12", label: "Grade 12" },
     ] as SelectOption[],
 };
 
@@ -87,9 +87,9 @@ export const PlaceOptions = {
         { value: "במקום פתוח", label: "במקום פתוח" },
     ] as SelectOption[],
     en: [
-        { value: "not specified", label: "not specified" },
-        { value: "indoor", label: "indoor" },
-        { value: "outdoor", label: "outdoor" },
+        { value: "not specified", label: "Not specified" },
+        { value: "indoor", label: "Indoor" },
+        { value: "outdoor", label: "Outdoor" },
     ] as SelectOption[],
 };
 
@@ -100,9 +100,9 @@ export const GenderOptions = {
         { value: "מעורב", label: "קבוצה מעורבת" },
     ] as SelectOption[],
     en: [
-        { value: "boys", label: "boys" },
-        { value: "girls", label: "girls" },
-        { value: "mixed", label: "mixed" },
+        { value: "boys", label: "Boys" },
+        { value: "girls", label: "Girls" },
+        { value: "mixed", label: "Mixed" },
     ] as SelectOption[],
 };
 
@@ -117,9 +117,9 @@ export const ActivityTimeOptions = {
     ] as SelectOption[],
     en: [
         { value: "20 minutes", label: "20 minutes" },
-        { value: "half hour", label: "half hour" },
-        { value: "hour", label: "hour" },
-        { value: "hour and a half", label: "hour and a half" },
+        { value: "half hour", label: "Half hour" },
+        { value: "hour", label: "Hour" },
+        { value: "hour and a half", label: "Hour and a half" },
     ] as SelectOption[],
 };
 
@@ -132,9 +132,9 @@ export const ContestOptions = {
     ] as SelectOption[],
     en: [
         // competitiveness
-        { value: "not specified", label: "not specified" },
-        { value: "with groups", label: "with groups" },
-        { value: "without groups", label: "without groups" },
+        { value: "not specified", label: "Not specified" },
+        { value: "with groups", label: "With groups" },
+        { value: "without groups", label: "Without groups" },
     ] as SelectOption[],
 };
 
@@ -146,8 +146,8 @@ export const ToolsOptions = {
     ] as SelectOption[],
     en: [
         // tools
-        { value: "not specified", label: "not specified" },
-        { value: "without tools", label: "without tools" },
+        { value: "not specified", label: "Not specified" },
+        { value: "without tools", label: "Without tools" },
     ] as SelectOption[],
 };
 
