@@ -2,12 +2,15 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import styles from "./PageLayout.module.css";
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 import UnderBar from "../UnderBar/UnderBar";
 import { WEBSITE_URL } from "../../../models/constants";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
+import { HelmetPage } from "../../../models/types/common";
+import { getContent, getTitle } from "../../../models/resources/helmet";
+import { useLanguage } from "../../../i18n/useLanguage";
 
 type PageLayoutProps = {
+    id: HelmetPage;
     path: string;
     hasGreenBackground?: boolean;
     hasHeader?:
@@ -17,36 +20,30 @@ type PageLayoutProps = {
               hasTitle?: string;
           }
         | undefined;
-    hasFooter?: boolean;
     hesAds?: string;
     hasNavBar?: boolean;
-    content?: string;
-    title?: string;
     index?: boolean;
     children: React.ReactNode;
-    showAbout?: boolean;
-    showPrivacyAndContact?: boolean;
+    title?: string;
 };
 
 function PageLayout({
+    id,
     path,
     children,
     hasGreenBackground = false,
     hasHeader = undefined,
-    hasFooter = false,
     hesAds = "",
     hasNavBar = false,
-    content = "",
-    title = "",
     index = true,
-    showAbout = true,
-    showPrivacyAndContact = true,
+    title = "",
 }: PageLayoutProps) {
+    const { lang } = useLanguage();
     return (
         <>
             <Helmet>
-                <title>{title}</title>
-                <meta name="description" content={content} />
+                <title>{getTitle(id, lang, title)}</title>
+                <meta name="description" content={getContent(id, lang, title)} />
                 <link rel="canonical" href={`${WEBSITE_URL}${path}`} />
                 <meta
                     key="robots"
@@ -69,9 +66,6 @@ function PageLayout({
 
                 {children}
 
-                {hasFooter ? (
-                    <Footer showAbout={showAbout} showPrivacyAndContact={showPrivacyAndContact} />
-                ) : null}
                 {hesAds != "" ? <AdsSmall slot={hesAds} /> : null}
                 {hasNavBar ? <UnderBar /> : null}
             </section>

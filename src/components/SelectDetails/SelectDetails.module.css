@@ -9,6 +9,14 @@
     max-width: 273px;
 }
 
+.ltr_select {
+    direction: ltr !important;
+}
+
+.ltr_select {
+    direction: ltr !important;
+  }
+
 .input_div select {
     cursor: pointer;
     border: 1px solid var(--select-border-color);
@@ -47,8 +55,19 @@
     outline: none;
 }
 
+.ltr_div select {
+    direction: ltr;
+    padding-left: 25px;
+}
+
+/* Move arrow to left side in LTR */
+.ltr_div::after {
+    right: 13px;
+    left: auto;
+}
+
 @media (min-width: 380px) {
-    .input_div{
+    .input_div {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -58,7 +77,7 @@
 }
 
 @media (min-width: 550px) {
-    .input_div{
+    .input_div {
         max-width: unset;
     }
 

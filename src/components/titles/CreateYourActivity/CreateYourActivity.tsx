@@ -1,21 +1,30 @@
+import React from "react";
 import styles from "./CreateYourActivity.module.css";
+import { useLanguage } from "../../../i18n/useLanguage";
 
 function CreateYourActivity() {
-    return (
-        <div className={styles.create_your_activity_title}>
-            <h1>
-                צרו את<br></br> הפעולה שלכם
-            </h1>
-            <img
-                title="Sparks effect"
-                alt="Sparks effect"
-                src={"page3_effect.svg"}
-                loading="lazy"
-                width={23}
-                height={24}
-            ></img>
-        </div>
-    );
+  const { isEnglish, t } = useLanguage();
+
+  return (
+    <div
+      className={
+        isEnglish
+          ? `${styles.create_your_activity_title} ${styles.ltr}`
+          : styles.create_your_activity_title
+      }
+    >
+      <h1>{t("buildActivity.createTitle")}</h1>
+
+      <img
+        title="Sparks effect"
+        alt="Sparks effect"
+        src="page3_effect.svg"
+        loading="lazy"
+        width={23}
+        height={24}
+      />
+    </div>
+  );
 }
 
 export default CreateYourActivity;

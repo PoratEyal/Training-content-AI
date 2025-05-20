@@ -35,6 +35,8 @@
   font-size: 42px;
   font-weight: bold;
   color: var(--text-color);
+  text-align: center;
+  line-height: 0.95;
 }
 
 .text {

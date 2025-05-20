@@ -3,12 +3,13 @@ import { useContentContext } from "../../context/ContentContext";
 import { useNavigate } from "react-router-dom";
 import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import helmet from "../../models/resources/helmet.json";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import ActivityArticle from "../../components/ActivityArticle/ActivityArticle";
 import { useAuthContext } from "../../context/AuthContext";
 import RichTextEditor from "../../components/RichTextEditor/RichTextEditor";
 import { useEditorContext } from "../../context/EditorContext";
+import { helmetJson } from "../../models/resources/helmet";
+import { useLanguage } from "../../i18n/useLanguage";
 
 function Activity() {
     const { data, mainActivity } = useContentContext();
@@ -17,6 +18,7 @@ function Activity() {
     const [newActivity, setNewActivity] = useState(false);
     const activityRef = useRef<HTMLElement>(null);
     const navigate = useNavigate();
+    const { lang } = useLanguage();
 
     const goBack = () => {
         if (isEdit) {
@@ -41,11 +43,11 @@ function Activity() {
 
     return (
         <PageLayout
+            id="activity"
             path={route.activity}
             hasGreenBackground
             hasHeader={{ goBack, hasTitle: mainActivity?.subject || undefined }}
-            title={helmet.activity.title}
-            content={helmet.home.content}
+            title={helmetJson[lang].activity.title}
             hesAds={ACTIVITY_AD_SLOT}
             hasNavBar
             index={false}

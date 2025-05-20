@@ -1,11 +1,14 @@
 import styles from "./DontHaveActivity.module.css";
+import { useLanguage } from "../../i18n/useLanguage";
 
 function DontHaveActivity() {
+    const { t } = useLanguage();
+
     return (
         <div className={styles.container}>
-            <h3 className={styles.title}>עדיין לא שמרתם פעולות?</h3>
+            <h3 className={styles.title}>{t("savedActivities.dontHaveActivity.title")}</h3>
             <div className={styles.mainText}>
-                <div>לשמירת הפעולות, לחצו על כפתור ה </div>
+                <div>{t("savedActivities.dontHaveActivity.mainTextLine1")}</div>
                 <div className={styles.iconWrapper}>
                     <svg
                         className={styles.svgIcon}
@@ -17,7 +20,7 @@ function DontHaveActivity() {
                     </svg>
                 </div>
             </div>
-            <div>לאחר יצירת פעולת חדשה</div>
+            <div>{t("savedActivities.dontHaveActivity.mainTextLine2")}</div>
         </div>
     );
 }

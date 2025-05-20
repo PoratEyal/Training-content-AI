@@ -11,7 +11,6 @@ import Session from "../../utils/sessionStorage";
 import { SessionKey } from "../../models/enum/storage";
 import StartBtn from "../../components/StartBtn/StartBtn";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
-import helmet from "../../models/resources/helmet.json";
 import { useCookiesContext } from "../../context/CookiesContext";
 import { SignInStatus } from "../../models/enum/registrationStatus";
 import { HOME_AD_SLOT } from "../../models/constants/adsSlot";
@@ -19,10 +18,11 @@ import AboutUsCollapse from "../../components/AboutUsCollapse/AboutUsCollapse";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { useSaveContext } from "../../context/SavedContext";
 import styles from "./Home.module.css";
+import { useLanguage } from "../../i18n/useLanguage";
 
 function Home() {
+    const { t, dir } = useLanguage();
     const { cookieLimit, setLimitCookie, cookieRememberMe } = useCookiesContext();
-
     const navigate = useNavigate();
     const { currentUser, isLoggedIn } = useAuthContext();
 
@@ -84,17 +84,18 @@ function Home() {
 
     return (
         <PageLayout
+            id="home"
             path={route.home}
-            title={helmet.home.title}
-            content={helmet.home.content}
             hasHeader={{}} /** -> show only the profile image **/
             hesAds={HOME_AD_SLOT}
-            hasNavBar
             index={true}
+            hasNavBar
         >
             <div className={styles.logo_text_div}>
                 <ContinueWithAI />
-                <h2 className={styles.home_lable}>מותאם, פשוט ומהיר 🤟</h2>
+                <div className={styles.home_lable} style={{ direction: dir }}>
+                    <span>{t("home.slogan")}</span>
+                </div>
             </div>
 
             {rememberMe === SignInStatus.REMEMBER &&
@@ -103,7 +104,7 @@ function Home() {
             currentUser?.image ? (
                 <section className={styles.button_section}>
                     <StartBtn
-                        text="יצירת פעולות"
+                        text={t("home.startAction")}
                         onClick={() => startAsGuestOrUser(route.details)}
                         isDisabled={btnDisabled}
                     />
@@ -111,7 +112,7 @@ function Home() {
             ) : rememberMe === SignInStatus.NOT_REMEMBER && !isLoading ? (
                 <section className={styles.button_section}>
                     <StartBtn
-                        text="יצירת פעולות"
+                        text={t("home.startAction")}
                         onClick={() => startAsGuestOrUser(route.details)}
                         isDisabled={btnDisabled}
                     />
@@ -124,12 +125,7 @@ function Home() {
 
             <div className={styles.about_div}>
                 <AboutUsCollapse>
-                    <p>
-                        ActivityWiz הוא אתר ליצירת פעולות לנוער. תוכלו לבחור מתוך מאגר של פעולות
-                        מוכנות מראש או להשתמש בבינה מלאכותית ליצירת פעולות מותאמות אישית, המתאימות
-                        בדיוק לצרכים שלכם. האתר מיועד למדריכים המחפשים רעיונות ודרכים חדשות להעשרת
-                        החוויה החינוכית והחברתית.
-                    </p>
+                    <p>{t("home.aboutText")}</p>
                 </AboutUsCollapse>
             </div>
         </PageLayout>

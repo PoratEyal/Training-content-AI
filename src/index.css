@@ -29,3 +29,14 @@
     --ads-height: 100px;
     --navbar-height: 40px;
 }
+
+/* Notification direction styles */
+.notification-rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.notification-ltr {
+  direction: ltr;
+  text-align: left;
+}

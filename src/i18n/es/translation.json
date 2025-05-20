@@ -1,0 +1,171 @@
+{
+  "home": {
+    "slogan": "Personalizado, Simple y Rápido 🤟",
+    "startAction": "Crear Actividad",
+    "aboutText": "ActivityWiz es un sitio web donde los guías juveniles pueden crear actividades para jóvenes. Elige entre actividades ya hechas o usa IA para crear actividades personalizadas según tus necesidades. Diseñado para consejeros que buscan ideas frescas para mejorar experiencias educativas y sociales.",
+    "moreOptions": "Más Opciones"
+  },
+  "continueWithAI": {
+    "advanced": "Avanzando",
+    "forActions": "a actividades",
+    "withPrefix": "con",
+    "ai": "IA"
+  },
+  "aboutUs": {
+    "title": "Sobre Nosotros"
+  },
+  "navbar": {
+    "home": "Inicio",
+    "build": "Crear Actividad",
+    "content": "Contenido",
+    "myActivities": "Mis Actividades"
+  },
+  "details": {
+    "title": "Cuéntanos sobre tu grupo",
+    "youthMovement": "Movimiento Juvenil",
+    "grade": "Nivel Escolar",
+    "numberOfChildren": "Número de Niños",
+    "gender": "Género",
+    "submit": "Continuar",
+    "lampAlt": "Lámpara amarilla"
+  },
+  "buildActivity": {
+    "createTitle": "Crea tu Actividad",
+    "category": {
+      "label": "Categoría"
+    },
+    "subject": {
+      "label": "Tema de la Actividad"
+    },
+    "place": {
+      "label": "Ubicación"
+    },
+    "time": {
+      "label": "Duración"
+    },
+    "religion": {
+      "label": "Religiosa"
+    },
+    "contest": {
+      "label": "Competencia"
+    },
+    "tools": {
+      "label": "Equipo"
+    },
+    "moreDetails": {
+      "label": "Detalles Adicionales"
+    },
+    "moreOptions": {
+      "title": "Más Opciones"
+    },
+    "loadingActivity": {
+      "heading": "La actividad está en camino",
+      "text": "Nota: estas actividades son generadas por un sistema de IA, por lo que puede haber algunas imprecisiones. Recomendamos revisar el contenido cuidadosamente antes de cada sesión"
+    },
+    "submit": "Crear Actividad",
+    "loading": "Creando tu actividad..."
+  },
+  "contentPage": {
+    "popularActivities": "10 Actividades Populares",
+    "noSubjectSelected": "Ningún tema seleccionado",
+    "readyContentTitle": "Actividades Pre-hechas"
+  },
+  "contentActivities": {
+    "noSuitableActivities": "No se encontraron actividades adecuadas.",
+    "noSubjectData": "No se encontraron datos para el tema solicitado.",
+    "readyContentName": {
+      "loading": "Cargando actividades...",
+      "many": "Actividades sobre",
+      "single": "Actividad sobre"
+    }
+  },
+  "savedActivities": {
+    "dontHaveActivity": {
+      "title": "¿Aún no has guardado ninguna actividad?",
+      "mainTextLine1": "Para guardar tus actividades, haz clic en el botón",
+      "mainTextLine2": "después de crear una nueva actividad"
+    },
+    "myActivities": {
+      "title": "Mis Actividades"
+    },
+    "deletePopup": {
+      "title": "Eliminar Actividad",
+      "message": "¿Estás seguro de que deseas eliminar la actividad {{activityName}}?",
+      "deleteButton": "Eliminar",
+      "deleteError": "La actividad no se eliminó, por favor inténtalo de nuevo más tarde"
+    }
+  },
+  "profile": {
+    "dropOptInviteFriends": {
+      "invite": "Compartir con amigos"
+    },
+    "dropOptContactUs": {
+      "contact": "Contáctanos"
+    },
+    "dropOptLogout": {
+      "logout": "Cerrar Sesión"
+    },
+    "dropOptPrivacy": {
+      "policy": "Política de Privacidad"
+    },
+    "dropOptSignIn": {
+      "signIn": "Iniciar Sesión"
+    },
+    "dropOptLang": {
+      "lang": "Idioma"
+    }
+  },
+  "reviewPopup": {
+    "title": "¿Qué hay de nuevo?!",
+    "shareIdea": "¿Tienes una idea para mejorar? ¿O simplemente algo que compartir?",
+    "placeholder": "Escríbenos aquí",
+    "submit": "Enviar"
+  },
+  "articleOptions": {
+    "copy": {
+      "button": "Copiar",
+      "success": "Actividad copiada con éxito 🎉",
+      "error": "No se pudo copiar el texto."
+    },
+    "share": {
+      "title": "Compartir",
+      "defaultMessage": "Encontré un sitio web que crea actividades con IA, ¡vale la pena probarlo!",
+      "createdBy": "Actividad creada por:"
+    },
+    "save": {
+      "button": "Guardar",
+      "saved": "Guardado",
+      "saveSuccess": "¡Actividad guardada con éxito! Puedes encontrarla en Mis Actividades",
+      "saveError": "No se pudo guardar la actividad, por favor inténtalo de nuevo",
+      "removeSuccess": "Actividad eliminada de Mis Actividades",
+      "removeError": "No se pudo eliminar la actividad, por favor inténtalo de nuevo"
+    },
+    "edit": "Editar"
+  },
+  "editor": {
+    "save": {
+      "saveToMyActivities": "Guardar en Mis Actividades",
+      "savedToMyActivities": "Guardado en Mis Actividades",
+      "saveSuccess": "¡Actividad guardada con éxito! Puedes encontrarla en la sección Mis Actividades",
+      "saveError": "No se pudo guardar la actividad, por favor inténtalo de nuevo"
+    },
+    "charLimitWarning": "Límite de caracteres alcanzado"
+  },
+  "contactUs": {
+    "header": {
+      "title": "¿Qué te gustaría contarnos?",
+      "subtitle": "Cualquier sugerencia, solicitud o problema, ¡nos encantará saber de ti!"
+    },
+    "form": {
+      "emailPlaceholder": "Correo electrónico",
+      "namePlaceholder": "Nombre",
+      "messagePlaceholder": "¿Qué te gustaría contarnos?",
+      "submitButton": "Enviar",
+      "successMessage": "¡Tu mensaje fue enviado con éxito!"
+    }
+  },
+  "privacyPolicy": {
+    "title": "Términos de Servicio y Política de Privacidad",
+    "acceptButton": "Aceptar"
+  }
+}

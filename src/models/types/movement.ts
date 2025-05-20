@@ -1,5 +1,10 @@
+
+
 export type MovementName =
+    //Common
     | "scout"
+    | "other"
+    //Hebrew
     | "oved"
     | "akiva"
     | "maccabi"
@@ -13,7 +18,13 @@ export type MovementName =
     | "noam"
     | "sayarut"
     | "agricultural"
-    | "other";
+    //English
+    | "h4"
+    | "BGCA"
+    | "girlScoutsOfTheUSA"
+    | "boysScoutsOfTheUSA"
+    | "ffa"
+
 
 export type Movement = {
     name: MovementName;
