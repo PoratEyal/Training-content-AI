@@ -35,7 +35,7 @@
       "label": "Category"
     },
     "subject": {
-      "label": "Activity Subject"
+      "label": "Subject"
     },
     "place": {
       "label": "Location"
@@ -81,7 +81,7 @@
   },
   "savedActivities": {
     "dontHaveActivity": {
-      "title": "You haven't saved any activities yet?",
+      "title": "You haven't saved any activities yet.",
       "mainTextLine1": "To save your activities, click the button",
       "mainTextLine2": "after creating a new activity"
     },
