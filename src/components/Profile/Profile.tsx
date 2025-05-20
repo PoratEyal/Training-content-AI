@@ -52,7 +52,7 @@ function Profile({ img, isLoading, openLangPopup }: ProfileProps) {
                     <DropOptInviteFriends />
                     <DropOptContactUs handleClose={close} />
                     <DropOptPrivacy handleClose={close} />
-                    <DropOptLang handleClose={close} openLangPopup={openLangPopup} />
+                    {/* <DropOptLang handleClose={close} openLangPopup={openLangPopup} /> */}
                     {isLoggedIn ? (
                         <DropOptLogout handleClose={close} />
                     ) : (
