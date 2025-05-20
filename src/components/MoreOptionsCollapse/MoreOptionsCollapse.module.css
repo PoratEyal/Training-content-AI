@@ -8,13 +8,14 @@
 }
 
 .options_container {
-    width: 100%;
-    display: inline-flex;
-    align-items: left;
-    justify-content: center;
-    font-size: 16px;
-    color: var(--text-color);
-    cursor: pointer;
+  flex-direction: var(--direction, row);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text-color);
 }
 
 .options_container .collapse_text {
@@ -62,4 +63,12 @@
 
 @media (min-width: 550px) {
 
+}
+
+:host([dir="rtl"]) .options_container {
+  --direction: row-reverse;  
+}
+
+:host([dir="ltr"]) .options_container {
+  --direction: row;        
 }

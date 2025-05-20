@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./RichTextEditor.module.css";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
@@ -9,12 +9,14 @@ import EditorOptStyle from "../options/editor/EditorOptStyle/EditorOptStyle";
 import ArticleOptions from "../ArticleOptions/ArticleOptions";
 import "./RichTextEditor.css";
 import { useEditorContext } from "../../context/EditorContext";
+import { useLanguage } from "../../i18n/useLanguage";
 
 type RichTextEditorProps = {
     activity: Activity | undefined;
 };
 
 const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
+    const { t, lang } = useLanguage();
     const { updateActivity } = useEditorContext();
     const [isLimitExceeded, setIsLimitExceeded] = useState<boolean>(false);
     const [debouncedHtml, setDebouncedHtml] = useState<string>("");
@@ -45,7 +47,8 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
         },
         editorProps: {
             attributes: {
-                class: styles.editorContent,
+                class: `${styles.editorContent} ${lang === 'he' ? styles.rtl : styles.ltr}`,
+                dir: lang === 'he' ? 'rtl' : 'ltr',
             },
             handleKeyDown: (view, event) => {
                 const text = view.state.doc.textContent;
@@ -82,10 +85,13 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
     return (
         <section className={styles.container}>
             <ArticleOptions Options={Options} backgroundColor={"#FFFFFF"} />
-            <EditorContent editor={editor} className={styles.editor} />
+            <EditorContent 
+                editor={editor} 
+                className={`${styles.editor} ${lang === 'he' ? styles.rtl : styles.ltr}`}
+            />
             <div className={styles.charCounter}>
                 {isLimitExceeded ? (
-                    <span className={styles.charLimitWarning}>הגעת למגבלת התווים האפשרית</span>
+                    <span className={styles.charLimitWarning}>{t('editor.charLimitWarning')}</span>
                 ) : null}
             </div>
         </section>

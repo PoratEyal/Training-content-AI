@@ -1,14 +1,14 @@
-import { CONTANT_PROMPT_B } from "../model/prompts/contant_B";
-import { CONTANT_PROMPT_M } from "../model/prompts/contant_M";
-import { CONTANT_PROMPT_S } from "../model/prompts/contant_S";
-import { PLAY_PROMPT_M } from "../model/prompts/playTime_M";
-import { PLAY_PROMPT_S } from "../model/prompts/playTime_S";
-import { VIEW_PROMPT_M } from "../model/prompts/pointOfView_M";
-import { VIEW_PROMPT_S } from "../model/prompts/pointOfView_S";
-import { CONTANT_SPECIAL_PROMPT_M } from "../model/prompts/contant_special_M";
-import { CONTANT_SPECIAL_PROMPT_S } from "../model/prompts/contant_special_S";
-import { PLAY_SPECIAL_PROMPT_M } from "../model/prompts/playTime_special_M";
-import { PLAY_SPECIAL_PROMPT_S } from "../model/prompts/playTime_special_S";
+import { CONTANT_PROMPT_B } from "../../model/prompts/he/contant_B";
+import { CONTANT_PROMPT_M } from "../../model/prompts/he/contant_M";
+import { CONTANT_PROMPT_S } from "../../model/prompts/he/contant_S";
+import { PLAY_PROMPT_M } from "../../model/prompts/he/playTime_M";
+import { PLAY_PROMPT_S } from "../../model/prompts/he/playTime_S";
+import { VIEW_PROMPT_M } from "../../model/prompts/he/pointOfView_M";
+import { VIEW_PROMPT_S } from "../../model/prompts/he/pointOfView_S";
+import { CONTANT_SPECIAL_PROMPT_M } from "../../model/prompts/he/contant_special_M";
+import { CONTANT_SPECIAL_PROMPT_S } from "../../model/prompts/he/contant_special_S";
+import { PLAY_SPECIAL_PROMPT_M } from "../../model/prompts/he/playTime_special_M";
+import { PLAY_SPECIAL_PROMPT_S } from "../../model/prompts/he/playTime_special_S";
 import {
     CONTANT_SECTION_120_IN,
     CONTANT_SECTION_120_OUT,
@@ -35,10 +35,10 @@ import {
     SURVIVAL_SECTION_45,
     SURVIVAL_SECTION_60,
     SURVIVAL_SECTION_90,
-} from "../model/prompts/sections";
-import { SURVIVAL_PROMPT_M } from "../model/prompts/survival_M";
-import { SURVIVAL_PROMPT_S } from "../model/prompts/survival_S";
-import { CategoryName } from "../model/types/movement";
+} from "../../model/prompts/he/sections";
+import { SURVIVAL_PROMPT_M } from "../../model/prompts/he/survival_M";
+import { SURVIVAL_PROMPT_S } from "../../model/prompts/he/survival_S";
+import { CategoryName } from "../../model/types/movement";
 
 /**
  * Returns a activity parts based on the time given.

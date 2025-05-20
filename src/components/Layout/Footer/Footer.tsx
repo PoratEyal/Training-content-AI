@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import route from "../../../router/route.json";
 import { Icons } from "../../Icons";
 
+//TODO: not in use
+
 function Footer({ showAbout = true, showPrivacyAndContact = true }) {
     const navigate = useNavigate();
 

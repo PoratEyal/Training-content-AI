@@ -2,22 +2,25 @@ import styles from "../ReadyContentName/ReadyContentName.module.css";
 
 type ActivityReadyProps = {
     subject: string;
-    type?: 'many' | 'one' | 'none';
+    type?: "many" | "one" | "none";
     isLoading?: boolean;
 };
 
-const ReadyContentName: React.FC<ActivityReadyProps> = ({ subject, type = 'none', isLoading = false }) => {
-    const setAdditionSpan = (type: 'many' | 'one' | 'none') => {
+const ReadyContentName: React.FC<ActivityReadyProps> = ({
+    subject,
+    type = "none",
+    isLoading = false,
+}) => {
+    const setAdditionSpan = (type: "many" | "one" | "none") => {
         switch (type) {
-            case 'many':
+            case "many":
                 return <span>פעולות בנושא</span>;
-            case 'one':
+            case "one":
                 return <span>פעולה בנושא</span>;
             default:
                 return null;
         }
     };
-
 
     return (
         <h1 className={styles.activity_title}>
@@ -31,6 +34,6 @@ const ReadyContentName: React.FC<ActivityReadyProps> = ({ subject, type = 'none'
             )}
         </h1>
     );
-}
+};
 
 export default ReadyContentName;

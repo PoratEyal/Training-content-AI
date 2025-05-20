@@ -1,12 +1,11 @@
-.header{
+.header {
     width: 100%;
     position: relative;
     padding: 15px;
     box-sizing: border-box;
-    
-}
-
-.header_fade{
+  }
+  
+  .header_fade {
     position: sticky;
     top: 0;
     left: 0;
@@ -16,16 +15,17 @@
     z-index: 995;
     background: #faf6ee83;
     border: none;
-}
-
-@supports (backdrop-filter: blur(5px)) {
+  }
+  
+  @supports (backdrop-filter: blur(5px)) {
     .header_fade {
-        backdrop-filter: blur(8.5px);
-        -webkit-backdrop-filter: blur(8.5px);
+      backdrop-filter: blur(8.5px);
+      -webkit-backdrop-filter: blur(8.5px);
     }
-}
-
-.header_container{
+  }
+  
+  /* Default container style: direction: ltr */
+  .header_container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,38 +33,51 @@
     width: 100%;
     z-index: 2;
     height: 30px;
-}
-
-.back_icon {
+  }
+  
+  /* If we need to flip container direction for English (or Hebrew),
+     you can apply .rtl in the JSX to override. */
+  .rtl {
+    direction: rtl;
+  }
+  
+  /* Default arrow icons point left via rotate(180deg) */
+  .back_icon {
     rotate: 180deg;
     font-size: 24px;
     color: var(--secondary-color);
     cursor: pointer;
-}
-
-.back_icon_fade{
+  }
+  
+  .back_icon_fade {
     rotate: 180deg;
     font-size: 24px;
     color: var(--primary-color);
     cursor: pointer;
-}
-
-.link {
+  }
+  
+  /* arrow_english: set rotate(0deg) to point arrow right */
+  .arrow_english {
+    rotate: 0deg;
+  }
+  
+  .link {
     font-size: 16px;
     color: var(--primary-color);
     text-decoration: none;
     border-bottom: 1px solid var(--primary-color);
     cursor: pointer;
-}
-
-@media (min-width: 550px) {
-    .back_icon_fade{
-        margin-bottom: 10px;
-        cursor: pointer;
+  }
+  
+  @media (min-width: 550px) {
+    .back_icon_fade {
+      margin-bottom: 10px;
+      cursor: pointer;
     }
-    
-    .link{
-        font-size: 14px;
-        cursor: pointer;
+  
+    .link {
+      font-size: 14px;
+      cursor: pointer;
     }
-}
+  }
+  
