@@ -21,11 +21,10 @@ export const MovmentsOptions = {
         { value: Movements.he.other.name, label: Movements.he.other.title },
     ] as SelectOption[],
     en: [
-        { value: Movements.en.h4.name, label: Movements.en.h4.title },
-        { value: Movements.en.BGCA.name, label: Movements.en.BGCA.title },
-        { value: Movements.en.girlScoutsOfTheUSA.name, label: Movements.en.girlScoutsOfTheUSA.title },
-        { value: Movements.en.boysScoutsOfTheUSA.name, label: Movements.en.boysScoutsOfTheUSA.title },
-        { value: Movements.en.ffa.name, label: Movements.en.ffa.title },
+        { value: Movements.en.youthLeadershipPrograms.name, label: Movements.en.youthLeadershipPrograms.title },
+        { value: Movements.en.scouts.name, label: Movements.en.scouts.title },
+        { value: Movements.en.faithBasedYouthGroups.name, label: Movements.en.faithBasedYouthGroups.title },
+        { value: Movements.en.environmentalAndNatureGroups.name, label: Movements.en.environmentalAndNatureGroups.title },
         { value: Movements.en.other.name, label: Movements.en.other.title }
     ] as SelectOption[],
 };
@@ -87,7 +86,7 @@ export const PlaceOptions = {
         { value: "במקום פתוח", label: "במקום פתוח" },
     ] as SelectOption[],
     en: [
-        { value: "not specified", label: "Not specified" },
+        { value: "not specified", label: "Any" },
         { value: "indoor", label: "Indoor" },
         { value: "outdoor", label: "Outdoor" },
     ] as SelectOption[],
@@ -132,9 +131,9 @@ export const ContestOptions = {
     ] as SelectOption[],
     en: [
         // competitiveness
-        { value: "not specified", label: "Not specified" },
-        { value: "with groups", label: "With groups" },
-        { value: "without groups", label: "Without groups" },
+        { value: "not specified", label: "Any" },
+        { value: "with groups", label: "Teams" },
+        { value: "without groups", label: "No teams" },
     ] as SelectOption[],
 };
 
@@ -146,8 +145,8 @@ export const ToolsOptions = {
     ] as SelectOption[],
     en: [
         // tools
-        { value: "not specified", label: "Not specified" },
-        { value: "without tools", label: "Without tools" },
+        { value: "not specified", label: "Any" },
+        { value: "without tools", label: "No materials" },
     ] as SelectOption[],
 };
 

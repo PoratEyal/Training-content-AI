@@ -54,6 +54,7 @@ function Details() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         updateDetails(movement, classLevel, numberOfChildren, gender);
+        sessionStorage.setItem('currentLanguage', lang);
         navigate(route.build);
     };
 

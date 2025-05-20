@@ -244,7 +244,7 @@ export const Movements = {
             categories: [
                 {
                     name: "contant",
-                    title: "Contant",
+                    title: "Contant Activity",
                 },
                 {
                     name: "playTime",
@@ -252,13 +252,13 @@ export const Movements = {
                 }
             ],
         } as Movement,
-        h4: {
-            name: "h4",
-            title: "H-4",
+        scouts: {
+            name: "Scouts",
+            title: "Scouts",
             categories: [
                 {
                     name: "contant",
-                    title: "Contant",
+                    title: "Content Activity",
                 },
                 {
                     name: "playTime",
@@ -266,13 +266,13 @@ export const Movements = {
                 },
             ],
         } as Movement,
-        BGCA: {
-            name: "BGCA",
-            title: "Scouting America",
+        youthLeadershipPrograms: {
+            name: "YouthLeadershipPrograms",
+            title: "Youth Leadership Programs",
             categories: [
                 {
                     name: "contant",
-                    title: "Contant",
+                    title: "Content Activity",
                 },
                 {
                     name: "playTime",
@@ -280,13 +280,13 @@ export const Movements = {
                 },
             ],
         } as Movement,
-        girlScoutsOfTheUSA: {
-            name: "girlScoutsOfTheUSA",
-            title: "Girl Scouts",
+        faithBasedYouthGroups: {
+            name: "FaithBasedYouthGroups",
+            title: "Faith-Based Youth Groups",
             categories: [
                 {
                     name: "contant",
-                    title: "Contant",
+                    title: "Content Activity",
                 },
                 {
                     name: "playTime",
@@ -294,33 +294,19 @@ export const Movements = {
                 },
             ],
         } as Movement,
-         boysScoutsOfTheUSA: {
-            name: "boysScoutsOfTheUSA",
-            title: "BGCA",
+        environmentalAndNatureGroups: {
+            name: "EnvironmentalAndNatureGroups",
+            title: "Environmental & Nature Groups",
             categories: [
                 {
                     name: "contant",
-                    title: "Contant",
+                    title: "Content Activity",
                 },
                 {
                     name: "playTime",
                     title: "Play Time",
                 },
             ],
-        } as Movement,
-         ffa: {
-            name: "ffa",
-            title: "FFA",
-            categories: [
-                {
-                    name: "contant",
-                    title: "Contant",
-                },
-                {
-                    name: "playTime",
-                    title: "Play Time",
-                },
-            ],
-        } as Movement,
+        } as Movement
     }
 };

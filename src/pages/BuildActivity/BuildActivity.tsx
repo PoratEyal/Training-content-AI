@@ -55,12 +55,6 @@ function BuildActivity() {
     const [hasAlert, setHasAlert] = useState(false);
 
     useEffect(() => {
-        if (data?.movement?.categories && data.movement.categories.length > 0) {
-            setCategory(data.movement.categories[0].name);
-        }
-    }, [data]);
-
-    useEffect(() => {
         const updateUser = async () => {
             lockRef.current = false;
             if (isLoggedIn && currentUser && data?.movement) {
@@ -94,6 +88,10 @@ function BuildActivity() {
 
         if (!data || !data.movement) {
             navigate(route.home);
+            return;
+        }
+        if (data?.movement?.categories && data.movement.categories.length > 0) {
+            setCategory(data.movement.categories[0].name);
         }
 
         if (lockRef.current) {

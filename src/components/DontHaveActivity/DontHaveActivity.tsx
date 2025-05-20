@@ -2,10 +2,10 @@ import styles from "./DontHaveActivity.module.css";
 import { useLanguage } from "../../i18n/useLanguage";
 
 function DontHaveActivity() {
-    const { t } = useLanguage();
+    const { t, dir } = useLanguage();
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} dir={dir}>
             <h3 className={styles.title}>{t("savedActivities.dontHaveActivity.title")}</h3>
             <div className={styles.mainText}>
                 <div>{t("savedActivities.dontHaveActivity.mainTextLine1")}</div>

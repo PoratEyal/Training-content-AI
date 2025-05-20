@@ -19,11 +19,10 @@ export type MovementName =
     | "sayarut"
     | "agricultural"
     //English
-    | "h4"
-    | "BGCA"
-    | "girlScoutsOfTheUSA"
-    | "boysScoutsOfTheUSA"
-    | "ffa"
+    | "Scouts"
+    | "YouthLeadershipPrograms"
+    | "FaithBasedYouthGroups"
+    | "EnvironmentalAndNatureGroups"
 
 
 export type Movement = {
