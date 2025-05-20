@@ -2,7 +2,7 @@
   "home": {
     "slogan": "Tailored, Simple and Fast 🤟",
     "startAction": "Create Activity",
-    "aboutText": "ActivityWiz is a platform where youth leaders can create engaging activities for young people. Choose from ready-made options or use AI to generate custom activities tailored to your group’s needs. Perfect for counselors looking for fresh ideas to enrich educational and social experiences.",
+    "aboutText": "ActivityWiz is a platform where youth leaders create engaging activities for young people. Choose from ready-made options or use AI to generate custom ones tailored to your group. Ideal for counselors seeking fresh educational and social ideas.",
     "moreOptions": "More Options"
   },
   "continueWithAI": {
@@ -47,10 +47,10 @@
       "label": "Religious"
     },
     "contest": {
-      "label": "Competition"
+      "label": "Teams and Competition"
     },
     "tools": {
-      "label": "Equipment"
+      "label": "Materials"
     },
     "moreDetails": {
       "label": "Additional Details"
@@ -168,3 +168,4 @@
     "acceptButton": "Accept"
   }
 }
+
