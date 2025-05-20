@@ -2,96 +2,170 @@ import { SelectOption } from "../types/common";
 import { Category } from "../types/movement";
 import { Movements } from "./movment";
 
-export const MovmentsOptions: SelectOption[] = [
-    { value: Movements.scout.name, label: Movements.scout.title },
-    { value: Movements.oved.name, label: Movements.oved.title },
-    { value: Movements.akiva.name, label: Movements.akiva.title },
-    { value: Movements.maccabi.name, label: Movements.maccabi.title },
-    { value: Movements.camps.name, label: Movements.camps.title },
-    { value: Movements.shomer.name, label: Movements.shomer.title },
-    { value: Movements.bitar.name, label: Movements.bitar.title },
-    { value: Movements.hadasha.name, label: Movements.hadasha.title },
-    { value: Movements.medtchim.name, label: Movements.medtchim.title },
-    // { value: Movements.krembo.name, label: Movements.krembo.title },
-    { value: Movements.meshachim.name, label: Movements.meshachim.title },
-    { value: Movements.sayarut.name, label: Movements.sayarut.title },
-    { value: Movements.noam.name, label: Movements.noam.title },
-    { value: Movements.agricultural.name, label: Movements.agricultural.title },
-    { value: Movements.other.name, label: Movements.other.title },
-];
+export const MovmentsOptions = {
+    he: [
+        { value: Movements.he.scout.name, label: Movements.he.scout.title },
+        { value: Movements.he.oved.name, label: Movements.he.oved.title },
+        { value: Movements.he.akiva.name, label: Movements.he.akiva.title },
+        { value: Movements.he.maccabi.name, label: Movements.he.maccabi.title },
+        { value: Movements.he.camps.name, label: Movements.he.camps.title },
+        { value: Movements.he.shomer.name, label: Movements.he.shomer.title },
+        { value: Movements.he.bitar.name, label: Movements.he.bitar.title },
+        { value: Movements.he.hadasha.name, label: Movements.he.hadasha.title },
+        { value: Movements.he.medtchim.name, label: Movements.he.medtchim.title },
+        // { value: Movements.krembo.name, label: Movements.krembo.title },
+        { value: Movements.he.meshachim.name, label: Movements.he.meshachim.title },
+        { value: Movements.he.sayarut.name, label: Movements.he.sayarut.title },
+        { value: Movements.he.noam.name, label: Movements.he.noam.title },
+        { value: Movements.he.agricultural.name, label: Movements.he.agricultural.title },
+        { value: Movements.he.other.name, label: Movements.he.other.title },
+    ] as SelectOption[],
+    en: [
+        { value: Movements.en.h4.name, label: Movements.en.h4.title },
+        { value: Movements.en.BGCA.name, label: Movements.en.BGCA.title },
+        { value: Movements.en.girlScoutsOfTheUSA.name, label: Movements.en.girlScoutsOfTheUSA.title },
+        { value: Movements.en.boysScoutsOfTheUSA.name, label: Movements.en.boysScoutsOfTheUSA.title },
+        { value: Movements.en.ffa.name, label: Movements.en.ffa.title },
+        { value: Movements.en.other.name, label: Movements.en.other.title }
+    ] as SelectOption[],
+};
 
-export const GradeOptions: SelectOption[] = [
-    { value: "כיתה א", label: "כיתה א" },
-    { value: "כיתה ב", label: "כיתה ב" },
-    { value: "כיתה ג", label: "כיתה ג" },
-    { value: "כיתה ד", label: "כיתה ד" },
-    { value: "כיתה ה", label: "כיתה ה" },
-    { value: "כיתה ו", label: "כיתה ו" },
-    { value: "כיתה ז", label: "כיתה ז" },
-    { value: "כיתה ח", label: "כיתה ח" },
-    { value: "כיתה ט", label: "כיתה ט" },
-    { value: "כיתה י", label: "כיתה י" },
-    { value: "כיתה יא", label: "כיתה יא" },
-    { value: "כיתה יב", label: "כיתה יב" },
-];
+export const GradeOptions = {
+    he: [
+        { value: "כיתה א", label: "כיתה א" },
+        { value: "כיתה ב", label: "כיתה ב" },
+        { value: "כיתה ג", label: "כיתה ג" },
+        { value: "כיתה ד", label: "כיתה ד" },
+        { value: "כיתה ה", label: "כיתה ה" },
+        { value: "כיתה ו", label: "כיתה ו" },
+        { value: "כיתה ז", label: "כיתה ז" },
+        { value: "כיתה ח", label: "כיתה ח" },
+        { value: "כיתה ט", label: "כיתה ט" },
+        { value: "כיתה י", label: "כיתה י" },
+        { value: "כיתה יא", label: "כיתה יא" },
+        { value: "כיתה יב", label: "כיתה יב" },
+    ] as SelectOption[],
+    en: [
+        { value: "grade 1", label: "Grade 1" },
+        { value: "grade 2", label: "Grade 2" },
+        { value: "grade 3", label: "Grade 3" },
+        { value: "grade 4", label: "Grade 4" },
+        { value: "grade 5", label: "Grade 5" },
+        { value: "grade 6", label: "Grade 6" },
+        { value: "grade 7", label: "Grade 7" },
+        { value: "grade 8", label: "Grade 8" },
+        { value: "grade 9", label: "Grade 9" },
+        { value: "grade 10", label: "Grade 10" },
+        { value: "grade 11", label: "Grade 11" },
+        { value: "grade 12", label: "Grade 12" },
+    ] as SelectOption[],
+};
 
-export const AmountOptions: SelectOption[] = [
-    { value: "1-5", label: "1-5" },
-    { value: "5-10", label: "5-10" },
-    { value: "10-20", label: "10-20" },
-    { value: "20-30", label: "20-30" },
-    { value: "30-50", label: "30-50" },
-    { value: "60+", label: "60+" },
-];
+export const AmountOptions = {
+    he: [
+        { value: "1-5", label: "1-5" },
+        { value: "5-10", label: "5-10" },
+        { value: "10-20", label: "10-20" },
+        { value: "20-30", label: "20-30" },
+        { value: "30-50", label: "30-50" },
+        { value: "60+", label: "60+" },
+    ] as SelectOption[],
+    en: [
+        { value: "1-5", label: "1-5" },
+        { value: "5-10", label: "5-10" },
+        { value: "10-20", label: "10-20" },
+        { value: "20-30", label: "20-30" },
+        { value: "30-50", label: "30-50" },
+        { value: "60+", label: "60+" },
+    ] as SelectOption[],
+};
 
-export const PlaceOptions: SelectOption[] = [
-    { value: "לא משנה", label: "לא משנה" },
-    { value: "במקום סגור", label: "במקום סגור" },
-    { value: "במקום פתוח", label: "במקום פתוח" },
-];
+export const PlaceOptions = {
+    he: [
+        { value: "לא משנה", label: "לא משנה" },
+        { value: "במקום סגור", label: "במקום סגור" },
+        { value: "במקום פתוח", label: "במקום פתוח" },
+    ] as SelectOption[],
+    en: [
+        { value: "not specified", label: "Not specified" },
+        { value: "indoor", label: "Indoor" },
+        { value: "outdoor", label: "Outdoor" },
+    ] as SelectOption[],
+};
 
-export const GenderOptions: SelectOption[] = [
-    { value: "חניכים", label: "קבוצת בנים" },
-    { value: "חניכות", label: "קבוצת בנות" },
-    { value: "מעורב", label: "קבוצה מעורבת" },
-];
+export const GenderOptions = {
+    he: [
+        { value: "חניכים", label: "קבוצת בנים" },
+        { value: "חניכות", label: "קבוצת בנות" },
+        { value: "מעורב", label: "קבוצה מעורבת" },
+    ] as SelectOption[],
+    en: [
+        { value: "boys", label: "Boys" },
+        { value: "girls", label: "Girls" },
+        { value: "mixed", label: "Mixed" },
+    ] as SelectOption[],
+};
 
-export const ActivityTimeOptions: SelectOption[] = [
-    { value: "20 דקות", label: "20 דקות" },
-    { value: "חצי שעה", label: "חצי שעה" },
-    // { value: "45 דקות", label: "45 דקות" },
-    { value: "שעה", label: "שעה" },
-    { value: "שעה וחצי", label: "שעה וחצי" },
-    // { value: "שעתיים", label: "שעתיים" },
-];
-  
-// export const BehaviorOptions: SelectOption[] = [//התנהגות
-//   { value: "רגוע", label: "רגוע" },
-//   { value: "רועש", label: "רועש" },
-//   { value: "שקט", label: "שקט" },
-//   { value: "מתפזר", label: "מתפזר" },
-// ];
+export const ActivityTimeOptions = {
+    he: [
+        { value: "20 דקות", label: "20 דקות" },
+        { value: "חצי שעה", label: "חצי שעה" },
+        // { value: "45 דקות", label: "45 דקות" },
+        { value: "שעה", label: "שעה" },
+        { value: "שעה וחצי", label: "שעה וחצי" },
+        // { value: "שעתיים", label: "שעתיים" },
+    ] as SelectOption[],
+    en: [
+        { value: "20 minutes", label: "20 minutes" },
+        { value: "half hour", label: "Half hour" },
+        { value: "hour", label: "Hour" },
+        { value: "hour and a half", label: "Hour and a half" },
+    ] as SelectOption[],
+};
 
-export const ContestOptions: SelectOption[] = [//תחרות
-    { value: "לא משנה", label: "לא משנה" },
-    { value: "עם חלוקה לקבוצות", label: "עם חלוקה לקבוצות" },
-    { value: "ללא חלוקה לקבוצות", label: "ללא חלוקה לקבוצות" },
-];
+export const ContestOptions = {
+    he: [
+        //תחרות
+        { value: "לא משנה", label: "לא משנה" },
+        { value: "עם חלוקה לקבוצות", label: "עם חלוקה לקבוצות" },
+        { value: "ללא חלוקה לקבוצות", label: "ללא חלוקה לקבוצות" },
+    ] as SelectOption[],
+    en: [
+        // competitiveness
+        { value: "not specified", label: "Not specified" },
+        { value: "with groups", label: "With groups" },
+        { value: "without groups", label: "Without groups" },
+    ] as SelectOption[],
+};
 
+export const ToolsOptions = {
+    he: [
+        //ציוד
+        { value: "לא משנה", label: "לא משנה" },
+        { value: "ללא ציוד", label: "ללא ציוד" },
+    ] as SelectOption[],
+    en: [
+        // tools
+        { value: "not specified", label: "Not specified" },
+        { value: "without tools", label: "Without tools" },
+    ] as SelectOption[],
+};
 
-export const ToolsOptions: SelectOption[] = [//ציוד
-    { value: "לא משנה", label: "לא משנה" },
-    { value: "ללא ציוד", label: "ללא ציוד" },
-];
-
-export const ReligionOptions: SelectOption[] = [//שומר שבת
+export const ReligionOptions: SelectOption[] = [
+    //שומר שבת
     { value: "לא משנה", label: "לא משנה" },
     { value: "מותאם לשומרי שבת", label: "מותאם לשומרי שבת" },
 ];
-
 
 export const CategoryOptions = (options: Category[]): SelectOption[] => {
     return options.map((option) => {
         return { value: option.name, label: option.title };
     });
 };
+
+// export const BehaviorOptions: SelectOption[] = [//התנהגות
+//   { value: "רגוע", label: "רגוע" },
+//   { value: "רועש", label: "רועש" },
+//   { value: "שקט", label: "שקט" },
+//   { value: "מתפזר", label: "מתפזר" },
+// ];

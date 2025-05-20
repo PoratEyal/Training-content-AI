@@ -9,6 +9,7 @@ import { NEED_TO_LOGIN } from "../models/constants/cookie";
 import { initRawUser } from "../utils/user";
 import msg from "../models/resources/errorMsg.json";
 import { useCookiesContext } from "./CookiesContext";
+import { useLanguage } from "../i18n/useLanguage";
 
 /**
  * for make getRedirectResult on localhost
@@ -49,6 +50,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
     const [whatsNewMsg, setWhatsNewMsg] = useState<string>("");
+    const { lang } = useLanguage();
 
     useEffect(() => {
         let unsubscribe: any;
@@ -68,14 +70,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             if (user && (user as GoogleUser)?.uid) {
                 let resultUser: User | undefined = undefined;
                 const rawUser = initRawUser(user);
-                const response = await fetchCreateNewUser({ rawUser });
+                const response = await fetchCreateNewUser({ rawUser }, lang);
                 if (response.user) {
                     resultUser = response.user;
                 }
                 if (resultUser) {
                     if (resultUser.movement) {
                         const { grade, amount, gender, movement } = resultUser.movement;
-                        addSessionData(movement, grade, amount, gender);
+                        addSessionData(lang, movement, grade, amount, gender);
                     }
                     setCurrentUser(resultUser);
                     await checkIfNeedToSendMsg(resultUser);
@@ -87,7 +89,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 setIsLoggedIn(false);
             }
         } catch (error) {
-            handleError(msg.google.message);
+            handleError(msg[lang].google.message);
         } finally {
             setLoading(false);
         }
@@ -96,13 +98,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const blockRef = useRef<boolean>(true);
     const checkIfNeedToSendMsg = async (user: User) => {
         if (user.isSendMsg && blockRef.current) {
-            const result = await fetchGetMsg();
-            if (result.result === "success") {
-                setWhatsNewMsg(result.msg.text);
+            const result = await fetchGetMsg(lang);
+    
+            if (result.result === "success" && result.msg) {
+                const localizedMsg =
+                    lang === "en" ? result.msg.textEn : result.msg.textHe;
+    
+                setWhatsNewMsg(localizedMsg);
                 blockRef.current = false;
             }
         }
-    }
+    };    
 
     const setIsSendMsg = () => {
         setCurrentUser({

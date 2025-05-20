@@ -55,6 +55,10 @@
     font-size: 25px;
 }
 
+.ltr_item {
+    direction: ltr !important; 
+  }
+
 @media (min-width: 550px) {
     .underBar{
         position: absolute;

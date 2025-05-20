@@ -1,15 +1,17 @@
 import React from "react";
 import styles from "./ArtOptCopy.module.css";
+import { FaRegCopy } from "react-icons/fa";
 import { Activity } from "../../../../models/types/activity";
-import { FaRegCopy } from "react-icons/fa6";
-import { useErrorContext } from "../../../../context/ErrorContext";
 import { formatCopy } from "../../../../utils/format";
+import { useErrorContext } from "../../../../context/ErrorContext";
+import { useLanguage } from "../../../../i18n/useLanguage";
 
 type ArtOptCopyProps = {
     activity: Activity;
 };
 
 const ArtOptCopy: React.FC<ArtOptCopyProps> = ({ activity }) => {
+    const { t, dir } = useLanguage();
     const { handleSuccess, handleError } = useErrorContext();
 
     const handleClick = () => {
@@ -17,17 +19,17 @@ const ArtOptCopy: React.FC<ArtOptCopyProps> = ({ activity }) => {
         navigator.clipboard
             .writeText(textToCopy)
             .then(() => {
-                handleSuccess("הפעולה הועתקה בהצלחה 🎉");
+                handleSuccess(t('articleOptions.copy.success'));
             })
             .catch((error) => {
-                handleError("העתקת הטקסט נכשלה.");
+                handleError(t('articleOptions.copy.error'));
             });
     };
 
     return (
-        <div className={styles.copyBtn} onClick={handleClick}>
+        <div className={`${styles.copyBtn} ${styles[dir]}`} onClick={handleClick}>
             <FaRegCopy className={styles.icon} />
-            <span className={styles.text}>העתקה</span>
+            <span className={styles.text}>{t('articleOptions.copy.button')}</span>
         </div>
     );
 };

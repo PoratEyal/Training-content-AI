@@ -1,8 +1,9 @@
 import moment from "moment";
 import "moment-timezone";
+import { Lng } from "../models/types/common";
 
-export const getCurrentTime = () => {
-    const currentDate = moment().tz("Asia/Jerusalem");
+export const getCurrentTime = (lang: Lng) => {
+    const currentDate = moment().tz(lang == "he" ? "Asia/Jerusalem" : "America/New_York");
     return currentDate.format("YYYY-MM-DD HH:mm:ss").toString();
 };
 

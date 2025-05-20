@@ -4,7 +4,6 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { useNavigate } from "react-router-dom";
 import MyActivitiesTitle from "../../components/titles/MyActivitiesTitle/MyActivitiesTitle";
-import helmet from "../../models/resources/helmet.json";
 import { MY_ACTIVITIES_AD_SLOT } from "../../models/constants/adsSlot";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import DontHaveActivity from "../../components/DontHaveActivity/DontHaveActivity";
@@ -15,9 +14,10 @@ import DeletePopUp from "../../components/DeletePopUp/DeletePopUp";
 import SavedActivityRow from "../../components/SavedActivityRow/SavedActivityRow";
 
 const SavedActivities: React.FC = () => {
-    const navigate = useNavigate();
-    const { savedActivity, isLoading, useFetchSavedData, deleteActivity } = useSaveContext();
-    useFetchSavedData();
+  const navigate = useNavigate();
+
+  const { savedActivity, isLoading, useFetchSavedData, deleteActivity } = useSaveContext();
+  useFetchSavedData();
 
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [activityToDelete, setActivityToDelete] = useState<Activity | null>(null);
@@ -44,14 +44,13 @@ const SavedActivities: React.FC = () => {
 
     return (
         <PageLayout
+            id="home"
             path={route.myactivities}
             hasHeader={{ goBack }}
             hasNavBar
             hesAds={MY_ACTIVITIES_AD_SLOT}
             index={false}
             hasGreenBackground
-            title={helmet.content.title}
-            content={helmet.home.content}
         >
             <MyActivitiesTitle />
             <article className={styles.content_article}>

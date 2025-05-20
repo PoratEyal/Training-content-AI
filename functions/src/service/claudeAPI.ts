@@ -2,14 +2,15 @@ import axios from 'axios';
 import { ActivityDetails } from "../model/types/activity";
 import { defineString } from "firebase-functions/params";
 import { formatString } from "../utils/format";
-import { CONTANT_PROMPT_M } from "../model/prompts/contant_M";
-import { CONTANT_PROMPT_S } from "../model/prompts/contant_S";
-import { CONTANT_PROMPT_B } from "../model/prompts/contant_B";
-import { VIEW_PROMPT_S } from "../model/prompts/pointOfView_S";
-import { VIEW_PROMPT_M } from "../model/prompts/pointOfView_M";
-import { PLAY_PROMPT_M } from "../model/prompts/playTime_M";
-import { SURVIVAL_PROMPT_S } from "../model/prompts/survival_S";
-import { SURVIVAL_PROMPT_M } from "../model/prompts/survival_M";
+import { CONTANT_PROMPT_M } from "../model/prompts/he/contant_M";
+import { CONTANT_PROMPT_S } from "../model/prompts/he/contant_S";
+import { CONTANT_PROMPT_B } from "../model/prompts/he/contant_B";
+import { VIEW_PROMPT_S } from "../model/prompts/he/pointOfView_S";
+import { VIEW_PROMPT_M } from "../model/prompts/he/pointOfView_M";
+import { PLAY_PROMPT_M } from "../model/prompts/he/playTime_M";
+import { SURVIVAL_PROMPT_S } from "../model/prompts/he/survival_S";
+import { SURVIVAL_PROMPT_M } from "../model/prompts/he/survival_M";
+// -- NOT IN USE -- //
 
 async function generateContent(prompt: string): Promise<string> {
     const API_KEY = defineString("API_KEY_CLAUDE").value() || "";

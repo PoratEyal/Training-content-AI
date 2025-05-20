@@ -10,7 +10,7 @@ import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
 import { StaticActivities } from "../../models/types/activity";
-import helmet from "../../models/resources/helmet.json";
+import { helmetJson } from "../../models/resources/helmet";
 
 const ContentActivities: React.FC = () => {
     const navigate = useNavigate();
@@ -25,7 +25,6 @@ const ContentActivities: React.FC = () => {
 
     const { subject, activities } = React.useMemo(() => {
         if (!subjects?.length) return { subject: undefined, activities: undefined };
-
         const foundSubject = subjects.find((subj) => subj.name === activityId);
         const sortedActivities = foundSubject?.activities?.sort((a, b) => a.orderId - b.orderId);
 
@@ -42,18 +41,24 @@ const ContentActivities: React.FC = () => {
 
     return (
         <PageLayout
+            id="contentActivities"
             path={contentActivitiesPath}
             hasHeader={{ goBack }}
             hasNavBar
             hasGreenBackground
-            title={subject?.metaTitle || helmet.contentActivities.title}
-            content={subject?.metaDescription || helmet.contentActivities.content}
             hesAds={CONTENT_ACTIVITY_AD_SLOT}
         >
-            <div style={{marginTop: "-60px", marginRight: "auto", marginLeft: "auto", width: "230px"}}>
+            <div
+                style={{
+                    marginTop: "-60px",
+                    marginRight: "auto",
+                    marginLeft: "auto",
+                    width: "230px",
+                }}
+            >
                 <ReadyContentName
                     type="many"
-                    subject={subject?.metaTitle || helmet.contentActivities.title}
+                    subject={subject?.metaTitle || helmetJson["he"].contentActivities.title}
                     isLoading={isLoading}
                 />
             </div>

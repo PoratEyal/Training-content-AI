@@ -1,19 +1,25 @@
+import { useLanguage } from "../../../i18n/useLanguage";
 import styles from "./TellUsAboutYourGroup.module.css";
 
 function TellUsAboutYourGroup() {
+    const { dir, t } = useLanguage();
+    
     return (
-        <div className={styles.tell_us_title}>
+        <div 
+            className={`${styles.tell_us_title} ${dir === "rtl" ? styles.tell_us_title_rtl : styles.tell_us_title_ltr}`}
+            style={{ direction: dir }}
+        >
             <h1>
-                ספרו לנו על <br /> הקבוצה שלכם
+                {t("details.title")}
             </h1>
             <img
-                title="Yellow line image"
-                alt="Yellow line image"
+                title={t("details.yellowLineAlt", "Yellow line image")}
+                alt={t("details.yellowLineAlt", "Yellow line image")}
                 src={"detailsLine.svg"}
                 loading="lazy"
                 width={90}
                 height={5}
-            ></img>
+            />
         </div>
     );
 }
