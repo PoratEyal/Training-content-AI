@@ -1,3 +1,4 @@
 export type MsgType = {
-    text: string;
+    textEn: string;
+    textHe: string;
 };

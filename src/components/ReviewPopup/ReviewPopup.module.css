@@ -7,6 +7,10 @@
   }
 }
 
+/* ------------------------------------------------------------------ */
+/* Base (RTL-first) styles — stay exactly as they were for Hebrew     */
+/* ------------------------------------------------------------------ */
+
 .popupOverlay {
   position: fixed;
   top: 0;
@@ -54,10 +58,11 @@
   position: absolute;
   font-size: 24px;
   top: 10px;
-  left: 5px;
+  left: 5px;             /* RTL default */
   cursor: pointer;
 }
-.popupTitle_div{
+
+.popupTitle_div {
   display: flex;
   flex-direction: row;
   justify-content: right;
@@ -68,33 +73,35 @@
   width: 100%;
   margin-right: 5px;
 }
+
 .popupTitle {
   color: var(--primary-color);
   font-size: 24px;
   font-weight: 600;
   text-align: center;
-
 }
-.icon_lamp{
+
+.icon_lamp {
   font-size: 60px;
   rotate: -30deg;
 }
 
-.text{
+.text {
   color: var(--primary-color);
   font-size: 14px;
   text-align: right;
   font-weight: 450;
   line-height: 1.6;
 }
-.text_btn{
+
+.text_btn {
   color: var(--primary-color);
   font-size: 16px;
   text-align: right;
   font-weight: 500;
   border: none;
   background-color: rgba(255, 255, 255, 0);
-  font-family: 'Fredoka', sans-serif;
+  font-family: "Fredoka", sans-serif;
   padding: 0px;
   margin-top: 8px;
   border-bottom: 1px solid var(--primary-color);
@@ -112,11 +119,14 @@
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-family: 'Fredoka', sans-serif;
+  font-family: "Fredoka", sans-serif;
   resize: none;
   touch-action: manipulation;
   font-size: 16px;
+  direction: rtl;           /* RTL default */
+  text-align: right;
 }
+
 .otherInput:focus {
   outline: none;
   border: 1px solid #ccc;
@@ -152,7 +162,7 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  direction: rtl;
+  direction: rtl;           /* RTL default */
   padding: 0 15px;
 }
 
@@ -193,4 +203,50 @@
   .popupContent {
     width: 500px;
   }
+}
+
+/* ------------------------------------------------------------------ */
+/* LTR overrides (activated by adding styles.ltr to the wrapper)      */
+/* ------------------------------------------------------------------ */
+
+.ltr {
+  direction: ltr;                       /* baseline */
+}
+
+.ltr .closeButton {
+  left: auto;
+  right: 5px;
+}
+
+.ltr .popupTitle_div {
+  justify-content: flex-start;
+  text-align: left;
+  margin-right: 0;
+  margin-left: 5px;
+  direction: ltr;
+}
+
+.ltr .popupTitle_div .popupTitle {
+  order: 1;          /* text first */
+}
+
+.ltr .popupTitle_div .icon_lamp {
+  order: 2;          /* icon after text */
+}
+
+.ltr .text {
+  text-align: left;
+}
+
+.ltr .otherInput {
+  direction: ltr;
+  text-align: left;
+}
+
+.ltr .buttonContent {
+  direction: ltr;   
+}
+
+.ltr .icon {
+  transform: rotate(180deg);
 }

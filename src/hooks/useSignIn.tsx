@@ -12,6 +12,7 @@ import { useAuthContext } from "../context/AuthContext";
 import { useEffect, useState } from "react";
 import { NEED_TO_LOGIN } from "../models/constants/cookie";
 import { useCookiesContext } from "../context/CookiesContext";
+import { useLanguage } from "../i18n/useLanguage";
 
 
 const useSignIn = (handleStart: ()=> void) => {
@@ -21,6 +22,7 @@ const useSignIn = (handleStart: ()=> void) => {
     const isMobile = /iPhone|iPad|iPod|Android|BlackBerry|IEMobile|Opera Mini|Windows Phone|webOS|Kindle|Mobile|Tablet/i.test(navigator.userAgent);    
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
+    const { lang } = useLanguage();
 
     useEffect(() => {
         if (!loading && isLoggedIn && currentUser){
@@ -61,7 +63,7 @@ const useSignIn = (handleStart: ()=> void) => {
             (error as unknown as string).toString().includes(`(auth/cancelled-popup-request)`) ===
                 false
         ) {
-            handleError(errMsg.google.message);
+            handleError(errMsg[lang].google.message);
         }
         removeRememberMeCookie();
         setBtnDisabled(false);

@@ -1,8 +1,10 @@
 import { Activity } from "../activity";
+import { Lng } from "../common";
 import { CategoryName } from "../movement";
 import { RawUser, User } from "../user";
 
 export type GetActivityRequest = {
+    lang: Lng;
     movement: string;
     category: CategoryName;
     subject: string;

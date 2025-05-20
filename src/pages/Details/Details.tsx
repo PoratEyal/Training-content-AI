@@ -15,10 +15,11 @@ import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
-import helmet from "../../models/resources/helmet.json";
 import { DETAILS_AD_SLOT } from "../../models/constants/adsSlot";
+import { useLanguage } from "../../i18n/useLanguage";
 
 function Details() {
+    const { t, isHebrew, dir, lang } = useLanguage();
     const { data, updateDetails, clearAll } = useContentContext();
     const { currentUser, loading } = useAuthContext();
     const navigate = useNavigate();
@@ -63,27 +64,30 @@ function Details() {
 
     return (
         <PageLayout
+            id="details"
             path={route.details}
             hasGreenBackground
             hasHeader={{ goBack }}
-            title={helmet.details.title}
-            content={helmet.home.content}
             hesAds={DETAILS_AD_SLOT}
             hasNavBar
             index={false}
         >
             <TellUsAboutYourGroup />
 
-            <form onSubmit={handleSubmit} className={styles.details_form_container}>
+            <form
+                onSubmit={handleSubmit}
+                className={styles.details_form_container}
+                style={{ direction: dir }}
+            >
                 <img
-                    className={styles.lamp_img}
-                    title="Yellow lamp"
-                    alt="Yellow lamp"
+                    className={`${styles.lamp_img} ${isHebrew ? styles.lamp_img_rtl : styles.lamp_img_ltr}`}
+                    title={t("details.lampAlt")}
+                    alt={t("details.lampAlt")}
                     src={"lamp.svg"}
                     loading="lazy"
                     width={105}
                     height={109}
-                ></img>
+                />
 
                 <div className={styles.selects_btn}>
                     {loading ? (
@@ -93,40 +97,40 @@ function Details() {
                     ) : (
                         <div className={styles.details_content}>
                             <SelectDetails
-                                data={MovmentsOptions}
-                                placeholder={"תנועת נוער"}
+                                data={MovmentsOptions[lang]}
+                                placeholder={t("details.youthMovement")}
                                 obj={movement}
                                 setObj={setMovment}
                             />
                             <SelectDetails
-                                data={GradeOptions}
-                                placeholder={"קבוצת גיל"}
+                                data={GradeOptions[lang]}
+                                placeholder={t("details.grade")}
                                 obj={classLevel}
                                 setObj={setClassLevel}
                             />
                             <SelectDetails
-                                data={AmountOptions}
-                                placeholder={"מספר ילדים"}
+                                data={AmountOptions[lang]}
+                                placeholder={t("details.numberOfChildren")}
                                 obj={numberOfChildren}
                                 setObj={setNumberOfChildren}
                             />
                             <SelectDetails
-                                data={GenderOptions}
-                                placeholder={"הרכב הקבוצה"}
+                                data={GenderOptions[lang]}
+                                placeholder={t("details.gender")}
                                 obj={gender}
                                 setObj={setGender}
                             />
-                            <div className={styles.btn_div}>
-                                <MainBtn
-                                    type="submit"
-                                    isDisabled={isDisabled}
-                                    height={42}
-                                    text="המשיכו"
-                                    func={handleSubmit}
-                                ></MainBtn>
-                            </div>
                         </div>
                     )}
+                    <div className={isHebrew ? styles.hebrewDir : styles.nonHebrewDir}>
+                        <MainBtn
+                            text={t("details.submit")}
+                            isDisabled={isDisabled}
+                            type="submit"
+                            func={handleSubmit}
+                            height={42}
+                        />
+                    </div>
                 </div>
             </form>
         </PageLayout>
