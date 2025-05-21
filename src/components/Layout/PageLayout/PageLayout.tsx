@@ -39,12 +39,13 @@ function PageLayout({
     title = "",
 }: PageLayoutProps) {
     const { lang, dir } = useLanguage();
+    const canonicalUrl = lang === "en" ? `${WEBSITE_URL}/en` : `${WEBSITE_URL}${path}`;
     return (
         <>
             <Helmet>
                 <title>{getTitle(id, lang, title)}</title>
                 <meta name="description" content={getContent(id, lang, title)} />
-                <link rel="canonical" href={`${WEBSITE_URL}${path}`} />
+                <link rel="canonical" href={canonicalUrl} />
                 <meta
                     key="robots"
                     name="robots"
