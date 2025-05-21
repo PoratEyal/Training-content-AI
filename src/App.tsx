@@ -18,15 +18,18 @@ import SavedActivities from "./pages/SavedActivities/SavedActivities";
 import Admin from "./pages/Admin/Admin";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import Providers from "./router/Providers";
+import LanguageRedirect from "./components/LanguageRedirect";
 
 function App() {
     return (
         <Providers>
             <ReactNotifications className="react-notifications" />
             <Router>
+                <LanguageRedirect />
                 <Routes>
                     <Route element={<PrivateRoutes />}>
                         <Route path={route.home} element={<Home />} />
+                        <Route path={route.homeEn} element={<Home />} />
                         <Route path={route.details} element={<Details />} />
                         <Route path={route.build} element={<BuildActivity />} />
                         <Route path={route.activity} element={<Activity />} />

@@ -29,12 +29,17 @@
     font-family: var(--font-family);
     direction: rtl;
     background-color: var(--select-color);
-    color: var(--placeholder-color);
+    color: var(--text-color); /* Changed from --placeholder-color to --text-color */
     -moz-appearance: none;
     /* Firefox */
     -webkit-appearance: none;
     /* Safari and Chrome */
     appearance: none;
+}
+
+.input_div select option {
+    color: var(--text-color); /* Added explicit color for options */
+    background-color: var(--select-color);
 }
 
 .input_div::after {

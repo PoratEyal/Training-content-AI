@@ -1,5 +1,6 @@
 {
     "home": "/",
+    "homeEn": "/en",
     "details": "/details",
     "build": "/build",
     "activity": "/activity",
