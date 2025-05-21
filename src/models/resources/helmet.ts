@@ -77,69 +77,69 @@ export const helmetJson: Record<Lng, LanguageSection> = {
     } as LanguageSection,
     en: {
         home: {
-            title: "Activities for youth",
+            title: "Youth Movement Activities",
             content:
-                "A variety of ready-made activities for youth guides, alongside the option to create customized activities with the help of artificial intelligence (AI). Suitable for Scouts, Working Youth, Bnei Akiva, Hashomer Hatzair, youth counselors, and more.",
+                "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
         details: {
-            title: "Activities for youth - group",
+            title: "Youth Movement Activities - group",
             content:
-                "A variety of ready-made activities for youth guides, alongside the option to create customized activities with the help of artificial intelligence (AI). Suitable for Scouts, Working Youth, Bnei Akiva, Hashomer Hatzair, youth counselors, and more.",
+                "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
         build: {
-            title: "Activities for youth - build",
+            title: "Youth Movement Activities - build",
             content:
-                "A variety of ready-made activities for youth guides, alongside the option to create customized activities with the help of artificial intelligence (AI). Suitable for Scouts, Working Youth, Bnei Akiva, Hashomer Hatzair, youth counselors, and more.",
+                "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
         activity: {
-            title: "Activities for youth - activity",
+            title: "Youth Movement Activities - activity",
             content:
-                "A variety of ready-made activities for youth guides, alongside the option to create customized activities with the help of artificial intelligence (AI). Suitable for Scouts, Working Youth, Bnei Akiva, Hashomer Hatzair, youth counselors, and more.",
+                "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
         content: {
-            title: "Activities for youth - content",
+            title: "Youth Movement Activities - content",
             content:
-                "A variety of ready-made activities for youth guides, alongside the option to create customized activities with the help of artificial intelligence (AI). Suitable for Scouts, Working Youth, Bnei Akiva, Hashomer Hatzair, youth counselors, and more.",
+                "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
         contentActivities: {
-            title: "Activities for youth - content activities",
+            title: "Youth Movement Activities - content activities",
             content:
-                "A variety of ready-made activities for youth guides, alongside the option to create customized activities with the help of artificial intelligence (AI). Suitable for Scouts, Working Youth, Bnei Akiva, Hashomer Hatzair, youth counselors, and more.",
+                "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
         contentActivity: {
-            title: "Activities for youth - content activity",
+            title: "Youth Movement Activities - content activity",
             content:
-                "A variety of ready-made activities for youth guides, alongside the option to create customized activities with the help of artificial intelligence (AI). Suitable for Scouts, Working Youth, Bnei Akiva, Hashomer Hatzair, youth counselors, and more.",
+                "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
         myactivities: {
-            title: "Activities for youth - my activities",
+            title: "Youth Movement Activities - my activities",
             content:
-                "A variety of ready-made activities for youth guides, alongside the option to create customized activities with the help of artificial intelligence (AI). Suitable for Scouts, Working Youth, Bnei Akiva, Hashomer Hatzair, youth counselors, and more.",
+                "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
         savedActivity: {
-            title: "Activities for youth - saved activity",
+            title: "Youth Movement Activities - saved activity",
             content:
-                "A variety of ready-made activities for youth guides, alongside the option to create customized activities with the help of artificial intelligence (AI). Suitable for Scouts, Working Youth, Bnei Akiva, Hashomer Hatzair, youth counselors, and more.",
+                "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
         popularActivities: {
-            title: "Activities for youth - popular activities",
+            title: "Youth Movement Activities - popular activities",
             content:
-                "The most popular activities - discover 10 of the most popular activities for group activities, education and fun in youth movements and groups",
+                "Most Popular Activities – Discover 10 top-rated activities for education, fun, and group engagement in youth movements and organizations.",
         },
         privacyPolicy: {
-            title: "Activities for youth - policy",
+            title: "Youth Movement Activities - policy",
             content:
-                "A variety of ready-made activities for youth guides, alongside the option to create customized activities with the help of artificial intelligence (AI). Suitable for Scouts, Working Youth, Bnei Akiva, Hashomer Hatzair, youth counselors, and more.",
+                "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
         edit: {
-            title: "Activities for youth - edit",
+            title: "Youth Movement Activities - edit",
             content:
-                "A variety of ready-made activities for youth guides, alongside the option to create customized activities with the help of artificial intelligence (AI). Suitable for Scouts, Working Youth, Bnei Akiva, Hashomer Hatzair, youth counselors, and more.",
+                "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
         contactUs: {
-            title: "Activities for youth - contact us",
+            title: "Youth Movement Activities - contact us",
             content:
-                "A variety of ready-made activities for youth guides, alongside the option to create customized activities with the help of artificial intelligence (AI). Suitable for Scouts, Working Youth, Bnei Akiva, Hashomer Hatzair, youth counselors, and more.",
+                "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
     } as LanguageSection,
 };

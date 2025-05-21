@@ -38,7 +38,7 @@ function PageLayout({
     index = true,
     title = "",
 }: PageLayoutProps) {
-    const { lang } = useLanguage();
+    const { lang, dir } = useLanguage();
     return (
         <>
             <Helmet>
@@ -50,11 +50,18 @@ function PageLayout({
                     name="robots"
                     content={index ? "index, follow" : "noindex, follow"}
                 />
+                <html lang={lang} dir={dir} />
+                {index && (
+                  <>
+                    <link rel="alternate" href={`${WEBSITE_URL}/`} hrefLang="he" />
+                    <link rel="alternate" href={`${WEBSITE_URL}/en`} hrefLang="en" />
+                  </>
+                )}
             </Helmet>
 
             <section
                 className={styles.page_container}
-                style={{ backgroundColor: hasGreenBackground ? "#708254" : "#FAF6EE" }}
+                style={{ backgroundColor: hasGreenBackground ? "#708254" : "#FAF6EE", direction: dir }}
             >
                 {hasHeader ? (
                     <Header
