@@ -18,7 +18,7 @@ function CreateYourActivity() {
       <img
         title="Sparks effect"
         alt="Sparks effect"
-        src="page3_effect.svg"
+        src="/page3_effect.svg"
         loading="lazy"
         width={23}
         height={24}

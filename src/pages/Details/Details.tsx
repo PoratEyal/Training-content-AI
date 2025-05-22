@@ -84,7 +84,7 @@ function Details() {
                     className={`${styles.lamp_img} ${isHebrew ? styles.lamp_img_rtl : styles.lamp_img_ltr}`}
                     title={t("details.lampAlt")}
                     alt={t("details.lampAlt")}
-                    src={"lamp.svg"}
+                    src={"/lamp.svg"}
                     loading="lazy"
                     width={105}
                     height={109}
