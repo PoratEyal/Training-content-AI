@@ -157,7 +157,7 @@ function BuildActivity() {
                     className={isHebrew ? styles.path_img : `${styles.path_img} ${styles.ltr_path}`}
                     title="Yellow sign with heart"
                     alt="Yellow sign with heart"
-                    src={"path.svg"}
+                    src={"/path.svg"}
                     width={95}
                     height={120}
                 ></img>

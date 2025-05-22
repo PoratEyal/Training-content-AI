@@ -15,7 +15,7 @@ function TellUsAboutYourGroup() {
             <img
                 title={t("details.yellowLineAlt", "Yellow line image")}
                 alt={t("details.yellowLineAlt", "Yellow line image")}
-                src={"detailsLine.svg"}
+                src={"/detailsLine.svg"}
                 loading="lazy"
                 width={90}
                 height={5}
