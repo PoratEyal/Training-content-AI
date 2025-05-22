@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
 import styles from "./PageLayout.module.css";
 import Header from "../Header/Header";
 import UnderBar from "../UnderBar/UnderBar";
@@ -39,7 +40,8 @@ function PageLayout({
     title = "",
 }: PageLayoutProps) {
     const { lang, dir } = useLanguage();
-    const canonicalUrl = lang === "en" ? `${WEBSITE_URL}/en` : `${WEBSITE_URL}${path}`;
+    const location = useLocation();
+    const canonicalUrl = `${WEBSITE_URL}${location.pathname}`;
     return (
         <>
             <Helmet>
