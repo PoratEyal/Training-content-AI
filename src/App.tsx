@@ -17,6 +17,7 @@ import SaveActivity from "./pages/SavedActivity/SavedActivity";
 import SavedActivities from "./pages/SavedActivities/SavedActivities";
 import Admin from "./pages/Admin/Admin";
 import ContactUs from "./pages/ContactUs/ContactUs";
+import FQA from "./pages/FQA/FQA";
 import Providers from "./router/Providers";
 import LanguageRedirect from "./components/LanguageRedirect";
 
@@ -53,6 +54,8 @@ function App() {
                     <Route path={route.contentActivityEn} element={<ContentActivity />} />
                     <Route path={route.contactUs} element={<ContactUs />} />
                     <Route path={route.contactUsEn} element={<ContactUs />} />
+                    <Route path={route.faq} element={<FQA />} />
+                    <Route path={route.faqEn} element={<FQA />} />
                     <Route path={route.all} element={<Navigate replace to={route.home} />} />
                     <Route path={route.admin} element={<Admin />} />
                 </Routes>

@@ -37,6 +37,7 @@ import { FaListCheck } from "react-icons/fa6";
 import { FaRibbon } from "react-icons/fa";
 import { MdEmojiPeople } from "react-icons/md";
 import { GiPodium } from "react-icons/gi";
+import { GoQuestion } from "react-icons/go";
 
 export const Icons = {
     loading: VscLoading,
@@ -77,4 +78,5 @@ export const Icons = {
     FaRibbon: FaRibbon,
     MdEmojiPeople: MdEmojiPeople,
     GiPodium: GiPodium,
+    fqa: GoQuestion,
 };

@@ -7,6 +7,7 @@ import DropOptLogout from "../options/dropdown/DropOptLogout";
 import { useAuthContext } from "../../context/AuthContext";
 import DropOptSignIn from "../options/dropdown/DropOptSignIn";
 import DropOptLang from "../options/dropdown/DropOptLang";
+import DropOptFQA from "../options/dropdown/DropOptFQA";
 import useToggle from "../../hooks/useToggle";
 import { Icons } from "../Icons";
 
@@ -52,6 +53,7 @@ function Profile({ img, isLoading, openLangPopup }: ProfileProps) {
                     <DropOptInviteFriends />
                     <DropOptContactUs handleClose={close} />
                     <DropOptPrivacy handleClose={close} />
+                    <DropOptFQA handleClose={close} />
                     {/* <DropOptLang handleClose={close} openLangPopup={openLangPopup} /> */}
                     {isLoggedIn ? (
                         <DropOptLogout handleClose={close} />
