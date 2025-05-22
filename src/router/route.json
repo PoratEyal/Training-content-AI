@@ -25,5 +25,7 @@
     "contactUsEn": "/en/contactUs",
     "status": "/status",
     "admin": "/admin/msg",
+    "faq": "/faq",
+    "faqEn": "/en/faq",
     "all": "*"
   }

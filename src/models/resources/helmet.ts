@@ -74,6 +74,11 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             content:
                 "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
         },
+        faq: {
+            title: "שאלות נפוצות ",
+            content:
+                "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+        },
     } as LanguageSection,
     en: {
         home: {
@@ -138,6 +143,11 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
         contactUs: {
             title: "Youth Movement Activities - contact us",
+            content:
+                "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
+        },
+        faq: {
+            title: "FAQ",
             content:
                 "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
