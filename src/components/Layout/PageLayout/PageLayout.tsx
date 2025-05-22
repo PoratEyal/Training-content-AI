@@ -42,24 +42,31 @@ function PageLayout({
     const { lang, dir } = useLanguage();
     const location = useLocation();
     const canonicalUrl = `${WEBSITE_URL}${location.pathname}`;
+    // Build alternate URLs for hreflang
+    let alternateHe = canonicalUrl;
+    let alternateEn = canonicalUrl;
+    if (location.pathname.startsWith('/en')) {
+        alternateHe = `${WEBSITE_URL}${location.pathname.replace(/^\/en/, '') || '/'}`;
+        alternateEn = canonicalUrl;
+    } else {
+        alternateHe = canonicalUrl;
+        alternateEn = `${WEBSITE_URL}/en${location.pathname === '/' ? '' : location.pathname}`;
+    }
     return (
         <>
             <Helmet>
                 <title>{getTitle(id, lang, title)}</title>
                 <meta name="description" content={getContent(id, lang, title)} />
                 <link rel="canonical" href={canonicalUrl} />
+                <meta property="og:url" content={lang === 'en' ? alternateEn : alternateHe} />
                 <meta
                     key="robots"
                     name="robots"
                     content={index ? "index, follow" : "noindex, follow"}
                 />
                 <html lang={lang} dir={dir} />
-                {index && (
-                  <>
-                    <link rel="alternate" href={`${WEBSITE_URL}/`} hrefLang="he" />
-                    <link rel="alternate" href={`${WEBSITE_URL}/en`} hrefLang="en" />
-                  </>
-                )}
+                <link rel="alternate" href={alternateHe} hrefLang="he" />
+                <link rel="alternate" href={alternateEn} hrefLang="en" />
             </Helmet>
 
             <section
