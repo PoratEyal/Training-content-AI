@@ -17,7 +17,7 @@ import SaveActivity from "./pages/SavedActivity/SavedActivity";
 import SavedActivities from "./pages/SavedActivities/SavedActivities";
 import Admin from "./pages/Admin/Admin";
 import ContactUs from "./pages/ContactUs/ContactUs";
-import FQA from "./pages/FQA/FQA";
+import FQA from "./pages/FAQ/FAQ";
 import Providers from "./router/Providers";
 import LanguageRedirect from "./components/LanguageRedirect";
 
