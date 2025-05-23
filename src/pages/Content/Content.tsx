@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";   
 import "../../components/ActivityOutput/Markdown.css";
 import styles from "./Content.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
@@ -9,11 +9,17 @@ import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { Icons } from "../../components/Icons";
+import { buildContentSchema } from "../../models/schemaOrg";
 
 function Content() {
     const { subjects, isLoading, useFetchSubjectsData } = useStaticContentContext();
     const navigate = useNavigate();
     useFetchSubjectsData();
+
+    const contentSchema = useMemo(
+        () => buildContentSchema(subjects || [], route.content),
+        [subjects]
+    );
 
     const goBack = () => {
         navigate(route.home);
@@ -29,6 +35,11 @@ function Content() {
             index={true}
             hasGreenBackground
         >
+
+            <script type="application/ld+json">
+                {JSON.stringify(contentSchema)}
+            </script>
+
             <ReadyContent />
 
             <article className={styles.content_article}>
