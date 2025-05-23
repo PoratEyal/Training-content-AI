@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import route from "../../router/route.json";
@@ -19,12 +19,18 @@ import { useStaticContentContext } from "../../context/StaticContentContext";
 import { useSaveContext } from "../../context/SavedContext";
 import styles from "./Home.module.css";
 import { useLanguage } from "../../i18n/useLanguage";
+import { buildHomeSchema } from "../../models/schemaOrg";
 
 function Home() {
-    const { t, dir } = useLanguage();
+    const { t, dir, lang } = useLanguage();
     const { cookieLimit, setLimitCookie, cookieRememberMe } = useCookiesContext();
     const navigate = useNavigate();
     const { currentUser, isLoggedIn } = useAuthContext();
+
+    const homeSchema = useMemo(
+        () => buildHomeSchema(lang, t("home.slogan")),
+        [lang]   
+    );
 
     const { useFetchSubjectsData } = useStaticContentContext();
     const { useFetchSavedData } = useSaveContext();
@@ -91,6 +97,11 @@ function Home() {
             index={true}
             hasNavBar
         >
+
+        <script type="application/ld+json">
+            {JSON.stringify(homeSchema)}
+        </script>
+
             <div className={styles.logo_text_div}>
                 <ContinueWithAI />
                 <div className={styles.home_lable} style={{ direction: dir }}>
