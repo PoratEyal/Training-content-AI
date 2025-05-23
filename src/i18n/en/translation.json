@@ -129,7 +129,11 @@
       "success": "Activity copied successfully 🎉",
       "error": "Failed to copy text."
     },
-    "share": "Share",
+    "share": {
+      "title": "Share",
+      "defaultMessage": "I found a site that creates activities using AI – worth trying!",
+      "createdBy": "This activity was created by:"
+    },
     "save": {
       "button": "Save",
       "saved": "Saved",
