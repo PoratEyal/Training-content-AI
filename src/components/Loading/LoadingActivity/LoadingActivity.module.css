@@ -65,7 +65,7 @@
   height: 8px;
   display: block;
   background-color: var(--primary-color);
-  animation: progress 20s linear forwards;
+  animation: progress 10s linear forwards;
   border-radius: 16px;
   will-change: transform;
   width: 270px;
