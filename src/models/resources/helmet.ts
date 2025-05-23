@@ -15,17 +15,17 @@ export const helmetJson: Record<Lng, LanguageSection> = {
                 "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
         },
         details: {
-            title: "פעולות לתנועות נוער - הקבוצה",
+            title: "פעולות לתנועות נוער",
             content:
                 "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
         },
         build: {
-            title: "פעולות לתנועות נוער - נושא",
+            title: "פעולות לתנועות נוער",
             content:
                 "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
         },
         activity: {
-            title: "פעולות לתנועות נוער - פעולה",
+            title: "פעולות לתנועות נוער",
             content:
                 "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
         },
@@ -75,7 +75,7 @@ export const helmetJson: Record<Lng, LanguageSection> = {
                 "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
         },
         faq: {
-            title: "שאלות נפוצות ",
+            title: "פעולות לתנועות נוער - שאלות נפוצות",
             content:
                 "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
         },
@@ -87,17 +87,17 @@ export const helmetJson: Record<Lng, LanguageSection> = {
                 "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
         details: {
-            title: "Youth Movement Activities - group",
+            title: "Youth Movement Activities",
             content:
                 "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
         build: {
-            title: "Youth Movement Activities - build",
+            title: "Youth Movement Activities",
             content:
                 "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
         activity: {
-            title: "Youth Movement Activities - activity",
+            title: "Youth Movement Activities",
             content:
                 "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
@@ -147,7 +147,7 @@ export const helmetJson: Record<Lng, LanguageSection> = {
                 "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
         faq: {
-            title: "FAQ",
+            title: "Youth Movement Activities - FAQ",
             content:
                 "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./FQA.module.css";
+import styles from "./FAQ.module.css";
 import { useTranslation } from "react-i18next";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
@@ -22,7 +22,7 @@ const FQA: React.FC = () => {
       id="faq"
       path={route.faq || (i18n.language === "en" ? "/en/faq" : "/faq")}
       hasHeader={{ goBack, isBlur: true }}
-      index={false}
+      index={true}
     >
       <div className={styles.faq_article} style={{ direction: dir }}>
         <h1 className={styles.faq_title}>{title}</h1>
