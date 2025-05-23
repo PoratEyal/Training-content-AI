@@ -2,515 +2,415 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
       <loc>https://activitywiz.com/</loc>
-      <priority>1.0</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/details</loc>
-      <priority>0.5</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/build</loc>
-      <priority>0.5</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/myactivities</loc>
-      <priority>0.5</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/activity</loc>
-      <priority>0.5</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/privacyPolicy</loc>
-      <priority>0.1</priority>
    </url>
-
+   <url>
+      <loc>https://activitywiz.com/faq</loc>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/en</loc>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/en/details</loc>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/en/build</loc>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/en/myactivities</loc>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/en/activity</loc>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/en/privacyPolicy</loc>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/en/faq</loc>
+   </url>
 
 
    <url>
       <loc>https://activitywiz.com/content</loc>
-      <priority>0.5</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/popular</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/israel</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/personalities</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/intro</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/friendship</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/sevenOct</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/responsibility</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/environmental</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/seasons</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/movies</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/traffic</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/animals</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/teamwork</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/superhero</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/harassment</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/peak</loc>
-      <priority>0.8</priority>
    </url>
    
    <url>
       <loc>https://activitywiz.com/content/games/champion</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/bingo</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/chaos</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/laugh</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/evolution</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/machine</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/whistle</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/pantomime</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/balloon</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/sing</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/circle</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/flag</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/dialogue</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/funny</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/wind</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/rabbit</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/hockey</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/kettle</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/character</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/killer</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/ball</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/games/story</loc>
-      <priority>0.8</priority>
    </url>
    
    <url>
       <loc>https://activitywiz.com/content/holidays/roshHashanah</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/yomKippur</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/sukkot</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/sigad</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/hanukkah</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/christmas</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/valentine</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/tuBshvat</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/tuBshvatGame</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/purim</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/purimGames</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/pesah</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/pesah4sons</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/yomshoa</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/yomzikaron</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/yomazmaut</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/lagBaomer</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/shavuot</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/9Av</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/holidays/TuAv</loc>
-      <priority>0.8</priority>
    </url>
    
    <url>
       <loc>https://activitywiz.com/content/israel/idf</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/israel/AliyahToIsrael</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/israel/Entebbe</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/israel/kaftet</loc>
-      <priority>0.8</priority>
    </url>
    
    <url>
       <loc>https://activitywiz.com/content/personalities/isaacRabin</loc>
-      <priority>0.9</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/personalities/benGurion</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/personalities/begin</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/personalities/jabotinsky</loc>
-      <priority>0.8</priority>
    </url>
    
    <url>
       <loc>https://activitywiz.com/content/intro/Introduction</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/intro/newFriends</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/intro/introAdventure</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/intro/openYear</loc>
-      <priority>0.9</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/intro/newyear</loc>
-      <priority>0.9</priority>
    </url>
    
    <url>
       <loc>https://activitywiz.com/content/friendship/friendsForever</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/friendship/journey</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/friendship/friendsGame</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/friendship/secretFriend</loc>
-      <priority>0.8</priority>
    </url>
    
    <url>
       <loc>https://activitywiz.com/content/sevenOct/memory</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/sevenOct/regeneration</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/sevenOct/haravotBarzel</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/sevenOct/emotional</loc>
-      <priority>0.9</priority>
    </url>
    
    <url>
       <loc>https://activitywiz.com/content/responsibility/responsibilityGames</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/responsibility/circlesResponsibility</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/responsibility/keySuccess</loc>
-      <priority>0.9</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/responsibility/respect</loc>
-      <priority>0.8</priority>
    </url>
    
    <url>
       <loc>https://activitywiz.com/content/environmental/greenInventors</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/environmental/zeroWaste</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/environmental/savingGlobe</loc>
-      <priority>0.8</priority>
    </url>
    
    <url>
       <loc>https://activitywiz.com/content/seasons/winterWorld</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/seasons/summerAdventure</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/seasons/springBlossom</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/seasons/autumnJourney</loc>
-      <priority>0.8</priority>
    </url>
    
    <url>
       <loc>https://activitywiz.com/content/movies/movieJourney</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/movies/hollywoodInMiniature</loc>
-      <priority>0.8</priority>
    </url>
    
    <url>
       <loc>https://activitywiz.com/content/traffic/safePath</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/traffic/trafficLight</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/traffic/publicTransport</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/traffic/seatBelt</loc>
-      <priority>0.8</priority>
    </url>
    
    <url>
       <loc>https://activitywiz.com/content/animals/animalWorld</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/animals/animalHabitats</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/animals/myPets</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/animals/animalProtection</loc>
-      <priority>0.8</priority>
    </url>
    
    <url>
       <loc>https://activitywiz.com/content/teamwork/togetherPossible</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/teamwork/teamBuilding</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/teamwork/successTower</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/teamwork/commonJourney</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/teamwork/survival</loc>
-      <priority>0.8</priority>
    </url>
 
    <url>
       <loc>https://activitywiz.com/content/superhero/superhero</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/superhero/superheroAcademy</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/superhero/superheroJourney</loc>
-      <priority>0.8</priority>
    </url>
    
    <url>
       <loc>https://activitywiz.com/content/harassment/harassment</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/harassment/harassmentPrevention</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/harassment/respectTogether</loc>
-      <priority>0.8</priority>
    </url>
 
    <url>
       <loc>https://activitywiz.com/content/peak/escape</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/peak/treasure</loc>
-      <priority>0.8</priority>
    </url>
    <url>
       <loc>https://activitywiz.com/content/peak/skyline</loc>
-      <priority>0.8</priority>
    </url>
    
 </urlset>
