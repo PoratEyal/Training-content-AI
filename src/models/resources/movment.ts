@@ -244,7 +244,7 @@ export const Movements = {
             categories: [
                 {
                     name: "contant",
-                    title: "Contant Activity",
+                    title: "Content Activity",
                 },
                 {
                     name: "playTime",
