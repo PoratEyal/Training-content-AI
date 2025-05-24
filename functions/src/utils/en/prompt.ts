@@ -227,19 +227,19 @@ export const getMoreInfo = (info: string | undefined): string => {
 };
 
 export const getTools = (category: CategoryName, tools: string | undefined, religion: string | undefined): string => {
-    if (tools === "without tools") return "**Equipment Required:** Do not use equipment!";
+    if (tools === "without tools") return "**Materials Needed:** Do not use materials!";
     else {
         switch (category) {
             case "pointOfView":
-                return "**Equipment Required:** (If there is, do not use expensive equipment, projector, video)";
+                return "**Materials Needed:** (If there is, do not use expensive materials, projector, video)";
             case "survival":
-                return "**Equipment Required:** (If there is, do not use expensive equipment, projector, video - for your use, construction equipment, floor equipment, work tools)";
+                return "**Materials Needed:** (If there is, do not use expensive materials, projector, video - for your use, construction materials, floor materials, work tools)";
             case "playTime":
-                return "**Equipment Required:** (If there is, do not use expensive equipment, projector, video)";
+                return "**Materials Needed:** (If there is, do not use expensive materials, projector, video)";
             case "contant":
-                return "**Equipment Required:** (If there is, do not use expensive equipment, projector, video)";
+                return "**Materials Needed:** (If there is, do not use expensive materials, projector, video)";
             default:
-                return "**Equipment Required:** Do not use equipment!";
+                return "**Materials Needed:** Do not use materials!";
         }
     }
 };
