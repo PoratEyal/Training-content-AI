@@ -15,7 +15,6 @@ export const initI18n = async () => {
     .use(initReactI18next)
     .use(LanguageDetector)
     .init({
-      // אל תעביר lng - תן ל־LanguageDetector להחליט לבד לפי ה־cookie, localStorage וכו׳
       resources,
       supportedLngs: ["en", "he"],
       fallbackLng: "en",
