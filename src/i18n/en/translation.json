@@ -82,8 +82,7 @@
   "savedActivities": {
     "dontHaveActivity": {
       "title": "You haven't saved any activities yet.",
-      "mainTextLine1": "Once you've created a new activity",
-      "mainTextLine2": "click the save button to keep it here for easy access later"
+      "mainTextLine1": "Once you've created a new activity, click the save button there to store it here for easy access later"
     },
     "myActivities": {
       "title": "My Activities"

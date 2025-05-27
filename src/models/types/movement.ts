@@ -18,6 +18,7 @@ export type MovementName =
     | "noam"
     | "sayarut"
     | "agricultural"
+    | "shinshin"
     //English
     | "Scouts"
     | "YouthLeadershipPrograms"

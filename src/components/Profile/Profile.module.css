@@ -29,3 +29,10 @@
     background-color: var(--loading-profile-color);
     color: rgb(163, 163, 163);
 }
+
+.dropdown_divider {
+  flex: 0 0 100%;
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 4px 0;
+}

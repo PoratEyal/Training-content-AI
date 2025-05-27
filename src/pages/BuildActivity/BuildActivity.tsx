@@ -145,7 +145,7 @@ function BuildActivity() {
             id="build"
             path={route.build}
             hasGreenBackground
-            hasHeader={{ goBack }}
+            hasHeader={{}}
             hesAds={BUILD_AD_SLOT}
             index={false}
             hasNavBar

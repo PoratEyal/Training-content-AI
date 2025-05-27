@@ -54,7 +54,8 @@ function Profile({ img, isLoading, openLangPopup }: ProfileProps) {
                     <DropOptContactUs handleClose={close} />
                     <DropOptPrivacy handleClose={close} />
                     <DropOptFQA handleClose={close} />
-                    {/* <DropOptLang handleClose={close} openLangPopup={openLangPopup} /> */}
+                    <DropOptLang handleClose={close} openLangPopup={openLangPopup} />
+                    <hr className={styles.dropdown_divider} />
                     {isLoggedIn ? (
                         <DropOptLogout handleClose={close} />
                     ) : (

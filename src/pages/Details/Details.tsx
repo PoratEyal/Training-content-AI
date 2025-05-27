@@ -68,7 +68,7 @@ function Details() {
             id="details"
             path={route.details}
             hasGreenBackground
-            hasHeader={{ goBack }}
+            hasHeader={{}}
             hesAds={DETAILS_AD_SLOT}
             hasNavBar
             index={false}
