@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import * as Flags from "country-flag-icons/react/3x2";
 import styles from "./LangPopup.module.css";
 import { useLanguage } from "../../i18n/useLanguage";
@@ -18,20 +18,16 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
     const { clearAll } = useContentContext();
     const navigate = useNavigate();
 
-    const [closing, setClosing] = useState(false);
-
-    const closeWithAnimation = (callback?: () => void) => {
-    setClosing(true);
-    setTimeout(() => {
+    const closePopup = (callback?: () => void) => {
         if (callback) callback();
         handleClose();
-    }, 300);
     };
 
-
     const changeLanguage = async (newLang: string) => {
+        // Clear session data
         sessionStorage.removeItem("data");
 
+        // Reset user movement data if user exists
         if (currentUser) {
             await fetchUpdateUser({
                 user: {
@@ -46,21 +42,26 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
             });
         }
 
+        // Clear all stored content, change language, and navigate home
         clearAll();
         changeLang(newLang);
-        closeWithAnimation(() => {
+        closePopup(() => {
             navigate(route.home);
         });
-
     };
 
     return (
+        <div
+            className={styles.popupOverlay}
+            onClick={() => closePopup()}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Language Selection Popup"
+        >
             <div
-            className={`${styles.popupOverlay} ${closing ? styles.closing : ""}`}
-            onClick={() => closeWithAnimation()}
+                className={styles.popupContent}
+                onClick={(e) => e.stopPropagation()}
             >
-
-            <div className={styles.popupContent} onClick={(e) => e.stopPropagation()}>
                 <div className={styles.buttonContainer}>
                     <button
                         onClick={() => changeLanguage("he")}
