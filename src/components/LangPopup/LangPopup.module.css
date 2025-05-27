@@ -10,7 +10,7 @@
   align-items: center;
   z-index: 1000;
   opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.1s ease-in-out;
 }
 
 .popupOverlay.closing {
@@ -30,7 +30,7 @@
   direction: ltr;
   transform: translateY(0);
   opacity: 1;
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transition: transform 0.1s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .popupOverlay.closing .popupContent {
