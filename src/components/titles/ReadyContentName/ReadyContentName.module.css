@@ -13,7 +13,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.activity_title[dir="rtl"] {
     direction: rtl;
+}
+
+.activity_title[dir="ltr"] {
+    direction: ltr;
 }
 
 .activity_title div {

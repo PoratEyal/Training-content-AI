@@ -1,3 +1,4 @@
+import { useLanguage } from "../../../i18n/useLanguage";
 import styles from "../ReadyContentName/ReadyContentName.module.css";
 
 type ActivityReadyProps = {
@@ -11,6 +12,7 @@ const ReadyContentName: React.FC<ActivityReadyProps> = ({
     type = "none",
     isLoading = false,
 }) => {
+    const { dir } = useLanguage();
     const setAdditionSpan = (type: "many" | "one" | "none") => {
         switch (type) {
             case "many":
@@ -23,7 +25,7 @@ const ReadyContentName: React.FC<ActivityReadyProps> = ({
     };
 
     return (
-        <h1 className={styles.activity_title}>
+        <h1 className={styles.activity_title} dir={dir}>
             {isLoading ? (
                 <span>פעולות בנושא בטעינה...</span>
             ) : (
