@@ -64,6 +64,7 @@
 .languageButton {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 15px;
   background-color: white;
   cursor: pointer;
@@ -74,6 +75,7 @@
   font-family: var(--font-family);
   border: none;
 }
+
 
 .languageIcon {
   width: 30px;

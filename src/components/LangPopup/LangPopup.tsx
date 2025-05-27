@@ -20,11 +20,9 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
             <div className={styles.popupContent} onClick={(e) => e.stopPropagation()}>
                 <div className={styles.buttonContainer}>
                     <button onClick={() => changeLanguage("he")} className={styles.languageButton}>
-                        <Flags.IL title="Hebrew" className={styles.languageIcon} />
                         עברית
                     </button>
                     <button onClick={() => changeLanguage("en")} className={styles.languageButton}>
-                        <Flags.US title="English" className={styles.languageIcon} />
                         English
                     </button>
                 </div>

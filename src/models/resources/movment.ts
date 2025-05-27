@@ -219,6 +219,20 @@ export const Movements = {
                 },
             ],
         } as Movement,
+        shinshin: {
+            name: "shinshin",
+            title: "שינשינים",
+            categories: [
+                {
+                    name: "contant",
+                    title: "פעילות",
+                },
+                {
+                    name: "playTime",
+                    title: "משחק",
+                },
+            ],
+        } as Movement,
         other: {
             name: "other",
             title: "אחר",
