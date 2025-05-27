@@ -9,6 +9,12 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.popupOverlay.closing {
+  opacity: 0;
 }
 
 .popupContent {
@@ -22,43 +28,20 @@
   border: 4px solid var(--secondary-color);
   padding: 15px;
   direction: ltr;
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
-.popupTitle_div {
-  display: flex;
-  flex-direction: row;
-  justify-content: right;
-  align-items: center;
-  margin-top: -40px;
-  gap: 10px;
-  text-align: right;
-  width: 100%;
-  margin-right: 5px;
-}
-
-.popupTitle {
-  color: var(--primary-color);
-  font-size: 24px;
-  font-weight: 600;
-  text-align: center;
-}
-
-.icon_lang {
-  font-size: 60px;
-  rotate: -30deg;
-  color: var(--primary-color);
+.popupOverlay.closing .popupContent {
+  transform: translateY(40px); /* זז למטה */
+  opacity: 0; /* נעלם */
 }
 
 .buttonContainer {
   display: flex;
   flex-direction: column;
   gap: 15px;
-}
-
-/* In LanguageSwitcherPopup.module.css */
-.buttonContainer .languageButton:first-child {
-  border-bottom: 1px solid gainsboro;
-  padding-bottom: 10px;
 }
 
 .languageButton {
@@ -76,9 +59,7 @@
   border: none;
 }
 
-
-.languageIcon {
-  width: 30px;
-  height: 30px;
-  border-radius: 7px;
+.languageButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

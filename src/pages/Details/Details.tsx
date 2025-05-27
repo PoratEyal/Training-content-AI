@@ -51,6 +51,16 @@ function Details() {
         }
     }, [movement, classLevel, numberOfChildren, gender, loading]);
 
+    // הוספה: איפוס ה־state אם ה־data נמחק
+    useEffect(() => {
+        if (!data) {
+            setMovment("");
+            setClassLevel("");
+            setNumberOfChildren("");
+            setGender("");
+        }
+    }, [data]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         updateDetails(movement, classLevel, numberOfChildren, gender);

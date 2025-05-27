@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Flags from "country-flag-icons/react/3x2";
 import styles from "./LangPopup.module.css";
 import { useLanguage } from "../../i18n/useLanguage";
@@ -13,12 +13,23 @@ type LangPopupProps = {
 };
 
 const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
-    const { changeLang } = useLanguage();
+    const { changeLang, lang } = useLanguage();
     const { currentUser } = useAuthContext();
     const { clearAll } = useContentContext();
     const navigate = useNavigate();
 
-    const changeLanguage = async (lang: string) => {
+    const [closing, setClosing] = useState(false);
+
+    const closeWithAnimation = (callback?: () => void) => {
+    setClosing(true);
+    setTimeout(() => {
+        if (callback) callback();
+        handleClose();
+    }, 300);
+    };
+
+
+    const changeLanguage = async (newLang: string) => {
         sessionStorage.removeItem("data");
 
         if (currentUser) {
@@ -36,19 +47,33 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
         }
 
         clearAll();
-        changeLang(lang);
-        handleClose();
-        navigate(route.home);
+        changeLang(newLang);
+        closeWithAnimation(() => {
+            navigate(route.home);
+        });
+
     };
 
     return (
-        <div className={styles.popupOverlay} onClick={handleClose}>
+            <div
+            className={`${styles.popupOverlay} ${closing ? styles.closing : ""}`}
+            onClick={() => closeWithAnimation()}
+            >
+
             <div className={styles.popupContent} onClick={(e) => e.stopPropagation()}>
                 <div className={styles.buttonContainer}>
-                    <button onClick={() => changeLanguage("he")} className={styles.languageButton}>
+                    <button
+                        onClick={() => changeLanguage("he")}
+                        className={styles.languageButton}
+                        disabled={lang === "he"}
+                    >
                         עברית
                     </button>
-                    <button onClick={() => changeLanguage("en")} className={styles.languageButton}>
+                    <button
+                        onClick={() => changeLanguage("en")}
+                        className={styles.languageButton}
+                        disabled={lang === "en"}
+                    >
                         English
                     </button>
                 </div>

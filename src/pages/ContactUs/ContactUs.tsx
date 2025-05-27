@@ -11,7 +11,7 @@ import { useLanguage } from "../../i18n/useLanguage";
 import MainBtn from "../../components/MainBtn/MainBtn";
 
 const ContactUs: React.FC = () => {
-  const { t, isHebrew, dir, textAlign} = useLanguage();
+  const { t, isHebrew, dir, textAlign } = useLanguage();
   const navigate = useNavigate();
   const { currentUser } = useAuthContext();
   const { handleSuccess } = useErrorContext();
@@ -24,10 +24,6 @@ const ContactUs: React.FC = () => {
   });
 
   emailjs.init("ZWKebkgRROVgM8nEV");
-
-  const goBack = () => {
-    navigate(-1);
-  };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -62,6 +58,9 @@ const ContactUs: React.FC = () => {
         name: "",
         message: "",
       });
+
+      // חזרה לדף הבית אחרי שליחת ההודעה בהצלחה
+      navigate(route.home);
     } catch (error) {
       console.error("Error sending email:", error);
     } finally {
@@ -79,7 +78,7 @@ const ContactUs: React.FC = () => {
     <PageLayout
       id="contactUs"
       path={route.contactUs}
-      hasHeader={{ goBack }}
+      hasHeader={{}}
       hesAds={DETAILS_AD_SLOT}
       hasNavBar
     >
@@ -147,15 +146,19 @@ const ContactUs: React.FC = () => {
           </div>
         </div>
 
-        <div className={`${styles.btn_div} ${isHebrew ? styles.hebrewDir : styles.nonHebrewDir}`}>
-            <MainBtn
-                text={t("contactUs.form.submitButton")}
-                isDisabled={isDisabled}
-                type="submit"
-                func={handleSubmit}
-                height={42}
-                isLoading={isLoading}
-            />
+        <div
+          className={`${styles.btn_div} ${
+            isHebrew ? styles.hebrewDir : styles.nonHebrewDir
+          }`}
+        >
+          <MainBtn
+            text={t("contactUs.form.submitButton")}
+            isDisabled={isDisabled}
+            type="submit"
+            func={handleSubmit}
+            height={42}
+            isLoading={isLoading}
+          />
         </div>
       </form>
     </PageLayout>

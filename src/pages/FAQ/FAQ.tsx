@@ -19,7 +19,7 @@ const FQA: React.FC = () => {
   const title = t("faq.title");
   const dir = i18n.dir();
   const navigate = useNavigate();
-  const goBack = () => navigate(-1);
+  const goBack = () => navigate(route.home);
 
   return (
     <PageLayout

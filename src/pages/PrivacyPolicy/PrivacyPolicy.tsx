@@ -12,7 +12,7 @@ function PrivacyPolicy() {
     const navigate = useNavigate();
 
     const goBack = () => {
-        navigate(-1);
+        navigate(route.home);
     };
 
     const currentPolicy = isHebrew ? policyHe : policyEn;
