@@ -10,12 +10,12 @@ const resources: Record<Lng, { translation: any }> = {
   he: { translation: translationHE },
 };
 
-export const initI18n = async (defaultLng: Lng) => {
+export const initI18n = async () => {
   await i18n
     .use(initReactI18next)
     .use(LanguageDetector)
     .init({
-      lng: defaultLng,
+      // אל תעביר lng - תן ל־LanguageDetector להחליט לבד לפי ה־cookie, localStorage וכו׳
       resources,
       supportedLngs: ["en", "he"],
       fallbackLng: "en",
