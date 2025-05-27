@@ -44,7 +44,6 @@ export const GradeOptions = {
         { value: "כיתה י", label: "כיתה י" },
         { value: "כיתה יא", label: "כיתה יא" },
         { value: "כיתה יב", label: "כיתה יב" },
-        { value: "בוגרים", label: "בוגרים" },
     ] as SelectOption[],
     en: [
         { value: "grade 1", label: "Grade 1" },
@@ -59,7 +58,6 @@ export const GradeOptions = {
         { value: "grade 10", label: "Grade 10" },
         { value: "grade 11", label: "Grade 11" },
         { value: "grade 12", label: "Grade 12" },
-        { value: "Graduates", label: "Graduates" },
     ] as SelectOption[],
 };
 
