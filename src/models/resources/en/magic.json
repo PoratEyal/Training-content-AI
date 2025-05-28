@@ -136,7 +136,7 @@
     { "id": 27, "name": "Music" },
     { "id": 28, "name": "Role‑playing Game" },
     { "id": 29, "name": "Obstacle Course" },
-    { "id": 30, "name": "Role‑playing Game" },
+    { "id": 30, "name": "Olympics" },
     { "id": 31, "name": "Charades" },
     { "id": 32, "name": "Ball" },
     { "id": 33, "name": "Construction" },
@@ -148,9 +148,7 @@
     { "id": 39, "name": "Tag" },
     { "id": 40, "name": "Capture the Flag" },
     { "id": 41, "name": "Dodgeball" },
-    { "id": 42, "name": "Cooking" },
-    { "id": 43, "name": "Role‑playing Games" },
-    { "id": 44, "name": "Olympics" }
+    { "id": 42, "name": "Cooking" }
   ]
 }
   

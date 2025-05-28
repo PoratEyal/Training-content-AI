@@ -8,90 +8,45 @@ import FadeEffect from "../../components/FadeEffect/FadeEffect";
 import { useLanguage } from "../../i18n/useLanguage";
 
 function PrivacyPolicy() {
-    const { t, isHebrew, dir } = useLanguage();
-    const navigate = useNavigate();
+  const { t, isHebrew, dir } = useLanguage();
+  const navigate = useNavigate();
 
-    const goBack = () => {
-        navigate(route.home);
-    };
+  const currentPolicy = isHebrew ? policyHe : policyEn;
 
-    const currentPolicy = isHebrew ? policyHe : policyEn;
+  return (
+    <PageLayout
+      id="privacyPolicy"
+      path={route.privacyPolicy}
+      hasHeader={{isBlur: true }}
+      hasNavBar // 🔥 same as FAQ, adds the footer
+      index={false}
+    >
+      <FadeEffect hasFade>
+        <article className={styles.privacy_article} dir={dir}>
+          <section>
+            <h1 className={styles.page_title}>{t("privacyPolicy.title")}</h1>
 
-    return (
-        <PageLayout
-            id="privacyPolicy"
-            path={route.privacyPolicy}
-            hasHeader={{ goBack, isBlur: true }}
-            index={false}
-        >
-            <FadeEffect hasFade>
-                <article className={styles.privacy_article} dir={dir}>
-                    <section>
-                        <h1 className={styles.page_title}>
-                            {t("privacyPolicy.title")}
-                        </h1>
+            {["p0", "p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9"].map(
+              (key, idx) => (
+                <div key={idx} className={styles.space_div}>
+                  <label>{currentPolicy[key].label}</label> {currentPolicy[key].text}
+                </div>
+              )
+            )}
 
-                        <div className={styles.space_div}>
-                            <label>{currentPolicy.p0.text}</label>
-                        </div>
-
-                        <div className={styles.space_div}>
-                            <label>{currentPolicy.p1.label}</label>{" "}
-                            {currentPolicy.p1.text}
-                        </div>
-
-                        <div className={styles.space_div}>
-                            <label>{currentPolicy.p2.label}</label>{" "}
-                            {currentPolicy.p2.text}
-                        </div>
-
-                        <div className={styles.space_div}>
-                            <label>{currentPolicy.p3.label}</label>{" "}
-                            {currentPolicy.p3.text}
-                        </div>
-
-                        <div className={styles.space_div}>
-                            <label>{currentPolicy.p4.label}</label>{" "}
-                            {currentPolicy.p4.text}
-                        </div>
-
-                        <div className={styles.space_div}>
-                            <label>{currentPolicy.p5.label}</label>{" "}
-                            {currentPolicy.p5.text}
-                        </div>
-
-                        <div className={styles.space_div}>
-                            <label>{currentPolicy.p6.label}</label>{" "}
-                            {currentPolicy.p6.text}
-                        </div>
-
-                        <div className={styles.space_div}>
-                            <label>{currentPolicy.p7.label}</label>{" "}
-                            {currentPolicy.p7.text}
-                        </div>
-
-                        <div className={styles.space_div}>
-                            <label>{currentPolicy.p8.label}</label>{" "}
-                            {currentPolicy.p8.text}
-                        </div>
-
-                        <div className={styles.space_div}>
-                            <label>{currentPolicy.p9.label}</label>{" "}
-                            {currentPolicy.p9.text}
-                        </div>
-                    </section>
-
-                    <section className={styles.email}>
-                        {currentPolicy.p10.text1}{" "}
-                        <a href={`mailto:${currentPolicy.p10.email}`}>
-                            {currentPolicy.p10.text2}
-                        </a>{" "}
-                        <div>{currentPolicy.p10.text3}.</div>
-                    </section>
-                </article>
-            </FadeEffect>
-        </PageLayout>
-    );
+            <section className={styles.email}>
+              {currentPolicy.p10.text1}{" "}
+              <a href={`mailto:${currentPolicy.p10.email}`}>
+                {currentPolicy.p10.text2}
+              </a>{" "}
+              <div>{currentPolicy.p10.text3}.</div>
+              <div style={{ height: "15px" }}></div>
+            </section>
+          </section>
+        </article>
+      </FadeEffect>
+    </PageLayout>
+  );
 }
 
 export default PrivacyPolicy;
