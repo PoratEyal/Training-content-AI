@@ -1,56 +1,56 @@
 .privacy {
-    max-height: 50vh; /* Limits the container's height so it can scroll */
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: none; /* Hides scrollbars on Firefox */
-    -ms-overflow-style: none; /* Hides scrollbars on old IE/Edge */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
+  max-height: 50vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
 }
 
 .privacy::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 
 .h3_privacy {
-    color: var(--primary-color);
-    font-size: 18px;
-    margin-top: -5px;
-    text-align: inherit; /* Inherits from dir (RTL or LTR) */
-    font-weight: 550;
-    margin-bottom: 0;
-    width: 100%;
+  color: var(--primary-color);
+  font-size: 18px;
+  margin-top: -5px;
+  text-align: inherit;
+  font-weight: 550;
+  margin-bottom: 0;
+  width: 100%;
 }
 
 .space_div {
-    font-size: 11px;
+  font-size: 11px;
 }
 
 .space_div_end {
-    font-size: 11px;
-    margin-bottom: 40px;
+  font-size: 11px;
+  margin-bottom: 40px;
 }
 
 .fixed_btn {
-    position: fixed;
-    bottom: 25px;
-    inset-inline-start: 25px; /* Logical property: left in LTR, right in RTL */
-    z-index: 1000;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    background-color: var(--primary-color);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  bottom: 25px;
+  display: flex;
+  justify-content: center; /* Center the button always */
+  width: 100%;
+  padding: 0 25px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+
+.fixed_btn button {
+  align-self: flex-start; /* New: fixes final button alignment */
 }
 
 @media (min-width: 550px) {
-    .space_div {
-        font-size: 11px;
-    }
+  .space_div {
+    font-size: 11px;
+  }
 }

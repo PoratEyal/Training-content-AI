@@ -20,7 +20,7 @@
   width: fit-content;
   max-width: 400px;
   border: 4px solid var(--secondary-color);
-  padding: 15px;
+  padding: 20px;
   direction: ltr;
 }
 
@@ -49,3 +49,4 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+

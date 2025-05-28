@@ -38,12 +38,6 @@ function MainBtn({
             ) : (
                 <div className={styles.btn} style={{ direction: dir }}>
                     <span style={{ opacity: isDisabled ? 0.5 : 1 }}>{text}</span>
-                    <div className={styles.btn_icon} style={{ opacity: isDisabled ? 0.5 : 1 }}>
-                        <Icons.chevronsLeft
-                            className={styles.icon}
-                            style={{ transform: isHebrew ? "none" : "rotate(180deg)" }}
-                        />
-                    </div>
                 </div>
             )}
         </button>
