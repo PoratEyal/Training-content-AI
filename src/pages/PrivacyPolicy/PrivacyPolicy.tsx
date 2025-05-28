@@ -40,6 +40,7 @@ function PrivacyPolicy() {
               <div>{currentPolicy.p10.text3}.</div>
               <div style={{ height: "15px" }}></div>
             </section>
+            <div style={{ height: "30px" }}></div>
           </section>
         </article>
       </FadeEffect>
