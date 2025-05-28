@@ -1,15 +1,15 @@
-import React, { useMemo } from "react";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import styles from "./FAQ.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
+import FadeEffect from "../../components/FadeEffect/FadeEffect";
+import { useLanguage } from "../../i18n/useLanguage";
+import { useTranslation } from "react-i18next";
 import route from "../../router/route.json";
 import { buildFaqSchema } from "../../models/schemaOrg";
+import React, { useMemo } from "react";
 
 const FAQ: React.FC = () => {
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
-  const dir = i18n.dir();
+  const { dir } = useLanguage();
 
   const faq = t("faq.questions", { returnObjects: true }) as {
     q: string;
@@ -27,23 +27,25 @@ const FAQ: React.FC = () => {
       hasNavBar
       index={true}
     >
+      <FadeEffect hasFade>
+        <article className={styles.faq_article} dir={dir}>
+          <section>
+            <h1 className={styles.faq_title}>{title}</h1>
+
+            {faq.map(({ q, a }, idx) => (
+              <div key={idx} className={styles.faq_item}>
+                <div className={styles.faq_q}>{q}</div>
+                <div className={styles.faq_a}>{a}</div>
+              </div>
+            ))}
+            <div style={{ height: "20px" }}></div>
+          </section>
+        </article>
+      </FadeEffect>
+
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </script>
-
-      <section className={styles.header} style={{ direction: dir }}>
-        <h3 className={styles.faq_title}>{title}</h3>
-      </section>
-
-      {/* Final fix: using .faq_article for horizontal spacing */}
-      <div className={styles.faq_article} style={{ direction: dir }}>
-        {faq.map(({ q, a }, idx) => (
-          <div className={styles.faq_item} key={idx}>
-            <div className={styles.faq_q}>{q}</div>
-            <div className={styles.faq_a}>{a}</div>
-          </div>
-        ))}
-      </div>
     </PageLayout>
   );
 };

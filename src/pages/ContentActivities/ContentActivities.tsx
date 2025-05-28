@@ -46,7 +46,7 @@ const ContentActivities: React.FC = () => {
             hasHeader={{ goBack }}
             hasNavBar
             hasGreenBackground
-            hesAds={CONTENT_ACTIVITY_AD_SLOT}
+            hasAds={CONTENT_ACTIVITY_AD_SLOT}
         >
             <div
                 style={{

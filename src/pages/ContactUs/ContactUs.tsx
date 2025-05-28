@@ -79,7 +79,7 @@ const ContactUs: React.FC = () => {
       id="contactUs"
       path={route.contactUs}
       hasHeader={{}}
-      hesAds={DETAILS_AD_SLOT}
+      hasAds={DETAILS_AD_SLOT}
       hasNavBar
     >
       <section className={styles.header} style={{ direction: dir }}>

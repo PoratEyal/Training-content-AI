@@ -54,7 +54,7 @@ function PopularActivities() {
             hasHeader={{ goBack }}
             hasNavBar
             hasGreenBackground
-            hesAds={ACTIVITY_AD_SLOT}
+            hasAds={ACTIVITY_AD_SLOT}
         >
             <TopActivities />
             {isLoading ? (

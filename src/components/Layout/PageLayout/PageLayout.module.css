@@ -16,7 +16,6 @@
 @media (min-width: 550px) {
     .page_container {
         position: relative;
-        /* margin-top: 5vh; */
         min-width: unset;
         width: 400px;
         background-color: var(--background-color);

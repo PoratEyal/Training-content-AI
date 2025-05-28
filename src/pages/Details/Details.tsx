@@ -20,7 +20,7 @@ import { useLanguage } from "../../i18n/useLanguage";
 
 function Details() {
     const { t, isHebrew, dir, lang } = useLanguage();
-    const { data, updateDetails, clearAll } = useContentContext();
+    const { data, updateDetails } = useContentContext()
     const { currentUser, loading } = useAuthContext();
     const navigate = useNavigate();
 
@@ -68,18 +68,13 @@ function Details() {
         navigate(route.build);
     };
 
-    const goBack = () => {
-        clearAll();
-        navigate(route.home);
-    };
-
     return (
         <PageLayout
             id="details"
             path={route.details}
             hasGreenBackground
             hasHeader={{}}
-            hesAds={DETAILS_AD_SLOT}
+            hasAds={DETAILS_AD_SLOT}
             hasNavBar
             index={false}
         >

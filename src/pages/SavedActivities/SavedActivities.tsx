@@ -52,7 +52,7 @@ const SavedActivities: React.FC = () => {
       path={route.myactivities}
       hasHeader={{ goBack }}
       hasNavBar
-      hesAds={MY_ACTIVITIES_AD_SLOT}
+      hasAds={MY_ACTIVITIES_AD_SLOT}
       index={false}
       hasGreenBackground
     >

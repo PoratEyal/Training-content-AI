@@ -1,49 +1,49 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import "../../components/ActivityOutput/Markdown.css";
-import styles from "./SavedActivity.module.css";
-import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import route from "../../router/route.json";
-import { MY_ACTIVITIES_AD_SLOT } from "../../models/constants/adsSlot";
-import PageLoading from "../../components/Loading/PageLoading/PageLoading";
-import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading";
-import { useAuthContext } from "../../context/AuthContext";
-import { Activity } from "../../models/types/activity";
-import { useSaveContext } from "../../context/SavedContext";
-import { compareNormalizedStrings } from "../../utils/format";
-import ActivityArticle from "../../components/ActivityArticle/ActivityArticle";
-import RichTextEditor from "../../components/RichTextEditor/RichTextEditor";
-import { useEditorContext } from "../../context/EditorContext";
-import { useContentContext } from "../../context/ContentContext";
+import React, { useEffect, useState } from "react"
+import { useParams, useNavigate } from "react-router-dom"
+import "../../components/ActivityOutput/Markdown.css"
+import styles from "./SavedActivity.module.css"
+import PageLayout from "../../components/Layout/PageLayout/PageLayout"
+import route from "../../router/route.json"
+import { MY_ACTIVITIES_AD_SLOT } from "../../models/constants/adsSlot"
+import PageLoading from "../../components/Loading/PageLoading/PageLoading"
+import SmallLoading from "../../components/Loading/SmallLoading/SmallLoading"
+import { useAuthContext } from "../../context/AuthContext"
+import { Activity } from "../../models/types/activity"
+import { useSaveContext } from "../../context/SavedContext"
+import { compareNormalizedStrings } from "../../utils/format"
+import ActivityArticle from "../../components/ActivityArticle/ActivityArticle"
+import RichTextEditor from "../../components/RichTextEditor/RichTextEditor"
+import { useEditorContext } from "../../context/EditorContext"
+import { useContentContext } from "../../context/ContentContext"
 
 const SavedActivity: React.FC = () => {
-    const { subject } = useParams<{ subject: string }>();
-    const { updateMainActivity, mainActivity } = useContentContext();
-    const navigate = useNavigate();
-    const { currentUser } = useAuthContext();
-    const { isEdit, readOnlyMode } = useEditorContext();
-    const { savedActivity, isLoading } = useSaveContext();
-    const [foundActivity, setFoundActivity] = useState<Activity | null>(null);
+    const { subject } = useParams<{ subject: string }>()
+    const { updateMainActivity, mainActivity } = useContentContext()
+    const navigate = useNavigate()
+    const { currentUser } = useAuthContext()
+    const { isEdit, readOnlyMode } = useEditorContext()
+    const { savedActivity, isLoading } = useSaveContext()
+    const [foundActivity, setFoundActivity] = useState<Activity | null>(null)
 
     const goBack = () => {
         if (isEdit) {
-            readOnlyMode();
+            readOnlyMode()
         } else {
-            navigate(route.myactivities);
+            navigate(route.myactivities)
         }
-    };
+    }
 
     useEffect(() => {
         if (savedActivity?.length > 0 && currentUser) {
             const founded = savedActivity.find((act) => {
-                return compareNormalizedStrings(act.subject, subject);
-            });
+                return compareNormalizedStrings(act.subject, subject)
+            })
             if (founded) {
-                setFoundActivity(founded);
-                updateMainActivity(founded);
+                setFoundActivity(founded)
+                updateMainActivity(founded)
             }
         }
-    }, [savedActivity, currentUser, subject]);
+    }, [savedActivity, currentUser, subject, updateMainActivity])
 
     return (
         <PageLayout
@@ -51,7 +51,7 @@ const SavedActivity: React.FC = () => {
             path={`${route.myactivities}/${subject}`}
             hasGreenBackground
             hasHeader={{ goBack, hasTitle: foundActivity?.subject || undefined }}
-            hesAds={MY_ACTIVITIES_AD_SLOT}
+            hasAds={MY_ACTIVITIES_AD_SLOT}
             title={foundActivity?.subject}
             hasNavBar
             index={false}
@@ -72,7 +72,7 @@ const SavedActivity: React.FC = () => {
                 </section>
             )}
         </PageLayout>
-    );
-};
+    )
+}
 
-export default SavedActivity;
+export default SavedActivity

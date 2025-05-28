@@ -21,7 +21,7 @@ type PageLayoutProps = {
         hasTitle?: string;
       }
     | undefined;
-  hesAds?: string;
+  hasAds?: string;
   hasNavBar?: boolean;
   index?: boolean;
   children: React.ReactNode;
@@ -34,7 +34,7 @@ function PageLayout({
   children,
   hasGreenBackground = false,
   hasHeader = undefined,
-  hesAds = "",
+  hasAds = "",
   hasNavBar = false,
   index = true,
   title = "",
@@ -108,7 +108,7 @@ function PageLayout({
 
         {children}
 
-        {hesAds !== "" ? <AdsSmall slot={hesAds} /> : null}
+        {hasAds !== "" ? <AdsSmall slot={hasAds} /> : null}
         {hasNavBar ? <UnderBar /> : null}
       </section>
     </>
