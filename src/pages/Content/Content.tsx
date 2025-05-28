@@ -31,7 +31,7 @@ function Content() {
             path={route.content}
             hasHeader={{ goBack }}
             hasNavBar
-            hesAds={ACTIVITY_AD_SLOT}
+            hasAds={ACTIVITY_AD_SLOT}
             index={true}
             hasGreenBackground
         >

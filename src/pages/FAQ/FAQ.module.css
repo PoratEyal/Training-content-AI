@@ -9,13 +9,13 @@
   margin: 0;
   color: var(--primary-color);
   text-align: start; /* RTL/LTR aware */
-  margin-top: 10px; /* add vertical margin for balance */
+  margin-bottom: 10px; /* add vertical margin for balance */
 }
 
 /* FAQ container with horizontal padding and vertical spacing */
 .faq_article {
   padding: 0 25px;
-  padding-top: 30px;
+  padding-top: 10px;
   margin-bottom: 70px;
   box-sizing: border-box;
   font-size: 14px;

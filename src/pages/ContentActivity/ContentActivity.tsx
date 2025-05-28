@@ -76,7 +76,7 @@ function ContentActivity() {
             path={contentActivityPath}
             hasGreenBackground
             hasHeader={{ goBack, hasTitle: activity?.title || undefined }}
-            hesAds={CONTENT_ACTIVITY_AD_SLOT}
+            hasAds={CONTENT_ACTIVITY_AD_SLOT}
             hasNavBar
         >
             {isActivityLoading ? (

@@ -1,24 +1,22 @@
-import styles from "./PrivacyPolicy.module.css";
-import { useNavigate } from "react-router-dom";
-import policyHe from "../../models/resources/he/policy.json";
-import policyEn from "../../models/resources/en/policy.json";
-import PageLayout from "../../components/Layout/PageLayout/PageLayout";
-import route from "../../router/route.json";
-import FadeEffect from "../../components/FadeEffect/FadeEffect";
-import { useLanguage } from "../../i18n/useLanguage";
+import styles from "./PrivacyPolicy.module.css"
+import policyHe from "../../models/resources/he/policy.json"
+import policyEn from "../../models/resources/en/policy.json"
+import PageLayout from "../../components/Layout/PageLayout/PageLayout"
+import route from "../../router/route.json"
+import FadeEffect from "../../components/FadeEffect/FadeEffect"
+import { useLanguage } from "../../i18n/useLanguage"
 
 function PrivacyPolicy() {
-  const { t, isHebrew, dir } = useLanguage();
-  const navigate = useNavigate();
+  const { t, isHebrew, dir } = useLanguage()
 
-  const currentPolicy = isHebrew ? policyHe : policyEn;
+  const currentPolicy = isHebrew ? policyHe : policyEn
 
   return (
     <PageLayout
       id="privacyPolicy"
       path={route.privacyPolicy}
-      hasHeader={{isBlur: true }}
-      hasNavBar // 🔥 same as FAQ, adds the footer
+      hasHeader={{ isBlur: true }}
+      hasNavBar
       index={false}
     >
       <FadeEffect hasFade>
@@ -46,7 +44,7 @@ function PrivacyPolicy() {
         </article>
       </FadeEffect>
     </PageLayout>
-  );
+  )
 }
 
-export default PrivacyPolicy;
+export default PrivacyPolicy

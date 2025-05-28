@@ -48,7 +48,7 @@ function Activity() {
             hasGreenBackground
             hasHeader={{ goBack, hasTitle: mainActivity?.subject || undefined }}
             title={helmetJson[lang].activity.title}
-            hesAds={ACTIVITY_AD_SLOT}
+            hasAds={ACTIVITY_AD_SLOT}
             hasNavBar
             index={false}
         >
