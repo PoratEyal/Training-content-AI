@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import * as Flags from "country-flag-icons/react/3x2";
 import styles from "./LangPopup.module.css";
 import { useLanguage } from "../../i18n/useLanguage";
 import { useAuthContext } from "../../context/AuthContext";
