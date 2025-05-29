@@ -5,4 +5,9 @@
     gap: 7px;
     width: 100%;
     justify-content: flex-end;
+    background-color: rgba(250, 235, 215, 0);
+    border: none;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 14px;
+    color: var(--text-color);
 }
