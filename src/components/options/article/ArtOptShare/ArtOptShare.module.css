@@ -8,6 +8,9 @@
     transition: color 0.3s ease;
     text-decoration: none;
     direction: inherit;
+    background-color: rgba(0, 0, 255, 0);
+    border: none;
+    font-family: 'Fredoka', sans-serif;
 }
 
 .ltr {
