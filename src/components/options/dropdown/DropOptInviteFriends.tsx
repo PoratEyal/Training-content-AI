@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./dropdown.module.css";
 import { formatWhatsUp } from "../../../utils/format";
 import { WEBSITE_URL } from "../../../models/constants";
@@ -9,38 +8,38 @@ import route from "../../../router/route.json";
 import { useLanguage } from "../../../i18n/useLanguage";
 
 function DropOptInviteFriends() {
-    const { t } = useLanguage();
-    const { mainActivity } = useContentContext();
-    const location = useLocation();
+  const { t } = useLanguage();
+  const { mainActivity } = useContentContext();
+  const { pathname } = useLocation();
 
-    const shareText = formatWhatsUp(
-        location.pathname === route.activity ? mainActivity?.activity : undefined,
-    );
+  const shareText = formatWhatsUp(
+    pathname === route.activity ? mainActivity?.activity : undefined
+  );
 
-    const fullText = `${shareText}\n\n${WEBSITE_URL}`;
+  const fullText = `${shareText}\n\n${WEBSITE_URL}`;
 
-    const handleShare = async () => {
-        if (navigator.share) {
-            try {
-                await navigator.share({
-                    title: t("profile.dropOptInviteFriends.invite"),
-                    text: fullText,
-                });
-                return;
-            } catch {
-
-            }
-        }
-
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: t("profile.dropOptInviteFriends.invite"),
+          text: fullText,
+        });
+      } catch {
+        // fallback to WhatsApp
         window.open(`https://wa.me/?text=${encodeURIComponent(fullText)}`, "_blank");
-    };
+      }
+    } else {
+      window.open(`https://wa.me/?text=${encodeURIComponent(fullText)}`, "_blank");
+    }
+  };
 
-    return (
-        <button onClick={handleShare} className={styles.text_and_icon} type="button">
-            {t("profile.dropOptInviteFriends.invite")}
-            <Icons.share />
-        </button>
-    );
+  return (
+    <button onClick={handleShare} className={styles.text_and_icon} type="button">
+      {t("profile.dropOptInviteFriends.invite")}
+      <Icons.Share />
+    </button>
+  );
 }
 
 export default DropOptInviteFriends;
