@@ -18,9 +18,8 @@
   border-radius: 10px;
   max-width: 400px;
   border: 2px solid var(--secondary-color);
-  padding: 20px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 35px;
+  padding-bottom: 35px;
 }
 
 .buttonContainer {
@@ -53,6 +52,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100px;
+  min-width: 180px;
 }
 
+/* Desktop-only adjustment */
+@media (min-width: 550px) {
+  .loaderContainer {
+    padding: 0 20px; /* Add 20px left and right padding on desktop only */
+    box-sizing: border-box;
+  }
+}
