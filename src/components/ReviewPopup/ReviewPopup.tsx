@@ -79,8 +79,8 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
           <h3 className={styles.popupTitle}>{t("reviewPopup.title")}</h3>
           <Icons.idea className={styles.icon_lamp} />
         </div>
-
-        <div className={styles.text}>{msg}</div>
+        
+        <div className={styles.text}>{msg}</div> 
 
         <form className={styles.popupForm}>
           <div className={styles.popupText}>
