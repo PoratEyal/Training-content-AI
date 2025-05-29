@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import * as Flags from "country-flag-icons/react/3x2";
 import styles from "./LangPopup.module.css";
@@ -8,6 +8,7 @@ import { fetchUpdateUser } from "../../utils/fetch";
 import { useContentContext } from "../../context/ContentContext";
 import { useNavigate } from "react-router-dom";
 import route from "../../router/route.json";
+import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 
 type LangPopupProps = {
   handleClose: () => void;
@@ -19,12 +20,16 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
   const { clearAll } = useContentContext();
   const navigate = useNavigate();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const closePopup = (callback?: () => void) => {
     if (callback) callback();
     handleClose();
   };
 
   const changeLanguage = async (newLang: string) => {
+    setIsLoading(true);
+
     // Clear session data
     sessionStorage.removeItem("data");
 
@@ -49,9 +54,10 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
     closePopup(() => {
       navigate(route.home);
     });
+
+    setIsLoading(false);
   };
 
-  // כאן מתחיל הפורטל
   return ReactDOM.createPortal(
     <div
       className={styles.popupOverlay}
@@ -64,22 +70,29 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
         className={styles.popupContent}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className={styles.buttonContainer}>
-          <button
-            onClick={() => changeLanguage("he")}
-            className={styles.languageButton}
-            disabled={lang === "he"}
-          >
-            עברית
-          </button>
-          <button
-            onClick={() => changeLanguage("en")}
-            className={styles.languageButton}
-            disabled={lang === "en"}
-          >
-            English
-          </button>
-        </div>
+        {isLoading && (
+          <div className={styles.loaderContainer}>
+            <PageLoading />
+          </div>
+        )}
+        {!isLoading && (
+          <div className={styles.buttonContainer}>
+            <button
+              onClick={() => changeLanguage("he")}
+              className={styles.languageButton}
+              disabled={lang === "he"}
+            >
+              עברית
+            </button>
+            <button
+              onClick={() => changeLanguage("en")}
+              className={styles.languageButton}
+              disabled={lang === "en"}
+            >
+              English
+            </button>
+          </div>
+        )}
       </div>
     </div>,
     document.body
