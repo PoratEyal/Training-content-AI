@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./dropdown.module.css";
-import { WhatsappShareButton } from "react-share";
 import { formatWhatsUp } from "../../../utils/format";
 import { WEBSITE_URL } from "../../../models/constants";
 import { Icons } from "../../Icons";
@@ -14,17 +13,33 @@ function DropOptInviteFriends() {
     const { mainActivity } = useContentContext();
     const location = useLocation();
 
-    const setMsg = () => {
-        return formatWhatsUp(
-            location.pathname === route.activity ? mainActivity?.activity : undefined,
-        );
+    const shareText = formatWhatsUp(
+        location.pathname === route.activity ? mainActivity?.activity : undefined,
+    );
+
+    const fullText = `${shareText}\n\n${WEBSITE_URL}`;
+
+    const handleShare = async () => {
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: t("profile.dropOptInviteFriends.invite"),
+                    text: fullText,
+                });
+                return;
+            } catch {
+
+            }
+        }
+
+        window.open(`https://wa.me/?text=${encodeURIComponent(fullText)}`, "_blank");
     };
 
     return (
-        <WhatsappShareButton className={styles.text_and_icon} url={WEBSITE_URL} title={setMsg()}>
+        <button onClick={handleShare} className={styles.text_and_icon} type="button">
             {t("profile.dropOptInviteFriends.invite")}
             <Icons.share />
-        </WhatsappShareButton>
+        </button>
     );
 }
 
