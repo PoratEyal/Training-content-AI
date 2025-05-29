@@ -66,3 +66,8 @@
     font-size: 22px;
   }
 }
+@media (max-width: 549px) {
+  .faq_article {
+    padding-top: 60px;
+  }
+}

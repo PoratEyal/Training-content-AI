@@ -10,11 +10,8 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  /* top: 100px; */
   width: 100vw;
   height: 85%;
-  /* height: 100%; */
-  /* max-height: 85vh; */
   overflow: hidden;
   padding: 20px 0;
   padding-bottom: 0px;
