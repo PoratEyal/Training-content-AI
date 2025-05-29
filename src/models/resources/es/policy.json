@@ -1,0 +1,54 @@
+{
+    "p0": {
+        "label": "",
+        "text": "Cree fácilmente actividades personalizadas utilizando inteligencia artificial (IA). Adecuado para todo tipo de organizaciones juveniles y programas de liderazgo, incluidos scouts, grupos de adolescentes, programas de educación al aire libre, monitores de campamento y más."
+    },
+    "p1": {
+        "label": "La aplicación está actualmente en fase de prueba y nuestro objetivo es mejorarla continuamente. Agradecemos sus comentarios si encuentra algún problema o error.",
+        "text": "El uso de la aplicación es bajo su propio riesgo y no asumimos ninguna responsabilidad por los daños que puedan resultar de su uso."
+    },
+    "p2": {
+        "label": "Política de privacidad:",
+        "text": "Usamos cookies y datos proporcionados voluntariamente por los usuarios (como nombre, correo electrónico y contenido de los mensajes) para mejorar la experiencia en la aplicación y analizar datos estadísticos. Podemos realizar pruebas de usabilidad periódicas para mejorar la interfaz de usuario."
+    },
+    "p3": {
+        "label": "Servicios publicitarios:",
+        "text": "Utilizamos los servicios publicitarios de Google, como Google AdSense, para mostrar anuncios en el sitio. Google y sus socios pueden usar cookies y otras tecnologías de seguimiento para recopilar información sobre su actividad en nuestro sitio y mostrarle anuncios personalizados. Puede administrar sus preferencias de anuncios personalizados a través de la configuración de anuncios de Google."
+    },
+    "p4": {
+        "label": "Derechos de autor:",
+        "text": "Todos los derechos de la aplicación, incluidos los derechos de autor, diseños, código y datos, nos pertenecen o pertenecen a fuentes autorizadas."
+    },
+    "p5": {
+        "label": "Responsabilidad:",
+        "text": "Ofrecemos la aplicación tal como está y no ofrecemos garantías, expresas o implícitas, sobre ella. No somos responsables de ningún daño directo, indirecto, consecuente o especial que pueda derivarse del uso de la aplicación."
+    },
+    "p6": {
+        "label": "Accesibilidad:",
+        "text": "La aplicación puede ser utilizada por personas con discapacidades mediante las funciones de accesibilidad integradas en el sistema operativo."
+    },
+    "p7": {
+        "label": "Limitación de responsabilidad:",
+        "text": "Usamos Microsoft Clarity para mejorar la experiencia del usuario. Los datos de uso del sitio, como clics, desplazamientos, tiempo de permanencia, mapas de calor y grabaciones de las acciones de los usuarios, se almacenan mediante cookies. Para más información sobre cómo Microsoft recopila datos, visite la declaración de privacidad de Microsoft."
+    },
+    "p8": {
+        "label": "Jurisdicción y resolución de disputas:",
+        "text": "Cualquier disputa que surja del uso de la aplicación estará sujeta a la jurisdicción exclusiva de los tribunales competentes en Israel."
+    },
+    "p9": {
+        "label": "Cambios:",
+        "text": "Podemos actualizar esta política de vez en cuando publicando una nueva versión en nuestro sitio. Debe consultar esta página periódicamente para asegurarse de que todo esté claro."
+    },
+    "p10": {
+        "label": "Correo electrónico:",
+        "email": "contact.activitywiz@gmail.com",
+        "text1": "Estamos disponibles para responder",
+        "text2": "por correo electrónico",
+        "text3": "cualquier pregunta, comentario o solicitud.",
+        "text4": "Contáctenos"
+    },
+    "p11": {
+        "label": "Obligación de leer la política:",
+        "text": "El uso de la aplicación implica la plena aceptación de los términos de esta política. El usuario se compromete y está obligado a leer cuidadosamente todas las secciones de la política antes de utilizar la aplicación y asumirá toda la responsabilidad por cualquier malentendido o incumplimiento de sus términos."
+    }
+}

@@ -152,7 +152,80 @@ export const helmetJson: Record<Lng, LanguageSection> = {
                 "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
     } as LanguageSection,
+    es: {
+        home: {
+            title: "Actividades para movimientos juveniles",
+            content:
+                "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+        },
+        details: {
+            title: "Actividades para movimientos juveniles",
+            content:
+                "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+        },
+        build: {
+            title: "Actividades para movimientos juveniles",
+            content:
+                "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+        },
+        activity: {
+            title: "Actividades para movimientos juveniles",
+            content:
+                "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+        },
+        content: {
+            title: "Actividades para movimientos juveniles - contenido",
+            content:
+                "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+        },
+        contentActivities: {
+            title: "Actividades para movimientos juveniles - actividades de contenido",
+            content:
+                "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+        },
+        contentActivity: {
+            title: "Actividades para movimientos juveniles - actividad de contenido",
+            content:
+                "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+        },
+        myactivities: {
+            title: "Actividades para movimientos juveniles - mis actividades",
+            content:
+                "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+        },
+        savedActivity: {
+            title: "Actividades para movimientos juveniles - actividad guardada",
+            content:
+                "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+        },
+        popularActivities: {
+            title: "Actividades para movimientos juveniles - actividades populares",
+            content:
+                "Actividades más populares: descubra las 10 actividades mejor valoradas para educación, diversión y participación grupal en movimientos juveniles y otras organizaciones.",
+        },
+        privacyPolicy: {
+            title: "Actividades para movimientos juveniles - política de privacidad",
+            content:
+                "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+        },
+        edit: {
+            title: "Actividades para movimientos juveniles - edición",
+            content:
+                "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+        },
+        contactUs: {
+            title: "Actividades para movimientos juveniles - contáctenos",
+            content:
+                "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+        },
+        faq: {
+            title: "Actividades para movimientos juveniles - preguntas frecuentes",
+            content:
+                "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+        },
+    } as LanguageSection,
 };
+
 
 export const getTitle = (page: HelmetPage, i18n: string, title?: string) => {
     if (title) return title;
