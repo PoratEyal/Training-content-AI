@@ -10,4 +10,5 @@
     font-family: 'Fredoka', sans-serif;
     font-size: 14px;
     color: var(--text-color);
+    cursor: pointer;
 }

@@ -50,7 +50,7 @@ export const Icons = {
     magic: FaWandMagicSparkles,
     chevronsLeft: FiChevronsLeft,
     output: VscOutput,
-    share: IoMdShare,
+    Share: IoMdShare,
     logout: MdLogout,
     login: RiLoginBoxFill,
     home: GoHome,
