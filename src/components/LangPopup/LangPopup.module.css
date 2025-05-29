@@ -25,6 +25,7 @@
 .buttonContainer {
   display: flex;
   flex-direction: row;
+  gap: 10px;
 }
 
 .languageButton {
@@ -58,7 +59,7 @@
 /* Desktop-only adjustment */
 @media (min-width: 550px) {
   .loaderContainer {
-    padding: 0 20px; /* Add 20px left and right padding on desktop only */
+    padding: 0 20px;
     box-sizing: border-box;
   }
 }

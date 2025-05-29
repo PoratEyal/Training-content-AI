@@ -1,7 +1,7 @@
 import React from "react";
 import { Movement } from "./movement";
 
-export type Lng = "he" | "en";
+export type Lng = "en" | "he" | "es";
 
 export type DataType = {
     movement: Movement | undefined;

@@ -29,13 +29,9 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
   const changeLanguage = async (newLang: string) => {
     setIsLoading(true);
 
-    // Save language choice in localStorage
     localStorage.setItem("i18nextLng", newLang);
-
-    // Clear session data
     sessionStorage.removeItem("data");
 
-    // Reset user movement data if user exists
     if (currentUser) {
       await fetchUpdateUser({
         user: {
@@ -44,13 +40,12 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
             movement: null,
             grade: null,
             gender: null,
-            amount: null,
-          },
-        },
+            amount: null
+          }
+        }
       });
     }
 
-    // Clear all stored content, change language, and navigate home
     clearAll();
     changeLang(newLang);
     closePopup(() => {
@@ -93,6 +88,7 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
             >
               English
             </button>
+
           </div>
         )}
       </div>
