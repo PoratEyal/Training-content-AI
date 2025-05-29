@@ -12,7 +12,7 @@ import "./App.css";
 import BuildActivity from "./pages/BuildActivity/BuildActivity";
 import ContentActivity from "./pages/ContentActivity/ContentActivity";
 import ContentActivities from "./pages/ContentActivities/ContentActivities";
-import PopularActivities from "./pages/PopularActivities/PopularActivities.tsx";
+import PopularActivities from "./pages/PopularActivities/PopularActivities";
 import SaveActivity from "./pages/SavedActivity/SavedActivity";
 import SavedActivities from "./pages/SavedActivities/SavedActivities";
 import Admin from "./pages/Admin/Admin";
