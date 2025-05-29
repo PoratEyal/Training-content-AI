@@ -30,6 +30,9 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
   const changeLanguage = async (newLang: string) => {
     setIsLoading(true);
 
+    // Save language choice in localStorage
+    localStorage.setItem("i18nextLng", newLang);
+
     // Clear session data
     sessionStorage.removeItem("data");
 
