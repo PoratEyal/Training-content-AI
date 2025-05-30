@@ -1,7 +1,7 @@
 {
     "p0": {
         "label": "",
-        "text": "Easily create personalized activities using artificial intelligence (AI). Suitable for all types of youth organizations and leadership programs, including scouts, teen groups, outdoor education programs, camp counselors, and more."
+        "text": "Using the app constitutes full agreement to the terms of this policy. The user undertakes and is obligated to carefully read all sections of the policy before using the app and will bear full responsibility for any misunderstanding or failure to comply with its terms."
     },
     "p1": {
         "label": "The app is currently in the testing phase, and we aim to improve it continuously. We’d appreciate feedback if you encounter any issues or glitches.",
@@ -46,9 +46,5 @@
         "text2": "via email",
         "text3": "for any questions, comments, or requests.",
         "text4": "Contact us"
-    },
-    "p11": {
-        "label": "Obligation to Read the Policy:",
-        "text": "Using the app constitutes full agreement to the terms of this policy. The user undertakes and is obligated to carefully read all sections of the policy before using the app and will bear full responsibility for any misunderstanding or failure to comply with its terms."
     }
 }

@@ -1,7 +1,7 @@
 {
     "p0": {
         "label": "",
-        "text": "Cree fácilmente actividades personalizadas utilizando inteligencia artificial (IA). Adecuado para todo tipo de organizaciones juveniles y programas de liderazgo, incluidos scouts, grupos de adolescentes, programas de educación al aire libre, monitores de campamento y más."
+        "text": "El uso de la aplicación implica la plena aceptación de los términos de esta política. El usuario se compromete y está obligado a leer cuidadosamente todas las secciones de la política antes de utilizar la aplicación y asumirá toda la responsabilidad por cualquier malentendido o incumplimiento de sus términos."
     },
     "p1": {
         "label": "La aplicación está actualmente en fase de prueba y nuestro objetivo es mejorarla continuamente. Agradecemos sus comentarios si encuentra algún problema o error.",
@@ -46,9 +46,5 @@
         "text2": "por correo electrónico",
         "text3": "cualquier pregunta, comentario o solicitud.",
         "text4": "Contáctenos"
-    },
-    "p11": {
-        "label": "Obligación de leer la política:",
-        "text": "El uso de la aplicación implica la plena aceptación de los términos de esta política. El usuario se compromete y está obligado a leer cuidadosamente todas las secciones de la política antes de utilizar la aplicación y asumirá toda la responsabilidad por cualquier malentendido o incumplimiento de sus términos."
     }
 }

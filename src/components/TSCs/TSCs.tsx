@@ -7,56 +7,31 @@ import { useLanguage } from "../../i18n/useLanguage";
 
 function TSCs({ handleAccept }) {
   const { isHebrew, dir, t } = useLanguage();
-
   const currentPolicy = isHebrew ? policyHe : policyEn;
+
+  const policyItems = [
+    currentPolicy.p0,
+    currentPolicy.p1,
+    currentPolicy.p2,
+    currentPolicy.p3,
+    currentPolicy.p4,
+    currentPolicy.p5,
+    currentPolicy.p6,
+    currentPolicy.p7,
+    currentPolicy.p8
+  ];
 
   return (
     <Popup>
       <div dir={dir}>
         <article className={styles.privacy}>
-          <h3 className={styles.h3_privacy}>
-            {t("privacyPolicy.title")}
-          </h3>
+          <h3 className={styles.h3_privacy}>{t("privacyPolicy.title")}</h3>
 
-          <div className={styles.space_div}>
-            <label>{currentPolicy.p11.text}</label>
-          </div>
-
-          <div className={styles.space_div}>
-            <label>{currentPolicy.p0.text}</label>
-          </div>
-
-          <div className={styles.space_div}>
-            <label>{currentPolicy.p1.label}</label> {currentPolicy.p1.text}
-          </div>
-
-          <div className={styles.space_div}>
-            <label>{currentPolicy.p2.label}</label> {currentPolicy.p2.text}
-          </div>
-
-          <div className={styles.space_div}>
-            <label>{currentPolicy.p3.label}</label> {currentPolicy.p3.text}
-          </div>
-
-          <div className={styles.space_div}>
-            <label>{currentPolicy.p4.label}</label> {currentPolicy.p4.text}
-          </div>
-
-          <div className={styles.space_div}>
-            <label>{currentPolicy.p5.label}</label> {currentPolicy.p5.text}
-          </div>
-
-          <div className={styles.space_div}>
-            <label>{currentPolicy.p6.label}</label> {currentPolicy.p6.text}
-          </div>
-
-          <div className={styles.space_div}>
-            <label>{currentPolicy.p7.label}</label> {currentPolicy.p7.text}
-          </div>
-
-          <div className={styles.space_div}>
-            <label>{currentPolicy.p8.label}</label> {currentPolicy.p8.text}
-          </div>
+          {policyItems.map((item, index) => (
+            <div key={index} className={styles.space_div}>
+              <label>{item.label}</label> {item.text}
+            </div>
+          ))}
 
           <div className={styles.space_div_end}>
             <label>{currentPolicy.p9.label}</label> {currentPolicy.p9.text}
