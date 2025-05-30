@@ -25,32 +25,21 @@
   width: 100%;
 }
 
-.space_div {
+.space_div,
+.space_div_end {
   font-size: 11px;
 }
 
 .space_div_end {
-  font-size: 11px;
   margin-bottom: 40px;
 }
 
 .fixed_btn {
   bottom: 25px;
   display: flex;
-  justify-content: center; /* Center the button always */
+  justify-content: center;
   width: 100%;
   padding: 0 25px;
   box-sizing: border-box;
   z-index: 1000;
-}
-
-
-.fixed_btn button {
-  align-self: flex-start; /* New: fixes final button alignment */
-}
-
-@media (min-width: 550px) {
-  .space_div {
-    font-size: 11px;
-  }
 }
