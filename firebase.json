@@ -26,6 +26,53 @@
         "source": "**",
         "destination": "/index.html"
       }
+    ],
+    "headers": [
+      {
+        "source": "/en/**",
+        "headers": [
+          {
+            "key": "Content-Language",
+            "value": "en"
+          }
+        ]
+      },
+      {
+        "source": "/es/**",
+        "headers": [
+          {
+            "key": "Content-Language",
+            "value": "es"
+          }
+        ]
+      },
+      {
+        "source": "/fr/**",
+        "headers": [
+          {
+            "key": "Content-Language",
+            "value": "fr"
+          }
+        ]
+      },
+      {
+        "source": "/ar/**",
+        "headers": [
+          {
+            "key": "Content-Language",
+            "value": "ar"
+          }
+        ]
+      },
+      {
+        "source": "/**",
+        "headers": [
+          {
+            "key": "Content-Language",
+            "value": "he"
+          }
+        ]
+      }
     ]
   }
 }
