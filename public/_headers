@@ -1,0 +1,10 @@
+/en/*
+  Content-Language: en
+/es/*
+  Content-Language: es
+/fr/*
+  Content-Language: fr
+/ar/*
+  Content-Language: ar
+/he/*
+  Content-Language: he
