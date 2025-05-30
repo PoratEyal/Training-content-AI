@@ -29,48 +29,63 @@
     ],
     "headers": [
       {
-        "source": "/en/*",
+        "source": "/en",
         "headers": [
-          {
-            "key": "Content-Language",
-            "value": "en"
-          }
+          { "key": "Content-Language", "value": "en" }
         ]
       },
       {
-        "source": "/es/*",
+        "source": "/en/**",
         "headers": [
-          {
-            "key": "Content-Language",
-            "value": "es"
-          }
+          { "key": "Content-Language", "value": "en" }
         ]
       },
       {
-        "source": "/fr/*",
+        "source": "/es",
         "headers": [
-          {
-            "key": "Content-Language",
-            "value": "fr"
-          }
+          { "key": "Content-Language", "value": "es" }
         ]
       },
       {
-        "source": "/ar/*",
+        "source": "/es/**",
         "headers": [
-          {
-            "key": "Content-Language",
-            "value": "ar"
-          }
+          { "key": "Content-Language", "value": "es" }
         ]
       },
       {
-        "source": "/he/*",
+        "source": "/fr",
         "headers": [
-          {
-            "key": "Content-Language",
-            "value": "he"
-          }
+          { "key": "Content-Language", "value": "fr" }
+        ]
+      },
+      {
+        "source": "/fr/**",
+        "headers": [
+          { "key": "Content-Language", "value": "fr" }
+        ]
+      },
+      {
+        "source": "/ar",
+        "headers": [
+          { "key": "Content-Language", "value": "ar" }
+        ]
+      },
+      {
+        "source": "/ar/**",
+        "headers": [
+          { "key": "Content-Language", "value": "ar" }
+        ]
+      },
+      {
+        "source": "/he",
+        "headers": [
+          { "key": "Content-Language", "value": "he" }
+        ]
+      },
+      {
+        "source": "/he/**",
+        "headers": [
+          { "key": "Content-Language", "value": "he" }
         ]
       }
     ]
