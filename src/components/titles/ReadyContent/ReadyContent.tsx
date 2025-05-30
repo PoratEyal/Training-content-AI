@@ -8,7 +8,7 @@ function ReadyContent() {
             <img
                 title="Yellow line image"
                 alt="Yellow line image"
-                src={"detailsLine.svg"}
+                src="/detailsLine.svg"
                 loading="lazy"
                 width={180}
                 height={5}
