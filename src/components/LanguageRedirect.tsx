@@ -12,15 +12,15 @@ const LanguageRedirect = () => {
     const currentLangPrefix = path.split("/")[1];
     const supportedLangs = ["en", "he", "es", "ar"];
 
-    // If the current path has a language prefix
+    // If the URL already has a language prefix
     if (supportedLangs.includes(currentLangPrefix)) {
       if (currentLangPrefix !== lang) {
-        // Replace the existing language prefix with the correct language
+        // Replace the language prefix with the current language
         const newPath = `/${lang}${path.substring(currentLangPrefix.length + 1)}`;
         navigate(newPath + location.search, { replace: true });
       }
     } else {
-      // If there is no language prefix, add it to the path
+      // If there is no language prefix, add the current language prefix
       const newPath = `/${lang}${path === "/" ? "" : path}`;
       navigate(newPath + location.search, { replace: true });
     }
