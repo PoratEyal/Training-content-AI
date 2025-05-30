@@ -9,18 +9,20 @@ const LanguageRedirect = () => {
 
   useEffect(() => {
     const path = location.pathname;
-    const currentLangPrefix = path.split("/")[1]; // e.g., 'en', 'he', 'es', 'ar'
+    const currentLangPrefix = path.split("/")[1];
     const supportedLangs = ["en", "he", "es", "ar"];
 
+    // If the current path has a language prefix
     if (supportedLangs.includes(currentLangPrefix)) {
-      if (lang !== currentLangPrefix) {
-        // If language doesn't match the path prefix, replace it
-        const newPath = path.replace(/^\/(en|he|es|ar)/, `/${lang}`);
+      if (currentLangPrefix !== lang) {
+        // Replace the existing language prefix with the correct language
+        const newPath = `/${lang}${path.substring(currentLangPrefix.length + 1)}`;
         navigate(newPath + location.search, { replace: true });
       }
     } else {
-      // No language prefix, add it
-      navigate(`/${lang}${path === "/" ? "" : path}` + location.search, { replace: true });
+      // If there is no language prefix, add it to the path
+      const newPath = `/${lang}${path === "/" ? "" : path}`;
+      navigate(newPath + location.search, { replace: true });
     }
   }, [lang, location.pathname, location.search, navigate]);
 
