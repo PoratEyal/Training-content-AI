@@ -1,392 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
-      <loc>https://activitywiz.com/</loc>
+      <loc>https://activitywiz.com/he</loc>
+      <xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es" />
    </url>
    <url>
-      <loc>https://activitywiz.com/activity</loc>
+      <loc>https://activitywiz.com/he/activity</loc>
+      <xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/activity" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/activity" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/activity" />
    </url>
    <url>
-      <loc>https://activitywiz.com/faq</loc>
+      <loc>https://activitywiz.com/he/faq</loc>
+      <xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/faq" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/faq" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/faq" />
    </url>
    <url>
       <loc>https://activitywiz.com/en</loc>
+      <xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es" />
    </url>
    <url>
-      <loc>https://activitywiz.com/en/activity</loc>
+   <loc>https://activitywiz.com/en/activity</loc>
+      <xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/activity" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/activity" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/activity" />
    </url>
    <url>
-      <loc>https://activitywiz.com/en/faq</loc>
+   <loc>https://activitywiz.com/en/faq</loc>
+      <xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/faq" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/faq" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/faq" />
+   </url>
+   <url>
+   <loc>https://activitywiz.com/es</loc>
+      <xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es" />
+   </url>
+   <url>
+   <loc>https://activitywiz.com/es/activity</loc>
+      <xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/activity" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/activity" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/activity" />
+   </url>
+   <url>
+   <loc>https://activitywiz.com/es/faq</loc>
+      <xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/faq" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/faq" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/faq" />
    </url>
 
+   <url><loc>https://activitywiz.com/he/content</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content" /></url>
+   <url><loc>https://activitywiz.com/he/content/popular</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/popular" /></url>
+   <url><loc>https://activitywiz.com/he/content/games</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays" /></url>
+   <url><loc>https://activitywiz.com/he/content/israel</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/israel" /></url>
+   <url><loc>https://activitywiz.com/he/content/personalities</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/personalities" /></url>
+   <url><loc>https://activitywiz.com/he/content/intro</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/intro" /></url>
+   <url><loc>https://activitywiz.com/he/content/friendship</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/friendship" /></url>
+   <url><loc>https://activitywiz.com/he/content/sevenOct</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/sevenOct" /></url>
+   <url><loc>https://activitywiz.com/he/content/responsibility</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/responsibility" /></url>
+   <url><loc>https://activitywiz.com/he/content/environmental</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/environmental" /></url>
+   <url><loc>https://activitywiz.com/he/content/seasons</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/seasons" /></url>
+   <url><loc>https://activitywiz.com/he/content/movies</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/movies" /></url>
+   <url><loc>https://activitywiz.com/he/content/traffic</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/traffic" /></url>
+   <url><loc>https://activitywiz.com/he/content/animals</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/animals" /></url>
+   <url><loc>https://activitywiz.com/he/content/teamwork</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/teamwork" /></url>
+   <url><loc>https://activitywiz.com/he/content/superhero</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/superhero" /></url>
+   <url><loc>https://activitywiz.com/he/content/harassment</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/harassment" /></url>
+   <url><loc>https://activitywiz.com/he/content/peak</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/peak" /></url>
 
-   <url>
-      <loc>https://activitywiz.com/content</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/popular</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/israel</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/personalities</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/intro</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/friendship</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/sevenOct</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/responsibility</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/environmental</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/seasons</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/movies</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/traffic</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/animals</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/teamwork</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/superhero</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/harassment</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/peak</loc>
-   </url>
-   
-   <url>
-      <loc>https://activitywiz.com/content/games/champion</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/bingo</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/chaos</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/laugh</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/evolution</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/machine</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/whistle</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/pantomime</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/balloon</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/sing</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/circle</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/flag</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/dialogue</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/funny</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/wind</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/rabbit</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/hockey</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/kettle</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/character</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/killer</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/ball</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/games/story</loc>
-   </url>
-   
-   <url>
-      <loc>https://activitywiz.com/content/holidays/roshHashanah</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/yomKippur</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/sukkot</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/sigad</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/hanukkah</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/christmas</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/valentine</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/tuBshvat</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/tuBshvatGame</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/purim</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/purimGames</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/pesah</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/pesah4sons</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/yomshoa</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/yomzikaron</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/yomazmaut</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/lagBaomer</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/shavuot</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/9Av</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/holidays/TuAv</loc>
-   </url>
-   
-   <url>
-      <loc>https://activitywiz.com/content/israel/idf</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/israel/AliyahToIsrael</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/israel/Entebbe</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/israel/kaftet</loc>
-   </url>
-   
-   <url>
-      <loc>https://activitywiz.com/content/personalities/isaacRabin</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/personalities/benGurion</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/personalities/begin</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/personalities/jabotinsky</loc>
-   </url>
-   
-   <url>
-      <loc>https://activitywiz.com/content/intro/Introduction</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/intro/newFriends</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/intro/introAdventure</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/intro/openYear</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/intro/newyear</loc>
-   </url>
-   
-   <url>
-      <loc>https://activitywiz.com/content/friendship/friendsForever</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/friendship/journey</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/friendship/friendsGame</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/friendship/secretFriend</loc>
-   </url>
-   
-   <url>
-      <loc>https://activitywiz.com/content/sevenOct/memory</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/sevenOct/regeneration</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/sevenOct/haravotBarzel</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/sevenOct/emotional</loc>
-   </url>
-   
-   <url>
-      <loc>https://activitywiz.com/content/responsibility/responsibilityGames</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/responsibility/circlesResponsibility</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/responsibility/keySuccess</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/responsibility/respect</loc>
-   </url>
-   
-   <url>
-      <loc>https://activitywiz.com/content/environmental/greenInventors</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/environmental/zeroWaste</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/environmental/savingGlobe</loc>
-   </url>
-   
-   <url>
-      <loc>https://activitywiz.com/content/seasons/winterWorld</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/seasons/summerAdventure</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/seasons/springBlossom</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/seasons/autumnJourney</loc>
-   </url>
-   
-   <url>
-      <loc>https://activitywiz.com/content/movies/movieJourney</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/movies/hollywoodInMiniature</loc>
-   </url>
-   
-   <url>
-      <loc>https://activitywiz.com/content/traffic/safePath</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/traffic/trafficLight</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/traffic/publicTransport</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/traffic/seatBelt</loc>
-   </url>
-   
-   <url>
-      <loc>https://activitywiz.com/content/animals/animalWorld</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/animals/animalHabitats</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/animals/myPets</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/animals/animalProtection</loc>
-   </url>
-   
-   <url>
-      <loc>https://activitywiz.com/content/teamwork/togetherPossible</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/teamwork/teamBuilding</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/teamwork/successTower</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/teamwork/commonJourney</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/teamwork/survival</loc>
-   </url>
+   <url><loc>https://activitywiz.com/he/content/games/champion</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/champion" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/bingo</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/bingo" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/chaos</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/chaos" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/laugh</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/laugh" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/evolution</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/evolution" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/machine</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/machine" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/whistle</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/whistle" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/pantomime</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/pantomime" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/balloon</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/balloon" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/sing</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/sing" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/circle</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/circle" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/flag</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/flag" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/dialogue</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/dialogue" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/funny</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/funny" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/wind</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/wind" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/rabbit</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/rabbit" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/hockey</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/hockey" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/kettle</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/kettle" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/character</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/character" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/killer</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/killer" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/ball</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/ball" /></url>
+   <url><loc>https://activitywiz.com/he/content/games/story</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/games/story" /></url>
 
-   <url>
-      <loc>https://activitywiz.com/content/superhero/superhero</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/superhero/superheroAcademy</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/superhero/superheroJourney</loc>
-   </url>
-   
-   <url>
-      <loc>https://activitywiz.com/content/harassment/harassment</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/harassment/harassmentPrevention</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/harassment/respectTogether</loc>
-   </url>
+   <url><loc>https://activitywiz.com/he/content/holidays/roshHashanah</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/roshHashanah" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/yomKippur</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/yomKippur" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/sukkot</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/sukkot" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/sigad</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/sigad" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/hanukkah</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/hanukkah" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/christmas</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/christmas" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/valentine</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/valentine" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/tuBshvat</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/tuBshvat" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/tuBshvatGame</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/tuBshvatGame" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/purim</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/purim" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/purimGames</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/purimGames" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/pesah</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/pesah" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/pesah4sons</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/pesah4sons" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/yomshoa</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/yomshoa" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/yomzikaron</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/yomzikaron" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/yomazmaut</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/yomazmaut" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/lagBaomer</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/lagBaomer" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/shavuot</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/shavuot" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/9Av</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/9Av" /></url>
+   <url><loc>https://activitywiz.com/he/content/holidays/TuAv</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/holidays/TuAv" /></url>
 
-   <url>
-      <loc>https://activitywiz.com/content/peak/escape</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/peak/treasure</loc>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/content/peak/skyline</loc>
-   </url>
-   
+   <url><loc>https://activitywiz.com/he/content/israel/idf</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/israel/idf" /></url>
+   <url><loc>https://activitywiz.com/he/content/israel/AliyahToIsrael</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/israel/AliyahToIsrael" /></url>
+   <url><loc>https://activitywiz.com/he/content/israel/Entebbe</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/israel/Entebbe" /></url>
+   <url><loc>https://activitywiz.com/he/content/israel/kaftet</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/israel/kaftet" /></url>
+   <url><loc>https://activitywiz.com/he/content/personalities/isaacRabin</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/personalities/isaacRabin" /></url>
+   <url><loc>https://activitywiz.com/he/content/personalities/benGurion</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/personalities/benGurion" /></url>
+   <url><loc>https://activitywiz.com/he/content/personalities/begin</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/personalities/begin" /></url>
+   <url><loc>https://activitywiz.com/he/content/personalities/jabotinsky</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/personalities/jabotinsky" /></url>
+   <url><loc>https://activitywiz.com/he/content/intro/Introduction</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/intro/Introduction" /></url>
+   <url><loc>https://activitywiz.com/he/content/intro/newFriends</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/intro/newFriends" /></url>
+   <url><loc>https://activitywiz.com/he/content/intro/introAdventure</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/intro/introAdventure" /></url>
+   <url><loc>https://activitywiz.com/he/content/intro/openYear</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/intro/openYear" /></url>
+   <url><loc>https://activitywiz.com/he/content/intro/newyear</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/intro/newyear" /></url>
+   <url><loc>https://activitywiz.com/he/content/friendship/friendsForever</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/friendship/friendsForever" /></url>
+   <url><loc>https://activitywiz.com/he/content/friendship/journey</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/friendship/journey" /></url>
+   <url><loc>https://activitywiz.com/he/content/friendship/friendsGame</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/friendship/friendsGame" /></url>
+   <url><loc>https://activitywiz.com/he/content/friendship/secretFriend</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/friendship/secretFriend" /></url>
+
+   <url><loc>https://activitywiz.com/he/content/sevenOct/memory</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/sevenOct/memory" /></url>
+   <url><loc>https://activitywiz.com/he/content/sevenOct/regeneration</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/sevenOct/regeneration" /></url>
+   <url><loc>https://activitywiz.com/he/content/sevenOct/haravotBarzel</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/sevenOct/haravotBarzel" /></url>
+   <url><loc>https://activitywiz.com/he/content/sevenOct/emotional</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/sevenOct/emotional" /></url>
+   <url><loc>https://activitywiz.com/he/content/responsibility/responsibilityGames</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/responsibility/responsibilityGames" /></url>
+   <url><loc>https://activitywiz.com/he/content/responsibility/circlesResponsibility</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/responsibility/circlesResponsibility" /></url>
+   <url><loc>https://activitywiz.com/he/content/responsibility/keySuccess</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/responsibility/keySuccess" /></url>
+   <url><loc>https://activitywiz.com/he/content/responsibility/respect</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/responsibility/respect" /></url>
+   <url><loc>https://activitywiz.com/he/content/environmental/greenInventors</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/environmental/greenInventors" /></url>
+   <url><loc>https://activitywiz.com/he/content/environmental/zeroWaste</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/environmental/zeroWaste" /></url>
+   <url><loc>https://activitywiz.com/he/content/environmental/savingGlobe</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/environmental/savingGlobe" /></url>
+   <url><loc>https://activitywiz.com/he/content/seasons/winterWorld</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/seasons/winterWorld" /></url>
+   <url><loc>https://activitywiz.com/he/content/seasons/summerAdventure</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/seasons/summerAdventure" /></url>
+   <url><loc>https://activitywiz.com/he/content/seasons/springBlossom</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/seasons/springBlossom" /></url>
+   <url><loc>https://activitywiz.com/he/content/seasons/autumnJourney</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/seasons/autumnJourney" /></url>
+
+   <url><loc>https://activitywiz.com/he/content/movies/movieJourney</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/movies/movieJourney" /></url>
+   <url><loc>https://activitywiz.com/he/content/movies/hollywoodInMiniature</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/movies/hollywoodInMiniature" /></url>
+   <url><loc>https://activitywiz.com/he/content/traffic/safePath</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/traffic/safePath" /></url>
+   <url><loc>https://activitywiz.com/he/content/traffic/trafficLight</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/traffic/trafficLight" /></url>
+   <url><loc>https://activitywiz.com/he/content/traffic/publicTransport</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/traffic/publicTransport" /></url>
+   <url><loc>https://activitywiz.com/he/content/traffic/seatBelt</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/traffic/seatBelt" /></url>
+   <url><loc>https://activitywiz.com/he/content/animals/animalWorld</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/animals/animalWorld" /></url>
+   <url><loc>https://activitywiz.com/he/content/animals/animalHabitats</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/animals/animalHabitats" /></url>
+   <url><loc>https://activitywiz.com/he/content/animals/myPets</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/animals/myPets" /></url>
+   <url><loc>https://activitywiz.com/he/content/animals/animalProtection</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/animals/animalProtection" /></url>
+   <url><loc>https://activitywiz.com/he/content/teamwork/togetherPossible</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/teamwork/togetherPossible" /></url>
+   <url><loc>https://activitywiz.com/he/content/teamwork/teamBuilding</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/teamwork/teamBuilding" /></url>
+   <url><loc>https://activitywiz.com/he/content/teamwork/successTower</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/teamwork/successTower" /></url>
+   <url><loc>https://activitywiz.com/he/content/teamwork/commonJourney</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/teamwork/commonJourney" /></url>
+   <url><loc>https://activitywiz.com/he/content/teamwork/survival</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/teamwork/survival" /></url>
+   <url><loc>https://activitywiz.com/he/content/superhero/superhero</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/superhero/superhero" /></url>
+   <url><loc>https://activitywiz.com/he/content/superhero/superheroAcademy</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/superhero/superheroAcademy" /></url>
+   <url><loc>https://activitywiz.com/he/content/superhero/superheroJourney</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/superhero/superheroJourney" /></url>
+   <url><loc>https://activitywiz.com/he/content/harassment/harassment</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/harassment/harassment" /></url>
+   <url><loc>https://activitywiz.com/he/content/harassment/harassmentPrevention</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/harassment/harassmentPrevention" /></url>
+   <url><loc>https://activitywiz.com/he/content/harassment/respectTogether</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/harassment/respectTogether" /></url>
+   <url><loc>https://activitywiz.com/he/content/peak/escape</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/peak/escape" /></url>
+   <url><loc>https://activitywiz.com/he/content/peak/treasure</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/peak/treasure" /></url>
+   <url><loc>https://activitywiz.com/he/content/peak/skyline</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/content/peak/skyline" /></url>
+
 </urlset>
