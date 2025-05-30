@@ -13,18 +13,21 @@ import BuildActivity from "./pages/BuildActivity/BuildActivity";
 import ContentActivity from "./pages/ContentActivity/ContentActivity";
 import ContentActivities from "./pages/ContentActivities/ContentActivities";
 import PopularActivities from "./pages/PopularActivities/PopularActivities";
-import SaveActivity from "./pages/SavedActivity/SavedActivity";
+import SaveActivity from "./pages/SavedActivity/SaveActivity";
 import SavedActivities from "./pages/SavedActivities/SavedActivities";
 import Admin from "./pages/Admin/Admin";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import FQA from "./pages/FAQ/FAQ";
 import Providers from "./router/Providers";
+import LanguageRedirect from "./components/LanguageRedirect";
 
 function App() {
   return (
     <Providers>
       <ReactNotifications className="react-notifications" />
       <Router>
+        {/* Restore LanguageRedirect to keep the URL in sync with the language */}
+        <LanguageRedirect />
         <Routes>
           {/* All languages: Hebrew, English, Spanish, Arabic */}
           <Route element={<PrivateRoutes />}>
