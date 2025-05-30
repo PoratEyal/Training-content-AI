@@ -29,7 +29,7 @@
     ],
     "headers": [
       {
-        "source": "/en/**",
+        "source": "/en/*",
         "headers": [
           {
             "key": "Content-Language",
@@ -38,7 +38,7 @@
         ]
       },
       {
-        "source": "/es/**",
+        "source": "/es/*",
         "headers": [
           {
             "key": "Content-Language",
@@ -47,7 +47,7 @@
         ]
       },
       {
-        "source": "/fr/**",
+        "source": "/fr/*",
         "headers": [
           {
             "key": "Content-Language",
@@ -56,7 +56,7 @@
         ]
       },
       {
-        "source": "/ar/**",
+        "source": "/ar/*",
         "headers": [
           {
             "key": "Content-Language",
@@ -65,7 +65,7 @@
         ]
       },
       {
-        "source": "/**",
+        "source": "/he/*",
         "headers": [
           {
             "key": "Content-Language",
