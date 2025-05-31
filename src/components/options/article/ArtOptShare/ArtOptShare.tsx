@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./ArtOptShare.module.css";
-import { FaShare } from "react-icons/fa";
 import { Activity } from "../../../../models/types/activity";
 import { WEBSITE_URL } from "../../../../models/constants";
 import { formatWhatsUp } from "../../../../utils/format";
 import { useLanguage } from "../../../../i18n/useLanguage";
+import { Icons } from "../../../Icons";  // Updated to use your centralized icons
 
 type ArtOptShareProps = { activity: Activity };
 
@@ -18,10 +18,11 @@ const ArtOptShare: React.FC<ArtOptShareProps> = ({ activity }) => {
       try {
         await navigator.share({
           title: t("articleOptions.share.title"),
-          text: shareText, 
+          text: shareText,
         });
         return;
       } catch {
+        // fallback if navigator.share fails
       }
     }
 
@@ -37,7 +38,7 @@ const ArtOptShare: React.FC<ArtOptShareProps> = ({ activity }) => {
       onClick={handleShare}
       type="button"
     >
-      <FaShare className={styles.icon} />
+      <Icons.Share className={styles.icon} />  {/* Use centralized icon */}
       <span className={styles.text}>{t("articleOptions.share.title")}</span>
     </button>
   );
