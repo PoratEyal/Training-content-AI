@@ -33,22 +33,25 @@ function Details() {
 
   const initialLangRef = useRef(lang);
 
-  // Decide what to do based on whether lang has changed
+  // Populate fields only on first render (same language)
   useEffect(() => {
     if (lang === initialLangRef.current) {
-      // Populate with saved data
       setMovment(data?.movement?.name || currentUser?.movement?.movement || "");
       setClassLevel(data?.grade || currentUser?.movement?.grade || "");
       setNumberOfChildren(data?.amount || currentUser?.movement?.amount || "");
       setGender(data?.gender || currentUser?.movement?.gender || "");
-    } else {
-      // Language changed: reset fields
+    }
+  }, [data, currentUser]);
+
+  // Reset fields only when language changes
+  useEffect(() => {
+    if (lang !== initialLangRef.current) {
       setMovment("");
       setClassLevel("");
       setNumberOfChildren("");
       setGender("");
     }
-  }, [lang, data, currentUser]);
+  }, [lang]);
 
   useEffect(() => {
     if (loading) setIsDisabled(true);
