@@ -30,14 +30,12 @@
     top: 10px;
 }
 
-/* Position on the right for Hebrew (RTL) */
 .closeButtonRtl {
-    right: 5px;
+    left: 5px;
 }
 
-/* Position on the left for English (LTR) */
 .closeButtonLtr {
-    left: 5px;
+    right: 5px;
 }
 
 
@@ -67,25 +65,7 @@
     transform: translateY(0);
   }
   
-  .popupTitle_div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    gap: 4px;
-    margin-top: -25px;
-  }
-  .deleteIcon{
-    color: var(--primary-color);
-    font-size: 27px;
-    margin-bottom: 3px;
-  }
-  .popupTitle {
-    color: var(--primary-color);
-    font-size: 20px;
-    font-weight: 600;
-  }
-  
+
   .message {
     font-size: 16px;
     color: var(--primary-color);

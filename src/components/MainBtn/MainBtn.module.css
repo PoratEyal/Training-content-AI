@@ -45,20 +45,3 @@
     position: relative;
     top: -1px;
 }
-
-.btn_icon {
-    width: 20px;
-    height: 20px;
-    background-color: var(--primary-color);
-    border: none;
-    border-radius: 100px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.icon {
-    color: var(--secondary-color);
-    font-size: 15px;
-}

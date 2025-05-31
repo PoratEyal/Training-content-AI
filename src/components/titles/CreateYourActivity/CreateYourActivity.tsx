@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./CreateYourActivity.module.css";
 import { useLanguage } from "../../../i18n/useLanguage";
 

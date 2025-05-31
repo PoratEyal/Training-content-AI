@@ -32,17 +32,6 @@
     font-size: 16px;
   }
   
-  .magic_icon {
-    position: absolute;
-    left: 12px;
-    bottom: 7px;
-    color: var(--primary-color);
-    cursor: pointer;
-    font-size: 19px;
-    padding: 7px;
-    padding-left: 2px;
-    padding-bottom: 0px;
-  }
   
   /* Override for non-Hebrew (forces LTR) */
   .ltr {
