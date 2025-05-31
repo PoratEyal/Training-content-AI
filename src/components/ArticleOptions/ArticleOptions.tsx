@@ -8,7 +8,7 @@ type ArticleOptionsProps = {
 
 const ArticleOptions: React.FC<ArticleOptionsProps> = ({ Options, backgroundColor = "#FAF6EE" }) => {
     return (
-        <div className={`${styles.article_options} ${styles.full_width}`} style={{ backgroundColor }}>
+        <div className={styles.article_options} style={{ backgroundColor }}>
             {Options.map((Option, index) => (
                 <React.Fragment key={index}>
                     <div className={styles.option}>{Option}</div>

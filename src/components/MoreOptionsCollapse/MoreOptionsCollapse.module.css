@@ -1,10 +1,10 @@
 .options_collapse_container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    color: var(--text-color);
-    -webkit-tap-highlight-color: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  color: var(--text-color);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .options_container {
@@ -19,56 +19,29 @@
 }
 
 .options_container .collapse_text {
-    border-bottom: 1px solid var(--text-color);
-    cursor: pointer;
+  border-bottom: 1px solid var(--text-color);
+  cursor: pointer;
 }
 
 .sizeMedium {
-    color: var(--text-color-opacity);
-    cursor: pointer;
-    position: relative;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.sizeMedium {
-    font-size: 16px;
+  color: var(--text-color-opacity);
+  cursor: pointer;
+  position: relative;
+  font-size: 16px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .toggelArrowAnimation {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    top: 2px;
-}
-
-.toggelArrow:hover {
-    color: var(--text-color-active);
-}
-
-.options_arrow {
-    height: 16px;
-    cursor: pointer;
-    width: fit-content;
-    position: relative;
-    top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 0px;
 }
 
 .collapse_form {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 20px;
-}
-
-@media (min-width: 550px) {
-
-}
-
-:host([dir="rtl"]) .options_container {
-  --direction: row-reverse;  
-}
-
-:host([dir="ltr"]) .options_container {
-  --direction: row;        
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
 }
