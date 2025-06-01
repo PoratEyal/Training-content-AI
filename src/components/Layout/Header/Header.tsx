@@ -1,3 +1,7 @@
+//
+// This is a general header component with optional back button, title, and language selector
+// It shows the user's profile, adapts layout for RTL languages
+//
 import React, { useState } from "react";
 import { useAuthContext } from "../../../context/AuthContext";
 import { Icons } from "../../Icons";
@@ -14,7 +18,7 @@ type HeaderProps = {
 };
 
 const Header: React.FC<HeaderProps> = ({ goBack, hasTitle = undefined, isBlur = false }) => {
-    const { isHebrew } = useLanguage();
+    const { isRTL } = useLanguage();
     const { isLoggedIn, loading, currentUser } = useAuthContext();
     const style = isBlur ? styles.header_fade : styles.header;
     const styleIcon = isBlur ? styles.back_icon_fade : styles.back_icon;
@@ -27,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ goBack, hasTitle = undefined, isBlur = 
         <section className={style}>
             <div
                 className={
-                    isHebrew ? styles.header_container : `${styles.header_container} ${styles.rtl}`
+                    isRTL ? styles.header_container : `${styles.header_container} ${styles.rtl}`
                 }
             >
                 <Profile
@@ -37,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ goBack, hasTitle = undefined, isBlur = 
                 />
                 {hasTitle ? <ReadyContentName type="none" subject={hasTitle} /> : null}
                 {!loading && goBack ? (
-                    isHebrew ? (
+                    isRTL ? (
                         <Icons.arrowBack onClick={goBack} className={styleIcon} />
                     ) : (
                         <Icons.arrowForward onClick={goBack} className={styleIcon} />

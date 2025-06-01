@@ -34,5 +34,42 @@
             "title": "Error",
             "message": "The action was not saved, please try again"
         }
+    },
+    "es": {
+        "error": {
+            "title": "Error",
+            "message": "No pudimos encontrar lo que buscabas. Por favor, intenta nuevamente"
+        },
+        "safety": {
+            "title": "Error",
+            "message": "El sistema ha identificado que el contenido que buscas puede ser inseguro, y la búsqueda ha sido bloqueada. Sugerimos crear una actividad diferente."
+        },
+        "google": {
+            "title": "Error",
+            "message": "El inicio de sesión falló. Por favor, asegúrate de estar conectado a internet e intenta nuevamente"
+        },
+        "notSaved": {
+            "title": "Error",
+            "message": "La acción no fue guardada, por favor intenta nuevamente"
+        }
+
+    },
+    "ar": {
+        "error": {
+            "title": "خطأ",
+            "message": "لم نتمكن من العثور على ما كنت تبحث عنه. يرجى المحاولة مرة أخرى"
+        },
+        "safety": {
+            "title": "خطأ",
+            "message": "حدد النظام أن المحتوى الذي تبحث عنه قد يكون غير آمن، وتم حظر البحث. نقترح إنشاء نشاط مختلف."
+        },
+        "google": {
+            "title": "خطأ",
+            "message": "فشل تسجيل الدخول. يرجى التأكد من أنك متصل بالإنترنت وحاول مرة أخرى"
+        },
+        "notSaved": {
+            "title": "خطأ",
+            "message": "لم يتم حفظ الإجراء، يرجى المحاولة مرة أخرى"
+        }
     }
 }

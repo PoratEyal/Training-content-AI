@@ -8,7 +8,7 @@
   z-index: 953;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  width: 165px;
+  width: 175px;
 }
 
 .nav_container::after {
@@ -38,7 +38,7 @@
   cursor: pointer;
 }
 
-/* New override for non-Hebrew: remove left margin, add right margin and set direction to LTR */
+/* New override for non-RTL: remove left margin, add right margin and set direction to LTR */
 .ltr_navbar_option {
   margin-left: 0 !important;
   margin-right: -35px !important;
@@ -51,7 +51,7 @@
   margin-bottom: -4px;
 }
 
-/* Container override for non-Hebrew */
+/* Container override for non-RTL */
 .ltr_nav {
   right: 0 !important;
   left: auto !important;

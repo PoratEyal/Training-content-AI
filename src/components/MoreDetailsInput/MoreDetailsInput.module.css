@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    direction: rtl; /* default for Hebrew */
+    direction: rtl;
     position: relative;
     width: 100%;
   }
@@ -14,7 +14,7 @@
     border: none;
     border-radius: 14px;
     font-family: var(--font-family);
-    text-align: right; /* for Hebrew */
+    text-align: right; /* RTL */
     background-color: var(--select-color);
     border: 1px solid var(--select-border-color);
     outline: none;
@@ -33,7 +33,6 @@
   }
   
   
-  /* Override for non-Hebrew (forces LTR) */
   .ltr {
     direction: ltr !important;
   }

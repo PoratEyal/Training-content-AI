@@ -1,3 +1,8 @@
+//
+// This is a dropdown option that allows users to share a link to invite friends
+// If on the activity page, it includes the activity's text in the share message
+// The share functionality adjusts to RTL/LTR based on the active language
+//
 import styles from "./dropdown.module.css";
 import { formatWhatsUp } from "../../../utils/format";
 import { WEBSITE_URL } from "../../../models/constants";
@@ -8,12 +13,16 @@ import route from "../../../router/route.json";
 import { useLanguage } from "../../../i18n/useLanguage";
 
 function DropOptInviteFriends() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const { mainActivity } = useContentContext();
   const { pathname } = useLocation();
 
+  // Determine language-specific activity path
+  const AI_activityContentPath = route[`AI_activity${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AI_activityContentHe;
+
+  // Only include activity text in the share message if on the activity page
   const shareText = formatWhatsUp(
-    pathname === route.activity ? mainActivity?.activity : undefined
+    pathname === AI_activityContentPath ? mainActivity?.activity : undefined
   );
 
   const fullText = `${shareText}\n\n${WEBSITE_URL}`;

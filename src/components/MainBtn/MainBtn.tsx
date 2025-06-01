@@ -1,6 +1,8 @@
+//
+// This is a general-purpose button component that adjusts to RTL languages and shows a loading spinner if needed
+//
 import styles from "./MainBtn.module.css";
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
-import { Icons } from "../Icons";
 import { useLanguage } from "../../i18n/useLanguage";
 
 type MainBtnProps = {
@@ -20,7 +22,7 @@ function MainBtn({
     isDisabled,
     type = "button",
 }: MainBtnProps) {
-    const { isHebrew, dir } = useLanguage();
+    const { dir } = useLanguage();
     const btnClassName = `${styles.main_btn} ${isDisabled ? styles.main_btn_disabled : ""}`;
 
     return (

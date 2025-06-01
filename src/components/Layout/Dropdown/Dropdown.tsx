@@ -1,3 +1,6 @@
+//
+// This is a general dropdown component that adapts to the active language and closes on outside clicks
+//
 import React, { useRef } from "react";
 import styles from "./Dropdown.module.css";
 import useClickOutside from "../../../hooks/useClickOutside";
@@ -9,7 +12,8 @@ type DropdownProps = {
 };
 
 function Dropdown({ handleClose, children }: DropdownProps) {
-    const { isHebrew } = useLanguage();
+    const { isRTL } = useLanguage();
+
     const modalRef = useRef<any>(null);
     useClickOutside(modalRef, () => handleClose());
 
@@ -17,7 +21,7 @@ function Dropdown({ handleClose, children }: DropdownProps) {
         <nav
             ref={modalRef}
             className={
-                isHebrew ? styles.nav_container : `${styles.nav_container} ${styles.ltr_nav}`
+                isRTL ? styles.nav_container : `${styles.nav_container} ${styles.ltr_nav}`
             }
         >
             <ul className={styles.ul}>
@@ -25,7 +29,7 @@ function Dropdown({ handleClose, children }: DropdownProps) {
                     <li
                         key={i}
                         className={
-                            isHebrew
+                            isRTL
                                 ? styles.navbar_option
                                 : `${styles.navbar_option} ${styles.ltr_navbar_option}`
                         }

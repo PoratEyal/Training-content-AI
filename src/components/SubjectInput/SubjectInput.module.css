@@ -5,7 +5,7 @@
     align-items: center;
     position: relative;
     width: 100%;
-    direction: rtl; /* default for Hebrew */
+    direction: rtl; /* default for RTL */
   }
   
   .input {
@@ -14,7 +14,7 @@
     border: none;
     border-radius: 14px;
     font-family: var(--font-family);
-    text-align: right; /* default for Hebrew */
+    text-align: right; /* default for RTL */
     background-color: var(--select-color);
     border: 1px solid var(--select-border-color);
     color: var(--text-color);
@@ -45,9 +45,7 @@
   }
   
   /* 
-    If you want to flip the entire container to LTR for non-Hebrew,
-    add an .ltr override. 
-  */
+    If you want to flip the entire container to LTR, add an .ltr override. */
   .ltr {
     direction: ltr !important;
   }

@@ -5,7 +5,7 @@
     left: 50%;
     transform: translateX(-50%);
     -webkit-tap-highlight-color: transparent;
-    direction: rtl; /* Default for Hebrew (RTL) */
+    direction: rtl;
   }
   
   .tell_us_title h1 {
@@ -23,10 +23,9 @@
   .tell_us_title img {
     position: absolute;
     top: 30px;
-    right: 70px; /* Default for Hebrew */
+    right: 70px; /* Default for RTL */
   }
   
-  /* Non-Hebrew override */
   .ltr_title {
     direction: ltr;
   }

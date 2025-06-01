@@ -1,10 +1,14 @@
+//
+// This Homepage component displays a fancy animated heading that says "Continue With AI"
+// It adjusts the layout and text direction based on whether the language is RTL or not
+//
 import styles from "./ContinueWithAI.module.css";
 import { useLanguage } from "../../../i18n/useLanguage";
 
 function ContinueWithAI() {
-    const { t, isHebrew } = useLanguage();
+    const { t, isRTL } = useLanguage();
 
-    if (isHebrew) {
+    if (isRTL) {
         return (
             <h1 className={styles.logo}>
                 <span className={styles.banner}>🎗</span>

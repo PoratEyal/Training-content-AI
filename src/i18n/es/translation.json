@@ -96,7 +96,7 @@
   },
   "profile": {
     "dropOptInviteFriends": {
-      "invite": "Compartir con amigos"
+      "invite": "Compartir"
     },
     "dropOptContactUs": {
       "contact": "Contáctanos"
@@ -105,10 +105,10 @@
       "logout": "Cerrar sesión"
     },
     "dropOptFQA": {
-      "fqa": "Preguntas Frecuentes"
+      "fqa": "FAQ"
     },
     "dropOptPrivacy": {
-      "policy": "Política de Privacidad"
+      "policy": "Privacidad"
     },
     "dropOptSignIn": {
       "signIn": "Iniciar sesión"

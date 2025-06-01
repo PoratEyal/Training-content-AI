@@ -1,8 +1,13 @@
+//
+// MagicBtn component generates a random subject from a given options list
+// When the button is clicked, it triggers the generation of a new subject 
+// and displays a loading indicator while the process is ongoing.
+// Once the subject is generated, it updates the state with the new subject name.
+//
 import { useState } from "react";
 import styles from "./MagicBtn.module.css";
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
 import { Icons } from "../Icons";
-
 
 type MagicBtnProps = {
     setSubject: (newSubject: string) => void;

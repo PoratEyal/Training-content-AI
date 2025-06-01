@@ -1,9 +1,15 @@
+//
+// This is a text input component for entering a subject, with a magic button to autofill suggestions
+// It adapts the layout to RTL languages and checks for blacklisted words
+//
 import React from "react";
 import styles from "./SubjectInput.module.css";
 import { isInBlackList } from "../../utils/blackList";
 import MagicBtn from "../MagicBtn/MagicBtn";
 import magicEn from "../../models/resources/en/magic.json";
+import magicEs from "../../models/resources/es/magic.json";
 import magicHe from "../../models/resources/he/magic.json";
+import magicAr from "../../models/resources/ar/magic.json";
 import { CategoryName } from "../../models/types/movement";
 import { useLanguage } from "../../i18n/useLanguage";
 
@@ -22,7 +28,7 @@ function SubjectInput({
   setSubject,
   setHasAlert,
 }: SubjectInputProps) {
-  const { isHebrew, lang } = useLanguage();
+  const { isRTL, lang } = useLanguage();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value;
@@ -37,12 +43,27 @@ function SubjectInput({
     setSubject(newSubject);
   };
 
-  const magicOptions = isHebrew ? magicHe[category] : magicEn[category];
+  let magicOptions;
+  switch (lang) {
+    case "he":
+      magicOptions = magicHe[category];
+      break;
+    case "ar":
+      magicOptions = magicAr[category];
+      break;
+    case "es":
+      magicOptions = magicEs[category];
+      break;
+    case "en":
+    default:
+      magicOptions = magicEn[category];
+      break;
+  }
 
   return (
     <div
       className={
-        isHebrew
+        isRTL
           ? styles.input_and_icon
           : `${styles.input_and_icon} ${styles.ltr}`
       }
@@ -57,7 +78,7 @@ function SubjectInput({
 
       {magicOptions && (
         <div
-          className={isHebrew ? styles.magic_btn_rtl : styles.magic_btn_ltr}
+          className={isRTL ? styles.magic_btn_rtl : styles.magic_btn_ltr}
         >
           <MagicBtn options={magicOptions} setSubject={changeSubject} />
         </div>

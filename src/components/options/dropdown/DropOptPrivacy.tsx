@@ -1,3 +1,7 @@
+//
+// This is a dropdown menu option that navigates the user to the Privacy Policy page.
+// It dynamically adjusts the navigation link based on the user's selected language.
+//
 import styles from "./dropdown.module.css";
 import { useNavigate } from "react-router-dom";
 import route from "../../../router/route.json";
@@ -10,10 +14,15 @@ type DropdownOption = {
 
 function DropOptPrivacy({ handleClose }: DropdownOption) {
   const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
-  const handleClick = async () => {
-    navigate(route.privacyPolicy);
+  // Determine the privacy policy route path based on the active language (fallback to Hebrew)
+  const privacyPolicyPath =
+    route[`privacyPolicy${lang.charAt(0).toUpperCase() + lang.slice(1)}`] ||
+    "/he/privacy-policy";
+
+  const handleClick = () => {
+    navigate(privacyPolicyPath);
     handleClose();
   };
 

@@ -1,13 +1,33 @@
+//
+// This component displays the Terms and Conditions (TSCs) popup
+// It loads the policy based on the active language and adjusts the layout for RTL languages
+//
 import styles from "./TSCs.module.css";
 import policyHe from "../../models/resources/he/policy.json";
 import policyEn from "../../models/resources/en/policy.json";
+import policyEs from "../../models/resources/es/policy.json";
+import policyAr from "../../models/resources/ar/policy.json";
 import Popup from "../core/Popup/Popup";
 import MainBtn from "../MainBtn/MainBtn";
 import { useLanguage } from "../../i18n/useLanguage";
 
 function TSCs({ handleAccept }) {
-  const { isHebrew, dir, t } = useLanguage();
-  const currentPolicy = isHebrew ? policyHe : policyEn;
+  const { isRTL, dir, t, lang } = useLanguage();
+
+  // Dynamically load the policy based on the language
+  const currentPolicy = (() => {
+    switch (lang) {
+      case "he":
+        return policyHe;
+      case "ar":
+        return policyAr;
+      case "es":
+        return policyEs;
+      case "en":
+      default:
+        return policyEn;
+    }
+  })();
 
   const policyItems = [
     currentPolicy.p0,

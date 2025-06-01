@@ -35,8 +35,7 @@
     height: 30px;
   }
   
-  /* If we need to flip container direction for English (or Hebrew),
-     you can apply .rtl in the JSX to override. */
+  /* If we need to flip container direction for RTL languages, you can apply .rtl in the JSX to override. */
   .rtl {
     direction: rtl;
   }
