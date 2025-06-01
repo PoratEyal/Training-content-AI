@@ -1,7 +1,7 @@
 import { Movement } from "../types/movement";
 
 /**
- * Dont forget to also update
+ * Dont forget to also update 
  * ./models/types/movement.ts for the new Movement type and
  * ./models/resources/he/select.ts for MovmentsOptions
  */
@@ -251,7 +251,8 @@ export const Movements = {
                 },
             ],
         } as Movement,
-    }, en: {
+    },
+    en: {
         other: {
             name: "other",
             title: "Other",
@@ -310,7 +311,7 @@ export const Movements = {
         } as Movement,
         environmentalAndNatureGroups: {
             name: "EnvironmentalAndNatureGroups",
-            title: "Environmental & Nature Groups",
+            title: "Environmental & Nature Groups",
             categories: [
                 {
                     name: "contant",
@@ -319,6 +320,150 @@ export const Movements = {
                 {
                     name: "playTime",
                     title: "Play Time",
+                },
+            ],
+        } as Movement
+    },
+    es: {
+        other: {
+            name: "other",
+            title: "Otro",
+            categories: [
+                {
+                    name: "contant",
+                    title: "Actividad de Contenido",
+                },
+                {
+                    name: "playTime",
+                    title: "Tiempo de Juego",
+                }
+            ],
+        } as Movement,
+        scouts: {
+            name: "Scouts",
+            title: "Scouts",
+            categories: [
+                {
+                    name: "contant",
+                    title: "Actividad de Contenido",
+                },
+                {
+                    name: "playTime",
+                    title: "Tiempo de Juego",
+                },
+            ],
+        } as Movement,
+        youthLeadershipPrograms: {
+            name: "YouthLeadershipPrograms",
+            title: "Programas de Liderazgo Juvenil",
+            categories: [
+                {
+                    name: "contant",
+                    title: "Actividad de Contenido",
+                },
+                {
+                    name: "playTime",
+                    title: "Tiempo de Juego",
+                },
+            ],
+        } as Movement,
+        faithBasedYouthGroups: {
+            name: "FaithBasedYouthGroups",
+            title: "Grupos Juveniles Basados en la Fe",
+            categories: [
+                {
+                    name: "contant",
+                    title: "Actividad de Contenido",
+                },
+                {
+                    name: "playTime",
+                    title: "Tiempo de Juego",
+                },
+            ],
+        } as Movement,
+        environmentalAndNatureGroups: {
+            name: "EnvironmentalAndNatureGroups",
+            title: "Grupos Ambientales y de la Naturaleza",
+            categories: [
+                {
+                    name: "contant",
+                    title: "Actividad de Contenido",
+                },
+                {
+                    name: "playTime",
+                    title: "Tiempo de Juego",
+                },
+            ],
+        } as Movement
+    },
+    ar: {
+        other: {
+            name: "other",
+            title: "آخر",
+            categories: [
+                {
+                    name: "contant",
+                    title: "نشاط محتوى",
+                },
+                {
+                    name: "playTime",
+                    title: "وقت اللعب",
+                }
+            ],
+        } as Movement,
+        scouts: {
+            name: "Scouts",
+            title: "الكشافة",
+            categories: [
+                {
+                    name: "contant",
+                    title: "نشاط محتوى",
+                },
+                {
+                    name: "playTime",
+                    title: "وقت اللعب",
+                },
+            ],
+        } as Movement,
+        youthLeadershipPrograms: {
+            name: "YouthLeadershipPrograms",
+            title: "برامج القيادة للشباب",
+            categories: [
+                {
+                    name: "contant",
+                    title: "نشاط محتوى",
+                },
+                {
+                    name: "playTime",
+                    title: "وقت اللعب",
+                },
+            ],
+        } as Movement,
+        faithBasedYouthGroups: {
+            name: "FaithBasedYouthGroups",
+            title: "مجموعات الشباب القائمة على الإيمان",
+            categories: [
+                {
+                    name: "contant",
+                    title: "نشاط محتوى",
+                },
+                {
+                    name: "playTime",
+                    title: "وقت اللعب",
+                },
+            ],
+        } as Movement,
+        environmentalAndNatureGroups: {
+            name: "EnvironmentalAndNatureGroups",
+            title: "المجموعات البيئية والطبيعية",
+            categories: [
+                {
+                    name: "contant",
+                    title: "نشاط محتوى",
+                },
+                {
+                    name: "playTime",
+                    title: "وقت اللعب",
                 },
             ],
         } as Movement

@@ -1,3 +1,8 @@
+//
+// This is a language selection popup that lets users switch between supported languages.
+// On language change, it clears the session data, updates the user's language in the database (if logged in),
+// clears app data, and navigates to the home page for the new language.
+//
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import styles from "./LangPopup.module.css";
@@ -21,6 +26,10 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  // Dynamically determine the home page path for the new language (fallback to Hebrew)
+  const getHomePagePath = (newLang: string) =>
+    route[`home${newLang.charAt(0).toUpperCase() + newLang.slice(1)}`] || "/he";
+
   const closePopup = (callback?: () => void) => {
     if (callback) callback();
     handleClose();
@@ -32,6 +41,7 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
     localStorage.setItem("i18nextLng", newLang);
     sessionStorage.removeItem("data");
 
+    // If user is logged in, reset their movement details in DB
     if (currentUser) {
       await fetchUpdateUser({
         user: {
@@ -40,16 +50,16 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
             movement: null,
             grade: null,
             gender: null,
-            amount: null
-          }
-        }
+            amount: null,
+          },
+        },
       });
     }
 
     clearAll();
     changeLang(newLang);
     closePopup(() => {
-      navigate(route.home);
+      navigate(getHomePagePath(newLang));
     });
 
     setIsLoading(false);
@@ -67,12 +77,11 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
         className={styles.popupContent}
         onClick={(e) => e.stopPropagation()}
       >
-        {isLoading && (
+        {isLoading ? (
           <div className={styles.loaderContainer}>
             <PageLoading />
           </div>
-        )}
-        {!isLoading && (
+        ) : (
           <div className={styles.buttonContainer}>
             <button
               onClick={() => changeLanguage("he")}
@@ -89,6 +98,22 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
               English
             </button>
 
+            {/* <button
+              onClick={() => changeLanguage("es")}
+              className={styles.languageButton}
+              disabled={lang === "es"}
+            >
+              Español
+            </button> */}
+
+            {/* <button
+              onClick={() => changeLanguage("ar")}
+              className={styles.languageButton}
+              disabled={lang === "ar"}
+            >
+              العربية
+            </button> */}
+            
           </div>
         )}
       </div>

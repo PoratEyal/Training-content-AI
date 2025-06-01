@@ -1,3 +1,6 @@
+//
+// This is a navigation option button for the “My Saved Activities” page in the bottom navbar.
+//
 import styles from "./navbar.module.css";
 import route from "../../../router/route.json";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -6,24 +9,27 @@ import { Icons } from "../../Icons";
 import { useLanguage } from "../../../i18n/useLanguage";
 
 const NavOptMyActivities = () => {
-    const { t } = useLanguage();
-    const [isSelected, setIsSelected] = useState<boolean>(false);
-    const navigate = useNavigate();
-    const location = useLocation();
+  const { t, lang } = useLanguage();
+  const [isSelected, setIsSelected] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    useEffect(() => {
-        setIsSelected(location.pathname === route.myactivities);
-    }, [location.pathname]);
+  // Determine the language-specific path for My Saved Activities (fallback to He)
+  const myActivitiesPath = route[`mySavedActivities${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.MY_ActivitiesL1He;
 
-    return (
-        <div
-            onClick={() => navigate(route.myactivities)}
-            className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
-        >
-            <Icons.bookmark className={styles.icon} />
-            <span className={styles.text}>{t("navbar.myActivities")}</span>
-        </div>
-    );
+  useEffect(() => {
+    setIsSelected(location.pathname === myActivitiesPath);
+  }, [location.pathname, myActivitiesPath]);
+
+  return (
+    <div
+      onClick={() => navigate(myActivitiesPath)}
+      className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
+    >
+      <Icons.bookmark className={styles.icon} />
+      <span className={styles.text}>{t("navbar.myActivities")}</span>
+    </div>
+  );
 };
 
 export default NavOptMyActivities;

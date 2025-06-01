@@ -1,4 +1,6 @@
-import React from "react";
+//
+// This is a general-purpose start button that adjusts layout and icon direction for RTL languages and shows a loading spinner if needed
+//
 import styles from "./StartBtn.module.css";
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
 import { Icons } from "../Icons";
@@ -12,7 +14,7 @@ type StartBtnProps = {
 };
 
 function StartBtn({ onClick, text, isDisabled, isLoading = false }: StartBtnProps) {
-    const { dir, isHebrew } = useLanguage();
+    const { dir, isRTL } = useLanguage();
 
     const btnClassName = `${styles.main_btn} ${isDisabled ? styles.main_btn_disabled : ""}`;
 
@@ -32,7 +34,7 @@ function StartBtn({ onClick, text, isDisabled, isLoading = false }: StartBtnProp
                     <div className={styles.btn_icon} style={{ opacity: isDisabled ? 0.5 : 1 }}>
                         <Icons.chevronsLeft
                             className={styles.icon}
-                            style={{ transform: isHebrew ? "none" : "rotate(180deg)" }}
+                            style={{ transform: isRTL ? "none" : "rotate(180deg)" }} // fixed!
                         />
                     </div>
                 </div>

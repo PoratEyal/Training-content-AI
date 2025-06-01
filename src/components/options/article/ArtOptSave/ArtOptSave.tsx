@@ -1,3 +1,10 @@
+//
+// This component allows users to save or unsave an activity as a bookmark.
+// It supports toggling the saved state based on user interaction.
+// It uses a cooldown to prevent rapid repeated actions (DDoS prevention).
+// The state of the activity is synchronized with the server and app contexts.
+// Dynamic translations are used for text, and layout direction adapts to the selected language.
+//
 import React, { useEffect, useState } from "react";
 import styles from "./ArtOptSave.module.css";
 import { Activity } from "../../../../models/types/activity";

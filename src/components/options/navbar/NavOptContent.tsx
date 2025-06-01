@@ -1,3 +1,7 @@
+//
+// This is a navigation option button that takes users to the ActivityWiz Static Content page.
+// The path dynamically adapts to the current active language.
+//
 import { useLocation, useNavigate } from "react-router-dom";
 import route from "../../../router/route.json";
 import styles from "./navbar.module.css";
@@ -6,24 +10,28 @@ import { Icons } from "../../Icons";
 import { useLanguage } from "../../../i18n/useLanguage";
 
 const NavOptContent = () => {
-    const { t } = useLanguage();
-    const [isSelected, setIsSelected] = useState<boolean>(false);
-    const navigate = useNavigate();
-    const location = useLocation();
+  const { t, lang } = useLanguage();
+  const [isSelected, setIsSelected] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    useEffect(() => {
-        setIsSelected(location.pathname.includes(route.content) ? true : false);
-    }, [location.pathname]);
+  // Determine the language-specific path for the content page (fallback to Hebrew)
+  const awActivitiesL1Path = route[`staticSubjects${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesL1He;
 
-    return (
-        <div
-            onClick={() => navigate(route.content)}
-            className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
-        >
-            <Icons.output className={styles.icon} />
-            <span className={styles.text}>{t("navbar.content")}</span>
-        </div>
-    );
+
+  useEffect(() => {
+    setIsSelected(location.pathname.includes(awActivitiesL1Path));
+  }, [location.pathname, awActivitiesL1Path]);
+
+  return (
+    <div
+      onClick={() => navigate(awActivitiesL1Path)}
+      className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
+    >
+      <Icons.output className={styles.icon} />
+      <span className={styles.text}>{t("navbar.content")}</span>
+    </div>
+  );
 };
 
 export default NavOptContent;

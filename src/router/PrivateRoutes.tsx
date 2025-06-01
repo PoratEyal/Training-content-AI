@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import { Outlet } from "react-router-dom"
 import TSCs from "../components/TSCs/TSCs"
 import { useCookiesContext } from "../context/CookiesContext"
-import ReviewPopup from "../components/ReviewPopup/ReviewPopup"
+import PopupFeedback from "../components/PopupFeedback/PopupFeedback"
 import { useAuthContext } from "../context/AuthContext"
 import { fetchUpdateIsMsg } from "../utils/fetch"
 
@@ -40,7 +40,7 @@ const PrivateRoutes = () => {
     return (
         <React.Fragment>
             {tscs && <TSCs handleAccept={handleAcceptTerms} />}
-            {whatsNew && <ReviewPopup handleClose={handleWhatsNewClose} msg={whatsNewMsg} />}
+            {whatsNew && <PopupFeedback handleClose={handleWhatsNewClose} msg={whatsNewMsg} />}
             <Outlet />
         </React.Fragment>
     )

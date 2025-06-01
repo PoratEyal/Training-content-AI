@@ -1,3 +1,6 @@
+//
+// This is a text input component with a 40-character limit, adjusting its layout for RTL languages
+//
 import React from "react";
 import styles from "./MoreDetailsInput.module.css";
 import { useLanguage } from "../../i18n/useLanguage";
@@ -9,7 +12,7 @@ type MoreDetailsInputProps = {
 };
 
 function MoreDetailsInput({ placeholder, text, setText }: MoreDetailsInputProps) {
-    const { isHebrew } = useLanguage();
+    const { isRTL } = useLanguage();
 
     const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         const newValue = event.target.value as string;
@@ -21,7 +24,7 @@ function MoreDetailsInput({ placeholder, text, setText }: MoreDetailsInputProps)
 
     return (
         <div
-            className={isHebrew ? styles.input_and_icon : `${styles.input_and_icon} ${styles.ltr}`}
+            className={isRTL ? styles.input_and_icon : `${styles.input_and_icon} ${styles.ltr}`}
         >
             <textarea
                 content="width=device-width, initial-scale=1.0, user-scalable=no"

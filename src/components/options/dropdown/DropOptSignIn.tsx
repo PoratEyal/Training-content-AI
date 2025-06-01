@@ -1,3 +1,7 @@
+//
+// This is a dropdown option that initiates the sign-in process for the user.
+// It uses Google sign-in and dynamically navigates to the group details page based on language.
+//
 import useSignIn from "../../../hooks/useSignIn";
 import { useNavigate } from "react-router-dom";
 import route from "../../../router/route.json";
@@ -11,8 +15,13 @@ type DropOptSignInProps = {
 
 function DropOptSignIn({ handleClose }: DropOptSignInProps) {
   const navigate = useNavigate();
-  const { t } = useLanguage();
-  const handleStart = () => navigate(route.details);
+  const { t, lang } = useLanguage();
+
+  // Determine the group details path based on the active language (fallback to Hebrew)
+  const groupDetailsPath =
+    route[`groupDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || "/he/details";
+
+  const handleStart = () => navigate(groupDetailsPath);
   const { signInWithGoogle } = useSignIn(handleStart);
 
   const handleClick = () => {

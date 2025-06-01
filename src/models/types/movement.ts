@@ -1,10 +1,18 @@
-
+//
+// This file defines types related to youth movements and their categories
+// MovementName: possible names of movements
+// Movement: a movement with a name, title, and categories
+// CategoryName: available activity categories
+// Category: a category with a name and title
+// UserMovementDetails: structure holding user-provided movement details (like movement name, grade, gender, and amount)
+//
 
 export type MovementName =
     //Common
     | "scout"
     | "other"
-    //Hebrew
+
+    //Israeli
     | "oved"
     | "akiva"
     | "maccabi"
@@ -19,7 +27,8 @@ export type MovementName =
     | "sayarut"
     | "agricultural"
     | "shinshin"
-    //English
+
+    //Rest of the World
     | "Scouts"
     | "YouthLeadershipPrograms"
     | "FaithBasedYouthGroups"

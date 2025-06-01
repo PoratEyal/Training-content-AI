@@ -13,7 +13,6 @@ export const MovmentsOptions = {
         { value: Movements.he.bitar.name, label: Movements.he.bitar.title },
         { value: Movements.he.hadasha.name, label: Movements.he.hadasha.title },
         { value: Movements.he.medtchim.name, label: Movements.he.medtchim.title },
-        // { value: Movements.krembo.name, label: Movements.krembo.title },
         { value: Movements.he.meshachim.name, label: Movements.he.meshachim.title },
         { value: Movements.he.sayarut.name, label: Movements.he.sayarut.title },
         { value: Movements.he.noam.name, label: Movements.he.noam.title },
@@ -59,7 +58,36 @@ export const GradeOptions = {
         { value: "grade 11", label: "Grade 11" },
         { value: "grade 12", label: "Grade 12" },
     ] as SelectOption[],
+    es: [
+        { value: "grado 1", label: "Grado 1" },
+        { value: "grado 2", label: "Grado 2" },
+        { value: "grado 3", label: "Grado 3" },
+        { value: "grado 4", label: "Grado 4" },
+        { value: "grado 5", label: "Grado 5" },
+        { value: "grado 6", label: "Grado 6" },
+        { value: "grado 7", label: "Grado 7" },
+        { value: "grado 8", label: "Grado 8" },
+        { value: "grado 9", label: "Grado 9" },
+        { value: "grado 10", label: "Grado 10" },
+        { value: "grado 11", label: "Grado 11" },
+        { value: "grado 12", label: "Grado 12" },
+    ] as SelectOption[],
+    ar: [
+        { value: "الصف 1", label: "الصف 1" },
+        { value: "الصف 2", label: "الصف 2" },
+        { value: "الصف 3", label: "الصف 3" },
+        { value: "الصف 4", label: "الصف 4" },
+        { value: "الصف 5", label: "الصف 5" },
+        { value: "الصف 6", label: "الصف 6" },
+        { value: "الصف 7", label: "الصف 7" },
+        { value: "الصف 8", label: "الصف 8" },
+        { value: "الصف 9", label: "الصف 9" },
+        { value: "الصف 10", label: "الصف 10" },
+        { value: "الصف 11", label: "الصف 11" },
+        { value: "الصف 12", label: "الصف 12" },
+    ] as SelectOption[],
 };
+
 
 export const AmountOptions = {
     he: [
@@ -78,7 +106,24 @@ export const AmountOptions = {
         { value: "30-50", label: "30-50" },
         { value: "60+", label: "60+" },
     ] as SelectOption[],
+    es: [
+        { value: "1-5", label: "1-5" },
+        { value: "5-10", label: "5-10" },
+        { value: "10-20", label: "10-20" },
+        { value: "20-30", label: "20-30" },
+        { value: "30-50", label: "30-50" },
+        { value: "60+", label: "60+" },
+    ] as SelectOption[],
+    ar: [
+        { value: "1-5", label: "1-5" },
+        { value: "5-10", label: "5-10" },
+        { value: "10-20", label: "10-20" },
+        { value: "20-30", label: "20-30" },
+        { value: "30-50", label: "30-50" },
+        { value: "60+", label: "60+" },
+    ] as SelectOption[],
 };
+
 
 export const PlaceOptions = {
     he: [
@@ -91,7 +136,18 @@ export const PlaceOptions = {
         { value: "indoor", label: "Indoor" },
         { value: "outdoor", label: "Outdoor" },
     ] as SelectOption[],
+    es: [
+        { value: "no especificado", label: "Cualquiera" },
+        { value: "interior", label: "Interior" },
+        { value: "exterior", label: "Exterior" },
+    ] as SelectOption[],
+    ar: [
+        { value: "غير محدد", label: "أي" },
+        { value: "داخلية", label: "داخلية" },
+        { value: "خارجية", label: "خارجية" },
+    ] as SelectOption[],
 };
+
 
 export const GenderOptions = {
     he: [
@@ -104,22 +160,43 @@ export const GenderOptions = {
         { value: "girls", label: "Girls" },
         { value: "mixed", label: "Mixed" },
     ] as SelectOption[],
+    es: [
+        { value: "niños", label: "Niños" },
+        { value: "niñas", label: "Niñas" },
+        { value: "mixto", label: "Mixto" },
+    ] as SelectOption[],
+    ar: [
+        { value: "أولاد", label: "أولاد" },
+        { value: "بنات", label: "بنات" },
+        { value: "مختلط", label: "مختلط" },
+    ] as SelectOption[],
 };
+
 
 export const ActivityTimeOptions = {
     he: [
         { value: "20 דקות", label: "20 דקות" },
         { value: "חצי שעה", label: "חצי שעה" },
-        // { value: "45 דקות", label: "45 דקות" },
         { value: "שעה", label: "שעה" },
         { value: "שעה וחצי", label: "שעה וחצי" },
-        // { value: "שעתיים", label: "שעתיים" },
     ] as SelectOption[],
     en: [
         { value: "20 minutes", label: "20 minutes" },
         { value: "half hour", label: "Half hour" },
         { value: "hour", label: "Hour" },
         { value: "hour and a half", label: "Hour and a half" },
+    ] as SelectOption[],
+    es: [
+        { value: "20 minutos", label: "20 minutos" },
+        { value: "media hora", label: "Media hora" },
+        { value: "hora", label: "Hora" },
+        { value: "hora y media", label: "Hora y media" },
+    ] as SelectOption[],
+    ar: [
+        { value: "20 دقيقة", label: "20 دقيقة" },
+        { value: "نصف ساعة", label: "نصف ساعة" },
+        { value: "ساعة", label: "ساعة" },
+        { value: "ساعة ونصف", label: "ساعة ونصف" },
     ] as SelectOption[],
 };
 
@@ -134,9 +211,20 @@ export const ContestOptions = {
         // competitiveness
         { value: "not specified", label: "Any" },
         { value: "with groups", label: "Teams" },
-        { value: "without groups", label: "No teams" },
+        { value: "without groups", label: "No teams" },
+    ] as SelectOption[],
+    es: [
+        { value: "no especificado", label: "Cualquiera" },
+        { value: "con grupos", label: "Equipos" },
+        { value: "sin grupos", label: "Sin equipos" },
+    ] as SelectOption[],
+    ar: [
+        { value: "غير محدد", label: "أي" },
+        { value: "مع مجموعات", label: "فرق" },
+        { value: "بدون مجموعات", label: "بدون فرق" },
     ] as SelectOption[],
 };
+
 
 export const ToolsOptions = {
     he: [
@@ -149,7 +237,16 @@ export const ToolsOptions = {
         { value: "not specified", label: "Any" },
         { value: "without tools", label: "No materials" },
     ] as SelectOption[],
+    es: [
+        { value: "no especificado", label: "Cualquiera" },
+        { value: "sin herramientas", label: "Sin materiales" },
+    ] as SelectOption[],
+    ar: [
+        { value: "غير محدد", label: "أي" },
+        { value: "بدون أدوات", label: "بدون مواد" },
+    ] as SelectOption[],
 };
+
 
 export const ReligionOptions: SelectOption[] = [
     //שומר שבת
@@ -162,10 +259,3 @@ export const CategoryOptions = (options: Category[]): SelectOption[] => {
         return { value: option.name, label: option.title };
     });
 };
-
-// export const BehaviorOptions: SelectOption[] = [//התנהגות
-//   { value: "רגוע", label: "רגוע" },
-//   { value: "רועש", label: "רועש" },
-//   { value: "שקט", label: "שקט" },
-//   { value: "מתפזר", label: "מתפזר" },
-// ];
