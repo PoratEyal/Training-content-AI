@@ -29,13 +29,13 @@ const detectCountryAndInit = async () => {
       // Spanish-speaking countries
       const spanishSpeakingCountries = [
         "ES", "MX", "AR", "CO", "PE", "VE", "CL", "EC", "GT", "CU", "BO",
-        "DO", "HN", "PY", "SV", "NI", "CR", "PA", "UY", "GQ", "PR"
+        "DO", "HN", "PY", "SV", "NI", "CR", "PA", "UY"
       ];
 
       // Arabic-speaking countries
       const arabicSpeakingCountries = [
         "SA", "AE", "DZ", "EG", "IQ", "JO", "KW", "LB", "LY", "MA", "OM",
-        "QA", "SY", "TN", "YE", "BH", "SD", "MR", "DJ", "KM", "SO"
+        "QA", "SY", "TN", "YE", "BH", "SD", "MR", "DJ", "KM"
       ];
 
       if (countryCode === "IL") {
