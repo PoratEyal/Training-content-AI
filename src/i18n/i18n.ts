@@ -10,7 +10,7 @@ const resources: Record<Lng, { translation: any }> = {
   en: { translation: translationEN },
   he: { translation: translationHE },
   es: { translation: translationES },
-  ar: { translation: translationAR }, // תוסיף את זה!
+  ar: { translation: translationAR },
 };
 
 export const initI18n = async (detectedLang: Lng) => {
@@ -19,7 +19,7 @@ export const initI18n = async (detectedLang: Lng) => {
     .init({
       lng: detectedLang,
       resources,
-      supportedLngs: ["en", "he", "es", "ar"], // תוסיף את זה!
+      supportedLngs: ["en", "he", "es", "ar"],
       fallbackLng: "en",
       interpolation: { escapeValue: false },
     });

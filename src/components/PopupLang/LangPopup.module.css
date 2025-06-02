@@ -53,6 +53,11 @@
   font-weight: 400;
 }
 
+.languageButton[lang="ar"] {
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-weight: 700;
+}
+
 .loaderContainer {
   display: flex;
   justify-content: center;
