@@ -2,12 +2,12 @@ import styles from "./CreateYourActivity.module.css";
 import { useLanguage } from "../../../i18n/useLanguage";
 
 function CreateYourActivity() {
-  const { isEnglish, t } = useLanguage();
+  const { isRTL, t } = useLanguage();
 
   return (
     <div
       className={
-        isEnglish
+        !isRTL
           ? `${styles.create_your_activity_title} ${styles.ltr}`
           : styles.create_your_activity_title
       }

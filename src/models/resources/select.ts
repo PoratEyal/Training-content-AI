@@ -27,6 +27,20 @@ export const MovmentsOptions = {
         { value: Movements.en.environmentalAndNatureGroups.name, label: Movements.en.environmentalAndNatureGroups.title },
         { value: Movements.en.other.name, label: Movements.en.other.title }
     ] as SelectOption[],
+    es: [
+        { value: Movements.en.youthLeadershipPrograms.name, label: Movements.en.youthLeadershipPrograms.title },
+        { value: Movements.en.scouts.name, label: Movements.en.scouts.title },
+        { value: Movements.en.faithBasedYouthGroups.name, label: Movements.en.faithBasedYouthGroups.title },
+        { value: Movements.en.environmentalAndNatureGroups.name, label: Movements.en.environmentalAndNatureGroups.title },
+        { value: Movements.en.other.name, label: Movements.en.other.title }
+    ] as SelectOption[],
+    ar: [
+        { value: Movements.en.youthLeadershipPrograms.name, label: Movements.en.youthLeadershipPrograms.title },
+        { value: Movements.en.scouts.name, label: Movements.en.scouts.title },
+        { value: Movements.en.faithBasedYouthGroups.name, label: Movements.en.faithBasedYouthGroups.title },
+        { value: Movements.en.environmentalAndNatureGroups.name, label: Movements.en.environmentalAndNatureGroups.title },
+        { value: Movements.en.other.name, label: Movements.en.other.title }
+    ] as SelectOption[],
 };
 
 export const GradeOptions = {

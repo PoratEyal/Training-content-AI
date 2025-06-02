@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 import styles from "./PageLayout.module.css";
@@ -43,15 +43,37 @@ function PageLayout({
   const location = useLocation();
   const canonicalUrl = `${WEBSITE_URL}${location.pathname}`;
 
+  // Set <html lang> and <html dir> directly
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = dir;
+  }, [lang, dir]);
+
   // Build alternate URLs for hreflang
   let alternateHe = canonicalUrl;
   let alternateEn = canonicalUrl;
+  let alternateEs = canonicalUrl;
+  let alternateAr = canonicalUrl;
+
   if (location.pathname.startsWith("/en")) {
-    alternateHe = `${WEBSITE_URL}${location.pathname.replace(/^\/en/, "") || "/"}`;
-    alternateEn = canonicalUrl;
+    const restOfPath = location.pathname.replace(/^\/en/, "") || "/";
+    alternateHe = `${WEBSITE_URL}${restOfPath}`;
+    alternateEs = `${WEBSITE_URL}/es${restOfPath}`;
+    alternateAr = `${WEBSITE_URL}/ar${restOfPath}`;
+  } else if (location.pathname.startsWith("/es")) {
+    const restOfPath = location.pathname.replace(/^\/es/, "") || "/";
+    alternateHe = `${WEBSITE_URL}${restOfPath}`;
+    alternateEn = `${WEBSITE_URL}/en${restOfPath}`;
+    alternateAr = `${WEBSITE_URL}/ar${restOfPath}`;
+  } else if (location.pathname.startsWith("/ar")) {
+    const restOfPath = location.pathname.replace(/^\/ar/, "") || "/";
+    alternateHe = `${WEBSITE_URL}${restOfPath}`;
+    alternateEn = `${WEBSITE_URL}/en${restOfPath}`;
+    alternateEs = `${WEBSITE_URL}/es${restOfPath}`;
   } else {
-    alternateHe = canonicalUrl;
     alternateEn = `${WEBSITE_URL}/en${location.pathname === "/" ? "" : location.pathname}`;
+    alternateEs = `${WEBSITE_URL}/es${location.pathname === "/" ? "" : location.pathname}`;
+    alternateAr = `${WEBSITE_URL}/ar${location.pathname === "/" ? "" : location.pathname}`;
   }
 
   const pageTitle = getTitle(id, lang, title);
@@ -79,6 +101,8 @@ function PageLayout({
         <link rel="canonical" href={canonicalUrl} />
         <link rel="alternate" href={alternateHe} hrefLang="he" />
         <link rel="alternate" href={alternateEn} hrefLang="en" />
+        <link rel="alternate" href={alternateEs} hrefLang="es" />
+        <link rel="alternate" href={alternateAr} hrefLang="ar" />
 
         {/* Robots */}
         <meta
@@ -86,9 +110,6 @@ function PageLayout({
           name="robots"
           content={index ? "index, follow" : "noindex, follow"}
         />
-
-        {/* Language and direction */}
-        <html lang={lang} dir={dir} />
       </Helmet>
 
       <section
