@@ -286,11 +286,16 @@ export const helmetJson: Record<Lng, LanguageSection> = {
 
 
 export const getTitle = (page: HelmetPage, i18n: string, title?: string) => {
-    if (title) return title;
-    return helmetJson[i18n][page].title;
+  if (title) return title;
+  const langData = helmetJson[i18n as Lng] || helmetJson["en"];
+  const pageData = langData[page] || helmetJson["en"][page];
+  return pageData?.title || "Youth Movement Activities";
 };
 
 export const getContent = (page: HelmetPage, i18n: string, content?: string) => {
-    if (content) return content;
-    return helmetJson[i18n][page].content;
+  if (content) return content;
+  const langData = helmetJson[i18n as Lng] || helmetJson["en"];
+  const pageData = langData[page] || helmetJson["en"][page];
+  return pageData?.content || "Discover a variety of youth movement activities.";
 };
+

@@ -1,5 +1,5 @@
 //
-// This is the Home page, showing the app’s entry point and start button
+// This is the Home page, showing the app’s entry point
 //
 import styles from "./HomePage.module.css"
 import { useEffect, useState, useMemo } from "react"

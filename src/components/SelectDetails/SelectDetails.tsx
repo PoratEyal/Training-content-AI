@@ -1,3 +1,8 @@
+//
+// This component renders a dropdown <select> for choosing an option
+// It automatically adjusts its text direction and style based on the active language (LTR for English/Spanish, RTL for Hebrew/Arabic)
+// It updates the selected value when changed and highlights the text color for selected items
+//
 import React, { useEffect, useState } from "react";
 import { SelectOption } from "../../models/types/common";
 import styles from "./SelectDetails.module.css";
@@ -11,7 +16,7 @@ type SelectDetailsProps = {
 };
 
 function SelectDetails({ data, placeholder, obj, setObj }: SelectDetailsProps) {
-  const { isEnglish } = useLanguage();
+  const { dir } = useLanguage();
   const [selected, setIsSelected] = useState(obj ? true : false);
   const textColor = selected ? "#333335" : "#8b8b8b";
 
@@ -26,7 +31,11 @@ function SelectDetails({ data, placeholder, obj, setObj }: SelectDetailsProps) {
 
   return (
     <div
-      className={isEnglish ? `${styles.input_div} ${styles.ltr_div}` : styles.input_div}
+      className={
+        dir === "ltr"
+          ? `${styles.input_div} ${styles.ltr_div}`
+          : styles.input_div
+      }
     >
       <select
         style={{ color: textColor }}
