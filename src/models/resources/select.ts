@@ -28,18 +28,18 @@ export const MovmentsOptions = {
         { value: Movements.en.other.name, label: Movements.en.other.title }
     ] as SelectOption[],
     es: [
-        { value: Movements.en.youthLeadershipPrograms.name, label: Movements.en.youthLeadershipPrograms.title },
-        { value: Movements.en.scouts.name, label: Movements.en.scouts.title },
-        { value: Movements.en.faithBasedYouthGroups.name, label: Movements.en.faithBasedYouthGroups.title },
-        { value: Movements.en.environmentalAndNatureGroups.name, label: Movements.en.environmentalAndNatureGroups.title },
-        { value: Movements.en.other.name, label: Movements.en.other.title }
+        { value: Movements.es.youthLeadershipPrograms.name, label: Movements.es.youthLeadershipPrograms.title },
+        { value: Movements.es.scouts.name, label: Movements.es.scouts.title },
+        { value: Movements.es.faithBasedYouthGroups.name, label: Movements.es.faithBasedYouthGroups.title },
+        { value: Movements.es.environmentalAndNatureGroups.name, label: Movements.es.environmentalAndNatureGroups.title },
+        { value: Movements.es.other.name, label: Movements.en.other.title }
     ] as SelectOption[],
     ar: [
-        { value: Movements.en.youthLeadershipPrograms.name, label: Movements.en.youthLeadershipPrograms.title },
-        { value: Movements.en.scouts.name, label: Movements.en.scouts.title },
-        { value: Movements.en.faithBasedYouthGroups.name, label: Movements.en.faithBasedYouthGroups.title },
-        { value: Movements.en.environmentalAndNatureGroups.name, label: Movements.en.environmentalAndNatureGroups.title },
-        { value: Movements.en.other.name, label: Movements.en.other.title }
+        { value: Movements.ar.youthLeadershipPrograms.name, label: Movements.ar.youthLeadershipPrograms.title },
+        { value: Movements.ar.scouts.name, label: Movements.ar.scouts.title },
+        { value: Movements.ar.faithBasedYouthGroups.name, label: Movements.ar.faithBasedYouthGroups.title },
+        { value: Movements.ar.environmentalAndNatureGroups.name, label: Movements.ar.environmentalAndNatureGroups.title },
+        { value: Movements.ar.other.name, label: Movements.ar.other.title }
     ] as SelectOption[],
 };
 
