@@ -189,25 +189,21 @@ export const GenderOptions = {
 
 export const ActivityTimeOptions = {
     he: [
-        { value: "20 דקות", label: "20 דקות" },
         { value: "חצי שעה", label: "חצי שעה" },
         { value: "שעה", label: "שעה" },
         { value: "שעה וחצי", label: "שעה וחצי" },
     ] as SelectOption[],
     en: [
-        { value: "20 minutes", label: "20 minutes" },
         { value: "half hour", label: "Half hour" },
         { value: "hour", label: "Hour" },
         { value: "hour and a half", label: "Hour and a half" },
     ] as SelectOption[],
     es: [
-        { value: "20 minutos", label: "20 minutos" },
         { value: "media hora", label: "Media hora" },
         { value: "hora", label: "Hora" },
         { value: "hora y media", label: "Hora y media" },
     ] as SelectOption[],
     ar: [
-        { value: "20 دقيقة", label: "20 دقيقة" },
         { value: "نصف ساعة", label: "نصف ساعة" },
         { value: "ساعة", label: "ساعة" },
         { value: "ساعة ونصف", label: "ساعة ونصف" },
@@ -216,13 +212,11 @@ export const ActivityTimeOptions = {
 
 export const ContestOptions = {
     he: [
-        //תחרות
         { value: "לא משנה", label: "לא משנה" },
         { value: "עם חלוקה לקבוצות", label: "עם חלוקה לקבוצות" },
         { value: "ללא חלוקה לקבוצות", label: "ללא חלוקה לקבוצות" },
     ] as SelectOption[],
     en: [
-        // competitiveness
         { value: "not specified", label: "Any" },
         { value: "with groups", label: "Teams" },
         { value: "without groups", label: "No teams" },
@@ -242,12 +236,10 @@ export const ContestOptions = {
 
 export const ToolsOptions = {
     he: [
-        //ציוד
         { value: "לא משנה", label: "לא משנה" },
         { value: "ללא ציוד", label: "ללא ציוד" },
     ] as SelectOption[],
     en: [
-        // tools
         { value: "not specified", label: "Any" },
         { value: "without tools", label: "No materials" },
     ] as SelectOption[],
@@ -257,7 +249,7 @@ export const ToolsOptions = {
     ] as SelectOption[],
     ar: [
         { value: "غير محدد", label: "أي" },
-        { value: "بدون أدوات", label: "بدون مواد" },
+        { value: "بدون مواد", label: "بدون مواد" },
     ] as SelectOption[],
 };
 

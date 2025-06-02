@@ -145,20 +145,6 @@ export const Movements = {
                 },
             ],
         } as Movement,
-        krembo: {
-            name: "krembo",
-            title: "כנפיים של קרמבו",
-            categories: [
-                {
-                    name: "contant",
-                    title: "פעילות",
-                },
-                {
-                    name: "playTime",
-                    title: "משחק",
-                },
-            ],
-        } as Movement,
         meshachim: {
             name: "meshachim",
             title: "מדריכי של״ח צעירים",
@@ -252,21 +238,8 @@ export const Movements = {
             ],
         } as Movement,
     },
+    
     en: {
-        other: {
-            name: "other",
-            title: "Other",
-            categories: [
-                {
-                    name: "contant",
-                    title: "Content Activity",
-                },
-                {
-                    name: "playTime",
-                    title: "Play Time",
-                }
-            ],
-        } as Movement,
         scouts: {
             name: "Scouts",
             title: "Scouts",
@@ -322,23 +295,24 @@ export const Movements = {
                     title: "Play Time",
                 },
             ],
-        } as Movement
-    },
-    es: {
+        } as Movement,
         other: {
             name: "other",
-            title: "Otro",
+            title: "Other",
             categories: [
                 {
                     name: "contant",
-                    title: "Actividad de Contenido",
+                    title: "Content Activity",
                 },
                 {
                     name: "playTime",
-                    title: "Tiempo de Juego",
+                    title: "Play Time",
                 }
             ],
-        } as Movement,
+        } as Movement
+    },
+
+    es: {
         scouts: {
             name: "Scouts",
             title: "Scouts",
@@ -383,7 +357,7 @@ export const Movements = {
         } as Movement,
         environmentalAndNatureGroups: {
             name: "EnvironmentalAndNatureGroups",
-            title: "Grupos Ambientales y de la Naturaleza",
+            title: "Grupos de la Naturaleza",
             categories: [
                 {
                     name: "contant",
@@ -394,23 +368,24 @@ export const Movements = {
                     title: "Tiempo de Juego",
                 },
             ],
-        } as Movement
-    },
-    ar: {
+        } as Movement,
         other: {
             name: "other",
-            title: "آخر",
+            title: "Otro",
             categories: [
                 {
                     name: "contant",
-                    title: "نشاط محتوى",
+                    title: "Actividad de Contenido",
                 },
                 {
                     name: "playTime",
-                    title: "وقت اللعب",
+                    title: "Tiempo de Juego",
                 }
             ],
-        } as Movement,
+        } as Movement
+    },
+
+    ar: {
         scouts: {
             name: "Scouts",
             title: "الكشافة",
@@ -465,6 +440,20 @@ export const Movements = {
                     name: "playTime",
                     title: "وقت اللعب",
                 },
+            ],
+        } as Movement,
+        other: {
+            name: "other",
+            title: "آخر",
+            categories: [
+                {
+                    name: "contant",
+                    title: "نشاط محتوى",
+                },
+                {
+                    name: "playTime",
+                    title: "وقت اللعب",
+                }
             ],
         } as Movement
     }

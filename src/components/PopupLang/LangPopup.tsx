@@ -110,6 +110,7 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
               onClick={() => changeLanguage("ar")}
               className={styles.languageButton}
               disabled={lang === "ar"}
+              lang="ar"
             >
               العربية
             </button> }
