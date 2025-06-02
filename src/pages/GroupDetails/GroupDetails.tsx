@@ -21,7 +21,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import route from "../../router/route.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
-import TellUsAboutYourGroup from "../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
+import TellUsAboutYourGroup from "../../components/Titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
 import { DETAILS_AD_SLOT } from "../../models/constants/adsSlot";
 import { useLanguage } from "../../i18n/useLanguage";
 
