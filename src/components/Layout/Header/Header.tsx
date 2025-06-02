@@ -6,10 +6,10 @@ import React, { useState } from "react";
 import { useAuthContext } from "../../../context/AuthContext";
 import { Icons } from "../../Icons";
 import Profile from "../../Profile/Profile";
-import ReadyContentName from "../../titles/ReadyContentName/ReadyContentName";
+import ReadyContentName from "../../Titles/ReadyContentName/ReadyContentName";
 import styles from "./Header.module.css";
 import { useLanguage } from "../../../i18n/useLanguage";
-import LangPopup from "../../LangPopup/LangPopup";
+import LangPopup from "../../PopupLang/LangPopup";
 
 type HeaderProps = {
     goBack?: () => void;

@@ -98,21 +98,21 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
               English
             </button>
 
-            {/* <button
+            { <button
               onClick={() => changeLanguage("es")}
               className={styles.languageButton}
               disabled={lang === "es"}
             >
               Español
-            </button> */}
+            </button> }
 
-            {/* <button
+            { <button
               onClick={() => changeLanguage("ar")}
               className={styles.languageButton}
               disabled={lang === "ar"}
             >
               العربية
-            </button> */}
+            </button> }
             
           </div>
         )}

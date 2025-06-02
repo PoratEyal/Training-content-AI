@@ -172,6 +172,87 @@
   },
   "faq": {
     "title": "Preguntas Frecuentes",
-    "questions": []
+    "questions": [
+      {
+        "q": "¿Qué es ActivityWiz?",
+        "a": "ActivityWiz es una plataforma inteligente para crear actividades personalizadas para instructores y educadores. Puedes usarla para acceder a actividades listas para usar o generar nuevas automáticamente mediante inteligencia artificial."
+      },
+      {
+        "q": "¿Necesito registrarme para usar el sitio?",
+        "a": "No. Puedes navegar y usar el sitio sin registrarte, pero al registrarte desbloqueas funciones adicionales como guardar y editar tus actividades."
+      },
+      {
+        "q": "¿El sitio es gratuito?",
+        "a": "Sí."
+      },
+      {
+        "q": "¿Para quién es el sitio?",
+        "a": "Para cualquier persona que lidere grupos: líderes de movimientos juveniles, maestros, educadores, padres, consejeros adolescentes, comandantes del ejército y más."
+      },
+      {
+        "q": "¿Cómo creo una actividad personalizada?",
+        "a": "Selecciona la opción 'Crear actividad' y completa algunos detalles simples. El sistema generará una actividad lista para usar adaptada a tus necesidades."
+      },
+      {
+        "q": "¿Puedo compartir actividades con otros?",
+        "a": "¡Sí! Cada actividad se puede compartir mediante un enlace o copiando el contenido al portapapeles."
+      },
+      {
+        "q": "¿Puedo editar una actividad generada automáticamente?",
+        "a": "Sí. Puedes editar manualmente cualquier actividad para que se ajuste a tu estilo y necesidades de grupo."
+      },
+      {
+        "q": "¿Puedo guardar las actividades que creo para usarlas después?",
+        "a": "Sí. Una vez que te registres, podrás guardar cualquier actividad que hayas creado y acceder o actualizarla en cualquier momento."
+      },
+      {
+        "q": "¿El sitio estará disponible en otros idiomas además del inglés?",
+        "a": "Actualmente estamos trabajando para añadir soporte para más idiomas en un futuro cercano."
+      },
+      {
+        "q": "¿Cómo puedo contactar al equipo de ActivityWiz?",
+        "a": "Puedes comunicarte con nosotros a través del formulario de contacto en el sitio o por correo electrónico a support@activitywiz.com."
+      },
+      {
+        "q": "¿Dónde puedo encontrar ideas para actividades para Scouts o movimientos juveniles?",
+        "a": "Te invitamos a visitar ActivityWiz, donde encontrarás una amplia variedad de actividades listas para usar o podrás generar las tuyas al instante usando inteligencia artificial."
+      },
+      {
+        "q": "¿Cómo creo una actividad educativa adecuada para un grupo de edad específico?",
+        "a": "En ActivityWiz puedes seleccionar el grupo de edad objetivo y el sistema te sugerirá una actividad completa adaptada a esa edad, que incluye apertura, contenido y cierre."
+      },
+      {
+        "q": "¿Existe una forma de crear una actividad grupal que no requiera mucho equipo?",
+        "a": "Claro que sí. En ActivityWiz puedes filtrar actividades que requieran poco o ningún material, y la plataforma te proporcionará opciones acordes."
+      },
+      {
+        "q": "Estoy buscando actividades listas para usar en un campamento. ¿Hay algo así en línea?",
+        "a": "Sí. ActivityWiz ofrece actividades basadas en temas, edad, tipo de grupo y nivel de energía—perfectas para campamentos, escuelas y organizaciones juveniles."
+      },
+      {
+        "q": "Tengo una idea para una actividad—¿cómo puedo convertirla en un plan estructurado completo?",
+        "a": "Con ActivityWiz, puedes ingresar tu idea y obtener una actividad completa sugerida, incluyendo estructura, pasos y orientación para el instructor."
+      },
+      {
+        "q": "¿Cómo puedo crear una actividad que sea educativa y divertida a la vez?",
+        "a": "Eso es precisamente para lo que está diseñado ActivityWiz. Puedes crear una actividad completa que incluya estructura, contenido y reflexión, manteniéndola atractiva y adecuada para la edad."
+      },
+      {
+        "q": "¿Existe algún sitio que organice actividades por valores como el trabajo en equipo o la responsabilidad?",
+        "a": "Sí. ActivityWiz te permite buscar o generar actividades por valores, objetivos educativos y necesidades del grupo como empatía, colaboración y liderazgo."
+      },
+      {
+        "q": "Necesito una actividad para mañana y no tengo tiempo—¿alguna solución rápida?",
+        "a": "Sí. Con ActivityWiz puedes generar una actividad completa en segundos. Solo define el objetivo, el grupo de edad y la duración—y obtendrás un plan listo para usar."
+      },
+      {
+        "q": "¿Cómo sé cuál actividad se adapta mejor a mi grupo?",
+        "a": "ActivityWiz te ayuda a elegir actividades en función de la edad, el tamaño del grupo, el nivel de energía y el tiempo disponible, para darte un ajuste perfecto al instante."
+      },
+      {
+        "q": "¿Hay actividades adecuadas para grupos mixtos?",
+        "a": "Sí. Puedes definir las características de tu grupo y ActivityWiz te sugerirá actividades adaptadas para grupos diversos e inclusivos."
+      }
+    ]
   }
 }

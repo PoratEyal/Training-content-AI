@@ -19,7 +19,7 @@ import { useErrorContext } from "../../context/ErrorContext";
 import msg from "../../models/resources/errorMsg.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import { BUILD_AD_SLOT } from "../../models/constants/adsSlot";
-import CreateYourActivity from "../../components/titles/CreateYourActivity/CreateYourActivity";
+import CreateYourActivity from "../../components/Titles/CreateYourActivity/CreateYourActivity";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import {

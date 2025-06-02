@@ -1,5 +1,5 @@
 import { useLanguage } from "../../../i18n/useLanguage";
-import styles from "../ReadyContentName/ReadyContentName.module.css";
+import styles from "./ReadyContentName.module.css";
 
 type ActivityReadyProps = {
     subject: string;
