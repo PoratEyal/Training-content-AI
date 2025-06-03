@@ -1,4 +1,5 @@
 //
+// Level 1: categories static Content 
 // This page shows a list of pre-written content topics with icons and titles
 // It fetches the data from StaticContentContext and displays it as links
 // It includes a link to the 10 most popular activities and a back button to homePage
@@ -24,13 +25,13 @@ function Content() {
   useFetchSubjectsData();
 
   // Determine language-specific paths (fallback to Hebrew)
-  const AW_TopicsPath = route[`AW_Topics${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_TopicsHe;
-  const AW_PopularPath = route[`AW_ActivitiesPopular${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesPopularHe;
+  const TopicsPath = route[`Content${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.ContentHe;
+  const PopularPath = route[`ActivitiesPopular${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.ActivitiesPopularHe;
   const homePagePath = route[`homePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.homePageHe;
 
   const contentSchema = useMemo(
-    () => buildContentSchema(subjects || [], AW_TopicsPath),
-    [subjects, AW_TopicsPath]
+    () => buildContentSchema(subjects || [], TopicsPath),
+    [subjects, TopicsPath]
   );
 
   const goBack = () => {
@@ -40,7 +41,7 @@ function Content() {
   return (
     <PageLayout
       id="content"
-      path={AW_TopicsPath}
+      path={TopicsPath}
       hasHeader={{ goBack }}
       hasNavBar
       hasAds={ACTIVITY_AD_SLOT}
@@ -58,7 +59,7 @@ function Content() {
           </section>
         ) : subjects && subjects.length > 0 ? (
           <section className={styles.grid_container}>
-            <Link to={AW_PopularPath} className={styles.grid_item}>
+            <Link to={PopularPath} className={styles.grid_item}>
               <h2 className={styles.item_title}>10 הפעולות הפופולריות</h2>
               <div className={styles.icon}>
                 {Icons["GiPodium"] &&
@@ -67,7 +68,7 @@ function Content() {
             </Link>
             {subjects.map((subject, index) => (
               <Link
-                to={`${AW_TopicsPath}/${subject.name}`}
+                to={`${TopicsPath}/${subject.name}`}
                 key={index}
                 className={styles.grid_item}
               >

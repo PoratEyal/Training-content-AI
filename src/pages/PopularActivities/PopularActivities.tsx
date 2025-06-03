@@ -21,11 +21,11 @@ function PopularActivities() {
   useFetchSubjectsData();
 
   // Determine language-specific paths
-  const AW_TopicsPath = route[`AW_Topics${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_TopicsHe;
-  const AW_PopularPath = route[`AW_ActivitiesPopular${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesPopularHe;
+  const TopicsPath = route[`Content${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.ContentHe;
+  const PopularPath = route[`ActivitiesPopular${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.ActivitiesPopularHe;
 
   const goBack = () => {
-    navigate(AW_TopicsPath);
+    navigate(TopicsPath);
   };
 
   let topActivities: { activity: StaticActivities; subjectName: string }[] = [];
@@ -58,7 +58,7 @@ function PopularActivities() {
   return (
     <PageLayout
       id="popularActivities"
-      path={AW_PopularPath}
+      path={PopularPath}
       hasHeader={{ goBack }}
       hasNavBar
       hasGreenBackground
@@ -75,7 +75,7 @@ function PopularActivities() {
             {topActivities.length > 0 ? (
               topActivities.map((item, index) => (
                 <Link
-                  to={`${AW_TopicsPath}/${item.subjectName}/${item.activity.name}`}
+                  to={`${TopicsPath}/${item.subjectName}/${item.activity.name}`}
                   className={styles.grid_item}
                   key={index}
                   onClick={() => handleActivityClick(item.activity)}

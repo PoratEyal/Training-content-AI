@@ -18,11 +18,11 @@ function DropOptInviteFriends() {
   const { pathname } = useLocation();
 
   // Determine language-specific activity path
-  const AI_activityContentPath = route[`AI_activity${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AI_activityContentHe;
+  const activityContentPath = route[`activityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityAIHe;
 
   // Only include activity text in the share message if on the activity page
   const shareText = formatWhatsUp(
-    pathname === AI_activityContentPath ? mainActivity?.activity : undefined
+    pathname === activityContentPath ? mainActivity?.activity : undefined
   );
 
   const fullText = `${shareText}\n\n${WEBSITE_URL}`;

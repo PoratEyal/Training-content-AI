@@ -1,8 +1,9 @@
 //
-// This is the Content Activities page
+// Level 2: This is the Static Content Activities page
 // It displays a list of static activities under a selected Category
 // It adjusts the layout and routes dynamically based on the active language (he, en, es, ar, etc.)
 //
+
 import styles from "./ContentActivities.module.css";
 import React from "react";
 import "../../components/ActivityOutput/Markdown.css";
@@ -27,13 +28,13 @@ const ContentActivities: React.FC = () => {
   useFetchSubjectsData();
 
   // Determine the dynamic language-specific path
-  const contentActivitiesPath = route[`AW_Activities${lang.charAt(0).toUpperCase() + lang.slice(1)}`]
-    ? route[`AW_Activities${lang.charAt(0).toUpperCase() + lang.slice(1)}`].replace(":activityId", activityId || "")
-    : `${route.AW_ActivitiesHe}/${activityId}`;
+  const contentActivitiesPath = route[`Activities${lang.charAt(0).toUpperCase() + lang.slice(1)}`]
+    ? route[`Activities${lang.charAt(0).toUpperCase() + lang.slice(1)}`].replace(":activityId", activityId || "")
+    : `${route.ActivitiesHe}/${activityId}`;
 
   const goBack = () => {
-    const AW_TopicsPath = route[`AW_Topics${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesHe;
-    navigate(AW_TopicsPath);
+    const topicsPath = route[`Content${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.ContentHe;
+    navigate(topicsPath);
   };
 
   // Find the subject and sort activities by order
@@ -87,7 +88,7 @@ const ContentActivities: React.FC = () => {
             <section className={styles.grid_container}>
               {activities.map((activity, index) => (
                 <Link
-                  to={`${route[`AW_Topics${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesHe}/${activityId}/${activity.name}`}
+                  to={`/${lang}/content/${activityId}/${activity.name}`}
                   className={styles.grid_item}
                   key={index}
                   onClick={() => handleActivityClick(activity)}
