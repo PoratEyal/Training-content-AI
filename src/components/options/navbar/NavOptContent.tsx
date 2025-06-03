@@ -16,7 +16,7 @@ const NavOptContent = () => {
   const location = useLocation();
 
   // Determine the language-specific path for the content page
-  const awTopicsPath = route[`AW_Topics${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_TopicsHe;
+  const awTopicsPath = route[`Content${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.ContentHe;
 
   useEffect(() => {
     setIsSelected(location.pathname.includes(awTopicsPath));

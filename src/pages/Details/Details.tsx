@@ -41,7 +41,7 @@ function Details() {
 
   // Determine language-specific paths
   const groupDetailsPath = route[`GroupDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.GroupDetailsHe;
-  const AI_activityParamsPath = route[`AI_activityParams${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AI_activityParamsHe;
+  const activityParamsPath = route[`activityParams${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityParamsHe;
 
 
   // Populate fields only on first render (same language)
@@ -76,7 +76,7 @@ function Details() {
     e.preventDefault();
     updateDetails(movement, classLevel, numberOfChildren, gender);
     sessionStorage.setItem("currentLanguage", lang);
-    navigate(AI_activityParamsPath);
+    navigate(activityParamsPath);
   };
 
   return (

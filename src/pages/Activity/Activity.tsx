@@ -26,15 +26,14 @@ function Activity() {
   const { lang } = useLanguage();
 
   // Determine language-specific paths (fallback to He if missing)
-  const AI_activityContentPath = route[`AI_activityContent${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AI_activityContentHe;
-  const AI_activityParamsPath = route[`AI_activityParams${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AI_activityParamsHe;
-
+  const activityParamsPath = route[`activityParams${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityParamsHe;
+  const activityAIPath = route[`activityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityAIHe;
 
   const goBack = () => {
     if (isEdit) {
       readOnlyMode();
     } else {
-      navigate(AI_activityParamsPath);
+      navigate(activityParamsPath);
     }
   };
 
@@ -54,7 +53,7 @@ function Activity() {
   return (
     <PageLayout
       id="activity"
-      path={AI_activityContentPath}
+      path={activityAIPath}
       hasGreenBackground
       hasHeader={{ goBack, hasTitle: mainActivity?.subject || undefined }}
       title={helmetJson[lang].activity.title}

@@ -60,9 +60,9 @@ function BuildActivity() {
   const [hasAlert, setHasAlert] = useState(false);
 
   // Determine language-specific paths (he is the fallback)
-  const activityParamsPath = route[`AI_activityParams${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AI_activityParamsHe;
-  const activityContentPath = route[`AI_activityContent${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AI_activityContentHe;
   const homePagePath = route[`homePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.homePageHe;
+  const activityParamsPath = route[`activityParams${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityParamsHe;
+  const activityAIPath = route[`activityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityAIHe;
 
   useEffect(() => {
     const updateUser = async () => {
@@ -136,7 +136,7 @@ function BuildActivity() {
         response.activity
       ) {
         updateMainActivity({ ...response.activity });
-        navigate(activityContentPath);
+        navigate(activityAIPath);
       }
     } catch (error) {
       handleError(msg[lang].error.message);

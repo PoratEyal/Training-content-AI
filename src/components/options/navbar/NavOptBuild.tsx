@@ -18,22 +18,22 @@ const NavOptBuild = () => {
 
   // Dynamically determine language-specific paths (fallback to He paths if not available)
   const groupDetailsPath = route[`groupDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.GroupDetailsHe;
-  const AI_activityParamsPath = route[`AI_activityParams${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AI_activityParamsHe;
-  const AI_activityPath = route[`AI_activityContent${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AI_activityContentHe;
+  const activityParamsPath = route[`activityParams${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityParamsHe;
+  const activityAIPath = route[`activityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityAIHe;
 
 
   // Determine whether the current page is one of the build-related pages
   useEffect(() => {
     if (
       location.pathname === groupDetailsPath ||
-      location.pathname === AI_activityParamsPath ||
-      location.pathname === AI_activityPath
+      location.pathname === activityParamsPath ||
+      location.pathname === activityAIPath
     ) {
       setIsSelected(true);
     } else {
       setIsSelected(false);
     }
-  }, [location.pathname, groupDetailsPath, AI_activityParamsPath, AI_activityPath]);
+  }, [location.pathname, groupDetailsPath, activityParamsPath, activityAIPath]);
 
   return (
     <div
