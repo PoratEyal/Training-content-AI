@@ -2,7 +2,7 @@
 // This is the Predefined Popular Activities page
 // It displays the top 10 most viewed static activities across all subjects
 //
-import styles from "../../pages/AW-Activities/awActivities.module.css";
+import styles from "../../pages/ContentActivities/ContentActivities.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { Link, useNavigate } from "react-router-dom";

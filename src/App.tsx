@@ -12,23 +12,22 @@ import LanguageRedirect from "./components/LanguageRedirect"
 
 import HomePage from "./pages/HomePage/HomePage"
 
-import GroupDetails from "./pages/GroupDetails/GroupDetails"
+import GroupDetails from "./pages/Details/Details"
+import BuildActivityParams from "./pages/BuildActivity/BuildActivity"
+import ActivityAI from "./pages/Activity/Activity"
 
-import AI_ActivityParams from "./pages/AI-ActivityParams/AI-ActivityParams"
-import AI_ActivityContent from "./pages/AI-ActivityContent/AI-ActivityContent"
+import contentTopics from "./pages/Content/Content";
+import contentActivities from "./pages/ContentActivities/ContentActivities";
+import contentPopular from "./pages/PopularActivities/PopularActivities";
+import contentActivity from "./pages/ContentActivity/ContentActivity";
 
-import AW_Topics from "./pages/AW-Topics/awTopics";
-import AW_Activities from "./pages/AW-Activities/awActivities";
-import AW_Popular from "./pages/AW-Popular/awPopularActivities";
-import AW_ActivityContent from "./pages/AW-Activity/awActivityContent";
-
-import My_Activities from "./pages/MyActivities/MyActivities"
-import My_ActivitiyContent from "./pages/MyActivityContent/MyActivityContent"
+import myActivities from "./pages/MyActivities/MyActivities"
+import myActivitiyContent from "./pages/MyActivityContent/MyActivityContent"
 
 import AdminPage from "./pages/AdminPage/AdminPage"
 import PrivacyPolicy from "./pages/PagePrivacyPolicy/PrivacyPolicy"
-import ContactUs from "./pages/PageContactUs/ContactUs"
-import FQA from "./pages/PageFAQ/FAQ"
+import ContactUs from "./pages/ContactUs/ContactUs"
+import FQA from "./pages/FAQ/FAQ"
 
 function App() {
   return (
@@ -48,46 +47,46 @@ function App() {
           <Route path={route.GroupDetailsEs} element={<GroupDetails />} />
           <Route path={route.GroupDetailsAr} element={<GroupDetails />} />
 
-          <Route path={route.AI_activityParamsHe} element={<AI_ActivityParams />} />
-          <Route path={route.AI_activityParamsEn} element={<AI_ActivityParams />} />
-          <Route path={route.AI_activityParamsEs} element={<AI_ActivityParams />} />
-          <Route path={route.AI_activityParamsAr} element={<AI_ActivityParams />} />
+          <Route path={route.AI_activityParamsHe} element={<BuildActivityParams />} />
+          <Route path={route.AI_activityParamsEn} element={<BuildActivityParams />} />
+          <Route path={route.AI_activityParamsEs} element={<BuildActivityParams />} />
+          <Route path={route.AI_activityParamsAr} element={<BuildActivityParams />} />
 
-          <Route path={route.AI_activityContentHe} element={<AI_ActivityContent />} />
-          <Route path={route.AI_activityContentEn} element={<AI_ActivityContent />} />
-          <Route path={route.AI_activityContentEs} element={<AI_ActivityContent />} />
-          <Route path={route.AI_activityContentAr} element={<AI_ActivityContent />} />
+          <Route path={route.AI_activityContentHe} element={<ActivityAI />} />
+          <Route path={route.AI_activityContentEn} element={<ActivityAI />} />
+          <Route path={route.AI_activityContentEs} element={<ActivityAI />} />
+          <Route path={route.AI_activityContentAr} element={<ActivityAI />} />
 
 
-          <Route path={route.AW_TopicsHe} element={<AW_Topics />} />
-          <Route path={route.AW_TopicsEn} element={<AW_Topics />} />
-          <Route path={route.AW_TopicsEs} element={<AW_Topics />} />
-          <Route path={route.AW_TopicsAr} element={<AW_Topics />} />
+          <Route path={route.AW_TopicsHe} element={<contentTopics />} />
+          <Route path={route.AW_TopicsEn} element={<contentTopics />} />
+          <Route path={route.AW_TopicsEs} element={<contentTopics />} />
+          <Route path={route.AW_TopicsAr} element={<contentTopics />} />
 
-          <Route path={route.AW_ActivitiesHe} element={<AW_Activities />} />
-          <Route path={route.AW_ActivitiesEn} element={<AW_Activities />} />
-          <Route path={route.AW_ActivitiesEs} element={<AW_Activities />} />
-          <Route path={route.AW_ActivitiesAr} element={<AW_Activities />} />
+          <Route path={route.AW_ActivitiesHe} element={<contentActivities />} />
+          <Route path={route.AW_ActivitiesEn} element={<contentActivities />} />
+          <Route path={route.AW_ActivitiesEs} element={<contentActivities />} />
+          <Route path={route.AW_ActivitiesAr} element={<contentActivities />} />
 
-          <Route path={route.AW_ActivitiesPopularHe} element={<AW_Popular />} />
-          <Route path={route.AW_ActivitiesPopularEn} element={<AW_Popular />} />
-          <Route path={route.AW_ActivitiesPopularEs} element={<AW_Popular />} />
-          <Route path={route.AW_ActivitiesPopularAr} element={<AW_Popular />} />
+          <Route path={route.AW_ActivitiesPopularHe} element={<contentPopular />} />
+          <Route path={route.AW_ActivitiesPopularEn} element={<contentPopular />} />
+          <Route path={route.AW_ActivitiesPopularEs} element={<contentPopular />} />
+          <Route path={route.AW_ActivitiesPopularAr} element={<contentPopular />} />
 
-          <Route path={route.AW_ActivityContentHe} element={<AW_ActivityContent />} />
-          <Route path={route.AW_ActivityContentEn} element={<AW_ActivityContent />} />
-          <Route path={route.AW_ActivityContentEs} element={<AW_ActivityContent />} />
-          <Route path={route.AW_ActivityContentAr} element={<AW_ActivityContent />} />
+          <Route path={route.AW_ActivityContentHe} element={<contentActivity />} />
+          <Route path={route.AW_ActivityContentEn} element={<contentActivity />} />
+          <Route path={route.AW_ActivityContentEs} element={<contentActivity />} />
+          <Route path={route.AW_ActivityContentAr} element={<contentActivity />} />
 
-          <Route path={route.MY_ActivitiesHe} element={<My_Activities />} />
-          <Route path={route.MY_ActivitiesEn} element={<My_Activities />} />
-          <Route path={route.MY_ActivitiesEs} element={<My_Activities />} />
-          <Route path={route.MY_ActivitiesAr} element={<My_Activities />} />
+          <Route path={route.MY_ActivitiesHe} element={<myActivities />} />
+          <Route path={route.MY_ActivitiesEn} element={<myActivities />} />
+          <Route path={route.MY_ActivitiesEs} element={<myActivities />} />
+          <Route path={route.MY_ActivitiesAr} element={<myActivities />} />
 
-          <Route path={route.MY_ActivityContentHe} element={<My_ActivitiyContent />} />
-          <Route path={route.MY_ActivityContentEn} element={<My_ActivitiyContent />} />
-          <Route path={route.MY_ActivityContentEs} element={<My_ActivitiyContent />} />
-          <Route path={route.MY_ActivityContentAr} element={<My_ActivitiyContent />} />
+          <Route path={route.MY_ActivityContentHe} element={<myActivitiyContent />} />
+          <Route path={route.MY_ActivityContentEn} element={<myActivitiyContent />} />
+          <Route path={route.MY_ActivityContentEs} element={<myActivitiyContent />} />
+          <Route path={route.MY_ActivityContentAr} element={<myActivitiyContent />} />
 
 
           <Route path={route.contactUsHe} element={<ContactUs />} />

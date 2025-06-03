@@ -5,7 +5,7 @@
 // The form uses dynamic translations and adjusts layout direction based on language (LTR/RTL)
 // On form submission, it saves the data to the app's context and navigates to the activity-building page
 //
-import styles from "./GroupDetails.module.css";
+import styles from "./Details.module.css";
 import { useEffect, useState, useRef } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import { useNavigate } from "react-router-dom";
