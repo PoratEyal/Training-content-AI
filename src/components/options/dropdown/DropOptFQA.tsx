@@ -18,8 +18,7 @@ function DropOptLang({ handleClose }: DropdownOption) {
   const { t, lang } = useLanguage()
 
   // Determine the language-specific FAQ path (fallback to Hebrew)
-  const faqPath =
-    route[`faq${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || "/he/faq"
+  const faqPath = route[`faq${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.faqHe;
 
   const handleClick = () => {
     navigate(faqPath)

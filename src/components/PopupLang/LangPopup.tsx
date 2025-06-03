@@ -26,9 +26,8 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  // Dynamically determine the home page path for the new language (fallback to Hebrew)
-  const getHomePagePath = (newLang: string) =>
-    route[`home${newLang.charAt(0).toUpperCase() + newLang.slice(1)}`] || "/he";
+  // Dynamically determine the home page path for the NEW!!! language
+  const homePagePath = (newLang: string) => route[`homePage${newLang.charAt(0).toUpperCase() + newLang.slice(1)}`] || route.homePageHe;
 
   const closePopup = (callback?: () => void) => {
     if (callback) callback();
@@ -59,7 +58,7 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
     clearAll();
     changeLang(newLang);
     closePopup(() => {
-      navigate(getHomePagePath(newLang));
+      navigate(homePagePath(newLang));
     });
 
     setIsLoading(false);

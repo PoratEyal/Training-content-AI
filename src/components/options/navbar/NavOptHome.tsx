@@ -16,16 +16,16 @@ const NavOptHome = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Determine the language-specific home path (fallback to Hebrew)
-  const homePath = route[`home${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || "/he";
+  // Determine the language-specific home path
+  const homePagePath = route[`homePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.homePageHe;
 
   useEffect(() => {
-    setIsSelected(location.pathname === homePath);
-  }, [location.pathname, homePath]);
+    setIsSelected(location.pathname === homePagePath);
+  }, [location.pathname, homePagePath]);
 
   return (
     <div
-      onClick={() => navigate(homePath)}
+      onClick={() => navigate(homePagePath)}
       className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
     >
       <Icons.home className={styles.icon} />

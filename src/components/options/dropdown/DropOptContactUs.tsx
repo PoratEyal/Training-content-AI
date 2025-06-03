@@ -17,8 +17,7 @@ function DropOptContactUs({ handleClose }: ContactUsProps) {
   const navigate = useNavigate()
 
   // Determine the contact page route based on language (fallback to He)
-  const contactUsPath =
-    route[`contactUs${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || "/he/contact-us"
+  const contactUsPath = route[`contactUs${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.contactUsHe;
 
   const handleClick = () => {
     navigate(contactUsPath)

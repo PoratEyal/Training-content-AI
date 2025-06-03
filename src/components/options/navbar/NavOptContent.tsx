@@ -15,17 +15,16 @@ const NavOptContent = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Determine the language-specific path for the content page (fallback to Hebrew)
-  const awActivitiesL1Path = route[`staticSubjects${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesL1He;
-
+  // Determine the language-specific path for the content page
+  const awTopicsPath = route[`AW_Topics${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_TopicsHe;
 
   useEffect(() => {
-    setIsSelected(location.pathname.includes(awActivitiesL1Path));
-  }, [location.pathname, awActivitiesL1Path]);
+    setIsSelected(location.pathname.includes(awTopicsPath));
+  }, [location.pathname, awTopicsPath]);
 
   return (
     <div
-      onClick={() => navigate(awActivitiesL1Path)}
+      onClick={() => navigate(awTopicsPath)}
       className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
     >
       <Icons.output className={styles.icon} />

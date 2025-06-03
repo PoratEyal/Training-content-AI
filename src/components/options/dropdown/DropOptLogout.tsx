@@ -23,8 +23,7 @@ function DropOptLogout({ handleClose }: DropdownOption) {
   const navigate = useNavigate();
 
   // Determine the language-specific home page path (fallback to He)
-  const homePagePath =
-    route[`home${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || "/he";
+  const homePagePath = route[`homePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.homePageHe;
 
   const handleLogout = async () => {
     await logout();

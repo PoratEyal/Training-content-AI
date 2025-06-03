@@ -35,9 +35,9 @@ function ContentActivity() {
   const { isLoggedIn, currentUser } = useAuthContext();
 
   // Determine language-specific paths (fallback to Hebrew)
-  const AW_ActivitiesL1Path = route[`AW_ActivitiesL1${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesL1He;
-  const AW_ActivitiesPopularsPath = route[`AW_ActivitiesPopulars${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesPopularsHe;
-  const ActivityContentPath = `${AW_ActivitiesL1Path}/${activityId}/${contentId}`;
+  const AW_TopicsPath = route[`AW_Topics${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_TopicsHe;
+  const AW_PopularPath = route[`AW_ActivitiesPopular${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesPopularHe;
+  const AW_ActivityContentPath = `${AW_TopicsPath}/${activityId}/${contentId}`;
 
   // Determine if coming from the popular activities page
   const fromPopular = location.state?.fromPopular ?? false;
@@ -47,9 +47,9 @@ function ContentActivity() {
       readOnlyMode();
     } else {
       if (fromPopular) {
-        navigate(AW_ActivitiesPopularsPath);
+        navigate(AW_PopularPath);
       } else {
-        navigate(`${AW_ActivitiesL1Path}/${activityId}`);
+        navigate(`${AW_TopicsPath}/${activityId}`);
       }
     }
   };
@@ -85,7 +85,7 @@ function ContentActivity() {
   return (
     <PageLayout
       id="contentActivity"
-      path={ActivityContentPath}
+      path={AW_ActivityContentPath}
       hasGreenBackground
       hasHeader={{ goBack, hasTitle: activity?.title || undefined }}
       hasAds={CONTENT_ACTIVITY_AD_SLOT}

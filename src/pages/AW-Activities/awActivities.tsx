@@ -26,14 +26,14 @@ const ContentActivities: React.FC = () => {
 
   useFetchSubjectsData();
 
-  // Determine the dynamic language-specific path (fallback to He)
-  const contentActivitiesPath = route[`AW_ActivitiesL2${lang.charAt(0).toUpperCase() + lang.slice(1)}`]
-    ? route[`AW_ActivitiesL2${lang.charAt(0).toUpperCase() + lang.slice(1)}`].replace(":activityId", activityId || "")
-    : `${route.AW_ActivitiesL1He}/${activityId}`;
+  // Determine the dynamic language-specific path
+  const contentActivitiesPath = route[`AW_Activities${lang.charAt(0).toUpperCase() + lang.slice(1)}`]
+    ? route[`AW_Activities${lang.charAt(0).toUpperCase() + lang.slice(1)}`].replace(":activityId", activityId || "")
+    : `${route.AW_ActivitiesHe}/${activityId}`;
 
   const goBack = () => {
-    const AW_ActivitiesL1Path = route[`AW_ActivitiesL1${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesL1He;
-    navigate(AW_ActivitiesL1Path);
+    const AW_TopicsPath = route[`AW_Topics${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesHe;
+    navigate(AW_TopicsPath);
   };
 
   // Find the subject and sort activities by order
@@ -87,7 +87,7 @@ const ContentActivities: React.FC = () => {
             <section className={styles.grid_container}>
               {activities.map((activity, index) => (
                 <Link
-                  to={`${route[`AW_ActivitiesL1${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesL1He}/${activityId}/${activity.name}`}
+                  to={`${route[`AW_Topics${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesHe}/${activityId}/${activity.name}`}
                   className={styles.grid_item}
                   key={index}
                   onClick={() => handleActivityClick(activity)}

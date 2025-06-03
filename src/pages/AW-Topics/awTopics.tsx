@@ -3,7 +3,7 @@
 // It fetches the data from StaticContentContext and displays it as links
 // It includes a link to the 10 most popular activities and a back button to homePage
 //
-import styles from "./awCategories.module.css";
+import styles from "./awTopics.module.css";
 import React, { useMemo } from "react";
 import "../../components/ActivityOutput/Markdown.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
@@ -24,13 +24,13 @@ function Content() {
   useFetchSubjectsData();
 
   // Determine language-specific paths (fallback to Hebrew)
-  const AW_ActivitiesL1Path = route[`AW_ActivitiesL1${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesL1He;
-  const AW_ActivitiesPopularPath = route[`AW_ActivitiesPopulars${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesPopularsHe;
+  const AW_TopicsPath = route[`AW_Topics${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_TopicsHe;
+  const AW_PopularPath = route[`AW_ActivitiesPopular${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesPopularHe;
   const homePagePath = route[`homePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.homePageHe;
 
   const contentSchema = useMemo(
-    () => buildContentSchema(subjects || [], AW_ActivitiesL1Path),
-    [subjects, AW_ActivitiesL1Path]
+    () => buildContentSchema(subjects || [], AW_TopicsPath),
+    [subjects, AW_TopicsPath]
   );
 
   const goBack = () => {
@@ -40,7 +40,7 @@ function Content() {
   return (
     <PageLayout
       id="content"
-      path={AW_ActivitiesL1Path}
+      path={AW_TopicsPath}
       hasHeader={{ goBack }}
       hasNavBar
       hasAds={ACTIVITY_AD_SLOT}
@@ -58,7 +58,7 @@ function Content() {
           </section>
         ) : subjects && subjects.length > 0 ? (
           <section className={styles.grid_container}>
-            <Link to={AW_ActivitiesPopularPath} className={styles.grid_item}>
+            <Link to={AW_PopularPath} className={styles.grid_item}>
               <h2 className={styles.item_title}>10 הפעולות הפופולריות</h2>
               <div className={styles.icon}>
                 {Icons["GiPodium"] &&
@@ -67,7 +67,7 @@ function Content() {
             </Link>
             {subjects.map((subject, index) => (
               <Link
-                to={`${AW_ActivitiesL1Path}/${subject.name}`}
+                to={`${AW_TopicsPath}/${subject.name}`}
                 key={index}
                 className={styles.grid_item}
               >
