@@ -25,7 +25,7 @@ function PrivacyPolicy() {
   }
   const currentPolicy = policyMap[lang] || policyEn // fallback to English if not available
 
-  // Determine the route path dynamically based on language (fallback to He)
+  // Determine the route path dynamically based on language
   const privacyPolicyPath = route[`privacyPolicy${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.privacyPolicyHe
 
   return (

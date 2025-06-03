@@ -3,7 +3,7 @@
  * If no activities are saved, it displays a message informing the user that they have no saved activities.
  * The user can also delete saved activities through a confirmation popup (`DeletePopUp`), which allows them to remove a selected activity.
  */
-import styles from "./MyActivitiesList.module.css";
+import styles from "./MyActivities.module.css";
 import React, { useState, useMemo } from "react";
 import "../../components/ActivityOutput/Markdown.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
@@ -30,7 +30,7 @@ const SavedActivities: React.FC = () => {
     () =>
       buildSavedActivitiesSchema(
         savedActivity || [],
-        lang === "en" ? route.MY_ActivitiesL1En : route.MY_ActivitiesL1He
+        lang === "en" ? route.MY_ActivitiesEn : route.MY_ActivitiesHe
       ),
     [savedActivity, lang]
   );
@@ -60,7 +60,7 @@ const SavedActivities: React.FC = () => {
   return (
     <PageLayout
       id="myactivities"
-      path={route[`MY_ActivitiesL1${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.MY_ActivitiesL1He} 
+      path={route[`MY_Activities${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.MY_ActivitiesHe}
       hasHeader={{}}
       hasNavBar
       hasAds={MY_ACTIVITIES_AD_SLOT}

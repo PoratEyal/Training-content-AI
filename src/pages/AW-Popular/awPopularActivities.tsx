@@ -2,7 +2,7 @@
 // This is the Predefined Popular Activities page
 // It displays the top 10 most viewed static activities across all subjects
 //
-import styles from "../../pages/AW-Level2-Activities/awActivities.module.css";
+import styles from "../../pages/AW-Activities/awActivities.module.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { Link, useNavigate } from "react-router-dom";
@@ -20,12 +20,12 @@ function PopularActivities() {
   const { subjects, isLoading, useFetchSubjectsData } = useStaticContentContext();
   useFetchSubjectsData();
 
-  // Determine language-specific paths (fallback to Hebrew)
-  const AW_ActivitiesL1Path = route[`AW_ActivitiesL1${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesL1He;
-  const AW_ActivitiesPopularsPath = route[`AW_ActivitiesPopulars${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesPopularsHe;
+  // Determine language-specific paths
+  const AW_TopicsPath = route[`AW_Topics${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_TopicsHe;
+  const AW_PopularPath = route[`AW_ActivitiesPopular${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AW_ActivitiesPopularHe;
 
   const goBack = () => {
-    navigate(AW_ActivitiesL1Path);
+    navigate(AW_TopicsPath);
   };
 
   let topActivities: { activity: StaticActivities; subjectName: string }[] = [];
@@ -58,7 +58,7 @@ function PopularActivities() {
   return (
     <PageLayout
       id="popularActivities"
-      path={AW_ActivitiesPopularsPath}
+      path={AW_PopularPath}
       hasHeader={{ goBack }}
       hasNavBar
       hasGreenBackground
@@ -75,7 +75,7 @@ function PopularActivities() {
             {topActivities.length > 0 ? (
               topActivities.map((item, index) => (
                 <Link
-                  to={`${AW_ActivitiesL1Path}/${item.subjectName}/${item.activity.name}`}
+                  to={`${AW_TopicsPath}/${item.subjectName}/${item.activity.name}`}
                   className={styles.grid_item}
                   key={index}
                   onClick={() => handleActivityClick(item.activity)}

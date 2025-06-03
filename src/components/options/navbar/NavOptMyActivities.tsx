@@ -14,8 +14,8 @@ const NavOptMyActivities = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Determine the language-specific path for My Saved Activities (fallback to He)
-  const myActivitiesPath = route[`mySavedActivities${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.MY_ActivitiesL1He;
+  // Determine the language-specific path for My Saved Activities
+  const myActivitiesPath = route[`MY_Activities${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.MY_ActivitiesHe;
 
   useEffect(() => {
     setIsSelected(location.pathname === myActivitiesPath);

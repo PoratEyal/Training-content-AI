@@ -39,7 +39,7 @@ function Details() {
   const [isDisabled, setIsDisabled] = useState(true);
   const initialLangRef = useRef(lang);
 
-  // Determine language-specific paths (Heb fallback)
+  // Determine language-specific paths
   const groupDetailsPath = route[`GroupDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.GroupDetailsHe;
   const AI_activityParamsPath = route[`AI_activityParams${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.AI_activityParamsHe;
 

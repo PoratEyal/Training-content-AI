@@ -18,8 +18,7 @@ function DropOptSignIn({ handleClose }: DropOptSignInProps) {
   const { t, lang } = useLanguage();
 
   // Determine the group details path based on the active language (fallback to Hebrew)
-  const groupDetailsPath =
-    route[`groupDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || "/he/details";
+  const groupDetailsPath = route[`GroupDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.GroupDetailsHe;
 
   const handleStart = () => navigate(groupDetailsPath);
   const { signInWithGoogle } = useSignIn(handleStart);

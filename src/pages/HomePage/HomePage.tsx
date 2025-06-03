@@ -43,7 +43,7 @@ function Home() {
   const [rememberMe, setRememberMe] = useState<SignInStatus>(SignInStatus.NEW_ACCESS)
 
   // Determine language-specific routes (fallback to He)
-  const homePath = route[`homePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.homePageHe;
+  const homePagePath = route[`homePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.homePageHe;
   const groupDetailsPath = route[`GroupDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.GroupDetailsHe;
 
 
@@ -99,7 +99,7 @@ function Home() {
   return (
     <PageLayout
       id="home"
-      path={homePath}
+      path={homePagePath}
       hasHeader={{}}
       hasAds={HOME_AD_SLOT}
       index={true}

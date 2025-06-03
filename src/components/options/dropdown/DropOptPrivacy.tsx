@@ -17,9 +17,7 @@ function DropOptPrivacy({ handleClose }: DropdownOption) {
   const { t, lang } = useLanguage();
 
   // Determine the privacy policy route path based on the active language (fallback to Hebrew)
-  const privacyPolicyPath =
-    route[`privacyPolicy${lang.charAt(0).toUpperCase() + lang.slice(1)}`] ||
-    "/he/privacy-policy";
+  const privacyPolicyPath = route[`privacyPolicy${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.privacyPolicyHe;
 
   const handleClick = () => {
     navigate(privacyPolicyPath);
