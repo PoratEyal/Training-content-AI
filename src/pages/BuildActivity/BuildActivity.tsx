@@ -3,7 +3,7 @@
 // It loads default values from session or user data, and allows filling in activity parameters
 // It adjusts layout and text direction based on the active language
 //
-import styles from "./AI-ActivityParams.module.css";
+import styles from "./BuildActivity.module.css";
 import { useEffect, useRef, useState, useMemo } from "react";
 import { useContentContext } from "../../context/ContentContext";
 import { useAuthContext } from "../../context/AuthContext";

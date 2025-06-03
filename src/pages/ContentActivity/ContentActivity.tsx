@@ -3,7 +3,7 @@
 // It displays a single static activity within a specific subject
 // It supports both view and edit modes (RichTextEditor for edit)
 //
-import styles from "./awActivityContent.module.css";
+import styles from "./ContentActivity.module.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "../../components/ActivityOutput/Markdown.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";

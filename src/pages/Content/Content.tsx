@@ -3,7 +3,7 @@
 // It fetches the data from StaticContentContext and displays it as links
 // It includes a link to the 10 most popular activities and a back button to homePage
 //
-import styles from "./awTopics.module.css";
+import styles from "./Content.module.css";
 import React, { useMemo } from "react";
 import "../../components/ActivityOutput/Markdown.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";

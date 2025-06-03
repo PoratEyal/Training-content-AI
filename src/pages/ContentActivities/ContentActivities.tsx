@@ -3,7 +3,7 @@
 // It displays a list of static activities under a selected Category
 // It adjusts the layout and routes dynamically based on the active language (he, en, es, ar, etc.)
 //
-import styles from "./awActivities.module.css";
+import styles from "./ContentActivities.module.css";
 import React from "react";
 import "../../components/ActivityOutput/Markdown.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
