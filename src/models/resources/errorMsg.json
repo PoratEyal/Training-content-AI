@@ -2,7 +2,7 @@
     "he": {
         "error": {
             "title": "שגיאה",
-            "message": "לא הצלחנו למצוא את מה שחיפשתם. נסו שוב בבקשה"
+            "message": "נתקלנו בבעיה ביצירת הפעולה. אנא נסו שוב."
         },
         "safety": {
             "title": "שגיאה",
@@ -20,7 +20,7 @@
     "en": {
         "error": {
             "title": "Error",
-            "message": "We could not find what you were looking for. Please try again"
+            "message": "We encountered an issue while creating the activity. Please try again."
         },
         "safety": {
             "title": "Error",
@@ -38,7 +38,7 @@
     "es": {
         "error": {
             "title": "Error",
-            "message": "No pudimos encontrar lo que buscabas. Por favor, intenta nuevamente"
+            "message": "Hemos encontrado un problema al crear la actividad. Por favor, inténtalo de nuevo."
         },
         "safety": {
             "title": "Error",
@@ -57,7 +57,7 @@
     "ar": {
         "error": {
             "title": "خطأ",
-            "message": "لم نتمكن من العثور على ما كنت تبحث عنه. يرجى المحاولة مرة أخرى"
+            "message": "واجهنا مشكلة في إنشاء النشاط. يرجى المحاولة مرة أخرى."
         },
         "safety": {
             "title": "خطأ",

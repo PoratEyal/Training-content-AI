@@ -1,5 +1,5 @@
 //
-// This page shows a list of pre-written content subjects (topics) with icons and titles
+// This page shows a list of pre-written content topics with icons and titles
 // It fetches the data from StaticContentContext and displays it as links
 // It includes a link to the 10 most popular activities and a back button to homePage
 //

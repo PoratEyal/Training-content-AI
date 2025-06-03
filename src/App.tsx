@@ -17,7 +17,7 @@ import AI_ActivityParams from "./pages/AI-ActivityParams/AI-ActivityParams"
 import AI_ActivityContent from "./pages/AI-ActivityContent/AI-ActivityContent"
 
 import AW_ActivitiesL1 from "./pages/AW-Level1-Categories/awCategories";
-import AW_ActivitiesL2 from "./pages/AW-Level2-Activities/awActivities";
+import AW_ActivitiesL2 from "./pages/AW-Activities/awActivities";
 import AW_Populars from "./pages/AW-Level2-Populars/awPopularActivities";
 import AW_ActivityContent from "./pages/AW-Level3-Activity/awActivityContent";
 
