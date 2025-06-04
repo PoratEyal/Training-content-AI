@@ -8,7 +8,7 @@ import React, { useState, useMemo } from "react";
 import "../../components/ActivityOutput/Markdown.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
-import MyActivitiesTitle from "../../components/Titles/MyActivitiesTitle/MyActivitiesTitle";
+import MyActivitiesTitle from "../../components/titles/MyActivitiesTitle/MyActivitiesTitle";
 import { MY_ACTIVITIES_AD_SLOT } from "../../models/constants/adsSlot";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import DontHaveActivity from "../../components/DontHaveActivity/DontHaveActivity";

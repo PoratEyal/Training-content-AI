@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { useAuthContext } from "../../../context/AuthContext";
 import { Icons } from "../../Icons";
 import Profile from "../../Profile/Profile";
-import ReadyContentName from "../../Titles/ReadyContentName/ReadyContentName";
+import ReadyContentName from "../../titles/ReadyContentName/ReadyContentName";
 import styles from "./Header.module.css";
 import { useLanguage } from "../../../i18n/useLanguage";
 import LangPopup from "../../PopupLang/LangPopup";
