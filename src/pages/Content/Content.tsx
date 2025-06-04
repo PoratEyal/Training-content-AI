@@ -10,7 +10,7 @@ import "../../components/ActivityOutput/Markdown.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { Link, useNavigate } from "react-router-dom";
-import ReadyContent from "../../components/Titles/ReadyContent/ReadyContent";
+import ReadyContent from "../../components/titles/ReadyContent/ReadyContent";
 import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
