@@ -11,13 +11,13 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
-import ReadyContentName from "../../components/Titles/ReadyContentName/ReadyContentName";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
 import { StaticActivities } from "../../models/types/activity";
 import { helmetJson } from "../../models/resources/helmet";
 import { useLanguage } from "../../i18n/useLanguage";
+import ReadyContentName from "../../components/titles/ReadyContentName/ReadyContentName";
 
 const ContentActivities: React.FC = () => {
   const { lang } = useLanguage();

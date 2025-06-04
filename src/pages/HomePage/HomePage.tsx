@@ -9,7 +9,6 @@ import route from "../../router/route.json"
 import useSignIn from "../../hooks/useSignIn"
 import PageLayout from "../../components/Layout/PageLayout/PageLayout"
 import { NEED_TO_LOGIN } from "../../models/constants/cookie"
-import ContinueWithAI from "../../components/Titles/ContinueWithAI/ContinueWithAI"
 import { isMoreThanADayAfter, isValidDateFormat } from "../../utils/time"
 import Session from "../../utils/sessionStorage"
 import { SessionKey } from "../../models/enum/storage"
@@ -23,6 +22,7 @@ import { useStaticContentContext } from "../../context/StaticContentContext"
 import { useSaveContext } from "../../context/SavedContext"
 import { useLanguage } from "../../i18n/useLanguage"
 import { buildHomeSchema } from "../../models/schemaOrg"
+import ContinueWithAI from "../../components/titles/ContinueWithAI/ContinueWithAI"
 
 function Home() {
   const { t, dir, lang } = useLanguage()
