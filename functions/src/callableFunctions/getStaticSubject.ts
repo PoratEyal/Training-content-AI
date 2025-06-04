@@ -19,7 +19,7 @@ const getStaticSubjectsHttp = functions.https.onCall(
                         activityReferences.map(async (activityRef: string) => {
                             const activitySnapshot = await db.doc(activityRef).get();
                             const activityData = activitySnapshot.data();
-                            console.log('Activity Document Data:', activityData);
+                            //console.log('Activity Document Data:', activityData);
 
                             return {
                                 name: activityData?.name || '',
