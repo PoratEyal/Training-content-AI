@@ -168,7 +168,7 @@
     { "id": 59, "name": "Fabricar brújula natural" },
     { "id": 60, "name": "Construcción de refugio de emergencia" }
   ],
-{
+
   "playTime": [
     {"id": 1, "name": "Construcción de torres"},
     {"id": 2, "name": "Pescado salado"},
