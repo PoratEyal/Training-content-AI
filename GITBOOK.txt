@@ -1,0 +1,54 @@
+# Simple GitHub Terminal Guide
+
+## Basic Commands
+
+
+git pull origin <branch>
+Pulls the latest changes from the remote repository to your local branch.
+
+git push origin <branch>
+Pushes your committed changes from local to remote repository.
+
+
+## Working with Branches
+
+git checkout main
+git pull origin main
+git checkout -b <new-branch-name>
+This creates and switches to a new branch based on the latest main.
+
+
+git checkout <branch-name>
+Switches to the specified branch.
+
+## Making Changes
+
+git add .           # Add all changes
+Adding files to the commit
+
+
+git commit -n -m "Your commit message"
+Commits staged changes with a message.
+
+git push origin <branch-name>
+Pushes commits to the specified branch on the remote.
+
+## Pull Requests
+
+### Creating a Pull Request
+1. Go to your repository on GitHub.com
+2. Click the "Pull requests" tab
+3. Click the green "New pull request" button
+4. Select your branch as "compare" and main as "base"
+5. Click "Create pull request"
+6. Add title and description
+7. Click "Create pull request" button
+
+### Approving a Pull Request
+1. Go to the Pull Request on GitHub
+2. Click the "Files changed" tab to review changes
+3. Click the "Review changes" button
+4. Select "Approve"
+5. Add comments (optional)
+6. Click "Submit review"
+7. Merge when ready by clicking "Merge pull request"

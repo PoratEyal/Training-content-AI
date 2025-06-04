@@ -1,5 +1,5 @@
 {
-  "contant": [
+  "content": [
     { "id": 1, "name": "Calidad ambiental" },
     { "id": 2, "name": "Unidad" },
     { "id": 3, "name": "Alcohol y drogas" },
@@ -168,7 +168,6 @@
     { "id": 59, "name": "Fabricar brújula natural" },
     { "id": 60, "name": "Construcción de refugio de emergencia" }
   ],
-{
   "playTime": [
     {"id": 1, "name": "Construcción de torres"},
     {"id": 2, "name": "Pescado salado"},

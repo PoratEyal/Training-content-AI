@@ -19,7 +19,6 @@ import { useErrorContext } from "../../context/ErrorContext";
 import msg from "../../models/resources/errorMsg.json";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import { BUILD_AD_SLOT } from "../../models/constants/adsSlot";
-import CreateYourActivity from "../../components/Titles/CreateYourActivity/CreateYourActivity";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import SelectDetails from "../../components/SelectDetails/SelectDetails";
 import {
@@ -36,6 +35,7 @@ import MoreDetailsInput from "../../components/MoreDetailsInput/MoreDetailsInput
 import MainBtn from "../../components/MainBtn/MainBtn";
 import LoadingActivity from "../../components/Loading/LoadingActivity/LoadingActivity";
 import { useLanguage } from "../../i18n/useLanguage";
+import CreateYourActivity from "../../components/titles/CreateYourActivity/CreateYourActivity";
 
 function BuildActivity() {
   const { t, isRTL, lang } = useLanguage();
