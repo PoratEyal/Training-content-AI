@@ -5,13 +5,11 @@ import styles from "./MyActivities.module.css";
 import { useLanguage } from "../../../i18n/useLanguage";
 
 function MyActivitiesTitle() {
-    const { isRTL, t } = useLanguage();
+    const { isRTL, t, lang } = useLanguage();
 
     return (
         <div
-            className={
-                isRTL ? styles.tell_us_title : `${styles.tell_us_title} ${styles.ltr_title}`
-            }
+            className={`${styles.tell_us_title} ${isRTL ? styles.rtl_title : styles.ltr_title} ${styles[lang]}`}
         >
             <h1>{t("savedActivities.myActivities.title")}</h1>
             <img
