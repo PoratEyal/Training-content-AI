@@ -87,6 +87,7 @@
     "myActivities": {
       "title": "أنشطتي"
     },
+    "lastUpdate": "آخر تحديث",
     "deletePopup": {
       "title": "حذف النشاط",
       "message": "هل أنت متأكد أنك تريد حذف النشاط {{activityName}}؟",

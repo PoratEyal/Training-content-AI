@@ -55,7 +55,7 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
       });
     }
 
-    clearAll();
+    clearAll(); // Clears sessionStorage and empties the GroupDetails screen fields by resetting context data
     changeLang(newLang);
     closePopup(() => {
       navigate(homePagePath(newLang));
