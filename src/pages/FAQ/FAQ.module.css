@@ -4,7 +4,7 @@
 }
 
 .title, .faq_title { /* Use .faq_title for the final element */
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
   margin: 0;
   color: var(--primary-color);
@@ -63,7 +63,7 @@
 /* Responsive adjustments */
 @media (min-width: 550px) {
   .title, .faq_title {
-    font-size: 22px;
+    font-size: 24px;
   }
 }
 @media (max-width: 549px) {
