@@ -17,11 +17,12 @@ type SavedActivityRowProps = {
 };
 
 const SavedActivityRow: React.FC<SavedActivityRowProps> = ({ activity, openDeletePopup }) => {
-  const { dir, lang } = useLanguage();
+  const { dir, lang, t } = useLanguage();
   const navigate = useNavigate();
 
   // Determine the language-specific path for My Saved Activities (fallback to Hebrew)
-  const myActivitiesPath = route[`MY_Activities${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.MY_ActivitiesHe;
+  const myActivitiesPath =
+    route[`MY_Activities${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.MY_ActivitiesHe;
 
   const goToActivity = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (!(e.target as Element).closest(".delete_icon")) {
@@ -29,7 +30,7 @@ const SavedActivityRow: React.FC<SavedActivityRowProps> = ({ activity, openDelet
     }
   };
 
-  const time = `עדכון אחרון: ${new Date(activity.savedAt).toLocaleDateString([], {
+  const time = `${t("savedActivities.lastUpdate")}: ${new Date(activity.savedAt).toLocaleDateString([], {
     year: "2-digit",
     month: "numeric",
     day: "numeric",

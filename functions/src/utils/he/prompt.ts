@@ -49,18 +49,12 @@ import { CategoryName } from "../../model/types/movement";
  */
 const sectionPerTime = (time: string, section: string[]): string => {
     switch (time) {
-        case "20 דקות":
-            return section[0];
         case "חצי שעה":
-            return section[1];
-        case "45 דקות":
-            return section[2];
+            return section[0];
         case "שעה":
-            return section[3];
+            return section[1];
         case "שעה וחצי":
-            return section[4];
-        case "שעתיים":
-            return section[5];
+            return section[2];
         default:
             return "";
     }

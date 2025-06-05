@@ -45,18 +45,12 @@ import { CategoryName } from "../../model/types/movement";
  */
 const sectionPerTime = (time: string, section: string[]): string => {
     switch (time) {
-        case "20 minutes":
+        case "media hora":
             return section[0];
-        case "half hour":
+        case "hora":
             return section[1];
-        case "45 minutes":
+        case "hora y media":
             return section[2];
-        case "hour":
-            return section[3];
-        case "hour and a half":
-            return section[4];
-        case "two hours":
-            return section[5];
         default:
             return "";
     }
@@ -64,7 +58,7 @@ const sectionPerTime = (time: string, section: string[]): string => {
 
 const sectionPerPlace = (place: string): string[] => {
     switch (place) {
-        case "outdoor":
+        case "exterior":
             return [
                 CONTANT_SECTION_20_OUT,
                 CONTANT_SECTION_30_OUT,
@@ -146,20 +140,20 @@ const setSectionForContant = (time: string, place: string): string =>
 
 export const promptPerGrade = (grade: string, prompts: [string, string, string]): string => {
     switch (grade) {
-        case "grade 1":
-        case "grade 2":
-        case "grade 3":
-        case "grade 4":
+        case "grado 1":
+        case "grado 2":
+        case "grado 3":
+        case "grado 4":
             return prompts[0];
-        case "grade 5":
-        case "grade 6":
-        case "grade 7":
-        case "grade 8":
+        case "grado 5":
+        case "grado 6":
+        case "grado 7":
+        case "grado 8":
             return prompts[1];
-        case "grade 9":
-        case "grade 10":
-        case "grade 11":
-        case "grade 12":
+        case "grado 9":
+        case "grado 10":
+        case "grado 11":
+        case "grado 12":
             return prompts[2];
         default:
             return "";
@@ -208,7 +202,7 @@ export const getSection = (category: CategoryName, time: string, place: string):
 };
 
 export const getMoreInfo = (info: string | undefined): string => {
-    if (!info || info === "") return "No additional information";
+    if (!info || info === "") return "Sin información adicional";
     return info;
 };
 
@@ -236,6 +230,6 @@ export const getSafty = (
 ) => {
     if (category === "pointOfView") return "";
     let safty: string = "- La actividad debe ser: sin violencia, sin peligro";
-    if (contest === "without groups") safty += ", sin competencias y sin dividir grupos.";
+    if (contest === "sin grupos") safty += ", sin competencias y sin dividir grupos.";
     return safty;
 };
