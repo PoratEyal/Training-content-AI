@@ -1,18 +1,18 @@
-export const CONTANT_PROMPT_S = `Descripción: Creando una actividad educativa para un movimiento juvenil
-Detalles de la actividad: Tiempo: {0} Tema: {1} Público objetivo: {2} niños pequeños de jardín de infantes, edades {3}, género de los niños: {4} Ubicación: {5} Notas adicionales: {6}
-!!! MÁS IMPORTANTE: Debes incluir todos los detalles de la actividad. Usa SÓLO los siguientes encabezados en este orden exacto !!!
-Estructura obligatoria:
-**Tema de la Actividad:** [nombre]
-**Duración de la Actividad:** [X minutos]
-**Objetivos:** (obligatorio, sólo dos objetivos relacionados con el tema y educativos)
-* [Objetivo 1]
-* [Objetivo 2]
+export const CONTANT_PROMPT_S = `الوصف: إنشاء نشاط تعليمي لحركة شبابية
+تفاصيل النشاط: الوقت: {0} الموضوع: {1} الفئة المستهدفة: {2} أطفال صغار في رياض الأطفال، الأعمار: {3}، جنس الأطفال: {4} الموقع: {5} ملاحظات إضافية: {6}
+!!! الأهم: يجب أن تتضمن جميع تفاصيل النشاط. استخدم فقط العناوين التالية بهذا الترتيب المحدد !!!
+البنية المطلوبة:
+**موضوع النشاط:** [الاسم]
+**مدة النشاط:** [X دقيقة]
+**أهداف النشاط:** (إجباري، هدفان فقط مرتبطان بالموضوع وتعليميان)
+* [الهدف 1]
+* [الهدف 2]
 {7}
 {8}
-Pautas:
-- Apropiado para niños de jardín de infantes
-- Preferencia por juegos, actividades, cuestionarios o manualidades en lugar de hablar mucho por parte del instructor
-- Si hay cuestionarios, preguntas o listas, incluye 5 ejemplos
+إرشادات:
+- مناسب لأطفال رياض الأطفال
+- الأفضلية للألعاب أو الأنشطة أو الاختبارات أو الأشغال اليدوية بدلاً من كثرة التحدث من قبل المرشد
+- إذا كان هناك اختبارات أو أسئلة أو قوائم، قم بتضمين 5 أمثلة
 {9}
-- Incluye toda la información necesaria para el instructor con explicaciones detalladas para que no necesite buscar información adicional en otras fuentes
-Formato de respuesta: markdown en español, revisa que no haya errores ortográficos ni palabras en otros idiomas.`;
+- يجب تضمين جميع المعلومات التي يحتاجها المرشد مع شروحات مفصلة حتى لا يضطر للبحث عن معلومات إضافية من مصادر أخرى
+صيغة الرد: markdown باللغة العربية، تأكد من عدم وجود أخطاء إملائية أو كلمات بلغات أخرى.`;
