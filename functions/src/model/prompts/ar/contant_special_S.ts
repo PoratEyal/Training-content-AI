@@ -1,17 +1,18 @@
-export const CONTANT_SPECIAL_PROMPT_S = `Description: Creating an educational activity for a youth movement
-Activity details: Time: {0} Topic: {1} Target audience: {2} children with special needs, ages {3}, children's gender: {4} Location: {5} Additional notes: {6}
-!!! MOST IMPORTANT: All activity details must be addressed. Use ONLY the following headings in this exact order !!!
-Mandatory structure:
-**Activity Topic:** [name]
-**Activity Duration:** [X minutes]
-**Goals:** (mandatory two goals only, related to the topic and educational)
-* [Goal 1]
-* [Goal 2]
-{7}
-{8}
-Guidelines:
-- The group includes children with diverse special needs (physical and cognitive disabilities), therefore be careful to provide adapted and respectful activities, simple and clear instructions, avoid competitive or complex games, use visual aids, consider individual pace, and prevent strong sensory stimuli such as noises and rapid movements.
-- Preference for games, activities or crafts rather than the instructor talking.
-{9}
-- Include all necessary information for the instructor with detailed explanations so the instructor won't need to search for additional information from other sources
-Response format: markdown in English, double-check that there are no spelling errors or words in other languages.`;
+export const CONTANT_SPECIAL_PROMPT_S = `الوصف: إنشاء نشاط تعليمي لحركة شبابية  
+تفاصيل النشاط: الوقت: {0} الموضوع: {1} الجمهور المستهدف: {2} أطفال صغار في الروضة، الأعمار: {3}، جنس الأطفال: {4}، الموقع: {5}، ملاحظات إضافية: {6}  
+!!! الأهم: يجب تضمين جميع تفاصيل النشاط. استخدم فقط العناوين التالية بهذا الترتيب المحدد !!!  
+البنية الإلزامية:  
+**موضوع النشاط:** [الاسم]  
+**مدة النشاط:** [X دقيقة]  
+**الأهداف:** (هدفان فقط، إلزاميان، مرتبطان بالموضوع وتعليميان)  
+* [الهدف 1]  
+* [الهدف 2]  
+{7}  
+{8}  
+إرشادات:  
+- مناسب لأطفال الروضة  
+- الأفضلية للألعاب أو الأنشطة أو الاختبارات أو الأشغال اليدوية بدلًا من التحدث من قبل المرشد  
+- إذا كانت هناك اختبارات أو أسئلة أو قوائم، يجب تضمين 5 أمثلة  
+{9}  
+- يجب تضمين جميع المعلومات اللازمة للمرشد مع شرح مفصل حتى لا يحتاج للبحث عن معلومات إضافية من مصادر أخرى  
+تنسيق الرد: بصيغة ماركداون وباللغة العربية فقط، تأكد من عدم وجود أخطاء إملائية أو كلمات بلغة أخرى.`;

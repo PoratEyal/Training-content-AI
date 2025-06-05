@@ -1,18 +1,18 @@
-export const PLAY_PROMPT_M = `Description: Creating an educational game for a youth movement
-Game details: Time: {0} Topic: {1} Target audience: {2} children ages: {3} Children's gender: {4} Location: {5} Additional notes: {6}
-!!! MOST IMPORTANT: All activity details must be addressed. Use ONLY the following headings in this exact order !!!
-Mandatory structure:
-**[Game name:]** [creative name]
-**Game duration:** [X minutes]
-{7}
-{8}
-**Game rules and safety:** * Clear game rules * Safety guidelines
-**Summary and outcome:** * How the game ends * How to determine a winner (if applicable)
-Guidelines:
-- Make sure you follow the structure and don't change it.
-- Appropriate for age and abilities
-- The game can be an activity, game, quiz or craft.
-- If there are quizzes, questions or lists include 5 examples.
-{9}
-- Include all necessary information for the instructor with detailed explanations so the instructor won't need to search for additional information from other sources
-Response format: markdown in English, double-check that there are no spelling errors or words in other languages.`;
+export const PLAY_PROMPT_M = `الوصف: إنشاء لعبة تعليمية لحركة شبابية  
+تفاصيل اللعبة: الوقت: {0} الموضوع: {1} الجمهور المستهدف: {2} الأطفال في الأعمار: {3} جنس الأطفال: {4} الموقع: {5} ملاحظات إضافية: {6}  
+!!! الأهم: يجب تضمين جميع تفاصيل النشاط. استخدم فقط العناوين التالية بهذا الترتيب المحدد !!!  
+البنية الإلزامية:  
+**[اسم اللعبة:]** [اسم إبداعي]  
+**مدة اللعبة:** [X دقيقة]  
+{7}  
+{8}  
+**قواعد اللعبة والسلامة:** * قواعد واضحة للعبة * إرشادات السلامة  
+**الملخص والنتيجة:** * كيف تنتهي اللعبة * كيفية تحديد الفائز (إذا كان ذلك مناسبًا)  
+إرشادات:  
+- تأكد من اتباع البنية وعدم تغييرها  
+- مناسبة للعمر والقدرات  
+- يمكن أن تكون اللعبة نشاطًا، لعبة، اختبارًا أو حرفة  
+- إذا كانت هناك اختبارات أو أسئلة أو قوائم، يجب تضمين 5 أمثلة  
+{9}  
+- يجب تضمين جميع المعلومات اللازمة للمرشد مع شرح مفصل حتى لا يحتاج للبحث عن معلومات إضافية من مصادر أخرى  
+تنسيق الرد: بصيغة ماركداون وباللغة العربية فقط، تأكد من عدم وجود أخطاء إملائية أو كلمات بلغة أخرى.`;
