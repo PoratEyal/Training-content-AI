@@ -18,44 +18,60 @@
   border-radius: 10px;
   max-width: 300px;
   border: 2px solid var(--secondary-color);
-  padding-top: 35px;
-  padding-bottom: 35px;
-  width: 70%;
+  width:120px;
+  direction: ltr;
+  padding: 10px;
 }
 
 .buttonContainer {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .languageButton {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 45%;  /* Adjust width to fit two buttons per row */
-  padding: 10px;
-  font-size: 16px;
+  justify-content: flex-start;
+  background: white;
   color: var(--text-color);
-  font-family: var(--font-family);
-  border: 2px solid #ddd;
-  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 10px 16px 10px 0;
+  width: 100%;
+  transition: color 0.2s;
+  position: relative;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Fredoka', sans-serif;
+  gap: 15px;
+}
+
+.languageButton.selected {
+  color: var(--primary-color);
   font-weight: 500;
 }
 
-.languageButton:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  font-weight: 400;
+.languageButton .checkmark {
+  color: var(--primary-color);
+  font-size: 18px;
+  margin-left: auto;
+  margin-right: 0;
+  min-width: 22px; /* שמירה על מקום קבוע גם כשהוי מוחלף בלואודינג */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-.languageButton[lang="ar"] {
-  font-family: "Noto Sans Arabic", sans-serif;
-  font-weight: 700;
+.languageButton:disabled {
+  opacity: 1;
+  color: var(--primary-color);
+  font-weight: 500;
+  cursor: default;
+}
+
+.languageButton:not(.selected):not(:disabled) {
+  color: var(--text-color);
 }
 
 .loaderContainer {
@@ -71,4 +87,13 @@
     padding: 0 20px;
     box-sizing: border-box;
   }
+}
+
+.loadingIcon {
+  animation: spin 1s linear infinite;
+  font-size: 18px; /* זהה לוי */
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
 }
