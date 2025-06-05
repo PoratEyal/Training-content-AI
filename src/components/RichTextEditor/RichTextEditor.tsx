@@ -16,14 +16,14 @@ type RichTextEditorProps = {
 };
 
 const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
-    const { t, lang } = useLanguage();
+    const { t, dir } = useLanguage();
     const { updateActivity } = useEditorContext();
     const [isLimitExceeded, setIsLimitExceeded] = useState<boolean>(false);
     const [debouncedHtml, setDebouncedHtml] = useState<string>("");
     const [lastUpdateTime, setLastUpdateTime] = useState<number>(Date.now());
     const MAX_CHARS = 3000;
-    const DEBOUNCE_DELAY = 3000; // 3 seconds delay for inactivity
-    const MIN_UPDATE_INTERVAL = 5000; // Minimum 5 seconds between updates
+    const DEBOUNCE_DELAY = 3000;
+    const MIN_UPDATE_INTERVAL = 5000;
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -47,19 +47,16 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
         },
         editorProps: {
             attributes: {
-                class: `${styles.editorContent} ${lang === 'he' ? styles.rtl : styles.ltr}`,
-                dir: lang === 'he' ? 'rtl' : 'ltr',
+                class: `${styles.editorContent} ${styles[dir]}`,
+                dir: dir,
             },
             handleKeyDown: (view, event) => {
                 const text = view.state.doc.textContent;
-                // Allow deletion and special keys
+
                 if (
                     event.key === "Backspace" ||
                     event.key === "Delete" ||
-                    event.key === "ArrowLeft" ||
-                    event.key === "ArrowRight" ||
-                    event.key === "ArrowUp" ||
-                    event.key === "ArrowDown" ||
+                    event.key.startsWith("Arrow") ||
                     event.ctrlKey ||
                     event.metaKey
                 ) {
@@ -69,10 +66,11 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
 
                 if (text.length >= MAX_CHARS) {
                     setIsLimitExceeded(true);
-                    return true; // Prevent input
+                    return true;
                 }
+
                 setIsLimitExceeded(false);
-                return false; // Allow input
+                return false;
             },
         },
     });
@@ -83,16 +81,16 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ activity }) => {
     ].filter(Boolean);
 
     return (
-        <section className={styles.container}>
+        <section className={styles.container} style={{ direction: dir }}>
             <ArticleOptions Options={Options} backgroundColor={"#FFFFFF"} />
             <EditorContent 
                 editor={editor} 
-                className={`${styles.editor} ${lang === 'he' ? styles.rtl : styles.ltr}`}
+                className={`${styles.editor} ${styles[dir]}`}
             />
             <div className={styles.charCounter}>
-                {isLimitExceeded ? (
+                {isLimitExceeded && (
                     <span className={styles.charLimitWarning}>{t('editor.charLimitWarning')}</span>
-                ) : null}
+                )}
             </div>
         </section>
     );

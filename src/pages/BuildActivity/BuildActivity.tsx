@@ -107,7 +107,7 @@ function BuildActivity() {
       updateUser();
       setStateFromSession();
     }
-  }, [currentUser, data, isLoggedIn, navigate, subject]);
+  }, [currentUser, data, isLoggedIn, navigate]);
 
   useEffect(() => {
     if (loading) setIsDisabled(true);
