@@ -45,3 +45,7 @@
     position: relative;
     top: -1px;
 }
+
+.btn svg {
+    margin-top: 5px;
+}
