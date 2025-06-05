@@ -11,17 +11,11 @@ import msg from "../models/resources/errorMsg.json";
 import { useCookiesContext } from "./CookiesContext";
 import { useLanguage } from "../i18n/useLanguage";
 
-/**
- * for make getRedirectResult on localhost
- * https://stackoverflow.com/questions/77270210/firebase-onauthstatechanged-user-returns-null-when-on-localhost
- * disable chrome://flags/#third-party-storage-partitioning (found it on default)
- */
-
 export type AuthContextType = {
     currentUser: User | undefined;
     isLoggedIn: boolean;
     loading: boolean;
-    setIsSendMsg: () => void
+    setIsSendMsg: () => void;
     logout: () => Promise<void>;
     whatsNewMsg: string;
 };
@@ -40,10 +34,6 @@ export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-    const isMobile =
-        /iPhone|iPad|iPod|Android|BlackBerry|IEMobile|Opera Mini|Windows Phone|webOS|Kindle|Mobile|Tablet/i.test(
-            navigator.userAgent,
-        );
     const { handleError } = useErrorContext();
     const { cookieLimit, setLimitCookie, removeRememberMeCookie } = useCookiesContext();
     const [currentUser, setCurrentUser] = useState<User | undefined>();
@@ -54,18 +44,29 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(() => {
         let unsubscribe: any;
-        const handleRedirectResult = async () => {
-            const userResult = await getRedirectResult(auth);
-            if (userResult) {
-                initializeUser(userResult);
-            } else unsubscribe = onAuthStateChanged(auth, initializeUser);
-        };
-        if (isMobile) handleRedirectResult();
-        else unsubscribe = onAuthStateChanged(auth, initializeUser);
-        return unsubscribe;
-    }, [isMobile, auth, loading]);
 
-    const initializeUser = async (user) => {
+        const checkRedirectAndInit = async () => {
+            try {
+                const result = await getRedirectResult(auth);
+                if (result && result.user) {
+                    await initializeUser(result);
+                    return;
+                }
+            } catch (err) {
+                console.warn("Redirect result not available or failed:", err);
+            }
+
+            unsubscribe = onAuthStateChanged(auth, initializeUser);
+        };
+
+        checkRedirectAndInit();
+
+        return () => {
+            if (unsubscribe) unsubscribe();
+        };
+    }, []);
+
+    const initializeUser = async (user: any) => {
         try {
             if (user && (user as GoogleUser)?.uid) {
                 let resultUser: User | undefined = undefined;
@@ -99,32 +100,32 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const checkIfNeedToSendMsg = async (user: User) => {
         if (user.isSendMsg && blockRef.current) {
             const result = await fetchGetMsg(lang);
-    
             if (result.result === "success" && result.msg) {
-                const localizedMsg =
-                    lang === "en" ? result.msg.textEn : result.msg.textHe;
-    
+                const localizedMsg = lang === "en" ? result.msg.textEn : result.msg.textHe;
                 setWhatsNewMsg(localizedMsg);
                 blockRef.current = false;
             }
         }
-    };    
+    };
 
     const setIsSendMsg = () => {
         setCurrentUser({
             ...currentUser,
-            isSendMsg: false
+            isSendMsg: false,
         });
-    }
+    };
 
     const logout = async () => {
         try {
+            setLoading(true); // Start loading spinner
             await auth.signOut();
             removeRememberMeCookie();
             setCurrentUser(undefined);
             setIsLoggedIn(false);
         } catch (error) {
             handleError(error);
+        } finally {
+            setLoading(false); // Stop loading spinner
         }
     };
 
@@ -136,7 +137,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 loading,
                 logout,
                 setIsSendMsg,
-                whatsNewMsg
+                whatsNewMsg,
             }}
         >
             {children}
