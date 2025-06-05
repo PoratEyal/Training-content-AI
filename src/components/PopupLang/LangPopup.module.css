@@ -37,7 +37,7 @@
   color: var(--text-color);
   font-size: 18px;
   font-weight: 400;
-  padding: 10px 16px 10px 0;
+  padding: 10px 16px 10px 10px;
   width: 100%;
   transition: color 0.2s;
   position: relative;
