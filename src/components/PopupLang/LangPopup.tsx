@@ -12,7 +12,7 @@ import { fetchUpdateUser } from "../../utils/fetch";
 import { useContentContext } from "../../context/ContentContext";
 import { useNavigate } from "react-router-dom";
 import route from "../../router/route.json";
-import PageLoading from "../../components/Loading/PageLoading/PageLoading";
+import { AiOutlineLoading } from "react-icons/ai";
 
 type LangPopupProps = {
   handleClose: () => void;
@@ -25,6 +25,7 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingLang, setLoadingLang] = useState<string | null>(null);
 
   // Dynamically determine the home page path for the NEW!!! language
   const homePagePath = (newLang: string) => route[`homePage${newLang.charAt(0).toUpperCase() + newLang.slice(1)}`] || route.homePageHe;
@@ -35,6 +36,7 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
   };
 
   const changeLanguage = async (newLang: string) => {
+    setLoadingLang(newLang);
     setIsLoading(true);
 
     localStorage.setItem("i18nextLng", newLang);
@@ -62,6 +64,7 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
     });
 
     setIsLoading(false);
+    setLoadingLang(null);
   };
 
   return ReactDOM.createPortal(
@@ -76,46 +79,57 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
         className={styles.popupContent}
         onClick={(e) => e.stopPropagation()}
       >
-        {isLoading ? (
-          <div className={styles.loaderContainer}>
-            <PageLoading />
-          </div>
-        ) : (
-          <div className={styles.buttonContainer}>
-            <button
-              onClick={() => changeLanguage("he")}
-              className={styles.languageButton}
-              disabled={lang === "he"}
-            >
-              עברית
-            </button>
-            <button
-              onClick={() => changeLanguage("en")}
-              className={styles.languageButton}
-              disabled={lang === "en"}
-            >
-              English
-            </button>
-
-            { <button
-              onClick={() => changeLanguage("es")}
-              className={styles.languageButton}
-              disabled={lang === "es"}
-            >
-              Español
-            </button> }
-
-            { <button
-              onClick={() => changeLanguage("ar")}
-              className={styles.languageButton}
-              disabled={lang === "ar"}
-              lang="ar"
-            >
-              العربية
-            </button> }
-            
-          </div>
-        )}
+        <div className={styles.buttonContainer}>
+          <button
+            onClick={() => changeLanguage("he")}
+            className={`${styles.languageButton} ${lang === "he" ? styles.selected : ""}`}
+            disabled={lang === "he"}
+          >
+            עברית
+            {loadingLang === "he" ? (
+              <span className={styles.checkmark}><AiOutlineLoading className={styles.loadingIcon} /></span>
+            ) : (
+              lang === "he" && !loadingLang && <span className={styles.checkmark}>✔</span>
+            )}
+          </button>
+          <button
+            onClick={() => changeLanguage("en")}
+            className={`${styles.languageButton} ${lang === "en" ? styles.selected : ""}`}
+            disabled={lang === "en"}
+          >
+            English
+            {loadingLang === "en" ? (
+              <span className={styles.checkmark}><AiOutlineLoading className={styles.loadingIcon} /></span>
+            ) : (
+              lang === "en" && !loadingLang && <span className={styles.checkmark}>✔</span>
+            )}
+          </button>
+          <button
+            onClick={() => changeLanguage("es")}
+            className={`${styles.languageButton} ${lang === "es" ? styles.selected : ""}`}
+            disabled={lang === "es"}
+          >
+            Español
+            {loadingLang === "es" ? (
+              <span className={styles.checkmark}><AiOutlineLoading className={styles.loadingIcon} /></span>
+            ) : (
+              lang === "es" && !loadingLang && <span className={styles.checkmark}>✔</span>
+            )}
+          </button>
+          <button
+            onClick={() => changeLanguage("ar")}
+            className={`${styles.languageButton} ${lang === "ar" ? styles.selected : ""}`}
+            disabled={lang === "ar"}
+            lang="ar"
+          >
+            العربية
+            {loadingLang === "ar" ? (
+              <span className={styles.checkmark}><AiOutlineLoading className={styles.loadingIcon} /></span>
+            ) : (
+              lang === "ar" && !loadingLang && <span className={styles.checkmark}>✔</span>
+            )}
+          </button>
+        </div>
       </div>
     </div>,
     document.body
