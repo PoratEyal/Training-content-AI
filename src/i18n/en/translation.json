@@ -87,7 +87,7 @@
     "myActivities": {
       "title": "My Activities"
     },
-    "lastUpdate": "Last update",
+    "lastUpdate": "Updated on",
     "deletePopup": {
       "title": "Delete Activity",
       "message": "Are you sure you want to delete the activity {{activityName}}?",

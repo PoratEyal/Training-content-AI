@@ -86,7 +86,7 @@
     "myActivities": {
       "title": "הפעולות שלי"
     },
-    "lastUpdate": "עדכון אחרון",
+    "lastUpdate": "עודכן ב",
     "deletePopup": {
       "title": "מחיקת הפעולה",
       "message": "האם למחוק את הפעולה {{activityName}}?",
