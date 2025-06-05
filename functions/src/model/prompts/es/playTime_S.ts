@@ -1,18 +1,25 @@
-export const PLAY_PROMPT_S = `Description: Creating an educational game for a youth movement
-Game details: Time: {0} Topic: {1} Target audience: {2} young children, ages: {3} Children's gender: {4} Location: {5} Additional notes: {6}
-!!! MOST IMPORTANT: All activity details must be addressed. Use ONLY the following headings in this exact order !!!
-Mandatory structure:
-**[Game name:]** [creative name]
-**Game duration:** [X minutes]
+export const PLAY_PROMPT_S = `Descripción: Creación de un juego educativo para un movimiento juvenil
+Detalles del juego: Tiempo: {0} Tema: {1} Público objetivo: {2} niños pequeños, edades: {3} Género de los niños: {4} Ubicación: {5} Notas adicionales: {6}
+¡¡¡ LO MÁS IMPORTANTE: Se deben incluir todos los detalles de la actividad. Usa SOLO los siguientes encabezados en este orden exacto !!!
+Estructura obligatoria:
+**[Nombre del juego:]** [nombre creativo]
+**Duración del juego:** [X minutos]
 {7}
 {8}
-**Game rules and safety:** * Clear game rules * Safety guidelines
-**Summary and outcome:** * How the game ends * How to determine a winner (if applicable)
-Guidelines:
-- Make sure you follow the structure and don't change it.
-- Appropriate for age and abilities
-- The game can be an activity, game, quiz or craft.
-- If there are quizzes, questions or lists include 5 examples.
+**Reglas del juego y seguridad:** * Reglas claras del juego * Pautas de seguridad
+**Resumen y resultado:** * Cómo termina el juego * Cómo se determina un ganador (si aplica)
+Pautas:
+- Asegúrate de seguir la estructura y no modificarla.
+- Apropiado para la edad y las habilidades
+- El juego puede ser una actividad, un juego, un cuestionario o una manualidad.
+- Si hay cuestionarios, preguntas o listas, incluye 5 ejemplos.
 {9}
-- Include all necessary information for the instructor with detailed explanations so the instructor won't need to search for additional information from other sources
-Response format: markdown in English, double-check that there are no spelling errors or words in other languages.`;
+- Incluye toda la información necesaria para el instructor con explicaciones detalladas para que no necesite buscar información adicional en otras fuentes
+Formato de respuesta: markdown en español, revisa que no haya errores ortográficos ni palabras en otros idiomas.`;
+
+
+
+
+
+
+
