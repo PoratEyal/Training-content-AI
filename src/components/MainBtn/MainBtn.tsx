@@ -4,6 +4,7 @@
 import styles from "./MainBtn.module.css";
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
 import { useLanguage } from "../../i18n/useLanguage";
+import { Icons } from "../Icons";
 
 type MainBtnProps = {
     type?: "button" | "submit";
@@ -40,7 +41,12 @@ function MainBtn({
             ) : (
                 <div className={styles.btn} style={{ direction: dir }}>
                     <span style={{ opacity: isDisabled ? 0.5 : 1 }}>{text}</span>
-                </div>
+                    <div className={styles.btn_icon} style={{ opacity: isDisabled ? 0.5 : 1 }}>
+                        <Icons.chevronsLeft
+                            className={styles.icon}
+                            style={{ transform: dir === "rtl" ? "none" : "rotate(180deg)" }}
+                        />
+                    </div>                </div>
             )}
         </button>
     );
