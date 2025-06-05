@@ -29,10 +29,19 @@
     top: 66px;
 }
 
-.tell_us_title_rtl img {
-    right: -3px;
+/* Language-specific overrides for image position */
+.he img {
+    left: 102px;
 }
 
-.tell_us_title_ltr img {
+.en img {
     left: 50px;
+}
+
+.es img {
+    left: 92px;
+}
+
+.ar img {
+    right: 5px;
 }

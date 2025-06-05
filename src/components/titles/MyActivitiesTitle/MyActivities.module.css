@@ -14,16 +14,29 @@
     position: relative;
     line-height: 32px;
     margin: 0;
-    width: 190px; 
-    text-align: center; 
+    width: 190px;
+    text-align: center;
     letter-spacing: 1px;
 }
 
 .tell_us_title img {
     position: absolute;
     top: 30px;
-    right:115px;
 }
-.ltr_title img {
+
+/* Specific language overrides */
+.he img {
+    right: 115px;
+}
+
+.en img {
     right: 130px;
-  }
+}
+
+.es img {
+    right: 144px;
+}
+
+.ar img {
+    right: 67px;
+}
