@@ -27,8 +27,8 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingLang, setLoadingLang] = useState<string | null>(null);
 
-  // Dynamically determine the home page path for the NEW!!! language
-  const homePagePath = (newLang: string) => route[`homePage${newLang.charAt(0).toUpperCase() + newLang.slice(1)}`] || route.homePageHe;
+  const homePagePath = (newLang: string) =>
+    route[`homePage${newLang.charAt(0).toUpperCase() + newLang.slice(1)}`] || route.homePageHe;
 
   const closePopup = (callback?: () => void) => {
     if (callback) callback();
@@ -42,7 +42,6 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
     localStorage.setItem("i18nextLng", newLang);
     sessionStorage.removeItem("data");
 
-    // If user is logged in, reset their movement details in DB
     if (currentUser) {
       await fetchUpdateUser({
         user: {
@@ -57,7 +56,7 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
       });
     }
 
-    clearAll(); // Clears sessionStorage and empties the GroupDetails screen fields by resetting context data
+    await clearAll(); // ← חיכה שה־data יתאפס לפני שינוי שפה וניווט
     changeLang(newLang);
     closePopup(() => {
       navigate(homePagePath(newLang));
@@ -75,10 +74,7 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
       aria-modal="true"
       aria-label="Language Selection Popup"
     >
-      <div
-        className={styles.popupContent}
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className={styles.popupContent} onClick={(e) => e.stopPropagation()}>
         <div className={styles.buttonContainer}>
           <button
             onClick={() => changeLanguage("he")}

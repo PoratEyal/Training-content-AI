@@ -46,13 +46,11 @@ function Details() {
 
   // Populate fields only on first render (same language)
   useEffect(() => {
-    if (lang === initialLangRef.current) {
-      setMovement(data?.movement?.name || currentUser?.movement?.movement || "");
-      setClassLevel(data?.grade || currentUser?.movement?.grade || "");
-      setNumberOfChildren(data?.amount || currentUser?.movement?.amount || "");
-      setGender(data?.gender || currentUser?.movement?.gender || "");
-    }
-  }, [data, currentUser]);
+    setMovement(data?.movement?.name || currentUser?.movement?.movement || "");
+    setClassLevel(data?.grade || currentUser?.movement?.grade || "");
+    setNumberOfChildren(data?.amount || currentUser?.movement?.amount || "");
+    setGender(data?.gender || currentUser?.movement?.gender || "");
+  }, [data]);
 
   // Reset fields only when language changes
   useEffect(() => {

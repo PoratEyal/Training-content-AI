@@ -15,8 +15,8 @@ const MoreOptionsCollapse: React.FC<MoreOptionsCollapseProps> = ({
   children,
   text,
 }) => {
-  const { t, lang } = useLanguage();         
-  const isRtl = lang === "he";
+  const { t, dir } = useLanguage();         
+  const isRtl = dir === "rtl";
   const [isOpen, toggle] = useToggle(false);
 
   const handleCollapse = () => toggle();
