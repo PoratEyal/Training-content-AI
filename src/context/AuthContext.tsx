@@ -21,7 +21,7 @@ export type AuthContextType = {
     currentUser: User | undefined;
     isLoggedIn: boolean;
     loading: boolean;
-    setIsSendMsg: () => void
+    setIsSendMsg: () => void;
     logout: () => Promise<void>;
     whatsNewMsg: string;
 };
@@ -75,31 +75,40 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         if (isMobile) handleRedirectResult();
         else unsubscribe = onAuthStateChanged(auth, initializeUser);
 
-        return unsubscribe;
-    }, [isMobile, auth, loading]);
+        return () => {
+            if (typeof unsubscribe === "function") {
+                unsubscribe();
+            }
+        };
+    }, [isMobile, auth]);
 
-
-
-    const initializeUser = async (user) => {
+    const initializeUser = async (user: any) => {
         try {
             if (user && (user as GoogleUser)?.uid) {
-                let resultUser: User | undefined = undefined;
                 const rawUser = initRawUser(user);
                 const response = await fetchCreateNewUser({ rawUser }, lang);
-                if (response.user) {
-                    resultUser = response.user;
-                }
+                const resultUser: User | undefined = response.user;
+
                 if (resultUser) {
                     if (resultUser.movement) {
                         const { grade, amount, gender, movement } = resultUser.movement;
                         addSessionData(lang, movement, grade, amount, gender);
                     }
-                    setCurrentUser(resultUser);
+
+                    if (JSON.stringify(resultUser) !== JSON.stringify(currentUser)) {
+                        setCurrentUser(resultUser);
+                    }
+
                     await checkIfNeedToSendMsg(resultUser);
-                    setIsLoggedIn(true);
+
+                    if (!isLoggedIn) setIsLoggedIn(true);
                     if (cookieLimit !== NEED_TO_LOGIN) setLimitCookie(NEED_TO_LOGIN);
                     return;
                 }
+            }
+
+            // fallback if user invalid or not found
+            if (currentUser !== undefined || isLoggedIn !== false) {
                 setCurrentUser(undefined);
                 setIsLoggedIn(false);
             }
@@ -111,26 +120,29 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const blockRef = useRef<boolean>(true);
+
     const checkIfNeedToSendMsg = async (user: User) => {
         if (user.isSendMsg && blockRef.current) {
             const result = await fetchGetMsg(lang);
-    
+
             if (result.result === "success" && result.msg) {
                 const localizedMsg =
                     lang === "en" ? result.msg.textEn : result.msg.textHe;
-    
+
                 setWhatsNewMsg(localizedMsg);
                 blockRef.current = false;
             }
         }
-    };    
+    };
 
     const setIsSendMsg = () => {
-        setCurrentUser({
-            ...currentUser,
-            isSendMsg: false
-        });
-    }
+        if (currentUser) {
+            setCurrentUser({
+                ...currentUser,
+                isSendMsg: false,
+            });
+        }
+    };
 
     const logout = async () => {
         try {
@@ -151,7 +163,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 loading,
                 logout,
                 setIsSendMsg,
-                whatsNewMsg
+                whatsNewMsg,
             }}
         >
             {children}
