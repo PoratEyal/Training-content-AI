@@ -6,20 +6,24 @@ import { useTranslation } from "react-i18next";
 import { Lng } from "../models/types/common";
 
 export const useLanguage = () => {
-  const { t, i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
 
-  const lang = i18n.language as Lng;
-  const isHebrew = lang === "he";
-  const isEnglish = lang === "en";
-  const isSpanish = lang === "es";
-  const isArabic = lang === "ar";
-  const isRTL = isHebrew || isArabic;
-  const dir = isRTL ? "rtl" : "ltr" as "rtl" | "ltr";
-  const textAlign = isRTL ? "right" : "left" as "right" | "left";
+    const normalizedLang = i18n.language.includes("-")
+        ? i18n.language.split("-")[0]
+        : i18n.language;
+    const lang = normalizedLang as Lng;
 
-  const changeLang = (lang: string) => {
-    i18n.changeLanguage(lang);
-  };
+    const isHebrew = lang === "he";
+    const isEnglish = lang === "en";
+    const isSpanish = lang === "es";
+    const isArabic = lang === "ar";
+    const isRTL = isHebrew || isArabic;
+    const dir = isRTL ? "rtl" : ("ltr" as "rtl" | "ltr");
+    const textAlign = isRTL ? "right" : ("left" as "right" | "left");
 
-  return { t, lang, isHebrew, isEnglish, isSpanish, isArabic, isRTL, dir, textAlign, changeLang };
+    const changeLang = (lang: string) => {
+        i18n.changeLanguage(lang);
+    };
+
+    return { t, lang, isHebrew, isEnglish, isSpanish, isArabic, isRTL, dir, textAlign, changeLang };
 };
