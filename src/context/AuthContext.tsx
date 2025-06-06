@@ -54,25 +54,30 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(() => {
         let unsubscribe: any;
+
         const handleRedirectResult = async () => {
             try {
                 const userResult = await getRedirectResult(auth);
-                if (userResult) {
-                    initializeUser(userResult);
+
+                if (userResult?.user) {
+                    console.log("✅ Firebase redirect result found, proceeding to initializeUser");
+                    initializeUser(userResult.user);
                 } else {
-                    unsubscribe = onAuthStateChanged(auth, initializeUser);
+                    console.warn("⚠️ Firebase redirect result was null — forcing redirect to '/' to recover");
+                    window.location.href = "/";
                 }
             } catch (error) {
-                // Edge Case:
-                // In some browsers (especially Chrome), getRedirectResult can fail and cause a white screen
-                // This fallback redirects the user back to the homepage if an error occurs
-                window.location.href = "/"; 
+                console.error("❌ Error in getRedirectResult — forcing redirect to '/'", error);
+                window.location.href = "/";
             }
         };
+
         if (isMobile) handleRedirectResult();
         else unsubscribe = onAuthStateChanged(auth, initializeUser);
+
         return unsubscribe;
     }, [isMobile, auth, loading]);
+
 
 
     const initializeUser = async (user) => {
