@@ -1,26 +1,21 @@
 import {
     GoogleAuthProvider,
-    browserLocalPersistence as rememberMeSession,
-    setPersistence,
     signInWithPopup,
-    signInWithRedirect,
 } from "firebase/auth";
 import { useErrorContext } from "../context/ErrorContext";
-import errMsg from "../models/resources/errorMsg.json";
 import { auth } from "../config/firebase";
 import { useAuthContext } from "../context/AuthContext";
 import { useEffect, useState } from "react";
-import { NEED_TO_LOGIN } from "../models/constants/cookie";
 import { useCookiesContext } from "../context/CookiesContext";
 import { useLanguage } from "../i18n/useLanguage";
 
 const useSignIn = (handleStart: () => void) => {
     const { handleError } = useErrorContext();
     const { isLoggedIn, loading, currentUser } = useAuthContext();
-    const { setLimitCookie, setRememberMeCookie, removeRememberMeCookie } = useCookiesContext();
+    const { lang } = useLanguage();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
-    const { lang } = useLanguage();
+    const { setLimitCookie, setRememberMeCookie, removeRememberMeCookie } = useCookiesContext();
 
     useEffect(() => {
         console.log("🔄 useEffect: [loading, isLoggedIn, currentUser]", {
@@ -36,49 +31,16 @@ const useSignIn = (handleStart: () => void) => {
     }, [loading, isLoggedIn, currentUser]);
 
     const signInWithGoogle = async () => {
-        console.log("👆 CLICK received — about to sign in");
+        console.log("🟡 CLICK — starting basic popup sign-in");
 
         const provider = new GoogleAuthProvider();
 
         try {
-            // ✳️ מבצעים קודם את signInWithPopup — ישירות אחרי הקליק
             const result = await signInWithPopup(auth, provider);
-            console.log("🎉 signInWithPopup success", result);
-
-            // ✅ ממשיכים רק אם הצליח
-            setIsLoading(true);
-            setBtnDisabled(true);
-            setLimitCookie(NEED_TO_LOGIN);
-            setRememberMeCookie();
-            await setPersistence(auth, rememberMeSession);
-            console.log("✅ Persistence set");
-        } catch (popupError: any) {
-            const errorCode = popupError?.code;
-            console.warn("⚠️ signInWithPopup error:", errorCode);
-
-            if (errorCode === "auth/popup-blocked") {
-                console.log("🔁 Fallback to signInWithRedirect...");
-                await signInWithRedirect(auth, provider);
-                return;
-            }
-
-            handleErrors(popupError);
-            setIsLoading(false);
+            console.log("✅ signInWithPopup SUCCESS:", result);
+        } catch (err: any) {
+            console.error("❌ signInWithPopup FAILED:", err?.code || err);
         }
-    };
-
-    const handleErrors = (error: any) => {
-        console.error("❌ Error in signInWithGoogle:", error);
-        const errorStr = (error as unknown as string).toString();
-        if (
-            !errorStr.includes("auth/popup-closed-by-user") &&
-            !errorStr.includes("auth/cancelled-popup-request")
-        ) {
-            handleError(errMsg[lang].google.message);
-        }
-        removeRememberMeCookie();
-        setBtnDisabled(false);
-        setIsLoading(false);
     };
 
     return { signInWithGoogle, isLoading, btnDisabled };
