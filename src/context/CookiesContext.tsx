@@ -18,7 +18,7 @@ export type CookiesContextType = {
     setLimitCookie: (data: string | number) => void;
 };
 
-export const defualtCookiesContext: CookiesContextType = {
+export const defaultCookiesContext: CookiesContextType = {
     cookieLimit: undefined,
     cookieUserConsent: undefined,
     cookieRememberMe: undefined,
@@ -28,7 +28,7 @@ export const defualtCookiesContext: CookiesContextType = {
     setLimitCookie: () => {},
 };
 
-export const CookiesContext = createContext<CookiesContextType>(defualtCookiesContext);
+export const CookiesContext = createContext<CookiesContextType>(defaultCookiesContext);
 
 export const useCookiesContext = () => useContext(CookiesContext);
 
@@ -56,7 +56,7 @@ export const CookiesProvider = ({ children }: { children: React.ReactNode }) => 
     };
 
     const removeRememberMeCookie = () => {
-        removeCookie(REMEMEBER_ME_KEY);
+        removeCookie(REMEMEBER_ME_KEY, CookieOptions);
     };
 
     return (

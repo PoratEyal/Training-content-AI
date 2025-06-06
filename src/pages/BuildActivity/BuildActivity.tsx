@@ -56,10 +56,8 @@ function BuildActivity() {
   const [isDisabled, setIsDisabled] = useState(true);
   const navigate = useNavigate();
   const lockRef = useRef(true);
-
   const [hasAlert, setHasAlert] = useState(false);
 
-  // Determine language-specific paths (he is the fallback)
   const homePagePath = route[`homePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.homePageHe;
   const activityParamsPath = route[`activityParams${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityParamsHe;
   const activityAIPath = route[`activityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityAIHe;
@@ -177,7 +175,10 @@ function BuildActivity() {
                 <SelectDetails
                   placeholder={t("buildActivity.category.label")}
                   obj={category}
-                  setObj={setCategory}
+                  setObj={(val) => {
+                    setCategory(val);
+                    setSubject(""); // reset only if category changes
+                  }}
                   data={CategoryOptions(data?.movement?.categories || [])}
                 />
 
@@ -262,5 +263,6 @@ function BuildActivity() {
     </PageLayout>
   );
 }
+
 
 export default BuildActivity;

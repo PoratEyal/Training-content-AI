@@ -1,3 +1,7 @@
+/**
+ * Handles Google sign-in with popup-first strategy and redirect fallback.
+ * Uses error.code for cleaner fallback logic and manages UI state and flow.
+ */
 import {
     GoogleAuthProvider,
     browserLocalPersistence as rememberMeSession,
@@ -45,12 +49,13 @@ const useSignIn = (handleStart: () => void) => {
 
             try {
                 await signInWithPopup(auth, provider);
-            } catch (popupError) {
+            } catch (popupError: any) {
                 console.warn("Popup failed, trying redirect fallback:", popupError);
-                const popupErrorStr = (popupError as any).toString();
+                const errorCode = popupError?.code;
+
                 const isSafeToFallback =
-                    !popupErrorStr.includes("auth/popup-closed-by-user") &&
-                    !popupErrorStr.includes("auth/cancelled-popup-request");
+                    errorCode !== "auth/popup-closed-by-user" &&
+                    errorCode !== "auth/cancelled-popup-request";
 
                 if (isSafeToFallback) {
                     await signInWithRedirect(auth, provider);
@@ -68,13 +73,15 @@ const useSignIn = (handleStart: () => void) => {
 
     const handleErrors = (error: any) => {
         console.error("Error in signInWithGoogle:", error);
-        const errorStr = error.toString();
+        const errorCode = error?.code;
+
         if (
-            !errorStr.includes("auth/popup-closed-by-user") &&
-            !errorStr.includes("auth/cancelled-popup-request")
+            errorCode !== "auth/popup-closed-by-user" &&
+            errorCode !== "auth/cancelled-popup-request"
         ) {
             handleError(errMsg[lang].google.message);
         }
+
         removeRememberMeCookie();
         setBtnDisabled(false);
         setIsLoading(false);

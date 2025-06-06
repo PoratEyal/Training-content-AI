@@ -1,3 +1,9 @@
+/**
+ * Provides global Firebase auth context.
+ * - Initializes user via redirect or auth state change
+ * - Manages login status, loading, logout, and "what's new" message
+ * - Wrap your app with <AuthProvider> to access auth context
+ */
 import { useEffect, createContext, useState, useContext, useRef } from "react";
 import { auth } from "../config/firebase";
 import { getRedirectResult, onAuthStateChanged } from "firebase/auth";
