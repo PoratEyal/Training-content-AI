@@ -36,6 +36,9 @@ const useSignIn = (handleStart: () => void) => {
     }, [loading, isLoggedIn, currentUser]);
 
     const signInWithGoogle = async () => {
+        console.log("📌 signInWithGoogle called");
+        console.trace(); // מדפיס את ה-stack כדי לראות מי קרא לפונקציה
+
         const provider = new GoogleAuthProvider();
         console.log("🚀 signInWithGoogle: clicked");
 
