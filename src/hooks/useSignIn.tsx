@@ -36,53 +36,33 @@ const useSignIn = (handleStart: () => void) => {
     }, [loading, isLoggedIn, currentUser]);
 
     const signInWithGoogle = async () => {
-        console.log("📌 signInWithGoogle called");
-        console.trace(); // מי קרא לפונקציה
+        console.log("👆 CLICK received — about to sign in");
 
         const provider = new GoogleAuthProvider();
-        console.log("🚀 signInWithGoogle: clicked");
-
-        setLimitCookie(NEED_TO_LOGIN);
 
         try {
-            if (!auth) {
-                console.error("❌ Auth not initialized");
+            // ✳️ מבצעים קודם את signInWithPopup — ישירות אחרי הקליק
+            const result = await signInWithPopup(auth, provider);
+            console.log("🎉 signInWithPopup success", result);
+
+            // ✅ ממשיכים רק אם הצליח
+            setIsLoading(true);
+            setBtnDisabled(true);
+            setLimitCookie(NEED_TO_LOGIN);
+            setRememberMeCookie();
+            await setPersistence(auth, rememberMeSession);
+            console.log("✅ Persistence set");
+        } catch (popupError: any) {
+            const errorCode = popupError?.code;
+            console.warn("⚠️ signInWithPopup error:", errorCode);
+
+            if (errorCode === "auth/popup-blocked") {
+                console.log("🔁 Fallback to signInWithRedirect...");
+                await signInWithRedirect(auth, provider);
                 return;
             }
 
-            console.log("🧠 Setting persistence...");
-            setIsLoading(true);
-            setBtnDisabled(true);
-            setRememberMeCookie();
-            await setPersistence(auth, rememberMeSession);
-            console.log("✅ Persistence set — trying popup...");
-
-            try {
-                // בדיקה מוקדמת האם הפופאפ חסום ע"י הדפדפן
-                const popupTest = window.open("", "_blank");
-                if (popupTest === null || typeof popupTest === "undefined") {
-                    console.warn("🛑 Popup was blocked by the browser before signInWithPopup");
-                } else {
-                    popupTest.close();
-                    console.log("🟢 Popup allowed by browser");
-                }
-
-                await signInWithPopup(auth, provider);
-                console.log("🎉 signInWithPopup: success");
-            } catch (popupError: any) {
-                const errorCode = popupError?.code;
-                console.warn("⚠️ signInWithPopup error:", errorCode);
-
-                if (errorCode === "auth/popup-blocked") {
-                    console.log("🔁 Fallback to signInWithRedirect...");
-                    await signInWithRedirect(auth, provider);
-                    return;
-                }
-
-                throw popupError;
-            }
-        } catch (error) {
-            handleErrors(error);
+            handleErrors(popupError);
             setIsLoading(false);
         }
     };
