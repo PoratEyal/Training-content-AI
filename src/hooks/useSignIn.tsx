@@ -14,39 +14,46 @@ import { NEED_TO_LOGIN } from "../models/constants/cookie";
 import { useCookiesContext } from "../context/CookiesContext";
 import { useLanguage } from "../i18n/useLanguage";
 
-
-const useSignIn = (handleStart: ()=> void) => {
+const useSignIn = (handleStart: () => void) => {
     const { handleError } = useErrorContext();
     const { isLoggedIn, loading, currentUser } = useAuthContext();
     const { setLimitCookie, setRememberMeCookie, removeRememberMeCookie } = useCookiesContext();
-    const isMobile = /iPhone|iPad|iPod|Android|BlackBerry|IEMobile|Opera Mini|Windows Phone|webOS|Kindle|Mobile|Tablet/i.test(navigator.userAgent);    
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
     const { lang } = useLanguage();
 
     useEffect(() => {
-        if (!loading && isLoggedIn && currentUser){
+        if (!loading && isLoggedIn && currentUser) {
             handleStart();
-        };
+        }
     }, [loading, isLoggedIn, currentUser]);
 
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
         setLimitCookie(NEED_TO_LOGIN);
-        
+
         try {
             if (!auth) {
                 console.error("Auth not initialized");
                 return;
             }
+
             setIsLoading(true);
             setBtnDisabled(true);
             setRememberMeCookie();
             await setPersistence(auth, rememberMeSession);
-            if (isMobile) {
-                await signInWithRedirect(auth, provider);
-            } else {
+
+            try {
                 await signInWithPopup(auth, provider);
+            } catch (popupError: any) {
+                const errorCode = popupError?.code;
+
+                if (errorCode === "auth/popup-blocked") {
+                    await signInWithRedirect(auth, provider);
+                    return;
+                }
+
+                throw popupError;
             }
         } catch (error) {
             handleErrors(error);
@@ -54,14 +61,12 @@ const useSignIn = (handleStart: ()=> void) => {
         }
     };
 
-
-    const handleErrors = (error) => {
+    const handleErrors = (error: any) => {
         console.error("Error in signInWithGoogle: ", error);
+        const errorStr = (error as unknown as string).toString();
         if (
-            (error as unknown as string).toString().includes(`(auth/popup-closed-by-user)`) ===
-                false &&
-            (error as unknown as string).toString().includes(`(auth/cancelled-popup-request)`) ===
-                false
+            !errorStr.includes("auth/popup-closed-by-user") &&
+            !errorStr.includes("auth/cancelled-popup-request")
         ) {
             handleError(errMsg[lang].google.message);
         }
@@ -71,7 +76,6 @@ const useSignIn = (handleStart: ()=> void) => {
     };
 
     return { signInWithGoogle, isLoading, btnDisabled };
-
-}
+};
 
 export default useSignIn;
