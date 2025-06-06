@@ -9,7 +9,7 @@ import { useErrorContext } from "../context/ErrorContext";
 import errMsg from "../models/resources/errorMsg.json";
 import { auth } from "../config/firebase";
 import { useAuthContext } from "../context/AuthContext";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { NEED_TO_LOGIN } from "../models/constants/cookie";
 import { useCookiesContext } from "../context/CookiesContext";
 import { useLanguage } from "../i18n/useLanguage";
@@ -21,37 +21,20 @@ const useSignIn = (handleStart: () => void) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
     const { lang } = useLanguage();
-    const hasStartedRef = useRef<boolean>(false); // ✅ שינוי כאן
 
     useEffect(() => {
-        console.log("🔄 useEffect triggered", {
-            loading,
-            isLoggedIn,
-            currentUser,
-            hasStarted: hasStartedRef.current,
-        });
-
-        if (!loading && isLoggedIn && currentUser && !hasStartedRef.current) {
-            console.log("✅ Authenticated — calling handleStart()");
-            hasStartedRef.current = true;
+        if (!loading && isLoggedIn && currentUser) {
             handleStart();
-        }
-
-        if (!loading && !isLoggedIn && !currentUser) {
-            console.log("🔁 Reset hasStarted on logout");
-            hasStartedRef.current = false;
         }
     }, [loading, isLoggedIn, currentUser]);
 
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
-        console.log("🚀 signInWithGoogle triggered");
-
         setLimitCookie(NEED_TO_LOGIN);
 
         try {
             if (!auth) {
-                console.error("❌ Auth not initialized");
+                console.error("Auth not initialized");
                 return;
             }
 
@@ -61,14 +44,11 @@ const useSignIn = (handleStart: () => void) => {
             await setPersistence(auth, rememberMeSession);
 
             try {
-                console.log("🟢 Trying signInWithPopup...");
                 await signInWithPopup(auth, provider);
             } catch (popupError: any) {
                 const errorCode = popupError?.code;
-                console.warn("⚠️ signInWithPopup error:", errorCode);
 
                 if (errorCode === "auth/popup-blocked") {
-                    console.log("🔁 Fallback to signInWithRedirect...");
                     await signInWithRedirect(auth, provider);
                     return;
                 }
@@ -82,7 +62,7 @@ const useSignIn = (handleStart: () => void) => {
     };
 
     const handleErrors = (error: any) => {
-        console.error("❌ Error in signInWithGoogle: ", error);
+        console.error("Error in signInWithGoogle: ", error);
         const errorStr = (error as unknown as string).toString();
         if (
             !errorStr.includes("auth/popup-closed-by-user") &&

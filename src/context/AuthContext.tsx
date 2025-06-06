@@ -21,7 +21,7 @@ export type AuthContextType = {
     currentUser: User | undefined;
     isLoggedIn: boolean;
     loading: boolean;
-    setIsSendMsg: () => void;
+    setIsSendMsg: () => void
     logout: () => Promise<void>;
     whatsNewMsg: string;
 };
@@ -54,61 +54,47 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(() => {
         let unsubscribe: any;
-
         const handleRedirectResult = async () => {
             try {
                 const userResult = await getRedirectResult(auth);
-
-                if (userResult?.user) {
-                    console.log("✅ Firebase redirect result found, proceeding to initializeUser");
-                    initializeUser(userResult.user);
+                if (userResult) {
+                    initializeUser(userResult);
                 } else {
-                    console.warn("⚠️ Firebase redirect result was null — forcing redirect to '/' to recover");
-                    window.location.href = "/";
+                    unsubscribe = onAuthStateChanged(auth, initializeUser);
                 }
             } catch (error) {
-                console.error("❌ Error in getRedirectResult — forcing redirect to '/'", error);
-                window.location.href = "/";
+                // Edge Case:
+                // In some browsers (especially Chrome), getRedirectResult can fail and cause a white screen
+                // This fallback redirects the user back to the homepage if an error occurs
+                window.location.href = "/"; 
             }
         };
-
         if (isMobile) handleRedirectResult();
         else unsubscribe = onAuthStateChanged(auth, initializeUser);
+        return unsubscribe;
+    }, [isMobile, auth, loading]);
 
-        return () => {
-            if (typeof unsubscribe === "function") {
-                unsubscribe();
-            }
-        };
-    }, [isMobile, auth]);
 
-    const initializeUser = async (user: any) => {
+    const initializeUser = async (user) => {
         try {
             if (user && (user as GoogleUser)?.uid) {
+                let resultUser: User | undefined = undefined;
                 const rawUser = initRawUser(user);
                 const response = await fetchCreateNewUser({ rawUser }, lang);
-                const resultUser: User | undefined = response.user;
-
+                if (response.user) {
+                    resultUser = response.user;
+                }
                 if (resultUser) {
                     if (resultUser.movement) {
                         const { grade, amount, gender, movement } = resultUser.movement;
                         addSessionData(lang, movement, grade, amount, gender);
                     }
-
-                    if (JSON.stringify(resultUser) !== JSON.stringify(currentUser)) {
-                        setCurrentUser(resultUser);
-                    }
-
+                    setCurrentUser(resultUser);
                     await checkIfNeedToSendMsg(resultUser);
-
-                    if (!isLoggedIn) setIsLoggedIn(true);
+                    setIsLoggedIn(true);
                     if (cookieLimit !== NEED_TO_LOGIN) setLimitCookie(NEED_TO_LOGIN);
                     return;
                 }
-            }
-
-            // fallback if user invalid or not found
-            if (currentUser !== undefined || isLoggedIn !== false) {
                 setCurrentUser(undefined);
                 setIsLoggedIn(false);
             }
@@ -120,29 +106,26 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const blockRef = useRef<boolean>(true);
-
     const checkIfNeedToSendMsg = async (user: User) => {
         if (user.isSendMsg && blockRef.current) {
             const result = await fetchGetMsg(lang);
-
+    
             if (result.result === "success" && result.msg) {
                 const localizedMsg =
                     lang === "en" ? result.msg.textEn : result.msg.textHe;
-
+    
                 setWhatsNewMsg(localizedMsg);
                 blockRef.current = false;
             }
         }
-    };
+    };    
 
     const setIsSendMsg = () => {
-        if (currentUser) {
-            setCurrentUser({
-                ...currentUser,
-                isSendMsg: false,
-            });
-        }
-    };
+        setCurrentUser({
+            ...currentUser,
+            isSendMsg: false
+        });
+    }
 
     const logout = async () => {
         try {
@@ -163,7 +146,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 loading,
                 logout,
                 setIsSendMsg,
-                whatsNewMsg,
+                whatsNewMsg
             }}
         >
             {children}
