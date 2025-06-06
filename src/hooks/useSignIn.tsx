@@ -37,7 +37,7 @@ const useSignIn = (handleStart: () => void) => {
 
     const signInWithGoogle = async () => {
         console.log("📌 signInWithGoogle called");
-        console.trace(); // מדפיס את ה-stack כדי לראות מי קרא לפונקציה
+        console.trace(); // מי קרא לפונקציה
 
         const provider = new GoogleAuthProvider();
         console.log("🚀 signInWithGoogle: clicked");
@@ -58,6 +58,15 @@ const useSignIn = (handleStart: () => void) => {
             console.log("✅ Persistence set — trying popup...");
 
             try {
+                // בדיקה מוקדמת האם הפופאפ חסום ע"י הדפדפן
+                const popupTest = window.open("", "_blank");
+                if (popupTest === null || typeof popupTest === "undefined") {
+                    console.warn("🛑 Popup was blocked by the browser before signInWithPopup");
+                } else {
+                    popupTest.close();
+                    console.log("🟢 Popup allowed by browser");
+                }
+
                 await signInWithPopup(auth, provider);
                 console.log("🎉 signInWithPopup: success");
             } catch (popupError: any) {
