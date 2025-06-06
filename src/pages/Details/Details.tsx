@@ -50,7 +50,7 @@ function Details() {
     setClassLevel(data?.grade || currentUser?.movement?.grade || "");
     setNumberOfChildren(data?.amount || currentUser?.movement?.amount || "");
     setGender(data?.gender || currentUser?.movement?.gender || "");
-  }, [data]);
+  }, [data, currentUser]);
 
   // Reset fields only when language changes
   useEffect(() => {

@@ -9,98 +9,101 @@ import { DataType } from "../models/types/common";
 import { useLanguage } from "../i18n/useLanguage";
 
 export type ContentContextType = {
-  data: DataType | undefined;
-  mainActivity: Activity | undefined;
-  setData: React.Dispatch<React.SetStateAction<DataType | undefined>>;
-  updateDetails: (movement: string, grade: string, amount: string, gender: string) => void;
-  updateMainActivity: (activity: Activity) => void;
-  clearAll: () => void;
-  clearMainActivity: () => void;
+    data: DataType;
+    mainActivity: Activity | undefined;
+    setData: React.Dispatch<React.SetStateAction<DataType>>;
+    updateDetails: (movement: string, grade: string, amount: string, gender: string) => void;
+    updateMainActivity: (activity: Activity) => void;
+    clearAll: () => void;
+    clearMainActivity: () => void;
 };
 
-const ContentContext = createContext<ContentContextType | undefined>(undefined);
-
-export const useContentContext = (): ContentContextType => {
-  const context = useContext(ContentContext);
-  if (!context) {
-    throw new Error("useContentContext must be used within a ContentProvider");
-  }
-  return context;
+export const typeContext = {
+    data: undefined,
+    mainActivity: undefined,
+    setData: () => {},
+    updateDetails: () => {},
+    updateMainActivity: () => {},
+    clearAll: () => {},
+    clearMainActivity: () => {},
 };
+
+export const ContentContext = createContext<ContentContextType>(typeContext);
+
+export const useContentContext = () => useContext(ContentContext);
 
 export const ContentProvider = ({ children }: { children: React.ReactNode }) => {
-  const { currentUser } = useAuthContext();
-  const [data, setData] = useState<DataType | undefined>();
-  const [mainActivity, setMainActivity] = useState<Activity | undefined>();
-  const { lang } = useLanguage();
+    const { currentUser } = useAuthContext();
+    const [data, setData] = useState<DataType | undefined>();
+    const [mainActivity, setMainActivity] = useState<Activity | undefined>();
+    const { lang } = useLanguage();
 
-  useEffect(() => {
-    try {
-      if (!data) {
-        const sessionData: DataType | undefined = Session.get(SessionKey.DATA);
-        if (sessionData) {
-          setData(sessionData);
+    const setStateFromSession = () => {
+        try {
+            if (data === undefined) {
+                const sessionData: DataType | undefined = Session.get(SessionKey.DATA);
+                if (sessionData) {
+                    setData(sessionData);
+                }
+            }
+            if (mainActivity === undefined) {
+                const sessionActivity: Activity | undefined = Session.get(SessionKey.ACTIVITY);
+                if (sessionActivity) {
+                    setMainActivity(sessionActivity);
+                }
+            }
+        } catch (error) {}
+    };
+    setStateFromSession();
+
+    useEffect(() => {
+        if (!data && currentUser && currentUser.movement) {
+            const { grade, amount, gender, movement } = currentUser.movement;
+            setData({
+                movement: Movements[lang][movement],
+                grade: grade,
+                amount: amount,
+                gender: gender,
+            });
         }
-      }
-      if (!mainActivity) {
-        const sessionActivity: Activity | undefined = Session.get(SessionKey.ACTIVITY);
-        if (sessionActivity) {
-          setMainActivity(sessionActivity);
-        }
-      }
-    } catch (error) {
-      console.error("Failed to restore session data", error);
-    }
-  }, []);
+    }, [currentUser, data, lang]);
 
-  useEffect(() => {
-    if (!data && currentUser?.movement) {
-      const { grade, amount, gender, movement } = currentUser.movement;
-      const newData = {
-        movement: Movements[lang][movement],
-        grade,
-        amount,
-        gender,
-      };
-      setData(newData);
-    }
-  }, [currentUser, data, lang]);
+    const updateDetails = (movement: string, grade: string, amount: string, gender: string) => {
+        setData((prevData) => {
+            const data = addSessionData(lang, movement, grade, amount, gender);
+            Session.set(SessionKey.DATA, data);
+            return data;
+        });
+    };
 
-  const updateDetails = (movement: string, grade: string, amount: string, gender: string) => {
-    const newData = addSessionData(lang, movement, grade, amount, gender);
-    Session.set(SessionKey.DATA, newData);
-    setData(newData);
-  };
+    const clearAll = () => {
+        Session.clear();
+        setData(undefined);
+    };
 
-  const updateMainActivity = (activity: Activity) => {
-    setMainActivity(activity);
-    Session.set(SessionKey.ACTIVITY, activity);
-  };
+    const clearMainActivity = () => {
+        setMainActivity(undefined);
+        Session.remove(SessionKey.ACTIVITY);
+    };
 
-  const clearAll = async () => {
-    Session.clear();
-    setData(undefined);
-    setMainActivity(undefined);
-  };
+    const updateMainActivity = (activity: Activity) => {
+        setMainActivity(activity);
+        Session.set(SessionKey.ACTIVITY, activity);
+    };
 
-  const clearMainActivity = () => {
-    setMainActivity(undefined);
-    Session.remove(SessionKey.ACTIVITY);
-  };
-
-  return (
-    <ContentContext.Provider
-      value={{
-        data,
-        setData,
-        mainActivity,
-        updateDetails,
-        updateMainActivity,
-        clearAll,
-        clearMainActivity,
-      }}
-    >
-      {children}
-    </ContentContext.Provider>
-  );
+    return (
+        <ContentContext.Provider
+            value={{
+                data,
+                setData,
+                mainActivity,
+                updateDetails,
+                updateMainActivity,
+                clearAll,
+                clearMainActivity,
+            }}
+        >
+            {children}
+        </ContentContext.Provider>
+    );
 };

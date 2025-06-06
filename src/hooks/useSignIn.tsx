@@ -38,8 +38,7 @@ const useSignIn = (handleStart: () => void) => {
 
         try {
             if (!auth) {
-                console.error("Auth not initialized");
-                return;
+                return; // console.error("Auth not initialized");
             }
 
             setIsLoading(true);
@@ -50,12 +49,13 @@ const useSignIn = (handleStart: () => void) => {
             try {
                 await signInWithPopup(auth, provider);
             } catch (popupError: any) {
-                console.warn("Popup failed, trying redirect fallback:", popupError);
                 const errorCode = popupError?.code;
 
                 const isSafeToFallback =
-                    errorCode !== "auth/popup-closed-by-user" &&
-                    errorCode !== "auth/cancelled-popup-request";
+                    (errorCode as unknown as string)
+                        .toString().includes(`(auth/popup-closed-by-user)`) === false &&
+                    (errorCode as unknown as string)
+                        .toString().includes(`(auth/cancelled-popup-request)`) === false;
 
                 if (isSafeToFallback) {
                     await signInWithRedirect(auth, provider);
@@ -63,7 +63,6 @@ const useSignIn = (handleStart: () => void) => {
                     throw popupError;
                 }
             }
-
         } catch (error) {
             handleErrors(error);
         } finally {
@@ -72,12 +71,11 @@ const useSignIn = (handleStart: () => void) => {
     };
 
     const handleErrors = (error: any) => {
-        console.error("Error in signInWithGoogle:", error);
-        const errorCode = error?.code;
+        const errorCode = error?.code; // console.error("Error in signInWithGoogle:", error);
 
         if (
-            errorCode !== "auth/popup-closed-by-user" &&
-            errorCode !== "auth/cancelled-popup-request"
+            (error as unknown as string).toString().includes(`(auth/popup-closed-by-user)`) === false &&
+            (error as unknown as string).toString().includes(`(auth/cancelled-popup-request)`) === false
         ) {
             handleError(errMsg[lang].google.message);
         }

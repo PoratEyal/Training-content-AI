@@ -17,6 +17,12 @@ import msg from "../models/resources/errorMsg.json";
 import { useCookiesContext } from "./CookiesContext";
 import { useLanguage } from "../i18n/useLanguage";
 
+/**
+ * for make getRedirectResult on localhost
+ * https://stackoverflow.com/questions/77270210/firebase-onauthstatechanged-user-returns-null-when-on-localhost
+ * disable chrome://flags/#third-party-storage-partitioning (found it on default)
+ */
+
 export type AuthContextType = {
     currentUser: User | undefined;
     isLoggedIn: boolean;
@@ -123,7 +129,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const logout = async () => {
         try {
-            setLoading(true); // Start loading spinner
+            setLoading(true); 
             await auth.signOut();
             removeRememberMeCookie();
             setCurrentUser(undefined);
@@ -131,7 +137,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         } catch (error) {
             handleError(error);
         } finally {
-            setLoading(false); // Stop loading spinner
+            setLoading(false); 
         }
     };
 

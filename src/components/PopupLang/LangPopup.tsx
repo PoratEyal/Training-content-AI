@@ -56,7 +56,7 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
       });
     }
 
-    await clearAll(); // ← חיכה שה־data יתאפס לפני שינוי שפה וניווט
+    await clearAll();
     changeLang(newLang);
     closePopup(() => {
       navigate(homePagePath(newLang));
