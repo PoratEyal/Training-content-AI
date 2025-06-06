@@ -23,32 +23,46 @@ const useSignIn = (handleStart: () => void) => {
     const { lang } = useLanguage();
 
     useEffect(() => {
+        console.log("🔄 useEffect: [loading, isLoggedIn, currentUser]", {
+            loading,
+            isLoggedIn,
+            currentUser,
+        });
+
         if (!loading && isLoggedIn && currentUser) {
+            console.log("✅ Authenticated, calling handleStart()");
             handleStart();
         }
     }, [loading, isLoggedIn, currentUser]);
 
     const signInWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
+        console.log("🚀 signInWithGoogle: clicked");
+
         setLimitCookie(NEED_TO_LOGIN);
 
         try {
             if (!auth) {
-                console.error("Auth not initialized");
+                console.error("❌ Auth not initialized");
                 return;
             }
 
+            console.log("🧠 Setting persistence...");
             setIsLoading(true);
             setBtnDisabled(true);
             setRememberMeCookie();
             await setPersistence(auth, rememberMeSession);
+            console.log("✅ Persistence set — trying popup...");
 
             try {
                 await signInWithPopup(auth, provider);
+                console.log("🎉 signInWithPopup: success");
             } catch (popupError: any) {
                 const errorCode = popupError?.code;
+                console.warn("⚠️ signInWithPopup error:", errorCode);
 
                 if (errorCode === "auth/popup-blocked") {
+                    console.log("🔁 Fallback to signInWithRedirect...");
                     await signInWithRedirect(auth, provider);
                     return;
                 }
@@ -62,7 +76,7 @@ const useSignIn = (handleStart: () => void) => {
     };
 
     const handleErrors = (error: any) => {
-        console.error("Error in signInWithGoogle: ", error);
+        console.error("❌ Error in signInWithGoogle:", error);
         const errorStr = (error as unknown as string).toString();
         if (
             !errorStr.includes("auth/popup-closed-by-user") &&
