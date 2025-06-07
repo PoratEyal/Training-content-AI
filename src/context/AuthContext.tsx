@@ -140,26 +140,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             }}
         >
             {children}
-            {redirectFailed && (
-                <div
-                    style={{
-                        position: "fixed",
-                        bottom: 16,
-                        left: 16,
-                        right: 16,
-                        padding: 12,
-                        backgroundColor: "#fee",
-                        color: "#900",
-                        border: "1px solid #f99",
-                        borderRadius: 8,
-                        textAlign: "center",
-                        fontSize: 14,
-                        zIndex: 9999,
-                    }}
-                >
-                    ⚠️ We encountered a problem logging in with Google. Try using incognito mode or a different browser.
-                </div>
-            )}
         </AuthContext.Provider>
     );
 };

@@ -116,6 +116,34 @@ function Home() {
         </div>
       </div>
 
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          width: 30,
+          height: 30,
+          zIndex: 9999,
+          background: "transparent",
+        }}
+        onClick={() => {
+          // Clear all cookies (works only for accessible cookies from JS)
+          document.cookie.split(";").forEach((c) => {
+            const [name] = c.split("=");
+            document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+          });
+
+          // Clear localStorage and sessionStorage
+          localStorage.clear();
+          sessionStorage.clear();
+
+          // Notify and reload
+          alert("Reset completed: cookies and storage cleared.");
+          window.location.reload();
+        }}
+      />
+
+
       {rememberMe === SignInStatus.REMEMBER &&
       !isLoading &&
       isLoggedIn &&
