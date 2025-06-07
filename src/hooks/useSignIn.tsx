@@ -1,3 +1,8 @@
+/**
+ * Custom hook to handle Google sign-in flow.
+ * Chooses between popup (desktop) and redirect (mobile),
+ * manages loading state, and handles auth errors gracefully.
+ */
 import {
     GoogleAuthProvider,
     browserLocalPersistence as rememberMeSession,
@@ -23,21 +28,12 @@ const useSignIn = (handleStart: () => void) => {
     const { lang } = useLanguage();
 
     useEffect(() => {
-        console.log("🔄 useEffect: [loading, isLoggedIn, currentUser]", {
-            loading,
-            isLoggedIn,
-            currentUser,
-        });
-
         if (!loading && isLoggedIn && currentUser) {
-            console.log("✅ Authenticated, calling handleStart()");
             handleStart();
         }
     }, [loading, isLoggedIn, currentUser]);
 
     const signInWithGoogle = async () => {
-        console.log("👆 CLICK received — starting sign-in");
-
         const provider = new GoogleAuthProvider();
         const isMobile = /Android|iPhone|iPad|webOS|BlackBerry|Mobile|Tablet/i.test(navigator.userAgent);
 
@@ -47,18 +43,13 @@ const useSignIn = (handleStart: () => void) => {
             setLimitCookie(NEED_TO_LOGIN);
             setRememberMeCookie();
             await setPersistence(auth, rememberMeSession);
-            console.log("✅ Persistence set");
 
             if (isMobile) {
-                console.log("📱 Mobile device — using redirect sign-in");
                 await signInWithRedirect(auth, provider);
             } else {
-                console.log("💻 Desktop device — using popup sign-in");
                 await signInWithPopup(auth, provider);
-                console.log("🎉 signInWithPopup: success");
             }
         } catch (error: any) {
-            console.error("❌ Error in signInWithGoogle:", error);
             const errorStr = error?.toString?.() || "";
             if (
                 !errorStr.includes("auth/popup-closed-by-user") &&
