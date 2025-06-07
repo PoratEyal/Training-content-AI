@@ -11,17 +11,11 @@ import msg from "../models/resources/errorMsg.json";
 import { useCookiesContext } from "./CookiesContext";
 import { useLanguage } from "../i18n/useLanguage";
 
-/**
- * for make getRedirectResult on localhost
- * https://stackoverflow.com/questions/77270210/firebase-onauthstatechanged-user-returns-null-when-on-localhost
- * disable chrome://flags/#third-party-storage-partitioning (found it on default)
- */
-
 export type AuthContextType = {
     currentUser: User | undefined;
     isLoggedIn: boolean;
     loading: boolean;
-    setIsSendMsg: () => void
+    setIsSendMsg: () => void;
     logout: () => Promise<void>;
     whatsNewMsg: string;
 };
@@ -30,8 +24,8 @@ export const defualtAuthContext: AuthContextType = {
     currentUser: null,
     isLoggedIn: false,
     loading: true,
-    setIsSendMsg: () => {},
-    logout: async () => {},
+    setIsSendMsg: () => { },
+    logout: async () => { },
     whatsNewMsg: "",
 };
 
@@ -42,7 +36,7 @@ export const useAuthContext = () => useContext(AuthContext);
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const isMobile =
         /iPhone|iPad|iPod|Android|BlackBerry|IEMobile|Opera Mini|Windows Phone|webOS|Kindle|Mobile|Tablet/i.test(
-            navigator.userAgent,
+            navigator.userAgent
         );
     const { handleError } = useErrorContext();
     const { cookieLimit, setLimitCookie, removeRememberMeCookie } = useCookiesContext();
@@ -54,87 +48,81 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(() => {
         let unsubscribe: any;
+
         const handleRedirectResult = async () => {
+            console.log("📲 handleRedirectResult: checking redirect login result...");
             try {
                 const userResult = await getRedirectResult(auth);
-                if (userResult) {
-                    initializeUser(userResult);
+                console.log("🔍 getRedirectResult:", userResult);
+                if (userResult?.user) {
+                    console.log("✅ userResult.user found — calling initializeUser");
+                    await initializeUser(userResult.user);
                 } else {
-                    unsubscribe = onAuthStateChanged(auth, initializeUser);
+                    console.log("⛔️ No user in redirect result — fallback to onAuthStateChanged");
                 }
             } catch (error) {
-                // Edge Case:
-                // In some browsers (especially Chrome), getRedirectResult can fail and cause a white screen
-                // This fallback redirects the user back to the homepage if an error occurs
-                window.location.href = "/"; 
+                console.error("❌ getRedirectResult error:", error);
+            } finally {
+                unsubscribe = onAuthStateChanged(auth, initializeUser);
             }
         };
-        if (isMobile) handleRedirectResult();
-        else unsubscribe = onAuthStateChanged(auth, initializeUser);
-        return unsubscribe;
-    }, [isMobile, auth, loading]);
 
+        if (isMobile) {
+            console.log("📱 Mobile device detected — using handleRedirectResult");
+            handleRedirectResult();
+        } else {
+            console.log("💻 Desktop device — using onAuthStateChanged");
+            unsubscribe = onAuthStateChanged(auth, initializeUser);
+        }
+
+        return () => {
+            if (typeof unsubscribe === "function") {
+                console.log("🧹 Cleaning up auth listener");
+                unsubscribe();
+            }
+        };
+    }, [isMobile, auth]);
 
     const initializeUser = async (user) => {
+        console.log("👤 initializeUser called with:", user);
         try {
             if (user && (user as GoogleUser)?.uid) {
                 let resultUser: User | undefined = undefined;
                 const rawUser = initRawUser(user);
+                console.log("📤 Sending rawUser to backend:", rawUser);
                 const response = await fetchCreateNewUser({ rawUser }, lang);
+                console.log("📥 fetchCreateNewUser response:", response);
+
                 if (response.user) {
                     resultUser = response.user;
                 }
+
                 if (resultUser) {
                     if (resultUser.movement) {
                         const { grade, amount, gender, movement } = resultUser.movement;
+                        console.log("🧠 Saving session data:", resultUser.movement);
                         addSessionData(lang, movement, grade, amount, gender);
                     }
                     setCurrentUser(resultUser);
+                    console.log("✅ User set successfully");
                     await checkIfNeedToSendMsg(resultUser);
                     setIsLoggedIn(true);
                     if (cookieLimit !== NEED_TO_LOGIN) setLimitCookie(NEED_TO_LOGIN);
                     return;
                 }
+
+                console.warn("⚠️ resultUser is undefined after backend call");
                 setCurrentUser(undefined);
                 setIsLoggedIn(false);
+            } else {
+                console.warn("⚠️ User object invalid or missing UID");
             }
         } catch (error) {
+            console.error("❌ initializeUser error:", error);
             handleError(msg[lang].google.message);
         } finally {
             setLoading(false);
-        }
-    };
-
-    const blockRef = useRef<boolean>(true);
-    const checkIfNeedToSendMsg = async (user: User) => {
-        if (user.isSendMsg && blockRef.current) {
-            const result = await fetchGetMsg(lang);
-    
-            if (result.result === "success" && result.msg) {
-                const localizedMsg =
-                    lang === "en" ? result.msg.textEn : result.msg.textHe;
-    
-                setWhatsNewMsg(localizedMsg);
-                blockRef.current = false;
-            }
-        }
-    };    
-
-    const setIsSendMsg = () => {
-        setCurrentUser({
-            ...currentUser,
-            isSendMsg: false
-        });
-    }
-
-    const logout = async () => {
-        try {
-            await auth.signOut();
-            removeRememberMeCookie();
-            setCurrentUser(undefined);
-            setIsLoggedIn(false);
-        } catch (error) {
-            handleError(error);
+            console.log("⏹️ Finished initializeUser");
         }
     };
 
@@ -146,10 +134,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 loading,
                 logout,
                 setIsSendMsg,
-                whatsNewMsg
+                whatsNewMsg,
             }}
         >
             {children}
         </AuthContext.Provider>
     );
 };
+
+
+/**
+ * for make getRedirectResult on localhost
+ * https://stackoverflow.com/questions/77270210/firebase-onauthstatechanged-user-returns-null-when-on-localhost
+ * disable chrome://flags/#third-party-storage-partitioning (found it on default)
+ */
