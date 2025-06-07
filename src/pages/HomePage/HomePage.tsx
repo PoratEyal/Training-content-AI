@@ -1,5 +1,5 @@
 //
-// This is the Home page, showing the app’s entry point
+// Home page, showing the app’s entry point
 //
 import styles from "./HomePage.module.css"
 import { useEffect, useState, useMemo } from "react"
@@ -116,6 +116,7 @@ function Home() {
         </div>
       </div>
 
+      {/* // 🔧 Hidden top-right button for developers to reset all storage and cookies (used for debugging on mobile)
       <div
         style={{
           position: "absolute",
@@ -127,27 +128,24 @@ function Home() {
           background: "transparent",
         }}
         onClick={() => {
-          // Clear all cookies (works only for accessible cookies from JS)
           document.cookie.split(";").forEach((c) => {
             const [name] = c.split("=");
             document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
           });
 
-          // Clear localStorage and sessionStorage
           localStorage.clear();
           sessionStorage.clear();
 
-          // Notify and reload
           alert("Reset completed: cookies and storage cleared.");
           window.location.reload();
         }}
       />
-
+      */}
 
       {rememberMe === SignInStatus.REMEMBER &&
-      !isLoading &&
-      isLoggedIn &&
-      currentUser?.image ? (
+        !isLoading &&
+        isLoggedIn &&
+        currentUser?.image ? (
         <section className={styles.button_section}>
           <StartBtn
             text={t("home.startAction")}
