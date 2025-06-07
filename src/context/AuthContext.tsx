@@ -24,8 +24,8 @@ export const defualtAuthContext: AuthContextType = {
     currentUser: null,
     isLoggedIn: false,
     loading: true,
-    setIsSendMsg: () => { },
-    logout: async () => { },
+    setIsSendMsg: () => {},
+    logout: async () => {},
     whatsNewMsg: "",
 };
 
@@ -45,6 +45,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [loading, setLoading] = useState<boolean>(true);
     const [whatsNewMsg, setWhatsNewMsg] = useState<string>("");
     const { lang } = useLanguage();
+    const blockRef = useRef<boolean>(true);
 
     useEffect(() => {
         let unsubscribe: any;
@@ -126,6 +127,37 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
     };
 
+    const checkIfNeedToSendMsg = async (user: User) => {
+        if (user.isSendMsg && blockRef.current) {
+            console.log("🔔 Checking if 'what's new' message should be shown");
+            const result = await fetchGetMsg(lang);
+            if (result.result === "success" && result.msg) {
+                const localizedMsg = lang === "en" ? result.msg.textEn : result.msg.textHe;
+                setWhatsNewMsg(localizedMsg);
+                blockRef.current = false;
+                console.log("📨 'What's new' message set");
+            }
+        }
+    };
+
+    const setIsSendMsg = () => {
+        setCurrentUser({
+            ...currentUser,
+            isSendMsg: false,
+        });
+    };
+
+    const logout = async () => {
+        try {
+            await auth.signOut();
+            removeRememberMeCookie();
+            setCurrentUser(undefined);
+            setIsLoggedIn(false);
+        } catch (error) {
+            handleError(error);
+        }
+    };
+
     return (
         <AuthContext.Provider
             value={{
@@ -142,9 +174,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-
 /**
- * for make getRedirectResult on localhost
- * https://stackoverflow.com/questions/77270210/firebase-onauthstatechanged-user-returns-null-when-on-localhost
- * disable chrome://flags/#third-party-storage-partitioning (found it on default)
+ * For making getRedirectResult work on localhost:
+ * Disable chrome://flags/#third-party-storage-partitioning (set to Default)
  */
