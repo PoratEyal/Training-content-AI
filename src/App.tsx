@@ -10,16 +10,17 @@ import "./App.css"
 import Providers from "./router/Providers"
 import LanguageRedirect from "./components/LanguageRedirect"
 
-import HomePage from "./pages/HomePage/HomePage"
+import PrivateRoutes from "./router/PrivateRoutes"
 
+import HomePage from "./pages/HomePage/HomePage"
 import GroupDetails from "./pages/Details/Details"
 import BuildActivityParams from "./pages/BuildActivity/BuildActivity"
 import ActivityAI from "./pages/Activity/Activity"
 
-import Content from "./pages/Content/Content";
-import ContentActivities from "./pages/ContentActivities/ContentActivities";
-import ContentPopular from "./pages/PopularActivities/PopularActivities";
-import ContentActivity from "./pages/ContentActivity/ContentActivity";
+import Content from "./pages/Content/Content"
+import ContentActivities from "./pages/ContentActivities/ContentActivities"
+import ContentPopular from "./pages/PopularActivities/PopularActivities"
+import ContentActivity from "./pages/ContentActivity/ContentActivity"
 
 import MyActivities from "./pages/MyActivities/MyActivities"
 import MyActivityContent from "./pages/MyActivityContent/MyActivityContent"
@@ -34,62 +35,63 @@ function App() {
     <Providers>
       <ReactNotifications className="react-notifications" />
       <Router>
-        {/* LanguageRedirect to keep the URL in sync with the language */}
         <LanguageRedirect />
         <Routes>
-          <Route path={route.homePageHe} element={<HomePage />} />
-          <Route path={route.homePageEn} element={<HomePage />} />
-          <Route path={route.homePageEs} element={<HomePage />} />
-          <Route path={route.homePageAr} element={<HomePage />} />
 
-          <Route path={route.GroupDetailsHe} element={<GroupDetails />} />
-          <Route path={route.GroupDetailsEn} element={<GroupDetails />} />
-          <Route path={route.GroupDetailsEs} element={<GroupDetails />} />
-          <Route path={route.GroupDetailsAr} element={<GroupDetails />} />
+          {/* Routes that require TSCs/WhatsNew */}
+          <Route element={<PrivateRoutes />}>
+            <Route path={route.homePageHe} element={<HomePage />} />
+            <Route path={route.homePageEn} element={<HomePage />} />
+            <Route path={route.homePageEs} element={<HomePage />} />
+            <Route path={route.homePageAr} element={<HomePage />} />
 
-          <Route path={route.activityParamsHe} element={<BuildActivityParams />} />
-          <Route path={route.activityParamsEn} element={<BuildActivityParams />} />
-          <Route path={route.activityParamsEs} element={<BuildActivityParams />} />
-          <Route path={route.activityParamsAr} element={<BuildActivityParams />} />
+            <Route path={route.GroupDetailsHe} element={<GroupDetails />} />
+            <Route path={route.GroupDetailsEn} element={<GroupDetails />} />
+            <Route path={route.GroupDetailsEs} element={<GroupDetails />} />
+            <Route path={route.GroupDetailsAr} element={<GroupDetails />} />
 
-          <Route path={route.activityAIHe} element={<ActivityAI />} />
-          <Route path={route.activityAIEn} element={<ActivityAI />} />
-          <Route path={route.activityAIEs} element={<ActivityAI />} />
-          <Route path={route.activityAIAr} element={<ActivityAI />} />
+            <Route path={route.activityParamsHe} element={<BuildActivityParams />} />
+            <Route path={route.activityParamsEn} element={<BuildActivityParams />} />
+            <Route path={route.activityParamsEs} element={<BuildActivityParams />} />
+            <Route path={route.activityParamsAr} element={<BuildActivityParams />} />
 
+            <Route path={route.activityAIHe} element={<ActivityAI />} />
+            <Route path={route.activityAIEn} element={<ActivityAI />} />
+            <Route path={route.activityAIEs} element={<ActivityAI />} />
+            <Route path={route.activityAIAr} element={<ActivityAI />} />
 
-          <Route path={route.ContentHe} element={<Content />} />
-          <Route path={route.ContentEn} element={<Content />} />
-          <Route path={route.ContentEs} element={<Content />} />
-          <Route path={route.ContentAr} element={<Content />} />
+            <Route path={route.ContentHe} element={<Content />} />
+            <Route path={route.ContentEn} element={<Content />} />
+            <Route path={route.ContentEs} element={<Content />} />
+            <Route path={route.ContentAr} element={<Content />} />
 
-          <Route path={route.ActivitiesHe} element={<ContentActivities />} />
-          <Route path={route.ActivitiesEn} element={<ContentActivities />} />
-          <Route path={route.ActivitiesEs} element={<ContentActivities />} />
-          <Route path={route.ActivitiesAr} element={<ContentActivities />} />
+            <Route path={route.ActivitiesHe} element={<ContentActivities />} />
+            <Route path={route.ActivitiesEn} element={<ContentActivities />} />
+            <Route path={route.ActivitiesEs} element={<ContentActivities />} />
+            <Route path={route.ActivitiesAr} element={<ContentActivities />} />
 
-          <Route path={route.ActivitiesPopularHe} element={<ContentPopular />} />
-          <Route path={route.ActivitiesPopularEn} element={<ContentPopular />} />
-          <Route path={route.ActivitiesPopularEs} element={<ContentPopular />} />
-          <Route path={route.ActivitiesPopularAr} element={<ContentPopular />} />
+            <Route path={route.ActivitiesPopularHe} element={<ContentPopular />} />
+            <Route path={route.ActivitiesPopularEn} element={<ContentPopular />} />
+            <Route path={route.ActivitiesPopularEs} element={<ContentPopular />} />
+            <Route path={route.ActivitiesPopularAr} element={<ContentPopular />} />
 
-          <Route path={route.ActivityContentHe} element={<ContentActivity />} />
-          <Route path={route.ActivityContentEn} element={<ContentActivity />} />
-          <Route path={route.ActivityContentEs} element={<ContentActivity />} />
-          <Route path={route.ActivityContentAr} element={<ContentActivity />} />
+            <Route path={route.ActivityContentHe} element={<ContentActivity />} />
+            <Route path={route.ActivityContentEn} element={<ContentActivity />} />
+            <Route path={route.ActivityContentEs} element={<ContentActivity />} />
+            <Route path={route.ActivityContentAr} element={<ContentActivity />} />
 
+            <Route path={route.MY_ActivitiesHe} element={<MyActivities />} />
+            <Route path={route.MY_ActivitiesEn} element={<MyActivities />} />
+            <Route path={route.MY_ActivitiesEs} element={<MyActivities />} />
+            <Route path={route.MY_ActivitiesAr} element={<MyActivities />} />
 
-          <Route path={route.MY_ActivitiesHe} element={<MyActivities />} />
-          <Route path={route.MY_ActivitiesEn} element={<MyActivities />} />
-          <Route path={route.MY_ActivitiesEs} element={<MyActivities />} />
-          <Route path={route.MY_ActivitiesAr} element={<MyActivities />} />
+            <Route path={route.MY_ActivityContentHe} element={<MyActivityContent />} />
+            <Route path={route.MY_ActivityContentEn} element={<MyActivityContent />} />
+            <Route path={route.MY_ActivityContentEs} element={<MyActivityContent />} />
+            <Route path={route.MY_ActivityContentAr} element={<MyActivityContent />} />
+          </Route>
 
-          <Route path={route.MY_ActivityContentHe} element={<MyActivityContent />} />
-          <Route path={route.MY_ActivityContentEn} element={<MyActivityContent />} />
-          <Route path={route.MY_ActivityContentEs} element={<MyActivityContent />} />
-          <Route path={route.MY_ActivityContentAr} element={<MyActivityContent />} />
-
-
+          {/* Public routes */}
           <Route path={route.contactUsHe} element={<ContactUs />} />
           <Route path={route.contactUsEn} element={<ContactUs />} />
           <Route path={route.contactUsEs} element={<ContactUs />} />
@@ -105,10 +107,9 @@ function App() {
           <Route path={route.privacyPolicyEs} element={<PrivacyPolicy />} />
           <Route path={route.privacyPolicyAr} element={<PrivacyPolicy />} />
 
-          {/* Admin page */}
           <Route path={route.adminHe} element={<AdminPage />} />
 
-          {/* Redirects */}
+          {/* Default redirects */}
           <Route path="/" element={<Navigate replace to={route.homePageHe} />} />
           <Route path={route.all} element={<Navigate replace to={route.homePageHe} />} />
         </Routes>
