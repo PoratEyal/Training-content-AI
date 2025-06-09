@@ -23,6 +23,10 @@
     ],
     "rewrites": [
       {
+        "source": "/BingSiteAuth.xml",
+        "destination": "/BingSiteAuth.xml"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
