@@ -7,7 +7,7 @@ import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { Link, useNavigate } from "react-router-dom";
 import { useStaticContentContext } from "../../context/StaticContentContext";
-import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
+import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import { fetchIncrementActivityDisplayCount } from "../../utils/fetch";
 import { StaticActivities } from "../../models/types/activity";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
@@ -62,7 +62,7 @@ function PopularActivities() {
       hasHeader={{ goBack }}
       hasNavBar
       hasGreenBackground
-      hasAds={ACTIVITY_AD_SLOT}
+      hasAds={CONTENT_ACTIVITY_AD_SLOT}
     >
       <TopActivities />
       {isLoading ? (
