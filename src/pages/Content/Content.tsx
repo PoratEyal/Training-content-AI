@@ -10,7 +10,7 @@ import "../../components/ActivityOutput/Markdown.css";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { Link, useNavigate } from "react-router-dom";
-import { ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
+import { CONTENT_ACTIVITY_AD_SLOT } from "../../models/constants/adsSlot";
 import PageLoading from "../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../context/StaticContentContext";
 import { Icons } from "../../components/Icons";
@@ -44,7 +44,7 @@ function Content() {
       path={TopicsPath}
       hasHeader={{ goBack }}
       hasNavBar
-      hasAds={ACTIVITY_AD_SLOT}
+      hasAds={CONTENT_ACTIVITY_AD_SLOT}
       index={true}
       hasGreenBackground
     >

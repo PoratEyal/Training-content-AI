@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import PageLayout from "../../components/Layout/PageLayout/PageLayout";
 import route from "../../router/route.json";
 import { useNavigate } from "react-router-dom";
-import { DETAILS_AD_SLOT } from "../../models/constants/adsSlot";
+import { CONTACT_US_AD_SLOT } from "../../models/constants/adsSlot";
 import { useAuthContext } from "../../context/AuthContext";
 import { useErrorContext } from "../../context/ErrorContext";
 import emailjs from "emailjs-com";
@@ -88,7 +88,7 @@ const ContactUs: React.FC = () => {
       id="contactUs"
       path={contactUsPath}
       hasHeader={{}}
-      hasAds={DETAILS_AD_SLOT}
+      hasAds={CONTACT_US_AD_SLOT}
       hasNavBar
     >
       <section className={styles.header} style={{ direction: dir }}>
