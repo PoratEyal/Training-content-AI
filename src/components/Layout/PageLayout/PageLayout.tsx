@@ -49,32 +49,13 @@ function PageLayout({
     document.documentElement.dir = dir;
   }, [lang, dir]);
 
-  // Build alternate URLs for hreflang
-  let alternateHe = canonicalUrl;
-  let alternateEn = canonicalUrl;
-  let alternateEs = canonicalUrl;
-  let alternateAr = canonicalUrl;
+  // Build hreflang alternate URLs
+  const restOfPath = location.pathname.replace(/^\/(he|en|es|ar)/, "") || "/";
 
-  if (location.pathname.startsWith("/en")) {
-    const restOfPath = location.pathname.replace(/^\/en/, "") || "/";
-    alternateHe = `${WEBSITE_URL}${restOfPath}`;
-    alternateEs = `${WEBSITE_URL}/es${restOfPath}`;
-    alternateAr = `${WEBSITE_URL}/ar${restOfPath}`;
-  } else if (location.pathname.startsWith("/es")) {
-    const restOfPath = location.pathname.replace(/^\/es/, "") || "/";
-    alternateHe = `${WEBSITE_URL}${restOfPath}`;
-    alternateEn = `${WEBSITE_URL}/en${restOfPath}`;
-    alternateAr = `${WEBSITE_URL}/ar${restOfPath}`;
-  } else if (location.pathname.startsWith("/ar")) {
-    const restOfPath = location.pathname.replace(/^\/ar/, "") || "/";
-    alternateHe = `${WEBSITE_URL}${restOfPath}`;
-    alternateEn = `${WEBSITE_URL}/en${restOfPath}`;
-    alternateEs = `${WEBSITE_URL}/es${restOfPath}`;
-  } else {
-    alternateEn = `${WEBSITE_URL}/en${location.pathname === "/" ? "" : location.pathname}`;
-    alternateEs = `${WEBSITE_URL}/es${location.pathname === "/" ? "" : location.pathname}`;
-    alternateAr = `${WEBSITE_URL}/ar${location.pathname === "/" ? "" : location.pathname}`;
-  }
+  const alternateHe = `${WEBSITE_URL}/he${restOfPath}`;
+  const alternateEn = `${WEBSITE_URL}/en${restOfPath}`;
+  const alternateEs = `${WEBSITE_URL}/es${restOfPath}`;
+  const alternateAr = `${WEBSITE_URL}/ar${restOfPath}`;
 
   const pageTitle = getTitle(id, lang, title);
   const pageDescription = getContent(id, lang, title);
@@ -103,6 +84,7 @@ function PageLayout({
         <link rel="alternate" href={alternateEn} hrefLang="en" />
         <link rel="alternate" href={alternateEs} hrefLang="es" />
         <link rel="alternate" href={alternateAr} hrefLang="ar" />
+        <link rel="alternate" href={alternateEn} hrefLang="x-default" />
 
         {/* Robots */}
         <meta
