@@ -61,10 +61,14 @@ function Home() {
     }
   }, [isLoggedIn, currentUser, cookieRememberMe, rememberMe])
 
+  // Only set cookie if date doesn't already exist, to allow future time comparisons
   const navigateAndSetCookieDate = (navigateTo: string) => {
-    setLimitCookie(new Date().toString())
-    navigate(navigateTo)
-  }
+    if (!cookieLimit) {
+      setLimitCookie(new Date().toString());
+    }
+    navigate(navigateTo);
+  };
+
 
   const guestSignInOrNavigate = (limitDate: string, navigateTo: string) => {
     const isValidDate = isValidDateFormat(limitDate)
