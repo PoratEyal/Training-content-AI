@@ -179,10 +179,6 @@
         "a": "ActivityWiz es una plataforma inteligente para crear actividades personalizadas para instructores y educadores. Puedes usarla para acceder a actividades listas para usar o generar nuevas automáticamente mediante inteligencia artificial."
       },
       {
-        "q": "¿Necesito registrarme para usar el sitio?",
-        "a": "No. Puedes navegar y usar el sitio sin registrarte, pero al registrarte desbloqueas funciones adicionales como guardar y editar tus actividades."
-      },
-      {
         "q": "¿El sitio es gratuito?",
         "a": "Sí."
       },
@@ -207,8 +203,8 @@
         "a": "Sí. Una vez que te registres, podrás guardar cualquier actividad que hayas creado y acceder o actualizarla en cualquier momento."
       },
       {
-        "q": "¿El sitio estará disponible en otros idiomas además del inglés?",
-        "a": "Actualmente estamos trabajando para añadir soporte para más idiomas en un futuro cercano."
+        "q": "¿Qué idiomas son compatibles?",
+        "a": "El sistema es compatible con inglés, español, hebreo y árabe. Se agregarán más idiomas en el futuro."
       },
       {
         "q": "¿Cómo puedo contactar al equipo de ActivityWiz?",

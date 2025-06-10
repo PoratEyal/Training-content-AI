@@ -96,34 +96,35 @@
     }
   },
   "profile": {
-      "dropOptInviteFriends": {
-        "invite": "Share with friends"
-      },
-      "dropOptContactUs": {
-        "contact": "Contact Us"
-      },
-      "dropOptLogout": {
-        "logout": "Logout"
-      },
-      "dropOptFQA": {
-        "fqa": "FAQ"
-      },
-      "dropOptPrivacy": {
-        "policy": "Privacy Policy"
-      },
-      "dropOptSignIn": {
-        "signIn": "Sign In"
-      },
-      "dropOptLang": {
-        "lang": "Language"
-      }
+    "dropOptInviteFriends": {
+      "invite": "Share with friends"
+    },
+    "dropOptContactUs": {
+      "contact": "Contact Us"
+    },
+    "dropOptLogout": {
+      "logout": "Logout"
+    },
+    "dropOptFQA": {
+      "fqa": "FAQ"
+    },
+    "dropOptPrivacy": {
+      "policy": "Privacy Policy"
+    },
+    "dropOptSignIn": {
+      "signIn": "Sign In"
+    },
+    "dropOptLang": {
+      "lang": "Language"
+    }
   },
   "reviewPopup": {
     "title": "What's New?!",
     "shareIdea": "Want to suggest an improvement? Or just share your thoughts?",
     "placeholder": "Please write to us here",
     "submit": "Submit"
-  },  "articleOptions": {
+  },
+  "articleOptions": {
     "copy": {
       "button": "Copy",
       "success": "Activity copied successfully 🎉",
@@ -178,10 +179,6 @@
         "a": "ActivityWiz is a smart platform for creating personalized activities for instructors and educators. You can use it to access ready-made activities or generate new ones automatically using artificial intelligence."
       },
       {
-        "q": "Do I need to register to use the site?",
-        "a": "No. You can browse and use the site without registration, but signing up unlocks extra features like saving and editing your activities."
-      },
-      {
         "q": "Is the site free to use?",
         "a": "Yes."
       },
@@ -206,8 +203,8 @@
         "a": "Yes. Once you sign up, you can save any activity you've created and access or update it anytime."
       },
       {
-        "q": "Will the site be available in languages other than English?",
-        "a": "We are currently working on adding support for more languages in the near future."
+        "q": "Which languages are supported?",
+        "a": "The system supports English, Spanish, Hebrew, and Arabic. More languages will be added in the future."
       },
       {
         "q": "How can I contact the ActivityWiz team?",
@@ -256,4 +253,3 @@
     ]
   }
 }
-
