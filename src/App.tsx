@@ -28,7 +28,7 @@ import MyActivityContent from "./pages/MyActivityContent/MyActivityContent"
 import AdminPage from "./pages/AdminPage/AdminPage"
 import PrivacyPolicy from "./pages/PagePrivacyPolicy/PrivacyPolicy"
 import ContactUs from "./pages/ContactUs/ContactUs"
-import FQA from "./pages/FAQ/FAQ"
+import FAQ from "./pages/FAQ/FAQ"
 
 function App() {
   return (
@@ -97,10 +97,10 @@ function App() {
           <Route path={route.contactUsEs} element={<ContactUs />} />
           <Route path={route.contactUsAr} element={<ContactUs />} />
 
-          <Route path={route.faqHe} element={<FQA />} />
-          <Route path={route.faqEn} element={<FQA />} />
-          <Route path={route.faqEs} element={<FQA />} />
-          <Route path={route.faqAr} element={<FQA />} />
+          <Route path={route.faqHe} element={<FAQ />} />
+          <Route path={route.faqEn} element={<FAQ />} />
+          <Route path={route.faqEs} element={<FAQ />} />
+          <Route path={route.faqAr} element={<FAQ />} />
 
           <Route path={route.privacyPolicyHe} element={<PrivacyPolicy />} />
           <Route path={route.privacyPolicyEn} element={<PrivacyPolicy />} />

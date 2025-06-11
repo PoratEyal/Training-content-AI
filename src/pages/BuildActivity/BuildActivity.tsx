@@ -1,7 +1,6 @@
 //
 // This is the Activity Parameters page
 // It loads default values from session or user data, and allows filling in activity parameters
-// It adjusts layout and text direction based on the active language
 //
 import styles from "./BuildActivity.module.css";
 import { useEffect, useRef, useState, useMemo } from "react";
@@ -59,7 +58,6 @@ function BuildActivity() {
 
   const [hasAlert, setHasAlert] = useState(false);
 
-  // Determine language-specific paths (he is the fallback)
   const homePagePath = route[`homePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.homePageHe;
   const activityParamsPath = route[`activityParams${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityParamsHe;
   const activityAIPath = route[`activityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityAIHe;

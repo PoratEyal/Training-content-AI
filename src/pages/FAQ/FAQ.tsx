@@ -11,6 +11,10 @@ const FAQ: React.FC = () => {
   const { t, i18n } = useTranslation();
   const { dir } = useLanguage();
 
+  const lang = i18n.language.slice(0, 2);
+  const capitalizedLang = lang.charAt(0).toUpperCase() + lang.slice(1);
+  const faqPath = route[`faq${capitalizedLang}`] || route.faqEn;
+
   const faq = t("faq.questions", { returnObjects: true }) as {
     q: string;
     a: string;
@@ -20,13 +24,13 @@ const FAQ: React.FC = () => {
   const title = t("faq.title");
 
   return (
-      <PageLayout
-        id="faq"
-        path={route[`faq${i18n.language.charAt(0).toUpperCase() + i18n.language.slice(1)}`] || route.faqHe} 
-        hasHeader={{ isBlur: true }}
-        hasNavBar
-        index={true}
-      >
+    <PageLayout
+      id="faq"
+      path={faqPath}
+      hasHeader={{ isBlur: true }}
+      hasNavBar
+      index={true}
+    >
       <FadeEffect hasFade>
         <article className={styles.faq_article} dir={dir}>
           <section>

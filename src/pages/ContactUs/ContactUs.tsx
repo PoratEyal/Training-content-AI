@@ -28,7 +28,6 @@ const ContactUs: React.FC = () => {
     message: "",
   });
 
-  // Dynamically determine the route path based on language
   const contactUsPath = route[`contactUs${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.contactUsHe;
   const homePagePath = route[`homePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.homePageHe;
 

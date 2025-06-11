@@ -2,7 +2,6 @@
 // This is the Activity Parameters page for filling in group details (movement, grade, number of children, gender)
 // It auto-fills fields on the first render from user/session data if available
 // It resets fields when the language changes to avoid mismatched data
-// The form uses dynamic translations and adjusts layout direction based on language (LTR/RTL)
 // On form submission, it saves the data to the app's context and navigates to the activity-building page
 //
 import styles from "./Details.module.css";
