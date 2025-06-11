@@ -1,7 +1,5 @@
 //
 // This is the Privacy Policy page where users can read the app's data and privacy practices.
-// The content is dynamically loaded based on the active language (he, en, es, ar, etc.).
-// The page adjusts text direction (RTL/LTR) and uses a fade effect for better readability.
 //
 import styles from "./PrivacyPolicy.module.css"
 import policyHe from "../../models/resources/he/policy.json"

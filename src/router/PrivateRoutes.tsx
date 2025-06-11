@@ -2,48 +2,58 @@ import React, { useEffect, useRef, useState } from "react"
 import { Outlet } from "react-router-dom"
 import TSCs from "../components/TSCs/TSCs"
 import { useCookiesContext } from "../context/CookiesContext"
-import PopupFeedback from "../components/PopupFeedback/PopupFeedback"
+// import PopupFeedback from "../components/PopupFeedback/PopupFeedback"
 import { useAuthContext } from "../context/AuthContext"
 import { fetchUpdateIsMsg } from "../utils/fetch"
 
 const PrivateRoutes = () => {
-    const { cookieUserConsent, setConsentCookie } = useCookiesContext()
-    const { whatsNewMsg, setIsSendMsg, currentUser } = useAuthContext()
-    const [tscs, setTscs] = useState<boolean>(false)
-    const [whatsNew, setWhatsNew] = useState<boolean>(false)
+  const { cookieUserConsent, setConsentCookie } = useCookiesContext()
+  const { whatsNewMsg, setIsSendMsg, currentUser } = useAuthContext()
+  const [tscs, setTscs] = useState<boolean>(false)
+  const [whatsNew, setWhatsNew] = useState<boolean>(false)
 
-    useEffect(() => {
-        if (cookieUserConsent === undefined) {
-            setTscs(true)
-        }
-    }, [cookieUserConsent])
-
-    const blockRef = useRef<boolean>(true)
-    useEffect(() => {
-        if (blockRef.current && currentUser?.isSendMsg && whatsNewMsg !== "") {
-            setWhatsNew(true)
-            blockRef.current = false
-        }
-    }, [whatsNewMsg, currentUser?.isSendMsg])
-
-    const handleAcceptTerms = () => {
-        setConsentCookie()
-        setTscs(false)
+  useEffect(() => {
+    if (cookieUserConsent === undefined) {
+      setTscs(true)
     }
+  }, [cookieUserConsent])
 
-    const handleWhatsNewClose = async () => {
-        setWhatsNew(false)
-        setIsSendMsg()
-        if (currentUser?.id) await fetchUpdateIsMsg(currentUser.id)
+  const blockRef = useRef<boolean>(true)
+  useEffect(() => {
+    if (blockRef.current && currentUser?.isSendMsg && whatsNewMsg !== "") {
+      // setWhatsNew(true)
+      blockRef.current = false
     }
+  }, [whatsNewMsg, currentUser?.isSendMsg])
 
-    return (
-        <React.Fragment>
-            {tscs && <TSCs handleAccept={handleAcceptTerms} />}
-            {whatsNew && <PopupFeedback handleClose={handleWhatsNewClose} msg={whatsNewMsg} />}
-            <Outlet />
-        </React.Fragment>
-    )
+  const handleAcceptTerms = () => {
+    setConsentCookie()
+    setTscs(false)
+  }
+
+  const handleWhatsNewClose = async () => {
+    setWhatsNew(false)
+    setIsSendMsg()
+    if (currentUser?.id) await fetchUpdateIsMsg(currentUser.id)
+  }
+
+  return (
+    <React.Fragment>
+      {tscs && <TSCs handleAccept={handleAcceptTerms} />}
+
+      {/* 
+        // 🔒 Disabled WhatsNew popup temporarily
+        // {whatsNew && (
+        //   <PopupFeedback
+        //     handleClose={handleWhatsNewClose}
+        //     msg={whatsNewMsg}
+        //   />
+        // )}
+      */}
+
+      <Outlet />
+    </React.Fragment>
+  )
 }
 
 export default PrivateRoutes
