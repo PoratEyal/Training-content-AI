@@ -3,3 +3,5 @@ User-agent: *
 Disallow: /__/
 
 Sitemap: https://activitywiz.com/sitemap.xml
+Sitemap: https://activitywiz.com/sitemap_youth.xml
+Sitemap: https://activitywiz.com/sitemap_practice.xml

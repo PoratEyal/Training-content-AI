@@ -1,80 +1,25 @@
 {
-    "short_name": "ActivityWiz",
-    "name": "Activity Wizard",
-    "icons": [
-        {
-            "src": "favicon.ico",
-            "sizes": "64x64 32x32 24x24 16x16",
-            "type": "image/x-icon"
-        },
-        {
-            "src": "logo192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "logo512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        },
-        {
-            "src": "maintenance.png",
-            "type": "image/png",
-            "sizes": "612x408"
-        },
-        {
-            "src": "icon.png",
-            "type": "image/png",
-            "sizes": "115x115"
-        },
-        {
-            "src": "ai.svg",
-            "type": "image/svg+xml",
-            "sizes": "14x14"
-        },
-        {
-            "src": "bigLogo.svg",
-            "type": "image/svg+xml",
-            "sizes": "251x95"
-        },
-        {
-            "src": "h2_page2.svg",
-            "type": "image/svg+xml",
-            "sizes": "161x66"
-        },
-        {
-            "src": "hand_icon.svg",
-            "type": "image/svg+xml",
-            "sizes": "64x64"
-        },
-        {
-            "src": "homePageLogo.svg",
-            "type": "image/svg+xml",
-            "sizes": "251x95"
-        },
-        {
-            "src": "lamp.svg",
-            "type": "image/svg+xml",
-            "sizes": "105x109"
-        },
-        {
-            "src": "more.svg",
-            "type": "image/svg+xml",
-            "sizes": "14x14"
-        },
-        {
-            "src": "page3_effect.svg",
-            "type": "image/svg+xml",
-            "sizes": "23x24"
-        },
-        {
-            "src": "path.svg",
-            "type": "image/svg+xml",
-            "sizes": "95x120"
-        }
-    ],
-    "start_url": "/",
-    "display": "standalone",
-    "theme_color": "#708254",
-    "background_color": "#FAF6EE"
+  "short_name": "ActivityWiz",
+  "name": "Activity Wizard",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#708254",
+  "background_color": "#FAF6EE",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
