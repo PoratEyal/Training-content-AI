@@ -15,6 +15,7 @@
     }
   ],
   "hosting": {
+    "target": "activitywiz",
     "public": "build",
     "ignore": [
       "firebase.json",
