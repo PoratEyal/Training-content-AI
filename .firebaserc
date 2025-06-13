@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "activity-wizard"
+  },
+  "targets": {
+    "activity-wizard": {
+      "hosting": {
+        "activitywiz": [
+          "activity-wizard"
+        ]
+      }
+    }
   }
 }
