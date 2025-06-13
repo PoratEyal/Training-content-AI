@@ -7,11 +7,9 @@
       "hosting": {
         "activitywiz": [
           "activity-wizard"
-        ],
-        "smartPractice": [
-          "activitywiz-practice"
         ]
       }
     }
-  }
+  },
+  "etags": {}
 }

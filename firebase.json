@@ -1,99 +1,58 @@
 {
-  "functions": [
+  "functions": {
+    "source": "functions",
+    "ignore": [
+      "node_modules",
+      ".git",
+      "firebase-debug.log",
+      "firebase-debug.*.log"
+    ],
+    "predeploy": [
+      "npm --prefix \"$RESOURCE_DIR\" run build"
+    ]
+  },
+  "hosting": [
     {
-      "source": "functions",
-      "codebase": "default",
+      "site": "activity-wizard",
+      "public": "build",
       "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log"
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
       ],
-      "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run build"
+      "rewrites": [
+        { "source": "/BingSiteAuth.xml", "destination": "/index.html" },
+        { "source": "/he", "destination": "/index.html" },
+        { "source": "/he/**", "destination": "/index.html" },
+        { "source": "/en", "destination": "/index.html" },
+        { "source": "/en/**", "destination": "/index.html" },
+        { "source": "/es", "destination": "/index.html" },
+        { "source": "/es/**", "destination": "/index.html" },
+        { "source": "/ar", "destination": "/index.html" },
+        { "source": "/ar/**", "destination": "/index.html" }
+      ],
+      "headers": [
+        {
+          "source": "/he/**",
+          "headers": [{ "key": "Content-Language", "value": "he" }]
+        },
+        {
+          "source": "/en/**",
+          "headers": [{ "key": "Content-Language", "value": "en" }]
+        },
+        {
+          "source": "/es/**",
+          "headers": [{ "key": "Content-Language", "value": "es" }]
+        },
+        {
+          "source": "/fr/**",
+          "headers": [{ "key": "Content-Language", "value": "fr" }]
+        },
+        {
+          "source": "/ar/**",
+          "headers": [{ "key": "Content-Language", "value": "ar" }]
+        }
       ]
     }
-  ],
-  "hosting": {
-    "target": "activitywiz",
-    "public": "build",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      { "source": "/BingSiteAuth.xml", "destination": "/BingSiteAuth.xml" },
-      { "source": "/he", "destination": "/index.html" },
-      { "source": "/he/**", "destination": "/index.html" },
-      { "source": "/en", "destination": "/index.html" },
-      { "source": "/en/**", "destination": "/index.html" },
-      { "source": "/es", "destination": "/index.html" },
-      { "source": "/es/**", "destination": "/index.html" },
-      { "source": "/ar", "destination": "/index.html" },
-      { "source": "/ar/**", "destination": "/index.html" }
-    ],
-    "headers": [
-      {
-        "source": "/en",
-        "headers": [
-          { "key": "Content-Language", "value": "en" }
-        ]
-      },
-      {
-        "source": "/en/**",
-        "headers": [
-          { "key": "Content-Language", "value": "en" }
-        ]
-      },
-      {
-        "source": "/es",
-        "headers": [
-          { "key": "Content-Language", "value": "es" }
-        ]
-      },
-      {
-        "source": "/es/**",
-        "headers": [
-          { "key": "Content-Language", "value": "es" }
-        ]
-      },
-      {
-        "source": "/fr",
-        "headers": [
-          { "key": "Content-Language", "value": "fr" }
-        ]
-      },
-      {
-        "source": "/fr/**",
-        "headers": [
-          { "key": "Content-Language", "value": "fr" }
-        ]
-      },
-      {
-        "source": "/ar",
-        "headers": [
-          { "key": "Content-Language", "value": "ar" }
-        ]
-      },
-      {
-        "source": "/ar/**",
-        "headers": [
-          { "key": "Content-Language", "value": "ar" }
-        ]
-      },
-      {
-        "source": "/he",
-        "headers": [
-          { "key": "Content-Language", "value": "he" }
-        ]
-      },
-      {
-        "source": "/he/**",
-        "headers": [
-          { "key": "Content-Language", "value": "he" }
-        ]
-      }
-    ]
-  }
+  ]
 }
