@@ -22,14 +22,15 @@
       "**/node_modules/**"
     ],
     "rewrites": [
-      {
-        "source": "/BingSiteAuth.xml",
-        "destination": "/BingSiteAuth.xml"
-      },
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
+      { "source": "/BingSiteAuth.xml", "destination": "/BingSiteAuth.xml" },
+      { "source": "/he", "destination": "/index.html" },
+      { "source": "/he/**", "destination": "/index.html" },
+      { "source": "/en", "destination": "/index.html" },
+      { "source": "/en/**", "destination": "/index.html" },
+      { "source": "/es", "destination": "/index.html" },
+      { "source": "/es/**", "destination": "/index.html" },
+      { "source": "/ar", "destination": "/index.html" },
+      { "source": "/ar/**", "destination": "/index.html" }
     ],
     "headers": [
       {
