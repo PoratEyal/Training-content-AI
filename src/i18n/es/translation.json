@@ -105,8 +105,8 @@
     "dropOptLogout": {
       "logout": "Cerrar sesión"
     },
-    "dropOptFQA": {
-      "fqa": "FAQ"
+    "dropOptFAQ": {
+      "faq": "FAQ"
     },
     "dropOptPrivacy": {
       "policy": "Privacidad"

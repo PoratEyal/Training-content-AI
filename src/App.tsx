@@ -12,23 +12,57 @@ import LanguageRedirect from "./components/LanguageRedirect"
 
 import PrivateRoutes from "./router/PrivateRoutes"
 
-import HomePage from "./pages/HomePage/HomePage"
-import GroupDetails from "./pages/Details/Details"
-import BuildActivityParams from "./pages/BuildActivity/BuildActivity"
-import ActivityAI from "./pages/Activity/Activity"
+// Youth Activities
+import HomePage from "./pages/YouthActivity/HomePage/HomePage"
+import GroupDetails from "./pages/YouthActivity/Details/Details"
+import BuildActivityParams from "./pages/YouthActivity/BuildActivity/BuildActivity"
+import ActivityAI from "./pages/YouthActivity/Activity/Activity"
+import Content from "./pages/YouthActivity/Content/Content"
+import ContentActivities from "./pages/YouthActivity/ContentActivities/ContentActivities"
+import ContentPopular from "./pages/YouthActivity/PopularActivities/PopularActivities"
+import ContentActivity from "./pages/YouthActivity/ContentActivity/ContentActivity"
+import MyActivities from "./pages/YouthActivity/MyActivities/MyActivities"
+import MyActivityContent from "./pages/YouthActivity/MyActivityContent/MyActivityContent"
+import ActivityFAQ from "./pages/YouthActivity/FAQ/FAQ"
+import AdminPage from "./pages/YouthActivity/AdminPage/AdminPage"
 
-import Content from "./pages/Content/Content"
-import ContentActivities from "./pages/ContentActivities/ContentActivities"
-import ContentPopular from "./pages/PopularActivities/PopularActivities"
-import ContentActivity from "./pages/ContentActivity/ContentActivity"
+// Smart Practice
+import PracticeHomePage from "./pages/SmartPractice/HomePage/Practice"
+import PracticeFAQ from "./pages/SmartPractice/FAQ/FAQ"
+import PracticeQuiz from "./pages/SmartPractice/Quiz/Quiz"
+import PracticeTopic from "./pages/SmartPractice/Topic/Topic"
 
-import MyActivities from "./pages/MyActivities/MyActivities"
-import MyActivityContent from "./pages/MyActivityContent/MyActivityContent"
+// Common
+import PrivacyPolicy from "./pages/Common/PagePrivacyPolicy/PrivacyPolicy"
+import ContactUs from "./pages/Common/ContactUs/ContactUs"
 
-import AdminPage from "./pages/AdminPage/AdminPage"
-import PrivacyPolicy from "./pages/PagePrivacyPolicy/PrivacyPolicy"
-import ContactUs from "./pages/ContactUs/ContactUs"
-import FAQ from "./pages/FAQ/FAQ"
+const langs = ["He", "En", "Es", "Ar"]
+
+const privateRoutes = [
+  // Youth Activities private pages
+  { key: "homePage", element: <HomePage /> },
+  { key: "GroupDetails", element: <GroupDetails /> },
+  { key: "activityParams", element: <BuildActivityParams /> },
+  { key: "activityAI", element: <ActivityAI /> },
+  { key: "Content", element: <Content /> },
+  { key: "Activities", element: <ContentActivities /> },
+  { key: "ActivitiesPopular", element: <ContentPopular /> },
+  { key: "ActivityContent", element: <ContentActivity /> },
+  { key: "MY_Activities", element: <MyActivities /> },
+  { key: "MY_ActivityContent", element: <MyActivityContent /> },
+
+  // Smart Practice private pages
+  { key: "practiceHomePage", element: <PracticeHomePage /> },
+  { key: "practiceQuiz", element: <PracticeQuiz /> },
+  { key: "practiceTopic", element: <PracticeTopic /> },
+]
+
+const publicRoutes = [
+  { key: "contactUs", element: <ContactUs /> },
+  { key: "faq", element: <ActivityFAQ /> },
+  { key: "privacyPolicy", element: <PrivacyPolicy /> },
+  { key: "smartFAQ", element: <PracticeFAQ /> },
+]
 
 function App() {
   return (
@@ -38,80 +72,28 @@ function App() {
         <LanguageRedirect />
         <Routes>
 
-          {/* Routes that require TSCs/WhatsNew */}
+          {/* Private Routes */}
           <Route element={<PrivateRoutes />}>
-            <Route path={route.homePageHe} element={<HomePage />} />
-            <Route path={route.homePageEn} element={<HomePage />} />
-            <Route path={route.homePageEs} element={<HomePage />} />
-            <Route path={route.homePageAr} element={<HomePage />} />
-
-            <Route path={route.GroupDetailsHe} element={<GroupDetails />} />
-            <Route path={route.GroupDetailsEn} element={<GroupDetails />} />
-            <Route path={route.GroupDetailsEs} element={<GroupDetails />} />
-            <Route path={route.GroupDetailsAr} element={<GroupDetails />} />
-
-            <Route path={route.activityParamsHe} element={<BuildActivityParams />} />
-            <Route path={route.activityParamsEn} element={<BuildActivityParams />} />
-            <Route path={route.activityParamsEs} element={<BuildActivityParams />} />
-            <Route path={route.activityParamsAr} element={<BuildActivityParams />} />
-
-            <Route path={route.activityAIHe} element={<ActivityAI />} />
-            <Route path={route.activityAIEn} element={<ActivityAI />} />
-            <Route path={route.activityAIEs} element={<ActivityAI />} />
-            <Route path={route.activityAIAr} element={<ActivityAI />} />
-
-            <Route path={route.ContentHe} element={<Content />} />
-            <Route path={route.ContentEn} element={<Content />} />
-            <Route path={route.ContentEs} element={<Content />} />
-            <Route path={route.ContentAr} element={<Content />} />
-
-            <Route path={route.ActivitiesHe} element={<ContentActivities />} />
-            <Route path={route.ActivitiesEn} element={<ContentActivities />} />
-            <Route path={route.ActivitiesEs} element={<ContentActivities />} />
-            <Route path={route.ActivitiesAr} element={<ContentActivities />} />
-
-            <Route path={route.ActivitiesPopularHe} element={<ContentPopular />} />
-            <Route path={route.ActivitiesPopularEn} element={<ContentPopular />} />
-            <Route path={route.ActivitiesPopularEs} element={<ContentPopular />} />
-            <Route path={route.ActivitiesPopularAr} element={<ContentPopular />} />
-
-            <Route path={route.ActivityContentHe} element={<ContentActivity />} />
-            <Route path={route.ActivityContentEn} element={<ContentActivity />} />
-            <Route path={route.ActivityContentEs} element={<ContentActivity />} />
-            <Route path={route.ActivityContentAr} element={<ContentActivity />} />
-
-            <Route path={route.MY_ActivitiesHe} element={<MyActivities />} />
-            <Route path={route.MY_ActivitiesEn} element={<MyActivities />} />
-            <Route path={route.MY_ActivitiesEs} element={<MyActivities />} />
-            <Route path={route.MY_ActivitiesAr} element={<MyActivities />} />
-
-            <Route path={route.MY_ActivityContentHe} element={<MyActivityContent />} />
-            <Route path={route.MY_ActivityContentEn} element={<MyActivityContent />} />
-            <Route path={route.MY_ActivityContentEs} element={<MyActivityContent />} />
-            <Route path={route.MY_ActivityContentAr} element={<MyActivityContent />} />
+            {privateRoutes.map(({ key, element }) =>
+              langs.map(lang => (
+                <Route key={`${key}${lang}`} path={route[`${key}${lang}`]} element={element} />
+              ))
+            )}
           </Route>
 
-          {/* Public routes */}
-          <Route path={route.contactUsHe} element={<ContactUs />} />
-          <Route path={route.contactUsEn} element={<ContactUs />} />
-          <Route path={route.contactUsEs} element={<ContactUs />} />
-          <Route path={route.contactUsAr} element={<ContactUs />} />
+          {/* Public Routes */}
+          {publicRoutes.map(({ key, element }) =>
+            langs.map(lang => (
+              <Route key={`${key}${lang}`} path={route[`${key}${lang}`]} element={element} />
+            ))
+          )}
 
-          <Route path={route.faqHe} element={<FAQ />} />
-          <Route path={route.faqEn} element={<FAQ />} />
-          <Route path={route.faqEs} element={<FAQ />} />
-          <Route path={route.faqAr} element={<FAQ />} />
-
-          <Route path={route.privacyPolicyHe} element={<PrivacyPolicy />} />
-          <Route path={route.privacyPolicyEn} element={<PrivacyPolicy />} />
-          <Route path={route.privacyPolicyEs} element={<PrivacyPolicy />} />
-          <Route path={route.privacyPolicyAr} element={<PrivacyPolicy />} />
-
+          {/* Admin route – Hebrew only */}
           <Route path={route.adminHe} element={<AdminPage />} />
 
-          {/* Default redirects */}
+          {/* Default Redirects */}
           <Route path="/" element={<Navigate replace to={route.homePageHe} />} />
-          <Route path={route.all} element={<Navigate replace to={route.homePageHe} />} />
+          <Route path="*" element={<Navigate replace to={route.homePageHe} />} />
         </Routes>
       </Router>
     </Providers>
