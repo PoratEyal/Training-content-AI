@@ -23,18 +23,20 @@ export type AuthContextType = {
     setIsSendMsg: () => void;
     logout: () => Promise<void>;
     whatsNewMsg: string;
+    setCurrentUser: (user: User) => void;
 };
 
-export const defualtAuthContext: AuthContextType = {
+export const defaultAuthContext: AuthContextType = {
     currentUser: null,
     isLoggedIn: false,
     loading: true,
     setIsSendMsg: () => { },
     logout: async () => { },
     whatsNewMsg: "",
+    setCurrentUser: () => { },
 };
 
-export const AuthContext = createContext<AuthContextType>(defualtAuthContext);
+export const AuthContext = createContext<AuthContextType>(defaultAuthContext);
 
 export const useAuthContext = () => useContext(AuthContext);
 
@@ -137,6 +139,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 logout,
                 setIsSendMsg,
                 whatsNewMsg,
+                setCurrentUser,
             }}
         >
             {children}
