@@ -18,7 +18,8 @@
     "home": "Inicio",
     "build": "Crear Actividad",
     "content": "Contenido",
-    "myActivities": "Mis Actividades"
+    "myActivities": "Mis Actividades",
+    "practiceBuild": "Create Practice"
   },
   "details": {
     "title": "Cuéntanos sobre tu grupo",
@@ -105,8 +106,8 @@
     "dropOptLogout": {
       "logout": "Cerrar sesión"
     },
-    "dropOptFQA": {
-      "fqa": "FAQ"
+    "dropOptFAQ": {
+      "faq": "FAQ"
     },
     "dropOptPrivacy": {
       "policy": "Privacidad"

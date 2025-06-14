@@ -1,23 +1,35 @@
 import cors from "cors";
 import express from "express";
 import * as functions from "firebase-functions";
+import * as admin from "firebase-admin";
+
+// Common
 import ping from './callableFunctions/ping';
+import sendMsg from "./callableFunctions/sendMsg";
+import getMsg from "./callableFunctions/getMsg";
+import updateIsMsg from "./callableFunctions/updateIsMsg";
+
+// Youth Activities
 import getActivity from "./callableFunctions/getActivity"
 import updateActivityLikes from "./callableFunctions/updateActivityLikes"
 import createNewUser from "./callableFunctions/createNewUser"
 import getUserById from "./callableFunctions/getUserById"
 import updateUser from "./callableFunctions/updateUser"
-import * as admin from "firebase-admin";
+
 import getSavedActivities from "./callableFunctions/getSavedActivities";
 import saveActivity from "./callableFunctions/saveActivity";
 import removeSavedActivity from "./callableFunctions/removeSavedActivity";
+
 import getStaticSubjectsHttp from "./callableFunctions/getStaticSubject";
 import incrementActivityDisplayCount from "./callableFunctions/incrementActivityDisplayCount";
 import getStaticActivityHttp from "./callableFunctions/getStaticActivity";
-import sendMsg from "./callableFunctions/sendMsg";
-import getMsg from "./callableFunctions/getMsg";
-import updateIsMsg from "./callableFunctions/updateIsMsg";
 import addStaticActivity from "./callableFunctions/addStaticActivity";
+
+// SmartPractice 
+import createNewUser4Practice from "./callableFunctions/createNewUser4Practice";
+import getQuestions4Practice from "./callableFunctions/getQuestions4Practice";
+
+
 
 const app = express();
 app.use(cors());
@@ -28,12 +40,12 @@ export { db };
 
 exports.ping = ping;
 
-
+// Youth Activities
 exports.getActivity = getActivity;
 exports.updateLikes = updateActivityLikes;
 
 exports.createNewUser = createNewUser;
-exports.updateUser = updateUser
+exports.updateUser = updateUser;
 exports.getUserById = getUserById;
 
 exports.getStaticSubjectsHttp = getStaticSubjectsHttp;
@@ -44,9 +56,15 @@ exports.getSavedActivities = getSavedActivities;
 exports.saveActivity = saveActivity;
 exports.removeSavedActivity = removeSavedActivity;
 
+exports.addStaticActivity = addStaticActivity;
+
+// SmartPractice 
+exports.createNewUser4Practice = createNewUser4Practice;
+exports.getQuestions4Practice = getQuestions4Practice;
+
+// Common
 exports.sendMsg = sendMsg;
 exports.getMsg = getMsg;
 exports.updateIsMsg = updateIsMsg;
-exports.addStaticActivity = addStaticActivity;
 
 exports.app = functions.https.onRequest(app);

@@ -74,12 +74,29 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             content:
                 "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
         },
-        faq: {
+        youthFaq: {
             title: "פעולות לתנועות נוער - שאלות נפוצות",
             content:
                 "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
         },
+        practiceHome: {
+            title: "תרגול חכם",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+        practiceTopic: {
+            title: "תרגול חכם",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+        practiceQuiz: {
+            title: "תרגול חכם",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+        practiceFaq: {
+            title: "תרגול חכם - שאלות נפוצות",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
     } as LanguageSection,
+    
     en: {
         home: {
             title: "Youth Movement Activities",
@@ -146,12 +163,29 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             content:
                 "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
-        faq: {
+        youthFaq: {
             title: "Youth Movement Activities - FAQ",
             content:
                 "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
         },
+        practiceHome: {
+            title: "Smart Practice",
+            content: "Create personalized practice in seconds using AI – on any topic you choose",
+        },
+        practiceTopic: {
+            title: "Smart Practice",
+            content: "Create personalized practice in seconds using AI – on any topic you choose",
+        },
+        practiceQuiz: {
+            title: "Smart Practice",
+            content: "Create personalized practice in seconds using AI – on any topic you choose",
+        },
+        practiceFaq: {
+            title: "Smart Practice",
+            content: "Create personalized practice in seconds using AI – on any topic you choose",
+        },
     } as LanguageSection,
+
     "ar": {
         "home": {
             "title": "أنشطة حركات الشباب",
@@ -205,11 +239,28 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             "title": "أنشطة حركات الشباب - اتصل بنا",
             "content": "مجموعة واسعة من الأنشطة لقادة الشباب، مع إمكانية إنشاء أنشطة مخصصة باستخدام الذكاء الاصطناعي. مثالية للكشافة، مجموعات الشباب، برامج القيادة والمزيد."
         },
-        "faq": {
+        "youthFaq": {
             "title": "أنشطة حركات الشباب - أسئلة متكررة",
             "content": "مجموعة واسعة من الأنشطة لقادة الشباب، مع إمكانية إنشاء أنشطة مخصصة باستخدام الذكاء الاصطناعي. مثالية للكشافة، مجموعات الشباب، برامج القيادة والمزيد."
-        }
+        },
+        practiceHome: {
+            title: "تمرين ذكي",
+            content: "أنشئ تمرينًا مخصصًا في ثوانٍ باستخدام الذكاء الاصطناعي – في أي موضوع تختاره"
+        },
+        practiceTopic: {
+            title: "تمرين ذكي",
+            content: "أنشئ تمرينًا مخصصًا في ثوانٍ باستخدام الذكاء الاصطناعي – في أي موضوع تختاره"
+        },
+        practiceQuiz: {
+            title: "تمرين ذكي",
+            content: "أنشئ تمرينًا مخصصًا في ثوانٍ باستخدام الذكاء الاصطناعي – في أي موضوع تختاره"
+        },
+        practiceFaq: {
+            title: "تمرين ذكي",
+            content: "أنشئ تمرينًا مخصصًا في ثوانٍ باستخدام الذكاء الاصطناعي – في أي موضوع تختاره"
+        },
     } as LanguageSection,
+
     es: {
         home: {
             title: "Actividades para movimientos juveniles",
@@ -276,26 +327,42 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             content:
                 "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
         },
-        faq: {
+        youthFaq: {
             title: "Actividades para movimientos juveniles - preguntas frecuentes",
             content:
                 "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+        },
+        practiceHome: {
+            title: "Práctica Inteligente",
+            content: "Crea una práctica personalizada en segundos con la ayuda de inteligencia artificial – sobre cualquier tema que elijas"
+        },
+        practiceTopic: {
+            title: "Práctica Inteligente",
+            content: "Crea una práctica personalizada en segundos con la ayuda de inteligencia artificial – sobre cualquier tema que elijas"
+        },
+        practiceQuiz: {
+            title: "Práctica Inteligente",
+            content: "Crea una práctica personalizada en segundos con la ayuda de inteligencia artificial – sobre cualquier tema que elijas"
+        },
+        practiceFaq: {
+            title: "Práctica Inteligente",
+            content: "Crea una práctica personalizada en segundos con la ayuda de inteligencia artificial – sobre cualquier tema que elijas"
         },
     } as LanguageSection,
 };
 
 
 export const getTitle = (page: HelmetPage, i18n: string, title?: string) => {
-  if (title) return title;
-  const langData = helmetJson[i18n as Lng] || helmetJson["en"];
-  const pageData = langData[page] || helmetJson["en"][page];
-  return pageData?.title || "Youth Movement Activities";
+    if (title) return title;
+    const langData = helmetJson[i18n as Lng] || helmetJson["en"];
+    const pageData = langData[page] || helmetJson["en"][page];
+    return pageData?.title || "Activity Wiz";
 };
 
 export const getContent = (page: HelmetPage, i18n: string, content?: string) => {
-  if (content) return content;
-  const langData = helmetJson[i18n as Lng] || helmetJson["en"];
-  const pageData = langData[page] || helmetJson["en"][page];
-  return pageData?.content || "Discover a variety of youth movement activities.";
+    if (content) return content;
+    const langData = helmetJson[i18n as Lng] || helmetJson["en"];
+    const pageData = langData[page] || helmetJson["en"][page];
+    return pageData?.content || "Activity Wiz";
 };
 

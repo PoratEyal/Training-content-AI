@@ -12,16 +12,11 @@
   "contactUsEs": "/es/contactUs",
   "contactUsAr": "/ar/contactUs",
 
-  "faqHe": "/he/faq",
-  "faqEn": "/en/faq",
-  "faqEs": "/es/faq",
-  "faqAr": "/ar/faq",
-  
+
   "homePageHe": "/he",
   "homePageEn": "/en",
   "homePageEs": "/es",
   "homePageAr": "/ar",
-
 
   "GroupDetailsHe": "/he/groupDetails",
   "GroupDetailsEn": "/en/groupDetails",
@@ -37,7 +32,6 @@
   "activityAIEn": "/en/Activity",
   "activityAIEs": "/es/Activity",
   "activityAIAr": "/ar/Activity",
-
 
   "ContentHe": "/he/content",
   "ContentEn": "/en/content",
@@ -59,10 +53,9 @@
   "ActivityContentEs": "/es/content/:activityId/:contentId",
   "ActivityContentAr": "/ar/content/:activityId/:contentId",
 
-
   "MY_ActivitiesHe": "/he/myActivities",
   "MY_ActivitiesEn": "/en/myActivities",
-  "MY_ActivitiesEs": "/es/myActivities", 
+  "MY_ActivitiesEs": "/es/myActivities",
   "MY_ActivitiesAr": "/ar/myActivities",
 
   "MY_ActivityContentHe": "/he/myActivities/:subject",
@@ -70,6 +63,31 @@
   "MY_ActivityContentEs": "/es/myActivities/:subject",
   "MY_ActivityContentAr": "/ar/myActivities/:subject",
 
+  "faqHe": "/he/faq",
+  "faqEn": "/en/faq",
+  "faqEs": "/es/faq",
+  "faqAr": "/ar/faq",
+
+
+  "practiceHomePageHe": "/he/practice",
+  "practiceHomePageEn": "/en/practice",
+  "practiceHomePageEs": "/es/practice",
+  "practiceHomePageAr": "/ar/practice",
+
+  "practiceTopicHe": "/he/practice/topic",
+  "practiceTopicEn": "/en/practice/topic",
+  "practiceTopicEs": "/es/practice/topic",
+  "practiceTopicAr": "/ar/practice/topic",
+
+  "practiceQuizHe": "/he/practice/quiz",
+  "practiceQuizEn": "/en/practice/quiz",
+  "practiceQuizEs": "/es/practice/quiz",
+  "practiceQuizAr": "/ar/practice/quiz",
+
+  "smartFAQHe": "/he/practice/faq",
+  "smartFAQEn": "/en/practice/faq",
+  "smartFAQEs": "/es/practice/faq",
+  "smartFAQAr": "/ar/practice/faq",
 
   "all": "*"
 }

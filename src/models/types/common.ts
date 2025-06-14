@@ -47,5 +47,9 @@ export type HelmetPage =
     | "contentActivities"
     | "contentActivity"
     | "edit"
+    | "youthFaq"
     | "contactUs"
-    | "faq";
+    | "practiceHome"
+    | "practiceTopic"
+    | "practiceQuiz"
+    | "practiceFaq";

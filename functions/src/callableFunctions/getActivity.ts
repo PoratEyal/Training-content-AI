@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import { GetActivityRequest } from "../model/types/request";
 import { NOT_REGISTERED } from "../model/constants";
-import { getMainActivity } from "../service/geminiAPI";
+import { getMainActivity } from "../service/YouthActivities/geminiAPI";
 import { initActivityFromAI } from "../utils/activity";
 import { GetActivityResponse } from "../model/types/response";
 import { handleGetActivityErrors } from "../utils/handleError";

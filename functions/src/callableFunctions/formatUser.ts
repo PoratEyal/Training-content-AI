@@ -7,10 +7,8 @@ import { db } from "../index";
 const formatUser = functions.https.onCall(
     async (data: FormatUserRequest): Promise<UpdateUserResponse> => {
         const { ids } = data;
-        console.log("Formatting user: ", ids);
         try {
             for (const id of ids) {
-                console.log("Updating user: ", id);
                 const userDoc = await db.collection(CollectionDB.USERS).doc(id).get();
                 const userData = userDoc.data();
                 if (userDoc.exists && userData) {

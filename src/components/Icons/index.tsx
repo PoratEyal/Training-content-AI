@@ -78,5 +78,5 @@ export const Icons = {
     FaRibbon: FaRibbon,
     MdEmojiPeople: MdEmojiPeople,
     GiPodium: GiPodium,
-    fqa: GoQuestion,
+    faq: GoQuestion,
 };

@@ -1,13 +1,15 @@
 {
   "home": {
-    "slogan": "Tailored, Simple and Fast 🤟",
-    "startAction": "Create Activity",
-    "aboutText": "ActivityWiz is a platform where youth leaders create engaging activities for young people. Choose from ready-made options or use AI to generate custom ones tailored to your group. Ideal for counselors looking for fresh educational and social ideas.",
-    "moreOptions": "More Options"
+    "slogan": "Customized, Simple and Fast 🤟",
+    "startAction": "Create Activities",
+    "aboutText": "ActivityWiz is a site for creating youth activities. You can choose from a collection of ready-made activities or use artificial intelligence to generate personalized activities tailored exactly to your needs. The site is intended for counselors looking for ideas and new ways to enrich the educational and social experience.",
+    "practiceStartAction": "Create Practice",
+    "practiceAboutText": "SmartPractice is a smart AI-based practice site. Choose any topic you want – and the system will create a personalized practice for you in seconds. Suitable for students, parents, and teachers looking for an easy, fast, and focused way to practice and deepen understanding."
   },
   "continueWithAI": {
-    "advanced": "Advancing",
-    "forActions": "Activities",
+    "advanced": "Advanced",
+    "forActions": "for Activities",
+    "practiceForActions": "Practice",
     "withPrefix": "with",
     "ai": "AI"
   },
@@ -16,9 +18,10 @@
   },
   "navbar": {
     "home": "Home",
-    "build": "Create Activity",
-    "content": "Content",
-    "myActivities": "My Activities"
+    "build": "Create Activities",
+    "content": "Ready-made Activities",
+    "myActivities": "My Activities",
+    "practiceBuild": "Create Practice"
   },
   "details": {
     "title": "Tell Us About Your Group",
@@ -95,6 +98,23 @@
       "deleteError": "The activity was not deleted, please try again later"
     }
   },
+  "topic": {
+    "title": "Practice a topic",
+    "labelPractice": "Practice:",
+    "topicPlaceholder": "Enter a topic to practice",
+    "examples": "For example: Simple fractions, Chemistry for final exam, 5th grade English, Road signs, Guitar trivia...",
+    "btnCreate": "Create Practice",
+    "btnCreating": "Creating Practice",
+    "error": "An error occurred while generating the questions. Please try again.",
+    "loadingHead": "Practice is on the way",
+    "loadingText": "Note: The practice was generated using artificial intelligence, which is constantly learning and improving."
+  },
+  "quiz": {
+    "FailMsg": "Failed to generate the practice. If the problem persists, please contact us via the 'Contact Us' menu.",
+    "score": "Score:",
+    "newPractice": "New Practice",
+    "check": "Check"
+  },
   "profile": {
     "dropOptInviteFriends": {
       "invite": "Share with friends"
@@ -105,8 +125,8 @@
     "dropOptLogout": {
       "logout": "Logout"
     },
-    "dropOptFQA": {
-      "fqa": "FAQ"
+    "dropOptFAQ": {
+      "faq": "FAQ"
     },
     "dropOptPrivacy": {
       "policy": "Privacy Policy"
@@ -249,6 +269,39 @@
       {
         "q": "Are there activities suitable for mixed groups?",
         "a": "Yes. You can define group characteristics, and ActivityWiz will suggest activities tailored for diverse and inclusive groups."
+      }
+    ]
+  },
+  "faqPractice": {
+    "title": "Frequently Asked Questions",
+    "questions": [
+      {
+        "q": "What is ActivityWiz Practice?",
+        "a": "ActivityWiz Practice is a tool that helps you practice topics in a smart way. You write a topic that interests you, and the system generates a quiz with multiple-choice questions so you can test your knowledge and learn in a fun and easy way."
+      },
+      {
+        "q": "Does the site cost money?",
+        "a": "No, the site is free and open to everyone."
+      },
+      {
+        "q": "Who is the site for?",
+        "a": "The site is for anyone who wants to practice different topics, learn independently, or simply enjoy smart and fun trivia – children, teens, and adults."
+      },
+      {
+        "q": "How do I create a personalized practice?",
+        "a": "Very simple – on the Create Practice page, enter a topic you're interested in, click the button, and the system will generate a quiz with multiple-choice questions tailored to your request."
+      },
+      {
+        "q": "Which languages are supported?",
+        "a": "The system supports English, Spanish, Hebrew, and Arabic. More languages will be added in the future."
+      },
+      {
+        "q": "How can I contact the site team?",
+        "a": "You can send us a message through the Contact Us form on the website."
+      },
+      {
+        "q": "Can I practice the same topic again with different questions?",
+        "a": "Absolutely."
       }
     ]
   }
