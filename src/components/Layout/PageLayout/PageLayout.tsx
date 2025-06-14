@@ -3,7 +3,8 @@ import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 import styles from "./PageLayout.module.css";
 import Header from "../Header/Header";
-import UnderBar from "../UnderBar/UnderBar";
+import YouthFooter from "../Footer/YouthFooter";
+import PracticeFooter from "../Footer/PracticeFooter";
 import { WEBSITE_URL } from "../../../models/constants";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
 import { HelmetPage } from "../../../models/types/common";
@@ -15,12 +16,12 @@ type PageLayoutProps = {
   path: string;
   hasGreenBackground?: boolean;
   hasHeader?:
-    | {
-        goBack?: () => void;
-        isBlur?: boolean;
-        hasTitle?: string;
-      }
-    | undefined;
+  | {
+    goBack?: () => void;
+    isBlur?: boolean;
+    hasTitle?: string;
+  }
+  | undefined;
   hasAds?: string;
   hasNavBar?: boolean;
   index?: boolean;
@@ -112,7 +113,13 @@ function PageLayout({
         {children}
 
         {hasAds !== "" ? <AdsSmall slot={hasAds} /> : null}
-        {hasNavBar ? <UnderBar /> : null}
+        {hasNavBar ? (
+          location.pathname.includes("/practice") ? (
+            <PracticeFooter />
+          ) : (
+            <YouthFooter />
+          )
+        ) : null}
       </section>
     </>
   );

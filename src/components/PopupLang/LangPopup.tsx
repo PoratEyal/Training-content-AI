@@ -19,8 +19,9 @@ type LangPopupProps = {
 };
 
 const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
+
   const { changeLang, lang } = useLanguage();
-  const { currentUser } = useAuthContext();
+  const { currentUser, setCurrentUser } = useAuthContext();
   const { clearAll } = useContentContext();
   const navigate = useNavigate();
 
@@ -28,7 +29,16 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
   const [loadingLang, setLoadingLang] = useState<string | null>(null);
 
   // Dynamically determine the home page path for the NEW!!! language
-  const homePagePath = (newLang: string) => route[`homePage${newLang.charAt(0).toUpperCase() + newLang.slice(1)}`] || route.homePageHe;
+  const homePagePath = (newLang: string) => {
+    const capitalizedLang = newLang.charAt(0).toUpperCase() + newLang.slice(1);
+    const isPractice = window.location.pathname.includes("/practice");
+
+    if (isPractice) {
+      return route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn;
+    } else {
+      return route[`homePage${capitalizedLang}`] || route.homePageHe;
+    }
+  };
 
   const closePopup = (callback?: () => void) => {
     if (callback) callback();
@@ -36,28 +46,29 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
   };
 
   const changeLanguage = async (newLang: string) => {
+
     setLoadingLang(newLang);
     setIsLoading(true);
 
     localStorage.setItem("i18nextLng", newLang);
-    sessionStorage.removeItem("data");
+    clearAll(); // Clean all data from Session Storage
 
     // If user is logged in, reset their movement details in DB
     if (currentUser) {
-      await fetchUpdateUser({
-        user: {
-          ...currentUser,
-          movement: {
-            movement: null,
-            grade: null,
-            gender: null,
-            amount: null,
-          },
+      const updatedUser = {
+        ...currentUser,
+        movement: {
+          movement: null,
+          grade: null,
+          gender: null,
+          amount: null,
         },
-      });
+      };
+
+      await fetchUpdateUser({ user: updatedUser });
+      setCurrentUser(updatedUser);
     }
 
-    clearAll(); // Clears sessionStorage and empties the GroupDetails screen fields by resetting context data
     changeLang(newLang);
     closePopup(() => {
       navigate(homePagePath(newLang));

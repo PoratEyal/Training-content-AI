@@ -55,15 +55,27 @@ export const initUserFromDB = (id: string, data: DocumentData) => {
 };
 
 export const initUserFromReq = (id: string, data: DbUser) => {
+    let movement: UserMovementDetails | null = null;
+
+    if (data.movement !== null && data.grade !== null && data.gender !== null && data.amount !== null) {
+        movement = {
+            movement: data.movement,
+            grade: data.grade,
+            gender: data.gender,
+            amount: data.amount,
+        };
+    }
+
     return {
         id,
         name: data.name || "",
         email: data.email || "",
         image: data.image || "",
         limit: data.limit || 0,
-        movement: null,
+        movement: movement,
         lastUpdate: data.lastUpdate || "",
         isAcceptTerms: data.isAcceptTerms || false,
         isSendMsg: data.isSendMsg || false,
     } as User;
 };
+

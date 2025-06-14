@@ -105,8 +105,8 @@
     "dropOptLogout": {
       "logout": "تسجيل خروج"
     },
-    "dropOptFQA": {
-      "fqa": "الأسئلة الشائعة"
+    "dropOptFAQ": {
+      "faq": "الأسئلة الشائعة"
     },
     "dropOptPrivacy": {
       "policy": "سياسة الخصوصية"
