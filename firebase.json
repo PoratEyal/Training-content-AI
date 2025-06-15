@@ -22,6 +22,8 @@
       ],
       "rewrites": [
         { "source": "/BingSiteAuth.xml", "destination": "/index.html" },
+        { "source": "/practice", "destination": "/index.html" },
+        { "source": "/practice/**", "destination": "/index.html" },
         { "source": "/he", "destination": "/index.html" },
         { "source": "/he/**", "destination": "/index.html" },
         { "source": "/en", "destination": "/index.html" },
