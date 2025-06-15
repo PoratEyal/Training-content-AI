@@ -117,7 +117,7 @@ function Home() {
         </div>
       </div>
 
-      {/* // 🔧 Hidden top-right button for developers to reset all storage and cookies (used for debugging on mobile)
+      {/* 🔧 Hidden top-right button for admin to navigate to /practice */}
       <div
         style={{
           position: "absolute",
@@ -129,19 +129,10 @@ function Home() {
           background: "transparent",
         }}
         onClick={() => {
-          document.cookie.split(";").forEach((c) => {
-            const [name] = c.split("=");
-            document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-          });
-
-          localStorage.clear();
-          sessionStorage.clear();
-
-          alert("Reset completed: cookies and storage cleared.");
-          window.location.reload();
+          window.location.href = "/practice";
         }}
       />
-      */}
+
 
       {rememberMe === SignInStatus.REMEMBER &&
         !isLoading &&
