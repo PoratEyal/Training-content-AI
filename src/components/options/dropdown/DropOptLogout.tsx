@@ -22,8 +22,15 @@ function DropOptLogout({ handleClose }: DropdownOption) {
   const { logout } = useAuthContext();
   const navigate = useNavigate();
 
-  // Determine the language-specific home page path (fallback to He)
-  const homePagePath = route[`homePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.homePageHe;
+  // Determine the language-specific home page path
+  const getHomePagePath = () => {
+    const capitalizedLang = lang.charAt(0).toUpperCase() + lang.slice(1);
+    const isPractice = window.location.pathname.includes("/practice");
+
+    return isPractice
+      ? route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn
+      : route[`youthHomePage${capitalizedLang}`] || route.youthHomePageEn;
+  };
 
   const handleLogout = async () => {
     await logout();
@@ -32,7 +39,7 @@ function DropOptLogout({ handleClose }: DropdownOption) {
 
   const handleClick = async () => {
     await handleLogout();
-    navigate(homePagePath);
+    navigate(getHomePagePath());
     handleClose();
   };
 

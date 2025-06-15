@@ -3,8 +3,8 @@ import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 import styles from "./PageLayout.module.css";
 import Header from "../Header/Header";
-import YouthFooter from "../Footer/YouthFooter";
-import PracticeFooter from "../Footer/PracticeFooter";
+import YouthNavigationBar from "../NavigationBar/YouthNavigationBar";
+import PracticeNavigationBar from "../NavigationBar/PracticeNavigationBar";
 import { WEBSITE_URL } from "../../../models/constants";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
 import { HelmetPage } from "../../../models/types/common";
@@ -13,7 +13,7 @@ import { useLanguage } from "../../../i18n/useLanguage";
 
 type PageLayoutProps = {
   id: HelmetPage;
-  path: string;
+  projectType: "practice" | "youth";
   hasGreenBackground?: boolean;
   hasHeader?:
   | {
@@ -31,7 +31,7 @@ type PageLayoutProps = {
 
 function PageLayout({
   id,
-  path,
+  projectType,
   children,
   hasGreenBackground = false,
   hasHeader = undefined,
@@ -40,6 +40,7 @@ function PageLayout({
   index = true,
   title = "",
 }: PageLayoutProps) {
+
   const { lang, dir } = useLanguage();
   const location = useLocation();
   const canonicalUrl = `${WEBSITE_URL}${location.pathname}`;
@@ -50,7 +51,6 @@ function PageLayout({
     document.documentElement.dir = dir;
   }, [lang, dir]);
 
-  // Build hreflang alternate URLs
   const restOfPath = location.pathname.replace(/^\/(he|en|es|ar)/, "") || "/";
 
   const alternateHe = `${WEBSITE_URL}/he${restOfPath}`;
@@ -114,10 +114,10 @@ function PageLayout({
 
         {hasAds !== "" ? <AdsSmall slot={hasAds} /> : null}
         {hasNavBar ? (
-          location.pathname.includes("/practice") ? (
-            <PracticeFooter />
+          projectType === "practice" ? (
+            <PracticeNavigationBar />
           ) : (
-            <YouthFooter />
+            <YouthNavigationBar />
           )
         ) : null}
       </section>

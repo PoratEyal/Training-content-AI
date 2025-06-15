@@ -39,9 +39,7 @@ function Details() {
   
   const initialLangRef = useRef(lang);
 
-  // Determine language-specific paths
-  const groupDetailsPath = route[`GroupDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.GroupDetailsHe;
-  const activityParamsPath = route[`activityParams${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityParamsHe;
+  const youthBuildPath = route[`youthBuild${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthBuildEn;
 
   useEffect(() => {
 
@@ -65,13 +63,13 @@ function Details() {
     e.preventDefault();
     updateDetails(movement, classLevel, numberOfChildren, gender);
     sessionStorage.setItem("currentLanguage", lang);
-    navigate(activityParamsPath);
+    navigate(youthBuildPath);
   };
 
   return (
     <PageLayout
       id="details"
-      path={groupDetailsPath}
+      projectType={"youth"}
       hasGreenBackground
       hasHeader={{}}
       hasAds={DETAILS_AD_SLOT}

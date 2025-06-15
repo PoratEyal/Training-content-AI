@@ -3,11 +3,11 @@
 // The path dynamically adapts to the current active language.
 //
 import { useLocation, useNavigate } from "react-router-dom";
-import route from "../../../router/route.json";
-import styles from "./navbar.module.css";
+import route from "../../../../router/route.json";
+import styles from "../navbar.module.css";
 import { useEffect, useState } from "react";
-import { Icons } from "../../Icons";
-import { useLanguage } from "../../../i18n/useLanguage";
+import { Icons } from "../../../Icons";
+import { useLanguage } from "../../../../i18n/useLanguage";
 
 const NavOptContent = () => {
   const { t, lang } = useLanguage();
@@ -16,7 +16,7 @@ const NavOptContent = () => {
   const location = useLocation();
 
   // Determine the language-specific path for the content page
-  const awTopicsPath = route[`Content${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.ContentHe;
+  const awTopicsPath = route[`youthContent${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthContentEn;
 
   useEffect(() => {
     setIsSelected(location.pathname.includes(awTopicsPath));

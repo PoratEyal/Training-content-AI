@@ -22,7 +22,7 @@ const SavedActivityRow: React.FC<SavedActivityRowProps> = ({ activity, openDelet
 
   // Determine the language-specific path for My Saved Activities (fallback to Hebrew)
   const myActivitiesPath =
-    route[`MY_Activities${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.MY_ActivitiesHe;
+    route[`youthMyActivities${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthMyActivitiesEn;
 
   const goToActivity = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (!(e.target as Element).closest(".delete_icon")) {

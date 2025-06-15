@@ -42,10 +42,7 @@ function Home() {
 
   const [rememberMe, setRememberMe] = useState<SignInStatus>(SignInStatus.NEW_ACCESS)
 
-  // Determine language-specific routes (fallback to He)
-  const homePagePath = route[`homePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.homePageHe;
-  const groupDetailsPath = route[`GroupDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.GroupDetailsHe;
-
+  const youthDetailsPath = route[`youthDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthDetailsEn;
 
   const handleStart = () => {
     const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE)
@@ -103,7 +100,7 @@ function Home() {
   return (
     <PageLayout
       id="home"
-      path={homePagePath}
+      projectType={"youth"}
       hasHeader={{}}
       hasAds={HOME_AD_SLOT}
       index={true}
@@ -153,7 +150,7 @@ function Home() {
         <section className={styles.button_section}>
           <StartBtn
             text={t("home.startAction")}
-            onClick={() => startAsGuestOrUser(groupDetailsPath)}
+            onClick={() => startAsGuestOrUser(youthDetailsPath)}
             isDisabled={btnDisabled}
           />
         </section>
@@ -161,7 +158,7 @@ function Home() {
         <section className={styles.button_section}>
           <StartBtn
             text={t("home.startAction")}
-            onClick={() => startAsGuestOrUser(groupDetailsPath)}
+            onClick={() => startAsGuestOrUser(youthDetailsPath)}
             isDisabled={btnDisabled}
           />
         </section>

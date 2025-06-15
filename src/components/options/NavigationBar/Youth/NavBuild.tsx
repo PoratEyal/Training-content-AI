@@ -3,12 +3,12 @@
 // It highlights itself as active when the current URL matches any of the build-related paths.
 // It dynamically adapts paths based on the active language.
 //
-import styles from "./navbar.module.css";
-import route from "../../../router/route.json";
+import styles from "../navbar.module.css";
+import route from "../../../../router/route.json";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Icons } from "../../Icons";
-import { useLanguage } from "../../../i18n/useLanguage";
+import { Icons } from "../../../Icons";
+import { useLanguage } from "../../../../i18n/useLanguage";
 
 const NavOptBuild = () => {
   const { t, lang } = useLanguage();
@@ -17,27 +17,27 @@ const NavOptBuild = () => {
   const location = useLocation();
 
   // Dynamically determine language-specific paths (fallback to He paths if not available)
-  const groupDetailsPath = route[`groupDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.GroupDetailsHe;
-  const activityParamsPath = route[`activityParams${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityParamsHe;
-  const activityAIPath = route[`activityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityAIHe;
+  const youthDetailsPath = route[`youthDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthDetailsEn;
+  const youthBuildPath = route[`youthBuild${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthBuildEn;
+  const youthActivityAIPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn;
 
 
   // Determine whether the current page is one of the build-related pages
   useEffect(() => {
     if (
-      location.pathname === groupDetailsPath ||
-      location.pathname === activityParamsPath ||
-      location.pathname === activityAIPath
+      location.pathname === youthDetailsPath ||
+      location.pathname === youthBuildPath ||
+      location.pathname === youthActivityAIPath
     ) {
       setIsSelected(true);
     } else {
       setIsSelected(false);
     }
-  }, [location.pathname, groupDetailsPath, activityParamsPath, activityAIPath]);
+  }, [location.pathname, youthDetailsPath, youthBuildPath, youthActivityAIPath]);
 
   return (
     <div
-      onClick={() => navigate(groupDetailsPath)}
+      onClick={() => navigate(youthDetailsPath)}
       className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
     >
       <Icons.magic className={styles.icon} />

@@ -3,12 +3,12 @@
 // It highlights itself when the current path matches the language-specific home page path.
 // The page adapts its routing dynamically based on the active language.
 //
-import styles from "./navbar.module.css";
-import route from "../../../router/route.json";
+import styles from "../navbar.module.css";
+import route from "../../../../router/route.json";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Icons } from "../../Icons";
-import { useLanguage } from "../../../i18n/useLanguage";
+import { Icons } from "../../../Icons";
+import { useLanguage } from "../../../../i18n/useLanguage";
 
 const NavOptHome = () => {
   const { t, lang } = useLanguage();
@@ -16,7 +16,6 @@ const NavOptHome = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Determine the language-specific home path
   const homePagePath = route[`practiceHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceHomePageEn;
 
   useEffect(() => {

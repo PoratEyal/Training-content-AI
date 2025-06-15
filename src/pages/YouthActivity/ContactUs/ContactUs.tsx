@@ -1,13 +1,11 @@
 //
 // This is the Contact Us page where users can send feedback, questions, or requests.
-// The form auto-fills the email field if the user is logged in and disables it.
-// On successful submission, it navigates to the homepage
-// 
+//
 import styles from "./ContactUs.module.css";
 import React, { useState } from "react";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import route from "../../../router/route.json";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { CONTACT_US_AD_SLOT } from "../../../models/constants/adsSlot";
 import { useAuthContext } from "../../../context/AuthContext";
 import { useErrorContext } from "../../../context/ErrorContext";
@@ -18,6 +16,7 @@ import MainBtn from "../../../components/MainBtn/MainBtn";
 const ContactUs: React.FC = () => {
   const { t, isRTL, dir, textAlign, lang } = useLanguage();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const { currentUser } = useAuthContext();
   const { handleSuccess } = useErrorContext();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -28,9 +27,11 @@ const ContactUs: React.FC = () => {
     message: "",
   });
 
-  const contactUsPath = route[`contactUs${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.contactUsHe;
-  const homePagePath = route[`homePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.homePageHe;
-
+  const isPractice = pathname.includes("practice");
+  const capitalizedLang = lang.charAt(0).toUpperCase() + lang.slice(1);
+  const getHomePagePath = isPractice
+    ? route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn
+    : route[`youthHomePage${capitalizedLang}`] || route.youthHomePageEn;
 
   emailjs.init("ZWKebkgRROVgM8nEV");
 
@@ -68,7 +69,7 @@ const ContactUs: React.FC = () => {
         message: "",
       });
 
-      navigate(homePagePath);
+      navigate(getHomePagePath);
     } catch (error) {
       console.error("Error sending email:", error);
     } finally {
@@ -85,7 +86,7 @@ const ContactUs: React.FC = () => {
   return (
     <PageLayout
       id="contactUs"
-      path={contactUsPath}
+      projectType={"youth"}
       hasHeader={{}}
       hasAds={CONTACT_US_AD_SLOT}
       hasNavBar
@@ -154,11 +155,7 @@ const ContactUs: React.FC = () => {
           </div>
         </div>
 
-        <div
-          className={`${styles.btn_div} ${
-            isRTL ? styles.RTLDir : styles.LTRDir
-          }`}
-        >
+        <div className={`${styles.btn_div} ${isRTL ? styles.RTLDir : styles.LTRDir}`}>
           <MainBtn
             text={t("contactUs.form.submitButton")}
             isDisabled={isDisabled}
