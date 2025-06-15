@@ -17,6 +17,7 @@ import route from "../../../router/route.json";
 import { useLanguage } from "../../../i18n/useLanguage";
 
 function Activity() {
+  
   const { data, mainActivity } = useContentContext();
   const { isEdit, readOnlyMode } = useEditorContext();
   const { isLoggedIn } = useAuthContext();
@@ -26,14 +27,13 @@ function Activity() {
   const { lang } = useLanguage();
 
   // Determine language-specific paths (fallback to He if missing)
-  const activityParamsPath = route[`activityParams${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityParamsHe;
-  const activityAIPath = route[`activityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityAIHe;
+  const youthBuildPath = route[`youthBuild${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthBuildEn;
 
   const goBack = () => {
     if (isEdit) {
       readOnlyMode();
     } else {
-      navigate(activityParamsPath);
+      navigate(youthBuildPath);
     }
   };
 
@@ -53,7 +53,7 @@ function Activity() {
   return (
     <PageLayout
       id="activity"
-      path={activityAIPath}
+      projectType={"youth"}
       hasGreenBackground
       hasHeader={{ goBack, hasTitle: mainActivity?.subject || undefined }}
       title={helmetJson[lang].activity.title}

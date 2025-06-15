@@ -25,23 +25,23 @@ function Content() {
   useFetchSubjectsData();
 
   // Determine language-specific paths (fallback to Hebrew)
-  const TopicsPath = route[`Content${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.ContentHe;
-  const PopularPath = route[`ActivitiesPopular${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.ActivitiesPopularHe;
-  const homePagePath = route[`homePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.homePageHe;
+  const youthContentPath = route[`youthContent${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthContentEn;
+  const youthPopularContentPath = route[`youthActivitiesPopular${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivitiesPopularEn;
+  const youthHomePagePath = route[`youthHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthHomePageEn;
 
   const contentSchema = useMemo(
-    () => buildContentSchema(subjects || [], TopicsPath),
-    [subjects, TopicsPath]
+    () => buildContentSchema(subjects || [], youthContentPath),
+    [subjects, youthContentPath]
   );
 
   const goBack = () => {
-    navigate(homePagePath);
+    navigate(youthHomePagePath);
   };
 
   return (
     <PageLayout
       id="content"
-      path={TopicsPath}
+      projectType={"youth"}
       hasHeader={{ goBack }}
       hasNavBar
       hasAds={CONTENT_ACTIVITY_AD_SLOT}
@@ -59,7 +59,7 @@ function Content() {
           </section>
         ) : subjects && subjects.length > 0 ? (
           <section className={styles.grid_container}>
-            <Link to={PopularPath} className={styles.grid_item}>
+            <Link to={youthPopularContentPath} className={styles.grid_item}>
               <h2 className={styles.item_title}>10 הפעולות הפופולריות</h2>
               <div className={styles.icon}>
                 {Icons["GiPodium"] &&
@@ -68,7 +68,7 @@ function Content() {
             </Link>
             {subjects.map((subject, index) => (
               <Link
-                to={`${TopicsPath}/${subject.name}`}
+                to={`${youthContentPath}/${subject.name}`}
                 key={index}
                 className={styles.grid_item}
               >

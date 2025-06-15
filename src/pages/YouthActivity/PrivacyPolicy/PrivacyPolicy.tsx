@@ -7,7 +7,6 @@ import policyEn from "../../../models/resources/en/policy.json"
 import policyEs from "../../../models/resources/es/policy.json"
 import policyAr from "../../../models/resources/ar/policy.json"
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
-import route from "../../../router/route.json"
 import FadeEffect from "../../../components/FadeEffect/FadeEffect"
 import { useLanguage } from "../../../i18n/useLanguage"
 
@@ -23,13 +22,10 @@ function PrivacyPolicy() {
   }
   const currentPolicy = policyMap[lang] || policyEn // fallback to English if not available
 
-  // Determine the route path dynamically based on language
-  const privacyPolicyPath = route[`privacyPolicy${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.privacyPolicyHe
-
   return (
     <PageLayout
       id="privacyPolicy"
-      path={privacyPolicyPath}
+      projectType={"youth"}
       hasHeader={{ isBlur: true }}
       hasNavBar
       index={false}

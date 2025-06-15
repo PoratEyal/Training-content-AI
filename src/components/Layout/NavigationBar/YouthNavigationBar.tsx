@@ -1,11 +1,11 @@
 //
 // This file defines the UnderBar component, which shows a bottom navigation bar
 //
-import styles from "./Footer.module.css";
-import NavOptBuild from "../../options/footerNavBar/NavOptBuild";
-import NavOptContent from "../../options/footerNavBar/NavOptContent";
-import NavOptHome from "../../options/footerNavBar/NavOptHome";
-import NavOptMyActivities from "../../options/footerNavBar/NavOptMyActivities";
+import styles from "./NavigationBar.module.css";
+import NavHome from "../../options/NavigationBar/Youth/NavHome";
+import NavBuild from "../../options/NavigationBar/Youth/NavBuild";
+import NavContent from "../../options/NavigationBar/Youth/NavContent";
+import NavMyActivities from "../../options/NavigationBar/Youth/NavMyActivities";
 import { useAuthContext } from "../../../context/AuthContext";
 import { useLanguage } from "../../../i18n/useLanguage";
 
@@ -15,10 +15,10 @@ const YouthFooter = () => {
 
     return (
         <nav className={styles.navbar_container}>
-            <NavOptHome />
-            <NavOptBuild />
-            {isHebrew ? <NavOptContent /> : null}
-            {isLoggedIn ? <NavOptMyActivities /> : null}
+            <NavHome />
+            <NavBuild />
+            {isHebrew ? <NavContent /> : null}
+            {isLoggedIn ? <NavMyActivities /> : null}
         </nav>
     );
 };

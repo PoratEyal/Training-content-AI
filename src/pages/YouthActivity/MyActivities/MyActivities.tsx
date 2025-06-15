@@ -26,14 +26,12 @@ const SavedActivities: React.FC = () => {
   useFetchSavedData();
 
   // Build JSON-LD schema based on saved activities
-  const savedSchema = useMemo(
-    () =>
-      buildSavedActivitiesSchema(
-        savedActivity || [],
-        lang === "en" ? route.MY_ActivitiesEn : route.MY_ActivitiesHe
-      ),
-    [savedActivity, lang]
-  );
+  const savedSchema = useMemo(() => {
+    const capitalizedLang = lang.charAt(0).toUpperCase() + lang.slice(1);
+    const path = route[`youthMyActivities${capitalizedLang}`] || route.youthMyActivitiesEn;
+    return buildSavedActivitiesSchema(savedActivity || [], path);
+  }, [savedActivity, lang]);
+
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [activityToDelete, setActivityToDelete] = useState<Activity | null>(null);
@@ -60,7 +58,7 @@ const SavedActivities: React.FC = () => {
   return (
     <PageLayout
       id="myactivities"
-      path={route[`MY_Activities${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.MY_ActivitiesHe}
+      projectType={"youth"}
       hasHeader={{}}
       hasNavBar
       hasAds={MY_ACTIVITIES_AD_SLOT}

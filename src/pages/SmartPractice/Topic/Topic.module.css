@@ -23,12 +23,6 @@
   gap: 8px;
 }
 
-.label {
-  width: 80%;
-  font-size: 16px;
-  color: var(--text-color);
-}
-
 .input {
   width: 80%;
   padding: 12px;
@@ -56,7 +50,7 @@
 }
 
 .button_wrapper {
-  margin-top: 100px;
+  margin-top: 60px;
 }
 
 .loading_mock_selection_container {

@@ -3,17 +3,12 @@ import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import FadeEffect from "../../../components/FadeEffect/FadeEffect";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { useTranslation } from "react-i18next";
-import route from "../../../router/route.json";
 import { buildFaqSchema } from "../../../models/schemaOrg";
 import React, { useMemo } from "react";
 
 const FAQ: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { dir } = useLanguage();
-
-  const lang = i18n.language.slice(0, 2);
-  const capitalizedLang = lang.charAt(0).toUpperCase() + lang.slice(1);
-  const faqPath = route[`faq${capitalizedLang}`] || route.faqEn;
 
   const faq = t("faq.questions", { returnObjects: true }) as {
     q: string;
@@ -26,7 +21,7 @@ const FAQ: React.FC = () => {
   return (
     <PageLayout
       id="youthFaq"
-      path={faqPath}
+      projectType={"youth"}
       hasHeader={{ isBlur: true }}
       hasNavBar
       index={true}

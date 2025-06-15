@@ -35,9 +35,8 @@ function ContentActivity() {
   const { isLoggedIn, currentUser } = useAuthContext();
 
   // Determine language-specific paths (fallback to Hebrew)
-  const TopicsPath = route[`Content${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.ContentHe;
-  const PopularPath = route[`ActivitiesPopular${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.ActivitiesPopularHe;
-  const ActivityContentPath = `${TopicsPath}/${activityId}/${contentId}`;
+  const youthContentPath = route[`youthContent${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthContentEn;
+  const PopularPath = route[`youthActivitiesPopular${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivitiesPopularEn;
 
   // Determine if coming from the popular activities page
   const fromPopular = location.state?.fromPopular ?? false;
@@ -49,7 +48,7 @@ function ContentActivity() {
       if (fromPopular) {
         navigate(PopularPath);
       } else {
-        navigate(`${TopicsPath}/${activityId}`);
+        navigate(`${youthContentPath}/${activityId}`);
       }
     }
   };
@@ -85,7 +84,7 @@ function ContentActivity() {
   return (
     <PageLayout
       id="contentActivity"
-      path={ActivityContentPath}
+      projectType={"youth"}
       hasGreenBackground
       hasHeader={{ goBack, hasTitle: activity?.title || undefined }}
       hasAds={CONTENT_ACTIVITY_AD_SLOT}

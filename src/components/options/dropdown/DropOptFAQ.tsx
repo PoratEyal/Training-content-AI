@@ -12,16 +12,16 @@ type DropdownOption = {
 }
 
 function DropOptLang({ handleClose }: DropdownOption) {
+
   const navigate = useNavigate()
   const { pathname } = useLocation()
   const { t, lang } = useLanguage()
 
   const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)
 
-  const faqPath =
-    pathname.includes("practice")
-      ? route[`smartFAQ${langKey}`] || route.smartFAQEn
-      : route[`faq${langKey}`] || route.faqEn
+  const faqPath = pathname.includes("practice")
+      ? route[`practiceFAQ${langKey}`] || route.practiceFAQEn
+      : route[`youthFAQ${langKey}`] || route.youthFAQEn
 
   const handleClick = () => {
     navigate(faqPath)

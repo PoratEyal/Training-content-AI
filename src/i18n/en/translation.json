@@ -4,7 +4,7 @@
     "startAction": "Create Activities",
     "aboutText": "ActivityWiz is a site for creating youth activities. You can choose from a collection of ready-made activities or use artificial intelligence to generate personalized activities tailored exactly to your needs. The site is intended for counselors looking for ideas and new ways to enrich the educational and social experience.",
     "practiceStartAction": "Create Practice",
-    "practiceAboutText": "SmartPractice is a smart AI-based practice site. Choose any topic you want – and the system will create a personalized practice for you in seconds. Suitable for students, parents, and teachers looking for an easy, fast, and focused way to practice and deepen understanding."
+    "practiceAboutText": "SmartPractice is a smart practice site powered by artificial intelligence. Choose any topic you like – the system will generate a personalized practice for you in seconds. Suitable for anyone looking for a simple, fast, and focused way to practice and deepen understanding."
   },
   "continueWithAI": {
     "advanced": "Advanced",
@@ -100,10 +100,9 @@
   },
   "topic": {
     "title": "Practice a topic",
-    "labelPractice": "Practice:",
     "topicPlaceholder": "Enter a topic to practice",
     "examples": "For example: Simple fractions, Chemistry for final exam, 5th grade English, Road signs, Guitar trivia...",
-    "btnCreate": "Create Practice",
+    "btnCreate": "Practice",
     "btnCreating": "Creating Practice",
     "error": "An error occurred while generating the questions. Please try again.",
     "loadingHead": "Practice is on the way",

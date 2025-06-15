@@ -3,11 +3,14 @@
     "slogan": "Personalizado, Simple y Rápido 🤟",
     "startAction": "Crear Actividad",
     "aboutText": "ActivityWiz es una plataforma donde los líderes juveniles crean actividades atractivas para jóvenes. Elige entre opciones predefinidas o usa la IA para generar actividades personalizadas según tu grupo. Ideal para consejeros que buscan ideas educativas y sociales frescas.",
-    "moreOptions": "Más Opciones"
+    "moreOptions": "Más Opciones",
+    "practiceStartAction": "Crear práctica",
+    "practiceAboutText": "SmartPractice es un sitio de práctica inteligente basado en inteligencia artificial. Elige cualquier tema que desees, y el sistema generará una práctica personalizada en segundos. Ideal para quienes buscan una forma sencilla, rápida y enfocada de practicar y profundizar su comprensión."
   },
   "continueWithAI": {
     "advanced": "Avanzado",
     "forActions": "Actividades",
+    "practiceForActions": "Practicar",
     "withPrefix": "con",
     "ai": "IA"
   },
@@ -19,7 +22,7 @@
     "build": "Crear Actividad",
     "content": "Contenido",
     "myActivities": "Mis Actividades",
-    "practiceBuild": "Create Practice"
+    "practiceBuild": "Crear práctica"
   },
   "details": {
     "title": "Cuéntanos sobre tu grupo",
@@ -95,6 +98,22 @@
       "deleteButton": "Eliminar",
       "deleteError": "La actividad no fue eliminada, por favor intenta nuevamente más tarde"
     }
+  },
+  "topic": {
+    "title": "¿Qué quieres practicar?",
+    "topicPlaceholder": "Ingresa un tema para practicar",
+    "examples": "Por ejemplo: fracciones simples, química para la secundaria, inglés de quinto grado, señales de tráfico, trivia sobre guitarras...",
+    "btnCreate": "Práctica",
+    "btnCreating": "Creando práctica",
+    "error": "Ocurrió un error al generar las preguntas. Intenta nuevamente.",
+    "loadingHead": "Tu práctica está en camino",
+    "loadingText": "¡Atención! Esta práctica fue generada con inteligencia artificial, la cual está en constante aprendizaje y mejora."
+  },
+  "quiz": {
+    "FailMsg": "La creación de la práctica falló. Si el problema persiste, por favor contáctanos a través del menú 'Contáctanos'.",
+    "score": "Puntuación:",
+    "newPractice": "Nueva práctica",
+    "check": "Revisar"
   },
   "profile": {
     "dropOptInviteFriends": {
@@ -250,6 +269,39 @@
       {
         "q": "¿Hay actividades adecuadas para grupos mixtos?",
         "a": "Sí. Puedes definir las características de tu grupo y ActivityWiz te sugerirá actividades adaptadas para grupos diversos e inclusivos."
+      }
+    ]
+  },
+  "faqPractice": {
+    "title": "Preguntas frecuentes",
+    "questions": [
+      {
+        "q": "¿Qué es ActivityWiz para practicar?",
+        "a": "ActivityWiz para practicar es una herramienta que te ayuda a entrenar sobre temas de forma inteligente. Escribes un tema que te interesa, y el sistema genera un cuestionario con preguntas de opción múltiple para que puedas evaluar tus conocimientos y aprender de manera divertida y sencilla."
+      },
+      {
+        "q": "¿El uso del sitio cuesta dinero?",
+        "a": "No, el uso del sitio es gratuito y abierto para todos."
+      },
+      {
+        "q": "¿A quién está dirigido el sitio?",
+        "a": "El sitio es adecuado para cualquier persona que quiera practicar temas variados, estudiar de forma independiente o simplemente disfrutar de una trivia inteligente y divertida: niños, adolescentes y adultos."
+      },
+      {
+        "q": "¿Cómo se crea una práctica personalizada?",
+        "a": "Muy fácil: en la página de creación de práctica escribes el tema que te interesa, haces clic en el botón y el sistema generará una práctica con preguntas de opción múltiple adaptadas exactamente a lo que pediste."
+      },
+      {
+        "q": "¿Qué idiomas están disponibles?",
+        "a": "El sistema admite inglés, español, hebreo y árabe. Se agregarán más idiomas en el futuro."
+      },
+      {
+        "q": "¿Cómo puedo contactar al equipo del sitio?",
+        "a": "Puedes enviarnos un mensaje a través del formulario de contacto en el sitio."
+      },
+      {
+        "q": "¿Puedo practicar el mismo tema con preguntas diferentes?",
+        "a": "Por supuesto."
       }
     ]
   }

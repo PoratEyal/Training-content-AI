@@ -4,7 +4,7 @@
 //
 import styles from "./dropdown.module.css"
 import { Icons } from "../../Icons"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import route from "../../../router/route.json"
 import { useLanguage } from "../../../i18n/useLanguage"
 
@@ -13,11 +13,17 @@ type ContactUsProps = {
 }
 
 function DropOptContactUs({ handleClose }: ContactUsProps) {
+  
   const { t, lang } = useLanguage()
+  const { pathname } = useLocation()
   const navigate = useNavigate()
 
-  // Determine the contact page route based on language (fallback to He)
-  const contactUsPath = route[`contactUs${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.contactUsHe;
+  const isPractice = pathname.includes("/practice");
+  const langKey = lang.charAt(0).toUpperCase() + lang.slice(1);
+
+  const contactUsPath = isPractice
+    ? route[`practiceContactUs${langKey}`] || route.practiceContactUsEn
+    : route[`youthContactUs${langKey}`] || route.youthContactUsEn;
 
   const handleClick = () => {
     navigate(contactUsPath)

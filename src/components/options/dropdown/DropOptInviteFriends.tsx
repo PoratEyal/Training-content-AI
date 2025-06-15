@@ -16,7 +16,7 @@ function DropOptInviteFriends() {
   const { mainActivity } = useContentContext()
   const { pathname } = useLocation()
 
-  const activityContentPath = route[`activityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityAIHe
+  const activityContentPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn
 
   // Only include activity text in the share message if on the activity page
   const shareText = formatWhatsUp(

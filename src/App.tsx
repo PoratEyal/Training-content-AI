@@ -9,59 +9,62 @@ import route from "./router/route.json"
 import "./App.css"
 import Providers from "./router/Providers"
 import LanguageRedirect from "./components/LanguageRedirect"
+import FallbackRedirect from "./components/FallbackRedirect"
 
 import PrivateRoutes from "./router/PrivateRoutes"
 
 // Youth Activities
-import HomePage from "./pages/YouthActivity/HomePage/HomePage"
-import GroupDetails from "./pages/YouthActivity/Details/Details"
-import BuildActivityParams from "./pages/YouthActivity/BuildActivity/BuildActivity"
-import ActivityAI from "./pages/YouthActivity/Activity/Activity"
-import Content from "./pages/YouthActivity/Content/Content"
-import ContentActivities from "./pages/YouthActivity/ContentActivities/ContentActivities"
-import ContentPopular from "./pages/YouthActivity/PopularActivities/PopularActivities"
-import ContentActivity from "./pages/YouthActivity/ContentActivity/ContentActivity"
-import MyActivities from "./pages/YouthActivity/MyActivities/MyActivities"
-import MyActivityContent from "./pages/YouthActivity/MyActivityContent/MyActivityContent"
-import ActivityFAQ from "./pages/YouthActivity/FAQ/FAQ"
-import AdminPage from "./pages/YouthActivity/AdminPage/AdminPage"
+import YouthHomePage from "./pages/YouthActivity/HomePage/HomePage"
+import YouthDetails from "./pages/YouthActivity/Details/Details"
+import YouthBuildActivity from "./pages/YouthActivity/BuildActivity/BuildActivity"
+import YouthActivityAI from "./pages/YouthActivity/Activity/Activity"
+import YouthContent from "./pages/YouthActivity/Content/Content"
+import YouthContentActivities from "./pages/YouthActivity/ContentActivities/ContentActivities"
+import YouthContentPopular from "./pages/YouthActivity/PopularActivities/PopularActivities"
+import YouthContentActivity from "./pages/YouthActivity/ContentActivity/ContentActivity"
+import YouthMyActivities from "./pages/YouthActivity/MyActivities/MyActivities"
+import YouthMyActivityContent from "./pages/YouthActivity/MyActivityContent/MyActivityContent"
+import YouthFAQ from "./pages/YouthActivity/FAQ/FAQ"
+import YouthPrivacyPolicy from "./pages/YouthActivity/PrivacyPolicy/PrivacyPolicy";
+import YouthAdminPage from "./pages/YouthActivity/AdminPage/AdminPage"
+import YouthContactUsRoute from "./pages/YouthActivity/ContactUs/ContactUs";
 
 // Smart Practice
 import PracticeHomePage from "./pages/SmartPractice/HomePage/Practice"
-import PracticeFAQ from "./pages/SmartPractice/FAQ/FAQ"
 import PracticeQuiz from "./pages/SmartPractice/Quiz/Quiz"
 import PracticeTopic from "./pages/SmartPractice/Topic/Topic"
+import PracticeFAQ from "./pages/SmartPractice/FAQ/FAQ"
+import PracticePrivacyPolicy from "./pages/SmartPractice/PrivacyPolicy/PrivacyPolicy";
+import PracticeContactUsRoute from "./pages/SmartPractice/ContactUs/ContactUs";
 
-// Common
-import PrivacyPolicy from "./pages/Common/PagePrivacyPolicy/PrivacyPolicy"
-import ContactUs from "./pages/Common/ContactUs/ContactUs"
 
-const langs = ["He", "En", "Es", "Ar"]
+import { supportedLangs as langs } from "./i18n/languages"
 
 const privateRoutes = [
-  // Youth Activities private pages
-  { key: "homePage", element: <HomePage /> },
-  { key: "GroupDetails", element: <GroupDetails /> },
-  { key: "activityParams", element: <BuildActivityParams /> },
-  { key: "activityAI", element: <ActivityAI /> },
-  { key: "Content", element: <Content /> },
-  { key: "Activities", element: <ContentActivities /> },
-  { key: "ActivitiesPopular", element: <ContentPopular /> },
-  { key: "ActivityContent", element: <ContentActivity /> },
-  { key: "MY_Activities", element: <MyActivities /> },
-  { key: "MY_ActivityContent", element: <MyActivityContent /> },
+  { key: "youthHomePage", element: <YouthHomePage /> },
+  { key: "youthDetails", element: <YouthDetails /> },
+  { key: "youthBuild", element: <YouthBuildActivity /> },
+  { key: "youthActivityAI", element: <YouthActivityAI /> },
+  { key: "youthContent", element: <YouthContent /> },
+  { key: "youthActivities", element: <YouthContentActivities /> },
+  { key: "youthActivitiesPopular", element: <YouthContentPopular /> },
+  { key: "youthActivityContent", element: <YouthContentActivity /> },
+  { key: "youthMyActivities", element: <YouthMyActivities /> },
+  { key: "youthMyActivityContent", element: <YouthMyActivityContent /> },
 
-  // Smart Practice private pages
   { key: "practiceHomePage", element: <PracticeHomePage /> },
   { key: "practiceQuiz", element: <PracticeQuiz /> },
   { key: "practiceTopic", element: <PracticeTopic /> },
 ]
 
 const publicRoutes = [
-  { key: "contactUs", element: <ContactUs /> },
-  { key: "faq", element: <ActivityFAQ /> },
-  { key: "privacyPolicy", element: <PrivacyPolicy /> },
-  { key: "smartFAQ", element: <PracticeFAQ /> },
+  { key: "youthContactUs", element: <YouthContactUsRoute /> },
+  { key: "youthPrivacyPolicy", element: <YouthPrivacyPolicy /> },
+  { key: "youthFAQ", element: <YouthFAQ /> },
+
+  { key: "practiceContactUs", element: <PracticeContactUsRoute /> },
+  { key: "practicePrivacyPolicy", element: <PracticePrivacyPolicy /> },
+  { key: "practiceFAQ", element: <PracticeFAQ /> },
 ]
 
 function App() {
@@ -75,25 +78,39 @@ function App() {
           {/* Private Routes */}
           <Route element={<PrivateRoutes />}>
             {privateRoutes.map(({ key, element }) =>
-              langs.map(lang => (
-                <Route key={`${key}${lang}`} path={route[`${key}${lang}`]} element={element} />
-              ))
+              langs.map(lang => {
+                const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)
+                return (
+                  <Route
+                    key={`${key}${lang}`}
+                    path={route[`${key}${langKey}`]}
+                    element={element}
+                  />
+                )
+              })
             )}
           </Route>
 
           {/* Public Routes */}
           {publicRoutes.map(({ key, element }) =>
-            langs.map(lang => (
-              <Route key={`${key}${lang}`} path={route[`${key}${lang}`]} element={element} />
-            ))
+            langs.map(lang => {
+              const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)
+              return (
+                <Route
+                  key={`${key}${lang}`}
+                  path={route[`${key}${langKey}`]}
+                  element={element}
+                />
+              )
+            })
           )}
 
           {/* Admin route – Hebrew only */}
-          <Route path={route.adminHe} element={<AdminPage />} />
+          <Route path={route.adminHe} element={<YouthAdminPage />} />
 
           {/* Default Redirects */}
-          <Route path="/" element={<Navigate replace to={route.homePageHe} />} />
-          <Route path="*" element={<Navigate replace to={route.homePageHe} />} />
+          <Route path="/" element={<Navigate replace to={route.youthHomePageEn} />} />
+          <Route path="*" element={<FallbackRedirect />} />
         </Routes>
       </Router>
     </Providers>

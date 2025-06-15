@@ -3,16 +3,16 @@
 // It loads default values from session or user data, and allows filling in activity parameters
 //
 import styles from "./BuildActivity.module.css";
+import route from "../../../router/route.json";
 import { useEffect, useRef, useState, useMemo } from "react";
 import { useContentContext } from "../../../context/ContentContext";
 import { useAuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { isGroupDetailsChanged, updateUserMovement } from "../../../utils/user";
+import { isYouthDetailsChanged as isYouthDetailsChanged, updateUserMovement } from "../../../utils/user";
 import { fetchGetActivity, fetchUpdateUser } from "../../../utils/fetch";
 import { Activity } from "../../../models/types/activity";
 import { SessionKey } from "../../../models/enum/storage";
 import Session from "../../../utils/sessionStorage";
-import route from "../../../router/route.json";
 import { CategoryName } from "../../../models/types/movement";
 import { useErrorContext } from "../../../context/ErrorContext";
 import msg from "../../../models/resources/errorMsg.json";
@@ -20,14 +20,7 @@ import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import { BUILD_AD_SLOT } from "../../../models/constants/adsSlot";
 import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
 import SelectDetails from "../../../components/SelectDetails/SelectDetails";
-import {
-  ActivityTimeOptions,
-  CategoryOptions,
-  ContestOptions,
-  PlaceOptions,
-  ReligionOptions,
-  ToolsOptions,
-} from "../../../models/resources/select";
+import { ActivityTimeOptions, CategoryOptions, ContestOptions, PlaceOptions, ReligionOptions, ToolsOptions } from "../../../models/resources/select";
 import SubjectInput from "../../../components/SubjectInput/SubjectInput";
 import MoreOptionsCollapse from "../../../components/MoreOptionsCollapse/MoreOptionsCollapse";
 import MoreDetailsInput from "../../../components/MoreDetailsInput/MoreDetailsInput";
@@ -58,15 +51,14 @@ function BuildActivity() {
 
   const [hasAlert, setHasAlert] = useState(false);
 
-  const homePagePath = route[`homePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.homePageHe;
-  const activityParamsPath = route[`activityParams${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityParamsHe;
-  const activityAIPath = route[`activityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.activityAIHe;
+  const youthHomePagePath = route[`youthHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthHomePageEn;
+  const youtActivityAIPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn;
 
   useEffect(() => {
     const updateUser = async () => {
       lockRef.current = false;
       if (isLoggedIn && currentUser && data?.movement) {
-        if (isGroupDetailsChanged(currentUser.movement, data)) {
+        if (isYouthDetailsChanged(currentUser.movement, data)) {
           const { movement, grade, gender, amount } = data;
           const { name } = movement;
           const user = updateUserMovement(currentUser, name, grade, gender, amount);
@@ -91,11 +83,11 @@ function BuildActivity() {
             if (sessionActivity.info) setInfo(sessionActivity.info);
           }
         }
-      } catch (error) {}
+      } catch (error) { }
     };
 
     if (!data || !data.movement) {
-      navigate(homePagePath);
+      navigate(youthHomePagePath);
       return;
     }
     if (data?.movement?.categories && data.movement.categories.length > 0) {
@@ -131,11 +123,10 @@ function BuildActivity() {
         lang,
       });
       if (
-        (response.result === "success" || response.result === "safety") &&
-        response.activity
+        (response.result === "success" || response.result === "safety") && response.activity
       ) {
         updateMainActivity({ ...response.activity });
-        navigate(activityAIPath);
+        navigate(youtActivityAIPath);
       }
     } catch (error) {
       handleError(msg[lang].error.message);
@@ -146,7 +137,7 @@ function BuildActivity() {
   return (
     <PageLayout
       id="build"
-      path={activityParamsPath}
+      projectType={"youth"}
       hasGreenBackground
       hasHeader={{}}
       hasAds={BUILD_AD_SLOT}

@@ -21,11 +21,10 @@ function PopularActivities() {
   useFetchSubjectsData();
 
   // Determine language-specific paths
-  const TopicsPath = route[`Content${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.ContentHe;
-  const PopularPath = route[`ActivitiesPopular${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.ActivitiesPopularHe;
+  const youthContentPath = route[`youthContent${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthContentEn;
 
   const goBack = () => {
-    navigate(TopicsPath);
+    navigate(youthContentPath);
   };
 
   let topActivities: { activity: StaticActivities; subjectName: string }[] = [];
@@ -58,7 +57,7 @@ function PopularActivities() {
   return (
     <PageLayout
       id="popularActivities"
-      path={PopularPath}
+      projectType={"youth"}
       hasHeader={{ goBack }}
       hasNavBar
       hasGreenBackground
@@ -75,7 +74,7 @@ function PopularActivities() {
             {topActivities.length > 0 ? (
               topActivities.map((item, index) => (
                 <Link
-                  to={`${TopicsPath}/${item.subjectName}/${item.activity.name}`}
+                  to={`${youthContentPath}/${item.subjectName}/${item.activity.name}`}
                   className={styles.grid_item}
                   key={index}
                   onClick={() => handleActivityClick(item.activity)}

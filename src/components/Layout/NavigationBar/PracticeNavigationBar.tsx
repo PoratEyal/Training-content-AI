@@ -1,16 +1,16 @@
 //
 // This file defines the UnderBar component, which shows a bottom navigation bar
 //
-import styles from "./Footer.module.css";
-import NavOptTopic from "../../options/footerNavBar/NavOptTopic";
-import NavOptHome from "../../options/footerNavBar/NavOptHome";
+import styles from "./NavigationBar.module.css";
+import NavTopic from "../../options/NavigationBar/Practice/NavTopic";
+import NavHome from "../../options/NavigationBar/Practice/NavHome";
 
 const PracticeFooter = () => {
 
     return (
         <nav className={styles.navbar_container}>
-            <NavOptHome />
-            <NavOptTopic />
+            <NavHome />
+            <NavTopic />
         </nav>
     );
 };

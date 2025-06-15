@@ -26,13 +26,11 @@ const ContentActivities: React.FC = () => {
 
   useFetchSubjectsData();
 
-  const contentActivitiesPath = route[`Activities${lang.charAt(0).toUpperCase() + lang.slice(1)}`]
-    ? route[`Activities${lang.charAt(0).toUpperCase() + lang.slice(1)}`].replace(":activityId", activityId || "")
-    : `${route.ActivitiesHe}/${activityId}`;
+  const langKey = lang.charAt(0).toUpperCase() + lang.slice(1);
 
   const goBack = () => {
-    const topicsPath = route[`Content${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.ContentHe;
-    navigate(topicsPath);
+    const youthContentPath = route[`youthContent${langKey}`] || route.youthContentEn;
+    navigate(youthContentPath);
   };
 
   // Find the subject and sort activities by order
@@ -55,7 +53,7 @@ const ContentActivities: React.FC = () => {
   return (
     <PageLayout
       id="contentActivities"
-      path={contentActivitiesPath}
+      projectType={"youth"}
       hasHeader={{ goBack }}
       hasNavBar
       hasGreenBackground
@@ -84,16 +82,23 @@ const ContentActivities: React.FC = () => {
         <article className={styles.content_article}>
           {activities && activities.length !== 0 ? (
             <section className={styles.grid_container}>
-              {activities.map((activity, index) => (
-                <Link
-                  to={`/${lang}/content/${activityId}/${activity.name}`}
-                  className={styles.grid_item}
-                  key={index}
-                  onClick={() => handleActivityClick(activity)}
-                >
-                  <h2 className={styles.item_title}>{activity.title}</h2>
-                </Link>
-              ))}
+              {activities.map((activity, index) => {
+                const activityPath =
+                  route[`youthActivityContent${langKey}`]
+                    ?.replace(":activityId", activityId || "")
+                    ?.replace(":contentId", activity.name) || "#";
+
+                return (
+                  <Link
+                    to={activityPath}
+                    className={styles.grid_item}
+                    key={index}
+                    onClick={() => handleActivityClick(activity)}
+                  >
+                    <h2 className={styles.item_title}>{activity.title}</h2>
+                  </Link>
+                );
+              })}
             </section>
           ) : (
             <div>לא נמצאו פעולות מתאימות</div>

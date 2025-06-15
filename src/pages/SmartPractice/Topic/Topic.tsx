@@ -17,8 +17,12 @@ function Topic() {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
-  const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn;
   const quizPath = route[`practiceQuiz${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceQuizEn;
+  const homePagePath = route[`practiceHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceHomePageEn;
+
+  const goBack = () => {
+      navigate(homePagePath); 
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -29,8 +33,8 @@ function Topic() {
     setLoading(false)
 
     if (result) {
-      sessionStorage.setItem("smartPracticeQuestions", result)
-      sessionStorage.setItem("smartPracticeTopic", topic)
+      sessionStorage.setItem("practiceQuestions", result)
+      sessionStorage.setItem("practiceTopic", topic)
       navigate(quizPath)
     } else {
       alert(t("topic.error"))
@@ -41,19 +45,14 @@ function Topic() {
     <>
       <PageLayout
         id="practiceTopic"
-        path={topicPath}
+        projectType={"practice"}
         hasGreenBackground
-        hasHeader={{ hasTitle: t("topic.title") }}
+        hasHeader={{ goBack, hasTitle: t("topic.title") }}
         hasAds={PRACTICE_TOPIC_AD_SLOT}
-        title="SmartPractice"
         hasNavBar
         index={false}
       >
         <form onSubmit={handleSubmit} className={styles.topic_form_container}>
-          <label htmlFor="topicInput" className={styles.label}>
-            {t("topic.labelPractice")}
-          </label>
-          <br />
           <input
             id="topicInput"
             type="text"

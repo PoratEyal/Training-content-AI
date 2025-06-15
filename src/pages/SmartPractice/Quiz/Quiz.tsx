@@ -24,16 +24,20 @@ function Quiz() {
   const lang = rawLang.slice(0, 2)
 
   const practiceHomePagePath = route[`practiceHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceHomePageEn;
-  const quizPath = route[`practiceQuiz${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceQuizEn;
+  const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn;
+
+  const goBack = () => {
+      navigate(topicPath);
+  };
 
   const [questions, setQuestions] = useState<Question[]>([])
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>([])
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const topic = sessionStorage.getItem("smartPracticeTopic") || ""
+  const topic = sessionStorage.getItem("practiceTopic") || ""
 
-  const loadQuestionsFromRaw = (raw: string) => {   // lior - fix a parsing bug
+  const loadQuestionsFromRaw = (raw: string) => {
     const blocks = raw.split(/\n\s*\n/)
     const parsed: Question[] = blocks.map((block) => {
       const lines = block.split("\n").map((line) => line.trim()).filter(Boolean)
@@ -50,7 +54,7 @@ function Quiz() {
   }
 
   useEffect(() => {
-    const raw = sessionStorage.getItem("smartPracticeQuestions")
+    const raw = sessionStorage.getItem("practiceQuestions")
     if (!raw) {
       navigate(practiceHomePagePath)
       return
@@ -75,7 +79,7 @@ function Quiz() {
     setLoading(false)
 
     if (result) {
-      sessionStorage.setItem("smartPracticeQuestions", result)
+      sessionStorage.setItem("practiceQuestions", result)
       loadQuestionsFromRaw(result)
     } else {
       alert(t("quiz.FailMsg"))
@@ -89,12 +93,11 @@ function Quiz() {
   return (
     <PageLayout
       id="practiceQuiz"
-      path={quizPath}
-      hasHeader={{ hasTitle: topic }}
+      projectType={"practice"}
+      hasHeader={{ goBack, hasTitle: topic }}
       hasAds={PRACTICE_QUIZ_AD_SLOT}
       hasGreenBackground
       hasNavBar
-      title="SmartPractice"
       index={false}
     >
       {loading ? (

@@ -31,7 +31,7 @@ export const updateUserMovement = (
     return { ...user, movement } as User;
 };
 
-export const isGroupDetailsChanged = (movement: UserMovementDetails, data: DataType) => {
+export const isYouthDetailsChanged = (movement: UserMovementDetails, data: DataType) => {
     if (
         movement?.movement === data?.movement?.name &&
         movement?.grade === data?.grade &&

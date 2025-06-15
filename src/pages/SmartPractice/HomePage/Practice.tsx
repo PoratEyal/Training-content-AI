@@ -35,9 +35,7 @@ function PracticeHomePage() {
 
   const [rememberMe, setRememberMe] = useState<SignInStatus>(SignInStatus.NEW_ACCESS)
 
-  const practiceHomePagePath = route[`practiceHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceHomePageEn;
   const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn;
-
 
   const handleStart = () => {
     const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE)
@@ -94,7 +92,7 @@ function PracticeHomePage() {
   return (
     <PageLayout
       id="practiceHome"
-      path={practiceHomePagePath}
+      projectType={"practice"}
       hasHeader={{}}
       hasAds={PRACTICE_HOME_AD_SLOT}
       index={true}

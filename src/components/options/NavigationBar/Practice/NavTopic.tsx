@@ -1,9 +1,9 @@
-import styles from "./navbar.module.css";
-import route from "../../../router/route.json";
+import styles from "../navbar.module.css";
+import route from "../../../../router/route.json";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Icons } from "../../Icons";
-import { useLanguage } from "../../../i18n/useLanguage";
+import { Icons } from "../../../Icons";
+import { useLanguage } from "../../../../i18n/useLanguage";
 
 const NavOptTopic = () => {
   const { t, lang } = useLanguage();

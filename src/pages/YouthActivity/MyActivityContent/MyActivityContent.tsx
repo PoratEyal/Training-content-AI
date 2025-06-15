@@ -33,13 +33,13 @@ const SavedActivity: React.FC = () => {
   const [foundActivity, setFoundActivity] = useState<Activity | null>(null)
 
   // Determine language-specific routes
-  const MY_ActivitiesPath = route[`MY_Activities${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.MY_ActivitiesHe;
+  const youthMyActivitiesPath = route[`youthMyActivities${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthMyActivitiesEn;
 
   const goBack = () => {
     if (isEdit) {
       readOnlyMode()
     } else {
-      navigate(MY_ActivitiesPath)
+      navigate(youthMyActivitiesPath)
     }
   }
 
@@ -58,7 +58,7 @@ const SavedActivity: React.FC = () => {
   return (
     <PageLayout
       id="savedActivity"
-      path={`${MY_ActivitiesPath}/${subject}`}
+      projectType={"youth"}
       hasGreenBackground
       hasHeader={{ goBack, hasTitle: foundActivity?.subject || undefined }}
       hasAds={MY_ACTIVITIES_AD_SLOT}

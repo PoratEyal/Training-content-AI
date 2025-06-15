@@ -3,7 +3,6 @@ import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import FadeEffect from "../../../components/FadeEffect/FadeEffect";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { useTranslation } from "react-i18next";
-import route from "../../../router/route.json";
 import { buildFaqSchema } from "../../../models/schemaOrg";
 import React, { useMemo } from "react";
 
@@ -20,12 +19,10 @@ const FAQ: React.FC = () => {
   const faqSchema = useMemo(() => buildFaqSchema(faq), [faq]);
   const title = t("faqPractice.title");
 
-  const faqPath = route[`smartFAQ${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.smartFAQEn;
-
   return (
     <PageLayout
       id="practiceFaq"
-      path={faqPath}
+      projectType={window.location.pathname.includes("/practice") ? "practice" : "youth"}
       hasHeader={{ isBlur: true }}
       hasNavBar
       index={true}

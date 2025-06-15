@@ -32,11 +32,10 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
   const homePagePath = (newLang: string) => {
     const capitalizedLang = newLang.charAt(0).toUpperCase() + newLang.slice(1);
     const isPractice = window.location.pathname.includes("/practice");
-
     if (isPractice) {
       return route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn;
     } else {
-      return route[`homePage${capitalizedLang}`] || route.homePageHe;
+      return route[`youthHomePage${capitalizedLang}`] || route.youthHomePageEn;
     }
   };
 
