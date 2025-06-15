@@ -111,8 +111,8 @@
   },
   "quiz": {
     "FailMsg": "La creación de la práctica falló. Si el problema persiste, por favor contáctanos a través del menú 'Contáctanos'.",
-    "score": "Puntuación:",
-    "newPractice": "Nueva práctica",
+    "score": "Nota:",
+    "newPractice": "Repetir",
     "check": "Revisar"
   },
   "profile": {

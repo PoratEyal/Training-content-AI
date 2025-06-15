@@ -17,10 +17,6 @@
   line-height: 1.6;
 }
 
-.optionItem:hover {
-  background-color: #f0f0f0;
-}
-
 .optionSelected {
   background-color: #d0e8ff;
 }
@@ -35,12 +31,12 @@
 
 .scoreCircle {
   position: fixed;
-  top: 63%;
+  top: 37%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2000;
-  width: 160px;
-  height: 160px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   border: none;
   box-shadow: inset -10px -10px 15px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -84,7 +80,7 @@
 
 .checkBtnContainer {
   position: fixed;
-  bottom: 130px;
+  bottom: 150px;
   z-index: 1000;
 }
 
@@ -102,7 +98,7 @@ html[dir="ltr"] .checkBtnContainer {
   background-color: rgba(0, 123, 255, 0.75);
   color: white;
   width: 75px;
-  height: 65px;
+  height: 75px;
   border-radius: 50%;
   border: none;
   font-size: 18px;
@@ -119,7 +115,7 @@ html[dir="ltr"] .checkBtnContainer {
   font-size: 17px;
   margin-top: 6px;
   font-weight: 550;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
 @media (min-width: 768px) {
