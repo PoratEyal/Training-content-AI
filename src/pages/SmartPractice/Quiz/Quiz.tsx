@@ -36,21 +36,19 @@ function Quiz() {
   const topic = sessionStorage.getItem("practiceTopic") || ""
 
   const loadQuestionsFromRaw = (raw: string) => {
-
     const blocks = raw.split(/~\d+~/).map(b => b.trim()).filter(Boolean)
 
     const parsed: Question[] = blocks.map((block) => {
       const lines = block.split(/\n/).map(line => line.trim()).filter(Boolean)
 
-      // השורה הראשונה היא השאלה
+      // השורה הראשונה היא נוסח השאלה
       const question = lines[0]
 
-      // שאר השורות הן תשובות – כל אחת מתחילה ב־~אות~
       const options: string[] = []
       let correctIndex = -1
 
       lines.slice(1).forEach((line, index) => {
-        const match = line.match(/~[א-ד]~\s*(.*)/)
+        const match = line.match(/~[א-דA-Dأ-د]~\s*(.*)/)
         if (!match) return
 
         const text = match[1].trim()
@@ -149,7 +147,13 @@ function Quiz() {
                   const isCorrectSelection = submitted && isAnswered && isSelected && optIdx === q.correctIndex
                   const isWrongSelection = submitted && isAnswered && isSelected && optIdx !== q.correctIndex
 
-                  const hebrewLetters = ['א', 'ב', 'ג', 'ד']
+                  const lettersMap: Record<string, string[]> = {
+                    he: ['א', 'ב', 'ג', 'ד'],
+                    ar: ['أ', 'ب', 'ج', 'د'],
+                    es: ['A', 'B', 'C', 'D'],
+                    en: ['A', 'B', 'C', 'D']
+                  }
+                  const letters = lettersMap[lang] || ['-', '-', '-', '-']
 
                   return (
                     <li
@@ -165,7 +169,7 @@ function Quiz() {
                         }`}
                     >
                       <span className={isCorrectAnswer ? styles.correctBold : ""}>
-                        {`${hebrewLetters[optIdx]}. ${opt}`}
+                        {`${letters[optIdx]}. ${opt}`}
                       </span>
                     </li>
                   )
