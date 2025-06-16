@@ -12,11 +12,11 @@ const PrivateRoutes = () => {
   const [tscs, setTscs] = useState<boolean>(false)
   const [whatsNew, setWhatsNew] = useState<boolean>(false)
 
-  useEffect(() => {
-    if (cookieUserConsent === undefined) {
-      setTscs(true)
-    }
-  }, [cookieUserConsent])
+//  useEffect(() => {
+//    if (cookieUserConsent === undefined) {
+//      setTscs(true)
+//    }
+//  }, [cookieUserConsent])
 
   const blockRef = useRef<boolean>(true)
   useEffect(() => {
