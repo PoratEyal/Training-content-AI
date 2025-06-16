@@ -2,6 +2,11 @@
   "statusHe": "/status",
   "adminHe": "/admin/msg",
 
+  "youthHomePageHeAlt": "/he/youth",
+  "youthHomePageEnAlt": "/en/youth",
+  "youthHomePageEsAlt": "/es/youth",
+  "youthHomePageArAlt": "/ar/youth",
+
   "youthHomePageHe": "/he",
   "youthHomePageEn": "/en",
   "youthHomePageEs": "/es",

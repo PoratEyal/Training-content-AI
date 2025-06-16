@@ -78,17 +78,23 @@ function App() {
           {/* Private Routes */}
           <Route element={<PrivateRoutes />}>
             {privateRoutes.map(({ key, element }) =>
-              langs.map(lang => {
+              langs.flatMap(lang => {
                 const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)
-                return (
-                  <Route
-                    key={`${key}${lang}`}
-                    path={route[`${key}${langKey}`]}
-                    element={element}
-                  />
-                )
+                const basePath = route[`${key}${langKey}`]
+
+                if (key === "youthHomePage") {
+                  return [
+                    <Route key={`${key}${lang}-base`} path={basePath} element={element} />,
+                    <Route key={`${key}${lang}-alt`} path={`/${lang}/youth`} element={element} />,
+                  ]
+                }
+
+                return [
+                  <Route key={`${key}${lang}`} path={basePath} element={element} />
+                ]
               })
             )}
+
           </Route>
 
           {/* Public Routes */}
