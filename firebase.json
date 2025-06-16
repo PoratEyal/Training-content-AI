@@ -31,7 +31,14 @@
         { "source": "/es", "destination": "/index.html" },
         { "source": "/es/**", "destination": "/index.html" },
         { "source": "/ar", "destination": "/index.html" },
-        { "source": "/ar/**", "destination": "/index.html" }
+        { "source": "/ar/**", "destination": "/index.html" },
+
+        { "source": "/youth", "destination": "/index.html" },
+        
+        { "source": "/he/youth", "destination": "/index.html" },
+        { "source": "/en/youth", "destination": "/index.html" },
+        { "source": "/es/youth", "destination": "/index.html" },
+        { "source": "/ar/youth", "destination": "/index.html" }
       ],
       "headers": [
         {
