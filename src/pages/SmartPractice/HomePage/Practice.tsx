@@ -109,6 +109,22 @@ function PracticeHomePage() {
         </div>
       </div>
 
+      {/* 🔧 Hidden top-right button for admin to navigate to /practice */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          width: 30,
+          height: 30,
+          zIndex: 9999,
+          background: "transparent",
+        }}
+        onClick={() => {
+          window.location.href = "/youth";
+        }}
+      />
+
       {rememberMe === SignInStatus.REMEMBER &&
         !isLoading &&
         isLoggedIn &&

@@ -3,11 +3,9 @@ import i18n from "i18next"
 
 export const formatWhatsUp = (text: string | undefined) => {
     if (!text) {
-        return i18n.t("articleOptions.share.defaultMessage",
-            "I found a website that builds activities using AI, worth trying!")
+        return i18n.t("articleOptions.share.defaultMessage", "I found a website that builds activities with AI. Definitely worth a try!")
     }
-    const title = i18n.t("articleOptions.share.createdBy",
-        "Activity created by:")
+    const title = i18n.t("articleOptions.share.createdBy", "Created by:")
     const br = "\n"
     const result = text.replace(/\*+/g, "*") + br + br + title
     return result

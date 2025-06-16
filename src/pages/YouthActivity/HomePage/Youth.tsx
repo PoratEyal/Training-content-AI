@@ -1,7 +1,7 @@
 //
 // Home page, showing the app’s entry point
 //
-import styles from "./HomePage.module.css"
+import styles from "./Youth.module.css"
 import { useEffect, useState, useMemo } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuthContext } from "../../../context/AuthContext"
@@ -161,7 +161,7 @@ function Home() {
 
       <div className={styles.about_div}>
         <AboutUsCollapse>
-          <p>{t("home.aboutText")}</p>
+          <p>{t("home.youthAboutText")}</p>
         </AboutUsCollapse>
       </div>
     </PageLayout>

@@ -2,9 +2,9 @@
   "home": {
     "slogan": "Customized, Simple and Fast 🤟",
     "startAction": "Create Activities",
-    "aboutText": "ActivityWiz is a site for creating youth activities. You can choose from a collection of ready-made activities or use artificial intelligence to generate personalized activities tailored exactly to your needs. The site is intended for counselors looking for ideas and new ways to enrich the educational and social experience.",
+    "youthAboutText": "Create youth activities – from a library of ready-made activities to personalized ones generated with AI. Perfect for counselors looking to enrich educational and social experiences.",
     "practiceStartAction": "Create Practice",
-    "practiceAboutText": "SmartPractice is a smart practice site powered by artificial intelligence. Choose any topic you like – the system will generate a personalized practice for you in seconds. Suitable for anyone looking for a simple, fast, and focused way to practice and deepen understanding."
+    "practiceAboutText": "Smart AI-powered practice. Choose any topic – get a personalized exercise in seconds. Great for anyone seeking a simple, focused way to improve understanding."
   },
   "continueWithAI": {
     "advanced": "Advanced",
@@ -151,8 +151,9 @@
     },
     "share": {
       "title": "Share",
-      "defaultMessage": "I found a site that creates activities using AI – worth trying!",
-      "createdBy": "This activity was created by:"
+      "createdBy": "Created with:",
+      "youthDefaultMessage": "I found a website that builds activities with AI – worth trying!",
+      "practiceDefaultMessage": "I found a website that helps you practice any topic with AI – worth trying!"
     },
     "save": {
       "button": "Save",

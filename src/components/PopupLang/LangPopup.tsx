@@ -50,7 +50,6 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
     setIsLoading(true);
 
     localStorage.setItem("i18nextLng", newLang);
-    clearAll(); // Clean all data from Session Storage
 
     // If user is logged in, reset their movement details in DB
     if (currentUser) {
@@ -66,6 +65,7 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
 
       await fetchUpdateUser({ user: updatedUser });
       setCurrentUser(updatedUser);
+      clearAll(); // Clean all data from Session Storage, MUST BE AT THE END OF THE FUNCTION !!!
     }
 
     changeLang(newLang);

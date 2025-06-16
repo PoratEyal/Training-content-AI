@@ -14,7 +14,7 @@ import FallbackRedirect from "./components/FallbackRedirect"
 import PrivateRoutes from "./router/PrivateRoutes"
 
 // Youth Activities
-import YouthHomePage from "./pages/YouthActivity/HomePage/HomePage"
+import YouthHomePage from "./pages/YouthActivity/HomePage/Youth"
 import YouthDetails from "./pages/YouthActivity/Details/Details"
 import YouthBuildActivity from "./pages/YouthActivity/BuildActivity/BuildActivity"
 import YouthActivityAI from "./pages/YouthActivity/Activity/Activity"

@@ -2,10 +2,9 @@
   "home": {
     "slogan": "Personalizado, Simple y Rápido 🤟",
     "startAction": "Crear Actividad",
-    "aboutText": "ActivityWiz es una plataforma donde los líderes juveniles crean actividades atractivas para jóvenes. Elige entre opciones predefinidas o usa la IA para generar actividades personalizadas según tu grupo. Ideal para consejeros que buscan ideas educativas y sociales frescas.",
-    "moreOptions": "Más Opciones",
+    "youthAboutText": "Crea actividades para jóvenes: desde una biblioteca de actividades listas hasta opciones personalizadas generadas con IA. Ideal para guías que buscan enriquecer la experiencia educativa y social.",
     "practiceStartAction": "Crear práctica",
-    "practiceAboutText": "SmartPractice es un sitio de práctica inteligente basado en inteligencia artificial. Elige cualquier tema que desees, y el sistema generará una práctica personalizada en segundos. Ideal para quienes buscan una forma sencilla, rápida y enfocada de practicar y profundizar su comprensión."
+    "practiceAboutText": "Práctica inteligente con IA. Elige cualquier tema y obtén un ejercicio personalizado en segundos. Ideal para quienes buscan una forma simple y enfocada de mejorar su comprensión."
   },
   "continueWithAI": {
     "advanced": "Avanzado",
@@ -152,8 +151,9 @@
     },
     "share": {
       "title": "Compartir",
-      "defaultMessage": "Encontré un sitio que crea actividades usando IA – ¡vale la pena probarlo!",
-      "createdBy": "Esta actividad fue creada por:"
+      "createdBy": "Creado con:",
+      "youthDefaultMessage": "Encontré un sitio que crea actividades con IA. ¡Vale la pena probarlo!",
+      "practiceDefaultMessage": "Encontré un sitio que te ayuda a practicar cualquier tema con IA. ¡Vale la pena intentarlo!"
     },
     "save": {
       "button": "Guardar",
