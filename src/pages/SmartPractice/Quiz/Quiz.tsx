@@ -36,15 +36,34 @@ function Quiz() {
   const topic = sessionStorage.getItem("practiceTopic") || ""
 
   const loadQuestionsFromRaw = (raw: string) => {
-    const blocks = raw.split(/\n\s*\n/)
+
+    const blocks = raw.split(/~\d+~/).map(b => b.trim()).filter(Boolean)
+
     const parsed: Question[] = blocks.map((block) => {
-      const lines = block.split("\n").map((line) => line.trim()).filter(Boolean)
+      const lines = block.split(/\n/).map(line => line.trim()).filter(Boolean)
+
+      // השורה הראשונה היא השאלה
       const question = lines[0]
-      const rawOptions = lines.slice(1)
-      const options = rawOptions.map((opt) => opt.replace(/\*\*/g, "").trim())
-      const correctIndex = rawOptions.findIndex((opt) => opt.includes("**"))
+
+      // שאר השורות הן תשובות – כל אחת מתחילה ב־~אות~
+      const options: string[] = []
+      let correctIndex = -1
+
+      lines.slice(1).forEach((line, index) => {
+        const match = line.match(/~[א-ד]~\s*(.*)/)
+        if (!match) return
+
+        const text = match[1].trim()
+        const clean = text.replace(/\*\*/g, "")
+        options.push(clean)
+
+        if (text.includes("**")) {
+          correctIndex = index
+        }
+      })
+
       return { question, options, correctIndex }
-    })
+    }).filter(q => q.options?.length === 4 && q.correctIndex >= 0)
 
     setQuestions(parsed)
     setUserAnswers(new Array(parsed.length).fill(null))
@@ -118,7 +137,9 @@ function Quiz() {
 
           {questions.map((q, qIdx) => (
             <div key={qIdx} className={styles.questionBlock}>
-              <div className={styles.questionText}>{q.question}</div>
+              <div className={styles.questionText}>
+                {`${qIdx + 1}. ${q.question}`}
+              </div>
               <ul className={styles.optionList}>
                 {q.options.map((opt, optIdx) => {
                   const selectedIndex = userAnswers[qIdx]
@@ -127,6 +148,8 @@ function Quiz() {
                   const isCorrectAnswer = submitted && q.correctIndex === optIdx
                   const isCorrectSelection = submitted && isAnswered && isSelected && optIdx === q.correctIndex
                   const isWrongSelection = submitted && isAnswered && isSelected && optIdx !== q.correctIndex
+
+                  const hebrewLetters = ['א', 'ב', 'ג', 'ד']
 
                   return (
                     <li
@@ -142,7 +165,7 @@ function Quiz() {
                         }`}
                     >
                       <span className={isCorrectAnswer ? styles.correctBold : ""}>
-                        {opt}
+                        {`${hebrewLetters[optIdx]}. ${opt}`}
                       </span>
                     </li>
                   )
@@ -150,6 +173,7 @@ function Quiz() {
               </ul>
             </div>
           ))}
+
 
           {!submitted && (
             <div className={styles.checkBtnContainer}>
