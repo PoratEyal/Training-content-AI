@@ -1,6 +1,7 @@
 import { Key } from "react";
 
 export default class Session {
+
     public static get = (key: Key) => {
         const value = sessionStorage.getItem(key as string);
         return value ? JSON.parse(value) : undefined;
@@ -43,4 +44,5 @@ export default class Session {
     public static clear = () => {
         sessionStorage.clear();
     };
+    
 }

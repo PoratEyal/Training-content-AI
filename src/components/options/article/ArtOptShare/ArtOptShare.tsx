@@ -25,7 +25,6 @@ const ArtOptShare: React.FC<ArtOptShareProps> = ({ activity }) => {
         // fallback if navigator.share fails
       }
     }
-
     window.open(
       `https://wa.me/?text=${encodeURIComponent(shareText)}`,
       "_blank"

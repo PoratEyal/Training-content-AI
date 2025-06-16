@@ -9,7 +9,6 @@ import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz"
 import styles from "./Quiz.module.css"
 import { PRACTICE_QUIZ_AD_SLOT } from "../../../models/constants/adsSlot"
 
-
 type Question = {
   question: string
   options: string[]
@@ -17,18 +16,17 @@ type Question = {
 }
 
 function Quiz() {
-
   const navigate = useNavigate()
   const { t, i18n } = useTranslation()
   const rawLang = i18n.language || "en"
   const lang = rawLang.slice(0, 2)
 
-  const practiceHomePagePath = route[`practiceHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceHomePageEn;
-  const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn;
+  const practiceHomePagePath = route[`practiceHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceHomePageEn
+  const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn
 
   const goBack = () => {
-      navigate(topicPath);
-  };
+    navigate(topicPath)
+  }
 
   const [questions, setQuestions] = useState<Question[]>([])
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>([])
@@ -104,22 +102,19 @@ function Quiz() {
         <LoadingQuiz />
       ) : (
         <QuizContainer>
-          {submitted && (() => {
-            const score = Math.round((correctCount / questions.length) * 100)
+          {submitted && (
+            <>
+              <div className={`${styles.scoreStar} ${correctCount / questions.length < 0.5 ? styles.scoreRed : correctCount / questions.length < 0.7 ? styles.scoreYellow : styles.scoreGreen}`}>
+                <div>{t("quiz.score")} {Math.round((correctCount / questions.length) * 100)}%</div>
+              </div>
 
-            let statusClass = ""
-            if (score < 50) statusClass = styles.scoreRed
-            else if (score < 70) statusClass = styles.scoreYellow
-            else statusClass = styles.scoreGreen
-
-            return (
-              <button onClick={handleRegenerate} className={`${styles.scoreCircle} ${statusClass}`}>
-                <div>{t("quiz.score")} {score}%</div>
-                <br />
-                <div className={styles.retryText}>{t("quiz.newPractice")}</div>
-              </button>
-            )
-          })()}
+              <div className={styles.retryFabContainer}>
+                <button onClick={handleRegenerate} className={styles.retryFab}>
+                  {t("quiz.newPractice")}
+                </button>
+              </div>
+            </>
+          )}
 
           {questions.map((q, qIdx) => (
             <div key={qIdx} className={styles.questionBlock}>

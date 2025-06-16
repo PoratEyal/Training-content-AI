@@ -33,6 +33,7 @@ export const ContentContext = createContext<ContentContextType>(typeContext);
 export const useContentContext = () => useContext(ContentContext);
 
 export const ContentProvider = ({ children }: { children: React.ReactNode }) => {
+    
     const { currentUser } = useAuthContext();
     const [data, setData] = useState<DataType | undefined>();
     const [mainActivity, setMainActivity] = useState<Activity | undefined>();

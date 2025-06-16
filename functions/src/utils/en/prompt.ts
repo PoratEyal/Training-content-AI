@@ -10,29 +10,17 @@ import { CONTANT_SPECIAL_PROMPT_S } from "../../model/prompts/en/contant_special
 import { PLAY_SPECIAL_PROMPT_M } from "../../model/prompts/en/playTime_special_M";
 import { PLAY_SPECIAL_PROMPT_S } from "../../model/prompts/en/playTime_special_S";
 import {
-    CONTANT_SECTION_120_IN,
-    CONTANT_SECTION_120_OUT,
-    CONTANT_SECTION_20_IN,
-    CONTANT_SECTION_20_OUT,
     CONTANT_SECTION_30_IN,
     CONTANT_SECTION_30_OUT,
-    CONTANT_SECTION_45_IN,
-    CONTANT_SECTION_45_OUT,
     CONTANT_SECTION_60_IN,
     CONTANT_SECTION_60_OUT,
     CONTANT_SECTION_90_IN,
     CONTANT_SECTION_90_OUT,
     PLAY_SECTION,
-    POINT_SECTION_120,
-    POINT_SECTION_20,
     POINT_SECTION_30,
-    POINT_SECTION_45,
     POINT_SECTION_60,
     POINT_SECTION_90,
-    SURVIVAL_SECTION_120,
-    SURVIVAL_SECTION_20,
     SURVIVAL_SECTION_30,
-    SURVIVAL_SECTION_45,
     SURVIVAL_SECTION_60,
     SURVIVAL_SECTION_90,
 } from "../../model/prompts/en/sections";
@@ -64,22 +52,16 @@ const sectionPerPlace = (place: string): string[] => {
     switch (place) {
         case "outdoor":
             return [
-                CONTANT_SECTION_20_OUT,
                 CONTANT_SECTION_30_OUT,
-                CONTANT_SECTION_45_OUT,
                 CONTANT_SECTION_60_OUT,
                 CONTANT_SECTION_90_OUT,
-                CONTANT_SECTION_120_OUT,
             ];
 
         default:
             return [
-                CONTANT_SECTION_20_IN,
                 CONTANT_SECTION_30_IN,
-                CONTANT_SECTION_45_IN,
                 CONTANT_SECTION_60_IN,
                 CONTANT_SECTION_90_IN,
-                CONTANT_SECTION_120_IN,
             ];
     }
 };
@@ -119,21 +101,15 @@ const setOptionsForSpecialKidsPlay = (): [string, string, string] => [
 
 const setSectionForPointOfView = (time: string): string =>
     sectionPerTime(time, [
-        POINT_SECTION_20,
         POINT_SECTION_30,
-        POINT_SECTION_45,
         POINT_SECTION_60,
         POINT_SECTION_90,
-        POINT_SECTION_120,
     ]);
 const setSectionForSurvival = (time: string): string =>
     sectionPerTime(time, [
-        SURVIVAL_SECTION_20,
         SURVIVAL_SECTION_30,
-        SURVIVAL_SECTION_45,
         SURVIVAL_SECTION_60,
         SURVIVAL_SECTION_90,
-        SURVIVAL_SECTION_120,
     ]);
 
 const setSectionForPlayTime = (time: string): string =>

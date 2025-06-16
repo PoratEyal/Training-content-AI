@@ -8,12 +8,7 @@ import styles from "./Details.module.css";
 import { useEffect, useState, useRef } from "react";
 import { useContentContext } from "../../../context/ContentContext";
 import { useNavigate } from "react-router-dom";
-import {
-  MovmentsOptions,
-  GradeOptions,
-  AmountOptions,
-  GenderOptions,
-} from "../../../models/resources/select";
+import { MovmentsOptions, GradeOptions, AmountOptions, GenderOptions } from "../../../models/resources/select";
 import SelectDetails from "../../../components/SelectDetails/SelectDetails";
 import MainBtn from "../../../components/MainBtn/MainBtn";
 import { useAuthContext } from "../../../context/AuthContext";
@@ -25,30 +20,27 @@ import { useLanguage } from "../../../i18n/useLanguage";
 import TellUsAboutYourGroup from "../../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
 
 function Details() {
-  
+
   const { t, isRTL, dir, lang } = useLanguage();
   const { data, updateDetails } = useContentContext();  // Session Storage
   const { currentUser, loading } = useAuthContext();    // Current User DB Data
   const navigate = useNavigate();
-
   const [movement, setMovement] = useState("");
   const [classLevel, setClassLevel] = useState("");
   const [numberOfChildren, setNumberOfChildren] = useState("");
   const [gender, setGender] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
-  
   const initialLangRef = useRef(lang);
 
   const youthBuildPath = route[`youthBuild${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthBuildEn;
 
   useEffect(() => {
 
-    if (lang === initialLangRef.current) {
-      setMovement(data?.movement?.name || currentUser?.movement?.movement || "");
-      setClassLevel(data?.grade || currentUser?.movement?.grade || "");
-      setNumberOfChildren(data?.amount || currentUser?.movement?.amount || "");
-      setGender(data?.gender || currentUser?.movement?.gender || "");
-    }
+    setMovement(data?.movement?.name || currentUser?.movement?.movement || "");
+    setClassLevel(data?.grade || currentUser?.movement?.grade || "");
+    setNumberOfChildren(data?.amount || currentUser?.movement?.amount || "");
+    setGender(data?.gender || currentUser?.movement?.gender || "");
+
   }, [data, currentUser]);
 
   useEffect(() => {
@@ -62,7 +54,7 @@ function Details() {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateDetails(movement, classLevel, numberOfChildren, gender);
-    sessionStorage.setItem("currentLanguage", lang);
+    // sessionStorage.setItem("currentLanguage", lang); // can be removed as nobody does anything with this param
     navigate(youthBuildPath);
   };
 
