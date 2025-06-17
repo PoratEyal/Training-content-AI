@@ -5,7 +5,7 @@ import {
     COOKIE_USER_CONSENT,
     CookieOptions,
     USER_CONSENT_VALUE,
-    REMEMEBER_ME_KEY,
+    REMEMEBER_ME_KEY,   // Can be removed
 } from "../models/constants/cookie";
 
 export type CookiesContextType = {
@@ -36,12 +36,12 @@ export const CookiesProvider = ({ children }: { children: React.ReactNode }) => 
     const [cookies, setCookie, removeCookie] = useCookies([
         COOKIE_LIMIT_KEY,
         COOKIE_USER_CONSENT,
-        REMEMEBER_ME_KEY,
+        REMEMEBER_ME_KEY,   // Can be removed
     ]);
 
     const cookieLimit = cookies[COOKIE_LIMIT_KEY];
     const cookieUserConsent = cookies[COOKIE_USER_CONSENT];
-    const cookieRememberMe = cookies[REMEMEBER_ME_KEY];
+    const cookieRememberMe = cookies[REMEMEBER_ME_KEY]; // Can be removed
 
     const setLimitCookie = (data: string | number) => {
         setCookie(COOKIE_LIMIT_KEY, JSON.stringify(data), CookieOptions);
@@ -51,11 +51,11 @@ export const CookiesProvider = ({ children }: { children: React.ReactNode }) => 
         setCookie(COOKIE_USER_CONSENT, USER_CONSENT_VALUE, CookieOptions);
     };
 
-    const setRememberMeCookie = () => {
+    const setRememberMeCookie = () => { // Can be removed
         setCookie(REMEMEBER_ME_KEY, "true", CookieOptions);
     };
 
-    const removeRememberMeCookie = () => {
+    const removeRememberMeCookie = () => {  // Can be removed
         removeCookie(REMEMEBER_ME_KEY);
     };
 

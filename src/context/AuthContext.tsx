@@ -119,7 +119,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const logout = async () => {
         try {
             await auth.signOut();
-            removeRememberMeCookie();
+            //removeRememberMeCookie();     // not in use anymore
             setCurrentUser(undefined);
             setIsLoggedIn(false);
         } catch (error) {

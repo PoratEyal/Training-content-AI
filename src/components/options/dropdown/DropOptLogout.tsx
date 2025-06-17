@@ -19,6 +19,7 @@ type DropdownOption = {
 }
 
 function DropOptLogout({ handleClose }: DropdownOption) {
+
   const { t, lang } = useLanguage()
   const { clearAll } = useContentContext()
   const { logout } = useAuthContext()
@@ -26,7 +27,7 @@ function DropOptLogout({ handleClose }: DropdownOption) {
   const product = useProduct()
   const isPractice = product === ProductType.Practice
 
-  const getHomePagePath = () => {
+  const homePagePath = () => {
     const capitalizedLang = lang.charAt(0).toUpperCase() + lang.slice(1)
     return isPractice
       ? route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn
@@ -40,7 +41,7 @@ function DropOptLogout({ handleClose }: DropdownOption) {
 
   const handleClick = async () => {
     await handleLogout()
-    navigate(getHomePagePath())
+    navigate(homePagePath())
     handleClose()
   }
 

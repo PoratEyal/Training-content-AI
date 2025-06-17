@@ -4,9 +4,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Icons } from "../../../Icons";
 import { useLanguage } from "../../../../i18n/useLanguage";
+import { useCookiesContext } from "../../../../context/CookiesContext"; 
 
 const NavOptTopic = () => {
   const { t, lang } = useLanguage();
+  const { cookieLimit, setLimitCookie } = useCookiesContext(); 
   const [isSelected, setIsSelected] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -18,9 +20,16 @@ const NavOptTopic = () => {
     setIsSelected(location.pathname === topicPath || location.pathname === quizPath);
   }, [location.pathname, topicPath, quizPath]);
 
+  const handleClick = () => {
+    if (!cookieLimit) {
+      setLimitCookie(new Date().toString());
+    }
+    navigate(topicPath);
+  };
+
   return (
     <div
-      onClick={() => navigate(topicPath)}
+      onClick={handleClick}
       className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
     >
       <Icons.magic className={styles.icon} />
