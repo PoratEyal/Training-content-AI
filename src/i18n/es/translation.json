@@ -3,7 +3,7 @@
     "slogan": "Personalizado, Simple y Rápido 🤟",
     "startAction": "Crear Actividad",
     "youthAboutText": "Crea actividades para jóvenes: desde una biblioteca de actividades listas hasta opciones personalizadas generadas con IA. Ideal para guías que buscan enriquecer la experiencia educativa y social.",
-    "practiceStartAction": "Crear práctica",
+    "practiceStartAction": "Crea una práctica",
     "practiceAboutText": "Práctica inteligente con IA. Elige cualquier tema y obtén un ejercicio personalizado en segundos. Ideal para quienes buscan una forma simple y enfocada de mejorar su comprensión."
   },
   "continueWithAI": {
@@ -99,14 +99,14 @@
     }
   },
   "topic": {
-    "title": "¿Qué quieres practicar?",
-    "topicPlaceholder": "Ingresa un tema para practicar",
+    "title": "Elijamos un tema",
+    "topicPlaceholder": "Ingresa un tema",
     "examples": "Por ejemplo: fracciones simples, química para la secundaria, inglés de quinto grado, señales de tráfico, trivia sobre guitarras...",
-    "btnCreate": "Práctica",
+    "btnCreate": "¡Vamos!",
     "btnCreating": "Creando práctica",
     "error": "Ocurrió un error al generar las preguntas. Intenta nuevamente.",
-    "loadingHead": "Tu práctica está en camino",
-    "loadingText": "¡Atención! Esta práctica fue generada con inteligencia artificial, la cual está en constante aprendizaje y mejora."
+    "loadingHead": "Ya estamos en eso...",
+    "loadingText": "Atención: Este cuestionario fue generado por una inteligencia artificial que está en constante aprendizaje y mejora. Pueden ocurrir errores."
   },
   "quiz": {
     "FailMsg": "La creación de la práctica falló. Si el problema persiste, por favor contáctanos a través del menú 'Contáctanos'.",

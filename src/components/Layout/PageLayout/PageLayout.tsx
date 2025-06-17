@@ -97,7 +97,7 @@ function PageLayout({
       </Helmet>
 
       <section
-        className={styles.page_container}
+        className={styles.pageContainer}
         style={{
           backgroundColor: hasGreenBackground
             ? productType === ProductType.Youth
@@ -118,7 +118,19 @@ function PageLayout({
 
         {children}
 
-        {hasAds !== "" ? <AdsSmall slot={hasAds} /> : null}
+        {hasAds !== "" ? (
+          productType === ProductType.Youth && location.pathname.includes("/youth/details") ? (
+            <div className={styles.customAdSlot}>
+              <a href="https://activitywiz.com/practice" target="_blank" rel="noopener noreferrer">
+                <img src="/practiceBanner.gif" alt="ActivityWiz Practice" className={styles.customAdImage} />
+              </a>
+            </div>
+          ) : (
+            <AdsSmall slot={hasAds} />
+          )
+        ) : null}
+
+
         {hasNavBar ? (
           productType === ProductType.Practice ? (
             <PracticeNavigationBar />
