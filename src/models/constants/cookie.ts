@@ -11,5 +11,5 @@ export const CookieOptions = {
 export const USER_CONSENT_VALUE = "accepted";
 export const NEED_TO_LOGIN = "guest-block";
 
-export const REMEMEBER_ME_KEY = 'rememberMe';
+export const REMEMEBER_ME_KEY = 'rememberMe';   // Can be removed
 

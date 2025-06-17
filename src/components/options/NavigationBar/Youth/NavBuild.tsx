@@ -9,20 +9,19 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Icons } from "../../../Icons";
 import { useLanguage } from "../../../../i18n/useLanguage";
+import { useCookiesContext } from "../../../../context/CookiesContext";
 
 const NavOptBuild = () => {
   const { t, lang } = useLanguage();
+  const { cookieLimit, setLimitCookie } = useCookiesContext();
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Dynamically determine language-specific paths (fallback to He paths if not available)
   const youthDetailsPath = route[`youthDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthDetailsEn;
   const youthBuildPath = route[`youthBuild${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthBuildEn;
   const youthActivityAIPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn;
 
-
-  // Determine whether the current page is one of the build-related pages
   useEffect(() => {
     if (
       location.pathname === youthDetailsPath ||
@@ -35,9 +34,16 @@ const NavOptBuild = () => {
     }
   }, [location.pathname, youthDetailsPath, youthBuildPath, youthActivityAIPath]);
 
+  const handleClick = () => {
+    if (!cookieLimit) {
+      setLimitCookie(new Date().toString());
+    }
+    navigate(youthDetailsPath);
+  };
+
   return (
     <div
-      onClick={() => navigate(youthDetailsPath)}
+      onClick={handleClick}
       className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
     >
       <Icons.magic className={styles.icon} />
