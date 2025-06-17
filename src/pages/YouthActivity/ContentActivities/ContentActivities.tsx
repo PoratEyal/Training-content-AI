@@ -17,6 +17,7 @@ import { StaticActivities } from "../../../models/types/activity";
 import { helmetJson } from "../../../models/resources/helmet";
 import { useLanguage } from "../../../i18n/useLanguage";
 import ReadyContentName from "../../../components/titles/ReadyContentName/ReadyContentName";
+import { ProductType } from "../../../context/ProductType"
 
 const ContentActivities: React.FC = () => {
   const { lang } = useLanguage();
@@ -53,7 +54,7 @@ const ContentActivities: React.FC = () => {
   return (
     <PageLayout
       id="contentActivities"
-      projectType={"youth"}
+      productType={ProductType.Youth}
       hasHeader={{ goBack }}
       hasNavBar
       hasGreenBackground

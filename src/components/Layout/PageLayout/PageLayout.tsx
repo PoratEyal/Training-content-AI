@@ -1,19 +1,21 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
-import styles from "./PageLayout.module.css";
-import Header from "../Header/Header";
-import YouthNavigationBar from "../NavigationBar/YouthNavigationBar";
-import PracticeNavigationBar from "../NavigationBar/PracticeNavigationBar";
-import { WEBSITE_URL } from "../../../models/constants";
-import AdsSmall from "../../ads/AdsSmall/AdsSmall";
-import { HelmetPage } from "../../../models/types/common";
-import { getContent, getTitle } from "../../../models/resources/helmet";
 import { useLanguage } from "../../../i18n/useLanguage";
+import { getContent, getTitle } from "../../../models/resources/helmet";
+import { WEBSITE_URL } from "../../../models/constants";
+import { HelmetPage } from "../../../models/types/common";
+import { ProductType } from "../../../context/ProductType";
+import Header from "../Header/Header";
+import PracticeNavigationBar from "../NavigationBar/PracticeNavigationBar";
+import YouthNavigationBar from "../NavigationBar/YouthNavigationBar";
+import AdsSmall from "../../ads/AdsSmall/AdsSmall";
+import styles from "./PageLayout.module.css";
+
 
 type PageLayoutProps = {
   id: HelmetPage;
-  projectType: "practice" | "youth";
+  productType: ProductType;
   hasGreenBackground?: boolean;
   hasHeader?:
   | {
@@ -31,7 +33,7 @@ type PageLayoutProps = {
 
 function PageLayout({
   id,
-  projectType,
+  productType,
   children,
   hasGreenBackground = false,
   hasHeader = undefined,
@@ -40,7 +42,6 @@ function PageLayout({
   index = true,
   title = "",
 }: PageLayoutProps) {
-
   const { lang, dir } = useLanguage();
   const location = useLocation();
   const canonicalUrl = `${WEBSITE_URL}${location.pathname}`;
@@ -98,10 +99,15 @@ function PageLayout({
       <section
         className={styles.page_container}
         style={{
-          backgroundColor: hasGreenBackground ? "#708254" : "#FAF6EE",
+          backgroundColor: hasGreenBackground
+            ? productType === ProductType.Youth
+              ? "var(--primary-color)"
+              : "var(--practice-primary-color)"
+            : "var(--background-color)",
           direction: dir,
         }}
       >
+
         {hasHeader ? (
           <Header
             goBack={hasHeader.goBack}
@@ -114,7 +120,7 @@ function PageLayout({
 
         {hasAds !== "" ? <AdsSmall slot={hasAds} /> : null}
         {hasNavBar ? (
-          projectType === "practice" ? (
+          productType === ProductType.Practice ? (
             <PracticeNavigationBar />
           ) : (
             <YouthNavigationBar />

@@ -17,6 +17,7 @@ import { Icons } from "../../../components/Icons";
 import { buildContentSchema } from "../../../models/schemaOrg";
 import { useLanguage } from "../../../i18n/useLanguage";
 import ReadyContent from "../../../components/titles/ReadyContent/ReadyContent";
+import { ProductType } from "../../../context/ProductType"
 
 function Content() {
   const { lang } = useLanguage();
@@ -41,7 +42,7 @@ function Content() {
   return (
     <PageLayout
       id="content"
-      projectType={"youth"}
+      productType={ProductType.Youth}
       hasHeader={{ goBack }}
       hasNavBar
       hasAds={CONTENT_ACTIVITY_AD_SLOT}

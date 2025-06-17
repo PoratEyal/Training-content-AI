@@ -5,6 +5,7 @@ import { useLanguage } from "../../../i18n/useLanguage";
 import { useTranslation } from "react-i18next";
 import { buildFaqSchema } from "../../../models/schemaOrg";
 import React, { useMemo } from "react";
+import { ProductType } from "../../../context/ProductType"
 
 const FAQ: React.FC = () => {
   const { t } = useTranslation();
@@ -21,7 +22,7 @@ const FAQ: React.FC = () => {
   return (
     <PageLayout
       id="youthFaq"
-      projectType={"youth"}
+      productType={ProductType.Youth}
       hasHeader={{ isBlur: true }}
       hasNavBar
       index={true}

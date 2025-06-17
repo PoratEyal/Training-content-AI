@@ -18,6 +18,7 @@ import SavedActivityRow from "../../../components/SavedActivityRow/SavedActivity
 import { buildSavedActivitiesSchema } from "../../../models/schemaOrg";
 import { useLanguage } from "../../../i18n/useLanguage";
 import MyActivitiesTitle from "../../../components/titles/MyActivitiesTitle/MyActivitiesTitle";
+import { ProductType } from "../../../context/ProductType"
 
 const SavedActivities: React.FC = () => {
   const { savedActivity, isLoading, useFetchSavedData, deleteActivity } = useSaveContext();
@@ -58,7 +59,7 @@ const SavedActivities: React.FC = () => {
   return (
     <PageLayout
       id="myactivities"
-      projectType={"youth"}
+      productType={ProductType.Youth}
       hasHeader={{}}
       hasNavBar
       hasAds={MY_ACTIVITIES_AD_SLOT}

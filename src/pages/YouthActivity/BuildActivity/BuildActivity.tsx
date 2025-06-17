@@ -28,8 +28,10 @@ import MainBtn from "../../../components/MainBtn/MainBtn";
 import LoadingActivity from "../../../components/Loading/LoadingActivity/LoadingActivity";
 import { useLanguage } from "../../../i18n/useLanguage";
 import CreateYourActivity from "../../../components/titles/CreateYourActivity/CreateYourActivity";
+import { ProductType } from "../../../context/ProductType"
 
 function BuildActivity() {
+  
   const { t, isRTL, lang } = useLanguage();
   const { handleError } = useErrorContext();
   const { data, updateMainActivity } = useContentContext();
@@ -52,7 +54,12 @@ function BuildActivity() {
   const [hasAlert, setHasAlert] = useState(false);
 
   const youthHomePagePath = route[`youthHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthHomePageEn;
+  const youthDetailsPath = route[`youthDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthDetailsEn;
   const youtActivityAIPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn;
+
+  const goBack = () => {
+    navigate(youthDetailsPath);
+  };
 
   useEffect(() => {
     const updateUser = async () => {
@@ -137,9 +144,9 @@ function BuildActivity() {
   return (
     <PageLayout
       id="build"
-      projectType={"youth"}
+      productType={ProductType.Youth}
       hasGreenBackground
-      hasHeader={{}}
+      hasHeader={{ goBack }}
       hasAds={BUILD_AD_SLOT}
       index={false}
       hasNavBar

@@ -1,5 +1,5 @@
 //
-// Home page, showing the app’s entry point
+// Home page
 //
 import styles from "./Youth.module.css"
 import { useEffect, useState, useMemo } from "react"
@@ -23,6 +23,8 @@ import { useSaveContext } from "../../../context/SavedContext"
 import { useLanguage } from "../../../i18n/useLanguage"
 import { buildHomeSchema } from "../../../models/schemaOrg"
 import ContinueWithAI from "../../../components/titles/ContinueWithAI/ContinueWithAI"
+import { ProductType } from "../../../context/ProductType"
+import { REMEMEBER_ME_KEY } from "../../../models/constants/cookie";
 
 function Home() {
   const { t, dir, lang } = useLanguage()
@@ -57,6 +59,14 @@ function Home() {
       setRememberMe(cookieRememberMe ? SignInStatus.REMEMBER : SignInStatus.NOT_REMEMBER)
     }
   }, [isLoggedIn, currentUser, cookieRememberMe, rememberMe])
+
+  // Resetting rememberMe (and loader) due to logout fallback
+  useEffect(() => {
+    if (!isLoggedIn && !currentUser) {
+      document.cookie = `${REMEMEBER_ME_KEY}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
+      setRememberMe(SignInStatus.NOT_REMEMBER)
+    }
+  }, [isLoggedIn, currentUser])
 
   // Only set cookie if date doesn't already exist, to allow future time comparisons
   const navigateAndSetCookieDate = (navigateTo: string) => {
@@ -100,7 +110,7 @@ function Home() {
   return (
     <PageLayout
       id="home"
-      projectType={"youth"}
+      productType={ProductType.Youth}
       hasHeader={{}}
       hasAds={HOME_AD_SLOT}
       index={true}

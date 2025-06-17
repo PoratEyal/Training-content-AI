@@ -21,6 +21,7 @@ import RichTextEditor from "../../../components/RichTextEditor/RichTextEditor"
 import { useEditorContext } from "../../../context/EditorContext"
 import { useContentContext } from "../../../context/ContentContext"
 import { useLanguage } from "../../../i18n/useLanguage"
+import { ProductType } from "../../../context/ProductType"
 
 const SavedActivity: React.FC = () => {
   const { subject } = useParams<{ subject: string }>()
@@ -58,7 +59,7 @@ const SavedActivity: React.FC = () => {
   return (
     <PageLayout
       id="savedActivity"
-      projectType={"youth"}
+      productType={ProductType.Youth}
       hasGreenBackground
       hasHeader={{ goBack, hasTitle: foundActivity?.subject || undefined }}
       hasAds={MY_ACTIVITIES_AD_SLOT}

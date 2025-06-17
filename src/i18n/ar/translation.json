@@ -8,7 +8,7 @@
   },
   "continueWithAI": {
     "advanced": "متقدمين",
-    "forActions": "للأنشطة",
+    "youthForActions": "للأنشطة",
     "practiceForActions": "للتمرين",
     "withPrefix": "مع",
     "ai": "AI"
