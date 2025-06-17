@@ -1,65 +1,45 @@
-import styles from "./ContinueWithAI.module.css";
-import { useLanguage } from "../../../i18n/useLanguage";
-import { useLocation } from "react-router-dom"
+import styles from "./ContinueWithAI.module.css"
+import { useLanguage } from "../../../i18n/useLanguage"
+import { useProduct } from "../../../context/ProductContext"
+import { ProductType } from "../../../context/ProductType"
 
 function ContinueWithAI() {
-  const { t, isRTL, lang } = useLanguage();
-  const location = useLocation();
+  const { t, isRTL } = useLanguage()
+  const product = useProduct()
 
-  let strForAction = "";
+  const isPractice = product === ProductType.Practice
+    ? t("continueWithAI.practiceForActions")
+    : t("continueWithAI.youthForActions")
 
-  if (location.pathname.includes("/practice")) {
-    strForAction = t("continueWithAI.practiceForActions");
-  } else {
-    strForAction = t("continueWithAI.forActions");
-  }
+  const productColorClass = product === ProductType.Practice
+    ? styles.practiceColor
+    : styles.youthColor
 
+  const dirPrefix = isRTL ? "" : "_en"
 
-  if (isRTL) {
-    return (
-      <h1 className={styles.logo}>
-        <div className={styles.word_1}>
-          <div className={styles.word_1_1}>{t("continueWithAI.advanced")}</div>
-          <div className={styles.word_1_2}>{t("continueWithAI.advanced")}</div>
-        </div>
-        <div className={styles.word_2}>{strForAction}</div>
-        <div className={styles.word_3}>
-          <div className={styles.word_3_1}>{t("continueWithAI.withPrefix")}</div>
-          <div className={styles.word_3_2}>{t("continueWithAI.withPrefix")}</div>
-        </div>
-        <div className={styles.word_4}>
-          <div className={styles.word_4_1}>{t("continueWithAI.ai")}</div>
-          <div className={styles.word_4_2}>{t("continueWithAI.ai")}</div>
-        </div>
-        <div className={styles.sparks}>
-          <div className={styles.small_spark} />
-          <div className={styles.big_spark} />
-        </div>
-      </h1>
-    )
-  } else {
-    return (
-      <h1 className={styles.logo}>
-        <div className={styles.word_1_en}>
-          <div className={styles.word_1_1_en}>{t("continueWithAI.advanced")}</div>
-          <div className={styles.word_1_2_en}>{t("continueWithAI.advanced")}</div>
-        </div>
-        <div className={styles.word_2_en}>{strForAction}</div>
-        <div className={styles.word_3_en}>
-          <div className={styles.word_3_1_en}>{t("continueWithAI.withPrefix")}</div>
-          <div className={styles.word_3_2_en}>{t("continueWithAI.withPrefix")}</div>
-        </div>
-        <div className={styles.word_4_en}>
-          <div className={styles.word_4_1_en}>{t("continueWithAI.ai")}</div>
-          <div className={styles.word_4_2_en}>{t("continueWithAI.ai")}</div>
-        </div>
-        <div className={styles.sparks_en}>
-          <div className={styles.small_spark} />
-          <div className={styles.big_spark} />
-        </div>
-      </h1>
-    )
-  }
+  return (
+    <h1 className={styles.logo}>
+      <div className={styles[`word_1${dirPrefix}`]}>
+        <div className={styles[`word_1_1${dirPrefix}`]}>{t("continueWithAI.advanced")}</div>
+        <div className={styles[`word_1_2${dirPrefix}`]}>{t("continueWithAI.advanced")}</div>
+      </div>
+      <div className={`${styles[`word_2${dirPrefix}`]} ${productColorClass}`}>
+        {isPractice}
+      </div>
+      <div className={styles[`word_3${dirPrefix}`]}>
+        <div className={styles[`word_3_1${dirPrefix}`]}>{t("continueWithAI.withPrefix")}</div>
+        <div className={styles[`word_3_2${dirPrefix}`]}>{t("continueWithAI.withPrefix")}</div>
+      </div>
+      <div className={styles[`word_4${dirPrefix}`]}>
+        <div className={styles[`word_4_1${dirPrefix}`]}>{t("continueWithAI.ai")}</div>
+        <div className={styles[`word_4_2${dirPrefix}`]}>{t("continueWithAI.ai")}</div>
+      </div>
+      <div className={styles[`sparks${dirPrefix}`]}>
+        <div className={styles.small_spark} />
+        <div className={styles.big_spark} />
+      </div>
+    </h1>
+  )
 }
 
-export default ContinueWithAI;
+export default ContinueWithAI

@@ -1,92 +1,88 @@
 //
-// This is the Contact Us page where users can send feedback, questions, or requests.
+// Contact Us page (4Practice only).
+// Sends user feedback via email and redirects back to the Practice homepage.
 //
-import styles from "./ContactUs.module.css";
-import React, { useState } from "react";
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import route from "../../../router/route.json";
-import { useNavigate, useLocation } from "react-router-dom";
-import { CONTACT_US_AD_SLOT } from "../../../models/constants/adsSlot";
-import { useAuthContext } from "../../../context/AuthContext";
-import { useErrorContext } from "../../../context/ErrorContext";
-import emailjs from "emailjs-com";
-import { useLanguage } from "../../../i18n/useLanguage";
-import MainBtn from "../../../components/MainBtn/MainBtn";
+import styles from "./ContactUs.module.css"
+import React, { useState } from "react"
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
+import route from "../../../router/route.json"
+import { useNavigate } from "react-router-dom"
+import { CONTACT_US_AD_SLOT } from "../../../models/constants/adsSlot"
+import { useAuthContext } from "../../../context/AuthContext"
+import { useErrorContext } from "../../../context/ErrorContext"
+import emailjs from "emailjs-com"
+import { useLanguage } from "../../../i18n/useLanguage"
+import MainBtn from "../../../components/MainBtn/MainBtn"
+import { ProductType } from "../../../context/ProductType"
 
 const ContactUs: React.FC = () => {
-  const { t, isRTL, dir, textAlign, lang } = useLanguage();
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
-  const { currentUser } = useAuthContext();
-  const { handleSuccess } = useErrorContext();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { t, isRTL, dir, textAlign, lang } = useLanguage()
+  const navigate = useNavigate()
+  const { currentUser } = useAuthContext()
+  const { handleSuccess } = useErrorContext()
+  const [isLoading, setIsLoading] = useState(false)
 
   const [formData, setFormData] = useState({
     email: currentUser?.email || "",
     name: "",
     message: "",
-  });
+  })
 
-  const isPractice = pathname.includes("practice");
-  const capitalizedLang = lang.charAt(0).toUpperCase() + lang.slice(1);
-  const getHomePagePath = isPractice
-    ? route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn
-    : route[`youthHomePage${capitalizedLang}`] || route.youthHomePageEn;
+  const capitalizedLang = lang.charAt(0).toUpperCase() + lang.slice(1)
+  const homePagePath = route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn
 
-  emailjs.init("ZWKebkgRROVgM8nEV");
+  emailjs.init("ZWKebkgRROVgM8nEV")
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    if (name === "name" && value.length > 50) return;
-    if (name === "message" && value.length > 200) return;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    if (name === "name" && value.length > 50) return
+    if (name === "message" && value.length > 200) return
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+    e.preventDefault()
+    setIsLoading(true)
 
     try {
       const templateParams = {
         user_response: formData.message,
         user_email: formData.email,
         user_name: formData.name,
-      };
+      }
 
       await emailjs.send(
         "service_p5bim93",
         "template_diemfva",
         templateParams,
         "ZWKebkgRROVgM8nEV"
-      );
+      )
 
-      handleSuccess(t("contactUs.form.successMessage"));
+      handleSuccess(t("contactUs.form.successMessage"))
       setFormData({
         email: currentUser?.email || "",
         name: "",
         message: "",
-      });
+      })
 
-      navigate(getHomePagePath);
+      navigate(homePagePath)
     } catch (error) {
-      console.error("Error sending email:", error);
+      console.error("Error sending email:", error)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   const isDisabled =
     !formData.message.trim() ||
     !formData.name.trim() ||
     !formData.email.trim() ||
-    isLoading;
+    isLoading
 
   return (
     <PageLayout
       id="contactUs"
-      projectType={"practice"}
+      productType={ProductType.Practice}
       hasHeader={{}}
       hasAds={CONTACT_US_AD_SLOT}
       hasNavBar
@@ -167,7 +163,7 @@ const ContactUs: React.FC = () => {
         </div>
       </form>
     </PageLayout>
-  );
-};
+  )
+}
 
-export default ContactUs;
+export default ContactUs

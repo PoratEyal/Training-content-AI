@@ -3,52 +3,53 @@
 // It clears all user data from the context and logs them out.
 // The page navigates to the home page, adjusting for the current language.
 //
-import React from "react";
-import styles from "./dropdown.module.css";
-import { useContentContext } from "../../../context/ContentContext";
-import { useAuthContext } from "../../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
-import route from "../../../router/route.json";
-import { Icons } from "../../Icons";
-import { useLanguage } from "../../../i18n/useLanguage";
+
+import { useNavigate } from "react-router-dom"
+import { useLanguage } from "../../../i18n/useLanguage"
+import { useContentContext } from "../../../context/ContentContext"
+import { useAuthContext } from "../../../context/AuthContext"
+import { useProduct } from "../../../context/ProductContext"
+import { ProductType } from "../../../context/ProductType"
+import route from "../../../router/route.json"
+import { Icons } from "../../Icons"
+import styles from "./dropdown.module.css"
 
 type DropdownOption = {
-  handleClose: () => void;
-};
+  handleClose: () => void
+}
 
 function DropOptLogout({ handleClose }: DropdownOption) {
-  const { t, lang } = useLanguage();
-  const { clearAll } = useContentContext();
-  const { logout } = useAuthContext();
-  const navigate = useNavigate();
+  const { t, lang } = useLanguage()
+  const { clearAll } = useContentContext()
+  const { logout } = useAuthContext()
+  const navigate = useNavigate()
+  const product = useProduct()
+  const isPractice = product === ProductType.Practice
 
-  // Determine the language-specific home page path
   const getHomePagePath = () => {
-    const capitalizedLang = lang.charAt(0).toUpperCase() + lang.slice(1);
-    const isPractice = window.location.pathname.includes("/practice");
-
+    const capitalizedLang = lang.charAt(0).toUpperCase() + lang.slice(1)
     return isPractice
       ? route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn
-      : route[`youthHomePage${capitalizedLang}`] || route.youthHomePageEn;
-  };
+      : route[`youthHomePage${capitalizedLang}`] || route.youthHomePageEn
+  }
 
   const handleLogout = async () => {
-    await logout();
-    clearAll();
-  };
+    await logout()
+    clearAll()
+  }
 
   const handleClick = async () => {
-    await handleLogout();
-    navigate(getHomePagePath());
-    handleClose();
-  };
+    await handleLogout()
+    navigate(getHomePagePath())
+    handleClose()
+  }
 
   return (
     <span className={styles.text_and_icon} onClick={handleClick}>
       {t("profile.dropOptLogout.logout")}
       <Icons.logout />
     </span>
-  );
+  )
 }
 
-export default DropOptLogout;
+export default DropOptLogout

@@ -15,6 +15,7 @@ import { useEditorContext } from "../../../context/EditorContext";
 import { helmetJson } from "../../../models/resources/helmet";
 import route from "../../../router/route.json";
 import { useLanguage } from "../../../i18n/useLanguage";
+import { ProductType } from "../../../context/ProductType"
 
 function Activity() {
   
@@ -53,7 +54,7 @@ function Activity() {
   return (
     <PageLayout
       id="activity"
-      projectType={"youth"}
+      productType={ProductType.Youth}
       hasGreenBackground
       hasHeader={{ goBack, hasTitle: mainActivity?.subject || undefined }}
       title={helmetJson[lang].activity.title}

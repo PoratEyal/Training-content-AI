@@ -8,7 +8,7 @@
   },
   "continueWithAI": {
     "advanced": "Avanzado",
-    "forActions": "Actividades",
+    "youthForActions": "Actividades",
     "practiceForActions": "Practicar",
     "withPrefix": "con",
     "ai": "IA"

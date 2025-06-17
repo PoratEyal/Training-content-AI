@@ -13,6 +13,7 @@ import { StaticActivities } from "../../../models/types/activity";
 import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
 import { useLanguage } from "../../../i18n/useLanguage";
 import TopActivities from "../../../components/titles/TopActivities/TopActivities";
+import { ProductType } from "../../../context/ProductType"
 
 function PopularActivities() {
   const { lang } = useLanguage();
@@ -57,7 +58,7 @@ function PopularActivities() {
   return (
     <PageLayout
       id="popularActivities"
-      projectType={"youth"}
+      productType={ProductType.Youth}
       hasHeader={{ goBack }}
       hasNavBar
       hasGreenBackground

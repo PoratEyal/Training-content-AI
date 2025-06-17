@@ -1,28 +1,30 @@
 //
-// Home page, showing the app’s entry point
+// Home page
 //
-import styles from "./Practice.module.css"
-import { useEffect, useState, useMemo } from "react"
-import { useNavigate } from "react-router-dom"
-import { useAuthContext } from "../../../context/AuthContext"
-import route from "../../../router/route.json"
-import useSignIn from "../../../hooks/useSignIn"
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
-import { NEED_TO_LOGIN } from "../../../models/constants/cookie"
-import { isMoreThanADayAfter, isValidDateFormat } from "../../../utils/time"
-import Session from "../../../utils/sessionStorage"
-import { SessionKey } from "../../../models/enum/storage"
-import StartBtn from "../../../components/StartBtn/StartBtn"
-import PageLoading from "../../../components/Loading/PageLoading/PageLoading"
-import { useCookiesContext } from "../../../context/CookiesContext"
-import { SignInStatus } from "../../../models/enum/registrationStatus"
-import { PRACTICE_HOME_AD_SLOT } from "../../../models/constants/adsSlot"
-import AboutUsCollapse from "../../../components/AboutUsCollapse/AboutUsCollapse"
-import { useLanguage } from "../../../i18n/useLanguage"
-import { buildHomeSchema } from "../../../models/schemaOrg"
-import ContinueWithAI from "../../../components/titles/ContinueWithAI/ContinueWithAI"
+import { useEffect, useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../../context/AuthContext";
+import { useCookiesContext } from "../../../context/CookiesContext";
+import { useLanguage } from "../../../i18n/useLanguage";
+import useSignIn from "../../../hooks/useSignIn";
+import { ProductType } from "../../../context/ProductType";
+import { SignInStatus } from "../../../models/enum/registrationStatus";
+import { SessionKey } from "../../../models/enum/storage";
+import { NEED_TO_LOGIN, REMEMEBER_ME_KEY } from "../../../models/constants/cookie";
+import { PRACTICE_HOME_AD_SLOT } from "../../../models/constants/adsSlot";
+import { isMoreThanADayAfter, isValidDateFormat } from "../../../utils/time";
+import route from "../../../router/route.json";
+import Session from "../../../utils/sessionStorage";
+import { buildHomeSchema } from "../../../models/schemaOrg";
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
+import StartBtn from "../../../components/StartBtn/StartBtn";
+import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
+import AboutUsCollapse from "../../../components/AboutUsCollapse/AboutUsCollapse";
+import ContinueWithAI from "../../../components/titles/ContinueWithAI/ContinueWithAI";
+import styles from "./Practice.module.css";
 
 function PracticeHomePage() {
+
   const { t, dir, lang } = useLanguage()
   const { cookieLimit, setLimitCookie, cookieRememberMe } = useCookiesContext()
   const navigate = useNavigate()
@@ -46,10 +48,19 @@ function PracticeHomePage() {
   const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart)
 
   useEffect(() => {
+    console.log("🧠 useEffect ran", { rememberMe, isLoggedIn, currentUser, cookieRememberMe })
     if (rememberMe === SignInStatus.NEW_ACCESS) {
       setRememberMe(cookieRememberMe ? SignInStatus.REMEMBER : SignInStatus.NOT_REMEMBER)
     }
   }, [isLoggedIn, currentUser, cookieRememberMe, rememberMe])
+
+  // Resetting rememberMe (and loader) due to logout fallback
+  useEffect(() => {
+    if (!isLoggedIn && !currentUser) {
+      document.cookie = `${REMEMEBER_ME_KEY}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
+      setRememberMe(SignInStatus.NOT_REMEMBER)
+    }
+  }, [isLoggedIn, currentUser])
 
   const navigateAndSetCookieDate = (navigateTo: string) => {
     if (!cookieLimit) {
@@ -92,7 +103,7 @@ function PracticeHomePage() {
   return (
     <PageLayout
       id="practiceHome"
-      projectType={"practice"}
+      productType={ProductType.Practice}
       hasHeader={{}}
       hasAds={PRACTICE_HOME_AD_SLOT}
       index={true}

@@ -18,6 +18,7 @@ import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
 import { DETAILS_AD_SLOT } from "../../../models/constants/adsSlot";
 import { useLanguage } from "../../../i18n/useLanguage";
 import TellUsAboutYourGroup from "../../../components/titles/TellUsAboutYourGroup/TellUsAboutYourGroup";
+import { ProductType } from "../../../context/ProductType"
 
 function Details() {
 
@@ -33,6 +34,11 @@ function Details() {
   const initialLangRef = useRef(lang);
 
   const youthBuildPath = route[`youthBuild${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthBuildEn;
+  const homePagePath = route[`youthHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthHomePageEn;
+
+  const goBack = () => {
+    navigate(homePagePath);
+  };
 
   useEffect(() => {
 
@@ -54,16 +60,15 @@ function Details() {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateDetails(movement, classLevel, numberOfChildren, gender);
-    // sessionStorage.setItem("currentLanguage", lang); // can be removed as nobody does anything with this param
     navigate(youthBuildPath);
   };
 
   return (
     <PageLayout
       id="details"
-      projectType={"youth"}
+      productType={ProductType.Youth}
       hasGreenBackground
-      hasHeader={{}}
+      hasHeader={{ goBack }}
       hasAds={DETAILS_AD_SLOT}
       hasNavBar
       index={false}

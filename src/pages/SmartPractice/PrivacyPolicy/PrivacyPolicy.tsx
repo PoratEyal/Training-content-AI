@@ -9,6 +9,7 @@ import policyAr from "../../../models/resources/ar/policy.json"
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
 import FadeEffect from "../../../components/FadeEffect/FadeEffect"
 import { useLanguage } from "../../../i18n/useLanguage"
+import { ProductType } from "../../../context/ProductType"
 
 function PrivacyPolicy() {
   const { t, lang, dir } = useLanguage()
@@ -25,7 +26,7 @@ function PrivacyPolicy() {
   return (
     <PageLayout
       id="privacyPolicy"
-      projectType={"practice"}
+      productType={ProductType.Practice}
       hasHeader={{ isBlur: true }}
       hasNavBar
       index={false}

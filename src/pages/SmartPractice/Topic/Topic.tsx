@@ -8,6 +8,7 @@ import { createQuiz } from "../../../hooks/useQuestions"
 import { useTranslation } from "react-i18next"
 import { PRACTICE_TOPIC_AD_SLOT } from "../../../models/constants/adsSlot"
 import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz"
+import { ProductType } from "../../../context/ProductType"
 
 function Topic() {
 
@@ -21,7 +22,7 @@ function Topic() {
   const homePagePath = route[`practiceHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceHomePageEn;
 
   const goBack = () => {
-      navigate(homePagePath); 
+    navigate(homePagePath);
   };
 
   const handleSubmit = async (e) => {
@@ -45,7 +46,7 @@ function Topic() {
     <>
       <PageLayout
         id="practiceTopic"
-        projectType={"practice"}
+        productType={ProductType.Practice}
         hasGreenBackground
         hasHeader={{ goBack, hasTitle: t("topic.title") }}
         hasAds={PRACTICE_TOPIC_AD_SLOT}

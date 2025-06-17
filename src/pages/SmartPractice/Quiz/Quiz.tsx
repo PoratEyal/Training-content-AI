@@ -8,6 +8,7 @@ import { createQuiz } from "../../../hooks/useQuestions"
 import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz"
 import styles from "./Quiz.module.css"
 import { PRACTICE_QUIZ_AD_SLOT } from "../../../models/constants/adsSlot"
+import { ProductType } from "../../../context/ProductType"
 
 type Question = {
   question: string
@@ -16,6 +17,7 @@ type Question = {
 }
 
 function Quiz() {
+
   const navigate = useNavigate()
   const { t, i18n } = useTranslation()
   const rawLang = i18n.language || "en"
@@ -108,7 +110,7 @@ function Quiz() {
   return (
     <PageLayout
       id="practiceQuiz"
-      projectType={"practice"}
+      productType={ProductType.Practice}
       hasHeader={{ goBack, hasTitle: topic }}
       hasAds={PRACTICE_QUIZ_AD_SLOT}
       hasGreenBackground
@@ -121,7 +123,12 @@ function Quiz() {
         <QuizContainer>
           {submitted && (
             <>
-              <div className={`${styles.scoreStar} ${correctCount / questions.length < 0.5 ? styles.scoreRed : correctCount / questions.length < 0.7 ? styles.scoreYellow : styles.scoreGreen}`}>
+              <div
+                className={`${styles.scoreStar} ${correctCount / questions.length < 0.5 ? styles.scoreRed : correctCount / questions.length < 0.7 ? styles.scoreYellow : styles.scoreGreen}`}
+                onClick={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.visibility = "hidden"
+                }}
+              >
                 <div>{t("quiz.score")} {Math.round((correctCount / questions.length) * 100)}%</div>
               </div>
 

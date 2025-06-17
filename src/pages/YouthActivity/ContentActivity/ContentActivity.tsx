@@ -21,6 +21,7 @@ import ActivityArticle from "../../../components/ActivityArticle/ActivityArticle
 import RichTextEditor from "../../../components/RichTextEditor/RichTextEditor";
 import { useEditorContext } from "../../../context/EditorContext";
 import { useLanguage } from "../../../i18n/useLanguage";
+import { ProductType } from "../../../context/ProductType"
 
 function ContentActivity() {
   const { lang } = useLanguage();
@@ -84,7 +85,7 @@ function ContentActivity() {
   return (
     <PageLayout
       id="contentActivity"
-      projectType={"youth"}
+      productType={ProductType.Youth}
       hasGreenBackground
       hasHeader={{ goBack, hasTitle: activity?.title || undefined }}
       hasAds={CONTENT_ACTIVITY_AD_SLOT}

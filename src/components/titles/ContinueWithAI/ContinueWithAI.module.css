@@ -40,7 +40,15 @@
   z-index: 50;
 }
 
-/* ------------ Hebrew & Arabic ------------ */
+.youthColor {
+  background-color: var(--primary-color);
+}
+
+.practiceColor {
+  background-color: var(--practice-primary-color);
+}
+
+/* ------------ RTL ------------ */
 .word_1 {
   position: absolute;
   left: 40px;
@@ -52,7 +60,6 @@
   position: absolute;
   left: 125px;
   bottom: 4px;
-  background-color: var(--primary-color);
   width: 125px;
   height: 47px;
   border-radius: 10px;
@@ -144,7 +151,6 @@
   position: absolute;
   left: -29px;
   bottom: 0px;
-  background-color: var(--primary-color);
   width: 135px;
   height: 47px;
   border-radius: 10px;

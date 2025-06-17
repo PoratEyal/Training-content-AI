@@ -5,11 +5,13 @@ import { useLanguage } from "../../../i18n/useLanguage";
 import { useTranslation } from "react-i18next";
 import { buildFaqSchema } from "../../../models/schemaOrg";
 import React, { useMemo } from "react";
+import { useProduct } from "../../../context/ProductContext"
 
 const FAQ: React.FC = () => {
 
   const { t } = useTranslation();
   const { dir, lang } = useLanguage();
+  const product = useProduct()
 
   const faq = t("faqPractice.questions", { returnObjects: true }) as {
     q: string;
@@ -22,7 +24,7 @@ const FAQ: React.FC = () => {
   return (
     <PageLayout
       id="practiceFaq"
-      projectType={window.location.pathname.includes("/practice") ? "practice" : "youth"}
+      productType={product}
       hasHeader={{ isBlur: true }}
       hasNavBar
       index={true}

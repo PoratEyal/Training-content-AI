@@ -5,40 +5,43 @@
 // - If it's from Youth any other page, the message includes the predefined Youth share text
 // - If it's from Practice, the message includes the predefined practice share text
 //
-import styles from "./dropdown.module.css"
-import { formatWhatsUp } from "../../../utils/format"
-import { WEBSITE_URL } from "../../../models/constants"
-import { Icons } from "../../Icons"
-import { useContentContext } from "../../../context/ContentContext"
+
 import { useLocation } from "react-router-dom"
-import route from "../../../router/route.json"
+
 import { useLanguage } from "../../../i18n/useLanguage"
+import { useProduct } from "../../../context/ProductContext"
+import { ProductType } from "../../../context/ProductType"
+import { useContentContext } from "../../../context/ContentContext"
+import route from "../../../router/route.json"
+import { WEBSITE_URL } from "../../../models/constants"
+import { formatWhatsUp } from "../../../utils/format"
+import { Icons } from "../../Icons"
+import styles from "./dropdown.module.css"
 
 function DropOptInviteFriends() {
 
   const { t, lang } = useLanguage()
   const { mainActivity } = useContentContext()
   const { pathname } = useLocation()
+  const product = useProduct()
+  const isPractice = product === ProductType.Practice
+
+  const activityContentPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn
+  const isYouthActivityPage = pathname === activityContentPath
 
   const handleShare = async () => {
-
-    const activityContentPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn
-
     let shareText = ""
 
-    const isActivityPage = pathname === activityContentPath
-    const isPracticePage = pathname.includes("/practice")
-
-    if (isActivityPage) {
+    if (isYouthActivityPage) {
       shareText = formatWhatsUp(mainActivity?.activity)
-    } else if (isPracticePage) {
+    } else if (isPractice) {
       shareText = t("articleOptions.share.practiceDefaultMessage")
     } else {
       shareText = t("articleOptions.share.youthDefaultMessage")
     }
 
     let shareUrl = `${WEBSITE_URL}/${lang}`
-    shareUrl += isPracticePage ? "/practice" : "/youth"
+    shareUrl += isPractice ? "/practice" : "/youth"
 
     const fullText = `${shareText}\n\n${shareUrl}`
 
@@ -52,7 +55,7 @@ function DropOptInviteFriends() {
         window.open(`https://wa.me/?text=${encodeURIComponent(fullText)}`, "_blank")
       }
     } else {
-        window.open(`https://wa.me/?text=${encodeURIComponent(fullText)}`, "_blank")
+      window.open(`https://wa.me/?text=${encodeURIComponent(fullText)}`, "_blank")
     }
   }
 

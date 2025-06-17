@@ -1,22 +1,23 @@
 //
 // This is the Contact Us page where users can send feedback, questions, or requests.
 //
-import styles from "./ContactUs.module.css";
 import React, { useState } from "react";
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import route from "../../../router/route.json";
-import { useNavigate, useLocation } from "react-router-dom";
-import { CONTACT_US_AD_SLOT } from "../../../models/constants/adsSlot";
-import { useAuthContext } from "../../../context/AuthContext";
-import { useErrorContext } from "../../../context/ErrorContext";
+import { useNavigate } from "react-router-dom";
 import emailjs from "emailjs-com";
 import { useLanguage } from "../../../i18n/useLanguage";
+import { useAuthContext } from "../../../context/AuthContext";
+import { useErrorContext } from "../../../context/ErrorContext";
+import route from "../../../router/route.json";
+import { CONTACT_US_AD_SLOT } from "../../../models/constants/adsSlot";
+import { ProductType } from "../../../context/ProductType";
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import MainBtn from "../../../components/MainBtn/MainBtn";
+import styles from "./ContactUs.module.css";
 
 const ContactUs: React.FC = () => {
+  
   const { t, isRTL, dir, textAlign, lang } = useLanguage();
   const navigate = useNavigate();
-  const { pathname } = useLocation();
   const { currentUser } = useAuthContext();
   const { handleSuccess } = useErrorContext();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -27,11 +28,8 @@ const ContactUs: React.FC = () => {
     message: "",
   });
 
-  const isPractice = pathname.includes("practice");
   const capitalizedLang = lang.charAt(0).toUpperCase() + lang.slice(1);
-  const getHomePagePath = isPractice
-    ? route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn
-    : route[`youthHomePage${capitalizedLang}`] || route.youthHomePageEn;
+  const youthHomePagePath = route[`youthHomePage${capitalizedLang}`] || route.youthHomePageEn;
 
   emailjs.init("ZWKebkgRROVgM8nEV");
 
@@ -69,7 +67,7 @@ const ContactUs: React.FC = () => {
         message: "",
       });
 
-      navigate(getHomePagePath);
+      navigate(youthHomePagePath);
     } catch (error) {
       console.error("Error sending email:", error);
     } finally {
@@ -86,7 +84,7 @@ const ContactUs: React.FC = () => {
   return (
     <PageLayout
       id="contactUs"
-      projectType={"youth"}
+      productType={ProductType.Youth}
       hasHeader={{}}
       hasAds={CONTACT_US_AD_SLOT}
       hasNavBar

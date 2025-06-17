@@ -8,7 +8,7 @@
   },
   "continueWithAI": {
     "advanced": "Advanced",
-    "forActions": "for Activities",
+    "youthForActions": "for Activities",
     "practiceForActions": "Practice",
     "withPrefix": "with",
     "ai": "AI"
