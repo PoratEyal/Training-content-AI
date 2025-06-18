@@ -8,7 +8,6 @@ import { useLanguage } from "../../../i18n/useLanguage";
 import { useAuthContext } from "../../../context/AuthContext";
 import { useErrorContext } from "../../../context/ErrorContext";
 import route from "../../../router/route.json";
-import { CONTACT_US_AD_SLOT } from "../../../models/constants/adsSlot";
 import { ProductType } from "../../../context/ProductType";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import MainBtn from "../../../components/MainBtn/MainBtn";
@@ -86,7 +85,6 @@ const ContactUs: React.FC = () => {
       id="contactUs"
       productType={ProductType.Youth}
       hasHeader={{}}
-      hasAds={CONTACT_US_AD_SLOT}
       hasNavBar
     >
       <section className={styles.header} style={{ direction: dir }}>

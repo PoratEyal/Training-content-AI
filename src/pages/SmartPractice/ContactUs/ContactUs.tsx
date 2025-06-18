@@ -1,5 +1,5 @@
 //
-// Contact Us page (4Practice only).
+// Contact Us page
 // Sends user feedback via email and redirects back to the Practice homepage.
 //
 import styles from "./ContactUs.module.css"
@@ -7,7 +7,6 @@ import React, { useState } from "react"
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
 import route from "../../../router/route.json"
 import { useNavigate } from "react-router-dom"
-import { CONTACT_US_AD_SLOT } from "../../../models/constants/adsSlot"
 import { useAuthContext } from "../../../context/AuthContext"
 import { useErrorContext } from "../../../context/ErrorContext"
 import emailjs from "emailjs-com"
@@ -16,6 +15,7 @@ import MainBtn from "../../../components/MainBtn/MainBtn"
 import { ProductType } from "../../../context/ProductType"
 
 const ContactUs: React.FC = () => {
+
   const { t, isRTL, dir, textAlign, lang } = useLanguage()
   const navigate = useNavigate()
   const { currentUser } = useAuthContext()
@@ -84,7 +84,6 @@ const ContactUs: React.FC = () => {
       id="contactUs"
       productType={ProductType.Practice}
       hasHeader={{}}
-      hasAds={CONTACT_US_AD_SLOT}
       hasNavBar
     >
       <section className={styles.header} style={{ direction: dir }}>

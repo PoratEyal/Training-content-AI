@@ -1,6 +1,6 @@
 //
-// This is a general header component with optional back button, title, and language selector
-// It shows the user's profile, adapts layout for RTL languages
+// Header component
+// It shows the user's profile, title and back button
 //
 import React, { useState } from "react";
 import { useAuthContext } from "../../../context/AuthContext";
@@ -18,6 +18,7 @@ type HeaderProps = {
 };
 
 const Header: React.FC<HeaderProps> = ({ goBack, hasTitle = undefined, isBlur = false }) => {
+
     const { isRTL } = useLanguage();
     const { isLoggedIn, loading, currentUser } = useAuthContext();
     const style = isBlur ? styles.header_fade : styles.header;
@@ -29,10 +30,7 @@ const Header: React.FC<HeaderProps> = ({ goBack, hasTitle = undefined, isBlur = 
 
     return (
         <section className={style}>
-            <div
-                className={
-                    isRTL ? styles.header_container : `${styles.header_container} ${styles.rtl}`
-                }
+            <div className={isRTL ? styles.header_container : `${styles.header_container} ${styles.rtl}`}
             >
                 <Profile
                     img={isLoggedIn ? currentUser?.image : undefined}

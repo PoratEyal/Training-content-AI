@@ -10,7 +10,7 @@ import { useAuthContext } from "../../../context/AuthContext";
 import { useLanguage } from "../../../i18n/useLanguage";
 
 const YouthFooter = () => {
-    const { isHebrew } = useLanguage();      // We use the Static PreWritten Content only for isHebrew check
+    const { isHebrew } = useLanguage();      // We keep this only because Static Content exist only for Hebrew site
     const { isLoggedIn } = useAuthContext();
 
     return (
