@@ -22,10 +22,10 @@
   "youthBuildEs": "/es/youth/build",
   "youthBuildAr": "/ar/youth/build",
 
-  "youthActivityAIHe": "/he/youth/Activity",
-  "youthActivityAIEn": "/en/youth/Activity",
-  "youthActivityAIEs": "/es/youth/Activity",
-  "youthActivityAIAr": "/ar/youth/Activity",
+  "youthActivityAIHe": "/he/youth/activity",
+  "youthActivityAIEn": "/en/youth/activity",
+  "youthActivityAIEs": "/es/youth/activity",
+  "youthActivityAIAr": "/ar/youth/activity",
 
   "youthContentHe": "/he/youth/content",
   "youthContentEn": "/en/youth/content",
@@ -47,15 +47,15 @@
   "youthActivityContentEs": "/es/youth/content/:activityId/:contentId",
   "youthActivityContentAr": "/ar/youth/content/:activityId/:contentId",
 
-  "youthMyActivitiesHe": "/he/youth/myActivities",
-  "youthMyActivitiesEn": "/en/youth/myActivities",
-  "youthMyActivitiesEs": "/es/youth/myActivities",
-  "youthMyActivitiesAr": "/ar/youth/myActivities",
+  "youthMyActivitiesHe": "/he/youth/my-activities",
+  "youthMyActivitiesEn": "/en/youth/my-activities",
+  "youthMyActivitiesEs": "/es/youth/my-activities",
+  "youthMyActivitiesAr": "/ar/youth/my-activities",
 
-  "youthMyActivityContentHe": "/he/youth/myActivities/:subject",
-  "youthMyActivityContentEn": "/en/youth/myActivities/:subject",
-  "youthMyActivityContentEs": "/es/youth/myActivities/:subject",
-  "youthMyActivityContentAr": "/ar/youth/myActivities/:subject",
+  "youthMyActivityContentHe": "/he/youth/my-activities/:subject",
+  "youthMyActivityContentEn": "/en/youth/my-activities/:subject",
+  "youthMyActivityContentEs": "/es/youth/my-activities/:subject",
+  "youthMyActivityContentAr": "/ar/youth/my-activities/:subject",
 
   "youthFAQHe": "/he/youth/faq",
   "youthFAQEn": "/en/youth/faq",
