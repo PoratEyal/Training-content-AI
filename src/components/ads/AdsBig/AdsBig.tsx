@@ -1,5 +1,4 @@
-import React from "react";
-import "./AdsBig.module.css";
+import "./AdsBig.css";
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import { Adsense } from "@ctrl/react-adsense";
 
@@ -15,6 +14,7 @@ const AdsBig: React.FC<AdsBigProps> = ({ slot }) => {
             slot={slot}
             layout="in-article"
             format="repv"
+            // adTest="on" //Dev Only
         />
     );
 };

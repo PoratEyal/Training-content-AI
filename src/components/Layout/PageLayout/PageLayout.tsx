@@ -10,6 +10,7 @@ import Header from "../Header/Header";
 import PracticeNavigationBar from "../NavigationBar/PracticeNavigationBar";
 import YouthNavigationBar from "../NavigationBar/YouthNavigationBar";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
+import AdsBig from "../../ads/AdsBig/AdsBig";
 import styles from "./PageLayout.module.css";
 
 
@@ -118,17 +119,32 @@ function PageLayout({
 
         {children}
 
-        {hasAds !== "" ? (
-          productType === ProductType.Youth && location.pathname.includes("/youth/details") ? (
-            <div className={styles.customAdSlot}>
-              <a href="https://activitywiz.com/practice" target="_blank" rel="noopener noreferrer">
-                <img src="/practiceBanner.gif" alt="ActivityWiz Practice" className={styles.customAdImage} />
-              </a>
-            </div>
-          ) : (
-            <AdsSmall slot={hasAds} />
-          )
-        ) : null}
+        {hasAds !== "" ? (() => {
+          const hour = new Date().getHours();
+          const path = location.pathname;
+
+          const showAd =
+            (hour >= 8 && hour < 12 && path.includes("/he/youth/details")) ||
+            (hour >= 12 && hour < 14 && path.includes("/he/youth/build")) ||
+            ((hour < 8 || hour >= 14) && path.includes("/he/youth/activity"));
+
+          if (productType === ProductType.Youth && showAd) {
+            return (
+              <div className={styles.customAdSlot}>
+                <a href="https://activitywiz.com/practice" target="_blank" rel="noopener noreferrer">
+                  <img src="/practiceBanner.gif" alt="ActivityWiz Practice" className={styles.customAdImage} />
+                </a>
+              </div>
+            );
+          }
+
+          if (path.includes("/practice/topic")) {
+            return <AdsBig slot={hasAds} />;
+          }
+          
+          return <AdsSmall slot={hasAds} />;  // Google Ad
+        })() : null}
+
 
 
         {hasNavBar ? (
