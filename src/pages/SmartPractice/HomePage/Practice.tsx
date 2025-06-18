@@ -62,6 +62,7 @@ function PracticeHomePage() {
       </div>
 
       {/* 🔧 Hidden top-right button for admin to navigate to /youth */}
+      {/*
       <div
         style={{
           position: "absolute",
@@ -74,9 +75,10 @@ function PracticeHomePage() {
         }}
         onClick={() => {
           SetCookieDate4Debug()
-          /* window.location.href = "/youth" */
+          // window.location.href = "/youth"
         }}
       />
+      */}      
 
       {shouldBlockUI ? (
         <div className={styles.button_section_loading}>
