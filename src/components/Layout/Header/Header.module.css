@@ -1,66 +1,80 @@
 .header {
-    width: 100%;
-    position: relative;
-    padding: 15px;
-    box-sizing: border-box;
-  }
-  
+  width: 100%;
+  position: relative;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.header_fade {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  z-index: 995;
+  background: #faf6ee83;
+  border: none;
+}
+
+@supports (backdrop-filter: blur(5px)) {
   .header_fade {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 15px;
-    box-sizing: border-box;
-    z-index: 995;
-    background: #faf6ee83;
-    border: none;
+    backdrop-filter: blur(8.5px);
+    -webkit-backdrop-filter: blur(8.5px);
   }
-  
-  @supports (backdrop-filter: blur(5px)) {
-    .header_fade {
-      backdrop-filter: blur(8.5px);
-      -webkit-backdrop-filter: blur(8.5px);
-    }
-  }
-  
-  /* Default container style: direction: ltr */
-  .header_container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    direction: ltr;
-    width: 100%;
-    z-index: 2;
-    height: 30px;
-  }
-  
-  /* If we need to flip container direction for RTL languages, you can apply .rtl in the JSX to override. */
-  .rtl {
-    direction: rtl;
-  }
-  
-  /* Default arrow icons point left via rotate(180deg) */
-  .back_icon {
-    rotate: 180deg;
-    font-size: 24px;
-    color: var(--secondary-color);
-    cursor: pointer;
-  }
-  
+}
+
+/* Default container style: direction: ltr */
+.header_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  direction: ltr;
+  width: 100%;
+  z-index: 2;
+  height: 30px;
+}
+
+.header_title {
+  color: var(--background-color);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 1px;
+  max-width: 260px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 auto;
+  white-space: pre-line;
+}
+
+/* If we need to flip container direction for RTL languages, you can apply .rtl in the JSX to override. */
+.rtl {
+  direction: rtl;
+}
+
+/* Default arrow icons point left via rotate(180deg) */
+.back_icon {
+  rotate: 180deg;
+  font-size: 24px;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.back_icon_fade {
+  rotate: 180deg;
+  font-size: 24px;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+
+@media (min-width: 550px) {
   .back_icon_fade {
-    rotate: 180deg;
-    font-size: 24px;
-    color: var(--primary-color);
+    margin-bottom: 10px;
     cursor: pointer;
   }
 
-  
-  @media (min-width: 550px) {
-    .back_icon_fade {
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-
-  }
-  
+}

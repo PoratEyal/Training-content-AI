@@ -76,11 +76,8 @@
   "contentActivities": {
     "noSuitableActivities": "لم يتم العثور على أنشطة مناسبة.",
     "noSubjectData": "لم يتم العثور على بيانات للموضوع المطلوب.",
-    "readyContentName": {
-      "loading": "جارٍ تحميل الأنشطة...",
-      "many": "أنشطة عن",
-      "single": "نشاط عن"
-    }
+    "loading": "جارٍ التحميل...",
+    "many": "أنشطة عن"
   },
   "savedActivities": {
     "dontHaveActivity": {

@@ -1,7 +1,7 @@
 .tell_us_title {
     width: fit-content;
     position: absolute;
-    top: 34px;
+    top: 15px;
     left: 50%;
     transform: translateX(-50%);
     -webkit-tap-highlight-color: transparent;

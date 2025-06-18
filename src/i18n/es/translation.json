@@ -76,11 +76,8 @@
   "contentActivities": {
     "noSuitableActivities": "No se encontraron actividades adecuadas.",
     "noSubjectData": "No se encontraron datos para el tema solicitado.",
-    "readyContentName": {
-      "loading": "Cargando actividades...",
-      "many": "Actividades sobre",
-      "single": "Actividad sobre"
-    }
+    "loading": "Cargando...",
+    "many": "Actividades sobre"
   },
   "savedActivities": {
     "dontHaveActivity": {
