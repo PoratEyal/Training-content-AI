@@ -54,7 +54,7 @@ function YouthHomePage() {
         </div>
       </div>
 
-      {/* 🔧 Hidden top-right button for admin to navigate to /practice */}
+      {/* 🔧 Hidden top-right button for admin to navigate to /practice 
       <div
         style={{
           position: "absolute",
@@ -68,7 +68,8 @@ function YouthHomePage() {
         onClick={() => {
           window.location.href = "/practice"
         }}
-      />
+      /> 
+      */}
 
       {shouldBlockUI ? (
         <div className={styles.button_section_loading}>
