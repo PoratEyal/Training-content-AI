@@ -4,14 +4,20 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Icons } from "../../../Icons";
 import { useLanguage } from "../../../../i18n/useLanguage";
-import { useCookiesContext } from "../../../../context/CookiesContext"; 
+import { useCookiesContext } from "../../../../context/CookiesContext";
+import { startAsGuestOrUser } from "../../../../utils/startAsGuestOrUser"
+import { useAuthContext } from "../../../../context/AuthContext"
+import useSignIn from "../../../../hooks/useSignIn"
 
 const NavOptTopic = () => {
+
   const { t, lang } = useLanguage();
-  const { cookieLimit, setLimitCookie } = useCookiesContext(); 
+  const { cookieLimit, setLimitCookie } = useCookiesContext();
   const [isSelected, setIsSelected] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const { currentUser, isLoggedIn } = useAuthContext()
+  const { signInWithGoogle } = useSignIn()
 
   const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn;
   const quizPath = route[`practiceQuiz${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceQuizEn;
@@ -21,11 +27,17 @@ const NavOptTopic = () => {
   }, [location.pathname, topicPath, quizPath]);
 
   const handleClick = () => {
-    if (!cookieLimit) {
-      setLimitCookie(new Date().toString());
-    }
-    navigate(topicPath);
-  };
+    startAsGuestOrUser({
+      currentUser,
+      isLoggedIn,
+      cookieLimit,
+      setLimitCookie,
+      signInWithGoogle,
+      navigateTo: topicPath,
+      navigate
+    })
+  }
+
 
   return (
     <div

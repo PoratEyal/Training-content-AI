@@ -3,67 +3,54 @@
  * Chooses between popup (desktop) and redirect (mobile),
  * manages loading state, and handles auth errors gracefully.
  */
-import {
-    GoogleAuthProvider,
-    browserLocalPersistence as rememberMeSession,
-    setPersistence,
-    signInWithPopup,
-    signInWithRedirect,
-} from "firebase/auth";
-import { useErrorContext } from "../context/ErrorContext";
-import errMsg from "../models/resources/errorMsg.json";
 import { auth } from "../config/firebase";
-import { useAuthContext } from "../context/AuthContext";
-import { useEffect, useState } from "react";
-import { NEED_TO_LOGIN } from "../models/constants/cookie";
+import { signInNow } from "../utils/signInNow";
 import { useCookiesContext } from "../context/CookiesContext";
+import { useErrorContext } from "../context/ErrorContext";
 import { useLanguage } from "../i18n/useLanguage";
+import errMsg from "../models/resources/errorMsg.json";
+import { NEED_TO_LOGIN } from "../models/constants/cookie";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import route from "../router/route.json";
+import { ProductType } from "../context/ProductType";
+import { useProduct } from "../context/ProductContext";
 
-const useSignIn = (handleStart: () => void) => {
+const useSignIn = () => {
+
     const { handleError } = useErrorContext();
-    const { isLoggedIn, loading, currentUser } = useAuthContext();
-    const { setLimitCookie, setRememberMeCookie, removeRememberMeCookie } = useCookiesContext();
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
+    const { setLimitCookie } = useCookiesContext();
     const { lang } = useLanguage();
-
-    useEffect(() => {
-        if (!loading && isLoggedIn && currentUser) {
-            handleStart();
-        }
-    }, [loading, isLoggedIn, currentUser]);
+    const { t } = useTranslation();
+    const navigate = useNavigate();
+    const product = useProduct();
+    const langKey = lang.charAt(0).toUpperCase() + lang.slice(1);
+    const isPractice = product === ProductType.Practice;
+    const homePagePath = isPractice
+        ? route[`practiceHomePage${langKey}`] || route.practiceHomePageEn
+        : route[`youthHomePage${langKey}`] || route.youthHomePageEn;
 
     const signInWithGoogle = async () => {
-        const provider = new GoogleAuthProvider();
-        const isMobile = /Android|iPhone|iPad|webOS|BlackBerry|Mobile|Tablet/i.test(navigator.userAgent);
+        setLimitCookie(NEED_TO_LOGIN);
 
         try {
-            setIsLoading(true);
-            setBtnDisabled(true);
-            setLimitCookie(NEED_TO_LOGIN);
-            setRememberMeCookie();
-            await setPersistence(auth, rememberMeSession);
-
-            if (isMobile) {
-                await signInWithRedirect(auth, provider);
-            } else {
-                await signInWithPopup(auth, provider);
-            }
+            await signInNow(auth);
         } catch (error: any) {
             const errorStr = error?.toString?.() || "";
-            if (
-                !errorStr.includes("auth/popup-closed-by-user") &&
-                !errorStr.includes("auth/cancelled-popup-request")
-            ) {
+
+            if (errorStr.includes("auth/popup-closed-by-user") || errorStr.includes("auth/cancelled-popup-request")) {
+                alert(t("login.mustLogin"));
+            } else {
                 handleError(errMsg[lang].google.message);
             }
-            removeRememberMeCookie();
-            setBtnDisabled(false);
-            setIsLoading(false);
+
+        } finally {
+            navigate(homePagePath);
         }
     };
 
-    return { signInWithGoogle, isLoading, btnDisabled };
+
+    return { signInWithGoogle };
 };
 
 export default useSignIn;

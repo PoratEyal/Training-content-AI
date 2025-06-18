@@ -10,7 +10,7 @@ import { useProduct } from "../../../context/ProductContext"
 const FAQ: React.FC = () => {
 
   const { t } = useTranslation();
-  const { dir, lang } = useLanguage();
+  const { dir } = useLanguage();
   const product = useProduct()
 
   const faq = t("faqPractice.questions", { returnObjects: true }) as {

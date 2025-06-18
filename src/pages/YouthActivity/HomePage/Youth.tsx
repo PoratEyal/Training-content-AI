@@ -1,17 +1,11 @@
-//
-// Home page
-//
 import styles from "./Youth.module.css"
-import { useEffect, useMemo } from "react"
+import { useMemo } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuthContext } from "../../../context/AuthContext"
 import route from "../../../router/route.json"
 import useSignIn from "../../../hooks/useSignIn"
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
 import { NEED_TO_LOGIN } from "../../../models/constants/cookie"
-import { a24hoursPeriodPassed, isValidDateFormat } from "../../../utils/time"
-import Session from "../../../utils/sessionStorage"
-import { SessionKey } from "../../../models/enum/storage"
 import StartBtn from "../../../components/StartBtn/StartBtn"
 import PageLoading from "../../../components/Loading/PageLoading/PageLoading"
 import { useCookiesContext } from "../../../context/CookiesContext"
@@ -23,15 +17,16 @@ import { useLanguage } from "../../../i18n/useLanguage"
 import { buildHomeSchema } from "../../../models/schemaOrg"
 import ContinueWithAI from "../../../components/titles/ContinueWithAI/ContinueWithAI"
 import { ProductType } from "../../../context/ProductType"
+import { startAsGuestOrUser } from "../../../utils/startAsGuestOrUser"
 
-function Home() {
+function YouthHomePage() {
 
   const { t, dir, lang } = useLanguage()
   const { cookieLimit, setLimitCookie } = useCookiesContext()
   const navigate = useNavigate()
   const { currentUser, isLoggedIn } = useAuthContext()
-  const { signInWithGoogle, isLoading, btnDisabled } = useSignIn(handleStart)
-
+  const { signInWithGoogle } = useSignIn()
+  
   const { useFetchSubjectsData } = useStaticContentContext()
   const { useFetchSavedData } = useSaveContext()
   useFetchSubjectsData()
@@ -39,52 +34,7 @@ function Home() {
 
   const homeSchema = useMemo(() => buildHomeSchema(lang, t("home.slogan")), [lang, t])
   const youthDetailsPath = route[`youthDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthDetailsEn
-
-  const shouldBlockUI = isLoading || (!isLoggedIn && cookieLimit === NEED_TO_LOGIN)
-
-  function handleStart() {
-    const navigateTo: string | undefined = Session.get(SessionKey.NAVIGATE)
-    Session.remove(SessionKey.NAVIGATE)
-    if (navigateTo) navigate(navigateTo)
-  }
-
-  const navigateAndSetCookieDate = (navigateTo: string) => {
-    if (!cookieLimit) {
-      setLimitCookie(new Date().toString())
-    }
-    navigate(navigateTo)
-  }
-
-  const guestSignInOrNavigate = (limitDate: string, navigateTo: string) => {
-    const isValidDate = isValidDateFormat(limitDate)
-    if (isValidDate) {
-      if (a24hoursPeriodPassed(limitDate)) {
-        signInWithGoogle()
-      } else {
-        navigateAndSetCookieDate(navigateTo)
-      }
-    }
-  }
-
-  const startAsGuestOrUser = (navigateTo: string) => {
-    
-    if (currentUser && isLoggedIn) {
-      navigate(navigateTo)
-      return
-    }
-
-    Session.set(SessionKey.NAVIGATE, navigateTo)
-
-    if (cookieLimit) {
-      if (cookieLimit === NEED_TO_LOGIN) {
-        signInWithGoogle()
-      } else {
-        guestSignInOrNavigate(cookieLimit, navigateTo)
-      }
-    } else {
-      navigateAndSetCookieDate(navigateTo)
-    }
-  }
+  const shouldBlockUI = !isLoggedIn && cookieLimit === NEED_TO_LOGIN
 
   return (
     <PageLayout
@@ -93,7 +43,7 @@ function Home() {
       hasHeader={{}}
       hasAds={HOME_AD_SLOT}
       index={true}
-      hasNavBar
+      hasNavBar={!shouldBlockUI}
     >
       <script type="application/ld+json">{JSON.stringify(homeSchema)}</script>
 
@@ -128,8 +78,18 @@ function Home() {
         <section className={styles.button_section}>
           <StartBtn
             text={t("home.startAction")}
-            onClick={() => startAsGuestOrUser(youthDetailsPath)}
-            isDisabled={btnDisabled}
+            onClick={() =>
+              startAsGuestOrUser({
+                currentUser,
+                isLoggedIn,
+                cookieLimit,
+                setLimitCookie,
+                signInWithGoogle,
+                navigateTo: youthDetailsPath,
+                navigate,
+              })
+            }
+            isDisabled={shouldBlockUI}
           />
         </section>
       )}
@@ -143,4 +103,4 @@ function Home() {
   )
 }
 
-export default Home
+export default YouthHomePage

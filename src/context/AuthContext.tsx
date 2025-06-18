@@ -4,17 +4,19 @@
  * initializes user data, and manages logout and "what's new" messages.
  */
 import { useEffect, createContext, useState, useContext, useRef } from "react";
-import { auth } from "../config/firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { GoogleUser, User } from "../models/types/user";
+import { auth } from "../config/firebase";
+import { signInNow } from "../utils/signInNow";
 import { fetchCreateNewUser, fetchGetMsg } from "../utils/fetch";
-import { useErrorContext } from "./ErrorContext";
 import { addSessionData } from "../utils/movment";
-import { NEED_TO_LOGIN } from "../models/constants/cookie";
 import { initRawUser } from "../utils/user";
-import msg from "../models/resources/errorMsg.json";
+import { useErrorContext } from "./ErrorContext";
 import { useCookiesContext } from "./CookiesContext";
 import { useLanguage } from "../i18n/useLanguage";
+import { GoogleUser, User } from "../models/types/user";
+import { NEED_TO_LOGIN } from "../models/constants/cookie";
+import msg from "../models/resources/errorMsg.json";
+
 
 export type AuthContextType = {
     currentUser: User | undefined;
@@ -42,7 +44,7 @@ export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const { handleError } = useErrorContext();
-    const { cookieLimit, setLimitCookie, removeRememberMeCookie } = useCookiesContext();
+    const { cookieLimit, setLimitCookie } = useCookiesContext();
     const [currentUser, setCurrentUser] = useState<User | undefined>();
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
@@ -50,12 +52,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [redirectFailed, setRedirectFailed] = useState<boolean>(false);
     const { lang } = useLanguage();
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (!user && document.referrer?.includes("accounts.google")) {
+    useEffect(() => {                                                           // Listen to connect status in Firebase (Login/Logout)
+        const unsubscribe = onAuthStateChanged(auth, (user) => {                // Unsubscribe is a common Firebase name to unsubscribe from listening to him
+            if (!user && document.referrer?.includes("accounts.google")) {      // Fail status
                 setRedirectFailed(true);
             }
-            initializeUser(user);
+            initializeUser(user);                                               // Succecss Login
         });
 
         return () => {
@@ -65,7 +67,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         };
     }, []);
 
-    const initializeUser = async (user: any) => {
+    const initializeUser = async (user: any) => {           // Called from AuthContext.useEffect and keep current User Data
         try {
             if (user && (user as GoogleUser)?.uid) {
                 let resultUser: User | undefined = undefined;
@@ -99,7 +101,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const blockRef = useRef<boolean>(true);
-    const checkIfNeedToSendMsg = async (user: User) => {
+
+    const checkIfNeedToSendMsg = async (user: User) => {    // called from AuthContext.initializeUser
         if (user.isSendMsg && blockRef.current) {
             const result = await fetchGetMsg(lang);
             if (result.result === "success" && result.msg) {
@@ -110,7 +113,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
     };
 
-    const setIsSendMsg = () => {
+    const setIsSendMsg = () => {                            // called from AuthContext
         setCurrentUser((prev) => {
             return prev ? { ...prev, isSendMsg: false } : prev;
         });
@@ -119,13 +122,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const logout = async () => {
         try {
             await auth.signOut();
-            //removeRememberMeCookie();     // not in use anymore
             setCurrentUser(undefined);
             setIsLoggedIn(false);
         } catch (error) {
             handleError(error);
         } finally {
             setLoading(false);
+            await signInNow(auth);  // Re-Connect
         }
     };
 
