@@ -8,6 +8,7 @@ import React, { useMemo } from "react";
 import { ProductType } from "../../../context/ProductType"
 
 const FAQ: React.FC = () => {
+  
   const { t } = useTranslation();
   const { dir } = useLanguage();
 

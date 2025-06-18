@@ -1,4 +1,7 @@
 {
+  "login": {
+    "mustLogin": "Para usar el sitio, debes iniciar sesión.\nHaz clic en la foto de perfil en la esquina superior y selecciona 'Iniciar sesión'."
+  },
   "home": {
     "slogan": "Personalizado, Simple y Rápido 🤟",
     "startAction": "Crear Actividad",
