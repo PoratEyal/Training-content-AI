@@ -2,7 +2,6 @@
 // Level 2: This is the Static Content Activities page
 // It displays a list of static activities under a selected Category
 //
-
 import styles from "./ContentActivities.module.css";
 import React from "react";
 import "../../../components/ActivityOutput/Markdown.css";
@@ -14,16 +13,16 @@ import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
 import { useStaticContentContext } from "../../../context/StaticContentContext";
 import { fetchIncrementActivityDisplayCount } from "../../../utils/fetch";
 import { StaticActivities } from "../../../models/types/activity";
-import { helmetJson } from "../../../models/resources/helmet";
 import { useLanguage } from "../../../i18n/useLanguage";
-import ReadyContentName from "../../../components/titles/ReadyContentName/ReadyContentName";
 import { ProductType } from "../../../context/ProductType"
+import { useTranslation } from "react-i18next";
 
 const ContentActivities: React.FC = () => {
   const { lang } = useLanguage();
   const navigate = useNavigate();
   const { activityId } = useParams<{ activityId: string }>();
   const { subjects, isLoading, useFetchSubjectsData } = useStaticContentContext();
+  const { t } = useTranslation();
 
   useFetchSubjectsData();
 
@@ -51,29 +50,17 @@ const ContentActivities: React.FC = () => {
     }
   };
 
+  const title = subject?.metaTitle || t("contentActivities.loading");
+
   return (
     <PageLayout
       id="contentActivities"
       productType={ProductType.Youth}
-      hasHeader={{ goBack }}
+      hasHeader={{ goBack, hasTitle: title }}
       hasNavBar
       hasGreenBackground
       hasAds={CONTENT_ACTIVITY_AD_SLOT}
     >
-      <div
-        style={{
-          marginTop: "-60px",
-          marginRight: "auto",
-          marginLeft: "auto",
-          width: "230px",
-        }}
-      >
-        <ReadyContentName
-          type="many"
-          subject={subject?.metaTitle || helmetJson[lang].contentActivities.title}
-          isLoading={isLoading}
-        />
-      </div>
 
       {isLoading ? (
         <section className={styles.content_article}>

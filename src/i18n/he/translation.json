@@ -76,11 +76,8 @@
   "contentActivities": {
     "noSuitableActivities": "לא נמצאו פעולות מתאימות",
     "noSubjectData": "לא נמצאו נתונים עבור הנושא המבוקש.",
-    "readyContentName": {
-      "loading": "פעולות בנושא בטעינה...",
-      "many": "פעולות בנושא",
-      "single": "פעולה בנושא"
-    }
+    "loading": "בטעינה...",
+    "many": "פעולות בנושא"
   },
   "savedActivities": {
     "dontHaveActivity": {

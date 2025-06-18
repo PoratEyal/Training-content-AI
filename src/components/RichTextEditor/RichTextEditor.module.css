@@ -1,7 +1,7 @@
 .container {
     width: 100%;
     position: relative;
-    height: calc(102% - var(--ads-height));
+    height: calc(101% - var(--ads-height));
     overflow: hidden;
     background-color: var(--editor-color);
     border-top-left-radius: 20px;

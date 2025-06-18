@@ -9,7 +9,6 @@ import Profile from "../../Profile/Profile";
 import styles from "./Header.module.css";
 import { useLanguage } from "../../../i18n/useLanguage";
 import LangPopup from "../../PopupLang/LangPopup";
-import ReadyContentName from "../../titles/ReadyContentName/ReadyContentName";
 
 type HeaderProps = {
     goBack?: () => void;
@@ -37,7 +36,10 @@ const Header: React.FC<HeaderProps> = ({ goBack, hasTitle = undefined, isBlur = 
                     isLoading={loading}
                     openLangPopup={openLangPopup}
                 />
-                {hasTitle ? <ReadyContentName type="none" subject={hasTitle} /> : null}
+                {hasTitle && (
+                    <h1 className={styles.header_title} dir={isRTL ? "rtl" : "ltr"} > {hasTitle} </h1>
+                )}
+
                 {!loading && goBack ? (
                     isRTL ? (
                         <Icons.arrowBack onClick={goBack} className={styleIcon} />

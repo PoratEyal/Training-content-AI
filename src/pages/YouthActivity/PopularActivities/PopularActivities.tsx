@@ -2,18 +2,18 @@
 // This is the Predefined Popular Activities page
 // It displays the top 10 most viewed static activities across all subjects
 //
-import styles from "../ContentActivities/ContentActivities.module.css";
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import route from "../../../router/route.json";
-import { Link, useNavigate } from "react-router-dom";
-import { useStaticContentContext } from "../../../context/StaticContentContext";
-import { CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
-import { fetchIncrementActivityDisplayCount } from "../../../utils/fetch";
-import { StaticActivities } from "../../../models/types/activity";
-import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
+import { useNavigate, Link } from "react-router-dom";
 import { useLanguage } from "../../../i18n/useLanguage";
-import TopActivities from "../../../components/titles/TopActivities/TopActivities";
-import { ProductType } from "../../../context/ProductType"
+import { useStaticContentContext } from "../../../context/StaticContentContext";
+import { ProductType } from "../../../context/ProductType";
+import route from "../../../router/route.json";
+import { CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
+import { StaticActivities } from "../../../models/types/activity";
+import { fetchIncrementActivityDisplayCount } from "../../../utils/fetch";
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
+import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
+import styles from "../ContentActivities/ContentActivities.module.css";
+
 
 function PopularActivities() {
   const { lang } = useLanguage();
@@ -59,12 +59,11 @@ function PopularActivities() {
     <PageLayout
       id="popularActivities"
       productType={ProductType.Youth}
-      hasHeader={{ goBack }}
+      hasHeader={{ goBack , hasTitle: "10 הפעולות הפופולריות"}}
       hasNavBar
       hasGreenBackground
       hasAds={CONTENT_ACTIVITY_AD_SLOT}
     >
-      <TopActivities />
       {isLoading ? (
         <section className={styles.content_article}>
           <PageLoading />
