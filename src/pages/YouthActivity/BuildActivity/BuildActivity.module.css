@@ -60,9 +60,6 @@
 
 .build_content {
     height: 100%;
-    /* height: calc(var(--ads-height) + 100%); */
-    /* margin-bottom: calc(var(--ads-height) + 80px); */
-    /* overflow-y: scroll; */
     display: flex;
     flex-direction: column;
     align-items: center;

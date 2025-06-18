@@ -1,17 +1,18 @@
-.ads-small-slot {
+.ads-big-slot {
     position: fixed;
     bottom: 55px;
     left: 0;
     display: block;
-    height: var(--ads-height);
+    height: var(--ads-big-height);
     width: 100vw;
     z-index: 997;
     background-color: var(--background-color);
     /* border: 1px solid black;    /* 4 Debug */
 }
 
+
 @media (min-width: 550px) {
-    .ads-small-slot {
+    .ads-big-slot {
         position: absolute;
         width: 400px;
     }
