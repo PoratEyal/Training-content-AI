@@ -12,7 +12,7 @@ type DeletePopUpProps = {
 };
 
 const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, activityName }) => {
-    const { t, isEnglish } = useLanguage();
+    const { t, dir } = useLanguage();
     const { handleError } = useErrorContext();
     const [showPopup, setShowPopup] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
@@ -44,9 +44,8 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
         <div className={styles.popupOverlay}>
             <div className={`${styles.popupContent} ${showPopup ? styles.popupContentShow : ""}`}>
                 <button
-                    className={`${styles.closeButton} ${
-                        isEnglish ? styles.closeButtonLtr : styles.closeButtonRtl
-                    }`}
+                    className={`${styles.closeButton} ${dir === "ltr" ? styles.closeButtonLtr : styles.closeButtonRtl
+                        }`}
                     onClick={onClose}
                 >
                     <Icons.cancel />

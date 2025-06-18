@@ -18,8 +18,7 @@ type ReviewPopupProps = {
 };
 
 const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
-  const { t, lang } = useLanguage();         
-  const isEnglish = lang === "en";    
+  const { t, dir } = useLanguage();
 
   const [textInput, setTextInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -68,13 +67,11 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
   const isDisabled = !textInput.trim();
 
   return (
-    <div
-      className={`${styles.popupOverlay} ${isEnglish ? styles.ltr : ""}`}
-    >
+    <div className={`${styles.popupOverlay} ${dir === "ltr" ? styles.ltr : ""}`}>
+
       <div
-        className={`${styles.popupContent} ${
-          showPopup ? styles.popupContentShow : ""
-        }`}
+        className={`${styles.popupContent} ${showPopup ? styles.popupContentShow : ""
+          }`}
       >
         <button className={styles.closeButton} onClick={handleClose}>
           <Icons.cancel />
@@ -84,8 +81,8 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
           <h3 className={styles.popupTitle}>{t("reviewPopup.title")}</h3>
           <Icons.idea className={styles.icon_lamp} />
         </div>
-        
-        <div className={styles.text}>{msg}</div> 
+
+        <div className={styles.text}>{msg}</div>
 
         <form className={styles.popupForm}>
           <div className={styles.popupText}>
@@ -104,9 +101,8 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
             type="button"
             onClick={handleSubmit}
             disabled={isDisabled}
-            className={`${styles.submitButton} ${
-              isDisabled ? styles.submitButtonDisabled : ""
-            }`}
+            className={`${styles.submitButton} ${isDisabled ? styles.submitButtonDisabled : ""
+              }`}
             style={{ height: 40 }}
           >
             {isLoading ? (
