@@ -52,6 +52,28 @@
   cursor: pointer;
 }
 
+.scoreCloseIcon {
+  position: absolute;
+  top: 72px;
+  right: 197px;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 1001;
+  background-color: #ffffffab;
+  border-radius: 50%;
+  color: red;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+[dir="ltr"] .scoreCloseIcon {
+  right: auto;
+  left: 197px;
+}
+
 @keyframes fadeInScale {
   from {
     opacity: 0;
