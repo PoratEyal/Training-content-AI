@@ -68,19 +68,19 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
 
         practiceHome: {
-            title: "תרגול חכם",
+            title: "תרגול עצמי חכם",
             content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
         },
         practiceTopic: {
-            title: "תרגול חכם",
+            title: "תרגול עצמי חכם",
             content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
         },
         practiceQuiz: {
-            title: "תרגול חכם",
+            title: "תרגול עצמי חכם",
             content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
         },
         practiceFaq: {
-            title: "תרגול חכם - שאלות נפוצות",
+            title: "תרגול עצמי חכם - שאלות נפוצות",
             content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
         },
     } as LanguageSection,
@@ -145,19 +145,19 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
 
         practiceHome: {
-            title: "Smart Practice",
+            title: "Smart Self Practice",
             content: "Create personalized practice in seconds using AI – on any topic you choose",
         },
         practiceTopic: {
-            title: "Smart Practice",
+            title: "Smart Self Practice",
             content: "Create personalized practice in seconds using AI – on any topic you choose",
         },
         practiceQuiz: {
-            title: "Smart Practice",
+            title: "Smart Self Practice",
             content: "Create personalized practice in seconds using AI – on any topic you choose",
         },
         practiceFaq: {
-            title: "Smart Practice",
+            title: "Smart Self Practice – Frequently Asked Questions",
             content: "Create personalized practice in seconds using AI – on any topic you choose",
         },
     } as LanguageSection,
@@ -222,19 +222,19 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
 
         practiceHome: {
-            title: "تمرين ذكي",
+            title: "تمرين ذاتي ذكي",
             content: "أنشئ تمرينًا مخصصًا في ثوانٍ باستخدام الذكاء الاصطناعي – في أي موضوع تختاره"
         },
         practiceTopic: {
-            title: "تمرين ذكي",
+            title: "تمرين ذاتي ذكي",
             content: "أنشئ تمرينًا مخصصًا في ثوانٍ باستخدام الذكاء الاصطناعي – في أي موضوع تختاره"
         },
         practiceQuiz: {
-            title: "تمرين ذكي",
+            title: "تمرين ذاتي ذكي",
             content: "أنشئ تمرينًا مخصصًا في ثوانٍ باستخدام الذكاء الاصطناعي – في أي موضوع تختاره"
         },
         practiceFaq: {
-            title: "تمرين ذكي",
+            title: "تمرين ذاتي ذكي - الأسئلة الشائعة",
             content: "أنشئ تمرينًا مخصصًا في ثوانٍ باستخدام الذكاء الاصطناعي – في أي موضوع تختاره"
         },
     } as LanguageSection,
@@ -299,19 +299,19 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
 
         practiceHome: {
-            title: "Práctica Inteligente",
+            title: "Práctica personal inteligente",
             content: "Crea una práctica personalizada en segundos con la ayuda de inteligencia artificial – sobre cualquier tema que elijas"
         },
         practiceTopic: {
-            title: "Práctica Inteligente",
+            title: "Práctica personal inteligente",
             content: "Crea una práctica personalizada en segundos con la ayuda de inteligencia artificial – sobre cualquier tema que elijas"
         },
         practiceQuiz: {
-            title: "Práctica Inteligente",
+            title: "Práctica personal inteligente",
             content: "Crea una práctica personalizada en segundos con la ayuda de inteligencia artificial – sobre cualquier tema que elijas"
         },
         practiceFaq: {
-            title: "Práctica Inteligente",
+            title: "Práctica personal inteligente - Preguntas frecuentes",
             content: "Crea una práctica personalizada en segundos con la ayuda de inteligencia artificial – sobre cualquier tema que elijas"
         },
     } as LanguageSection,
