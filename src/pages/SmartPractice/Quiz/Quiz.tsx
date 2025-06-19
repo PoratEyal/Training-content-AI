@@ -9,6 +9,7 @@ import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz"
 import styles from "./Quiz.module.css"
 import { PRACTICE_QUIZ_AD_SLOT } from "../../../models/constants/adsSlot"
 import { ProductType } from "../../../context/ProductType"
+import { Icons } from "../../../components/Icons";
 
 type Question = {
   question: string
@@ -129,6 +130,8 @@ function Quiz() {
                   (e.currentTarget as HTMLDivElement).style.visibility = "hidden"
                 }}
               >
+                <Icons.cancel className={styles.scoreCloseIcon} />
+
                 <div>{t("quiz.score")} {Math.round((correctCount / questions.length) * 100)}%</div>
               </div>
 
