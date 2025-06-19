@@ -38,7 +38,9 @@
         { "source": "/he/youth", "destination": "/index.html" },
         { "source": "/en/youth", "destination": "/index.html" },
         { "source": "/es/youth", "destination": "/index.html" },
-        { "source": "/ar/youth", "destination": "/index.html" }
+        { "source": "/ar/youth", "destination": "/index.html" },
+
+        { "source": "**", "destination": "/index.html" }
       ],
       "headers": [
         {
