@@ -14,8 +14,15 @@ function FallbackRedirect() {
   useEffect(() => {
     for (const lang of supportedLangs) {
       const youthPrefix = `/${lang}/youth`
+      const practicePrefix = `/${lang}/practice`
+
       if (pathname.startsWith(`${youthPrefix}/`)) {
         setRedirectTo(youthPrefix)
+        return
+      }
+
+      if (pathname.startsWith(`${practicePrefix}/`)) {
+        setRedirectTo(practicePrefix)
         return
       }
     }
