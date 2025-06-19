@@ -3,25 +3,26 @@
 // It displays a single static activity within a specific subject
 // It supports both view and edit modes (RichTextEditor for edit)
 //
-import styles from "./ContentActivity.module.css";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "../../../components/ActivityOutput/Markdown.css";
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import route from "../../../router/route.json";
-import { CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
-import SmallLoading from "../../../components/Loading/SmallLoading/SmallLoading";
-import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
-import { useStaticContentContext } from "../../../context/StaticContentContext";
-import { StaticActivities } from "../../../models/types/activity";
 import { useCallback, useEffect, useState } from "react";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
+import { StaticActivities } from "../../../models/types/activity";
 import { fetchGetStaticActivity } from "../../../utils/fetch";
 import { useAuthContext } from "../../../context/AuthContext";
-import { convertActivityType } from "../../../utils/activity";
+import { useEditorContext } from "../../../context/EditorContext";
+import { useStaticContentContext } from "../../../context/StaticContentContext";
+import { useLanguage } from "../../../i18n/useLanguage";
+import { ProductType } from "../../../context/ProductType";
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
+import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
+import SmallLoading from "../../../components/Loading/SmallLoading/SmallLoading";
 import ActivityArticle from "../../../components/ActivityArticle/ActivityArticle";
 import RichTextEditor from "../../../components/RichTextEditor/RichTextEditor";
-import { useEditorContext } from "../../../context/EditorContext";
-import { useLanguage } from "../../../i18n/useLanguage";
-import { ProductType } from "../../../context/ProductType"
+import { convertActivityType } from "../../../utils/activity";
+import route from "../../../router/route.json";
+import styles from "./ContentActivity.module.css";
+
 
 function ContentActivity() {
   const { lang } = useLanguage();
@@ -72,6 +73,11 @@ function ContentActivity() {
       const foundSubject = subjects.find((subj) => subj.name === activityId);
       const foundActivity = foundSubject?.activities?.find((act) => act.name === contentId);
       setActivity(foundActivity);
+
+      // 🔧 Redirect if subject exists but activity is missing
+      if (foundSubject && !foundActivity) {
+        navigate(`${youthContentPath}/${activityId}`, { replace: true });
+      }
     } else {
       fetchActivity();
     }

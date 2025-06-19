@@ -32,9 +32,16 @@ const detectCountryAndInit = async () => {
       const response = await fetch("https://ipapi.co/json/")
       const data = await response.json()
       const countryCode = data.country_code
-
-      const spanishSpeakingCountries = [/* ... */]
-      const arabicSpeakingCountries = [/* ... */]
+      const spanishSpeakingCountries = [
+        "AR", "BO", "CL", "CO", "CR", "CU", "DO", "EC",
+        "SV", "GQ", "GT", "HN", "MX", "NI", "PA", "PY",
+        "PE", "PR", "ES", "UY", "VE"
+      ]
+      const arabicSpeakingCountries = [
+        "DZ", "BH", "EG", "IQ", "JO", "KW", "LB", "LY",
+        "MA", "OM", "QA", "SA", "SD", "SY", "TN", "AE",
+        "YE"
+      ]
 
       if (countryCode === "IL") detectedLang = "he"
       else if (spanishSpeakingCountries.includes(countryCode)) detectedLang = "es"
