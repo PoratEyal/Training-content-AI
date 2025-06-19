@@ -11,8 +11,6 @@ import Providers from "./router/Providers"
 import LanguageRedirect from "./components/LanguageRedirect"
 import FallbackRedirect from "./components/FallbackRedirect"
 
-import PrivateRoutes from "./router/PrivateRoutes"
-
 // Youth Activities
 import YouthHomePage from "./pages/YouthActivity/HomePage/Youth"
 import YouthDetails from "./pages/YouthActivity/Details/Details"
@@ -25,22 +23,22 @@ import YouthContentActivity from "./pages/YouthActivity/ContentActivity/ContentA
 import YouthMyActivities from "./pages/YouthActivity/MyActivities/MyActivities"
 import YouthMyActivityContent from "./pages/YouthActivity/MyActivityContent/MyActivityContent"
 import YouthFAQ from "./pages/YouthActivity/FAQ/FAQ"
-import YouthPrivacyPolicy from "./pages/YouthActivity/PrivacyPolicy/PrivacyPolicy";
+import YouthPrivacyPolicy from "./pages/YouthActivity/PrivacyPolicy/PrivacyPolicy"
 import YouthAdminPage from "./pages/YouthActivity/AdminPage/AdminPage"
-import YouthContactUsRoute from "./pages/YouthActivity/ContactUs/ContactUs";
+import YouthContactUsRoute from "./pages/YouthActivity/ContactUs/ContactUs"
 
 // Smart Practice
 import PracticeHomePage from "./pages/SmartPractice/HomePage/Practice"
 import PracticeQuiz from "./pages/SmartPractice/Quiz/Quiz"
 import PracticeTopic from "./pages/SmartPractice/Topic/Topic"
 import PracticeFAQ from "./pages/SmartPractice/FAQ/FAQ"
-import PracticePrivacyPolicy from "./pages/SmartPractice/PrivacyPolicy/PrivacyPolicy";
-import PracticeContactUsRoute from "./pages/SmartPractice/ContactUs/ContactUs";
-
+import PracticePrivacyPolicy from "./pages/SmartPractice/PrivacyPolicy/PrivacyPolicy"
+import PracticeContactUsRoute from "./pages/SmartPractice/ContactUs/ContactUs"
 
 import { supportedLangs as langs } from "./i18n/languages"
 
-const privateRoutes = [
+const allRoutes = [
+  // Youth
   { key: "youthHomePage", element: <YouthHomePage /> },
   { key: "youthDetails", element: <YouthDetails /> },
   { key: "youthBuild", element: <YouthBuildActivity /> },
@@ -51,17 +49,14 @@ const privateRoutes = [
   { key: "youthActivityContent", element: <YouthContentActivity /> },
   { key: "youthMyActivities", element: <YouthMyActivities /> },
   { key: "youthMyActivityContent", element: <YouthMyActivityContent /> },
-
-  { key: "practiceHomePage", element: <PracticeHomePage /> },
-  { key: "practiceQuiz", element: <PracticeQuiz /> },
-  { key: "practiceTopic", element: <PracticeTopic /> },
-]
-
-const publicRoutes = [
   { key: "youthContactUs", element: <YouthContactUsRoute /> },
   { key: "youthPrivacyPolicy", element: <YouthPrivacyPolicy /> },
   { key: "youthFAQ", element: <YouthFAQ /> },
 
+  // Practice
+  { key: "practiceHomePage", element: <PracticeHomePage /> },
+  { key: "practiceQuiz", element: <PracticeQuiz /> },
+  { key: "practiceTopic", element: <PracticeTopic /> },
   { key: "practiceContactUs", element: <PracticeContactUsRoute /> },
   { key: "practicePrivacyPolicy", element: <PracticePrivacyPolicy /> },
   { key: "practiceFAQ", element: <PracticeFAQ /> },
@@ -74,48 +69,27 @@ function App() {
       <Router>
         <LanguageRedirect />
         <Routes>
+          {allRoutes.map(({ key, element }) =>
+            langs.map(lang => {                                               // example: lang = "he"
+              const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)    // example: langKey = "He"
+              const basePath = route[`${key}${langKey}`]                      // example: route["youthHomePageHe"]
 
-          {/* Private Routes */}
-          <Route element={<PrivateRoutes />}>
-            {privateRoutes.map(({ key, element }) =>
-              langs.flatMap(lang => {
-                const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)
-                const basePath = route[`${key}${langKey}`]
-
-                if (key === "youthHomePage") {
-                  return [
-                    <Route key={`${key}${lang}-base`} path={basePath} element={element} />,
-                    <Route key={`${key}${lang}-alt`} path={`/${lang}/youth`} element={element} />,
-                  ]
-                }
-
+              // Special case for youthHomePage: support both /he and /he/youth
+              if (key === "youthHomePage") {
                 return [
-                  <Route key={`${key}${lang}`} path={basePath} element={element} />
+                  <Route key={`${key}${lang}-base`} path={`/${lang}`} element={element} />,
+                  <Route key={`${key}${lang}-alt`} path={`/${lang}/youth`} element={element} />
                 ]
-              })
-            )}
+              }
 
-          </Route>
-
-          {/* Public Routes */}
-          {publicRoutes.map(({ key, element }) =>
-            langs.map(lang => {
-              const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)
-              return (
-                <Route
-                  key={`${key}${lang}`}
-                  path={route[`${key}${langKey}`]}
-                  element={element}
-                />
-              )
+              return <Route key={`${key}${lang}`} path={basePath} element={element} />
             })
           )}
 
-          {/* Admin route – Hebrew only */}
+          {/* Admin route – Heb only */}
           <Route path={route.adminHe} element={<YouthAdminPage />} />
 
-          {/* Default Redirects */}
-          <Route path="/" element={<Navigate replace to={route.youthHomePageEn} />} />
+          {/* Fallback for undefined routes */}
           <Route path="*" element={<FallbackRedirect />} />
         </Routes>
       </Router>

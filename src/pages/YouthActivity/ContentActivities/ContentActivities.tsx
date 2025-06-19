@@ -2,22 +2,24 @@
 // Level 2: This is the Static Content Activities page
 // It displays a list of static activities under a selected Category
 //
-import styles from "./ContentActivities.module.css";
-import React from "react";
 import "../../../components/ActivityOutput/Markdown.css";
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import route from "../../../router/route.json";
+import React from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
-import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
-import { useStaticContentContext } from "../../../context/StaticContentContext";
-import { fetchIncrementActivityDisplayCount } from "../../../utils/fetch";
 import { StaticActivities } from "../../../models/types/activity";
+import { fetchIncrementActivityDisplayCount } from "../../../utils/fetch";
+import { useStaticContentContext } from "../../../context/StaticContentContext";
 import { useLanguage } from "../../../i18n/useLanguage";
-import { ProductType } from "../../../context/ProductType"
 import { useTranslation } from "react-i18next";
+import { ProductType } from "../../../context/ProductType";
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
+import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
+import route from "../../../router/route.json";
+import styles from "./ContentActivities.module.css";
+
 
 const ContentActivities: React.FC = () => {
+
   const { lang } = useLanguage();
   const navigate = useNavigate();
   const { activityId } = useParams<{ activityId: string }>();
@@ -41,6 +43,13 @@ const ContentActivities: React.FC = () => {
     return { subject: foundSubject, activities: sortedActivities };
   }, [subjects, activityId]);
 
+  // Redirect to /{lang}/youth if subject not found
+  React.useEffect(() => {
+    if (!isLoading && activityId && !subject) {
+      navigate(`/${lang}/youth`, { replace: true });
+    }
+  }, [isLoading, subject, activityId, lang, navigate]);
+
   // Increment activity display count
   const handleActivityClick = async (activity: StaticActivities) => {
     try {
@@ -61,12 +70,11 @@ const ContentActivities: React.FC = () => {
       hasGreenBackground
       hasAds={CONTENT_ACTIVITY_AD_SLOT}
     >
-
       {isLoading ? (
         <section className={styles.content_article}>
           <PageLoading />
         </section>
-      ) : subject ? (
+      ) : (
         <article className={styles.content_article}>
           {activities && activities.length !== 0 ? (
             <section className={styles.grid_container}>
@@ -91,10 +99,6 @@ const ContentActivities: React.FC = () => {
           ) : (
             <div>לא נמצאו פעולות מתאימות</div>
           )}
-        </article>
-      ) : (
-        <article className={styles.content_article}>
-          <p>לא נמצאו נתונים עבור הנושא המבוקש.</p>
         </article>
       )}
     </PageLayout>
