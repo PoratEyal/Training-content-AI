@@ -54,24 +54,18 @@
 
 .scoreCloseIcon {
   position: absolute;
-  top: 72px;
-  right: 197px;
+  top: 43px;
+  right: 129px;
   width: 22px;
   height: 22px;
   cursor: pointer;
   z-index: 1001;
-  background-color: #ffffffab;
-  border-radius: 50%;
-  color: red;
-  display: flex; 
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  color: #ffffff9c;
 }
 
 [dir="ltr"] .scoreCloseIcon {
   right: auto;
-  left: 197px;
+  left: 129px;
 }
 
 @keyframes fadeInScale {
@@ -101,7 +95,7 @@
 }
 
 .correctBold {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .checkBtnContainer {
