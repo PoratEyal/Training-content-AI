@@ -26,7 +26,6 @@ import getStaticActivityHttp from "./callableFunctions/getStaticActivity";
 import addStaticActivity from "./callableFunctions/addStaticActivity";
 
 // SmartPractice 
-import createNewUser4Practice from "./callableFunctions/createNewUser4Practice";
 import getQuestions4Practice from "./callableFunctions/getQuestions4Practice";
 
 
@@ -59,7 +58,6 @@ exports.removeSavedActivity = removeSavedActivity;
 exports.addStaticActivity = addStaticActivity;
 
 // SmartPractice 
-exports.createNewUser4Practice = createNewUser4Practice;
 exports.getQuestions4Practice = getQuestions4Practice;
 
 // Common

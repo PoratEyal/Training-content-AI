@@ -113,7 +113,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
     };
 
-    const setIsSendMsg = () => {                            // called from AuthContext
+    const setIsSendMsg = () => {                            // Currently not being used (in comment)
         setCurrentUser((prev) => {
             return prev ? { ...prev, isSendMsg: false } : prev;
         });
