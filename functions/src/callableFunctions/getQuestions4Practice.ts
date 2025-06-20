@@ -4,11 +4,14 @@ import { getSmartPracticeQuestions } from "../service/SmartPractice/geminiAPI";
 import { Lang } from "../model/types/common";
 
 export const getQuestions4Practice = onCall(async (request) => {
-
-  const { topic, lang } = request.data;
+  const { topic, lang, count } = request.data;
 
   try {
-    const questions = await getSmartPracticeQuestions(topic.trim(), lang as Lang);
+    const questions = await getSmartPracticeQuestions(
+      topic.trim(),
+      count ?? 10, // default is 10 questions
+      lang as Lang
+    );
     return { questions };
   } catch (error: any) {
     console.error("❌ Failed to generate questions:", error);
