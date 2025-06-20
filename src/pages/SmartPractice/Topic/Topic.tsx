@@ -30,12 +30,13 @@ function Topic() {
     if (!topic.trim()) return
 
     setLoading(true)
-    const result = await createQuiz(topic, lang, 5)
+    const result = await createQuiz(topic, lang, 10)
     setLoading(false)
 
     if (result) {
       sessionStorage.setItem("practiceQuestions", result)
       sessionStorage.setItem("practiceTopic", topic)
+
       navigate(quizPath)
     } else {
       alert(t("topic.error"))
