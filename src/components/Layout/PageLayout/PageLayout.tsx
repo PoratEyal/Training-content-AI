@@ -138,9 +138,10 @@ function PageLayout({
             );
           }
 
-          if (path.includes("/practice/topic")) {
-            return <AdsBig slot={hasAds} />;
-          }
+          // FFU: When more users will use it
+          //if (path.includes("/practice/topic")) {
+          //  return <AdsBig slot={hasAds} />;
+          //}
           
           return <AdsSmall slot={hasAds} />;  // Google Ad
         })() : null}
