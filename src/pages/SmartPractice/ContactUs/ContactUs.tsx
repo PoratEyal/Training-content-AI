@@ -2,17 +2,19 @@
 // Contact Us page
 // Sends user feedback via email and redirects back to the Practice homepage.
 //
-import styles from "./ContactUs.module.css"
-import React, { useState } from "react"
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
-import route from "../../../router/route.json"
-import { useNavigate } from "react-router-dom"
-import { useAuthContext } from "../../../context/AuthContext"
-import { useErrorContext } from "../../../context/ErrorContext"
-import emailjs from "emailjs-com"
-import { useLanguage } from "../../../i18n/useLanguage"
-import MainBtn from "../../../components/MainBtn/MainBtn"
-import { ProductType } from "../../../context/ProductType"
+import React, { useState } from "react";
+import { getAuth } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import emailjs from "emailjs-com";
+import route from "../../../router/route.json";
+import styles from "./ContactUs.module.css";
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
+import MainBtn from "../../../components/MainBtn/MainBtn";
+import { useAuthContext } from "../../../context/AuthContext";
+import { useErrorContext } from "../../../context/ErrorContext";
+import { useLanguage } from "../../../i18n/useLanguage";
+import { ProductType } from "../../../context/ProductType";
+import { logEvent } from "../../../utils/logEvent";
 
 const ContactUs: React.FC = () => {
 
@@ -67,8 +69,12 @@ const ContactUs: React.FC = () => {
 
       navigate(homePagePath)
     } catch (error) {
-      console.error("Error sending email:", error)
-    } finally {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      const userEmail = user?.email || formData.email || "guest";
+      logEvent(`ContactUs error sending email: ${error?.toString?.() || "unknown error"}`, userEmail);
+    }
+    finally {
       setIsLoading(false)
     }
   }

@@ -1,11 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { Activity } from "../models/types/activity";
 import { useAuthContext } from "./AuthContext";
-import { fetchGetSavedActivities, fetchRemoveActivity } from "../utils/fetch";
 import { useErrorContext } from "./ErrorContext";
-import { RemoveActivityRequest } from "../models/types/api/request";
-import msg from "../models/resources/errorMsg.json";
 import { useLanguage } from "../i18n/useLanguage";
+import { RemoveActivityRequest } from "../models/types/api/request";
+import { fetchGetSavedActivities, fetchRemoveActivity } from "../utils/fetch";
+import { logEvent } from "../utils/logEvent";
+import msg from "../models/resources/errorMsg.json";
 
 export type SaveContextType = {
     savedActivity: Activity[];
@@ -18,9 +19,9 @@ export type SaveContextType = {
 export const defualtSaveContext: SaveContextType = {
     savedActivity: [],
     isLoading: false,
-    useFetchSavedData: () => {},
-    getSavedActivities: async () => {},
-    deleteActivity: async () => {},
+    useFetchSavedData: () => { },
+    getSavedActivities: async () => { },
+    deleteActivity: async () => { },
 }
 
 export const SaveContext = createContext<SaveContextType>(defualtSaveContext);
@@ -28,6 +29,7 @@ export const SaveContext = createContext<SaveContextType>(defualtSaveContext);
 export const useSaveContext = () => useContext(SaveContext);
 
 export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
+
     const { currentUser } = useAuthContext();
     const { handleError } = useErrorContext();
     const [savedActivity, setSavedActivity] = useState<Activity[]>();
@@ -61,16 +63,17 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                 setSavedActivity((prevActivities) =>
                     prevActivities.filter((act) => act.id !== activityIdToDelete),
                 );
-                //TODO: add alert that the activity was removed
                 await fetchRemoveActivity({
                     userId: currentUser.id,
                     activityId: activityIdToDelete,
                 } as RemoveActivityRequest);
             } catch (error) {
-                // handleError("לא הצלחנו למחוק את הפעולה, אנא נסו שוב."); // TODO
+                const userEmail = currentUser.email || "guest";
+                logEvent(`Failed to delete activity: ${activityIdToDelete}`, userEmail);
             }
         }
     };
+
 
     const useFetchSavedData = () => {
         useEffect(() => {
