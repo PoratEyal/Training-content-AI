@@ -1,4 +1,7 @@
 {
+  "common": {
+    "appName": "Smart Practice"
+  },
   "login": {
     "mustLogin": "To use the site, you must sign in.\nClick the profile picture at the top corner and select 'Sign In'."
   },
@@ -113,7 +116,10 @@
     "FailMsg": "Failed to generate the practice. If the problem persists, please contact us via the 'Contact Us' menu.",
     "score": "Score:",
     "newPractice": "New Practice",
-    "check": "Check"
+    "check": "Check",
+    "shareButton": "Who’s better? Share now!",
+    "LinkinClipboard": "Link copied – share it with your friends",
+    "shareMessage": "I created a quiz on \"{{topic}}\" – let's see if you can beat me!"
   },
   "profile": {
     "dropOptInviteFriends": {

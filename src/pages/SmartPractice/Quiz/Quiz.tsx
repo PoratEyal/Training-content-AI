@@ -201,6 +201,25 @@ function Quiz() {
     return questions
   }
 
+  const handleShare = (topic: string) => {
+
+    const text = t("quiz.shareMessage", { topic })
+    console.log(text)
+    const url = window.location.href
+
+    if (navigator.share) {
+      navigator.share({
+        title: t("common.appName"),
+        text,
+        url,
+      }).catch((err) => {
+        console.error("Share failed:", err)
+      })
+    } else {
+      navigator.clipboard.writeText(`${text} ${url}`)
+      alert(t("quiz.LinkinClipboard"))
+    }
+  }
 
   const correctCount = questions.reduce((sum, q, idx) => {
     return sum + (userAnswers[idx] === q.correctIndex ? 1 : 0)
@@ -223,13 +242,16 @@ function Quiz() {
           {submitted && (
             <>
               <div
+                id="scoreBox"
                 className={`${styles.scoreStar} ${correctCount / questions.length < 0.5 ? styles.scoreRed : correctCount / questions.length < 0.7 ? styles.scoreYellow : styles.scoreGreen}`}
-                onClick={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.visibility = "hidden"
+                onClick={() => {
+                  const star = document.getElementById("scoreBox")
+                  const share = document.getElementById("shareBtn")
+                  if (star) star.style.visibility = "hidden"
+                  if (share) share.style.display = "none"
                 }}
               >
                 <Icons.cancel className={styles.scoreCloseIcon} />
-
                 <div>{t("quiz.score")} {Math.round((correctCount / questions.length) * 100)}%</div>
               </div>
 
@@ -238,6 +260,12 @@ function Quiz() {
                   {t("quiz.newPractice")}
                 </button>
               </div>
+
+              <button id="shareBtn" onClick={() => handleShare(topic)} className={styles.shareBox}>
+                {t("quiz.shareButton")}
+                <Icons.Share className={styles.shareIcon} />
+              </button>
+
             </>
           )}
 
