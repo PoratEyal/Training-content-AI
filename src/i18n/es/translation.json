@@ -24,7 +24,7 @@
     "build": "Crear Actividad",
     "content": "Contenido",
     "myActivities": "Mis Actividades",
-    "practiceBuild": "Crear práctica"
+    "practiceBuild": "Práctica nueva"
   },
   "details": {
     "title": "Cuéntanos sobre tu grupo",
@@ -101,7 +101,7 @@
   "topic": {
     "title": "Elijamos un tema",
     "topicPlaceholder": "Ingresa un tema",
-    "examples": "Por ejemplo: fracciones simples, química para la secundaria, inglés de quinto grado, señales de tráfico, trivia sobre guitarras...",
+    "examples": "Ejemplos: Fracciones simples, química para la selectividad, inglés de quinto grado, teoría de conducción, trivia musical...",
     "btnCreate": "¡Vamos!",
     "btnCreating": "Creando práctica",
     "error": "Ocurrió un error al generar las preguntas. Intenta nuevamente.",

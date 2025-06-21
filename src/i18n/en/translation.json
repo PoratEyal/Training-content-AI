@@ -24,7 +24,7 @@
     "build": "Create Activities",
     "content": "Ready-made Activities",
     "myActivities": "My Activities",
-    "practiceBuild": "Create Practice"
+    "practiceBuild": "New Practice"
   },
   "details": {
     "title": "Tell Us About Your Group",
@@ -101,7 +101,7 @@
   "topic": {
     "title": "Let's pick a topic",
     "topicPlaceholder": "Enter a topic",
-    "examples": "For example: Simple fractions, Chemistry for final exam, 5th grade English, Road signs, Guitar trivia...",
+    "examples": "Examples: Simple fractions, chemistry for final exams, 5th grade English, driving theory, music trivia...",
     "btnCreate": "Let’s go",
     "btnCreating": "Creating Practice",
     "error": "An error occurred while generating the questions. Please try again.",
