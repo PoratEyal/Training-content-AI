@@ -120,19 +120,24 @@ function PageLayout({
         {children}
 
         {hasAds !== "" ? (() => {
+
           const hour = new Date().getHours();
           const path = location.pathname;
-
-          const showAd =
-            (hour >= 8 && hour < 12 && path.includes("/he/youth/details")) ||
-            (hour >= 12 && hour < 14 && path.includes("/he/youth/build")) ||
-            ((hour < 8 || hour >= 14) && path.includes("/he/youth/activity"));
+          const showAd = path.includes("/he/youth/activity");
+          let bannerImage = null;
+          if (hour >= 8 && hour < 14) {
+            bannerImage = "/practiceBanner1.png";
+          } else if (hour >= 14 && hour < 20) {
+            bannerImage = "/practiceBanner2.png";
+          } else {
+            bannerImage = "/practiceBanner3.png";
+          }
 
           if (productType === ProductType.Youth && showAd) {
             return (
               <div className={styles.customAdSlot}>
                 <a href="https://activitywiz.com/practice" target="_blank" rel="noopener noreferrer">
-                  <img src="/practiceBanner.gif" alt="ActivityWiz Practice" className={styles.customAdImage} />
+                  <img src={bannerImage} alt="ActivityWiz Practice" className={styles.customAdImage} />
                 </a>
               </div>
             );
@@ -142,7 +147,7 @@ function PageLayout({
           //if (path.includes("/practice/topic")) {
           //  return <AdsBig slot={hasAds} />;
           //}
-          
+
           return <AdsSmall slot={hasAds} />;  // Google Ad
         })() : null}
 
