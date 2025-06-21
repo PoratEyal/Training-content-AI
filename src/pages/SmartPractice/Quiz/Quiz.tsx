@@ -26,7 +26,7 @@ function Quiz() {
 
   const practiceHomePagePath = route[`practiceHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceHomePageEn
   const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn
-  const goBack = () => {navigate(topicPath)}
+  const goBack = () => { navigate(topicPath) }
 
   const [questions, setQuestions] = useState<Question[]>([])
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>([])
@@ -91,69 +91,103 @@ function Quiz() {
   }
 
   //
-  // Explanations about the Sessions Storage keys:
-  // - "practiceQuestions": the current set of questions displayed to the user in the quiz
-  // - "prevPracticeQuestions": the previous set of questions used before clicking "new"
+  // Generates a new quiz with 10 valid and unique questions (max 5 attempts). Replaces current questions if successful.
   //
   const handleRegenerate = async () => {
 
-    const current = sessionStorage.getItem("practiceQuestions");  // Copy current questions to: prevPracticeQuestions
-    if (current) {
-      sessionStorage.setItem("prevPracticeQuestions", current);
+    const prev = sessionStorage.getItem("practiceQuestions")
+    if (prev) {
+      sessionStorage.setItem("prevPracticeQuestions", prev)
     }
 
-    setLoading(true);
-    const result = await createQuiz(topic, lang, 10);
-    setLoading(false);
+    setLoading(true)
 
+    const tryGenerateValidQuiz = async (attempt: number): Promise<string | null> => {
+      if (attempt > 5) return null
 
-    if (result) {
-      const blocks = result.split(/~\d+~/).map(b => b.trim()).filter(Boolean)
-      const prevRaw = sessionStorage.getItem("prevPracticeQuestions") || ""
-      const prevQuestions = extractQuestionsFromRaw(prevRaw)
+      const prevQuestions = extractQuestionsFromRaw(sessionStorage.getItem("prevPracticeQuestions") || "")
+      const duplicateQuestions = new Set<string>()
+      const finalBlocks: string[] = []
 
-      const uniqueBlocks: string[] = []
-      const duplicateBlocks: string[] = []
+      // Helper function to add valid blocks to finalBlocks
+      const addValidBlocks = (raw: string | null) => {
+        if (!raw || raw.trim() === "") return
 
-      blocks.forEach((block) => {
-        const lines = block.split(/\n/).map(line => line.trim()).filter(Boolean)
-        const question = lines[0]?.toLowerCase().trim()
-        if (prevQuestions.includes(question)) {
-          duplicateBlocks.push(block)
-        } else {
-          uniqueBlocks.push(block)
+        const blocks = raw.split(/~\d+~/).map(b => b.trim()).filter(Boolean)
+
+        for (const block of blocks) {
+          const lines = block.split(/\n/).map(line => line.trim()).filter(Boolean)
+          const question = lines[0]?.toLowerCase().trim()
+          if (!question) continue
+          if (prevQuestions.includes(question)) continue
+          if (duplicateQuestions.has(question)) continue
+
+          duplicateQuestions.add(question)
+          finalBlocks.push(block)
         }
-      })
-
-      const missingCount = duplicateBlocks.length
-
-      if (missingCount > 0) {
-        const additionalRaw = await createQuiz(topic, lang, missingCount)
-        const additionalBlocks = additionalRaw
-          .split(/~\d+~/)
-          .map(b => b.trim())
-          .filter(Boolean)
-
-        // make sure the additional questions also don't include duplicates
-        const additionalUnique = additionalBlocks.filter((block) => {
-          const question = block.split(/\n/)[0]?.toLowerCase().trim()
-          return !prevQuestions.includes(question) && !uniqueBlocks.some(b => b.split(/\n/)[0]?.toLowerCase().trim() === question)
-        })
-
-        const finalBlocks = [...uniqueBlocks, ...additionalUnique].slice(0, 10)
-        const finalRaw = finalBlocks.map((b, idx) => `~${idx + 1}~\n${b}`).join("\n\n")
-
-        sessionStorage.setItem("practiceQuestions", finalRaw)
-        loadQuestionsFromRaw(finalRaw)
-      } else {
-        sessionStorage.setItem("practiceQuestions", result)
-        loadQuestionsFromRaw(result)
       }
+
+      // first attempt
+      addValidBlocks(await createQuiz(topic, lang, 10))
+
+      // Validate question structure to ensure it's properly formatted
+      const getValidQuestionCount = (blocks: string[]): number => {
+        return blocks
+          .map(block => {
+            const lines = block.split(/\n/).map(l => l.trim()).filter(Boolean)
+            if (!lines[0]) return { options: [], correctIndex: -1 }
+
+            const options: string[] = []
+            let correctIndex = -1
+
+            lines.slice(1).forEach((line, index) => {
+              const match = line.match(/~[א-דA-Dأ-د]~\s*(.*)/)
+              if (!match) return
+              const text = match[1].trim()
+              options.push(text.replace(/\*\*/g, ""))
+              if (text.includes("**")) correctIndex = index
+            })
+
+            return { options, correctIndex }
+          })
+          .filter(q => q.options.length === 4 && q.correctIndex >= 0)
+          .length
+      }
+
+      // Request additional questions based on the actual number of valid ones
+      let validCount = getValidQuestionCount(finalBlocks)
+      while (validCount < 10 && attempt <= 5) {
+        const needed = 10 - validCount
+        addValidBlocks(await createQuiz(topic, lang, needed))
+        validCount = getValidQuestionCount(finalBlocks)
+        if (validCount >= 10) break
+        attempt++
+      }
+
+      if (validCount >= 5) {
+        const rawValidated = finalBlocks
+          .slice(0, 10) // Displays up to 10 questions, even if fewer are available
+          .map((b, idx) => `~${idx + 1}~\n${b}`)
+          .join("\n\n")
+
+        return rawValidated
+      } else {
+        return null // Only if fewer than 5 valid questions, return null to trigger error message
+      }
+    }
+
+
+    const finalRaw = await tryGenerateValidQuiz(1)
+
+    setLoading(false)
+
+    if (finalRaw) {
+      sessionStorage.setItem("practiceQuestions", finalRaw)
+      loadQuestionsFromRaw(finalRaw)
     } else {
       alert(t("quiz.FailMsg"))
     }
-
-  };
+  }
 
   const extractQuestionsFromRaw = (raw: string): string[] => {
     const blocks = raw.split(/~\d+~/).map(b => b.trim()).filter(Boolean)
