@@ -33,10 +33,18 @@
   width: 280px;
   height: 200px;
   background: gold;
-  clip-path: polygon(50% 4%, 61% 35%, 90% 35%,
-      68% 57%, 79% 91%, 50% 70%,
-      21% 91%, 32% 57%, 10% 35%,
-      39% 35%);
+  clip-path: polygon(
+    50% 7%,    /* Top point */
+    61% 35%,   /* Upper-right */
+    81% 35%,   /* Far-right */
+    67% 54%,   /* Lower-right */
+    76% 82%,   /* Bottom-right */
+    50% 66%,   /* Bottom center */
+    24% 82%,   /* Bottom-left */
+    33% 54%,   /* Lower-left */
+    19% 35%,   /* Far-left */
+    39% 35%    /* Upper-left */
+  );
   position: fixed;
   top: 20%;
   left: 50%;
@@ -45,7 +53,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 19px;
+  font-size: 17px;
   font-weight: normal;
   color: white;
   animation: fadeInScale 0.5s ease;
@@ -91,7 +99,7 @@
 }
 
 .scoreRed {
-  background: radial-gradient(circle at 30% 30%, rgba(255, 0, 0, 0.8), rgb(255, 0, 0));
+  background: radial-gradient(circle at 30% 30%, rgba(204, 112, 112, 0.85), rgb(255, 0, 0));
 }
 
 .correctBold {
@@ -169,7 +177,35 @@ html[dir="ltr"] .retryFabContainer {
   box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
 }
 
+.shareBox {
+  position: absolute;
+  top: 245px;
+  left: 50%;
+  padding: 5px 5px;
+  transform: translateX(-50%);
+  width: 66%;
+  background-color: #FFF8E2;
+  color: rgba(0, 0, 0, 0.918);
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  z-index: 999;
+}
+
+.shareIcon {
+  margin-inline-start: 8px;
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
 @media (min-width: 550px) {
+
   .questionBlock {
     margin-bottom: 20px;
     margin-inline: auto;
@@ -187,4 +223,11 @@ html[dir="ltr"] .retryFabContainer {
     position: absolute;
   }
 
+  .scoreStar {
+    top: 23%;
+  }
+
+  .shareBox {
+    top: 184px;
+  }
 }

@@ -1,4 +1,7 @@
 {
+  "common": {
+    "appName": "Práctica Inteligente"
+  },
   "login": {
     "mustLogin": "Para usar el sitio, debes iniciar sesión.\nHaz clic en la foto de perfil en la esquina superior y selecciona 'Iniciar sesión'."
   },
@@ -113,7 +116,10 @@
     "FailMsg": "La creación de la práctica falló. Si el problema persiste, por favor contáctanos a través del menú 'Contáctanos'.",
     "score": "Nota:",
     "newPractice": "Repetir",
-    "check": "Revisar"
+    "check": "Revisar",
+    "shareButton": "¡Compártelo y reta a tus amigos!",
+    "LinkinClipboard": "¡Enlace copiado! Compártelo con tus amigos!",
+    "shareMessage": "¡Creé un cuestionario sobre \"{{topic}}\" – veamos si puedes superarme!"
   },
   "profile": {
     "dropOptInviteFriends": {
