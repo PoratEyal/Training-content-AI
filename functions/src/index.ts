@@ -8,6 +8,7 @@ import ping from './callableFunctions/ping';
 import sendMsg from "./callableFunctions/sendMsg";
 import getMsg from "./callableFunctions/getMsg";
 import updateIsMsg from "./callableFunctions/updateIsMsg";
+import writeLog from "./callableFunctions/writeLog";
 
 // Youth Activities
 import getActivity from "./callableFunctions/getActivity"
@@ -37,7 +38,12 @@ admin.initializeApp();
 const db = admin.firestore();
 export { db };
 
+// Common
 exports.ping = ping;
+exports.sendMsg = sendMsg;
+exports.getMsg = getMsg;
+exports.updateIsMsg = updateIsMsg;
+export { writeLog };
 
 // Youth Activities
 exports.getActivity = getActivity;
@@ -59,10 +65,5 @@ exports.addStaticActivity = addStaticActivity;
 
 // SmartPractice 
 exports.getQuestions4Practice = getQuestions4Practice;
-
-// Common
-exports.sendMsg = sendMsg;
-exports.getMsg = getMsg;
-exports.updateIsMsg = updateIsMsg;
 
 exports.app = functions.https.onRequest(app);

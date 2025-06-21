@@ -4,13 +4,15 @@
 // It adjusts the layout based on the active language (like left-to-right or right-to-left)
 //
 import React, { useState, useEffect } from "react";
-import styles from "./PopupFeedback.module.css";
 import emailjs from "emailjs-com";
+import { getAuth } from "firebase/auth";
+import styles from "./PopupFeedback.module.css";
 import SmallLoading from "../Loading/SmallLoading/SmallLoading";
-import { useAuthContext } from "../../context/AuthContext";
 import { Icons } from "../Icons";
-import { fetchUpdateIsMsg } from "../../utils/fetch";
+import { useAuthContext } from "../../context/AuthContext";
 import { useLanguage } from "../../i18n/useLanguage";
+import { fetchUpdateIsMsg } from "../../utils/fetch";
+import { logEvent } from "../../utils/logEvent";
 
 type ReviewPopupProps = {
   msg: string;
@@ -56,10 +58,14 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
       );
 
       await fetchUpdateIsMsg(currentUser.id);
-      console.log("Email sent successfully");
+
     } catch (error) {
-      console.error("Error sending email:", error);
-    } finally {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      const userEmail = user?.email || "guest";
+      logEvent(`Error sending feedback email: ${error?.toString?.() || "unknown error"}`, userEmail);
+    }
+    finally {
       setIsLoading(false);
     }
   };

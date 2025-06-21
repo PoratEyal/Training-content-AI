@@ -1,18 +1,19 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
+import { getAuth } from "firebase/auth";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { getContent, getTitle } from "../../../models/resources/helmet";
 import { WEBSITE_URL } from "../../../models/constants";
 import { HelmetPage } from "../../../models/types/common";
 import { ProductType } from "../../../context/ProductType";
+import { logEvent } from "../../../utils/logEvent";
 import Header from "../Header/Header";
 import PracticeNavigationBar from "../NavigationBar/PracticeNavigationBar";
 import YouthNavigationBar from "../NavigationBar/YouthNavigationBar";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
 import AdsBig from "../../ads/AdsBig/AdsBig";
 import styles from "./PageLayout.module.css";
-
 
 type PageLayoutProps = {
   id: HelmetPage;
@@ -123,28 +124,35 @@ function PageLayout({
 
           const path = location.pathname;
           const showAd = path.includes("/he/youth/activity");
+          const auth = getAuth();
+          const user = auth.currentUser;
+          const userEmail = user?.email || "";
 
           if (productType === ProductType.Youth && showAd) {
             const banners = ["/practiceBanner1.png", "/practiceBanner2.png", "/practiceBanner3.png", "/practiceBanner4.png"];
             const randomIndex = Math.floor(Math.random() * banners.length);
             const bannerImage = banners[randomIndex];
+
+            const handleBannerClick = () => {
+              logEvent(bannerImage, userEmail);
+            };
+
             return (
               <div className={styles.customAdSlot}>
-                <a href="https://activitywiz.com/practice" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://activitywiz.com/practice"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleBannerClick}
+                >
                   <img src={bannerImage} alt="ActivityWiz Practice" className={styles.customAdImage} />
                 </a>
               </div>
             );
           }
 
-          // FFU: When more users will use it
-          //if (path.includes("/practice/topic")) {
-          //  return <AdsBig slot={hasAds} />;
-          //}
-
           return <AdsSmall slot={hasAds} />;  // Google Ad
         })() : null}
-
 
 
         {hasNavBar ? (

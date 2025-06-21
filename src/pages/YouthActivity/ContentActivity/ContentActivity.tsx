@@ -6,6 +6,14 @@
 import "../../../components/ActivityOutput/Markdown.css";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { getAuth } from "firebase/auth";
+import route from "../../../router/route.json";
+import styles from "./ContentActivity.module.css";
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
+import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
+import SmallLoading from "../../../components/Loading/SmallLoading/SmallLoading";
+import ActivityArticle from "../../../components/ActivityArticle/ActivityArticle";
+import RichTextEditor from "../../../components/RichTextEditor/RichTextEditor";
 import { CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
 import { StaticActivities } from "../../../models/types/activity";
 import { fetchGetStaticActivity } from "../../../utils/fetch";
@@ -14,15 +22,8 @@ import { useEditorContext } from "../../../context/EditorContext";
 import { useStaticContentContext } from "../../../context/StaticContentContext";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { ProductType } from "../../../context/ProductType";
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
-import SmallLoading from "../../../components/Loading/SmallLoading/SmallLoading";
-import ActivityArticle from "../../../components/ActivityArticle/ActivityArticle";
-import RichTextEditor from "../../../components/RichTextEditor/RichTextEditor";
 import { convertActivityType } from "../../../utils/activity";
-import route from "../../../router/route.json";
-import styles from "./ContentActivity.module.css";
-
+import { logEvent } from "../../../utils/logEvent";
 
 function ContentActivity() {
   const { lang } = useLanguage();
@@ -61,8 +62,12 @@ function ContentActivity() {
       const response = await fetchGetStaticActivity({ contentName: contentId });
       setActivity(response.activity);
     } catch (error) {
-      console.error("Failed to fetch activity:", error);
-    } finally {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      const userEmail = user?.email || "guest";
+      logEvent(`Failed to fetch static activity: contentId=${contentId}, activityId=${activityId}, error=${error?.toString?.() || "unknown error"}`, userEmail);
+    }
+    finally {
       setIsActivityLoading(false);
     }
   }, [contentId]);

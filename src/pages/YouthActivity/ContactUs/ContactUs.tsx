@@ -2,19 +2,21 @@
 // This is the Contact Us page where users can send feedback, questions, or requests.
 //
 import React, { useState } from "react";
+import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import emailjs from "emailjs-com";
+import route from "../../../router/route.json";
+import styles from "./ContactUs.module.css";
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
+import MainBtn from "../../../components/MainBtn/MainBtn";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { useAuthContext } from "../../../context/AuthContext";
 import { useErrorContext } from "../../../context/ErrorContext";
-import route from "../../../router/route.json";
 import { ProductType } from "../../../context/ProductType";
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import MainBtn from "../../../components/MainBtn/MainBtn";
-import styles from "./ContactUs.module.css";
+import { logEvent } from "../../../utils/logEvent";
 
 const ContactUs: React.FC = () => {
-  
+
   const { t, isRTL, dir, textAlign, lang } = useLanguage();
   const navigate = useNavigate();
   const { currentUser } = useAuthContext();
@@ -68,8 +70,12 @@ const ContactUs: React.FC = () => {
 
       navigate(youthHomePagePath);
     } catch (error) {
-      console.error("Error sending email:", error);
-    } finally {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      const userEmail = user?.email || formData.email || "guest";
+      logEvent(`ContactUs (Youth) error sending email: ${error?.toString?.() || "unknown error"}`, userEmail);
+    }
+    finally {
       setIsLoading(false);
     }
   };

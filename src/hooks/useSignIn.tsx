@@ -7,14 +7,16 @@ import { auth } from "../config/firebase";
 import { signInNow } from "../utils/signInNow";
 import { useCookiesContext } from "../context/CookiesContext";
 import { useErrorContext } from "../context/ErrorContext";
+import { useProduct } from "../context/ProductContext";
 import { useLanguage } from "../i18n/useLanguage";
-import errMsg from "../models/resources/errorMsg.json";
-import { NEED_TO_LOGIN } from "../models/constants/cookie";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import route from "../router/route.json";
 import { ProductType } from "../context/ProductType";
-import { useProduct } from "../context/ProductContext";
+import { logEvent } from "../utils/logEvent";
+import errMsg from "../models/resources/errorMsg.json";
+import route from "../router/route.json";
+import { NEED_TO_LOGIN } from "../models/constants/cookie";
+
 
 const useSignIn = () => {
 
@@ -37,6 +39,7 @@ const useSignIn = () => {
             await signInNow(auth);
         } catch (error: any) {
             const errorStr = error?.toString?.() || "";
+            logEvent(`Google Sign-In Error: ${errorStr}`, "guest");
 
             if (errorStr.includes("auth/popup-closed-by-user") || errorStr.includes("auth/cancelled-popup-request")) {
                 alert(t("login.mustLogin"));

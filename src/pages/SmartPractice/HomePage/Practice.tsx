@@ -1,24 +1,25 @@
 //
 // Home page
 //
-import { useMemo } from "react"
-import { useNavigate } from "react-router-dom"
-import { useAuthContext } from "../../../context/AuthContext"
-import { useCookiesContext } from "../../../context/CookiesContext"
-import { useLanguage } from "../../../i18n/useLanguage"
-import useSignIn from "../../../hooks/useSignIn"
-import { ProductType } from "../../../context/ProductType"
-import { NEED_TO_LOGIN } from "../../../models/constants/cookie"
-import { PRACTICE_HOME_AD_SLOT } from "../../../models/constants/adsSlot"
-import route from "../../../router/route.json"
-import { buildHomeSchema } from "../../../models/schemaOrg"
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
-import StartBtn from "../../../components/StartBtn/StartBtn"
-import PageLoading from "../../../components/Loading/PageLoading/PageLoading"
-import AboutUsCollapse from "../../../components/AboutUsCollapse/AboutUsCollapse"
-import ContinueWithAI from "../../../components/titles/ContinueWithAI/ContinueWithAI"
-import styles from "./Practice.module.css"
-import { startAsGuestOrUser } from "../../../utils/startAsGuestOrUser"
+import { useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import route from "../../../router/route.json";
+import styles from "./Practice.module.css";
+import { useAuthContext } from "../../../context/AuthContext";
+import { useCookiesContext } from "../../../context/CookiesContext";
+import { useLanguage } from "../../../i18n/useLanguage";
+import useSignIn from "../../../hooks/useSignIn";
+import { ProductType } from "../../../context/ProductType";
+import { NEED_TO_LOGIN } from "../../../models/constants/cookie";
+import { PRACTICE_HOME_AD_SLOT } from "../../../models/constants/adsSlot";
+import { buildHomeSchema } from "../../../models/schemaOrg";
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
+import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
+import StartBtn from "../../../components/StartBtn/StartBtn";
+import AboutUsCollapse from "../../../components/AboutUsCollapse/AboutUsCollapse";
+import ContinueWithAI from "../../../components/titles/ContinueWithAI/ContinueWithAI";
+import { startAsGuestOrUser } from "../../../utils/startAsGuestOrUser";
+
 
 function PracticeHomePage() {
 
@@ -32,14 +33,13 @@ function PracticeHomePage() {
   const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn
   const shouldBlockUI = !isLoggedIn && cookieLimit === NEED_TO_LOGIN
 
-  const SetCookieDate4Debug = () => { // Temporary Debug function
-    if (cookieLimit) {
-      const lastWeek = new Date()
-      lastWeek.setDate(lastWeek.getDate() - 7)
-      setLimitCookie(lastWeek.toString())
-      console.log("Set prev week Limit for debug:", lastWeek.toString())
-    }
-  }
+//  const SetCookieDate4Debug = () => { // Temporary Debug function
+//    if (cookieLimit) {
+//      const lastWeek = new Date()
+//      lastWeek.setDate(lastWeek.getDate() - 7)
+//      setLimitCookie(lastWeek.toString())
+//    }
+//  }
 
   return (
     <PageLayout

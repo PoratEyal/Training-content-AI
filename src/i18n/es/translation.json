@@ -105,7 +105,8 @@
     "btnCreate": "¡Vamos!",
     "btnCreating": "Creando práctica",
     "error": "Ocurrió un error al generar las preguntas. Intenta nuevamente.",
-    "loadingHead": "Ya estamos en eso...",
+    "topicError": "Lo siento, no puedo generar preguntas sobre el tema que seleccionaste. Por favor, intenta con otro tema.",
+    "loadingHead": "Ya estamos en eso",
     "loadingText": "Atención: Este cuestionario fue generado por una inteligencia artificial que está en constante aprendizaje y mejora. Pueden ocurrir errores."
   },
   "quiz": {

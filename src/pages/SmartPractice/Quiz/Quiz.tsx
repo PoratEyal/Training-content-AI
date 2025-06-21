@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import route from "../../../router/route.json"
-import { useTranslation } from "react-i18next"
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
-import QuizContainer from "../../../components/SmartPractice/QuizContainer/QuizContainer"
-import { createQuiz } from "../../../hooks/useQuestions"
-import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz"
-import styles from "./Quiz.module.css"
-import { PRACTICE_QUIZ_AD_SLOT } from "../../../models/constants/adsSlot"
-import { ProductType } from "../../../context/ProductType"
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getAuth } from "firebase/auth";
+import { useTranslation } from "react-i18next";
+import route from "../../../router/route.json";
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
+import QuizContainer from "../../../components/SmartPractice/QuizContainer/QuizContainer";
+import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz";
+import { PRACTICE_QUIZ_AD_SLOT } from "../../../models/constants/adsSlot";
+import { ProductType } from "../../../context/ProductType";
 import { Icons } from "../../../components/Icons";
+import { createQuiz } from "../../../hooks/useQuestions";
+import { logEvent } from "../../../utils/logEvent";
+import styles from "./Quiz.module.css";
 
 type Question = {
   question: string
@@ -37,14 +39,11 @@ function Quiz() {
 
   // Takes the raw text of the AI answer, extracts the questions and answers, and saves them to display in the quiz.
   const loadQuestionsFromRaw = (raw: string) => {
-
     const blocks = raw.split(/~\d+~/).map(b => b.trim()).filter(Boolean)
 
     const parsed: Question[] = blocks.map((block) => {
       const lines = block.split(/\n/).map(line => line.trim()).filter(Boolean)
-
       const question = lines[0]
-
       const options: string[] = []
       let correctIndex = -1
 
@@ -55,19 +54,19 @@ function Quiz() {
         const text = match[1].trim()
         const clean = text.replace(/\*\*/g, "")
         options.push(clean)
-
-        if (text.includes("**")) {
-          correctIndex = index
-        }
+        if (text.includes("**")) correctIndex = index
       })
 
       return { question, options, correctIndex }
-    }).filter(q => q.options?.length === 4 && q.correctIndex >= 0)
+    }).filter(q => q.options.length === 4 && q.correctIndex >= 0)
+
+    if (parsed.length === 0) return // silently ignore bad input
 
     setQuestions(parsed)
     setUserAnswers(new Array(parsed.length).fill(null))
     setSubmitted(false)
   }
+
 
   // On component load, get the quiz from sessionStorage and display it. If missing, redirect to the home page.
   useEffect(() => {
@@ -185,6 +184,10 @@ function Quiz() {
       sessionStorage.setItem("practiceQuestions", finalRaw)
       loadQuestionsFromRaw(finalRaw)
     } else {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      const userEmail = user?.email || "guest";
+      logEvent(`Quiz generation failed: less then 5 valid questions found (topic: ${topic}, lang: ${lang})`, userEmail);
       alert(t("quiz.FailMsg"))
     }
   }
