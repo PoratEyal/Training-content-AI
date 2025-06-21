@@ -56,7 +56,7 @@ function Topic() {
     setLoading(false)
 
     if (result) {
-      if (isValidQuiz(result)) {
+      if (!isValidQuiz(result)) {
         alert(t("topic.topicError"));
         return
       }
