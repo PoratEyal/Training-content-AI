@@ -121,19 +121,13 @@ function PageLayout({
 
         {hasAds !== "" ? (() => {
 
-          const hour = new Date().getHours();
           const path = location.pathname;
           const showAd = path.includes("/he/youth/activity");
-          let bannerImage = null;
-          if (hour >= 8 && hour < 14) {
-            bannerImage = "/practiceBanner1.png";
-          } else if (hour >= 14 && hour < 20) {
-            bannerImage = "/practiceBanner2.png";
-          } else {
-            bannerImage = "/practiceBanner3.png";
-          }
 
           if (productType === ProductType.Youth && showAd) {
+            const banners = ["/practiceBanner1.png", "/practiceBanner2.png", "/practiceBanner3.png", "/practiceBanner4.png"];
+            const randomIndex = Math.floor(Math.random() * banners.length);
+            const bannerImage = banners[randomIndex];
             return (
               <div className={styles.customAdSlot}>
                 <a href="https://activitywiz.com/practice" target="_blank" rel="noopener noreferrer">
