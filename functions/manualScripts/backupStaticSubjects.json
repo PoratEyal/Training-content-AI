@@ -1,0 +1,250 @@
+{
+  "9yN4eWSQkkJ8Rq7GypjO": {
+    "icon": "FaDog",
+    "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, בעלי חיים, חיות",
+    "metaTitle": "בעלי חיים",
+    "name": "animals",
+    "activities": [
+      "/staticActivities/1eMpRo2B08e1DARPz2Lh",
+      "/staticActivities/k7UCfNhXkP11a58RLCys",
+      "/staticActivities/TFg5YfTG6zUCpQlSmmZg",
+      "/staticActivities/ZnDLYq3BxJp9js1w51T6"
+    ],
+    "orderId": 40
+  },
+  "AYi7Q79RVUngvDFfFDY2": {
+    "icon": "FaListCheck",
+    "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, אחריות",
+    "metaTitle": "אחריות",
+    "name": "responsibility",
+    "activities": [
+      "/staticActivities/HZO2Fu8M9JaRcLi6GcVD",
+      "/staticActivities/eqHD0fioTZXFzjBVQKP9",
+      "/staticActivities/hvJD6jxwkEkpTLvDvhBn"
+    ],
+    "orderId": 10
+  },
+  "DPIX46cWhKdSWd6qzHjk": {
+    "icon": "AiFillEnvironment",
+    "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, ירוקים, איכות הסביבה",
+    "metaTitle": "איכות הסביבה",
+    "name": "environmental",
+    "activities": [
+      "/staticActivities/lJ6rkBZT1JD7snLCkEsP",
+      "/staticActivities/Yd74TS3r5eqS8OKjEWba",
+      "/staticActivities/SzKQwg6HdrwIDQ8atVLN"
+    ],
+    "orderId": 20
+  },
+  "F6f68hNvAWTxtC9Ue0ES": {
+    "icon": "FaCloudSunRain",
+    "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, עונות השנה, קיץ, סתיו, חורף, אביב",
+    "metaTitle": "עונות השנה",
+    "name": "seasons",
+    "activities": [
+      "/staticActivities/UxppeLPiugjxmvxGjDVN",
+      "/staticActivities/XovD1qlf8HUfiu3718Zj",
+      "/staticActivities/XRQJGYfjskx6OntrQvdd",
+      "/staticActivities/Mdn9kfCUorPGegY3nxGq"
+    ],
+    "orderId": 130
+  },
+  "FhLV1IjcFi9VrLDZgof2": {
+    "icon": "PiShootingStarFill",
+    "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, גיבורי על, סופרמן, באטמן",
+    "metaTitle": "גיבורי על",
+    "name": "superhero",
+    "activities": [
+      "/staticActivities/8zoC783Zj9B13c7wgMw1",
+      "/staticActivities/kGqHCY87s98RcuNcL7LJ",
+      "/staticActivities/xdPu01KAwBwt4fR61URq"
+    ],
+    "orderId": 50
+  },
+  "G6HgiZWU5YolvOf4na7D": {
+    "icon": "MdEmojiPeople",
+    "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, דמויות, אישים, מנהיגים",
+    "metaTitle": "אישים ומנהיגים",
+    "name": "personalities",
+    "activities": [
+      "/staticActivities/Kyz8ZoRq2vJWdel9mOKm",
+      "/staticActivities/K0RqS1MtdDhVKScEDmXW",
+      "/staticActivities/rj4GsfYhvxolta83Yu6V",
+      "/staticActivities/dqAgrVYYaXUe49rmkVa3"
+    ],
+    "orderId": 30
+  },
+  "GDqiyfUhPDi4H4GKdG6N": {
+    "metaDescription": "פעולה מיוחדת וגדולה שמסכמת תקופה משמעותית בפעילות השבט",
+    "metaTitle": "פעולות שיא",
+    "icon": "FaTrophy",
+    "activities": [
+      "/staticActivities/UVkxsOYVZYth1a6m0DKI",
+      "/staticActivities/JEQUkhPL2eTMU75JUeRh",
+      "/staticActivities/OctrxhLj15MYbQjCWWec"
+    ],
+    "name": "peak",
+    "orderId": 140
+  },
+  "JRhlvM1DewunJNqPr9kk": {
+    "icon": "MdOutlineSportsKabaddi",
+    "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, בנים, בנות, הטרדה מינית",
+    "metaTitle": "הטרדה מינית",
+    "name": "harassment",
+    "activities": [
+      "/staticActivities/qWzL1vb7StKfpzAyRGnF",
+      "/staticActivities/fpmuQT9ZQJHJwRVxsKhn",
+      "/staticActivities/Rp1dIeFCVVTYCMXIUv6J"
+    ],
+    "orderId": 60
+  },
+  "PzHqAklAHP5opCjiz563": {
+    "icon": "FaTrafficLight",
+    "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, זהירות בדרכים, תחבורה",
+    "metaTitle": "זהירות בדרכים",
+    "name": "traffic",
+    "activities": [
+      "/staticActivities/NYXXmujOv3eEDYb8vh5w",
+      "/staticActivities/FwcSklTl69KtnnfdTX5I",
+      "/staticActivities/jiGci0a9L3jZy5DtasLp"
+    ],
+    "orderId": 70
+  },
+  "VybIZRavZY5ugdxIMoL8": {
+    "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, פעולות היכרות, פתיחת שנה",
+    "name": "intro",
+    "metaTitle": "שנה חדשה",
+    "activities": [
+      "/staticActivities/HdJTyK3S3WJUz7ZfpwQH",
+      "/staticActivities/vf8MfLaYak9qwyYCR5kO",
+      "/staticActivities/ccScxMjKKmcYImAXgCNi",
+      "/staticActivities/Y5vlbYfnEnJTIcZjnV9m"
+    ],
+    "orderId": 160,
+    "icon": "TbConfetti"
+  },
+  "e1n1MQMIjWphKEYXirFj": {
+    "icon": "FaStarOfDavid",
+    "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, ארץ ישראל, מדינת ישראל",
+    "metaTitle": "מדינת ישראל",
+    "name": "israel",
+    "activities": [
+      "/staticActivities/mSOuH5vGjrJnmaSgh87w",
+      "/staticActivities/XwrjGHPuM2G6ceFSV77Z",
+      "/staticActivities/DWB93WpD5dolY4Babod1",
+      "/staticActivities/HA4ShetH5eb72Yf4sdWO"
+    ],
+    "orderId": 100
+  },
+  "gsQBNBzUFHr6knIv1OsC": {
+    "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, עבודת צוות",
+    "metaTitle": "עבודת צוות",
+    "name": "teamwork",
+    "icon": "FaHandsHelping",
+    "activities": [
+      "/staticActivities/64tGhKTywYdBlYIdmD43",
+      "/staticActivities/7HIurPapK2gA95kEP4c0",
+      "/staticActivities/UJoZmDEpzjfhB88NtgBa",
+      "/staticActivities/6M6qtqRPqCsp6L81bAuP",
+      "/staticActivities/Coa5ooDzGl7D9E7i9pO3"
+    ],
+    "orderId": 120
+  },
+  "o0qhCsGtBMt8Py1ogwhy": {
+    "icon": "FaUserFriends",
+    "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, חברות",
+    "metaTitle": "חברות",
+    "name": "friendship",
+    "activities": [
+      "/staticActivities/fUxvQ5Am8tufUvBKuxiA",
+      "/staticActivities/gCmMAPJP4JvGr39i3osV",
+      "/staticActivities/VeV6aV4L2dro93Xwk3va",
+      "/staticActivities/d9mYajGm7pv8JfTI1oVO"
+    ],
+    "orderId": 80
+  },
+  "qo48JQRNHtsfz63TE85q": {
+    "icon": "BsCalendar2DateFill",
+    "metaTitle": "חגים ומועדים",
+    "name": "holidays",
+    "metaDescription": "פעולות ומשחקים לתנועות נוער, רעיונות לפעילויות יצירתיות, חגי ישראל, חגים, מועדים",
+    "orderId": 90,
+    "activities": [
+      "/staticActivities/74XVTeqJGPNYc0FTc9VO",
+      "/staticActivities/cwUv39l89MAZxbkTxHM6",
+      "/staticActivities/J0cosle6FrbBPrRpji36",
+      "/staticActivities/2OwJqyLfhTBTzTspvn7j",
+      "/staticActivities/nXbxYqS6xiwV0JDkC0E4",
+      "/staticActivities/oy8dYRqsayr4OuYZwtDo",
+      "/staticActivities/MaR5KWUUMJr8zbDiAGOK",
+      "/staticActivities/S7fwAddKUpCXmVwoItwr",
+      "/staticActivities/ea4bOmly79v3Un5UhIvo",
+      "/staticActivities/mj18bGZUYv30iykR1wIn",
+      "/staticActivities/IX0ddmOTrICV3Rq0sDJj",
+      "/staticActivities/1kxY2geZgeYrqnekRhdo",
+      "/staticActivities/jszPUp5K8X37dGnDNRji",
+      "/staticActivities/OSQgq5QJofs9bxMv7EnY",
+      "/staticActivities/dyAgnvgMopOg5gy0XaEm",
+      "/staticActivities/FqMrpwBTgSvIJDxjNJ3F",
+      "/staticActivities/6iNmXnWMVQHG6jsJzsUH",
+      "/staticActivities/Wg2nIahYLtPZBPzUvG31",
+      "/staticActivities/TrG9a37RNIagyouZlxlv",
+      "/staticActivities/ZDrKB63vFHMpuqIrMmMz"
+    ]
+  },
+  "r0EQUxfS5MSOXUXcXaVy": {
+    "icon": "BiSolidCameraMovie",
+    "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, סרטים",
+    "metaTitle": "סרטים",
+    "name": "movies",
+    "activities": [
+      "/staticActivities/JvmQlscmoSp0HPWoc42u",
+      "/staticActivities/M6of9MWdouFV92TapVIK"
+    ],
+    "orderId": 110
+  },
+  "shmzOwgaKSrWCtaJMKbZ": {
+    "icon": "FaGamepad",
+    "metaTitle": "משחקים",
+    "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, משחקים",
+    "name": "games",
+    "orderId": 1,
+    "activities": [
+      "/staticActivities/WUD1GhR9L6OnAyboV5ap",
+      "/staticActivities/LWIgu6EMOBoOCHa4YuEK",
+      "/staticActivities/1EM6fYIPPsX3KsCJH4pV",
+      "/staticActivities/qnLCzjqN8p6iGbrxNsGr",
+      "/staticActivities/S5Fo7TOnFFfS9UXYwTZF",
+      "/staticActivities/auUdU702B8Jl1ULGrrRz",
+      "/staticActivities/VpnU4FmuVt77ZwC4WEJm",
+      "/staticActivities/C5nwSODilhEwsfyDvjDr",
+      "/staticActivities/2N8XDpWRFH6JF0zLw8YI",
+      "/staticActivities/Wl4Pspz1lm43i0JLEHzT",
+      "/staticActivities/YjwddGx8uUUcAPyujfb1",
+      "/staticActivities/GEtiCwfnDAARMvCKjzZY",
+      "/staticActivities/0cFlrLbdS76NPZvqB0Yz",
+      "/staticActivities/gFR7G3LGRAN2OzX7Vm7s",
+      "/staticActivities/xINLyabfUv4dnRHMWxek",
+      "/staticActivities/ihbdmWusyIQZAe0ydRHu",
+      "/staticActivities/U3rRB1EMsMY0UMv1uYjV",
+      "/staticActivities/3d3mgb6PeeOXkv8IkqzW",
+      "/staticActivities/lg5eCQCPgYqjdwkwu1Xv",
+      "/staticActivities/CULGg5kYUAoBmUuH1C6X",
+      "/staticActivities/qCVOeD3xnKSOiagi1UXW",
+      "/staticActivities/V9DotzA1VATVPBt8Yxo3"
+    ]
+  },
+  "uBHbP8gnuK2k6mj0S1ST": {
+    "icon": "FaRibbon",
+    "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, שבעה באוקטובר, 7 באוקטובר, מלחמה, לבנון, מלחמת עזה, איראן, חרבות ברזל",
+    "metaTitle": "שבעה באוקטובר",
+    "name": "sevenOct",
+    "activities": [
+      "/staticActivities/Zy0EZqET3m9JXrGztVVN",
+      "/staticActivities/KCHAFUGpSNFNEPUTxOh9",
+      "/staticActivities/XdqOjSokJ3aB1Mv32iMw",
+      "/staticActivities/nIX58X7A3Xpa9gN9pIKI"
+    ],
+    "orderId": 150
+  }
+}

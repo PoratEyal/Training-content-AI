@@ -5,7 +5,7 @@ import * as admin from "firebase-admin";
 import * as fs from "fs";
 import * as path from "path";
 
-// נמצא בכוונה מחוץ לפרוייקט כדי שלא בטעות נעשה Commit
+// נמצא בכוונה מחוץ לפרויקט כדי שלא בטעות נעשה Commit
 const serviceAccount = require("C:/Dev/serviceAccountKey.json");
 
 admin.initializeApp({
@@ -14,22 +14,21 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-async function backupCollection(collectionName: string) {
+async function backupStaticActivities() {
   try {
-    const snapshot = await db.collection(collectionName).get();
+    const snapshot = await db.collection("staticActivities").get();
     const data: Record<string, any> = {};
 
     snapshot.forEach((doc) => {
       data[doc.id] = doc.data();
     });
 
-    const backupPath = path.join(__dirname, `backupUsers.json`);
+    const backupPath = path.join(__dirname, "backupStaticActivities.json");
     fs.writeFileSync(backupPath, JSON.stringify(data, null, 2));
-    console.log(`✅ ${collectionName} backup saved to ${backupPath}`);
+    console.log(`✅ staticActivities backup saved to ${backupPath}`);
   } catch (error) {
-    console.error(`❌ Error backing up ${collectionName}:`, error);
+    console.error("❌ Error backing up staticActivities:", error);
   }
 }
 
-// הפעלת גיבוי עבור users
-backupCollection("users");
+backupStaticActivities();
