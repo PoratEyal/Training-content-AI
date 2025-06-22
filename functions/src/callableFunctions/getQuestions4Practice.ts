@@ -1,22 +1,23 @@
-import { onCall } from "firebase-functions/v2/https";
-import { HttpsError } from "firebase-functions/v1/https";
+import * as functions from "firebase-functions";
 import { getSmartPracticeQuestions } from "../service/SmartPractice/geminiAPI";
 import { Lang } from "../model/types/common";
 
-export const getQuestions4Practice = onCall(async (request) => {
-  const { topic, lang, count } = request.data;
+const getQuestions4Practice = functions.https.onCall(
+  async (data: { topic: string; lang: string; count?: number }) => {
+    const { topic, lang, count } = data;
 
-  try {
-    const questions = await getSmartPracticeQuestions(
-      topic.trim(),
-      count ?? 10, // default is 10 questions
-      lang as Lang
-    );
-    return { questions };
-  } catch (error: any) {
-    console.error("❌ Failed to generate questions:", error);
-    throw new HttpsError("internal", "Failed to generate questions.");
+    try {
+      const questions = await getSmartPracticeQuestions(
+        topic.trim(),
+        count ?? 10,
+        lang as Lang
+      );
+      return { questions };
+    } catch (error: any) {
+      console.error("❌ Failed to generate questions:", error);
+      throw new functions.https.HttpsError("internal", "Failed to generate questions.");
+    }
   }
-});
+);
 
 export default getQuestions4Practice;

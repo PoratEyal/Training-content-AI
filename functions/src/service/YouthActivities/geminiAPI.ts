@@ -36,13 +36,15 @@ import {
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { ActivityDetails } from "../../model/types/activity";
-import { defineString } from "firebase-functions/params";
 import { formatString } from "../../utils/format";
 //import { getPromptAndDetailsForSpecialKids } from "../../utils/specialKids";
 import { GetActivityRequest } from "../../model/types/request";
 import { Lang } from "../../model/types/common";
+import * as functions from "firebase-functions";
 
-const genAI = new GoogleGenerativeAI(defineString("API_KEY").value() || "");
+const geminiConfig = functions.config()?.gemini;
+const apiKey = geminiConfig?.apikey || process.env.API_KEY || "";
+const genAI = new GoogleGenerativeAI(apiKey);
 
 async function generateContent(prompt: string): Promise<string> {
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });

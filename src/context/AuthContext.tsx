@@ -87,15 +87,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                         addSessionData(lang, movement, grade, amount, gender);
                     }
                     setCurrentUser(resultUser);
-                    await checkIfNeedToSendMsg(resultUser);
+                    //await checkIfNeedToSendMsg(resultUser); // Disabled: currently not using "What's New" message
                     setIsLoggedIn(true);
                     if (cookieLimit !== NEED_TO_LOGIN) setLimitCookie(NEED_TO_LOGIN);
-                    
-                    try {   // update "lastUpdate" field in DB to announce that there is a new interaction of the user
-                        await fetchUpdateLastLogin();
-                    } catch (e) {
-                        await logEvent("Failed to update lastLogin: " + e, resultUser?.email);
-                    }
+
+                    // update "lastUpdate" field in DB to announce that there is a new interaction of the user
+                    fetchUpdateLastLogin().catch((e) => {
+                        logEvent("Failed to update lastLogin: " + e, resultUser?.email);
+                    });
                     return;
                 }
 

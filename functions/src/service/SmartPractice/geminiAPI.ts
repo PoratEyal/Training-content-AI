@@ -1,8 +1,12 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { defineString } from "firebase-functions/params";
 import { Lang } from "../../model/types/common";
+import * as functions from "firebase-functions";
 
-const genAI = new GoogleGenerativeAI(defineString("API_KEY").value() || "");
+// Production: geminiConfig?.apikey
+// Dev Emulator: process.env.API_KEY
+const geminiConfig = functions.config()?.gemini;
+const apiKey = geminiConfig?.apikey || process.env.API_KEY || "";
+const genAI = new GoogleGenerativeAI(apiKey);
 
 const getPromptByLang = (topic: string, count: number, lang: Lang): string => {
 
