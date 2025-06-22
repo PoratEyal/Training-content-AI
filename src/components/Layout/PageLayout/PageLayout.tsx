@@ -46,7 +46,16 @@ function PageLayout({
 }: PageLayoutProps) {
   const { lang, dir } = useLanguage();
   const location = useLocation();
-  const canonicalUrl = `${WEBSITE_URL}${location.pathname}`;
+
+  // Force canonical to /[lang]/youth for language root pages (/en, /he, etc.) to avoid duplication
+  // in the future if we will have a general homepage we will be able to remove it and just leave:
+  // const canonicalUrl = `${WEBSITE_URL}${location.pathname}`;
+  const isLangRoot = /^\/(he|en|es|ar)\/?$/.test(location.pathname)
+  const isLangYouth = /^\/(he|en|es|ar)\/youth\/?$/.test(location.pathname)
+  const canonicalUrl =
+    isLangRoot || isLangYouth
+      ? `${WEBSITE_URL}${location.pathname.replace(/\/(he|en|es|ar)\/?$/, "/$1/youth")}`
+      : `${WEBSITE_URL}${location.pathname}`
 
   // Set <html lang> and <html dir> directly
   useEffect(() => {
