@@ -5,9 +5,11 @@
  */
 import { useEffect, createContext, useState, useContext, useRef } from "react";
 import { onAuthStateChanged } from "firebase/auth";
+import { getFunctions, httpsCallable } from "firebase/functions";
 import { auth } from "../config/firebase";
 import { signInNow } from "../utils/signInNow";
 import { fetchCreateNewUser, fetchGetMsg } from "../utils/fetch";
+import { fetchUpdateLastLogin } from "../utils/fetch";
 import { addSessionData } from "../utils/movment";
 import { initRawUser } from "../utils/user";
 import { useErrorContext } from "./ErrorContext";
@@ -16,6 +18,7 @@ import { useLanguage } from "../i18n/useLanguage";
 import { GoogleUser, User } from "../models/types/user";
 import { NEED_TO_LOGIN } from "../models/constants/cookie";
 import msg from "../models/resources/errorMsg.json";
+import { logEvent } from "../utils/logEvent";
 
 
 export type AuthContextType = {
@@ -87,6 +90,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                     await checkIfNeedToSendMsg(resultUser);
                     setIsLoggedIn(true);
                     if (cookieLimit !== NEED_TO_LOGIN) setLimitCookie(NEED_TO_LOGIN);
+                    
+                    try {   // update "lastUpdate" field in DB to announce that there is a new interaction of the user
+                        await fetchUpdateLastLogin();
+                    } catch (e) {
+                        await logEvent("Failed to update lastLogin: " + e, resultUser?.email);
+                    }
                     return;
                 }
 

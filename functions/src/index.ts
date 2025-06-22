@@ -5,6 +5,7 @@ import * as admin from "firebase-admin";
 
 // Common
 import ping from './callableFunctions/ping';
+import updateLastLogin from "./callableFunctions/updateLastLogin";
 import sendMsg from "./callableFunctions/sendMsg";
 import getMsg from "./callableFunctions/getMsg";
 import updateIsMsg from "./callableFunctions/updateIsMsg";
@@ -40,6 +41,7 @@ export { db };
 
 // Common
 exports.ping = ping;
+exports.updateLastLogin = updateLastLogin;
 exports.sendMsg = sendMsg;
 exports.getMsg = getMsg;
 exports.updateIsMsg = updateIsMsg;

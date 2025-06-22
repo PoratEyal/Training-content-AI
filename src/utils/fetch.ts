@@ -69,6 +69,14 @@ export const fetchUpdateUser = async (request: UpdateUserRequest): Promise<Updat
     }
 };
 
+export const fetchUpdateLastLogin = async (): Promise<void> => {
+    const updateLastLoginFunc = httpsCallable(functions, "updateLastLogin");
+    const response = (await updateLastLoginFunc()).data as { result: string };
+    if (response.result !== "success") {
+        throw new Error("Failed to update last login");
+    }
+};
+
 export const fetchGetActivities = async (): Promise<getAllActivitiesResponse> => {
     const getActivitiesFunc = httpsCallable(functions, "getAllActivities");
 
