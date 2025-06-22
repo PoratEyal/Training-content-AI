@@ -45,8 +45,8 @@
     19% 35%,   /* Far-left */
     39% 35%    /* Upper-left */
   );
-  position: fixed;
-  top: 20%;
+  position: absolute;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
@@ -224,7 +224,7 @@ html[dir="ltr"] .retryFabContainer {
   }
 
   .scoreStar {
-    top: 23%;
+    top: 0%;
   }
 
   .shareBox {
