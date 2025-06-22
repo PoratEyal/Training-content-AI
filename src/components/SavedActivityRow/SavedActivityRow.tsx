@@ -30,7 +30,7 @@ const SavedActivityRow: React.FC<SavedActivityRowProps> = ({ activity, openDelet
     }
   };
 
-  const time = `${t("savedActivities.lastUpdate")}: ${new Date(activity.savedAt).toLocaleDateString([], {
+  const time = `${t("savedActivities.myActivityUpdate")}: ${new Date(activity.savedAt).toLocaleDateString([], {
     year: "2-digit",
     month: "numeric",
     day: "numeric",

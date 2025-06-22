@@ -7,6 +7,7 @@ export type User = {
     image: string;
     limit: number;
     lastUpdate: string;
+    createDate: string;
     movement: UserMovementDetails | null;
     isAcceptTerms: boolean;
     isSendMsg: boolean;
@@ -18,6 +19,7 @@ export type DbUser = {
     image: string;
     limit: number;
     lastUpdate: string;
+    createDate: string;
     movement: string | null; //the en name
     grade: string | null;
     gender: string | null;

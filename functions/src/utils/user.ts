@@ -10,6 +10,7 @@ export const initUserToDB = (user: RawUser) => {
         image: user.photoURL,
         limit: 0,
         lastUpdate: getCurrentTime(),
+        createDate: getCurrentTime(),
         movement: null,
         grade: null,
         gender: null,
@@ -19,6 +20,7 @@ export const initUserToDB = (user: RawUser) => {
         isSendMsg: false,
     } as DbUser;
 };
+
 
 export const initUserFromDB = (id: string, data: DocumentData) => {
     try {
@@ -36,6 +38,7 @@ export const initUserFromDB = (id: string, data: DocumentData) => {
             limit: data.limit || 0,
             movement: movement,
             lastUpdate: data.lastUpdate || "",
+            createDate: data.createDate || "",
             isAcceptTerms: data.isAcceptTerms || false,
             isSendMsg: data.isSendMsg || false,
         } as User;
@@ -48,6 +51,7 @@ export const initUserFromDB = (id: string, data: DocumentData) => {
             limit: data.limit || 0,
             movement: null,
             lastUpdate: data.lastUpdate || "",
+            createDate: data.createDate || "",
             isAcceptTerms: data.isAcceptTerms || false,
             isSendMsg: data.isSendMsg || false,
         } as User;
@@ -74,6 +78,7 @@ export const initUserFromReq = (id: string, data: DbUser) => {
         limit: data.limit || 0,
         movement: movement,
         lastUpdate: data.lastUpdate || "",
+        createDate: data.createDate || "",
         isAcceptTerms: data.isAcceptTerms || false,
         isSendMsg: data.isSendMsg || false,
     } as User;

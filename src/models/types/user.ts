@@ -7,6 +7,7 @@ export type User = {
     image: string;
     limit: number;
     lastUpdate: string;
+    createDate: string;
     movement: UserMovementDetails | null;
     isAcceptTerms: boolean;
     isSendMsg: boolean;
