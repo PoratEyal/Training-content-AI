@@ -37,8 +37,7 @@ const useSignIn = () => {
                 lastWeek.setDate(lastWeek.getDate() - 7)
                 setLimitCookie(lastWeek.toString())
             }
-            const errorStr = error?.toString?.() || "";
-            logEvent(`Google Sign-In Error, usually indicates exit login: ${errorStr}`, "guest");
+            logEvent(`[useSignIn.tsx.signInWithGoogle]: Google Sign-In Error, usually indicates exit login screen: ${error?.toString?.() || ""}`, "guest");
 
         } finally {
             navigate(homePagePath);

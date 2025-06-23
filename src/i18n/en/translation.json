@@ -2,9 +2,6 @@
   "common": {
     "appName": "Smart Practice"
   },
-  "login": {
-    "mustLogin": "To use the site, you must sign in.\nClick the profile picture at the top corner and select 'Sign In'."
-  },
   "home": {
     "slogan": "Customized, Simple and Fast 🤟",
     "startAction": "Create Activities",

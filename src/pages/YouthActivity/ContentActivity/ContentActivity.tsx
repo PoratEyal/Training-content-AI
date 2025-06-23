@@ -65,7 +65,7 @@ function ContentActivity() {
       const auth = getAuth();
       const user = auth.currentUser;
       const userEmail = user?.email || "guest";
-      logEvent(`Failed to fetch static activity: contentId=${contentId}, activityId=${activityId}, error=${error?.toString?.() || "unknown error"}`, userEmail);
+      logEvent(`[ContentActivity]: Failed to fetch static activity: contentId=${contentId}, activityId=${activityId}, error=${error?.toString?.() || "unknown error"}`, userEmail);
     }
     finally {
       setIsActivityLoading(false);

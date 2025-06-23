@@ -5,14 +5,11 @@
  */
 import { useEffect, createContext, useState, useContext, useRef } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { getFunctions, httpsCallable } from "firebase/functions";
 import { auth } from "../config/firebase";
-import { signInNow } from "../utils/signInNow";
 import { fetchCreateNewUser, fetchGetMsg } from "../utils/fetch";
 import { fetchUpdateLastLogin } from "../utils/fetch";
 import { addSessionData } from "../utils/movment";
 import { initRawUser } from "../utils/user";
-import { useErrorContext } from "./ErrorContext";
 import { useCookiesContext } from "./CookiesContext";
 import { useLanguage } from "../i18n/useLanguage";
 import { GoogleUser, User } from "../models/types/user";
@@ -46,21 +43,30 @@ export const AuthContext = createContext<AuthContextType>(defaultAuthContext);
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-    const { handleError } = useErrorContext();
     const { cookieLimit, setLimitCookie } = useCookiesContext();
     const [currentUser, setCurrentUser] = useState<User | undefined>();
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
-    const [whatsNewMsg, setWhatsNewMsg] = useState<string>("");
+    const [whatsNewMsg] = useState<string>("");
     const [redirectFailed, setRedirectFailed] = useState<boolean>(false);
     const { lang } = useLanguage();
 
-    useEffect(() => {                                                           // Listen to connect status in Firebase (Login/Logout)
-        const unsubscribe = onAuthStateChanged(auth, (user) => {                // Unsubscribe is a common Firebase name to unsubscribe from listening to him
-            if (!user && document.referrer?.includes("accounts.google")) {      // Fail status
-                setRedirectFailed(true);
+    useEffect(() => {                                                           // Logged-in status in Firebase
+        const unsubscribe = onAuthStateChanged(auth, (user) => {                // "Unsubscribe" = common Firebase name to stop listening to it
+
+            if (user)
+                initializeUser(user);
+            else {
+                if (cookieLimit) {          // cleanup: set limit cookie to a "must login" value
+                    const lastWeek = new Date()
+                    lastWeek.setDate(lastWeek.getDate() - 7)
+                    setLimitCookie(lastWeek.toString())
+                }
+                if (document.referrer?.includes("accounts.google")) {           // Those 2 line are redundent but left as legacy 2be on the safe side
+                    logEvent("[AuthContext.useEffect]: It’s highly unlikely that this block is ever reached.", "guest");
+                    setRedirectFailed(true);
+                }
             }
-            initializeUser(user);                                               // Succecss Login
         });
 
         return () => {
@@ -70,9 +76,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         };
     }, []);
 
-    const initializeUser = async (user: any) => {           // Called from AuthContext.useEffect and keep current User Data
+    //
+    // initialize User Data, keep current User Data
+    //
+    const initializeUser = async (user: any) => {
         try {
             if (user && (user as GoogleUser)?.uid) {
+
                 let resultUser: User | undefined = undefined;
                 const rawUser = initRawUser(user);
                 const response = await fetchCreateNewUser({ rawUser }, lang);
@@ -82,19 +92,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 }
 
                 if (resultUser) {
+
                     if (resultUser.movement) {
                         const { grade, amount, gender, movement } = resultUser.movement;
                         addSessionData(lang, movement, grade, amount, gender);
                     }
                     setCurrentUser(resultUser);
-                    //await checkIfNeedToSendMsg(resultUser); // Disabled: currently not using "What's New" message
-                    setIsLoggedIn(true);
-                    if (cookieLimit !== NEED_TO_LOGIN) setLimitCookie(NEED_TO_LOGIN);
 
-                    // update "lastUpdate" field in DB to announce that there is a new interaction of the user
-                    fetchUpdateLastLogin().catch((e) => {
-                        logEvent("Failed to update lastLogin: " + e, resultUser?.email);
+                    //await checkIfNeedToSendMsg(resultUser);   // WhatsNew Message - Currently unused
+
+                    setIsLoggedIn(true);
+
+                    if (cookieLimit !== NEED_TO_LOGIN)
+                        setLimitCookie(NEED_TO_LOGIN);
+
+                    fetchUpdateLastLogin().catch((e) => {       // Keep "lastLogin" in DB
+                        logEvent("[AuthContext.initializeUser]: Failed to update lastLogin in DB: " + e, resultUser?.email);
                     });
+
                     return;
                 }
 
@@ -102,15 +117,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 setIsLoggedIn(false);
             }
         } catch (error) {
-            handleError(msg[lang].google.message);
+            logEvent("[AuthContext.initializeUser]: Failed to initialize User: " + msg[lang].google.message, "guest");
+
         } finally {
-            setLoading(false);
+            setLoading(false);  // Used for an error scenario and sets the profile menu enabled
         }
     };
 
     const blockRef = useRef<boolean>(true);
 
-    const checkIfNeedToSendMsg = async (user: User) => {    // called from AuthContext.initializeUser
+    /*
+    const checkIfNeedToSendMsg = async (user: User) => {    // WhatsNew Message - Currently unused
         if (user.isSendMsg && blockRef.current) {
             const result = await fetchGetMsg(lang);
             if (result.result === "success" && result.msg) {
@@ -120,8 +137,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             }
         }
     };
+    */
 
-    const setIsSendMsg = () => {                            // Currently not being used (in comment)
+    const setIsSendMsg = () => {                            // WhatsNew Message - Currently unused
         setCurrentUser((prev) => {
             return prev ? { ...prev, isSendMsg: false } : prev;
         });
@@ -132,18 +150,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     //
     const logout = async () => {
         try {
-            await auth.signOut();
-            setCurrentUser(undefined);
-            setIsLoggedIn(false);
-
             if (cookieLimit) {  // set limit cookie to a "must login" value
                 const lastWeek = new Date()
                 lastWeek.setDate(lastWeek.getDate() - 7)
                 setLimitCookie(lastWeek.toString())
             }
-
+            await auth.signOut();
+            setCurrentUser(undefined);
+            setIsLoggedIn(false);
         } catch (error) {
-            handleError(error);
+            logEvent("[AuthContext.logout]: Logout Error, " + error, "guest");
         }
     };
 

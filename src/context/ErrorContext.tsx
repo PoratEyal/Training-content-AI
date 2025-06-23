@@ -22,7 +22,6 @@ export const ErrorContextProvider = ({ children }: { children: React.ReactNode }
     const { dir } = useLanguage();
 
     const handleError = (error: Error | string | undefined) => {
-        console.error(error);
         notification("", error.toString().replace(/^Error:\s*/, ""), "danger", {
             duration: 6000,
             onScreen: true,
@@ -31,7 +30,6 @@ export const ErrorContextProvider = ({ children }: { children: React.ReactNode }
     };
 
     const handleAlert = (error: Error | string | undefined) => {
-        console.error(error);
         notification("", error.toString().replace(/^Error:\s*/, ""), "info", {
             duration: 6000,
             onScreen: true,

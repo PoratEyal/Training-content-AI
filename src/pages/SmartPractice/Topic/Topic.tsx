@@ -69,7 +69,7 @@ function Topic() {
       const auth = getAuth();
       const user = auth.currentUser;
       const userEmail = user?.email || "guest";
-      logEvent(`createQuiz failed from Topic screen, topic: ${topic}`, userEmail);
+      logEvent(`[Practice.Topic]: createQuiz failed, topic: ${topic}`, userEmail);
       alert(t("topic.error"));
     }
   }

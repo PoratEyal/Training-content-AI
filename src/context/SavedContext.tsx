@@ -69,7 +69,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                 } as RemoveActivityRequest);
             } catch (error) {
                 const userEmail = currentUser.email || "guest";
-                logEvent(`Failed to delete activity: ${activityIdToDelete}`, userEmail);
+                logEvent(`[SavedContext]: Failed to delete activity: ${activityIdToDelete}`, userEmail);
             }
         }
     };

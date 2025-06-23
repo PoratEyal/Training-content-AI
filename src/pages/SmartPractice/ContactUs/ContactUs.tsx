@@ -72,7 +72,7 @@ const ContactUs: React.FC = () => {
       const auth = getAuth();
       const user = auth.currentUser;
       const userEmail = user?.email || formData.email || "guest";
-      logEvent(`ContactUs error sending email: ${error?.toString?.() || "unknown error"}`, userEmail);
+      logEvent(`[Practice.ContactUs]: Error sending email: ${error?.toString?.() || "unknown error"}`, userEmail);
     }
     finally {
       setIsLoading(false)

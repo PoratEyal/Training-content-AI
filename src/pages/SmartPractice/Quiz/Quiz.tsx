@@ -187,7 +187,7 @@ function Quiz() {
       const auth = getAuth();
       const user = auth.currentUser;
       const userEmail = user?.email || "guest";
-      logEvent(`Quiz generation failed: less then 5 valid questions found (topic: ${topic}, lang: ${lang})`, userEmail);
+      logEvent(`[Quiz]: Generation failed: less then 5 valid questions found (topic: ${topic}, lang: ${lang})`, userEmail);
       alert(t("quiz.FailMsg"))
     }
   }
