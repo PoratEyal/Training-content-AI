@@ -33,14 +33,6 @@ function PracticeHomePage() {
   const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn
   const shouldBlockUI = !isLoggedIn && cookieLimit === NEED_TO_LOGIN
 
-//  const SetCookieDate4Debug = () => { // Temporary Debug function
-//    if (cookieLimit) {
-//      const lastWeek = new Date()
-//      lastWeek.setDate(lastWeek.getDate() - 7)
-//      setLimitCookie(lastWeek.toString())
-//    }
-//  }
-
   return (
     <PageLayout
       id="practiceHome"
@@ -60,25 +52,6 @@ function PracticeHomePage() {
           <span>{t("home.slogan")}</span>
         </div>
       </div>
-
-      {/* 🔧 Hidden top-right button for admin to navigate to /youth */}
-      {/*
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          right: 0,
-          width: 30,
-          height: 30,
-          zIndex: 9999,
-          background: "transparent",
-        }}
-        onClick={() => {
-          SetCookieDate4Debug()
-          // window.location.href = "/youth"
-        }}
-      />
-      */}      
 
       {shouldBlockUI ? (
         <div className={styles.button_section_loading}>

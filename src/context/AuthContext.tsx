@@ -127,16 +127,23 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         });
     };
 
+    //
+    // Logout
+    //
     const logout = async () => {
         try {
             await auth.signOut();
             setCurrentUser(undefined);
             setIsLoggedIn(false);
+
+            if (cookieLimit) {  // set limit cookie to a "must login" value
+                const lastWeek = new Date()
+                lastWeek.setDate(lastWeek.getDate() - 7)
+                setLimitCookie(lastWeek.toString())
+            }
+
         } catch (error) {
             handleError(error);
-        } finally {
-            setLoading(false);
-            await signInNow(auth);  // Re-Connect
         }
     };
 
