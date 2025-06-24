@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import Session from "../utils/sessionStorage";
-import { Activity } from "../models/types/activity";
 import { addSessionData } from "../utils/movment";
-import { useAuthContext } from "./AuthContext";
+import { Activity } from "../models/types/activity";
 import { Movements } from "../models/resources/movment";
 import { SessionKey } from "../models/enum/storage";
 import { DataType } from "../models/types/common";
+import { useAuthContext } from "./AuthContext";
 import { useLanguage } from "../i18n/useLanguage";
+import { ProductPages } from "../models/enum/pages";
 
 export type ContentContextType = {
     data: DataType;
@@ -16,6 +17,8 @@ export type ContentContextType = {
     updateMainActivity: (activity: Activity) => void;
     clearAll: () => void;
     clearMainActivity: () => void;
+    currentPage: ProductPages | null;
+    setCurrentPage: (page: ProductPages) => void;
 };
 
 export const typeContext = {
@@ -26,6 +29,8 @@ export const typeContext = {
     updateMainActivity: () => {},
     clearAll: () => {},
     clearMainActivity: () => {},
+    currentPage: null,
+    setCurrentPage: () => {},
 };
 
 export const ContentContext = createContext<ContentContextType>(typeContext);
@@ -33,11 +38,12 @@ export const ContentContext = createContext<ContentContextType>(typeContext);
 export const useContentContext = () => useContext(ContentContext);
 
 export const ContentProvider = ({ children }: { children: React.ReactNode }) => {
-    
+
     const { currentUser } = useAuthContext();
     const [data, setData] = useState<DataType | undefined>();
     const [mainActivity, setMainActivity] = useState<Activity | undefined>();
     const { lang } = useLanguage();
+    const [currentPage, setCurrentPage] = useState<ProductPages | null>(null);
 
     const setStateFromSession = () => {
         try {
@@ -102,6 +108,8 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
                 updateMainActivity,
                 clearAll,
                 clearMainActivity,
+                currentPage,
+                setCurrentPage,
             }}
         >
             {children}

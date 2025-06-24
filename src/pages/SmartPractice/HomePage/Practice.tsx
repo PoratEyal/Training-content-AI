@@ -1,7 +1,7 @@
 //
 // Home page
 //
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import route from "../../../router/route.json";
 import styles from "./Practice.module.css";
@@ -19,6 +19,8 @@ import StartBtn from "../../../components/StartBtn/StartBtn";
 import AboutUsCollapse from "../../../components/AboutUsCollapse/AboutUsCollapse";
 import ContinueWithAI from "../../../components/titles/ContinueWithAI/ContinueWithAI";
 import { startAsGuestOrUser } from "../../../utils/startAsGuestOrUser";
+import { useContentContext } from "../../../context/ContentContext";
+import { ProductPages } from "../../../models/enum/pages";
 
 
 function PracticeHomePage() {
@@ -28,10 +30,16 @@ function PracticeHomePage() {
   const navigate = useNavigate()
   const { currentUser, isLoggedIn } = useAuthContext()
   const { signInWithGoogle } = useSignIn()
+  const { setCurrentPage } = useContentContext()
 
   const homeSchema = useMemo(() => buildHomeSchema(lang, t("home.slogan")), [lang, t])
   const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn
   const shouldBlockUI = !isLoggedIn && cookieLimit === GUEST_BLOCK_MustLogin
+
+  useEffect(() => {
+    setCurrentPage(ProductPages.PAGE_PracticeHome);
+    sessionStorage.setItem("lastVisitedPage", ProductPages.PAGE_PracticeHome);
+  }, []);
 
   return (
     <PageLayout

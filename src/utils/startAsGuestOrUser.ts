@@ -26,7 +26,7 @@ export function startAsGuestOrUser({
         return
     }
 
-    Session.set(SessionKey.NAVIGATE, navigateTo)
+    // Session.set(SessionKey.NAVIGATE, navigateTo) // this session key is never used anywhere else in the codebase
 
     if (cookieLimit) {
         if (cookieLimit === GUEST_BLOCK_MustLogin) {

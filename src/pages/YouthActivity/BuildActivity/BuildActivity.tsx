@@ -2,38 +2,41 @@
 // This is the Activity Parameters page
 // It loads default values from session or user data, and allows filling in activity parameters
 //
-import MainBtn from "../../../components/MainBtn/MainBtn"
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
-import LoadingActivity from "../../../components/Loading/LoadingActivity/LoadingActivity"
-import MoreDetailsInput from "../../../components/MoreDetailsInput/MoreDetailsInput"
-import MoreOptionsCollapse from "../../../components/MoreOptionsCollapse/MoreOptionsCollapse"
-import SelectDetails from "../../../components/SelectDetails/SelectDetails"
-import SubjectInput from "../../../components/SubjectInput/SubjectInput"
-import CreateYourActivity from "../../../components/titles/CreateYourActivity/CreateYourActivity"
-import { useAuthContext } from "../../../context/AuthContext"
-import { useContentContext } from "../../../context/ContentContext"
-import { ProductType } from "../../../context/ProductType"
-import { useErrorContext } from "../../../context/ErrorContext"
-import { useLanguage } from "../../../i18n/useLanguage"
-import { BUILD_AD_SLOT } from "../../../models/constants/adsSlot"
-import msg from "../../../models/resources/errorMsg.json"
-import { ActivityTimeOptions, CategoryOptions, ContestOptions, PlaceOptions, ReligionOptions, ToolsOptions } from "../../../models/resources/select"
-import { Activity } from "../../../models/types/activity"
-import { CategoryName } from "../../../models/types/movement"
-import { SessionKey } from "../../../models/enum/storage"
-import Session from "../../../utils/sessionStorage"
-import { fetchGetActivity, fetchUpdateUser } from "../../../utils/fetch"
-import route from "../../../router/route.json"
-import { isYouthDetailsChanged, updateUserMovement } from "../../../utils/user"
-import { useNavigate } from "react-router-dom"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import MainBtn from "../../../components/MainBtn/MainBtn";
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
+import LoadingActivity from "../../../components/Loading/LoadingActivity/LoadingActivity";
+import MoreDetailsInput from "../../../components/MoreDetailsInput/MoreDetailsInput";
+import MoreOptionsCollapse from "../../../components/MoreOptionsCollapse/MoreOptionsCollapse";
+import SelectDetails from "../../../components/SelectDetails/SelectDetails";
+import SubjectInput from "../../../components/SubjectInput/SubjectInput";
+import CreateYourActivity from "../../../components/titles/CreateYourActivity/CreateYourActivity";
+import { useAuthContext } from "../../../context/AuthContext";
+import { useContentContext } from "../../../context/ContentContext";
+import { ProductType } from "../../../context/ProductType";
+import { useErrorContext } from "../../../context/ErrorContext";
+import { useLanguage } from "../../../i18n/useLanguage";
+import { BUILD_AD_SLOT } from "../../../models/constants/adsSlot";
+import msg from "../../../models/resources/errorMsg.json";
+import { ActivityTimeOptions, CategoryOptions, ContestOptions, PlaceOptions, ReligionOptions, ToolsOptions } from "../../../models/resources/select";
+import { Activity } from "../../../models/types/activity";
+import { CategoryName } from "../../../models/types/movement";
+import { SessionKey } from "../../../models/enum/storage";
+import Session from "../../../utils/sessionStorage";
+import { fetchGetActivity, fetchUpdateUser } from "../../../utils/fetch";
+import route from "../../../router/route.json";
+import { isYouthDetailsChanged, updateUserMovement } from "../../../utils/user";
+import { ProductPages } from "../../../models/enum/pages";
+import { enforcePageAccess } from "../../../utils/navigation";
 import styles from "./BuildActivity.module.css"
+
 
 function BuildActivity() {
 
   const { t, isRTL, lang } = useLanguage();
   const { handleError } = useErrorContext();
-  const { data, updateMainActivity } = useContentContext();
+  const { data, updateMainActivity, currentPage, setCurrentPage } = useContentContext();
   const { isLoggedIn, currentUser, setCurrentUser } = useAuthContext();
 
   const [category, setCategory] = useState("");
@@ -53,16 +56,16 @@ function BuildActivity() {
   const [hasAlert, setHasAlert] = useState(false);
 
   const youthHomePagePath = route[`youthHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthHomePageEn;
-  const youthDetailsPath = route[`youthDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthDetailsEn;
   const youtActivityAIPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn;
 
-  const goBack = () => { navigate(youthDetailsPath); };
+  const goBack = () => {
+    const youthDetailsPath = route[`youthDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthDetailsEn;
+    navigate(youthDetailsPath);
+  };
 
-  //  useEffect(() => { // Prevent direct access via URL
-  //    if (!currentUser) {
-  //      navigate(youthHomePagePath);
-  //    }
-  //  }, [currentUser, navigate]);
+  useEffect(() => { // Prevent direct access via URL
+    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_Build, navigate, youthHomePagePath);
+  }, []);
 
   useEffect(() => { // Initialize form: validate data, set defaults, update user if needed, load session activity
 
@@ -97,11 +100,11 @@ function BuildActivity() {
       } catch (error) { }
     };
 
-    if (!data || !data.movement) {
+    if (!data || !data.movement) {  // Backup code although it should not be needed
       navigate(youthHomePagePath);
       return;
     }
-    
+
     if (data?.movement?.categories && data.movement.categories.length > 0) {
       setCategory(data.movement.categories[0].name);
     }

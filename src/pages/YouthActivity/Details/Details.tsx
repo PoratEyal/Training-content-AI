@@ -18,11 +18,14 @@ import route from "../../../router/route.json"
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import styles from "./Details.module.css"
+import { ProductPages } from "../../../models/enum/pages"
+import { enforcePageAccess } from "../../../utils/navigation"
+
 
 function Details() {
 
   const { t, isRTL, dir, lang } = useLanguage();
-  const { data, updateDetails } = useContentContext();  // Session
+  const { currentPage, setCurrentPage, data, updateDetails } = useContentContext();
   const { currentUser } = useAuthContext();
   const navigate = useNavigate();
   const [movement, setMovement] = useState("");
@@ -36,11 +39,9 @@ function Details() {
 
   const goBack = () => { navigate(youthHomePagePath); };
 
-  //  useEffect(() => { // Prevent direct access via URL
-  //    if (!currentUser) {
-  //      navigate(youthHomePagePath);
-  //    }
-  //  }, [currentUser, navigate]);
+  useEffect(() => { // Prevent direct access via URL
+    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_Details, navigate, youthHomePagePath);
+  }, []);
 
   useEffect(() => { // Set default values from session data or current user
     setMovement(data?.movement?.name || currentUser?.movement?.movement || "");

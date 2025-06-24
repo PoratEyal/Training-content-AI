@@ -18,15 +18,19 @@ import { useNavigate } from "react-router-dom"
 import { useMemo } from "react"
 import { startAsGuestOrUser } from "../../../utils/startAsGuestOrUser"
 import styles from "./Youth.module.css"
+import { useContentContext } from "../../../context/ContentContext"
+import { ProductPages } from "../../../models/enum/pages"
+import { useEffect } from "react"
+
 
 function YouthHomePage() {
 
+  const { signInWithGoogle } = useSignIn()
+  const navigate = useNavigate()
   const { t, dir, lang } = useLanguage()
   const { cookieLimit, setLimitCookie } = useCookiesContext()
-  const navigate = useNavigate()
   const { currentUser, isLoggedIn } = useAuthContext()
-  const { signInWithGoogle } = useSignIn()
-  
+  const { setCurrentPage } = useContentContext()
   const { useFetchSubjectsData } = useStaticContentContext()
   const { useFetchSavedData } = useSaveContext()
   useFetchSubjectsData()
@@ -35,6 +39,11 @@ function YouthHomePage() {
   const homeSchema = useMemo(() => buildHomeSchema(lang, t("home.slogan")), [lang, t])
   const youthDetailsPath = route[`youthDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthDetailsEn
   const shouldBlockUI = !isLoggedIn && cookieLimit === GUEST_BLOCK_MustLogin
+
+  useEffect(() => {
+    setCurrentPage(ProductPages.PAGE_YouthHome);
+    sessionStorage.setItem("lastVisitedPage", ProductPages.PAGE_YouthHome);
+  }, []);
 
   return (
     <PageLayout

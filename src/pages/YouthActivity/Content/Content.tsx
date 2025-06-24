@@ -4,33 +4,42 @@
 // It fetches the data from StaticContentContext and displays it as links
 // It includes a link to the 10 most popular activities and a back button to homePage
 //
-import styles from "./Content.module.css";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../../../components/ActivityOutput/Markdown.css";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import route from "../../../router/route.json";
-import { Link, useNavigate } from "react-router-dom";
-import { CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
 import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
-import { useStaticContentContext } from "../../../context/StaticContentContext";
-import { Icons } from "../../../components/Icons";
-import { buildContentSchema } from "../../../models/schemaOrg";
-import { useLanguage } from "../../../i18n/useLanguage";
 import ReadyContent from "../../../components/titles/ReadyContent/ReadyContent";
-import { ProductType } from "../../../context/ProductType"
+import { Icons } from "../../../components/Icons";
+import { useStaticContentContext } from "../../../context/StaticContentContext";
+import { useContentContext } from "../../../context/ContentContext";
+import { useLanguage } from "../../../i18n/useLanguage";
+import { ProductType } from "../../../context/ProductType";
+import { CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
+import { buildContentSchema } from "../../../models/schemaOrg";
+import route from "../../../router/route.json";
+import { ProductPages } from "../../../models/enum/pages";
+import styles from "./Content.module.css";
+
 
 function Content() {
+
   const { lang } = useLanguage();
   const { subjects, isLoading, useFetchSubjectsData } = useStaticContentContext();
   const navigate = useNavigate();
+  const { setCurrentPage } = useContentContext()
   useFetchSubjectsData();
 
-  // Determine language-specific paths (fallback to Hebrew)
   const youthContentPath = route[`youthContent${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthContentEn;
   const youthPopularContentPath = route[`youthActivitiesPopular${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivitiesPopularEn;
   const youthHomePagePath = route[`youthHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthHomePageEn;
 
   const goBack = () => { navigate(youthHomePagePath); };
+
+  useEffect(() => {
+    setCurrentPage(ProductPages.PAGE_StaticContent);
+    sessionStorage.setItem("lastVisitedPage", ProductPages.PAGE_StaticContent);
+  }, []);
 
   const contentSchema = useMemo(
     () => buildContentSchema(subjects || [], youthContentPath),
