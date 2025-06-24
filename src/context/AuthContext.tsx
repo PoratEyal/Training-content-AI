@@ -57,15 +57,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             if (user)
                 initializeUser(user);
             else {
-                if (cookieLimit) {          // cleanup: set limit cookie to a "must login" value
-                    const lastWeek = new Date()
-                    lastWeek.setDate(lastWeek.getDate() - 7)
-                    setLimitCookie(lastWeek.toString())
-                }
                 if (document.referrer?.includes("accounts.google")) {           // Those 2 line are redundent but left as legacy 2be on the safe side
                     logEvent("[AuthContext.useEffect]: It’s highly unlikely that this block is ever reached.", "guest");
                     setRedirectFailed(true);
                 }
+                setLoading(false);
             }
         });
 
