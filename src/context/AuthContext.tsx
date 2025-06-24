@@ -13,7 +13,7 @@ import { initRawUser } from "../utils/user";
 import { useCookiesContext } from "./CookiesContext";
 import { useLanguage } from "../i18n/useLanguage";
 import { GoogleUser, User } from "../models/types/user";
-import { NEED_TO_LOGIN } from "../models/constants/cookie";
+import { GUEST_BLOCK_MustLogin } from "../models/constants/cookie";
 import msg from "../models/resources/errorMsg.json";
 import { logEvent } from "../utils/logEvent";
 
@@ -103,8 +103,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
                     setIsLoggedIn(true);
 
-                    if (cookieLimit !== NEED_TO_LOGIN)
-                        setLimitCookie(NEED_TO_LOGIN);
+                    if (cookieLimit !== GUEST_BLOCK_MustLogin)
+                        setLimitCookie(GUEST_BLOCK_MustLogin);
 
                     fetchUpdateLastLogin().catch((e) => {       // Keep "lastLogin" in DB
                         logEvent("[AuthContext.initializeUser]: Failed to update lastLogin in DB: " + e, resultUser?.email);

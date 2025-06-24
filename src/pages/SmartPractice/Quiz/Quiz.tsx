@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getAuth } from "firebase/auth";
-import { useTranslation } from "react-i18next";
-import route from "../../../router/route.json";
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import QuizContainer from "../../../components/SmartPractice/QuizContainer/QuizContainer";
-import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz";
-import { PRACTICE_QUIZ_AD_SLOT } from "../../../models/constants/adsSlot";
-import { ProductType } from "../../../context/ProductType";
-import { Icons } from "../../../components/Icons";
-import { createQuiz } from "../../../hooks/useQuestions";
-import { logEvent } from "../../../utils/logEvent";
-import styles from "./Quiz.module.css";
+import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz"
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
+import QuizContainer from "../../../components/SmartPractice/QuizContainer/QuizContainer"
+import { Icons } from "../../../components/Icons"
+import { useAuthContext } from "../../../context/AuthContext"
+import { ProductType } from "../../../context/ProductType"
+import { PRACTICE_QUIZ_AD_SLOT } from "../../../models/constants/adsSlot"
+import { createQuiz } from "../../../hooks/useQuestions"
+import { logEvent } from "../../../utils/logEvent"
+import route from "../../../router/route.json"
+import { getAuth } from "firebase/auth"
+import { useTranslation } from "react-i18next"
+import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+import styles from "./Quiz.module.css"
 
 type Question = {
   question: string
@@ -28,12 +29,14 @@ function Quiz() {
 
   const practiceHomePagePath = route[`practiceHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceHomePageEn
   const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn
+
   const goBack = () => { navigate(topicPath) }
 
   const [questions, setQuestions] = useState<Question[]>([])
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>([])
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const { currentUser } = useAuthContext();
 
   const topic = sessionStorage.getItem("practiceTopic") || ""
 
@@ -67,16 +70,18 @@ function Quiz() {
     setSubmitted(false)
   }
 
-
-  // On component load, get the quiz from sessionStorage and display it. If missing, redirect to the home page.
   useEffect(() => {
-    const raw = sessionStorage.getItem("practiceQuestions")
-    if (!raw) {
+//    if (!currentUser) { // Prevent direct access via URL
+//      navigate(practiceHomePagePath);
+//      return
+//    }
+
+    const raw = sessionStorage.getItem("practiceQuestions") // Never runs but kept for consistency
+    if (raw)  // On component load, get the quiz from sessionStorage and display it. If missing, redirect to the home page.
+      loadQuestionsFromRaw(raw)
+    else
       navigate(practiceHomePagePath)
-      return
-    }
-    loadQuestionsFromRaw(raw)
-  }, [navigate, lang])
+  }, [lang, navigate])
 
   const handleSelect = (qIdx: number, optIdx: number) => {
     if (submitted) return
@@ -89,9 +94,7 @@ function Quiz() {
     setSubmitted(true)
   }
 
-  //
   // Generates a new quiz with 10 valid and unique questions (max 5 attempts). Replaces current questions if successful.
-  //
   const handleRegenerate = async () => {
 
     const prev = sessionStorage.getItem("practiceQuestions")

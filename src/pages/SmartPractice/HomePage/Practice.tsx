@@ -10,7 +10,7 @@ import { useCookiesContext } from "../../../context/CookiesContext";
 import { useLanguage } from "../../../i18n/useLanguage";
 import useSignIn from "../../../hooks/useSignIn";
 import { ProductType } from "../../../context/ProductType";
-import { NEED_TO_LOGIN } from "../../../models/constants/cookie";
+import { GUEST_BLOCK_MustLogin } from "../../../models/constants/cookie";
 import { PRACTICE_HOME_AD_SLOT } from "../../../models/constants/adsSlot";
 import { buildHomeSchema } from "../../../models/schemaOrg";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
@@ -31,7 +31,7 @@ function PracticeHomePage() {
 
   const homeSchema = useMemo(() => buildHomeSchema(lang, t("home.slogan")), [lang, t])
   const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn
-  const shouldBlockUI = !isLoggedIn && cookieLimit === NEED_TO_LOGIN
+  const shouldBlockUI = !isLoggedIn && cookieLimit === GUEST_BLOCK_MustLogin
 
   return (
     <PageLayout

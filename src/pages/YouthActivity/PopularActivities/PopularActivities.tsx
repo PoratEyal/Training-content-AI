@@ -24,9 +24,7 @@ function PopularActivities() {
   // Determine language-specific paths
   const youthContentPath = route[`youthContent${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthContentEn;
 
-  const goBack = () => {
-    navigate(youthContentPath);
-  };
+  const goBack = () => { navigate(youthContentPath); };
 
   let topActivities: { activity: StaticActivities; subjectName: string }[] = [];
 
@@ -59,7 +57,7 @@ function PopularActivities() {
     <PageLayout
       id="popularActivities"
       productType={ProductType.Youth}
-      hasHeader={{ goBack , hasTitle: "10 הפעולות הפופולריות"}}
+      hasHeader={{ goBack, hasTitle: "10 הפעולות הפופולריות" }}
       hasNavBar
       hasGreenBackground
       hasAds={CONTENT_ACTIVITY_AD_SLOT}

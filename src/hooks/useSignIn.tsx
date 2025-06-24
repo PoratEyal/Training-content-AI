@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { ProductType } from "../context/ProductType";
 import { logEvent } from "../utils/logEvent";
 import route from "../router/route.json";
-import { NEED_TO_LOGIN } from "../models/constants/cookie";
+import { GUEST_BLOCK_MustLogin } from "../models/constants/cookie";
 
 
 const useSignIn = () => {
@@ -27,7 +27,7 @@ const useSignIn = () => {
 
     const signInWithGoogle = async () => {
         
-        setLimitCookie(NEED_TO_LOGIN);
+        setLimitCookie(GUEST_BLOCK_MustLogin);
         try {
             await signInNow(auth);
 

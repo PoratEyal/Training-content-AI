@@ -1,16 +1,17 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getAuth } from "firebase/auth";
-import { useTranslation } from "react-i18next";
-import route from "../../../router/route.json";
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import MainBtn from "../../../components/MainBtn/MainBtn";
-import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz";
-import { PRACTICE_TOPIC_AD_SLOT } from "../../../models/constants/adsSlot";
-import { ProductType } from "../../../context/ProductType";
-import { createQuiz } from "../../../hooks/useQuestions";
-import { logEvent } from "../../../utils/logEvent";
-import styles from "./Topic.module.css";
+import MainBtn from "../../../components/MainBtn/MainBtn"
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
+import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz"
+import { useAuthContext } from "../../../context/AuthContext"
+import { ProductType } from "../../../context/ProductType"
+import { PRACTICE_TOPIC_AD_SLOT } from "../../../models/constants/adsSlot"
+import { createQuiz } from "../../../hooks/useQuestions"
+import { logEvent } from "../../../utils/logEvent"
+import route from "../../../router/route.json"
+import { getAuth } from "firebase/auth"
+import { useTranslation } from "react-i18next"
+import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+import styles from "./Topic.module.css"
 
 function Topic() {
 
@@ -19,13 +20,17 @@ function Topic() {
   const [topic, setTopic] = useState("")
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  const { currentUser} = useAuthContext();
 
-  const quizPath = route[`practiceQuiz${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceQuizEn;
-  const homePagePath = route[`practiceHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceHomePageEn;
+  const practiceHomePagePath = route[`practiceHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceHomePageEn;
+  const practiceQuizPath = route[`practiceQuiz${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceQuizEn;
+  const goBack = () => { navigate(practiceHomePagePath); };
 
-  const goBack = () => {
-    navigate(homePagePath);
-  };
+//  useEffect(() => { // Prevent direct access via URL
+//    if (!currentUser) {
+//      navigate(practiceHomePagePath);
+//    }
+//  }, [currentUser, navigate]);
 
   // Checks if the given text contains at least one valid multiple-choice question block.
   // Because if the request was invalid and the model returns a general message saying a quiz can't be generated, we want to display that message to the user.
@@ -64,7 +69,7 @@ function Topic() {
       sessionStorage.setItem("practiceQuestions", result)
       sessionStorage.setItem("practiceTopic", topic)
 
-      navigate(quizPath)
+      navigate(practiceQuizPath)
     } else {
       const auth = getAuth();
       const user = auth.currentUser;

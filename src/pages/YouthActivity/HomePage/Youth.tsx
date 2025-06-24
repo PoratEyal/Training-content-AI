@@ -1,23 +1,23 @@
-import styles from "./Youth.module.css"
-import { useMemo } from "react"
-import { useNavigate } from "react-router-dom"
+import AboutUsCollapse from "../../../components/AboutUsCollapse/AboutUsCollapse"
+import ContinueWithAI from "../../../components/titles/ContinueWithAI/ContinueWithAI"
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
+import PageLoading from "../../../components/Loading/PageLoading/PageLoading"
+import StartBtn from "../../../components/StartBtn/StartBtn"
 import { useAuthContext } from "../../../context/AuthContext"
+import { useCookiesContext } from "../../../context/CookiesContext"
+import { useSaveContext } from "../../../context/SavedContext"
+import { useStaticContentContext } from "../../../context/StaticContentContext"
+import { ProductType } from "../../../context/ProductType"
+import { useLanguage } from "../../../i18n/useLanguage"
+import { GUEST_BLOCK_MustLogin } from "../../../models/constants/cookie"
+import { HOME_AD_SLOT } from "../../../models/constants/adsSlot"
+import { buildHomeSchema } from "../../../models/schemaOrg"
 import route from "../../../router/route.json"
 import useSignIn from "../../../hooks/useSignIn"
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
-import { NEED_TO_LOGIN } from "../../../models/constants/cookie"
-import StartBtn from "../../../components/StartBtn/StartBtn"
-import PageLoading from "../../../components/Loading/PageLoading/PageLoading"
-import { useCookiesContext } from "../../../context/CookiesContext"
-import { HOME_AD_SLOT } from "../../../models/constants/adsSlot"
-import AboutUsCollapse from "../../../components/AboutUsCollapse/AboutUsCollapse"
-import { useStaticContentContext } from "../../../context/StaticContentContext"
-import { useSaveContext } from "../../../context/SavedContext"
-import { useLanguage } from "../../../i18n/useLanguage"
-import { buildHomeSchema } from "../../../models/schemaOrg"
-import ContinueWithAI from "../../../components/titles/ContinueWithAI/ContinueWithAI"
-import { ProductType } from "../../../context/ProductType"
+import { useNavigate } from "react-router-dom"
+import { useMemo } from "react"
 import { startAsGuestOrUser } from "../../../utils/startAsGuestOrUser"
+import styles from "./Youth.module.css"
 
 function YouthHomePage() {
 
@@ -34,7 +34,7 @@ function YouthHomePage() {
 
   const homeSchema = useMemo(() => buildHomeSchema(lang, t("home.slogan")), [lang, t])
   const youthDetailsPath = route[`youthDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthDetailsEn
-  const shouldBlockUI = !isLoggedIn && cookieLimit === NEED_TO_LOGIN
+  const shouldBlockUI = !isLoggedIn && cookieLimit === GUEST_BLOCK_MustLogin
 
   return (
     <PageLayout
@@ -53,23 +53,6 @@ function YouthHomePage() {
           <span>{t("home.slogan")}</span>
         </div>
       </div>
-
-      {/* 🔧 Hidden top-right button for admin to navigate to /practice 
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          right: 0,
-          width: 30,
-          height: 30,
-          zIndex: 9999,
-          background: "transparent",
-        }}
-        onClick={() => {
-          window.location.href = "/practice"
-        }}
-      /> 
-      */}
 
       {shouldBlockUI ? (
         <div className={styles.button_section_loading}>

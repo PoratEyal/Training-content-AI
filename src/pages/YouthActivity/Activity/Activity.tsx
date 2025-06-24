@@ -1,33 +1,31 @@
 //
 // This is the AI Generated Activity page, which displays a single activity article or the activity editor (if in edit mode).
-// It validates that all required activity data is present (grade, movement, main activity) before rendering.
-// If no data is found, it navigates back to the activity parameters page.
 //
-import { useRef, useState, useEffect } from "react";
-import { useContentContext } from "../../../context/ContentContext";
-import { useNavigate } from "react-router-dom";
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import { ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
-import ActivityArticle from "../../../components/ActivityArticle/ActivityArticle";
-import { useAuthContext } from "../../../context/AuthContext";
-import RichTextEditor from "../../../components/RichTextEditor/RichTextEditor";
-import { useEditorContext } from "../../../context/EditorContext";
-import { helmetJson } from "../../../models/resources/helmet";
-import route from "../../../router/route.json";
-import { useLanguage } from "../../../i18n/useLanguage";
+import ActivityArticle from "../../../components/ActivityArticle/ActivityArticle"
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
+import RichTextEditor from "../../../components/RichTextEditor/RichTextEditor"
+import { useAuthContext } from "../../../context/AuthContext"
+import { useContentContext } from "../../../context/ContentContext"
+import { useEditorContext } from "../../../context/EditorContext"
 import { ProductType } from "../../../context/ProductType"
+import { useLanguage } from "../../../i18n/useLanguage"
+import { ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot"
+import { helmetJson } from "../../../models/resources/helmet"
+import route from "../../../router/route.json"
+import { useNavigate } from "react-router-dom"
+import { useRef, useState, useEffect } from "react"
 
 function Activity() {
-  
-  const { data, mainActivity } = useContentContext();
+
+  const { mainActivity } = useContentContext();
   const { isEdit, readOnlyMode } = useEditorContext();
-  const { isLoggedIn } = useAuthContext();
+  const { isLoggedIn, currentUser } = useAuthContext();
   const [newActivity, setNewActivity] = useState(false);
   const activityRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
   const { lang } = useLanguage();
 
-  // Determine language-specific paths (fallback to He if missing)
+  const youthHomePagePath = route[`youthHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthHomePageEn;
   const youthBuildPath = route[`youthBuild${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthBuildEn;
 
   const goBack = () => {
@@ -38,11 +36,11 @@ function Activity() {
     }
   };
 
-  useEffect(() => {
-    if (!data || !data.grade || !data.movement || !mainActivity) {
-      goBack();
-    }
-  }, [data, mainActivity]);
+//  useEffect(() => { // Prevent direct access via URL
+//    if (!currentUser) {
+//      navigate(youthHomePagePath);
+//    }
+//  }, [currentUser, navigate]);
 
   useEffect(() => {
     if (newActivity && activityRef.current) {

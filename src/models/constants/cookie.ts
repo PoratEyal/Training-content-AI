@@ -9,4 +9,4 @@ export const CookieOptions = {
 };
 
 export const USER_CONSENT_VALUE = "accepted";
-export const NEED_TO_LOGIN = "guest-block";
+export const GUEST_BLOCK_MustLogin = "guest-block";

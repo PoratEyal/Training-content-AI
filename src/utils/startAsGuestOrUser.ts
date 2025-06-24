@@ -1,5 +1,4 @@
-// utils/startAsGuestOrUser.ts
-import { NEED_TO_LOGIN } from "../models/constants/cookie"
+import { GUEST_BLOCK_MustLogin } from "../models/constants/cookie"
 import { a24hoursPeriodPassed, isValidDateFormat } from "../utils/time"
 import Session from "../utils/sessionStorage"
 import { SessionKey } from "../models/enum/storage"
@@ -30,7 +29,7 @@ export function startAsGuestOrUser({
     Session.set(SessionKey.NAVIGATE, navigateTo)
 
     if (cookieLimit) {
-        if (cookieLimit === NEED_TO_LOGIN) {
+        if (cookieLimit === GUEST_BLOCK_MustLogin) {
             signInWithGoogle()
         } else {
             const isValidDate = isValidDateFormat(cookieLimit)

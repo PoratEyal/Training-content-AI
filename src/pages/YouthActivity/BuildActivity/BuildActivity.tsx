@@ -2,40 +2,39 @@
 // This is the Activity Parameters page
 // It loads default values from session or user data, and allows filling in activity parameters
 //
-import styles from "./BuildActivity.module.css";
-import route from "../../../router/route.json";
-import { useEffect, useRef, useState, useMemo } from "react";
-import { useContentContext } from "../../../context/ContentContext";
-import { useAuthContext } from "../../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
-import { isYouthDetailsChanged as isYouthDetailsChanged, updateUserMovement } from "../../../utils/user";
-import { fetchGetActivity, fetchUpdateUser } from "../../../utils/fetch";
-import { Activity } from "../../../models/types/activity";
-import { SessionKey } from "../../../models/enum/storage";
-import Session from "../../../utils/sessionStorage";
-import { CategoryName } from "../../../models/types/movement";
-import { useErrorContext } from "../../../context/ErrorContext";
-import msg from "../../../models/resources/errorMsg.json";
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import { BUILD_AD_SLOT } from "../../../models/constants/adsSlot";
-import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
-import SelectDetails from "../../../components/SelectDetails/SelectDetails";
-import { ActivityTimeOptions, CategoryOptions, ContestOptions, PlaceOptions, ReligionOptions, ToolsOptions } from "../../../models/resources/select";
-import SubjectInput from "../../../components/SubjectInput/SubjectInput";
-import MoreOptionsCollapse from "../../../components/MoreOptionsCollapse/MoreOptionsCollapse";
-import MoreDetailsInput from "../../../components/MoreDetailsInput/MoreDetailsInput";
-import MainBtn from "../../../components/MainBtn/MainBtn";
-import LoadingActivity from "../../../components/Loading/LoadingActivity/LoadingActivity";
-import { useLanguage } from "../../../i18n/useLanguage";
-import CreateYourActivity from "../../../components/titles/CreateYourActivity/CreateYourActivity";
+import MainBtn from "../../../components/MainBtn/MainBtn"
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
+import LoadingActivity from "../../../components/Loading/LoadingActivity/LoadingActivity"
+import MoreDetailsInput from "../../../components/MoreDetailsInput/MoreDetailsInput"
+import MoreOptionsCollapse from "../../../components/MoreOptionsCollapse/MoreOptionsCollapse"
+import SelectDetails from "../../../components/SelectDetails/SelectDetails"
+import SubjectInput from "../../../components/SubjectInput/SubjectInput"
+import CreateYourActivity from "../../../components/titles/CreateYourActivity/CreateYourActivity"
+import { useAuthContext } from "../../../context/AuthContext"
+import { useContentContext } from "../../../context/ContentContext"
 import { ProductType } from "../../../context/ProductType"
+import { useErrorContext } from "../../../context/ErrorContext"
+import { useLanguage } from "../../../i18n/useLanguage"
+import { BUILD_AD_SLOT } from "../../../models/constants/adsSlot"
+import msg from "../../../models/resources/errorMsg.json"
+import { ActivityTimeOptions, CategoryOptions, ContestOptions, PlaceOptions, ReligionOptions, ToolsOptions } from "../../../models/resources/select"
+import { Activity } from "../../../models/types/activity"
+import { CategoryName } from "../../../models/types/movement"
+import { SessionKey } from "../../../models/enum/storage"
+import Session from "../../../utils/sessionStorage"
+import { fetchGetActivity, fetchUpdateUser } from "../../../utils/fetch"
+import route from "../../../router/route.json"
+import { isYouthDetailsChanged, updateUserMovement } from "../../../utils/user"
+import { useNavigate } from "react-router-dom"
+import { useEffect, useRef, useState } from "react"
+import styles from "./BuildActivity.module.css"
 
 function BuildActivity() {
-  
+
   const { t, isRTL, lang } = useLanguage();
   const { handleError } = useErrorContext();
   const { data, updateMainActivity } = useContentContext();
-  const { isLoggedIn, currentUser, loading, setCurrentUser } = useAuthContext();
+  const { isLoggedIn, currentUser, setCurrentUser } = useAuthContext();
 
   const [category, setCategory] = useState("");
   const [subject, setSubject] = useState<string>("");
@@ -57,11 +56,16 @@ function BuildActivity() {
   const youthDetailsPath = route[`youthDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthDetailsEn;
   const youtActivityAIPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn;
 
-  const goBack = () => {
-    navigate(youthDetailsPath);
-  };
+  const goBack = () => { navigate(youthDetailsPath); };
 
-  useEffect(() => {
+  //  useEffect(() => { // Prevent direct access via URL
+  //    if (!currentUser) {
+  //      navigate(youthHomePagePath);
+  //    }
+  //  }, [currentUser, navigate]);
+
+  useEffect(() => { // Initialize form: validate data, set defaults, update user if needed, load session activity
+
     const updateUser = async () => {
       lockRef.current = false;
       if (isLoggedIn && currentUser && data?.movement) {
@@ -97,6 +101,7 @@ function BuildActivity() {
       navigate(youthHomePagePath);
       return;
     }
+    
     if (data?.movement?.categories && data.movement.categories.length > 0) {
       setCategory(data.movement.categories[0].name);
     }
@@ -107,10 +112,9 @@ function BuildActivity() {
     }
   }, [currentUser, data, isLoggedIn, navigate]);
 
-  useEffect(() => {
-    if (loading) setIsDisabled(true);
-    setIsDisabled(subject === "" || place === "" || time === "" ? true : false);
-  }, [loading, subject, place, time]);
+  useEffect(() => { // Enable/Disable "Continue" button based on whether fields are filled
+    setIsDisabled(subject === "" || place === "" || time === "");
+  }, [subject, place, time]);
 
   const submitHandler = async () => {
     setClicked(true);
@@ -164,95 +168,89 @@ function BuildActivity() {
         />
 
         <div className={styles.selects_btn}>
-          {loading ? (
-            <section className={styles.loading_mock_selection_container}>
-              <PageLoading />
-            </section>
-          ) : (
-            <section className={styles.build_container}>
-              <section className={styles.build_content}>
+          <section className={styles.build_container}>
+            <section className={styles.build_content}>
+              <SelectDetails
+                placeholder={t("buildActivity.category.label")}
+                obj={category}
+                setObj={setCategory}
+                data={CategoryOptions(data?.movement?.categories || [])}
+              />
+
+              <SubjectInput
+                placeholder={t("buildActivity.subject.label")}
+                setSubject={setSubject}
+                subject={subject}
+                category={category as CategoryName}
+                setHasAlert={setHasAlert}
+              />
+
+              <SelectDetails
+                placeholder={t("buildActivity.place.label")}
+                obj={place}
+                setObj={setPlace}
+                data={PlaceOptions[lang]}
+              />
+
+              <SelectDetails
+                placeholder={t("buildActivity.time.label")}
+                obj={time}
+                setObj={setTime}
+                data={ActivityTimeOptions[lang]}
+              />
+
+              <MoreOptionsCollapse text={t("buildActivity.moreOptions.title")}>
                 <SelectDetails
-                  placeholder={t("buildActivity.category.label")}
-                  obj={category}
-                  setObj={setCategory}
-                  data={CategoryOptions(data?.movement?.categories || [])}
-                />
-
-                <SubjectInput
-                  placeholder={t("buildActivity.subject.label")}
-                  setSubject={setSubject}
-                  subject={subject}
-                  category={category as CategoryName}
-                  setHasAlert={setHasAlert}
+                  placeholder={t("buildActivity.tools.label")}
+                  obj={tools}
+                  setObj={setTools}
+                  data={ToolsOptions[lang]}
                 />
 
                 <SelectDetails
-                  placeholder={t("buildActivity.place.label")}
-                  obj={place}
-                  setObj={setPlace}
-                  data={PlaceOptions[lang]}
+                  placeholder={t("buildActivity.contest.label")}
+                  obj={contest}
+                  setObj={setContest}
+                  data={ContestOptions[lang]}
                 />
 
-                <SelectDetails
-                  placeholder={t("buildActivity.time.label")}
-                  obj={time}
-                  setObj={setTime}
-                  data={ActivityTimeOptions[lang]}
-                />
-
-                <MoreOptionsCollapse text={t("buildActivity.moreOptions.title")}>
+                {lang === "he" && (
                   <SelectDetails
-                    placeholder={t("buildActivity.tools.label")}
-                    obj={tools}
-                    setObj={setTools}
-                    data={ToolsOptions[lang]}
+                    placeholder={t("buildActivity.religion.label")}
+                    obj={religion}
+                    setObj={setReligion}
+                    data={ReligionOptions}
                   />
+                )}
 
-                  <SelectDetails
-                    placeholder={t("buildActivity.contest.label")}
-                    obj={contest}
-                    setObj={setContest}
-                    data={ContestOptions[lang]}
-                  />
+                <MoreDetailsInput
+                  placeholder={t("buildActivity.moreDetails.label")}
+                  text={info}
+                  setText={setInfo}
+                />
+              </MoreOptionsCollapse>
 
-                  {lang === "he" && (
-                    <SelectDetails
-                      placeholder={t("buildActivity.religion.label")}
-                      obj={religion}
-                      setObj={setReligion}
-                      data={ReligionOptions}
-                    />
-                  )}
-
-                  <MoreDetailsInput
-                    placeholder={t("buildActivity.moreDetails.label")}
-                    text={info}
-                    setText={setInfo}
-                  />
-                </MoreOptionsCollapse>
-
-                <div
-                  className={
-                    isRTL
-                      ? `${styles.btn_div} ${styles.rtl_btn}`
-                      : styles.btn_div
-                  }
-                >
-                  <MainBtn
-                    isDisabled={isDisabled}
-                    height={42}
-                    text={t("buildActivity.submit")}
-                    func={submitHandler}
-                  />
-                  {hasAlert && (
-                    <div className={styles.input_alert}>
-                      {t("buildActivity.alert")}
-                    </div>
-                  )}
-                </div>
-              </section>
+              <div
+                className={
+                  isRTL
+                    ? `${styles.btn_div} ${styles.rtl_btn}`
+                    : styles.btn_div
+                }
+              >
+                <MainBtn
+                  isDisabled={isDisabled}
+                  height={42}
+                  text={t("buildActivity.submit")}
+                  func={submitHandler}
+                />
+                {hasAlert && (
+                  <div className={styles.input_alert}>
+                    {t("buildActivity.alert")}
+                  </div>
+                )}
+              </div>
             </section>
-          )}
+          </section>
         </div>
       </div>
       {clicked && <LoadingActivity />}

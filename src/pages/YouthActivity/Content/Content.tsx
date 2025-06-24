@@ -30,14 +30,12 @@ function Content() {
   const youthPopularContentPath = route[`youthActivitiesPopular${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivitiesPopularEn;
   const youthHomePagePath = route[`youthHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthHomePageEn;
 
+  const goBack = () => { navigate(youthHomePagePath); };
+
   const contentSchema = useMemo(
     () => buildContentSchema(subjects || [], youthContentPath),
     [subjects, youthContentPath]
   );
-
-  const goBack = () => {
-    navigate(youthHomePagePath);
-  };
 
   return (
     <PageLayout

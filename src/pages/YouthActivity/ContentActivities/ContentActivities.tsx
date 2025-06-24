@@ -43,15 +43,17 @@ const ContentActivities: React.FC = () => {
     return { subject: foundSubject, activities: sortedActivities };
   }, [subjects, activityId]);
 
-  // Redirect to /{lang}/youth if subject not found
+  // Redirect to HomePage if subject not found
   React.useEffect(() => {
+    const youthHomePagePath = route[`youthHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthHomePageEn;
     if (!isLoading && activityId && !subject) {
-      navigate(`/${lang}/youth`, { replace: true });
+      navigate(youthHomePagePath);
     }
   }, [isLoading, subject, activityId, lang, navigate]);
 
+
   // Increment activity display count
-  const handleActivityClick = async (activity: StaticActivities) => {
+  const incrementActivityDisplayCount = async (activity: StaticActivities) => {
     try {
       await fetchIncrementActivityDisplayCount(activity);
     } catch (error) {
@@ -89,7 +91,7 @@ const ContentActivities: React.FC = () => {
                     to={activityPath}
                     className={styles.grid_item}
                     key={index}
-                    onClick={() => handleActivityClick(activity)}
+                    onClick={() => incrementActivityDisplayCount(activity)}
                   >
                     <h2 className={styles.item_title}>{activity.title}</h2>
                   </Link>

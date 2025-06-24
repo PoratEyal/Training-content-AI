@@ -1,15 +1,15 @@
-import styles from "./Profile.module.css";
-import Dropdown from "../Layout/Dropdown/Dropdown";
-import DropOptContactUs from "../options/dropdown/DropOptContactUs";
-import DropOptInviteFriends from "../options/dropdown/DropOptInviteFriends";
-import DropOptPrivacy from "../options/dropdown/DropOptPrivacy";
-import DropOptLogout from "../options/dropdown/DropOptLogout";
-import { useAuthContext } from "../../context/AuthContext";
-import DropOptSignIn from "../options/dropdown/DropOptSignIn";
-import DropOptLang from "../options/dropdown/DropOptLang";
-import DropOptFAQ from "../options/dropdown/DropOptFAQ";
-import useToggle from "../../hooks/useToggle";
-import { Icons } from "../Icons";
+import Dropdown from "../Layout/Dropdown/Dropdown"
+import { Icons } from "../Icons"
+import DropOptContactUs from "../options/dropdown/DropOptContactUs"
+import DropOptFAQ from "../options/dropdown/DropOptFAQ"
+import DropOptInviteFriends from "../options/dropdown/DropOptInviteFriends"
+import DropOptLang from "../options/dropdown/DropOptLang"
+import DropOptLogout from "../options/dropdown/DropOptLogout"
+import DropOptPrivacy from "../options/dropdown/DropOptPrivacy"
+import DropOptSignIn from "../options/dropdown/DropOptSignIn"
+import { useAuthContext } from "../../context/AuthContext"
+import useToggle from "../../hooks/useToggle"
+import styles from "./Profile.module.css"
 
 type ProfileProps = {
     img?: string;
@@ -18,6 +18,7 @@ type ProfileProps = {
 };
 
 function Profile({ img, isLoading, openLangPopup }: ProfileProps) {
+    
     const { isLoggedIn } = useAuthContext();
     const [isOpen, toggle, close] = useToggle(false);
 
