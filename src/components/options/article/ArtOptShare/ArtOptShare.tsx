@@ -15,7 +15,7 @@ const ArtOptShare: React.FC<ArtOptShareProps> = ({ activity }) => {
 
   const handleShare = () => {
     const text = formatWhatsUp(activity?.activity)
-    share(t, t("articleOptions.share.title"), text, `${WEBSITE_URL}/${lang}/youth`)
+    share(t, t("common.youthAppName"), text, `${WEBSITE_URL}/${lang}/youth`)
   }
 
   return (
