@@ -1,6 +1,7 @@
 {
   "common": {
-    "appName": "Práctica Inteligente"
+    "youthAppName": "Actividades para movimientos juveniles",
+    "practiceAppName": "Práctica personal inteligente"
   },
   "home": {
     "slogan": "Personalizado, Simple y Rápido 🤟",
@@ -156,8 +157,10 @@
     "share": {
       "title": "Compartir",
       "createdBy": "Creado con:",
-      "youthDefaultMessage": "Encontré un sitio que crea actividades con IA. ¡Vale la pena probarlo!",
-      "practiceDefaultMessage": "Encontré un sitio que te ayuda a practicar cualquier tema con IA. ¡Vale la pena intentarlo!"
+      "youthShareMessage": "Encontré un sitio que crea actividades con IA. ¡Vale la pena probarlo!",
+      "practiceShareMessage": "Encontré un sitio que te ayuda a practicar cualquier tema con IA. ¡Vale la pena intentarlo!",
+      "shared2Clipboard": "Texto copiado. Compártelo en cualquier app.",
+      "shareError": "Error al copiar el texto. Intenta de nuevo."
     },
     "save": {
       "button": "Guardar",

@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getAuth } from "firebase/auth";
-import { useTranslation } from "react-i18next";
-import route from "../../../router/route.json";
-import styles from "./Quiz.module.css";
-import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz";
-import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import QuizContainer from "../../../components/SmartPractice/QuizContainer/QuizContainer";
-import { Icons } from "../../../components/Icons";
-import { ProductType } from "../../../context/ProductType";
-import { PRACTICE_QUIZ_AD_SLOT } from "../../../models/constants/adsSlot";
-import { createQuiz } from "../../../hooks/useQuestions";
-import { logEvent } from "../../../utils/logEvent";
-import { ProductPages } from "../../../models/enum/pages";
-import { enforcePageAccess } from "../../../utils/navigation";
-import { useContentContext } from "../../../context/ContentContext";
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { getAuth } from "firebase/auth"
+import { useTranslation } from "react-i18next"
+import route from "../../../router/route.json"
+import styles from "./Quiz.module.css"
+import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
+import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz"
+import QuizContainer from "../../../components/SmartPractice/QuizContainer/QuizContainer"
+import { Icons } from "../../../components/Icons"
+import { createQuiz } from "../../../hooks/useQuestions"
+import { ProductType } from "../../../context/ProductType"
+import { useContentContext } from "../../../context/ContentContext"
+import { useShareTextOrLink } from "../../../utils/share"
+import { logEvent } from "../../../utils/logEvent"
+import { enforcePageAccess } from "../../../utils/navigation"
+import { PRACTICE_QUIZ_AD_SLOT } from "../../../models/constants/adsSlot"
+import { ProductPages } from "../../../models/enum/pages"
+import { WEBSITE_URL } from "../../../models/constants"
 
 
 type Question = {
@@ -206,25 +208,15 @@ function Quiz() {
     return questions
   }
 
-  const handleShare = (topic: string) => {
-
-    const text = t("quiz.shareMessage", { topic })
-    console.log(text)
-    const url = window.location.href
-
-    if (navigator.share) {
-      navigator.share({
-        title: t("common.appName"),
-        text,
-        url,
-      }).catch((err) => {
-        console.error("Share failed:", err)
-      })
-    } else {
-      navigator.clipboard.writeText(`${text} ${url}`)
-      alert(t("quiz.LinkinClipboard"))
-    }
-  }
+const share = useShareTextOrLink()
+const handleShare = (topic: string) => {
+  share(
+    t,
+    t("common.practiceAppName"),
+    t("quiz.shareMessage", { topic }),
+    `${WEBSITE_URL}/${lang}/practice`
+  )
+}
 
   const correctCount = questions.reduce((sum, q, idx) => {
     return sum + (userAnswers[idx] === q.correctIndex ? 1 : 0)

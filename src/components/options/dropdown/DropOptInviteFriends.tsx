@@ -1,22 +1,19 @@
 //
 // Allows users to share a link to invite friends
-// The share message is based on the current URL:
-// - If it's a Youth activity page, the message includes the activity's content
-// - If it's from Youth any other page, the message includes the predefined Youth share text
-// - If it's from Practice, the message includes the predefined practice share text
+// Note: If it's a Youth activity page, the message includes the activity's content
 //
-
 import { useLocation } from "react-router-dom"
-
 import { useLanguage } from "../../../i18n/useLanguage"
 import { useProduct } from "../../../context/ProductContext"
 import { ProductType } from "../../../context/ProductType"
 import { useContentContext } from "../../../context/ContentContext"
+import { useShareTextOrLink } from "../../../utils/share"
 import route from "../../../router/route.json"
 import { WEBSITE_URL } from "../../../models/constants"
 import { formatWhatsUp } from "../../../utils/format"
 import { Icons } from "../../Icons"
 import styles from "./dropdown.module.css"
+
 
 function DropOptInviteFriends() {
 
@@ -24,39 +21,31 @@ function DropOptInviteFriends() {
   const { mainActivity } = useContentContext()
   const { pathname } = useLocation()
   const product = useProduct()
-  const isPractice = product === ProductType.Practice
+  const share = useShareTextOrLink()
 
-  const activityContentPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn
-  const isYouthActivityPage = pathname === activityContentPath
+  const handleShare = () => {
 
-  const handleShare = async () => {
+    let shareTitle = ""
     let shareText = ""
-
-    if (isYouthActivityPage) {
-      shareText = formatWhatsUp(mainActivity?.activity)
-    } else if (isPractice) {
-      shareText = t("articleOptions.share.practiceDefaultMessage")
-    } else {
-      shareText = t("articleOptions.share.youthDefaultMessage")
-    }
-
     let shareUrl = `${WEBSITE_URL}/${lang}`
-    shareUrl += isPractice ? "/practice" : "/youth"
 
-    const fullText = `${shareText}\n\n${shareUrl}`
+    if (product === ProductType.Youth) {
+      const youthActivityAIPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn
+      const isYouthActivityPage = pathname === youthActivityAIPath
 
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: t("profile.dropOptInviteFriends.invite"),
-          text: fullText,
-        })
-      } catch {
-        window.open(`https://wa.me/?text=${encodeURIComponent(fullText)}`, "_blank")
-      }
+      shareText = isYouthActivityPage
+        ? formatWhatsUp(mainActivity?.activity)
+        : t("articleOptions.share.youthShareMessage")
+
+      shareTitle = t("common.youthAppName")
+      shareUrl += "/youth"
     } else {
-      window.open(`https://wa.me/?text=${encodeURIComponent(fullText)}`, "_blank")
+      shareText = t("articleOptions.share.practiceShareMessage")
+      shareTitle = t("common.practiceAppName")
+      shareUrl += "/practice"
     }
+
+    share(t, shareTitle, shareText, shareUrl)
   }
 
   return (

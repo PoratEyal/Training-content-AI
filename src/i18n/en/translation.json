@@ -1,6 +1,7 @@
 {
   "common": {
-    "appName": "Smart Practice"
+    "youthAppName": "Youth Movement Activities",
+    "practiceAppName": "Smart Self Practice"
   },
   "home": {
     "slogan": "Customized, Simple and Fast 🤟",
@@ -156,8 +157,10 @@
     "share": {
       "title": "Share",
       "createdBy": "Created with:",
-      "youthDefaultMessage": "I found a website that builds activities with AI – worth trying!",
-      "practiceDefaultMessage": "I found a website that helps you practice any topic with AI – worth trying!"
+      "youthShareMessage": "I found a website that builds activities with AI – worth trying!",
+      "practiceShareMessage": "I found a website that helps you practice any topic with AI – worth trying!",
+      "shared2Clipboard": "Text copied – share it in any app.",
+      "shareError": "Failed to copy text – try again."
     },
     "save": {
       "button": "Save",

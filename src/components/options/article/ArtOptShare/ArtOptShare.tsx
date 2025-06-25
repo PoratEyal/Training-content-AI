@@ -1,35 +1,22 @@
-import React from "react";
-import styles from "./ArtOptShare.module.css";
-import { Activity } from "../../../../models/types/activity";
-import { WEBSITE_URL } from "../../../../models/constants";
-import { formatWhatsUp } from "../../../../utils/format";
-import { useLanguage } from "../../../../i18n/useLanguage";
-import { Icons } from "../../../Icons";  // Updated to use your centralized icons
+import React from "react"
+import styles from "./ArtOptShare.module.css"
+import { Activity } from "../../../../models/types/activity"
+import { WEBSITE_URL } from "../../../../models/constants"
+import { formatWhatsUp } from "../../../../utils/format"
+import { useLanguage } from "../../../../i18n/useLanguage"
+import { useShareTextOrLink } from "../../../../utils/share"
+import { Icons } from "../../../Icons"
 
-type ArtOptShareProps = { activity: Activity };
+type ArtOptShareProps = { activity: Activity }
 
 const ArtOptShare: React.FC<ArtOptShareProps> = ({ activity }) => {
-  const { t, dir } = useLanguage();
+  const { t, dir , lang} = useLanguage()
+  const share = useShareTextOrLink()
 
-  const handleShare = async () => {
-    const shareText = `${formatWhatsUp(activity?.activity)}\n\n${WEBSITE_URL}`;
-
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: t("articleOptions.share.title"),
-          text: shareText,
-        });
-        return;
-      } catch {
-        // fallback if navigator.share fails
-      }
-    }
-    window.open(
-      `https://wa.me/?text=${encodeURIComponent(shareText)}`,
-      "_blank"
-    );
-  };
+  const handleShare = () => {
+    const text = formatWhatsUp(activity?.activity)
+    share(t, t("articleOptions.share.title"), text, `${WEBSITE_URL}/${lang}/youth`)
+  }
 
   return (
     <button
@@ -37,10 +24,10 @@ const ArtOptShare: React.FC<ArtOptShareProps> = ({ activity }) => {
       onClick={handleShare}
       type="button"
     >
-      <Icons.Share className={styles.icon} />  {/* Use centralized icon */}
+      <Icons.Share className={styles.icon} />
       <span className={styles.text}>{t("articleOptions.share.title")}</span>
     </button>
-  );
-};
+  )
+}
 
-export default ArtOptShare;
+export default ArtOptShare
