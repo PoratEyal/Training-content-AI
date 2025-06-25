@@ -3,7 +3,7 @@ import styles from "./ArtOptCopy.module.css";
 import { FaRegCopy } from "react-icons/fa";
 import { Activity } from "../../../../models/types/activity";
 import { formatCopy } from "../../../../utils/format";
-import { useErrorContext } from "../../../../context/ErrorContext";
+import { useNotificationContext } from "../../../../context/NotificationContext";
 import { useLanguage } from "../../../../i18n/useLanguage";
 
 type ArtOptCopyProps = {
@@ -12,7 +12,7 @@ type ArtOptCopyProps = {
 
 const ArtOptCopy: React.FC<ArtOptCopyProps> = ({ activity }) => {
     const { t, dir } = useLanguage();
-    const { handleSuccess, handleError } = useErrorContext();
+    const { handleSuccess, handleAlert } = useNotificationContext();
 
     const handleClick = () => {
         const textToCopy = formatCopy(activity.activity);
@@ -22,7 +22,7 @@ const ArtOptCopy: React.FC<ArtOptCopyProps> = ({ activity }) => {
                 handleSuccess(t('articleOptions.copy.success'));
             })
             .catch((error) => {
-                handleError(t('articleOptions.copy.error'));
+                handleAlert(t('articleOptions.copy.error'));
             });
     };
 

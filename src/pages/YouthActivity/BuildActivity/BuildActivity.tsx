@@ -15,7 +15,7 @@ import CreateYourActivity from "../../../components/titles/CreateYourActivity/Cr
 import { useAuthContext } from "../../../context/AuthContext";
 import { useContentContext } from "../../../context/ContentContext";
 import { ProductType } from "../../../context/ProductType";
-import { useErrorContext } from "../../../context/ErrorContext";
+import { useNotificationContext } from "../../../context/NotificationContext";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { BUILD_AD_SLOT } from "../../../models/constants/adsSlot";
 import msg from "../../../models/resources/errorMsg.json";
@@ -29,13 +29,14 @@ import route from "../../../router/route.json";
 import { isYouthDetailsChanged, updateUserMovement } from "../../../utils/user";
 import { ProductPages } from "../../../models/enum/pages";
 import { enforcePageAccess } from "../../../utils/navigation";
+import { logEvent } from "../../../utils/logEvent";
 import styles from "./BuildActivity.module.css"
 
 
 function BuildActivity() {
 
   const { t, isRTL, lang } = useLanguage();
-  const { handleError } = useErrorContext();
+  const { handleAlert } = useNotificationContext();
   const { data, updateMainActivity, currentPage, setCurrentPage } = useContentContext();
   const { isLoggedIn, currentUser, setCurrentUser } = useAuthContext();
 
@@ -56,7 +57,7 @@ function BuildActivity() {
   const [hasAlert, setHasAlert] = useState(false);
 
   const youthHomePagePath = route[`youthHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthHomePageEn;
-  const youtActivityAIPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn;
+  const youthActivityAIPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn;
 
   const goBack = () => {
     const youthDetailsPath = route[`youthDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthDetailsEn;
@@ -120,6 +121,7 @@ function BuildActivity() {
   }, [subject, place, time]);
 
   const submitHandler = async () => {
+
     setClicked(true);
     const { movement, ...detailsData } = data;
     try {
@@ -140,11 +142,13 @@ function BuildActivity() {
         (response.result === "success" || response.result === "safety") && response.activity
       ) {
         updateMainActivity({ ...response.activity });
-        navigate(youtActivityAIPath);
+        navigate(youthActivityAIPath);
       }
     } catch (error) {
-      handleError(msg[lang].error.message);
+      handleAlert(msg[lang].error.message);
       setClicked(false);
+      const userEmail = currentUser?.email || "guest";
+      logEvent(`[buildActivity.submitHandler]: Failed to delete activity: ${msg[lang].error.message}`, userEmail);
     }
   };
 
