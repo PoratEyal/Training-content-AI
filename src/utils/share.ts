@@ -1,15 +1,15 @@
 import { TFunction } from "i18next"
-import { useErrorContext } from "../context/ErrorContext"
+import { useNotificationContext } from "../context/NotificationContext"
 
 export const useShareTextOrLink = () => {
-  const { handleSuccess, handleError } = useErrorContext()
+  const { handleSuccess, handleAlert } = useNotificationContext()
 
   return (t: TFunction, title: string, text: string, url?: string) => {
     if (navigator.share) {
       navigator.share({ title, text, url })
         .catch((err) => {
           if (err.name !== "AbortError" && err.name !== "NotAllowedError") {
-            handleError(t("share.shareError"))
+            handleAlert(t("share.shareError"))
           }
         })
     } else {
@@ -20,7 +20,7 @@ export const useShareTextOrLink = () => {
           handleSuccess(t("share.shared2Clipboard"))
         })
         .catch(() => {
-          handleError(t("share.shareError"))
+          handleAlert(t("share.shareError"))
         })
     }
   }

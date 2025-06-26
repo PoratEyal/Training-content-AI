@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { useErrorContext } from "./ErrorContext";
+import { useNotificationContext } from "./NotificationContext";
 import msg from "../models/resources/errorMsg.json";
 import { fetchStaticSubjects } from "../utils/fetch";
 import { StaticSubjects } from "../models/types/activity";
@@ -22,7 +22,8 @@ const StaticContentContext = createContext<StaticContentContextType>(defualtStat
 export const useStaticContentContext = () => useContext(StaticContentContext);
 
 export const StaticContentProvider = ({ children }: { children: React.ReactNode }) => {
-    const { handleError } = useErrorContext();
+
+    const { handleAlert } = useNotificationContext();
     const [subjects, setSubjects] = useState<StaticSubjects[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const { lang } = useLanguage();
@@ -36,7 +37,7 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
                 setSubjects(sortedSubjects);
             }
         } catch (error: any) {
-            handleError(msg[lang].error.message);
+            handleAlert(msg[lang].error.message);
         } finally {
             setIsLoading(false);
         }

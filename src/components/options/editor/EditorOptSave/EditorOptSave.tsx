@@ -5,7 +5,7 @@ import { SAVE_COOLDOWN } from "../../../../models/constants/time";
 import { convertHTMLToContent } from "../../../../utils/format";
 import { updateActivityWithContent } from "../../../../utils/activity";
 import { fetchSaveActivity } from "../../../../utils/fetch";
-import { useErrorContext } from "../../../../context/ErrorContext";
+import { useNotificationContext } from "../../../../context/NotificationContext";
 import { useContentContext } from "../../../../context/ContentContext";
 import { useSaveContext } from "../../../../context/SavedContext";
 import { useLanguage } from "../../../../i18n/useLanguage";
@@ -18,7 +18,7 @@ type EditorOptSaveProps = {
 const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) => {
     const { t, dir, lang } = useLanguage();
     const { updateMainActivity } = useContentContext();
-    const { handleSuccess, handleError } = useErrorContext();
+    const { handleSuccess, handleAlert } = useNotificationContext();
     const { getSavedActivities } = useSaveContext();
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
     const [saved, setSaved] = useState<boolean>(false);
@@ -42,7 +42,7 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
                     setSaved(false);
                 }, 1000);
             } catch (error) {
-                handleError(t("editor.save.saveError"));
+                handleAlert(t("editor.save.saveError"));
                 setSaved(false);
             }
         }

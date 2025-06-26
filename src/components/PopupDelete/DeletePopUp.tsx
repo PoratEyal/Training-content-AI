@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./DeletePopUp.module.css";
 import { Icons } from "../Icons";
-import { useErrorContext } from "../../context/ErrorContext";
+import { useNotificationContext } from "../../context/NotificationContext";
 import { useLanguage } from "../../i18n/useLanguage";
 
 type DeletePopUpProps = {
@@ -13,7 +13,7 @@ type DeletePopUpProps = {
 
 const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, activityName }) => {
     const { t, dir } = useLanguage();
-    const { handleError } = useErrorContext();
+    const { handleAlert } = useNotificationContext();
     const [showPopup, setShowPopup] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
 
@@ -32,7 +32,7 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
             onClose();
             await onDelete();
         } catch (error) {
-            handleError(t("savedActivities.deletePopup.deleteError"));
+            handleAlert(t("savedActivities.deletePopup.deleteError"));
             setIsDeleting(false);
             onClose();
         }

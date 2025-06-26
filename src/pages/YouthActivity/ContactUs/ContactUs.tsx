@@ -11,7 +11,7 @@ import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import MainBtn from "../../../components/MainBtn/MainBtn";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { useAuthContext } from "../../../context/AuthContext";
-import { useErrorContext } from "../../../context/ErrorContext";
+import { useNotificationContext } from "../../../context/NotificationContext";
 import { ProductType } from "../../../context/ProductType";
 import { logEvent } from "../../../utils/logEvent";
 
@@ -20,7 +20,7 @@ const ContactUs: React.FC = () => {
   const { t, isRTL, dir, textAlign, lang } = useLanguage();
   const navigate = useNavigate();
   const { currentUser } = useAuthContext();
-  const { handleSuccess } = useErrorContext();
+  const { handleSuccess } = useNotificationContext();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [formData, setFormData] = useState({

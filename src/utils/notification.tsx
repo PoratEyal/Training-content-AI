@@ -21,9 +21,9 @@ export const notification = (
         ),
         type,
         insert: "bottom",
-        container: "bottom-full",
-        animationIn: ["animate__animated", "animate__fadeIn"],
-        animationOut: ["animate__animated", "animate__fadeOut"],
+        container: "bottom-center",
+        animationIn: ["animate__animated", "animate__fadeInUp"],
+        animationOut: ["animate__animated", "animate__fadeOutDown"],
         dismiss: { duration: options?.duration || 3000, onScreen: options?.onScreen ?? true }
     })
 };

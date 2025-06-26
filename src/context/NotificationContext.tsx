@@ -1,24 +1,24 @@
 import { createContext, useContext } from "react";
-import { notification } from "../utils/error";
+import { notification } from "../utils/notification";
 import { useLanguage } from "../i18n/useLanguage";
 
-export type ErrorContextType = {
+export type NotificationContextType = {
     handleError: (error: Error | string | undefined) => void;
     handleAlert: (message: string, duration?: number) => void;
     handleSuccess: (message: string) => void;
 };
 
-export const defualtErrorContext = {
+export const defaultNotificationContext = {
     handleError: () => {},
     handleAlert: () => {},
     handleSuccess: () => {},
 };
 
-export const ErrorContext = createContext<ErrorContextType>(defualtErrorContext);
+export const NotificationContext = createContext<NotificationContextType>(defaultNotificationContext);
 
-export const useErrorContext = () => useContext(ErrorContext);
+export const useNotificationContext = () => useContext(NotificationContext);
 
-export const ErrorContextProvider = ({ children }: { children: React.ReactNode }) => {
+export const NotificationContextProvider = ({ children }: { children: React.ReactNode }) => {
     const { dir } = useLanguage();
 
     const handleError = (error: Error | string | undefined) => {
@@ -46,8 +46,8 @@ export const ErrorContextProvider = ({ children }: { children: React.ReactNode }
     };
 
     return (
-        <ErrorContext.Provider value={{ handleError, handleAlert, handleSuccess }}>
+        <NotificationContext.Provider value={{ handleError, handleAlert, handleSuccess }}>
             {children}
-        </ErrorContext.Provider>
+        </NotificationContext.Provider>
     );
 };

@@ -10,7 +10,7 @@ import styles from "./ArtOptSave.module.css";
 import { Activity } from "../../../../models/types/activity";
 import { useAuthContext } from "../../../../context/AuthContext";
 import { useContentContext } from "../../../../context/ContentContext";
-import { useErrorContext } from "../../../../context/ErrorContext";
+import { useNotificationContext } from "../../../../context/NotificationContext";
 import { useSaveContext } from "../../../../context/SavedContext";
 import { useQueryParam } from "../../../../hooks/useQueryParam";
 import { fetchSaveActivity } from "../../../../utils/fetch";
@@ -26,7 +26,7 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
     const { currentParam, updateParam } = useQueryParam();
     const { currentUser } = useAuthContext();
     const { updateMainActivity } = useContentContext();
-    const { handleSuccess, handleError } = useErrorContext();
+    const { handleSuccess, handleAlert } = useNotificationContext();
     const { getSavedActivities, deleteActivity } = useSaveContext();
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
@@ -55,7 +55,7 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
             await getSavedActivities();
             setSaved(true);
         } catch (error) {
-            handleError(t('articleOptions.save.saveError'));
+            handleAlert(t('articleOptions.save.saveError'));
             updateParam(false);
         }
     };
@@ -75,7 +75,7 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
             await deleteActivity(activityId);
             setSaved(false);
         } catch (error) {
-            handleError(t('articleOptions.save.removeError'));
+            handleAlert(t('articleOptions.save.removeError'));
             updateParam(true);
         }
     };

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { Activity } from "../models/types/activity";
 import { useAuthContext } from "./AuthContext";
-import { useErrorContext } from "./ErrorContext";
+import { useNotificationContext } from "./NotificationContext";
 import { useLanguage } from "../i18n/useLanguage";
 import { RemoveActivityRequest } from "../models/types/api/request";
 import { fetchGetSavedActivities, fetchRemoveActivity } from "../utils/fetch";
@@ -31,10 +31,11 @@ export const useSaveContext = () => useContext(SaveContext);
 export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
 
     const { currentUser } = useAuthContext();
-    const { handleError } = useErrorContext();
+    const { handleAlert } = useNotificationContext();
     const [savedActivity, setSavedActivity] = useState<Activity[]>();
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const { lang } = useLanguage();
+    const userEmail = currentUser?.email || "guest";
 
     const getSavedActivities = async () => {
         if (currentUser && currentUser.id) {
@@ -50,7 +51,8 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                     setSavedActivity(sortedActivities);
                 }
             } catch (error) {
-                handleError(msg[lang].notSaved.message);
+                handleAlert(msg[lang].notSaved.message);
+                logEvent(`[SavedContext.getSavedActivities]: Failed to delete activity: ${error}`, userEmail);
             } finally {
                 setIsLoading(false);
             }
@@ -68,8 +70,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                     activityId: activityIdToDelete,
                 } as RemoveActivityRequest);
             } catch (error) {
-                const userEmail = currentUser.email || "guest";
-                logEvent(`[SavedContext]: Failed to delete activity: ${activityIdToDelete}`, userEmail);
+                logEvent(`[SavedContext.deleteActivity]: Failed to delete activity: ${activityIdToDelete}`, userEmail);
             }
         }
     };
