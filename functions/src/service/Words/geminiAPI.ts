@@ -30,7 +30,7 @@ const buildPrompt = (words: string, sourceLang: Lang, targetLang: Lang): string 
     .split(/[\n,]/)
     .map(w => w.trim())
     .filter(Boolean)
-    .slice(0, 20)
+    .slice(0, 35)
     .join(", ")
 
   const labels = answerLabels[targetLang] || ["A", "B", "C", "D"]

@@ -1,8 +1,10 @@
 import { useEffect, useState, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
+import { MdTranslate } from "react-icons/md";
 import route from "../../../router/route.json"
 import styles from "./Vocab.module.css"
+import { useNotificationContext } from "../../../context/NotificationContext";
 import MainBtn from "../../../components/MainBtn/MainBtn"
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
 import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz"
@@ -24,6 +26,7 @@ function WordsVocab() {
   const lang = i18n.language
   const navigate = useNavigate()
   const { currentPage, setCurrentPage } = useContentContext()
+  const { handleAlert } = useNotificationContext();
 
   const wordsHomePagePath =
     route[`wordsHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsHomePageEn
@@ -222,6 +225,12 @@ function WordsVocab() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    const originalLines = originalText.split("\n").filter(line => line.trim() !== "")
+    if (originalLines.length > 35) {
+      handleAlert(t("wordsVocab.tooManyLines"));
+      return
+    }
+
     setLoading(true)
     const AI_quizFull = await createWordsQuiz(originalText, detectedLang, lang)
     setLoading(false)
@@ -310,7 +319,7 @@ function WordsVocab() {
                 onClick={handleTranslateClick}
                 disabled={translating || !originalText.trim()}
               >
-                {translating ? "⏳" : ">"}
+                {translating ? "⏳" : <MdTranslate size={20} />}
               </button>
 
               <button

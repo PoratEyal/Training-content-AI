@@ -129,6 +129,7 @@
     "Translate": "Traducir",
     "noWords2Translate": "No se ingresaron palabras para traducir",
     "noTranslation": "Se recomienda usar primero la traducción automática para asegurar que las palabras estén bien traducidas",
+    "tooManyLines": "Puedes ingresar hasta 35 líneas (cada línea es una pregunta).",
     "btnCreate": "¡Empezar!",
     "btnCreating": "Creando práctica",
     "error": "Ocurrió un error al crear las preguntas. Intenta nuevamente.",

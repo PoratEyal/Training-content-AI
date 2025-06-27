@@ -129,6 +129,7 @@
     "Translate": "Translate",
     "noWords2Translate": "No words were entered for translation",
     "noTranslation": "It's recommended to run the automatic translation first to ensure the words are translated correctly",
+    "tooManyLines": "You can enter up to 35 lines (each line is one question).",
     "btnCreate": "Let's Go",
     "btnCreating": "Creating Practice",
     "error": "An error occurred while generating the questions. Please try again.",

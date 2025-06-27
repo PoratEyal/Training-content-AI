@@ -27,7 +27,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   margin: 16px 0;
 }
 
@@ -47,8 +47,8 @@
   color: #4F4F4F;
   border: 2px solid #ccc;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   font-weight: bold;
   display: flex;
   align-items: center;
