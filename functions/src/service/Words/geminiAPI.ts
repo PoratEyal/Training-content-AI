@@ -37,14 +37,15 @@ const buildPrompt = (words: string, sourceLang: Lang, targetLang: Lang): string 
 
   return `
 For each of the following words, generate one multiple-choice translation question.
-The question should **only be the source word itself**, without any extra phrasing.
-Use this format:
+
+Instructions:
+- The question is just the word from the source language, nothing else.
 - Start each question with ~1~, ~2~, etc.
-- The question is just the word, for example: ~1~ meal
-- Provide 4 translation options into ${langName[targetLang]}, labeled ~${labels[0]}~, ~${labels[1]}~, etc.
-- Highlight **only one** correct answer using double asterisks, e.g. ~${labels[1]}~ **אוכל**
-- All 4 options must be plausible and different.
-- Respond only with the questions and answers — no explanations.
+- Each question must have 4 answer options, labeled ~${labels[0]}~, ~${labels[1]}~, ~${labels[2]}~, ~${labels[3]}~.
+- All 4 options must be written only in ${langName[targetLang]}. Do not use any other language.
+- Mark **only one** correct answer using double asterisks (e.g. ~${labels[1]}~ **correct_word**).
+- All 4 options must be different, plausible translations or near-translations in the target language.
+- Do not include any explanations, metadata, or translations other than what is asked.
 
 Words:
 ${wordList}
@@ -55,7 +56,6 @@ ${wordList}
 export async function getWordsQuiz(words: string, sourceLang: Lang, targetLang: Lang): Promise<string> {
   const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" })
   const prompt = buildPrompt(words, sourceLang, targetLang)
-  console.log("Generated prompt:", prompt)
   const result = await model.generateContent(prompt)
   return result.response.text()
 }

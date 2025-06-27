@@ -99,8 +99,8 @@ html[dir="ltr"] .retryFabContainer {
 }
 
 .retryFab {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   font-weight: bold;
   border: none;
@@ -113,11 +113,13 @@ html[dir="ltr"] .retryFabContainer {
 .retryBtn {
   background-color: var(--words-primary-color);
   color: white;
+  font-size: 16px;
 }
 
 .doneBtn {
   background-color: var(--secondary-color);
   color: var(--text-color);
+  font-size: 16px;
 }
 
 .retryFab:active {
