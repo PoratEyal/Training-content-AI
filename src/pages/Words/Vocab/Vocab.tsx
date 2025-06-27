@@ -51,36 +51,36 @@ function WordsVocab() {
     }
   }, [])
 
-useEffect(() => {
-  const original = originalRef.current
-  const translated = translatedRef.current
+  useEffect(() => {
+    const original = originalRef.current
+    const translated = translatedRef.current
 
-  const isSyncing = { current: false }
+    const isSyncing = { current: false }
 
-  const syncScroll = (source: HTMLTextAreaElement, target: HTMLTextAreaElement) => {
-    if (isSyncing.current) return
-    isSyncing.current = true
-    const ratio = source.scrollTop / (source.scrollHeight - source.clientHeight)
-    target.scrollTop = ratio * (target.scrollHeight - target.clientHeight)
-    // תן זמן לרנדר ואז אפס את הדגל
-    setTimeout(() => {
-      isSyncing.current = false
-    }, 10)
-  }
-
-  if (original && translated) {
-    const onOriginalScroll = () => syncScroll(original, translated)
-    const onTranslatedScroll = () => syncScroll(translated, original)
-
-    original.addEventListener("scroll", onOriginalScroll)
-    translated.addEventListener("scroll", onTranslatedScroll)
-
-    return () => {
-      original.removeEventListener("scroll", onOriginalScroll)
-      translated.removeEventListener("scroll", onTranslatedScroll)
+    const syncScroll = (source: HTMLTextAreaElement, target: HTMLTextAreaElement) => {
+      if (isSyncing.current) return
+      isSyncing.current = true
+      const ratio = source.scrollTop / (source.scrollHeight - source.clientHeight)
+      target.scrollTop = ratio * (target.scrollHeight - target.clientHeight)
+      // תן זמן לרנדר ואז אפס את הדגל
+      setTimeout(() => {
+        isSyncing.current = false
+      }, 10)
     }
-  }
-}, [])
+
+    if (original && translated) {
+      const onOriginalScroll = () => syncScroll(original, translated)
+      const onTranslatedScroll = () => syncScroll(translated, original)
+
+      original.addEventListener("scroll", onOriginalScroll)
+      translated.addEventListener("scroll", onTranslatedScroll)
+
+      return () => {
+        original.removeEventListener("scroll", onOriginalScroll)
+        translated.removeEventListener("scroll", onTranslatedScroll)
+      }
+    }
+  }, [])
 
 
   // Replaces the AI-generated correct Q&A in the quiz text with the accurate translations
@@ -181,6 +181,36 @@ useEffect(() => {
     return sanitized.join("\n")
   }
 
+  const shuffleQuestions = (quizRaw: string): string => {
+    const lines = quizRaw.split("\n")
+    const questions: string[][] = []
+
+    let currentBlock: string[] = []
+
+    for (const line of lines) {
+      if (/^~\d+~/.test(line)) {
+        if (currentBlock.length > 0) {
+          questions.push(currentBlock)
+        }
+        currentBlock = [line]
+      } else if (line.trim() !== "") {
+        currentBlock.push(line)
+      }
+    }
+
+    if (currentBlock.length > 0) {
+      questions.push(currentBlock)
+    }
+
+    // Fisher-Yates shuffle
+    for (let i = questions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+        ;[questions[i], questions[j]] = [questions[j], questions[i]]
+    }
+
+    return questions.map((q) => q.join("\n")).join("\n")
+  }
+
 
   // Handle form submission and create Words Quiz
   const handleSubmit = async (e) => {
@@ -196,7 +226,8 @@ useEffect(() => {
 
       const sanitaizedText = sanitizeAIQuizOutput(AI_quizFull, originalText.split("\n").length)
       const textWithCorrcectAnswers = applyTheOriginalQuestionsAnswersToAIresult(sanitaizedText, originalText, translatedText)
-      sessionStorage.setItem("wordsQuizRaw", textWithCorrcectAnswers)
+      const shuffled = shuffleQuestions(textWithCorrcectAnswers)
+      sessionStorage.setItem("wordsQuizRaw", shuffled)
 
       navigate(wordsQuizPath)
     } else {
@@ -272,7 +303,7 @@ useEffect(() => {
               onClick={handleTranslateClick}
               disabled={translating || !originalText.trim()}
             >
-              {translating ? "⏳" : "←"}
+              {translating ? "⏳" : "🡸"}
             </button>
 
 
