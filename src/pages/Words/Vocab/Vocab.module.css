@@ -78,3 +78,21 @@
 .button_wrapper {
   margin-top: 20px;
 }
+
+.clearButton {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.clearButton:hover {
+  font-size: 24px;
+}

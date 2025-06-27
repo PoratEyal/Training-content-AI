@@ -211,6 +211,12 @@ function WordsVocab() {
     return questions.map((q) => q.join("\n")).join("\n")
   }
 
+  const handleClearAll = () => {
+    setOriginalText("")
+    setTranslatedText("")
+    localStorage.removeItem("wordsInput")
+    localStorage.removeItem("wordsTranslated")
+  }
 
   // Handle form submission and create Words Quiz
   const handleSubmit = async (e) => {
@@ -293,18 +299,29 @@ function WordsVocab() {
               value={originalText}
               onChange={(e) => setOriginalText(e.target.value)}
               className={styles.textarea}
-              rows={12}
+              rows={14}
               placeholder={t("wordsVocab.Words2Translate")}
             />
 
-            <button
-              type="button"
-              className={`${styles.translateButton} ${translating ? styles.loading : ""}`}
-              onClick={handleTranslateClick}
-              disabled={translating || !originalText.trim()}
-            >
-              {translating ? "⏳" : "🡸"}
-            </button>
+            <div className={styles.translateControls}>
+              <button
+                type="button"
+                className={`${styles.translateButton} ${translating ? styles.loading : ""}`}
+                onClick={handleTranslateClick}
+                disabled={translating || !originalText.trim()}
+              >
+                {translating ? "⏳" : ">"}
+              </button>
+
+              <button
+                type="button"
+                className={styles.clearButton}
+                onClick={handleClearAll}
+                disabled={translating || !originalText.trim()}
+              >
+                ❌
+              </button>
+            </div>
 
 
             <textarea
@@ -312,7 +329,7 @@ function WordsVocab() {
               value={translatedText}
               onChange={(e) => setTranslatedText(e.target.value)}
               className={styles.textarea}
-              rows={12}
+              rows={14}
               placeholder={t("wordsVocab.WordsTranslated")}
             />
           </div>
