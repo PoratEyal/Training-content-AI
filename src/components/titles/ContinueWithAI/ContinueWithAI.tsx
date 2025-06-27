@@ -7,13 +7,24 @@ function ContinueWithAI() {
   const { t, isRTL } = useLanguage()
   const product = useProduct()
 
-  const isPractice = product === ProductType.Practice
-    ? t("continueWithAI.practiceForActions")
-    : t("continueWithAI.youthForActions")
+  let productTitle = "";
+  if (product === ProductType.Practice) {
+    productTitle = t("continueWithAI.practiceForActions");
+  } else if (product === ProductType.Youth) {
+    productTitle = t("continueWithAI.youthForActions");
+  } else if (product === ProductType.Words) {
+    productTitle = t("continueWithAI.practiceForActions");
+  }
 
-  const productColorClass = product === ProductType.Practice
-    ? styles.practiceColor
-    : styles.youthColor
+  let productColorClass = "";
+  if (product === ProductType.Practice) {
+    productColorClass = styles.practiceColor;
+  } else if (product === ProductType.Youth) {
+    productColorClass = styles.youthColor;
+  } else if (product === ProductType.Words) {
+    productColorClass = styles.langColor;
+  }
+
 
   const dirPrefix = isRTL ? "" : "_en"
 
@@ -24,7 +35,7 @@ function ContinueWithAI() {
         <div className={styles[`word_1_2${dirPrefix}`]}>{t("continueWithAI.advanced")}</div>
       </div>
       <div className={`${styles[`word_2${dirPrefix}`]} ${productColorClass}`}>
-        {isPractice}
+        {productTitle}
       </div>
       <div className={styles[`word_3${dirPrefix}`]}>
         <div className={styles[`word_3_1${dirPrefix}`]}>{t("continueWithAI.withPrefix")}</div>

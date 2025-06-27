@@ -17,6 +17,7 @@ import { ProductType } from "./context/ProductType"
 const detectProductFromPath = (path: string): ProductType => {
   if (path.includes("/practice")) return ProductType.Practice
   if (path.includes("/youth")) return ProductType.Youth
+  if (path.includes("/words")) return ProductType.Words
   return ProductType.Youth
 }
 

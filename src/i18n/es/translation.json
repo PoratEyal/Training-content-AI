@@ -119,6 +119,32 @@
     "LinkinClipboard": "¡Enlace copiado! Compártelo con tus amigos!",
     "shareMessage": "¡Creé un cuestionario sobre \"{{topic}}\" – veamos si puedes superarme!"
   },
+
+
+  "wordsVocab": {
+    "title": "Vamos a ingresar palabras",
+    "instructions": "Ingresa palabras para practicar, haz clic en el botón de traducir y corrige manualmente la traducción si lo deseas.",
+    "Words2Translate": "Palabras para practicar",
+    "WordsTranslated": "Traducción de cada palabra",
+    "Translate": "Traducir",
+    "noWords2Translate": "No se ingresaron palabras para traducir",
+    "noTranslation": "Se recomienda usar primero la traducción automática para asegurar que las palabras estén bien traducidas",
+    "btnCreate": "¡Empezar!",
+    "btnCreating": "Creando práctica",
+    "error": "Ocurrió un error al crear las preguntas. Intenta nuevamente.",
+    "topicError": "Lo siento, no puedo generar preguntas sobre el tema que elegiste. Por favor, intenta con otro tema.",
+    "loadingHead": "Estamos trabajando en ello",
+    "loadingText": "¡Atención! Este cuestionario fue generado con inteligencia artificial, que está en constante aprendizaje, por lo que pueden ocurrir errores."
+  },
+
+  "wordsQuiz": {
+    "title": "Y ahora a practicar",
+    "nextWord": "Siguiente",
+    "newPractice": "Nueva práctica",
+    "done": "He terminado por ahora"
+  },
+  
+
   "profile": {
     "dropOptInviteFriends": {
       "invite": "Compartir"

@@ -30,6 +30,8 @@ import addStaticActivity from "./callableFunctions/addStaticActivity";
 // SmartPractice 
 import getQuestions4Practice from "./callableFunctions/getQuestions4Practice";
 
+// Words Practice
+import getWords4Practice from "./callableFunctions/getWords4Practice";
 
 
 const app = express();
@@ -67,5 +69,11 @@ exports.addStaticActivity = addStaticActivity;
 
 // SmartPractice 
 exports.getQuestions4Practice = getQuestions4Practice;
+
+// Words Practice 
+exports.getWords4Practice = getWords4Practice;
+
+import translateText from "./callableFunctions/translateText"
+exports.translateText = translateText
 
 exports.app = functions.https.onRequest(app);

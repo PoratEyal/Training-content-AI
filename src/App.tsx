@@ -29,11 +29,19 @@ import YouthContactUsRoute from "./pages/YouthActivity/ContactUs/ContactUs"
 
 // Smart Practice
 import PracticeHomePage from "./pages/SmartPractice/HomePage/Practice"
-import PracticeQuiz from "./pages/SmartPractice/Quiz/Quiz"
 import PracticeTopic from "./pages/SmartPractice/Topic/Topic"
+import PracticeQuiz from "./pages/SmartPractice/Quiz/Quiz"
 import PracticeFAQ from "./pages/SmartPractice/FAQ/FAQ"
 import PracticePrivacyPolicy from "./pages/SmartPractice/PrivacyPolicy/PrivacyPolicy"
 import PracticeContactUsRoute from "./pages/SmartPractice/ContactUs/ContactUs"
+
+// Learn Words Language
+import WordsHomePage from "./pages/Words/HomePage/Home"
+import WordsVocab from "./pages/Words/Vocab/Vocab"
+import WordsQuiz from "./pages/Words/Quiz/Quiz"
+//import WordsFAQ from "./pages/Language/FAQ/FAQ"
+//import WordsPrivacyPolicy from "./pages/Language/PrivacyPolicy/PrivacyPolicy"
+//import WordsContactUsRoute from "./pages/Language/ContactUs/ContactUs"
 
 import { supportedLangs as langs } from "./i18n/languages"
 
@@ -55,11 +63,17 @@ const allRoutes = [
 
   // Practice
   { key: "practiceHomePage", element: <PracticeHomePage /> },
-  { key: "practiceQuiz", element: <PracticeQuiz /> },
   { key: "practiceTopic", element: <PracticeTopic /> },
+  { key: "practiceQuiz", element: <PracticeQuiz /> },
   { key: "practiceContactUs", element: <PracticeContactUsRoute /> },
   { key: "practicePrivacyPolicy", element: <PracticePrivacyPolicy /> },
   { key: "practiceFAQ", element: <PracticeFAQ /> },
+
+  // Words
+  { key: "wordsHomePage", element: <WordsHomePage /> },
+  { key: "wordsVocab", element: <WordsVocab /> },
+  { key: "wordsQuiz", element: <WordsQuiz /> },
+
 ]
 
 function App() {

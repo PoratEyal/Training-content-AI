@@ -97,5 +97,21 @@
   "practiceContactUsEs": "/es/practice/contactUs",
   "practiceContactUsAr": "/ar/practice/contactUs",
 
+  "wordsHomePageHe": "/he/words",
+  "wordsHomePageEn": "/en/words",
+  "wordsHomePageEs": "/es/words",
+  "wordsHomePageAr": "/ar/words",
+
+  "wordsVocabHe": "/he/words/vocab",
+  "wordsVocabEn": "/en/words/vocab",
+  "wordsVocabEs": "/es/words/vocab",
+  "wordsVocabAr": "/ar/words/vocab",
+
+  "wordsQuizHe": "/he/words/quiz",
+  "wordsQuizEn": "/en/words/quiz",
+  "wordsQuizEs": "/es/words/quiz",
+  "wordsQuizAr": "/ar/words/quiz",
+
+
   "all": "*"
 }

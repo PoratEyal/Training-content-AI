@@ -119,6 +119,31 @@
     "LinkinClipboard": "Link copied – share it with your friends",
     "shareMessage": "I created a quiz on \"{{topic}}\" – let's see if you can beat me!"
   },
+
+
+  "wordsVocab": {
+    "title": "Let's Enter Words",
+    "instructions": "Enter words to practice, click the Translate button, and manually adjust the translation if needed.",
+    "Words2Translate": "Words to Practice",
+    "WordsTranslated": "Translation for Each Word",
+    "Translate": "Translate",
+    "noWords2Translate": "No words were entered for translation",
+    "noTranslation": "It's recommended to run the automatic translation first to ensure the words are translated correctly",
+    "btnCreate": "Let's Go",
+    "btnCreating": "Creating Practice",
+    "error": "An error occurred while generating the questions. Please try again.",
+    "topicError": "Sorry, I can't generate questions for the selected topic. Please try entering a different topic.",
+    "loadingHead": "We're on it",
+    "loadingText": "Note! This quiz was generated using AI, which is constantly learning, so errors may occur."
+  },
+
+  "wordsQuiz": {
+    "title": "Now for the Practice",
+    "nextWord": "Next",
+    "newPractice": "New Practice",
+    "done": "Done for Now"
+  },
+
   "profile": {
     "dropOptInviteFriends": {
       "invite": "Share with friends"

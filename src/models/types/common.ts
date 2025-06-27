@@ -52,4 +52,8 @@ export type HelmetPage =
     | "practiceHome"
     | "practiceTopic"
     | "practiceQuiz"
-    | "practiceFaq";
+    | "practiceFaq"
+    | "wordsHome"
+    | "wordsVocab"
+    | "wordsQuiz"
+    | "wordsFaq";

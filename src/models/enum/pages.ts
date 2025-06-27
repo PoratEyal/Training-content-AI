@@ -8,7 +8,11 @@ export enum ProductPages {
 
   PAGE_PracticeHome = "practiceHome",
   PAGE_Topic = "practiceTopic",
-  PAGE_Quiz = "practiceQuiz"
+  PAGE_Quiz = "practiceQuiz",
+
+  PAGE_WordsHome = "wordsHome",
+  PAGE_WordsVocab = "wordsVocab",
+  PAGE_WordsQuiz = "wordsQuiz"
 }
 
 // Map of allowed transitions: from which pages each page can be entered
@@ -57,5 +61,20 @@ export const allowedTransitions: Record<ProductPages, ProductPages[]> = {
   [ProductPages.PAGE_Quiz]:
     [
       ProductPages.PAGE_Topic
+    ],
+
+
+  [ProductPages.PAGE_WordsHome]:
+    [
+    ],
+  [ProductPages.PAGE_WordsVocab]:
+    [
+      ProductPages.PAGE_WordsHome,
+      ProductPages.PAGE_WordsQuiz
+    ],
+  [ProductPages.PAGE_WordsQuiz]:
+    [
+      ProductPages.PAGE_WordsVocab
     ]
+
 };

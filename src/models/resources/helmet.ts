@@ -83,6 +83,24 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             title: "תרגול עצמי חכם - שאלות נפוצות",
             content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
         },
+
+        wordsHome: {
+            title: "תרגול עצמי חכם",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+        wordsVocab: {
+            title: "תרגול עצמי חכם",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+        wordsQuiz: {
+            title: "תרגול עצמי חכם",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+        wordsFaq: {
+            title: "תרגול עצמי חכם - שאלות נפוצות",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+
     } as LanguageSection,
 
     en: {
@@ -160,6 +178,25 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             title: "Smart Self Practice – Frequently Asked Questions",
             content: "Create personalized practice in seconds using AI – on any topic you choose",
         },
+
+
+        wordsHome: {
+            title: "תרגול עצמי חכם",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+        wordsVocab: {
+            title: "תרגול עצמי חכם",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+        wordsQuiz: {
+            title: "תרגול עצמי חכם",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+        wordsFaq: {
+            title: "תרגול עצמי חכם - שאלות נפוצות",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+
     } as LanguageSection,
 
     ar: {
@@ -237,6 +274,25 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             title: "تمرين ذاتي ذكي - الأسئلة الشائعة",
             content: "أنشئ تمرينًا مخصصًا في ثوانٍ باستخدام الذكاء الاصطناعي – في أي موضوع تختاره"
         },
+
+
+        wordsHome: {
+            title: "תרגול עצמי חכם",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+        wordsVocab: {
+            title: "תרגול עצמי חכם",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+        wordsQuiz: {
+            title: "תרגול עצמי חכם",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+        wordsFaq: {
+            title: "תרגול עצמי חכם - שאלות נפוצות",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+
     } as LanguageSection,
 
     es: {
@@ -314,6 +370,25 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             title: "Práctica personal inteligente - Preguntas frecuentes",
             content: "Crea una práctica personalizada en segundos con la ayuda de inteligencia artificial – sobre cualquier tema que elijas"
         },
+
+        
+        wordsHome: {
+            title: "תרגול עצמי חכם",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+        wordsVocab: {
+            title: "תרגול עצמי חכם",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+        wordsQuiz: {
+            title: "תרגול עצמי חכם",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+        wordsFaq: {
+            title: "תרגול עצמי חכם - שאלות נפוצות",
+            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+        },
+
     } as LanguageSection,
 };
 

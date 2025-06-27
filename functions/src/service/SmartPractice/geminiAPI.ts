@@ -1,3 +1,6 @@
+// LIOR TO FIX: MAKE ONYL 1 PROMPT FOR ALL LANGUAGES !!!!!!!!!!!!!!!!11
+
+
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Lang } from "../../model/types/common";
 import * as functions from "firebase-functions";

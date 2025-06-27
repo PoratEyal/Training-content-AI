@@ -9,8 +9,9 @@ import { HelmetPage } from "../../../models/types/common";
 import { ProductType } from "../../../context/ProductType";
 import { logEvent } from "../../../utils/logEvent";
 import Header from "../Header/Header";
-import PracticeNavigationBar from "../NavigationBar/PracticeNavigationBar";
 import YouthNavigationBar from "../NavigationBar/YouthNavigationBar";
+import PracticeNavigationBar from "../NavigationBar/PracticeNavigationBar";
+import WordsNavigationBar from "../NavigationBar/WordsNavigationBar";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
 import AdsBig from "../../ads/AdsBig/AdsBig";
 import styles from "./PageLayout.module.css";
@@ -110,11 +111,13 @@ function PageLayout({
       <section
         className={styles.pageContainer}
         style={{
-          backgroundColor: hasGreenBackground
-            ? productType === ProductType.Youth
-              ? "var(--primary-color)"
-              : "var(--practice-primary-color)"
-            : "var(--background-color)",
+          backgroundColor: (() => {
+            if (!hasGreenBackground) return "var(--background-color)";
+            if (productType === ProductType.Youth) return "var(--primary-color)";
+            if (productType === ProductType.Practice) return "var(--practice-primary-color)";
+            if (productType === ProductType.Words) return "var(--words-primary-color)";
+            return "var(--background-color)";
+          })(),
           direction: dir,
         }}
       >
@@ -167,13 +170,16 @@ function PageLayout({
         {hasNavBar ? (
           productType === ProductType.Practice ? (
             <PracticeNavigationBar />
-          ) : (
+          ) : productType === ProductType.Youth ? (
             <YouthNavigationBar />
-          )
+          ) : productType === ProductType.Words ? (
+            <WordsNavigationBar />
+          ) : null
         ) : null}
       </section>
     </>
   );
 }
+
 
 export default PageLayout;

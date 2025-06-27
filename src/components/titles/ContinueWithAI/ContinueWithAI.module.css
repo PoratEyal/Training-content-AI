@@ -48,6 +48,10 @@
   background-color: var(--practice-primary-color);
 }
 
+.langColor {
+  background-color: var(--words-primary-color);
+}
+
 /* ------------ RTL ------------ */
 .word_1 {
   position: absolute;
