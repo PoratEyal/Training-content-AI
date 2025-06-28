@@ -30,7 +30,7 @@ function Topic() {
   const dropDownOptions = [
     { value: "englishPractice", label: "מילים שימושיות באנגלית" },
     { value: "spanishPractice", label: "מילים שימושיות בספרדית" },
-    { value: "italiaPractice", label: "מילים שימושיות באיטלקית" },
+    { value: "italianPractice", label: "מילים שימושיות באיטלקית" },
     { value: "hebrewPractice", label: "מילים שימושיות בעברית" },
     { value: "arabicPractice", label: "מילים שימושיות בערבית" }
   ]
