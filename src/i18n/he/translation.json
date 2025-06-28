@@ -212,6 +212,7 @@
       "namePlaceholder": "שם",
       "messagePlaceholder": "מה תרצו לספר לנו?",
       "submitButton": "שליחה",
+      "loadingButton": "בביצוע",
       "successMessage": "ההודעה נשלחה בהצלחה!"
     }
   },

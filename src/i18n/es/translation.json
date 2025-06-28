@@ -214,6 +214,7 @@
       "namePlaceholder": "Nombre",
       "messagePlaceholder": "¿Qué te gustaría decirnos?",
       "submitButton": "Enviar",
+      "loadingButton": "En proceso",
       "successMessage": "¡Tu mensaje fue enviado con éxito!"
     }
   },

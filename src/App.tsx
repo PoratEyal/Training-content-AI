@@ -23,24 +23,20 @@ import YouthContentActivity from "./pages/YouthActivity/ContentActivity/ContentA
 import YouthMyActivities from "./pages/YouthActivity/MyActivities/MyActivities"
 import YouthMyActivityContent from "./pages/YouthActivity/MyActivityContent/MyActivityContent"
 import YouthFAQ from "./pages/YouthActivity/FAQ/FAQ"
-import YouthPrivacyPolicy from "./pages/YouthActivity/PrivacyPolicy/PrivacyPolicy"
 import YouthAdminPage from "./pages/YouthActivity/AdminPage/AdminPage"
-import YouthContactUsRoute from "./pages/YouthActivity/ContactUs/ContactUs"
 
 // Smart Practice
 import PracticeHomePage from "./pages/SmartPractice/HomePage/Home"
 import PracticeTopic from "./pages/SmartPractice/Topic/Topic"
 import PracticeQuiz from "./pages/SmartPractice/Quiz/Quiz"
 import PracticeFAQ from "./pages/SmartPractice/FAQ/FAQ"
-import PracticePrivacyPolicy from "./pages/SmartPractice/PrivacyPolicy/PrivacyPolicy"
-import PracticeContactUsRoute from "./pages/SmartPractice/ContactUs/ContactUs"
 
 // Learn Words Language
 import WordsHomePage from "./pages/Words/HomePage/Home"
 import WordsTopic from "./pages/Words/Topic/Topic"
 import WordsVocab from "./pages/Words/Vocab/Vocab"
 import WordsQuiz from "./pages/Words/Quiz/Quiz"
-//import WordsFAQ from "./pages/Language/FAQ/FAQ"
+import WordsFAQ from "./pages/Words/FAQ/FAQ"
 
 import { supportedLangs as langs } from "./i18n/languages"
 
@@ -56,16 +52,12 @@ const allRoutes = [
   { key: "youthActivityContent", element: <YouthContentActivity /> },
   { key: "youthMyActivities", element: <YouthMyActivities /> },
   { key: "youthMyActivityContent", element: <YouthMyActivityContent /> },
-  { key: "youthContactUs", element: <YouthContactUsRoute /> },
-  { key: "youthPrivacyPolicy", element: <YouthPrivacyPolicy /> },
   { key: "youthFAQ", element: <YouthFAQ /> },
 
   // Practice
   { key: "practiceHomePage", element: <PracticeHomePage /> },
   { key: "practiceTopic", element: <PracticeTopic /> },
   { key: "practiceQuiz", element: <PracticeQuiz /> },
-  { key: "practiceContactUs", element: <PracticeContactUsRoute /> },
-  { key: "practicePrivacyPolicy", element: <PracticePrivacyPolicy /> },
   { key: "practiceFAQ", element: <PracticeFAQ /> },
 
   // Words
@@ -73,6 +65,7 @@ const allRoutes = [
   { key: "wordsTopic", element: <WordsTopic /> },
   { key: "wordsVocab", element: <WordsVocab /> },
   { key: "wordsQuiz", element: <WordsQuiz /> },
+  { key: "wordsFAQ", element: <WordsFAQ /> },
 
 ]
 

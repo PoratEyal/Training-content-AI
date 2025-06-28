@@ -1,31 +1,17 @@
-//
-// This is a dropdown option to navigate the user to the Privacy Policy page.
-//
 import styles from "./dropdown.module.css"
-import { useNavigate } from "react-router-dom"
-import route from "../../../router/route.json"
 import { Icons } from "../../Icons"
 import { useLanguage } from "../../../i18n/useLanguage"
-import { useProduct } from "../../../context/ProductContext"
-import { ProductType } from "../../../context/ProductType"
 
-type DropdownOption = {
+type DropOptPrivacyProps = {
   handleClose: () => void
+  openPrivacyPopup: () => void
 }
 
-function DropOptPrivacy({ handleClose }: DropdownOption) {
-  const navigate = useNavigate()
-  const { t, lang } = useLanguage()
-  const product = useProduct()
-
-  const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)
-
-  const privacyPolicyPath = product === ProductType.Practice
-    ? route[`practicePrivacyPolicy${langKey}`] || route.practicePrivacyPolicyEn
-    : route[`youthPrivacyPolicy${langKey}`] || route.youthPrivacyPolicyEn
+function DropOptPrivacy({ handleClose, openPrivacyPopup }: DropOptPrivacyProps) {
+  const { t } = useLanguage()
 
   const handleClick = () => {
-    navigate(privacyPolicyPath)
+    openPrivacyPopup()
     handleClose()
   }
 

@@ -20,9 +20,13 @@ function DropOptLang({ handleClose }: DropdownOption) {
 
   const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)
 
-  const faqPath = product === ProductType.Practice
+const faqPath =
+  product === ProductType.Practice
     ? route[`practiceFAQ${langKey}`] || route.practiceFAQEn
+    : product === ProductType.Words
+    ? route[`wordsFAQ${langKey}`] || route.wordsFAQEn
     : route[`youthFAQ${langKey}`] || route.youthFAQEn
+
 
   const handleClick = () => {
     navigate(faqPath)

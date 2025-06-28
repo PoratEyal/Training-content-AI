@@ -214,6 +214,7 @@
       "namePlaceholder": "الاسم",
       "messagePlaceholder": "ما الذي تود أن تخبرنا به؟",
       "submitButton": "إرسال",
+      "loadingButton": "بالتنفيذ",
       "successMessage": "تم إرسال رسالتك بنجاح!"
     }
   },

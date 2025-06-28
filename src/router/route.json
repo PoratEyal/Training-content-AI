@@ -57,16 +57,6 @@
   "youthFAQEs": "/es/youth/faq",
   "youthFAQAr": "/ar/youth/faq",
 
-  "youthPrivacyPolicyHe": "/he/youth/privacy",
-  "youthPrivacyPolicyEn": "/en/youth/privacy",
-  "youthPrivacyPolicyEs": "/es/youth/privacy",
-  "youthPrivacyPolicyAr": "/ar/youth/privacy",
-
-  "youthContactUsHe": "/he/youth/contactUs",
-  "youthContactUsEn": "/en/youth/contactUs",
-  "youthContactUsEs": "/es/youth/contactUs",
-  "youthContactUsAr": "/ar/youth/contactUs",
-
   
   "practiceHomePageHe": "/he/practice",
   "practiceHomePageEn": "/en/practice",
@@ -88,16 +78,6 @@
   "practiceFAQEs": "/es/practice/faq",
   "practiceFAQAr": "/ar/practice/faq",
 
-  "practicePrivacyPolicyHe": "/he/practice/privacy",
-  "practicePrivacyPolicyEn": "/en/practice/privacy",
-  "practicePrivacyPolicyEs": "/es/practice/privacy",
-  "practicePrivacyPolicyAr": "/ar/practice/privacy",
-
-  "practiceContactUsHe": "/he/practice/contactUs",
-  "practiceContactUsEn": "/en/practice/contactUs",
-  "practiceContactUsEs": "/es/practice/contactUs",
-  "practiceContactUsAr": "/ar/practice/contactUs",
-
 
   "wordsHomePageHe": "/he/words",
   "wordsHomePageEn": "/en/words",
@@ -118,6 +98,11 @@
   "wordsQuizEn": "/en/words/quiz",
   "wordsQuizEs": "/es/words/quiz",
   "wordsQuizAr": "/ar/words/quiz",
+
+  "wordsFAQHe": "/he/words/faq",
+  "wordsFAQEn": "/en/words/faq",
+  "wordsFAQEs": "/es/words/faq",
+  "wordsFAQAr": "/ar/words/faq",
 
 
   "all": "*"

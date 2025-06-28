@@ -212,6 +212,7 @@
       "namePlaceholder": "Name",
       "messagePlaceholder": "What would you like to tell us?",
       "submitButton": "Send",
+      "loadingButton": "Processing",
       "successMessage": "Your message was sent successfully!"
     }
   },
