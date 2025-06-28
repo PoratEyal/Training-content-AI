@@ -8,7 +8,8 @@ import MainBtn from "../../../components/MainBtn/MainBtn";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz";
 import { ProductType } from "../../../context/ProductType";
-import { PRACTICE_TOPIC_AD_SLOT } from "../../../models/constants/adsSlot";
+import { useNotificationContext } from "../../../context/NotificationContext";
+import { PRACTICE_AD_SLOT } from "../../../models/constants/adsSlot";
 import { createQuiz } from "../../../hooks/useQuestions";
 import { logEvent } from "../../../utils/logEvent";
 import { ProductPages } from "../../../models/enum/pages";
@@ -24,13 +25,14 @@ function Topic() {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { currentPage, setCurrentPage } = useContentContext();
+  const { notifyAlert: notifyAlert } = useNotificationContext();
 
   const practiceHomePagePath = route[`practiceHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceHomePageEn;
   const practiceQuizPath = route[`practiceQuiz${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceQuizEn;
   const goBack = () => { navigate(practiceHomePagePath); };
 
   useEffect(() => { // Prevent direct access via URL
-    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_Topic, navigate, practiceHomePagePath);
+    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_PracticeTopic, navigate, practiceHomePagePath);
   }, []);
 
   // Checks if the given text contains at least one valid multiple-choice question block.
@@ -55,7 +57,6 @@ function Topic() {
   const handleSubmit = async (e) => {
 
     e.preventDefault()
-    if (!topic.trim()) return
 
     setLoading(true)
     const result = await createQuiz(topic, lang, 10)
@@ -75,8 +76,8 @@ function Topic() {
       const auth = getAuth();
       const user = auth.currentUser;
       const userEmail = user?.email || "guest";
+      notifyAlert(t("topic.error"));
       logEvent(`[Practice.Topic]: createQuiz failed, topic: ${topic}`, userEmail);
-      alert(t("topic.error"));
     }
   }
 
@@ -87,7 +88,7 @@ function Topic() {
         productType={ProductType.Practice}
         hasGreenBackground
         hasHeader={{ goBack, hasTitle: t("topic.title") }}
-        hasAds={PRACTICE_TOPIC_AD_SLOT}
+        hasAds={PRACTICE_AD_SLOT}
         hasNavBar
         index={false}
       >

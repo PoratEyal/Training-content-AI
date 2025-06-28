@@ -11,7 +11,7 @@ import { useLanguage } from "../../../i18n/useLanguage";
 import useSignIn from "../../../hooks/useSignIn";
 import { ProductType } from "../../../context/ProductType";
 import { GUEST_BLOCK_MustLogin } from "../../../models/constants/cookie";
-import { PRACTICE_HOME_AD_SLOT } from "../../../models/constants/adsSlot";
+import { PRACTICE_AD_SLOT } from "../../../models/constants/adsSlot";
 import { buildHomeSchema } from "../../../models/schemaOrg";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
@@ -46,7 +46,7 @@ function PracticeHomePage() {
       id="practiceHome"
       productType={ProductType.Practice}
       hasHeader={{}}
-      hasAds={PRACTICE_HOME_AD_SLOT}
+      hasAds={PRACTICE_AD_SLOT}
       index={true}
       hasNavBar={!shouldBlockUI}
     >

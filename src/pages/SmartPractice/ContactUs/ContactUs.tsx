@@ -21,7 +21,7 @@ const ContactUs: React.FC = () => {
   const { t, isRTL, dir, textAlign, lang } = useLanguage()
   const navigate = useNavigate()
   const { currentUser } = useAuthContext()
-  const { handleSuccess } = useNotificationContext()
+  const { notifySuccess: handleSuccess } = useNotificationContext()
   const [isLoading, setIsLoading] = useState(false)
 
   const [formData, setFormData] = useState({

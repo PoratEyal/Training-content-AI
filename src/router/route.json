@@ -67,6 +67,7 @@
   "youthContactUsEs": "/es/youth/contactUs",
   "youthContactUsAr": "/ar/youth/contactUs",
 
+  
   "practiceHomePageHe": "/he/practice",
   "practiceHomePageEn": "/en/practice",
   "practiceHomePageEs": "/es/practice",
@@ -97,10 +98,16 @@
   "practiceContactUsEs": "/es/practice/contactUs",
   "practiceContactUsAr": "/ar/practice/contactUs",
 
+
   "wordsHomePageHe": "/he/words",
   "wordsHomePageEn": "/en/words",
   "wordsHomePageEs": "/es/words",
   "wordsHomePageAr": "/ar/words",
+
+  "wordsTopicHe": "/he/words/topic",
+  "wordsTopicEn": "/en/words/topic",
+  "wordsTopicEs": "/es/words/topic",
+  "wordsTopicAr": "/ar/words/topic",
 
   "wordsVocabHe": "/he/words/vocab",
   "wordsVocabEn": "/en/words/vocab",

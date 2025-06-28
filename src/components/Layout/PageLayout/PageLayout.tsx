@@ -141,7 +141,7 @@ function PageLayout({
           const userEmail = user?.email || "";
 
           if (productType === ProductType.Youth && showAd) {
-            const banners = ["/practiceBanner1.png", "/practiceBanner2.png", "/practiceBanner3.png", "/practiceBanner4.png"];
+            const banners = ["/Youth/practiceBanner1.png", "/Youth/practiceBanner2.png", "/Youth/practiceBanner3.png", "/Youth/practiceBanner4.png"];
             const randomIndex = Math.floor(Math.random() * banners.length);
             const bannerImage = banners[randomIndex];
 

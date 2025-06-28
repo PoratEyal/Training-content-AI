@@ -12,17 +12,17 @@ type ArtOptCopyProps = {
 
 const ArtOptCopy: React.FC<ArtOptCopyProps> = ({ activity }) => {
     const { t, dir } = useLanguage();
-    const { handleSuccess, handleAlert } = useNotificationContext();
+    const { notifySuccess: notifySuccess, notifyAlert: notifyAlert } = useNotificationContext();
 
     const handleClick = () => {
         const textToCopy = formatCopy(activity.activity);
         navigator.clipboard
             .writeText(textToCopy)
             .then(() => {
-                handleSuccess(t('articleOptions.copy.success'));
+                notifySuccess(t('articleOptions.copy.success'));
             })
             .catch((error) => {
-                handleAlert(t('articleOptions.copy.error'));
+                notifyAlert(t('articleOptions.copy.error'));
             });
     };
 

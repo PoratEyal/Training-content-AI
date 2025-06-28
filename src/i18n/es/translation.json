@@ -1,8 +1,16 @@
 {
   "common": {
     "youthAppName": "Actividades para movimientos juveniles",
-    "practiceAppName": "Práctica personal inteligente"
+    "practiceAppName": "Práctica personal inteligente",
+    "wordsAppName": "Aprendizaje y práctica de vocabulario",
+    "btnContinue": "Continuar",
+    "loadingHead": "Estamos trabajando en ello",
+    "loadingText": "¡Atención! Este cuestionario fue generado con inteligencia artificial, que está en constante aprendizaje, por lo que pueden ocurrir errores."
   },
+  "aboutUs": {
+    "title": "Sobre Nosotros"
+  },
+
   "home": {
     "slogan": "Personalizado, Simple y Rápido 🤟",
     "startAction": "Crear Actividad",
@@ -17,9 +25,6 @@
     "withPrefix": "con",
     "ai": "IA"
   },
-  "aboutUs": {
-    "title": "Sobre Nosotros"
-  },
   "navbar": {
     "home": "Inicio",
     "build": "Crear Actividad",
@@ -33,7 +38,6 @@
     "grade": "Grado Escolar",
     "numberOfChildren": "Número de Niños",
     "gender": "Género",
-    "submit": "Continuar",
     "lampAlt": "Lámpara amarilla"
   },
   "buildActivity": {
@@ -106,9 +110,7 @@
     "btnCreate": "¡Vamos!",
     "btnCreating": "Creando práctica",
     "error": "Ocurrió un error al generar las preguntas. Intenta nuevamente.",
-    "topicError": "Lo siento, no puedo generar preguntas sobre el tema que seleccionaste. Por favor, intenta con otro tema.",
-    "loadingHead": "Ya estamos en eso",
-    "loadingText": "Atención: Este cuestionario fue generado por una inteligencia artificial que está en constante aprendizaje y mejora. Pueden ocurrir errores."
+    "topicError": "Lo siento, no puedo generar preguntas sobre el tema que seleccionaste. Por favor, intenta con otro tema."
   },
   "quiz": {
     "FailMsg": "La creación de la práctica falló. Si el problema persiste, por favor contáctanos a través del menú 'Contáctanos'.",
@@ -123,24 +125,18 @@
 
   "wordsVocab": {
     "title": "Vamos a ingresar palabras",
-    "instructions": "Ingresa palabras para practicar, haz clic en el botón de traducir y corrige manualmente la traducción si lo deseas.",
-    "Words2Translate": "Palabras para practicar",
-    "WordsTranslated": "Traducción de cada palabra",
-    "Translate": "Traducir",
-    "noWords2Translate": "No se ingresaron palabras para traducir",
+    "instructions": "La lista de palabras o frases para practicar",
+    "TextAreaGuide": "Words to Practice",
     "noTranslation": "Se recomienda usar primero la traducción automática para asegurar que las palabras estén bien traducidas",
     "tooManyLines": "Puedes ingresar hasta 35 líneas (cada línea es una pregunta).",
     "btnCreate": "¡Empezar!",
     "btnCreating": "Creando práctica",
     "error": "Ocurrió un error al crear las preguntas. Intenta nuevamente.",
-    "topicError": "Lo siento, no puedo generar preguntas sobre el tema que elegiste. Por favor, intenta con otro tema.",
-    "loadingHead": "Estamos trabajando en ello",
-    "loadingText": "¡Atención! Este cuestionario fue generado con inteligencia artificial, que está en constante aprendizaje, por lo que pueden ocurrir errores."
+    "topicError": "Lo siento, no puedo generar preguntas sobre el tema que elegiste. Por favor, intenta con otro tema."
   },
 
   "wordsQuiz": {
     "title": "Y ahora a practicar",
-    "nextWord": "Siguiente",
     "newPractice": "Nueva práctica",
     "done": "He terminado por ahora"
   },

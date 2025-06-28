@@ -33,7 +33,7 @@ function WordsHomePage() {
   const { setCurrentPage } = useContentContext()
 
   const homeSchema = useMemo(() => buildHomeSchema(lang, t("home.slogan")), [lang, t])
-  const wordsVocabPath = route[`wordsVocab${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsVocabEn
+  const wordsTopicPath = route[`wordsTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsTopicEn
   const shouldBlockUI = !isLoggedIn && cookieLimit === GUEST_BLOCK_MustLogin
 
   useEffect(() => {
@@ -76,7 +76,7 @@ function WordsHomePage() {
                 cookieLimit,
                 setLimitCookie,
                 signInWithGoogle,
-                navigateTo: wordsVocabPath,
+                navigateTo: wordsTopicPath,
                 navigate,
               })
             }

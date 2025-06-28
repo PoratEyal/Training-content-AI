@@ -12,7 +12,7 @@ import { useAuthContext } from "../../../context/AuthContext"
 import { useContentContext } from "../../../context/ContentContext"
 import { ProductType } from "../../../context/ProductType"
 import { useLanguage } from "../../../i18n/useLanguage"
-import { DETAILS_AD_SLOT } from "../../../models/constants/adsSlot"
+import { YOUTH_DETAILS_AD_SLOT } from "../../../models/constants/adsSlot"
 import { MovmentsOptions, GradeOptions, AmountOptions, GenderOptions } from "../../../models/resources/select"
 import route from "../../../router/route.json"
 import { useNavigate } from "react-router-dom"
@@ -40,7 +40,7 @@ function Details() {
   const goBack = () => { navigate(youthHomePagePath); };
 
   useEffect(() => { // Prevent direct access via URL
-    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_Details, navigate, youthHomePagePath);
+    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_YouthDetails, navigate, youthHomePagePath);
   }, []);
 
   useEffect(() => { // Set default values from session data or current user
@@ -66,7 +66,7 @@ function Details() {
       productType={ProductType.Youth}
       hasGreenBackground
       hasHeader={{ goBack }}
-      hasAds={DETAILS_AD_SLOT}
+      hasAds={YOUTH_DETAILS_AD_SLOT}
       hasNavBar
       index={false}
     >
@@ -81,7 +81,7 @@ function Details() {
           className={`${styles.lamp_img} ${isRTL ? styles.lamp_img_rtl : styles.lamp_img_ltr}`}
           title={t("details.lampAlt")}
           alt={t("details.lampAlt")}
-          src="/lamp.svg"
+          src="/Youth/lamp.svg"
           loading="lazy"
           width={105}
           height={109}
@@ -116,7 +116,7 @@ function Details() {
           </div>
           <div className={isRTL ? styles.RTLDir : styles.LTRDir}>
             <MainBtn
-              text={t("details.submit")}
+              text={t("common.btnContinue")}
               isDisabled={isDisabled}
               type="submit"
               func={handleSubmit}

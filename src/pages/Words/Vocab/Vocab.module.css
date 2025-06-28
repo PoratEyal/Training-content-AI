@@ -14,16 +14,16 @@
   box-sizing: border-box;
 }
 
-.instructionsLabel {
+.listLabel {
   display: block;
-  width: 86%;
+  width: 100%;
   margin-bottom: 2px;
   font-size: 16px;
-  line-height: 1.6;
   color: #333;
+  text-align: center;
 }
 
-.sideBySideWrapper {
+.textareaWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,67 +32,23 @@
 }
 
 .textarea {
-  width: 135px;
+  width: 200px;
+  height: 250px;
   padding: 4px;
-  font-size: 12px;
+  font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 6px;
   resize: none;
-  direction: rtl;
   background-color: #fff;
+  text-align: center;
+  line-height: 1.5;
 }
 
-.translateButton {
-  background-color: #f0f0f0;
-  color: #4F4F4F;
-  border: 2px solid #ccc;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.3s ease;
-}
-
-.translateButton:hover {
-  background-color: #e0e0e0;
-  border-color: #888;
-}
-
-.translateButton.loading {
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.textarea:focus {
+  border-color: #ddd;
+  outline: none;
 }
 
 .button_wrapper {
-  margin-top: 20px;
-}
-
-.clearButton {
-  background: none;
-  border: none;
-  padding: 0;
-  margin-top: 20px;
-  cursor: pointer;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-}
-
-.clearButton:hover {
-  font-size: 24px;
+  margin-top: 10px;
 }

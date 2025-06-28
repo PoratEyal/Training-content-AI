@@ -11,7 +11,7 @@ import { useContentContext } from "../../../context/ContentContext";
 import { useEditorContext } from "../../../context/EditorContext";
 import { ProductType } from "../../../context/ProductType";
 import { useLanguage } from "../../../i18n/useLanguage";
-import { ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
+import { YOUTH_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
 import { helmetJson } from "../../../models/resources/helmet";
 import route from "../../../router/route.json";
 import { ProductPages } from "../../../models/enum/pages";
@@ -40,7 +40,7 @@ function Activity() {
   };
 
   useEffect(() => { // Prevent direct access via URL
-    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_Activity, navigate, youthHomePagePath);
+    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_YouthActivity, navigate, youthHomePagePath);
   }, []);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ function Activity() {
       hasGreenBackground
       hasHeader={{ goBack, hasTitle: mainActivity?.subject || undefined }}
       title={helmetJson[lang].activity.title}
-      hasAds={ACTIVITY_AD_SLOT}
+      hasAds={YOUTH_ACTIVITY_AD_SLOT}
       hasNavBar
       index={false}
     >

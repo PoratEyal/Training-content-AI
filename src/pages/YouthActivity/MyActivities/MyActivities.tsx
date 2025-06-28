@@ -12,7 +12,7 @@ import SavedActivityRow from "../../../components/SavedActivityRow/SavedActivity
 import { useSaveContext } from "../../../context/SavedContext"
 import { ProductType } from "../../../context/ProductType"
 import { useLanguage } from "../../../i18n/useLanguage"
-import { MY_ACTIVITIES_AD_SLOT } from "../../../models/constants/adsSlot"
+import { YOUTH_MY_ACTIVITIES_AD_SLOT } from "../../../models/constants/adsSlot"
 import { buildSavedActivitiesSchema } from "../../../models/schemaOrg"
 import { Activity } from "../../../models/types/activity"
 import route from "../../../router/route.json"
@@ -33,7 +33,7 @@ const SavedActivities: React.FC = () => {
   const youthHomePagePath = route[`youthHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthHomePageEn;
 
   useEffect(() => { // Prevent direct access via URL
-    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_MyActivities, navigate, youthHomePagePath);
+    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_YouthMyActivities, navigate, youthHomePagePath);
   }, []);
 
   useFetchSavedData();
@@ -69,7 +69,7 @@ const SavedActivities: React.FC = () => {
       productType={ProductType.Youth}
       hasHeader={{}}
       hasNavBar
-      hasAds={MY_ACTIVITIES_AD_SLOT}
+      hasAds={YOUTH_MY_ACTIVITIES_AD_SLOT}
       index={false}
       hasGreenBackground
     >

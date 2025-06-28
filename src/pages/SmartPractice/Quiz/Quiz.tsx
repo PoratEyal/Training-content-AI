@@ -14,7 +14,7 @@ import { useContentContext } from "../../../context/ContentContext"
 import { useShareTextOrLink } from "../../../utils/share"
 import { logEvent } from "../../../utils/logEvent"
 import { enforcePageAccess } from "../../../utils/navigation"
-import { PRACTICE_QUIZ_AD_SLOT } from "../../../models/constants/adsSlot"
+import { PRACTICE_AD_SLOT } from "../../../models/constants/adsSlot"
 import { ProductPages } from "../../../models/enum/pages"
 import { WEBSITE_URL } from "../../../models/constants"
 
@@ -76,7 +76,7 @@ function Quiz() {
   }
 
     useEffect(() => { // Prevent direct access via URL
-      enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_Quiz, navigate, practiceHomePagePath);
+      enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_PracticeQuiz, navigate, practiceHomePagePath);
     }, []);
 
   useEffect(() => {
@@ -227,7 +227,7 @@ const handleShare = (topic: string) => {
       id="practiceQuiz"
       productType={ProductType.Practice}
       hasHeader={{ goBack, hasTitle: topic }}
-      hasAds={PRACTICE_QUIZ_AD_SLOT}
+      hasAds={PRACTICE_AD_SLOT}
       hasGreenBackground
       hasNavBar
       index={false}

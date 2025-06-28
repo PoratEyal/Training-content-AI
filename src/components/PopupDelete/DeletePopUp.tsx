@@ -13,7 +13,7 @@ type DeletePopUpProps = {
 
 const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, activityName }) => {
     const { t, dir } = useLanguage();
-    const { handleAlert } = useNotificationContext();
+    const { notifyAlert: notifyAlert } = useNotificationContext();
     const [showPopup, setShowPopup] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
 
@@ -32,7 +32,7 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
             onClose();
             await onDelete();
         } catch (error) {
-            handleAlert(t("savedActivities.deletePopup.deleteError"));
+            notifyAlert(t("savedActivities.deletePopup.deleteError"));
             setIsDeleting(false);
             onClose();
         }

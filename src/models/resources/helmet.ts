@@ -85,20 +85,24 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
 
         wordsHome: {
-            title: "תרגול עצמי חכם",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "לימוד ותרגול אוצר מילים",
+            content: "תרגלו רשימת מילים בין שפות ולמדו את הפירוש בקלות וביעילות. הכלי המושלם ללמידת שפה, שיפור אוצר המילים וחיזוק הזיכרון",
+        },
+        wordsTopic: {
+            title: "לימוד ותרגול אוצר מילים",
+            content: "תרגלו רשימת מילים בין שפות ולמדו את הפירוש בקלות וביעילות. הכלי המושלם ללמידת שפה, שיפור אוצר המילים וחיזוק הזיכרון",
         },
         wordsVocab: {
-            title: "תרגול עצמי חכם",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "לימוד ותרגול אוצר מילים",
+            content: "תרגלו רשימת מילים בין שפות ולמדו את הפירוש בקלות וביעילות. הכלי המושלם ללמידת שפה, שיפור אוצר המילים וחיזוק הזיכרון",
         },
         wordsQuiz: {
-            title: "תרגול עצמי חכם",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "לימוד ותרגול אוצר מילים",
+            content: "תרגלו רשימת מילים בין שפות ולמדו את הפירוש בקלות וביעילות. הכלי המושלם ללמידת שפה, שיפור אוצר המילים וחיזוק הזיכרון",
         },
         wordsFaq: {
-            title: "תרגול עצמי חכם - שאלות נפוצות",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "לימוד ותרגול אוצר מילים - שאלות נפוצות",
+            content: "תרגלו רשימת מילים בין שפות ולמדו את הפירוש בקלות וביעילות. הכלי המושלם ללמידת שפה, שיפור אוצר המילים וחיזוק הזיכרון",
         },
 
     } as LanguageSection,
@@ -181,20 +185,24 @@ export const helmetJson: Record<Lng, LanguageSection> = {
 
 
         wordsHome: {
-            title: "תרגול עצמי חכם",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "Vocabulary Learning and Practice",
+            content: "Practice a list of words between languages and learn their meaning easily and efficiently. The perfect tool for language learning, vocabulary improvement, and memory enhancement",
+        },
+        wordsTopic: {
+            title: "Vocabulary Learning and Practice",
+            content: "Practice a list of words between languages and learn their meaning easily and efficiently. The perfect tool for language learning, vocabulary improvement, and memory enhancement",
         },
         wordsVocab: {
-            title: "תרגול עצמי חכם",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "Vocabulary Learning and Practice",
+            content: "Practice a list of words between languages and learn their meaning easily and efficiently. The perfect tool for language learning, vocabulary improvement, and memory enhancement",
         },
         wordsQuiz: {
-            title: "תרגול עצמי חכם",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "Vocabulary Learning and Practice",
+            content: "Practice a list of words between languages and learn their meaning easily and efficiently. The perfect tool for language learning, vocabulary improvement, and memory enhancement",
         },
         wordsFaq: {
-            title: "תרגול עצמי חכם - שאלות נפוצות",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "Vocabulary Learning and Practice",
+            content: "Practice a list of words between languages and learn their meaning easily and efficiently. The perfect tool for language learning, vocabulary improvement, and memory enhancement",
         },
 
     } as LanguageSection,
@@ -277,20 +285,24 @@ export const helmetJson: Record<Lng, LanguageSection> = {
 
 
         wordsHome: {
-            title: "תרגול עצמי חכם",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "تعلم وممارسة المفردات",
+            content: "تدرّب على قائمة كلمات بين اللغات وتعلّم معانيها بسهولة وكفاءة. الأداة المثالية لتعلم اللغات، تحسين المفردات، وتعزيز الذاكرة.",        
+        },
+        wordsTopic: {
+            title: "تعلم وممارسة المفردات",
+            content: "تدرّب على قائمة كلمات بين اللغات وتعلّم معانيها بسهولة وكفاءة. الأداة المثالية لتعلم اللغات، تحسين المفردات، وتعزيز الذاكرة.",        
         },
         wordsVocab: {
-            title: "תרגול עצמי חכם",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "تعلم وممارسة المفردات",
+            content: "تدرّب على قائمة كلمات بين اللغات وتعلّم معانيها بسهولة وكفاءة. الأداة المثالية لتعلم اللغات، تحسين المفردات، وتعزيز الذاكرة.",
         },
         wordsQuiz: {
-            title: "תרגול עצמי חכם",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "تعلم وممارسة المفردات",
+            content: "تدرّب على قائمة كلمات بين اللغات وتعلّم معانيها بسهولة وكفاءة. الأداة المثالية لتعلم اللغات، تحسين المفردات، وتعزيز الذاكرة.",
         },
         wordsFaq: {
-            title: "תרגול עצמי חכם - שאלות נפוצות",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "تعلم وممارسة المفردات",
+            content: "تدرّب على قائمة كلمات بين اللغات وتعلّم معانيها بسهولة وكفاءة. الأداة المثالية لتعلم اللغات، تحسين المفردات، وتعزيز الذاكرة.",
         },
 
     } as LanguageSection,
@@ -373,20 +385,24 @@ export const helmetJson: Record<Lng, LanguageSection> = {
 
         
         wordsHome: {
-            title: "תרגול עצמי חכם",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "Aprendizaje y práctica de vocabulario",
+            content: "Practica una lista de palabras entre idiomas y aprende su significado de forma fácil y eficaz. La herramienta perfecta para aprender idiomas, mejorar el vocabulario y reforzar la memoria"
+        },
+        wordsTopic: {
+            title: "Aprendizaje y práctica de vocabulario",
+            content: "Practica una lista de palabras entre idiomas y aprende su significado de forma fácil y eficaz. La herramienta perfecta para aprender idiomas, mejorar el vocabulario y reforzar la memoria"
         },
         wordsVocab: {
-            title: "תרגול עצמי חכם",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "Aprendizaje y práctica de vocabulario",
+            content: "Practica una lista de palabras entre idiomas y aprende su significado de forma fácil y eficaz. La herramienta perfecta para aprender idiomas, mejorar el vocabulario y reforzar la memoria"
         },
         wordsQuiz: {
-            title: "תרגול עצמי חכם",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "Aprendizaje y práctica de vocabulario",
+            content: "Practica una lista de palabras entre idiomas y aprende su significado de forma fácil y eficaz. La herramienta perfecta para aprender idiomas, mejorar el vocabulario y reforzar la memoria"
         },
         wordsFaq: {
-            title: "תרגול עצמי חכם - שאלות נפוצות",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "Aprendizaje y práctica de vocabulario",
+            content: "Practica una lista de palabras entre idiomas y aprende su significado de forma fácil y eficaz. La herramienta perfecta para aprender idiomas, mejorar el vocabulario y reforzar la memoria"
         },
 
     } as LanguageSection,

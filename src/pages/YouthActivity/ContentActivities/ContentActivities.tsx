@@ -5,7 +5,7 @@
 import "../../../components/ActivityOutput/Markdown.css";
 import React from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
+import { YOUTH_CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
 import { StaticActivities } from "../../../models/types/activity";
 import { fetchIncrementActivityDisplayCount } from "../../../utils/fetch";
 import { useStaticContentContext } from "../../../context/StaticContentContext";
@@ -70,7 +70,7 @@ const ContentActivities: React.FC = () => {
       hasHeader={{ goBack, hasTitle: title }}
       hasNavBar
       hasGreenBackground
-      hasAds={CONTENT_ACTIVITY_AD_SLOT}
+      hasAds={YOUTH_CONTENT_ACTIVITY_AD_SLOT}
     >
       {isLoading ? (
         <section className={styles.content_article}>

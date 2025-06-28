@@ -13,10 +13,20 @@ import { speakText } from "../../../utils/speak"
 import { WORDS_AD_SLOT } from "../../../models/constants/adsSlot"
 import { ProductPages } from "../../../models/enum/pages"
 
+function shuffleArray<T>(arr: T[]): T[] {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
 type Question = {
   question: string
+  pronunciation?: string
   options: string[]
-  correctIndex: number
+  correctAnswer: string
 }
 
 function Quiz() {
@@ -27,13 +37,13 @@ function Quiz() {
   const { currentPage, setCurrentPage } = useContentContext()
 
   const wordsHomePagePath = route[`wordsHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsHomePageEn
-  const wordsVocabPath = route[`wordsVocab${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsVocabEn
+  const wordstopicPath = route[`wordsTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsTopicEn
 
-  const [questions, setQuestions] = useState<Question[]>([])
+  const [fullCycle, setFullCycle] = useState<Question[]>([])
+  const [currentCycle, setCurrentCycle] = useState<Question[]>([])
   const [currentIdx, setCurrentIdx] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
-  const [wrongStack, setWrongStack] = useState<Question[]>([])
-  const [initialQuestions, setInitialQuestions] = useState<Question[]>([])
+  const [wrongQuestions, setWrongQuestions] = useState<Question[]>([])
   const [done, setDone] = useState(false)
 
   useEffect(() => {
@@ -46,90 +56,91 @@ function Quiz() {
       navigate(wordsHomePagePath)
       return
     }
-
-    const blocks = raw.split(/~\d+~/).map(b => b.trim()).filter(Boolean)
-    const parsed: Question[] = blocks.map((block) => {
-      const lines = block.split(/\n/).map(line => line.trim()).filter(Boolean)
-      const options: string[] = []
-      let correctIndex = -1
-      let answerIdx = 0
-
-      lines.forEach((line) => {
-        const match = line.match(/~[א-דA-Dأ-د]~\s*(.*)/)
-        if (!match) return
-
-        const text = match[1].trim()
-        const clean = text.replace(/\*\*/g, "")
-        options.push(clean)
-
-        if (text.includes("**")) {
-          correctIndex = answerIdx
+    const parsedRaw = JSON.parse(raw)
+    const prepared: Question[] = parsedRaw
+      .filter((item: any) => item.correct && item.text)
+      .map((item: any) => {
+        const allOptions = shuffleArray([
+          item.correct,
+          item.dist1,
+          item.dist2,
+          item.dist3
+        ].filter(Boolean))
+        return {
+          question: item.text,
+          pronunciation: item.pronunciation,
+          correctAnswer: item.correct,
+          options: allOptions
         }
-
-        answerIdx++ // Advance only when line is a valid answer
       })
 
-      return {
-        question: lines[0].replace(/^~\d+~\s*/, "") || "",
-        options,
-        correctIndex,
-      }
-    }).filter(q => q.options.length === 4 && q.correctIndex >= 0)
-
-    setQuestions(parsed)
-    setInitialQuestions(parsed)
+    const shuffled = shuffleArray(prepared)
+    setFullCycle(shuffled)
+    setCurrentCycle(shuffled)
     setCurrentIdx(0)
     setSelected(null)
-    setWrongStack([])
+    setWrongQuestions([])
     setDone(false)
-  }, [lang, navigate])
+  }, [lang])
 
-  const handleSelect = (index: number) => {
-    if (selected === null) setSelected(index)
+  const handleSelect = (idx: number) => {
+    if (selected === null) setSelected(idx)
   }
 
   const handleNext = () => {
-    const currentQ = questions[currentIdx]
-    if (selected !== currentQ.correctIndex) {
-      setWrongStack(prev => [...prev, currentQ])
-    }
+    const currentQ = currentCycle[currentIdx]
+    if (selected === null) return
 
-    if (currentIdx < questions.length - 1) {
+    const selectedAnswer = currentQ.options[selected]
+    const isWrong = selectedAnswer !== currentQ.correctAnswer
+
+    if (isWrong) setWrongQuestions(prev => [...prev, currentQ])
+
+    if (currentIdx < currentCycle.length - 1) {
       setCurrentIdx(currentIdx + 1)
       setSelected(null)
-    } else if (wrongStack.length > 0 || selected !== currentQ.correctIndex) {
-      setQuestions([...wrongStack, ...(selected !== currentQ.correctIndex ? [currentQ] : [])])
-      setCurrentIdx(0)
-      setWrongStack([])
-      setSelected(null)
     } else {
-      setDone(true)
+      if (wrongQuestions.length === 0 && !isWrong) {
+        setDone(true)
+      } else {
+        const next = isWrong ? [...wrongQuestions, currentQ] : [...wrongQuestions]
+        const reshuffled = next.map(q => ({
+          ...q,
+          options: shuffleArray(q.options)
+        }))
+        setCurrentCycle(reshuffled)
+        setWrongQuestions([])
+        setCurrentIdx(0)
+        setSelected(null)
+      }
     }
   }
 
   const handleRestart = () => {
-    setQuestions(initialQuestions)
+    const reshuffled = shuffleArray(fullCycle).map(q => ({
+      ...q,
+      options: shuffleArray(q.options)
+    }))
+    setCurrentCycle(reshuffled)
     setCurrentIdx(0)
     setSelected(null)
-    setWrongStack([])
+    setWrongQuestions([])
     setDone(false)
   }
 
-  const q = questions[currentIdx]
-
-  const lettersMap: Record<string, string[]> = {
-    he: ['א', 'ב', 'ג', 'ד'],
-    ar: ['أ', 'ب', 'ج', 'د'],
-    es: ['A', 'B', 'C', 'D'],
-    en: ['A', 'B', 'C', 'D']
-  }
-  const letters = lettersMap[lang] || ['-', '-', '-', '-']
+  const q = currentCycle[currentIdx]
+  const letters = {
+    he: ["א", "ב", "ג", "ד"],
+    ar: ["أ", "ب", "ج", "د"],
+    es: ["A", "B", "C", "D"],
+    en: ["A", "B", "C", "D"]
+  }[lang] || ["-", "-", "-", "-"]
 
   return (
     <PageLayout
       id="wordsQuiz"
       productType={ProductType.Words}
-      hasHeader={{ goBack: () => navigate(wordsVocabPath), hasTitle: t("wordsQuiz.title") }}
+      hasHeader={{ goBack: () => navigate(wordstopicPath), hasTitle: t("wordsQuiz.title") }}
       hasAds={WORDS_AD_SLOT}
       hasGreenBackground
       hasNavBar
@@ -153,6 +164,9 @@ function Quiz() {
           <div className={styles.questionBlock}>
             <div className={styles.questionText}>
               {q.question}
+              {q.pronunciation && (
+                <span className={styles.pronunciation}> ({q.pronunciation})</span>
+              )}
               <span
                 onClick={() => speakText(q.question)}
                 className={styles.speakerIcon}
@@ -165,19 +179,16 @@ function Quiz() {
             <ul className={styles.optionList}>
               {q.options.map((opt, idx) => {
                 const isSelected = selected === idx
-                const isCorrectAnswer = selected !== null && idx === q.correctIndex
-                const isWrongAnswer = selected === idx && selected !== q.correctIndex
+                const isCorrect = opt === q.correctAnswer
+                const isWrong = isSelected && !isCorrect
 
                 return (
                   <li
                     key={idx}
                     onClick={() => handleSelect(idx)}
-                    className={`${styles.optionItem} ${isCorrectAnswer ? styles.optionCorrect :
-                      isWrongAnswer ? styles.optionWrong :
-                        isSelected ? styles.optionSelected : ""
-                      }`}
+                    className={`${styles.optionItem} ${isCorrect && selected !== null ? styles.optionCorrect : ""} ${isWrong ? styles.optionWrong : ""} ${isSelected ? styles.optionSelected : ""}`}
                   >
-                    <span className={idx === q.correctIndex && selected !== null ? styles.correctBold : ""}>
+                    <span className={isCorrect && selected !== null ? styles.correctBold : ""}>
                       {`${letters[idx]}. ${opt}`}
                     </span>
                   </li>
@@ -188,7 +199,7 @@ function Quiz() {
           {selected !== null && (
             <div className={styles.checkBtnContainer}>
               <button onClick={handleNext} className={styles.checkBtn}>
-                {t("wordsQuiz.nextWord")}
+                {t("common.btnContinue")}
               </button>
             </div>
           )}

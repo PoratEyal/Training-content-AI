@@ -54,6 +54,7 @@ export type HelmetPage =
     | "practiceQuiz"
     | "practiceFaq"
     | "wordsHome"
+    | "wordsTopic"
     | "wordsVocab"
     | "wordsQuiz"
     | "wordsFaq";

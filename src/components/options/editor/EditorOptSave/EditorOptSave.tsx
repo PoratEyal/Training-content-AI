@@ -18,7 +18,7 @@ type EditorOptSaveProps = {
 const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) => {
     const { t, dir, lang } = useLanguage();
     const { updateMainActivity } = useContentContext();
-    const { handleSuccess, handleAlert } = useNotificationContext();
+    const { notifySuccess: handleSuccess, notifyAlert: notifyAlert } = useNotificationContext();
     const { getSavedActivities } = useSaveContext();
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
     const [saved, setSaved] = useState<boolean>(false);
@@ -42,7 +42,7 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
                     setSaved(false);
                 }, 1000);
             } catch (error) {
-                handleAlert(t("editor.save.saveError"));
+                notifyAlert(t("editor.save.saveError"));
                 setSaved(false);
             }
         }

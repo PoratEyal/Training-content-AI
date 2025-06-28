@@ -15,7 +15,7 @@ function MyActivitiesTitle() {
             <img
                 title="Yellow line image"
                 alt="Yellow line image"
-                src="/detailsLine.svg"
+                src="/Youth/detailsLine.svg"
                 loading="lazy"
                 width={50}
                 height={5}

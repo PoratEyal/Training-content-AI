@@ -10,7 +10,7 @@ import { useStaticContentContext } from "../../../context/StaticContentContext"
 import { ProductType } from "../../../context/ProductType"
 import { useLanguage } from "../../../i18n/useLanguage"
 import { GUEST_BLOCK_MustLogin } from "../../../models/constants/cookie"
-import { HOME_AD_SLOT } from "../../../models/constants/adsSlot"
+import { YOUTH_HOME_AD_SLOT } from "../../../models/constants/adsSlot"
 import { buildHomeSchema } from "../../../models/schemaOrg"
 import route from "../../../router/route.json"
 import useSignIn from "../../../hooks/useSignIn"
@@ -50,7 +50,7 @@ function YouthHomePage() {
       id="home"
       productType={ProductType.Youth}
       hasHeader={{}}
-      hasAds={HOME_AD_SLOT}
+      hasAds={YOUTH_HOME_AD_SLOT}
       index={true}
       hasNavBar={!shouldBlockUI}
     >

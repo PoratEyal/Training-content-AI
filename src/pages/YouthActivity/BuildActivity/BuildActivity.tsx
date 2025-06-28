@@ -17,7 +17,7 @@ import { useContentContext } from "../../../context/ContentContext";
 import { ProductType } from "../../../context/ProductType";
 import { useNotificationContext } from "../../../context/NotificationContext";
 import { useLanguage } from "../../../i18n/useLanguage";
-import { BUILD_AD_SLOT } from "../../../models/constants/adsSlot";
+import { YOUTH_BUILD_AD_SLOT } from "../../../models/constants/adsSlot";
 import msg from "../../../models/resources/errorMsg.json";
 import { ActivityTimeOptions, CategoryOptions, ContestOptions, PlaceOptions, ReligionOptions, ToolsOptions } from "../../../models/resources/select";
 import { Activity } from "../../../models/types/activity";
@@ -36,7 +36,7 @@ import styles from "./BuildActivity.module.css"
 function BuildActivity() {
 
   const { t, isRTL, lang } = useLanguage();
-  const { handleAlert } = useNotificationContext();
+  const { notifyAlert: notifyAlert } = useNotificationContext();
   const { data, updateMainActivity, currentPage, setCurrentPage } = useContentContext();
   const { isLoggedIn, currentUser, setCurrentUser } = useAuthContext();
 
@@ -65,7 +65,7 @@ function BuildActivity() {
   };
 
   useEffect(() => { // Prevent direct access via URL
-    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_Build, navigate, youthHomePagePath);
+    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_YouthBuild, navigate, youthHomePagePath);
   }, []);
 
   useEffect(() => { // Initialize form: validate data, set defaults, update user if needed, load session activity
@@ -145,7 +145,7 @@ function BuildActivity() {
         navigate(youthActivityAIPath);
       }
     } catch (error) {
-      handleAlert(msg[lang].error.message);
+      notifyAlert(msg[lang].error.message);
       setClicked(false);
       const userEmail = currentUser?.email || "guest";
       logEvent(`[buildActivity.submitHandler]: Failed to delete activity: ${msg[lang].error.message}`, userEmail);
@@ -158,7 +158,7 @@ function BuildActivity() {
       productType={ProductType.Youth}
       hasGreenBackground
       hasHeader={{ goBack }}
-      hasAds={BUILD_AD_SLOT}
+      hasAds={YOUTH_BUILD_AD_SLOT}
       index={false}
       hasNavBar
     >
@@ -169,7 +169,7 @@ function BuildActivity() {
           className={isRTL ? styles.path_img : `${styles.path_img} ${styles.ltr_path}`}
           title="Yellow sign with heart"
           alt="Yellow sign with heart"
-          src={"/path.svg"}
+          src={"/Youth/path.svg"}
           width={90}
           height={110}
         />

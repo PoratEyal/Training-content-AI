@@ -7,7 +7,7 @@ import { useLanguage } from "../../../i18n/useLanguage";
 import { useStaticContentContext } from "../../../context/StaticContentContext";
 import { ProductType } from "../../../context/ProductType";
 import route from "../../../router/route.json";
-import { CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
+import { YOUTH_CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
 import { StaticActivities } from "../../../models/types/activity";
 import { fetchIncrementActivityDisplayCount } from "../../../utils/fetch";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
@@ -60,7 +60,7 @@ function PopularActivities() {
       hasHeader={{ goBack, hasTitle: "10 הפעולות הפופולריות" }}
       hasNavBar
       hasGreenBackground
-      hasAds={CONTENT_ACTIVITY_AD_SLOT}
+      hasAds={YOUTH_CONTENT_ACTIVITY_AD_SLOT}
     >
       {isLoading ? (
         <section className={styles.content_article}>

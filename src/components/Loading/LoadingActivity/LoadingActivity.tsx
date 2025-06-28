@@ -7,7 +7,7 @@ function LoadingActivity() {
     return (
         <section className={styles.loading_activity}>
             <div className={styles.loading_main}>
-                <img className={styles.gif} src="/loading.gif" alt="loading gif" />
+                <img className={styles.gif} src="/Common/loading.gif" alt="loading" />
                 <label className={styles.h2}>{t("buildActivity.loadingActivity.heading")}</label>
                 <label className={styles.text}>{t("buildActivity.loadingActivity.text")}</label>
                 <div className={styles.progress_bar}></div>

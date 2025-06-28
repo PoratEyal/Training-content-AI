@@ -14,7 +14,7 @@ import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
 import SmallLoading from "../../../components/Loading/SmallLoading/SmallLoading";
 import ActivityArticle from "../../../components/ActivityArticle/ActivityArticle";
 import RichTextEditor from "../../../components/RichTextEditor/RichTextEditor";
-import { CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
+import { YOUTH_CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
 import { StaticActivities } from "../../../models/types/activity";
 import { fetchGetStaticActivity } from "../../../utils/fetch";
 import { useAuthContext } from "../../../context/AuthContext";
@@ -99,7 +99,7 @@ function ContentActivity() {
       productType={ProductType.Youth}
       hasGreenBackground
       hasHeader={{ goBack, hasTitle: activity?.title || undefined }}
-      hasAds={CONTENT_ACTIVITY_AD_SLOT}
+      hasAds={YOUTH_CONTENT_ACTIVITY_AD_SLOT}
       hasNavBar
     >
       {isActivityLoading ? (

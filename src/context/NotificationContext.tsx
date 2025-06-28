@@ -3,15 +3,15 @@ import { notification } from "../utils/notification";
 import { useLanguage } from "../i18n/useLanguage";
 
 export type NotificationContextType = {
-    handleError: (error: Error | string | undefined) => void;
-    handleAlert: (message: string, duration?: number) => void;
-    handleSuccess: (message: string) => void;
+    notifyError: (error: Error | string | undefined) => void;
+    notifyAlert: (message: string, duration?: number) => void;
+    notifySuccess: (message: string) => void;
 };
 
 export const defaultNotificationContext = {
-    handleError: () => {},
-    handleAlert: () => {},
-    handleSuccess: () => {},
+    notifyError: () => {},
+    notifyAlert: () => {},
+    notifySuccess: () => {},
 };
 
 export const NotificationContext = createContext<NotificationContextType>(defaultNotificationContext);
@@ -21,7 +21,7 @@ export const useNotificationContext = () => useContext(NotificationContext);
 export const NotificationContextProvider = ({ children }: { children: React.ReactNode }) => {
     const { dir } = useLanguage();
 
-    const handleError = (error: Error | string | undefined) => {
+    const notifyError = (error: Error | string | undefined) => {
         notification("", error.toString().replace(/^Error:\s*/, ""), "danger", {
             duration: 6000,
             onScreen: true,
@@ -29,7 +29,7 @@ export const NotificationContextProvider = ({ children }: { children: React.Reac
         });
     };
 
-    const handleAlert = (error: Error | string | undefined) => {
+    const notifyAlert = (error: Error | string | undefined) => {
         notification("", error.toString().replace(/^Error:\s*/, ""), "info", {
             duration: 6000,
             onScreen: true,
@@ -37,7 +37,7 @@ export const NotificationContextProvider = ({ children }: { children: React.Reac
         });
     };
 
-    const handleSuccess = (message: string) => {
+    const notifySuccess = (message: string) => {
         notification("", message, "success", { 
             duration: 2500, 
             onScreen: false,
@@ -46,7 +46,7 @@ export const NotificationContextProvider = ({ children }: { children: React.Reac
     };
 
     return (
-        <NotificationContext.Provider value={{ handleError, handleAlert, handleSuccess }}>
+        <NotificationContext.Provider value={{ notifyError: notifyError, notifyAlert: notifyAlert, notifySuccess: notifySuccess }}>
             {children}
         </NotificationContext.Provider>
     );

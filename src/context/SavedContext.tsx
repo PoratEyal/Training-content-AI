@@ -31,7 +31,7 @@ export const useSaveContext = () => useContext(SaveContext);
 export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
 
     const { currentUser } = useAuthContext();
-    const { handleAlert } = useNotificationContext();
+    const { notifyAlert: notifyAlert } = useNotificationContext();
     const [savedActivity, setSavedActivity] = useState<Activity[]>();
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const { lang } = useLanguage();
@@ -51,7 +51,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                     setSavedActivity(sortedActivities);
                 }
             } catch (error) {
-                handleAlert(msg[lang].notSaved.message);
+                notifyAlert(msg[lang].notSaved.message);
                 logEvent(`[SavedContext.getSavedActivities]: Failed to delete activity: ${error}`, userEmail);
             } finally {
                 setIsLoading(false);

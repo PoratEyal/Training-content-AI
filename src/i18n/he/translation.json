@@ -1,8 +1,16 @@
 {
   "common": {
     "youthAppName": "פעולות לתנועות נוער",
-    "practiceAppName": "תרגול עצמי חכם"
+    "practiceAppName": "תרגול עצמי חכם",
+    "wordsAppName": "לימוד ותרגול אוצר מילים",
+    "btnContinue": "המשך",
+    "loadingHead": "אנחנו על זה",
+    "loadingText": "שימו לב! השאלון הופק בעזרת בינה מלאכותית שנמצאת בתהליך מתמיד של למידה ויתכנו טעויות."
   },
+  "aboutUs": {
+    "title": "אודות"
+  },
+
   "home": {
     "slogan": "מותאם, פשוט ומהיר 🤟",
     "startAction": "יצירת פעולות",
@@ -17,9 +25,6 @@
     "withPrefix": "ב-",
     "ai": "AI"
   },
-  "aboutUs": {
-    "title": "אודות"
-  },
   "navbar": {
     "home": "מסך הבית",
     "build": "יצירת פעולות",
@@ -33,7 +38,6 @@
     "grade": "שכבת גיל",
     "numberOfChildren": "מספר חניכים",
     "gender": "מגדר",
-    "submit": "המשך",
     "lampAlt": "מנורה צהובה"
   },
   "buildActivity": {
@@ -106,9 +110,7 @@
     "btnCreate": "צאו לדרך",
     "btnCreating": "יצירת התרגול",
     "error": "אירעה שגיאה בעת יצירת השאלות. נסו שוב.",
-    "topicError": "מצטער, איני יכול ליצור שאלות בנושא שבחרת. אנא נסה להזין נושא אחר.",
-    "loadingHead": "אנחנו על זה",
-    "loadingText": "שימו לב! השאלון הופק בעזרת בינה מלאכותית שנמצאת בתהליך מתמיד של למידה ויתכנו טעויות."
+    "topicError": "מצטער, איני יכול ליצור שאלות בנושא שבחרת. אנא נסה להזין נושא אחר."
   },
   "quiz": {
     "FailMsg": "ניסיון יצירת התרגול נכשל. אם הבעיה נמשכת, אנא צרו איתנו קשר דרך תפריט 'צרו קשר'.",
@@ -122,24 +124,18 @@
 
   "wordsVocab": {
     "title": "בואו נכניס מילים",
-    "instructions": "כתבו את המילים לתרגול, לחצו על כפתור התרגום, וערכו את התרגום אם צריך.",
-    "Words2Translate": "מילים לתרגול",
-    "WordsTranslated": "תרגום אוטומטי (ניתן לשנות)",
-    "Translate": "תרגם",
-    "noWords2Translate": "לא הוזנו מילים לתרגום",
+    "instructions": "רשימת המילים או הביטויים לתרגול",
+    "loadListError": "אירעה שגיאה בעת טעינת קובץ המילים. נסו שוב.",
+    "TextAreaGuide": "מילים לתרגול",
     "tooManyLines": "באפשרותך להזין עד 35 שורות (כל שורה שאלה אחת).",
-    "noTranslation": "מומלץ להפעיל תחילה את התרגום האוטומטי כדי לוודא שהמילים מתורגמות נכון",
     "btnCreate": "צאו לדרך",
     "btnCreating": "יצירת התרגול",
     "error": "אירעה שגיאה בעת יצירת השאלות. נסו שוב.",
-    "topicError": "מצטער, איני יכול ליצור שאלות בנושא שבחרת. אנא נסה להזין נושא אחר.",
-    "loadingHead": "אנחנו על זה",
-    "loadingText": "שימו לב! השאלון הופק בעזרת בינה מלאכותית שנמצאת בתהליך מתמיד של למידה ויתכנו טעויות."
+    "topicError": "מצטער, איני יכול ליצור שאלות בנושא שבחרת. אנא נסה להזין נושא אחר."
   },
   
   "wordsQuiz": {
     "title": "ועכשיו לתרגול",
-    "nextWord": "המשך",
     "newPractice": "תרגול חדש",
     "done": "סיימתי להפעם"
   },

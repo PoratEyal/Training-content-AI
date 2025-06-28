@@ -23,7 +23,7 @@ export const useStaticContentContext = () => useContext(StaticContentContext);
 
 export const StaticContentProvider = ({ children }: { children: React.ReactNode }) => {
 
-    const { handleAlert } = useNotificationContext();
+    const { notifyAlert: notifyAlert } = useNotificationContext();
     const [subjects, setSubjects] = useState<StaticSubjects[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const { lang } = useLanguage();
@@ -37,7 +37,7 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
                 setSubjects(sortedSubjects);
             }
         } catch (error: any) {
-            handleAlert(msg[lang].error.message);
+            notifyAlert(msg[lang].error.message);
         } finally {
             setIsLoading(false);
         }

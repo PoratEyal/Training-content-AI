@@ -9,7 +9,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import "../../../components/ActivityOutput/Markdown.css";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
 import route from "../../../router/route.json"
-import { MY_ACTIVITIES_AD_SLOT } from "../../../models/constants/adsSlot"
+import { YOUTH_MY_ACTIVITIES_AD_SLOT } from "../../../models/constants/adsSlot"
 import PageLoading from "../../../components/Loading/PageLoading/PageLoading"
 import SmallLoading from "../../../components/Loading/SmallLoading/SmallLoading"
 import { useAuthContext } from "../../../context/AuthContext"
@@ -62,7 +62,7 @@ const SavedActivity: React.FC = () => {
       productType={ProductType.Youth}
       hasGreenBackground
       hasHeader={{ goBack, hasTitle: foundActivity?.subject || undefined }}
-      hasAds={MY_ACTIVITIES_AD_SLOT}
+      hasAds={YOUTH_MY_ACTIVITIES_AD_SLOT}
       title={foundActivity?.subject}
       hasNavBar
       index={false}

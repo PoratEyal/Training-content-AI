@@ -37,11 +37,10 @@ import PracticeContactUsRoute from "./pages/SmartPractice/ContactUs/ContactUs"
 
 // Learn Words Language
 import WordsHomePage from "./pages/Words/HomePage/Home"
+import WordsTopic from "./pages/Words/Topic/Topic"
 import WordsVocab from "./pages/Words/Vocab/Vocab"
 import WordsQuiz from "./pages/Words/Quiz/Quiz"
 //import WordsFAQ from "./pages/Language/FAQ/FAQ"
-//import WordsPrivacyPolicy from "./pages/Language/PrivacyPolicy/PrivacyPolicy"
-//import WordsContactUsRoute from "./pages/Language/ContactUs/ContactUs"
 
 import { supportedLangs as langs } from "./i18n/languages"
 
@@ -71,6 +70,7 @@ const allRoutes = [
 
   // Words
   { key: "wordsHomePage", element: <WordsHomePage /> },
+  { key: "wordsTopic", element: <WordsTopic /> },
   { key: "wordsVocab", element: <WordsVocab /> },
   { key: "wordsQuiz", element: <WordsQuiz /> },
 

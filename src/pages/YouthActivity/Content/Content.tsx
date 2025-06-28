@@ -15,7 +15,7 @@ import { useStaticContentContext } from "../../../context/StaticContentContext";
 import { useContentContext } from "../../../context/ContentContext";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { ProductType } from "../../../context/ProductType";
-import { CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
+import { YOUTH_CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
 import { buildContentSchema } from "../../../models/schemaOrg";
 import route from "../../../router/route.json";
 import { ProductPages } from "../../../models/enum/pages";
@@ -37,8 +37,8 @@ function Content() {
   const goBack = () => { navigate(youthHomePagePath); };
 
   useEffect(() => {
-    setCurrentPage(ProductPages.PAGE_StaticContent);
-    sessionStorage.setItem("lastVisitedPage", ProductPages.PAGE_StaticContent);
+    setCurrentPage(ProductPages.PAGE_YouthStaticContent);
+    sessionStorage.setItem("lastVisitedPage", ProductPages.PAGE_YouthStaticContent);
   }, []);
 
   const contentSchema = useMemo(
@@ -52,7 +52,7 @@ function Content() {
       productType={ProductType.Youth}
       hasHeader={{ goBack }}
       hasNavBar
-      hasAds={CONTENT_ACTIVITY_AD_SLOT}
+      hasAds={YOUTH_CONTENT_ACTIVITY_AD_SLOT}
       index={true}
       hasGreenBackground
     >
