@@ -22,23 +22,27 @@ type LangPopupProps = {
 }
 
 const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
-
   const { changeLang, lang } = useLanguage()
   const { currentUser, setCurrentUser } = useAuthContext()
   const { clearAll } = useContentContext()
   const navigate = useNavigate()
   const product = useProduct()
-  const isPractice = product === ProductType.Practice
 
   const [isLoading, setIsLoading] = useState(false)
   const [loadingLang, setLoadingLang] = useState<string | null>(null)
 
-  // Dynamically determine the home page path for the new language
   const homePagePath = (newLang: string) => {
     const capitalizedLang = newLang.charAt(0).toUpperCase() + newLang.slice(1)
-    return isPractice
-      ? route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn
-      : route[`youthHomePage${capitalizedLang}`] || route.youthHomePageEn
+    switch (product) {
+      case ProductType.Practice:
+        return route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn
+      case ProductType.Youth:
+        return route[`youthHomePage${capitalizedLang}`] || route.youthHomePageEn
+      case ProductType.Words:
+        return route[`wordsHomePage${capitalizedLang}`] || route.wordsHomePageEn
+      default:
+        return "/"
+    }
   }
 
   const closePopup = (callback?: () => void) => {
