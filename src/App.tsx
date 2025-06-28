@@ -12,7 +12,7 @@ import LanguageRedirect from "./components/LanguageRedirect"
 import FallbackRedirect from "./components/FallbackRedirect"
 
 // Youth Activities
-import YouthHomePage from "./pages/YouthActivity/HomePage/Youth"
+import YouthHomePage from "./pages/YouthActivity/HomePage/Home"
 import YouthDetails from "./pages/YouthActivity/Details/Details"
 import YouthBuildActivity from "./pages/YouthActivity/BuildActivity/BuildActivity"
 import YouthActivityAI from "./pages/YouthActivity/Activity/Activity"
@@ -28,7 +28,7 @@ import YouthAdminPage from "./pages/YouthActivity/AdminPage/AdminPage"
 import YouthContactUsRoute from "./pages/YouthActivity/ContactUs/ContactUs"
 
 // Smart Practice
-import PracticeHomePage from "./pages/SmartPractice/HomePage/Practice"
+import PracticeHomePage from "./pages/SmartPractice/HomePage/Home"
 import PracticeTopic from "./pages/SmartPractice/Topic/Topic"
 import PracticeQuiz from "./pages/SmartPractice/Quiz/Quiz"
 import PracticeFAQ from "./pages/SmartPractice/FAQ/FAQ"

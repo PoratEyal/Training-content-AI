@@ -4,7 +4,7 @@
 import { useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import route from "../../../router/route.json";
-import styles from "./Practice.module.css";
+import styles from "./Home.module.css";
 import { useAuthContext } from "../../../context/AuthContext";
 import { useCookiesContext } from "../../../context/CookiesContext";
 import { useLanguage } from "../../../i18n/useLanguage";
