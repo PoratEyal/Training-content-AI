@@ -111,9 +111,9 @@
   cursor: not-allowed;
 }
 
-@media (min-width: 550px) {
+@media (min-width: 380px) {   /* should be 380 */
 
   .popup_container {
-    width: 300px;
+    width: 310px;
   }
 }

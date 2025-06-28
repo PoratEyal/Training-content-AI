@@ -31,13 +31,11 @@
   height: calc(var(--ads-height) + 50px);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 550px) {
   .quiz_data_container {
     width: 100%; 
   }
-}
 
-@media (min-width: 550px) {
   .quiz_data_container {
     width: 100%;
     top: 65px;

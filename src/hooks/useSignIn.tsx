@@ -21,12 +21,23 @@ const useSignIn = () => {
     const product = useProduct();
     const langKey = lang.charAt(0).toUpperCase() + lang.slice(1);
     const isPractice = product === ProductType.Practice;
-    const homePagePath = isPractice
-        ? route[`practiceHomePage${langKey}`] || route.practiceHomePageEn
-        : route[`youthHomePage${langKey}`] || route.youthHomePageEn;
+
+    let homePagePath = route.youthHomePageEn; // fallback
+    switch (product) {
+        case ProductType.Practice:
+            homePagePath = route[`practiceHomePage${langKey}`] || route.practiceHomePageEn;
+            break;
+        case ProductType.Youth:
+            homePagePath = route[`youthHomePage${langKey}`] || route.youthHomePageEn;
+            break;
+        case ProductType.Words:
+            homePagePath = route[`wordsHomePage${langKey}`] || route.wordsHomePageEn;
+            break;
+    }
+
 
     const signInWithGoogle = async () => {
-        
+
         setLimitCookie(GUEST_BLOCK_MustLogin);
         try {
             await signInNow(auth);

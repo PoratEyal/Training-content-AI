@@ -2,320 +2,146 @@
   {
     "text": "قف",
     "he_Translate": "עצור",
-    "he_Pronunciation": "ווקף",
-    "ar_Translate": "قف",
-    "ar_Pronunciation": "קֻף",
-    "en_Translate": "stop",
-    "en_Pronunciation": "woqf",
-    "es_Translate": "alto",
-    "es_Pronunciation": "wuqf"
+    "he_Pronunciation": "ווקף"
   },
   {
     "text": "ارفع يديك",
     "he_Translate": "הרם ידיים",
-    "he_Pronunciation": "אַרְפַע יְדֵיכּ",
-    "ar_Translate": "ارفع يديك",
-    "ar_Pronunciation": "אַרְפַע יְדֵיכּ",
-    "en_Translate": "raise your hands",
-    "en_Pronunciation": "irfa' yadayk",
-    "es_Translate": "levanta las manos",
-    "es_Pronunciation": "irfa iadeik"
+    "he_Pronunciation": "אַרְפַע יְדֵיכּ"
   },
   {
     "text": "التف",
     "he_Translate": "הסתובב",
-    "he_Pronunciation": "אַלְתִף",
-    "ar_Translate": "التف",
-    "ar_Pronunciation": "אַלְתִף",
-    "en_Translate": "turn around",
-    "en_Pronunciation": "iltaf",
-    "es_Translate": "gira",
-    "es_Pronunciation": "iltáf"
+    "he_Pronunciation": "אַלְתִף"
   },
   {
     "text": "افتح تمك",
     "he_Translate": "פתח את הפה",
-    "he_Pronunciation": "אִפְתַח תֻמַّכּ",
-    "ar_Translate": "افتح تمك",
-    "ar_Pronunciation": "אִפְתַח תֻמַّכּ",
-    "en_Translate": "open your mouth",
-    "en_Pronunciation": "iftah tummak",
-    "es_Translate": "abre la boca",
-    "es_Pronunciation": "iftaj tumak"
+    "he_Pronunciation": "אִפְתַח תֻמַّכּ"
   },
   {
     "text": "لا تتحرك",
     "he_Translate": "אל תזוז",
-    "he_Pronunciation": "לַא תִתְחַרַّכּ",
-    "ar_Translate": "لا تتحرك",
-    "ar_Pronunciation": "לַא תִתְחַרַّכּ",
-    "en_Translate": "don’t move",
-    "en_Pronunciation": "la tataharrak",
-    "es_Translate": "no te muevas",
-    "es_Pronunciation": "la tatajarrak"
+    "he_Pronunciation": "לַא תִתְחַרַّכּ"
   },
   {
     "text": "شو اسمك؟",
     "he_Translate": "איך קוראים לך?",
-    "he_Pronunciation": "שוּ אִסְמַכּ",
-    "ar_Translate": "شو اسمك؟",
-    "ar_Pronunciation": "שוּ אִסְמַכּ",
-    "en_Translate": "what’s your name?",
-    "en_Pronunciation": "shoo ismak",
-    "es_Translate": "¿cómo te llamas?",
-    "es_Pronunciation": "shu ismak"
+    "he_Pronunciation": "שוּ אִסְמַכּ"
   },
   {
     "text": "كم عمرك؟",
     "he_Translate": "בן כמה אתה?",
-    "he_Pronunciation": "כַּם עֻמְרַכּ",
-    "ar_Translate": "كم عمرك؟",
-    "ar_Pronunciation": "כַּם עֻמְרַכּ",
-    "en_Translate": "how old are you?",
-    "en_Pronunciation": "kam omrak",
-    "es_Translate": "¿cuántos años tienes?",
-    "es_Pronunciation": "kam umrak"
+    "he_Pronunciation": "כַּם עֻמְרַכּ"
   },
   {
     "text": "من وين إنت؟",
     "he_Translate": "מאיפה אתה?",
-    "he_Pronunciation": "מִן וֵין אִנְתַ",
-    "ar_Translate": "من وين إنت؟",
-    "ar_Pronunciation": "מִן וֵין אִנְתַ",
-    "en_Translate": "where are you from?",
-    "en_Pronunciation": "min wein enta",
-    "es_Translate": "¿de dónde eres?",
-    "es_Pronunciation": "min uein enta"
+    "he_Pronunciation": "מִן וֵין אִנְתַ"
   },
   {
     "text": "أرني هويتك",
     "he_Translate": "תראה לי את התעודה",
-    "he_Pronunciation": "וַרִינִי הַוִיֵּיתַכּ",
-    "ar_Translate": "أرني هويتك",
-    "ar_Pronunciation": "וַרִינִי הַוִיֵּיתַכּ",
-    "en_Translate": "show me your ID",
-    "en_Pronunciation": "arni haweytak",
-    "es_Translate": "muéstrame tu identificación",
-    "es_Pronunciation": "arni jaweitaq"
+    "he_Pronunciation": "וַרִינִי הַוִיֵּיתַכּ"
   },
   {
     "text": "معك سلاح؟",
     "he_Translate": "יש עליך נשק?",
-    "he_Pronunciation": "מַעַכּ סִלַאח?",
-    "ar_Translate": "معك سلاح؟",
-    "ar_Pronunciation": "מַעַכּ סִלַאח?",
-    "en_Translate": "do you have a weapon?",
-    "en_Pronunciation": "ma'ak silah",
-    "es_Translate": "¿tienes un arma?",
-    "es_Pronunciation": "maak silaj"
+    "he_Pronunciation": "מַעַכּ סִלַאח?"
   },
   {
     "text": "معك شي حاد؟",
     "he_Translate": "יש עליך משהו חד?",
-    "he_Pronunciation": "מַעַכּ שִי חַאד?",
-    "ar_Translate": "معك شي حاد؟",
-    "ar_Pronunciation": "מַעַכּ שִי חַאד?",
-    "en_Translate": "do you have anything sharp?",
-    "en_Pronunciation": "ma'ak shi had?",
-    "es_Translate": "¿tienes algo filoso?",
-    "es_Pronunciation": "maak shi jad"
+    "he_Pronunciation": "מַעַכּ שִי חַאד?"
   },
   {
     "text": "ارفع قميصك",
     "he_Translate": "הרם את החולצה שלך",
-    "he_Pronunciation": "אַרְפַע קֻמֵיסַכּ",
-    "ar_Translate": "ارفع قميصك",
-    "ar_Pronunciation": "אַרְפַע קֻמֵיסַכּ",
-    "en_Translate": "lift your shirt",
-    "en_Pronunciation": "irfa' qameesak",
-    "es_Translate": "levanta tu camisa",
-    "es_Pronunciation": "irfa qamisak"
+    "he_Pronunciation": "אַרְפַע קֻמֵיסַכּ"
   },
   {
     "text": "اخلع قناعك",
     "he_Translate": "הסר את המסכה שלך",
-    "he_Pronunciation": "אִכְלַע קִנַעַכּ",
-    "ar_Translate": "اخلع قناعك",
-    "ar_Pronunciation": "אִכְלַע קִנַעַכּ",
-    "en_Translate": "take off your mask",
-    "en_Pronunciation": "ikhla' qina'ak",
-    "es_Translate": "quítate la máscara",
-    "es_Pronunciation": "ijla kina'ak"
+    "he_Pronunciation": "אִכְלַע קִנַעַכּ"
   },
   {
     "text": "ما فهمت",
     "he_Translate": "לא הבנתי",
-    "he_Pronunciation": "מַא פְהִמֵת",
-    "ar_Translate": "ما فهمت",
-    "ar_Pronunciation": "מַא פְהִמֵת",
-    "en_Translate": "I didn’t understand",
-    "en_Pronunciation": "ma fhemt",
-    "es_Translate": "no entendí",
-    "es_Pronunciation": "ma fehmet"
+    "he_Pronunciation": "מַא פְהִמֵת"
   },
   {
     "text": "هدا مو إلك",
     "he_Translate": "זה לא שלך",
-    "he_Pronunciation": "הַדַא מוּ אִילַכּ",
-    "ar_Translate": "هدا مو إلك",
-    "ar_Pronunciation": "הַדַא מוּ אִילַכּ",
-    "en_Translate": "this isn’t yours",
-    "en_Pronunciation": "hada mo ilak",
-    "es_Translate": "esto no es tuyo",
-    "es_Pronunciation": "jada mu ilak"
+    "he_Pronunciation": "הַדַא מוּ אִילַכּ"
   },
   {
     "text": "هذا ممنوع",
     "he_Translate": "זה אסור",
-    "he_Pronunciation": "הַדַא מַמְנוּעַ",
-    "ar_Translate": "هذا ممنوع",
-    "ar_Pronunciation": "הַדַא מַמְנוּעַ",
-    "en_Translate": "this is forbidden",
-    "en_Pronunciation": "hada mamnou'",
-    "es_Translate": "esto está prohibido",
-    "es_Pronunciation": "jada mamnu'"
+    "he_Pronunciation": "הַדַא מַמְנוּעַ"
   },
   {
     "text": "أين كنت قبل ساعة؟",
     "he_Translate": "איפה היית לפני שעה?",
-    "he_Pronunciation": "אֵין כֻּנְת קַבֶּל סָעַה?",
-    "ar_Translate": "أين كنت قبل ساعة؟",
-    "ar_Pronunciation": "אֵין כֻּנְת קַבֶּל סָעַה?",
-    "en_Translate": "where were you an hour ago?",
-    "en_Pronunciation": "ain kint qabl sa'a?",
-    "es_Translate": "¿dónde estabas hace una hora?",
-    "es_Pronunciation": "ain kunt kabel sa'a"
+    "he_Pronunciation": "אֵין כֻּנְת קַבֶּל סָעַה?"
   },
   {
     "text": "من معك؟",
     "he_Translate": "מי איתך?",
-    "he_Pronunciation": "מִין מַעַכּ?",
-    "ar_Translate": "من معك؟",
-    "ar_Pronunciation": "מִין מַעַכּ?",
-    "en_Translate": "who is with you?",
-    "en_Pronunciation": "meen ma'ak?",
-    "es_Translate": "¿quién está contigo?",
-    "es_Pronunciation": "min maak"
+    "he_Pronunciation": "מִין מַעַכּ?"
   },
   {
     "text": "ساكن هون",
     "he_Translate": "אתה גר פה?",
-    "he_Pronunciation": "סַאכֵּן הוֹן",
-    "ar_Translate": "ساكن هون",
-    "ar_Pronunciation": "סַאכֵּן הוֹן",
-    "en_Translate": "do you live here?",
-    "en_Pronunciation": "saken hon",
-    "es_Translate": "¿vives aquí?",
-    "es_Pronunciation": "saken jón"
+    "he_Pronunciation": "סַאכֵּן הוֹן"
   },
   {
     "text": "افتح الشنطة",
     "he_Translate": "פתח את התיק",
-    "he_Pronunciation": "אִפְתַח א-שַּנְטַה",
-    "ar_Translate": "افتح الشنطة",
-    "ar_Pronunciation": "אִפְתַח א-שַּנְטַה",
-    "en_Translate": "open the bag",
-    "en_Pronunciation": "iftah al-shanta",
-    "es_Translate": "abre la bolsa",
-    "es_Pronunciation": "iftaj el shanta"
+    "he_Pronunciation": "אִפְתַח א-שַּנְטַה"
   },
   {
     "text": "طلّع من جيوبك",
     "he_Translate": "תוציא מהכיסים",
-    "he_Pronunciation": "טַלַּע מִן גִ'יוּבַּכּ",
-    "ar_Translate": "طلّع من جيوبك",
-    "ar_Pronunciation": "טַלַּע מִן גִ'יוּבַּכּ",
-    "en_Translate": "take out what's in your pockets",
-    "en_Pronunciation": "talla' min juyubak",
-    "es_Translate": "saca lo de tus bolsillos",
-    "es_Pronunciation": "tal'a min yubak"
+    "he_Pronunciation": "טַלַּע מִן גִ'יוּבַּכּ"
   },
   {
     "text": "إنتَ موقوف",
     "he_Translate": "אתה עצור",
-    "he_Pronunciation": "אִנְתַ מַוְקוּף",
-    "ar_Translate": "إنتَ موقوف",
-    "ar_Pronunciation": "אִנְתַ מַוְקוּף",
-    "en_Translate": "you are under arrest",
-    "en_Pronunciation": "inta mawqouf",
-    "es_Translate": "estás arrestado",
-    "es_Pronunciation": "enta maukuf"
+    "he_Pronunciation": "אִנְתַ מַוְקוּף"
   },
   {
     "text": "كله تمام",
     "he_Translate": "הכל בסדר",
-    "he_Pronunciation": "כֻּלּוּ תַמַאם",
-    "ar_Translate": "كله تمام",
-    "ar_Pronunciation": "כֻּלּוּ תַמַאם",
-    "en_Translate": "everything is fine",
-    "en_Pronunciation": "kullu tamam",
-    "es_Translate": "todo está bien",
-    "es_Pronunciation": "kulu tamám"
+    "he_Pronunciation": "כֻּלּוּ תַמַאם"
   },
   {
     "text": "احكي شوي شوي",
     "he_Translate": "דבר לאט לאט",
-    "he_Pronunciation": "אִחְכִּי שְוַי שְוַי",
-    "ar_Translate": "احكي شوي شوي",
-    "ar_Pronunciation": "אִחְכִּי שְוַי שְוַי",
-    "en_Translate": "speak slowly",
-    "en_Pronunciation": "ihki shwai shwai",
-    "es_Translate": "habla despacio",
-    "es_Pronunciation": "ijki shuai shuai"
+    "he_Pronunciation": "אִחְכִּי שְוַי שְוַי"
   },
   {
     "text": "شو في بالشنطة؟",
     "he_Translate": "מה יש בתיק?",
-    "he_Pronunciation": "שוּ פִי בַּאלְשַנְטַה?",
-    "ar_Translate": "شو في بالشنطة؟",
-    "ar_Pronunciation": "שוּ פִי בַּאלְשַנְטַה?",
-    "en_Translate": "what's in the bag?",
-    "en_Pronunciation": "shoo fi bel shanta",
-    "es_Translate": "¿qué hay en la bolsa?",
-    "es_Pronunciation": "shu fi bal shanta"
+    "he_Pronunciation": "שוּ פִי בַּאלְשַנְטַה?"
   },
   {
     "text": "شو في بالجيوب؟",
     "he_Translate": "מה יש בכיסים?",
-    "he_Pronunciation": "שוּ פִי בַּלְגִ'יוּבּ?",
-    "ar_Translate": "شو في بالجيوب؟",
-    "ar_Pronunciation": "שוּ פִי בַּלְגִ'יוּבּ?",
-    "en_Translate": "what's in the pockets?",
-    "en_Pronunciation": "shoo fi bel juyub",
-    "es_Translate": "¿qué hay en los bolsillos?",
-    "es_Pronunciation": "shu fi bal yub"
+    "he_Pronunciation": "שוּ פִי בַּלְגִ'יוּבּ?"
   },
   {
     "text": "ليش معك كفّاز؟",
     "he_Translate": "למה יש לך כפפה?",
-    "he_Pronunciation": "לֵיש מַעַכּ כַּפַּאז?",
-    "ar_Translate": "ليش معك كفّاز؟",
-    "ar_Pronunciation": "לֵיש מַעַכּ כַּפַּאז?",
-    "en_Translate": "why do you have a glove?",
-    "en_Pronunciation": "leish ma'ak kaffaz?",
-    "es_Translate": "¿por qué tienes un guante?",
-    "es_Pronunciation": "leish maak kafaz"
+    "he_Pronunciation": "לֵיש מַעַכּ כַּפַּאז?"
   },
   {
     "text": "اقعد",
     "he_Translate": "שב",
-    "he_Pronunciation": "אֻקְעֻד",
-    "ar_Translate": "اقعد",
-    "ar_Pronunciation": "אֻקְעֻד",
-    "en_Translate": "sit down",
-    "en_Pronunciation": "uq'od",
-    "es_Translate": "siéntate",
-    "es_Pronunciation": "uk'ad"
+    "he_Pronunciation": "אֻקְעֻד"
   },
   {
     "text": "شيل هدومك",
     "he_Translate": "תוריד את הבגדים שלך",
-    "he_Pronunciation": "שִיל הֻדוּמַכּ",
-    "ar_Translate": "شيل هدومك",
-    "ar_Pronunciation": "שִיל הֻדוּמַכּ",
-    "en_Translate": "take off your clothes",
-    "en_Pronunciation": "sheel hudoomak",
-    "es_Translate": "quítate la ropa",
-    "es_Pronunciation": "shil judumak"
+    "he_Pronunciation": "שִיל הֻדוּמַכּ"
   }
 ]

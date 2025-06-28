@@ -1,9 +1,3 @@
-//
-// This is a dropdown option for logging out the user.
-// It clears all user data from the context and logs them out.
-// The page navigates to the home page, adjusting for the current language.
-//
-
 import { useNavigate } from "react-router-dom"
 import { useLanguage } from "../../../i18n/useLanguage"
 import { useContentContext } from "../../../context/ContentContext"
@@ -25,22 +19,23 @@ function DropOptLogout({ handleClose }: DropdownOption) {
   const { logout } = useAuthContext()
   const navigate = useNavigate()
   const product = useProduct()
-  const isPractice = product === ProductType.Practice
 
   const homePagePath = () => {
-    const capitalizedLang = lang.charAt(0).toUpperCase() + lang.slice(1)
-    return isPractice
-      ? route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn
-      : route[`youthHomePage${capitalizedLang}`] || route.youthHomePageEn
-  }
+    const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)
+    let homeKey = ""
+    if (product === ProductType.Practice)
+      homeKey = "practiceHomePage"
+    else if (product === ProductType.Words)
+      homeKey = "wordsHomePage"
+    else
+      homeKey = "youthHomePage"
 
-  const handleLogout = async () => {
-    await logout()
-    clearAll()
+    return route[`${homeKey}${langKey}`] || route[`${homeKey}En`]
   }
 
   const handleClick = async () => {
-    await handleLogout()
+    await logout()
+    clearAll()
     navigate(homePagePath())
     handleClose()
   }
