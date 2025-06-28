@@ -70,7 +70,7 @@ function YouthHomePage() {
       ) : (
         <section className={styles.button_section}>
           <StartBtn
-            text={t("home.startAction")}
+            text={t("home.youthStartAction")}
             onClick={() =>
               startAsGuestOrUser({
                 currentUser,
@@ -89,7 +89,7 @@ function YouthHomePage() {
 
       <div className={styles.about_div}>
         <AboutUsCollapse>
-          <p>{t("home.youthAboutText")}</p>
+          <p>{t("aboutUs.youthAboutText")}</p>
         </AboutUsCollapse>
       </div>
     </PageLayout>

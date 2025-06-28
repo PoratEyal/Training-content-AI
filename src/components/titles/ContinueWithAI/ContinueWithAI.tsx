@@ -13,7 +13,7 @@ function ContinueWithAI() {
   } else if (product === ProductType.Youth) {
     productTitle = t("continueWithAI.youthForActions");
   } else if (product === ProductType.Words) {
-    productTitle = t("continueWithAI.practiceForActions");
+    productTitle = t("continueWithAI.wordsForActions");
   }
 
   let productColorClass = "";

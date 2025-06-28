@@ -2,17 +2,17 @@
 // This file defines the UnderBar component, which shows a bottom navigation bar
 //
 import styles from "./NavigationBar.module.css";
-import NavVocab from "../../options/NavigationBar/Words/NavVocab";
+import NavTopic from "../../options/NavigationBar/Words/NavTopic";
 import NavHome from "../../options/NavigationBar/Words/NavHome";
 
-const PracticeFooter = () => {
+const WordsNavigationBar = () => {
 
     return (
         <nav className={styles.navbar_container}>
             <NavHome />
-            <NavVocab />
+            <NavTopic />
         </nav>
     );
 };
 
-export default PracticeFooter;
+export default WordsNavigationBar;

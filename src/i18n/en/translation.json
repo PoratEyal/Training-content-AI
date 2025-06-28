@@ -7,21 +7,25 @@
     "loadingHead": "We're on it",
     "loadingText": "Note! This quiz was generated using AI, which is constantly learning, so errors may occur."
   },
+
   "aboutUs": {
-    "title": "About Us"
+    "title": "About",
+    "youthAboutText": "Create youth activities – from a library of ready-made activities to personalized ones generated with AI. Perfect for guides looking to enrich educational and social engagement.",
+    "practiceAboutText": "Smart practice using AI. Choose any topic you like, and the system will generate a personal quiz in seconds. Ideal for anyone seeking a simple, focused way to practice and deepen understanding.",
+    "wordsAboutText": "Vocabulary training made smart and efficient. Enter words or choose a topic to get a personalized practice that helps you learn, remember, and understand better – in any language."
   },
+
 
   "home": {
     "slogan": "Customized, Simple and Fast 🤟",
-    "startAction": "Create Activities",
-    "youthAboutText": "Create youth activities – from a library of ready-made activities to personalized ones generated with AI. Perfect for counselors looking to enrich educational and social experiences.",
-    "practiceStartAction": "Create a Practice",
-    "practiceAboutText": "Smart AI-powered practice. Choose any topic – get a personalized exercise in seconds. Great for anyone seeking a simple, focused way to improve understanding."
+    "youthStartAction": "Create Activities",
+    "practiceStartAction": "Create a Practice"
   },
   "continueWithAI": {
     "advanced": "Advanced",
     "youthForActions": "for Activities",
     "practiceForActions": "Practice",
+    "wordsForActions": "Vocabulary",
     "withPrefix": "with",
     "ai": "AI"
   },
@@ -30,7 +34,7 @@
     "build": "Create Activities",
     "content": "Ready-made Activities",
     "myActivities": "My Activities",
-    "practiceBuild": "New Practice"
+    "practiceBuild": "Practice"
   },
   "details": {
     "title": "Tell Us About Your Group",
@@ -124,14 +128,24 @@
 
 
   "wordsVocab": {
-    "title": "Let's Enter Words",
+    "title": "Let's enter words",
     "instructions": "The list of words or phrases to practice",
-    "TextAreaGuide": "Words to Practice",
-    "tooManyLines": "You can enter up to 35 lines (each line is one question).",
-    "btnCreate": "Let's Go",
-    "btnCreating": "Creating Practice",
+    "loadListError": "An error occurred while loading the word file. Please try again.",
+    "TextAreaGuide": "Words to practice",
+    "tooManyLines": "You can enter up to 35 lines (one question per line).",
+    "btnCreate": "Let's go",
+    "btnCreating": "Creating the practice",
     "error": "An error occurred while generating the questions. Please try again.",
-    "topicError": "Sorry, I can't generate questions for the selected topic. Please try entering a different topic."
+    "topicError": "Sorry, I can't generate questions for the selected topic. Please try a different one."
+  },
+
+
+  "wordsPredefined": {
+    "hebrewPractice": "Useful Words in Hebrew",
+    "arabicPractice": "Useful Words in Arabic",
+    "englishPractice": "Useful Words in English",
+    "spanishPractice": "Useful Words in Spanish",
+    "italianPractice": "Useful Words in Italian"
   },
 
   "wordsQuiz": {

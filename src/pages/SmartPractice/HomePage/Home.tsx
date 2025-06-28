@@ -87,7 +87,7 @@ function PracticeHomePage() {
 
       <div className={styles.about_div}>
         <AboutUsCollapse>
-          <p>{t("home.practiceAboutText")}</p>
+          <p>{t("aboutUs.practiceAboutText")}</p>
         </AboutUsCollapse>
       </div>
 

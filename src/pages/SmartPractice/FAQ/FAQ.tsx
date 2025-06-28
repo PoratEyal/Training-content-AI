@@ -4,6 +4,7 @@ import FadeEffect from "../../../components/FadeEffect/FadeEffect";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { useTranslation } from "react-i18next";
 import { buildFaqSchema } from "../../../models/schemaOrg";
+import { ProductType } from "../../../context/ProductType";
 import React, { useMemo } from "react";
 import { useProduct } from "../../../context/ProductContext"
 
@@ -24,7 +25,7 @@ const FAQ: React.FC = () => {
   return (
     <PageLayout
       id="practiceFaq"
-      productType={product}
+      productType={ProductType.Practice}
       hasHeader={{ isBlur: true }}
       hasNavBar
       index={true}

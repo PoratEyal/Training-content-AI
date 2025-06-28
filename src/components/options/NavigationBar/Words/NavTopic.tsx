@@ -19,12 +19,12 @@ const NavOptTopic = () => {
   const { currentUser, isLoggedIn } = useAuthContext()
   const { signInWithGoogle } = useSignIn()
 
-  const vocabPath = route[`wordsVocab${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsVocabEn;
+  const topicPath = route[`wordsTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsTopicEn;
   const quizPath = route[`wordsQuiz${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsQuizEn;
 
   useEffect(() => {
-    setIsSelected(location.pathname === vocabPath || location.pathname === quizPath);
-  }, [location.pathname, vocabPath, quizPath]);
+    setIsSelected(location.pathname === topicPath || location.pathname === quizPath);
+  }, [location.pathname, topicPath, quizPath]);
 
   const handleClick = () => {
     startAsGuestOrUser({
@@ -33,7 +33,7 @@ const NavOptTopic = () => {
       cookieLimit,
       setLimitCookie,
       signInWithGoogle,
-      navigateTo: vocabPath,
+      navigateTo: topicPath,
       navigate
     })
   }

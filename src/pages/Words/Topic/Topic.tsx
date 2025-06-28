@@ -28,11 +28,11 @@ function Topic() {
   const goBack = () => { navigate(wordsHomePagePath); };
 
   const dropDownOptions = [
-    { value: "englishPractice", label: "מילים שימושיות באנגלית" },
-    { value: "spanishPractice", label: "מילים שימושיות בספרדית" },
-    { value: "italianPractice", label: "מילים שימושיות באיטלקית" },
-    { value: "hebrewPractice", label: "מילים שימושיות בעברית" },
-    { value: "arabicPractice", label: "מילים שימושיות בערבית" }
+    { value: "englishPractice", label: t("wordsPredefined.englishPractice")},
+    { value: "spanishPractice", label: t("wordsPredefined.spanishPractice")},
+    { value: "italianPractice", label: t("wordsPredefined.italianPractice")},
+    { value: "hebrewPractice", label: t("wordsPredefined.hebrewPractice")},
+    { value: "arabicPractice", label: t("wordsPredefined.arabicPractice")}
   ]
 
   useEffect(() => { // Prevent direct access via URL
@@ -65,7 +65,7 @@ function Topic() {
     <>
       <PageLayout
         id="wordsTopic"
-        productType={ProductType.Practice}
+        productType={ProductType.Words}
         hasGreenBackground
         hasHeader={{ goBack, hasTitle: t("topic.title") }}
         hasAds={WORDS_AD_SLOT}

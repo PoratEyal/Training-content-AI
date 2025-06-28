@@ -7,21 +7,24 @@
     "loadingHead": "Estamos trabajando en ello",
     "loadingText": "¡Atención! Este cuestionario fue generado con inteligencia artificial, que está en constante aprendizaje, por lo que pueden ocurrir errores."
   },
+
   "aboutUs": {
-    "title": "Sobre Nosotros"
+    "title": "Acerca de",
+    "youthAboutText": "Crea actividades para jóvenes: desde una biblioteca de actividades listas hasta actividades personalizadas con inteligencia artificial. Ideal para guías que desean enriquecer la experiencia educativa y social.",
+    "practiceAboutText": "Práctica inteligente con inteligencia artificial. Elige cualquier tema y el sistema generará un ejercicio personalizado en segundos. Perfecto para quienes buscan una forma sencilla y enfocada de practicar y profundizar su comprensión.",
+    "wordsAboutText": "Entrenamiento de vocabulario de forma inteligente y eficiente. Ingresa palabras o elige un tema para obtener una práctica personalizada que te ayudará a aprender, recordar y comprender mejor – en cualquier idioma."
   },
 
   "home": {
     "slogan": "Personalizado, Simple y Rápido 🤟",
-    "startAction": "Crear Actividad",
-    "youthAboutText": "Crea actividades para jóvenes: desde una biblioteca de actividades listas hasta opciones personalizadas generadas con IA. Ideal para guías que buscan enriquecer la experiencia educativa y social.",
-    "practiceStartAction": "Crea una práctica",
-    "practiceAboutText": "Práctica inteligente con IA. Elige cualquier tema y obtén un ejercicio personalizado en segundos. Ideal para quienes buscan una forma simple y enfocada de mejorar su comprensión."
+    "youthStartAction": "Crear Actividad",
+    "practiceStartAction": "Crea una práctica"
   },
   "continueWithAI": {
     "advanced": "Avanzado",
     "youthForActions": "Actividades",
     "practiceForActions": "Practicar",
+    "wordsForActions": "Vocabulario",
     "withPrefix": "con",
     "ai": "IA"
   },
@@ -30,7 +33,7 @@
     "build": "Crear Actividad",
     "content": "Contenido",
     "myActivities": "Mis Actividades",
-    "practiceBuild": "Práctica nueva"
+    "practiceBuild": "Práctica"
   },
   "details": {
     "title": "Cuéntanos sobre tu grupo",
@@ -126,13 +129,22 @@
   "wordsVocab": {
     "title": "Vamos a ingresar palabras",
     "instructions": "La lista de palabras o frases para practicar",
-    "TextAreaGuide": "Words to Practice",
-    "noTranslation": "Se recomienda usar primero la traducción automática para asegurar que las palabras estén bien traducidas",
-    "tooManyLines": "Puedes ingresar hasta 35 líneas (cada línea es una pregunta).",
-    "btnCreate": "¡Empezar!",
-    "btnCreating": "Creando práctica",
-    "error": "Ocurrió un error al crear las preguntas. Intenta nuevamente.",
-    "topicError": "Lo siento, no puedo generar preguntas sobre el tema que elegiste. Por favor, intenta con otro tema."
+    "loadListError": "Ocurrió un error al cargar el archivo de palabras. Inténtalo de nuevo.",
+    "TextAreaGuide": "Palabras para practicar",
+    "tooManyLines": "Puedes ingresar hasta 35 líneas (una pregunta por línea).",
+    "btnCreate": "¡Vamos!",
+    "btnCreating": "Creando la práctica",
+    "error": "Ocurrió un error al generar las preguntas. Inténtalo de nuevo.",
+    "topicError": "Lo siento, no puedo generar preguntas para el tema seleccionado. Por favor, intenta con otro tema."
+  },
+
+
+  "wordsPredefined": {
+    "hebrewPractice": "Palabras útiles en hebreo",
+    "arabicPractice": "Palabras útiles en árabe",
+    "englishPractice": "Palabras útiles en inglés",
+    "spanishPractice": "Palabras útiles en español",
+    "italianPractice": "Palabras útiles en italiano"
   },
 
   "wordsQuiz": {

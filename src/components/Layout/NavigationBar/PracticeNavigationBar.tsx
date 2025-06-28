@@ -5,7 +5,7 @@ import styles from "./NavigationBar.module.css";
 import NavTopic from "../../options/NavigationBar/Practice/NavTopic";
 import NavHome from "../../options/NavigationBar/Practice/NavHome";
 
-const PracticeFooter = () => {
+const PracticeNavigationBar = () => {
 
     return (
         <nav className={styles.navbar_container}>
@@ -15,4 +15,4 @@ const PracticeFooter = () => {
     );
 };
 
-export default PracticeFooter;
+export default PracticeNavigationBar;
