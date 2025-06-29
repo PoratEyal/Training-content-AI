@@ -17,7 +17,7 @@ function shuffleArray<T>(arr: T[]): T[] {
   const a = [...arr]
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
-    ;[a[i], a[j]] = [a[j], a[i]]
+      ;[a[i], a[j]] = [a[j], a[i]]
   }
   return a
 }
@@ -89,8 +89,8 @@ function Quiz() {
   }
 
   const handleNext = () => {
+
     const currentQ = currentCycle[currentIdx]
-    if (selected === null) return
 
     const selectedAnswer = currentQ.options[selected]
     const isWrong = selectedAnswer !== currentQ.correctAnswer
@@ -170,16 +170,8 @@ function Quiz() {
         </QuizContainer>
       ) : (
         <QuizContainer>
-          <div className={styles.progressBarWrapper}>
-            <div className={styles.progressBar} style={{ width: `${progressPercent}%` }}></div>
-          </div>
-
           <div className={styles.questionBlock}>
             <div className={styles.questionText}>
-              {q.question}
-              {q.pronunciation && (
-                <span className={styles.pronunciation}> ({q.pronunciation})</span>
-              )}
               <span
                 onClick={() => speakText(q.question, quizLang)}
                 className={styles.speakerIcon}
@@ -188,6 +180,10 @@ function Quiz() {
               >
                 🔊
               </span>
+              {q.question}
+              {q.pronunciation && (
+                <span className={styles.pronunciation}> ({q.pronunciation})</span>
+              )}
             </div>
             <ul className={styles.optionList}>
               {q.options.map((opt, idx) => {
@@ -209,13 +205,30 @@ function Quiz() {
               })}
             </ul>
           </div>
-          {selected !== null && (
-            <div className={styles.checkBtnContainer}>
-              <button onClick={handleNext} className={styles.checkBtn}>
-                {t("common.btnContinue")}
-              </button>
-            </div>
-          )}
+
+          <div className={styles.circularProgressWrapper}>
+            <svg className={styles.circularProgress} viewBox="0 0 36 36">
+              <path
+                className={styles.bg}
+                d="M18 2.0845         a 15.9155 15.9155 0 0 1 0 31.831         a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+              <path
+                className={styles.fg}
+                strokeDasharray={`${progressPercent}, 100`}
+                d="M18 2.0845         a 15.9155 15.9155 0 0 1 0 31.831         a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+              <text x="18" y="20.35" className={styles.percentage}>
+                {progressPercent}%
+              </text>
+            </svg>
+          </div>
+
+          <div className={styles.continueBtnContainer}>
+            <button onClick={handleNext} className={styles.continueBtn}>
+              {t("common.btnContinue")}
+            </button>
+          </div>
+
         </QuizContainer>
       )}
     </PageLayout>

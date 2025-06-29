@@ -17,7 +17,7 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" as="style"
     onload="this.onload=null;this.rel='stylesheet'" />
 
-  <!-- ✅ Add this line for ResponsiveVoice -->
+  <!-- ResponsiveVoice -->
   <script src="https://code.responsivevoice.org/responsivevoice.js?key=MrUBPkih"></script>
 
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
@@ -26,12 +26,48 @@
 
 <body>
   <noscript>
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" />
   </noscript>
   <noscript>You need to enable JavaScript to run this app.</noscript>
 
   <div id="root"></div>
+
+  <script>
+    window.addEventListener("load", function () {
+      const originalSpeak = window.responsiveVoice?.speak;
+
+      // Handles Text-to-Speech and disables unwanted automatic speech
+      window.responsiveVoice.speak = function () { };
+
+      // Controlled speech function
+      window.speakControlled = function (text, langCode) {
+        if (!originalSpeak || typeof text !== "string" || !text.trim()) return;
+
+        const langMap = {
+          he: "Hebrew Male",
+          en: "US English Female",
+          ar: "Arabic Male",
+          es: "Spanish Latin American Female",
+          fr: "French Female",
+          it: "Italian Female",
+          ru: "Russian Male",
+          de: "Deutsch Male",
+          pt: "Portuguese Male",
+          ja: "Japanese Male",
+          ko: "Korean Male",
+          hi: "Hindi Male",
+          zh: "Chinese Male",
+          bn: "Bangla Male",
+          tr: "Turkish Male",
+        };
+
+        const selectedVoice = langMap[langCode] || "US English Female";
+        originalSpeak(text, selectedVoice);
+      };
+    });
+  </script>
+
+
 
   <style>
     body {

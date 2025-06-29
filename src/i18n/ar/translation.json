@@ -128,7 +128,7 @@
 
   "words": {
     "topic": {
-      "pageTitle": "ما الموضوع الذي سنختاره؟",
+      "pageTitle": "لنختر شيئًا!",
       "select": "اختر موضوعًا"
     },
   "predefined": {
@@ -140,7 +140,7 @@
     "ar-Practice": "كلمات مفيدة بالعربية"
   },
     "vocab": {
-      "pageTitle": "ماذا سنتدرب الآن؟",
+      "pageTitle": "جاهز للتدريب؟",
       "instructions": "قائمة الكلمات أو العبارات للتدريب",
       "listNotification": "لا توجد كلمات للتدريب",
       "btnCreate": "لنبدأ",

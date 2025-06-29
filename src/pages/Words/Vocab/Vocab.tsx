@@ -18,7 +18,6 @@ import { useContentContext } from "../../../context/ContentContext"
 
 // --- Merges AI distractors and predefined jsons ---
 function mergeQuizData(baseData, distractorList, lang) {
-
   const langKey = lang.toLowerCase()
   const translateKey = `${langKey}_Translate`
   const pronKey = `${langKey}_Pronunciation`
@@ -26,24 +25,15 @@ function mergeQuizData(baseData, distractorList, lang) {
   return baseData
     .map((item, index) => {
       const dist = distractorList[index] || {}
-
-      // Build the final answers array (including the correct one)
       const allAnswers = [
         item[translateKey] || "",
         dist.dist1 || "",
         dist.dist2 || "",
         dist.dist3 || "",
       ]
-
-      // Remove duplicates and empty values
       const uniqueAnswers = Array.from(new Set(allAnswers.filter(Boolean)))
-
-      // Ensure the correct answer is still present after filtering
       const correct = item[translateKey] || ""
-      if (!uniqueAnswers.includes(correct)) {
-        uniqueAnswers.unshift(correct)
-      }
-
+      if (!uniqueAnswers.includes(correct)) uniqueAnswers.unshift(correct)
       return {
         text: item.text || "",
         pronunciation: item[pronKey] || "",
@@ -54,21 +44,18 @@ function mergeQuizData(baseData, distractorList, lang) {
       }
     })
     .filter(item => {
-      // Ensure there is at least a correct answer and one additional distinct option
       const opts = [item.correct, item.dist1, item.dist2, item.dist3].filter(Boolean)
       const unique = new Set(opts)
       return unique.size >= 2
     })
 }
 
-
 function WordsVocab() {
-
   const { t, i18n } = useTranslation()
   const lang = i18n.language
   const navigate = useNavigate()
   const { currentPage, setCurrentPage } = useContentContext()
-  const { notifyAlert: notifyAlert } = useNotificationContext();
+  const { notifyAlert } = useNotificationContext();
 
   const wordsHomePagePath = route[`wordsHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsHomePageEn
   const wordsTopicPath = route[`wordsTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsTopicEn
@@ -86,7 +73,7 @@ function WordsVocab() {
     enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_WordsVocab, navigate, wordsHomePagePath)
   }, [])
 
-  // loads the words file based on the selected topic
+  // load and display the words based on the selected topic
   useEffect(() => {
     if (!topicValue) return
 
@@ -119,12 +106,8 @@ function WordsVocab() {
     fetchWordsFile()
   }, [topicValue])
 
-
-  // Handle form submission and create Words Quiz
   const handleSubmit = async (e) => {
-
     e.preventDefault()
-
     const originalLines = originalText.split("\n").filter(line => line.trim() !== "")
     if (originalLines.length > 35) {
       notifyAlert(t("wordsVocab.tooManyLines"));
@@ -151,6 +134,8 @@ function WordsVocab() {
     }
   }
 
+  const translateKey = `${lang}_Translate`
+
   return (
     <>
       <PageLayout
@@ -168,15 +153,17 @@ function WordsVocab() {
             {t("words.vocab.instructions")}
           </label>
 
-          <div className={styles.textareaWrapper}>
-            <textarea
-              value={originalText}
-              onChange={(e) => setOriginalText(e.target.value)}
-              className={styles.textarea}
-              rows={14}
-              placeholder={t("words.vocab.listNotification")}
-              readOnly
-            />
+          <div className={styles.tableWrapper}>
+            <table className={styles.wordsTable}>
+              <tbody>
+                {topicDataJSON.map((item, idx) => (
+                  <tr key={idx}>
+                    <td>{item.text}</td>
+                    <td>{item[translateKey]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
           <div className={styles.button_wrapper}>

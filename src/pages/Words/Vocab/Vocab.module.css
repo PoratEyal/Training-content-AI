@@ -16,39 +16,31 @@
 
 .listLabel {
   display: block;
-  width: 100%;
+  width: 80%;
   margin-bottom: 2px;
   font-size: 16px;
+  font-weight: 600;
   color: #333;
-  text-align: center;
-}
-
-.textareaWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin: 16px 0;
-}
-
-.textarea {
-  width: 200px;
-  height: 250px;
-  padding: 4px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  resize: none;
-  background-color: #fff;
-  text-align: center;
-  line-height: 1.5;
-}
-
-.textarea:focus {
-  border-color: #ddd;
-  outline: none;
 }
 
 .button_wrapper {
   margin-top: 10px;
+}
+
+.tableWrapper {
+  width: 80%;
+  height: 250px;
+  margin: 16px 0;
+  overflow-x: auto;
+  padding: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.wordsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  line-height: 1.6;
 }

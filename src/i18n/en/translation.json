@@ -129,7 +129,7 @@
 
   "words": {
     "topic": {
-      "pageTitle": "Which topic shall we choose?",
+      "pageTitle": "Let’s pick something!",
       "select": "Select a topic"
     },
   "predefined": {
@@ -141,7 +141,7 @@
     "ar-Practice": "Useful words in Arabic"
   },
     "vocab": {
-      "pageTitle": "What shall we practice now?",
+      "pageTitle": "Ready to practice?",
       "instructions": "List of words or expressions to practice",
       "listNotification": "No words to practice",
       "btnCreate": "Let's Start",

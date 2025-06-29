@@ -128,7 +128,7 @@
 
   "words": {
     "topic": {
-      "pageTitle": "¿Qué tema elegimos?",
+      "pageTitle": "¡Elijamos algo",
       "select": "Selecciona un tema"
     },
   "predefined": {
@@ -140,8 +140,8 @@
     "ar-Practice": "Palabras útiles en árabe"
   },
     "vocab": {
-      "pageTitle": "¿Qué practicamos ahora?",
-      "instructions": "Lista de palabras o expresiones para practicar",
+      "pageTitle": "¿Listo para practicar",
+      "instructions": "Lista de práctica",
       "listNotification": "No hay palabras para practicar",
       "btnCreate": "Empezar",
       "btnCreating": "Creando práctica",
