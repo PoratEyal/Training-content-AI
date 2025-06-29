@@ -179,7 +179,7 @@ function Quiz() {
                 title={t("words.quiz.speak")}
               >
                 🔊
-              </span>
+              </span>{" "}
               {q.question}
               {q.pronunciation && (
                 <span className={styles.pronunciation}> ({q.pronunciation})</span>

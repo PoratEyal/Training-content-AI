@@ -50,15 +50,28 @@
 
 .continueBtnContainer {
   position: fixed;
-  bottom: 150px;
-  left: 23%;
+  bottom: 130px;
+  left: 20%;
   transform: translateX(-50%);
   z-index: 1000;
 }
 
+.circularProgressWrapper {
+  position: fixed;
+  bottom: 130px;
+  left: 80%;
+  transform: translateX(-50%);
+  width: 75px;
+  height: 75px;
+  z-index: 1001;
+}
 
 :dir(ltr) .continueBtnContainer {
-  left: 77%;
+  left: 80%;
+}
+
+:dir(ltr) .circularProgressWrapper {
+  left: 20%;
 }
 
 .continueBtn {
@@ -80,21 +93,6 @@
 .continueBtn:active {
   transform: scale(0.96);
   box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
-}
-
-
-.circularProgressWrapper {
-  position: fixed;
-  bottom: 130px;
-  left: 67%;
-  width: 75px;
-  height: 75px;
-  margin: 0 auto 16px;
-  z-index: 999;
-}
-
-:dir(ltr) .circularProgressWrapper {
-  left: 5%;
 }
 
 .circularProgress {
@@ -174,19 +172,10 @@
     width: 100%;
   }
 
-  .circularProgressWrapper {
-    bottom: 274px;
-    left: 65%;
-    width: 75px;
-    height: 75px;
-  }
-
-  :dir(ltr) .circularProgressWrapper {
-    left: 21%;
-  }
 
   .continueBtnContainer,
-  .retryFabContainer {
+  .retryFabContainer,
+  .circularProgressWrapper {
     position: absolute;
   }
 }
