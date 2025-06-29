@@ -87,7 +87,7 @@ function WordsHomePage() {
 
       <div className={styles.about_div}>
         <AboutUsCollapse>
-          <p>{t("aboutUs.practiceAboutText")}</p>
+          <p>{t("aboutUs.wordsAboutText")}</p>
         </AboutUsCollapse>
       </div>
 

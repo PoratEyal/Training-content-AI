@@ -45,6 +45,7 @@ function Quiz() {
   const [wrongQuestions, setWrongQuestions] = useState<Question[]>([])
   const [done, setDone] = useState(false)
   const [correctCount, setCorrectCount] = useState(0)
+  const [feedbackText, setFeedbackText] = useState("")
 
   useEffect(() => {
     enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_WordsQuiz, navigate, wordsHomePagePath)
@@ -82,53 +83,55 @@ function Quiz() {
     setWrongQuestions([])
     setCorrectCount(0)
     setDone(false)
+    setFeedbackText("") // reset feedback
   }, [lang])
 
-const handleSelect = (idx: number) => {
-  if (selected !== null) return
+  const handleSelect = (idx: number) => {
+    if (selected !== null) return
 
-  setSelected(idx)
+    setSelected(idx)
 
-  const currentQ = currentCycle[currentIdx]
-  const selectedAnswer = currentQ.options[idx]
-  const isCorrect = selectedAnswer === currentQ.correctAnswer
+    const currentQ = currentCycle[currentIdx]
+    const selectedAnswer = currentQ.options[idx]
+    const isCorrect = selectedAnswer === currentQ.correctAnswer
 
-  if (isCorrect) {
-    setCorrectCount(prev => prev + 1)
-  }
-}
-
-const handleNext = () => {
-
-  const currentQ = currentCycle[currentIdx]
-
-  const selectedAnswer = currentQ.options[selected]
-  const isWrong = selectedAnswer !== currentQ.correctAnswer
-
-  if (isWrong) {
-    setWrongQuestions(prev => [...prev, currentQ])
-  }
-
-  if (currentIdx < currentCycle.length - 1) {
-    setCurrentIdx(currentIdx + 1)
-    setSelected(null)
-  } else {
-    if (wrongQuestions.length === 0 && !isWrong) {
-      setDone(true)
-    } else {
-      const next = isWrong ? [...wrongQuestions, currentQ] : [...wrongQuestions]
-      const reshuffled = next.map(q => ({
-        ...q,
-        options: shuffleArray(q.options)
-      }))
-      setCurrentCycle(reshuffled)
-      setWrongQuestions([])
-      setCurrentIdx(0)
-      setSelected(null)
+    if (isCorrect) {
+      setCorrectCount(prev => prev + 1)
     }
   }
-}
 
+  const handleNext = () => {
+
+    const currentQ = currentCycle[currentIdx]
+
+    const selectedAnswer = currentQ.options[selected]
+    const isWrong = selectedAnswer !== currentQ.correctAnswer
+
+    if (isWrong) {
+      setWrongQuestions(prev => [...prev, currentQ])
+    }
+
+    if (currentIdx < currentCycle.length - 1) {
+      setCurrentIdx(currentIdx + 1)
+      setSelected(null)
+    } else {
+      if (wrongQuestions.length === 0 && !isWrong) {
+        const rand = Math.floor(Math.random() * 4) + 1
+        setFeedbackText(t(`words.quiz.feedback${rand}`))
+        setDone(true)
+      } else {
+        const next = isWrong ? [...wrongQuestions, currentQ] : [...wrongQuestions]
+        const reshuffled = next.map(q => ({
+          ...q,
+          options: shuffleArray(q.options)
+        }))
+        setCurrentCycle(reshuffled)
+        setWrongQuestions([])
+        setCurrentIdx(0)
+        setSelected(null)
+      }
+    }
+  }
 
   const handleRestart = () => {
     const reshuffled = shuffleArray(fullCycle).map(q => ({
@@ -141,6 +144,7 @@ const handleNext = () => {
     setWrongQuestions([])
     setCorrectCount(0)
     setDone(false)
+    setFeedbackText("")
   }
 
   const q = currentCycle[currentIdx]
@@ -168,6 +172,9 @@ const handleNext = () => {
         <LoadingQuiz />
       ) : done ? (
         <QuizContainer>
+          <div className={styles.feedbackText}>
+            {feedbackText}
+          </div>
           <div className={styles.retryFabContainer}>
             <button onClick={handleRestart} className={`${styles.retryFab} ${styles.retryBtn}`}>
               {t("words.quiz.newPractice")}

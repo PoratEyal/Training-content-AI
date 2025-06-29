@@ -108,23 +108,27 @@
       "deleteError": "The activity was not deleted, please try again later"
     }
   },
-  "topic": {
-    "title": "Let's pick a topic",
-    "topicPlaceholder": "Enter a topic",
-    "examples": "Examples: Simple fractions, chemistry for final exams, 5th grade English, driving theory, music trivia...",
-    "btnCreate": "Let’s go",
-    "btnCreating": "Creating Practice",
-    "error": "An error occurred while generating the questions. Please try again.",
-    "topicError": "Sorry, I can't generate questions for the topic you selected. Please try a different topic."
-  },
-  "quiz": {
-    "FailMsg": "Failed to generate the practice. If the problem persists, please contact us via the 'Contact Us' menu.",
-    "score": "Score:",
-    "newPractice": "New Practice",
-    "check": "Check",
-    "shareButton": "Who’s better? Share now!",
-    "LinkinClipboard": "Link copied – share it with your friends",
-    "shareMessage": "I created a quiz on \"{{topic}}\" – let's see if you can beat me!"
+
+  "practice": {
+
+    "topic": {
+      "title": "Let's pick a topic",
+      "topicPlaceholder": "Enter a topic",
+      "examples": "Examples: Simple fractions, chemistry for final exams, 5th grade English, driving theory, music trivia...",
+      "btnCreate": "Let’s go",
+      "btnCreating": "Creating Practice",
+      "error": "An error occurred while generating the questions. Please try again.",
+      "topicError": "Sorry, I can't generate questions for the topic you selected. Please try a different topic."
+    },
+    "quiz": {
+      "FailMsg": "Failed to generate the practice. If the problem persists, please contact us via the 'Contact Us' menu.",
+      "score": "Score:",
+      "newPractice": "New Practice",
+      "check": "Check",
+      "shareButton": "Who’s better? Share now!",
+      "LinkinClipboard": "Link copied – share it with your friends",
+      "shareMessage": "I created a quiz on \"{{topic}}\" – let's see if you can beat me!"
+    }
   },
 
 
@@ -133,14 +137,14 @@
       "pageTitle": "Let’s pick something!",
       "select": "Select a topic"
     },
-  "predefined": {
-    "en-Practice": "Useful words in English",
-    "es-Practice": "Useful words in Spanish",
-    "it-Practice": "Useful words in Italian",
-    "fr-Practice": "Useful words in French",
-    "he-Practice": "Useful words in Hebrew",
-    "ar-Practice": "Useful words in Arabic"
-  },
+    "predefined": {
+      "en-Practice": "Useful words in English",
+      "es-Practice": "Useful words in Spanish",
+      "it-Practice": "Useful words in Italian",
+      "fr-Practice": "Useful words in French",
+      "he-Practice": "Useful words in Hebrew",
+      "ar-Practice": "Useful words in Arabic"
+    },
     "vocab": {
       "pageTitle": "Ready to practice?",
       "instructions": "List of words or expressions to practice",
@@ -156,10 +160,10 @@
       "newPractice": "New Practice",
       "donePractice": "Done for now",
       "speak": "Speak",
-      "feedback1": "Awesome job! You crushed it",
-      "feedback2": "Well done!",
-      "feedback3": "Nice! You nailed every question",
-      "feedback4": "Great work!"
+      "feedback1": "🎉 Awesome job! You crushed it",
+      "feedback2": "🎉 Well done!",
+      "feedback3": "🎉 Nice! You nailed every question",
+      "feedback4": "🎉 Great work!"
     }
   },
 

@@ -107,23 +107,27 @@
       "deleteError": "La actividad no fue eliminada, por favor intenta nuevamente más tarde"
     }
   },
-  "topic": {
-    "title": "Elijamos un tema",
-    "topicPlaceholder": "Ingresa un tema",
-    "examples": "Ejemplos: Fracciones simples, química para la selectividad, inglés de quinto grado, teoría de conducción, trivia musical...",
-    "btnCreate": "¡Vamos!",
-    "btnCreating": "Creando práctica",
-    "error": "Ocurrió un error al generar las preguntas. Intenta nuevamente.",
-    "topicError": "Lo siento, no puedo generar preguntas sobre el tema que seleccionaste. Por favor, intenta con otro tema."
-  },
-  "quiz": {
-    "FailMsg": "La creación de la práctica falló. Si el problema persiste, por favor contáctanos a través del menú 'Contáctanos'.",
-    "score": "Nota:",
-    "newPractice": "Repetir",
-    "check": "Revisar",
-    "shareButton": "¡Compártelo y reta a tus amigos!",
-    "LinkinClipboard": "¡Enlace copiado! Compártelo con tus amigos!",
-    "shareMessage": "¡Creé un cuestionario sobre \"{{topic}}\" – veamos si puedes superarme!"
+
+  "practice": {
+
+    "topic": {
+      "title": "Elijamos un tema",
+      "topicPlaceholder": "Ingresa un tema",
+      "examples": "Ejemplos: Fracciones simples, química para la selectividad, inglés de quinto grado, teoría de conducción, trivia musical...",
+      "btnCreate": "¡Vamos!",
+      "btnCreating": "Creando práctica",
+      "error": "Ocurrió un error al generar las preguntas. Intenta nuevamente.",
+      "topicError": "Lo siento, no puedo generar preguntas sobre el tema que seleccionaste. Por favor, intenta con otro tema."
+    },
+    "quiz": {
+      "FailMsg": "La creación de la práctica falló. Si el problema persiste, por favor contáctanos a través del menú 'Contáctanos'.",
+      "score": "Nota:",
+      "newPractice": "Repetir",
+      "check": "Revisar",
+      "shareButton": "¡Compártelo y reta a tus amigos!",
+      "LinkinClipboard": "¡Enlace copiado! Compártelo con tus amigos!",
+      "shareMessage": "¡Creé un cuestionario sobre \"{{topic}}\" – veamos si puedes superarme!"
+    }
   },
 
 
@@ -132,14 +136,14 @@
       "pageTitle": "¡Elijamos algo",
       "select": "Selecciona un tema"
     },
-  "predefined": {
-    "en-Practice": "Palabras útiles en inglés",
-    "es-Practice": "Palabras útiles en español",
-    "it-Practice": "Palabras útiles en italiano",
-    "fr-Practice": "Palabras útiles en francés",
-    "he-Practice": "Palabras útiles en hebreo",
-    "ar-Practice": "Palabras útiles en árabe"
-  },
+    "predefined": {
+      "en-Practice": "Palabras útiles en inglés",
+      "es-Practice": "Palabras útiles en español",
+      "it-Practice": "Palabras útiles en italiano",
+      "fr-Practice": "Palabras útiles en francés",
+      "he-Practice": "Palabras útiles en hebreo",
+      "ar-Practice": "Palabras útiles en árabe"
+    },
     "vocab": {
       "pageTitle": "¿Listo para practicar",
       "instructions": "Lista de práctica",
@@ -155,10 +159,10 @@
       "newPractice": "Nueva práctica",
       "donePractice": "Terminé por ahora",
       "speak": "Di la palabra",
-      "feedback1": "¡Excelente trabajo! Lo hiciste genial",
-      "feedback2": "¡Bien hecho!",
-      "feedback3": "¡Muy bien! Respondiste todo correctamente",
-      "feedback4": "¡Buen trabajo!"
+      "feedback1": "🎉 ¡Excelente trabajo! Lo hiciste genial",
+      "feedback2": "🎉 ¡Bien hecho!",
+      "feedback3": "🎉 ¡Muy bien! Respondiste todo correctamente",
+      "feedback4": "🎉 ¡Buen trabajo!"
     }
   },
   

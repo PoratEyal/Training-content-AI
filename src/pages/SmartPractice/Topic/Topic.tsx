@@ -64,7 +64,7 @@ function Topic() {
 
     if (result) {
       if (!isValidQuiz(result)) {
-        alert(t("topic.topicError"));
+        alert(t("practice.topic.topicError"));
         return
       }
 
@@ -76,7 +76,7 @@ function Topic() {
       const auth = getAuth();
       const user = auth.currentUser;
       const userEmail = user?.email || "guest";
-      notifyAlert(t("topic.error"));
+      notifyAlert(t("practice.topic.error"));
       logEvent(`[Practice.Topic]: createQuiz failed, topic: ${topic}`, userEmail);
     }
   }
@@ -87,7 +87,7 @@ function Topic() {
         id="practiceTopic"
         productType={ProductType.Practice}
         hasGreenBackground
-        hasHeader={{ goBack, hasTitle: t("topic.title") }}
+        hasHeader={{ goBack, hasTitle: t("practice.topic.title") }}
         hasAds={PRACTICE_AD_SLOT}
         hasNavBar
         index={false}
@@ -98,17 +98,17 @@ function Topic() {
             type="text"
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
-            placeholder={t("topic.topicPlaceholder")}
+            placeholder={t("practice.topic.topicPlaceholder")}
             className={styles.input}
           />
 
           <label className={styles.examples_label}>
-            {t("topic.examples")}
+            {t("practice.topic.examples")}
           </label>
 
           <div className={styles.button_wrapper}>
             <MainBtn
-              text={loading ? t("topic.btnCreating") : t("topic.btnCreate")}
+              text={loading ? t("practice.topic.btnCreating") : t("practice.topic.btnCreate")}
               isDisabled={!topic.trim() || loading}
               type="submit"
               height={42}

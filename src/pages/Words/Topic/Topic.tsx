@@ -64,10 +64,11 @@ function Topic() {
       selectedValue = topic.label.trim()
     }
 
-    // Special condition for "Suspect arrest" - We do not want to expose it in the dropdown
-    if (selectedValue === "מעצר") {
+    // Special conditions for "Suspect arrest" and internal debug - We do not want to expose it in the dropdown
+    if (selectedValue === "מעצר")
       selectedValue = "armyPractice"
-    }
+    else     if (selectedValue === "בדיקות")
+      selectedValue = "_debug"
 
     navigate(wordsVocabPath, { state: { topicValue: selectedValue } })
   }

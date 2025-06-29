@@ -195,7 +195,7 @@ function Quiz() {
       const user = auth.currentUser;
       const userEmail = user?.email || "guest";
       logEvent(`[Quiz]: Generation failed: less then 5 valid questions found (topic: ${topic}, lang: ${lang})`, userEmail);
-      alert(t("quiz.FailMsg"))
+      alert(t("practice.quiz.FailMsg"))
     }
   }
 
@@ -213,7 +213,7 @@ const handleShare = (topic: string) => {
   share(
     t,
     t("common.practiceAppName"),
-    t("quiz.shareMessage", { topic }),
+    t("practice.quiz.shareMessage", { topic }),
     `${WEBSITE_URL}/${lang}/practice`
   )
 }
@@ -249,17 +249,17 @@ const handleShare = (topic: string) => {
                 }}
               >
                 <Icons.cancel className={styles.scoreCloseIcon} />
-                <div>{t("quiz.score")} {Math.round((correctCount / questions.length) * 100)}%</div>
+                <div>{t("practice.quiz.score")} {Math.round((correctCount / questions.length) * 100)}%</div>
               </div>
 
               <div className={styles.retryFabContainer}>
                 <button onClick={handleRegenerate} className={styles.retryFab}>
-                  {t("quiz.newPractice")}
+                  {t("practice.quiz.newPractice")}
                 </button>
               </div>
 
               <button id="shareBtn" onClick={() => handleShare(topic)} className={styles.shareBox}>
-                {t("quiz.shareButton")}
+                {t("practice.quiz.shareButton")}
                 <Icons.Share className={styles.shareIcon} />
               </button>
 
@@ -314,7 +314,7 @@ const handleShare = (topic: string) => {
 
           {!submitted && (
             <div className={styles.checkBtnContainer}>
-              <button onClick={handleSubmit} className={styles.checkBtn}>{t("quiz.check")}</button>
+              <button onClick={handleSubmit} className={styles.checkBtn}>{t("practice.quiz.check")}</button>
             </div>
           )}
         </QuizContainer>
