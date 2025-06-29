@@ -2,10 +2,10 @@
   "common": {
     "youthAppName": "Youth Movement Activities",
     "practiceAppName": "Smart Self Practice",
-    "wordsAppName": "Vocabulary Learning and Practice",
+    "wordsAppName": "Smart Vocab",
     "btnContinue": "Continue",
     "loadingHead": "We're on it",
-    "loadingText": "Note! This quiz was generated using AI, which is constantly learning, so errors may occur.",
+    "loadingText": "Note! This quiz is generated using AI, which is constantly learning, so errors may occur.",
     "FAQtitle": "FAQ"
   },
 
@@ -20,9 +20,8 @@
   "home": {
     "slogan": "Customized, Simple and Fast 🤟",
     "youthStartAction": "Create Activities",
-    "practiceStartAction": "Create a Practice"
-  },
-  "continueWithAI": {
+    "practiceStartAction": "Create a Practice",
+    "wordsStartAction": "Create a Practice",
     "advanced": "Advanced",
     "youthForActions": "for Activities",
     "practiceForActions": "Practice",
@@ -134,7 +133,7 @@
 
   "words": {
     "topic": {
-      "pageTitle": "Let’s pick something!",
+      "pageTitle": "What will we practice?",
       "select": "Select a topic"
     },
     "predefined": {
@@ -146,7 +145,7 @@
       "ar-Practice": "Useful words in Arabic"
     },
     "vocab": {
-      "pageTitle": "Ready to practice?",
+      "pageTitle": "Practice Words",
       "instructions": "List of words or expressions to practice",
       "listNotification": "No words to practice",
       "btnCreate": "Let's Start",
@@ -207,6 +206,7 @@
       "createdBy": "Created with:",
       "youthShareMessage": "I found a website that builds activities with AI – worth trying!",
       "practiceShareMessage": "I found a website that helps you practice any topic with AI – worth trying!",
+      "wordsShareMessage": "I found a great website for simple and easy vocabulary practice in any language – highly recommended!",
       "shared2Clipboard": "Text copied – share it in any app.",
       "shareError": "Failed to copy text – try again."
     },

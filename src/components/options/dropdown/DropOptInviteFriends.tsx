@@ -46,8 +46,8 @@ function DropOptInviteFriends() {
       shareUrl += "/practice"
 
     } else if (product === ProductType.Words) {
-      shareText = t("articleOptions.share.practiceShareMessage")
-      shareTitle = t("common.practiceAppName")
+      shareText = t("articleOptions.share.wordsShareMessage")
+      shareTitle = t("common.wordsAppName")
       shareUrl += "/words"
 
     } else {

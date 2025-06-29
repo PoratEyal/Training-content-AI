@@ -2,10 +2,10 @@
   "common": {
     "youthAppName": "פעולות לתנועות נוער",
     "practiceAppName": "תרגול עצמי חכם",
-    "wordsAppName": "לימוד ותרגול אוצר מילים",
+    "wordsAppName": "אוצר המילים חכם",
     "btnContinue": "המשך",
     "loadingHead": "אנחנו על זה",
-    "loadingText": "שימו לב! השאלון הופק בעזרת בינה מלאכותית שנמצאת בתהליך מתמיד של למידה ויתכנו טעויות.",
+    "loadingText": "שימו לב! התרגול מופק בעזרת בינה מלאכותית שנמצאת בתהליך מתמיד של למידה ויתכנו טעויות.",
     "FAQtitle": "שאלות נפוצות"
   },
   "aboutUs": {
@@ -18,9 +18,8 @@
   "home": {
     "slogan": "מותאם, פשוט ומהיר 🤟",
     "youthStartAction": "יצירת פעולות",
-    "practiceStartAction": "בואו נתרגל"
-  },
-  "continueWithAI": {
+    "practiceStartAction": "בואו נתרגל",
+    "wordsStartAction": "בואו נתרגל",
     "advanced": "מתקדמים",
     "youthForActions": "לפעולות",
     "practiceForActions": "לתרגול",
@@ -28,6 +27,7 @@
     "withPrefix": "ב-",
     "ai": "AI"
   },
+
   "navbar": {
     "home": "מסך הבית",
     "build": "יצירת פעולות",
@@ -35,6 +35,7 @@
     "myActivities": "הפעולות שלי",
     "practiceBuild": "תרגול"
   },
+  
   "details": {
     "title": "ספרו לנו על הקבוצה שלכם",
     "youthMovement": "תנועת נוער",
@@ -132,7 +133,7 @@
   "words": {
 
     "topic": {
-      "pageTitle": "איזה נושא נבחר?",
+      "pageTitle": "מה נתרגל עכשיו?",
       "select": "בחרו נושא"
     },
 
@@ -146,7 +147,7 @@
     },
 
     "vocab": {
-      "pageTitle": "מה נתרגל עכשיו?",
+      "pageTitle": "המילים לתרגול",
       "instructions": "רשימת המילים או הביטויים לתרגול",
       "listNotification": "אין מילים לתרגול",
       "btnCreate": "צאו לדרך",
@@ -209,6 +210,7 @@
       "createdBy": "נוצר בעזרת:",
       "youthShareMessage": "מצאתי אתר שבונה פעולות בעזרת בינה מלאכותית, שווה לנסות!",
       "practiceShareMessage": "מצאתי אתר שעוזר לתרגל כל נושא בעזרת בינה מלאכותית, שווה לנסות!",
+      "wordsShareMessage": "מצאתי אתר מעולה לתרגול פשוט וקל של אוצר מילים בכל שפה – מומלץ בחום!",
       "shared2Clipboard": "טקסט השיתוף הועתק – אפשר לשתף בכל אפליקציה.",
       "shareError": "טקסט השיתוף לא הועתק – נסו שוב או העתקו ידנית."
     },

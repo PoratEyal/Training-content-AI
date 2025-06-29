@@ -34,7 +34,8 @@ function Topic() {
     { value: "fr-Practice", label: t("words.predefined.fr-Practice") },
     { value: "he-Practice", label: t("words.predefined.he-Practice") },
     { value: "ar-Practice", label: t("words.predefined.ar-Practice") }
-  ]
+  ].filter(opt => !opt.value.startsWith(lang))
+
 
   useEffect(() => { // Prevent direct access via URL
     enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_WordsTopic, navigate, wordsHomePagePath);
@@ -67,7 +68,7 @@ function Topic() {
     // Special conditions for "Suspect arrest" and internal debug - We do not want to expose it in the dropdown
     if (selectedValue === "מעצר")
       selectedValue = "armyPractice"
-    else     if (selectedValue === "בדיקות")
+    else if (selectedValue === "בדיקות")
       selectedValue = "_debug"
 
     navigate(wordsVocabPath, { state: { topicValue: selectedValue } })

@@ -2,7 +2,7 @@
   "common": {
     "youthAppName": "Actividades para movimientos juveniles",
     "practiceAppName": "Práctica personal inteligente",
-    "wordsAppName": "Aprendizaje y práctica de vocabulario",
+    "wordsAppName": "Vocabulario Inteligente",
     "btnContinue": "Continuar",
     "loadingHead": "Estamos trabajando en ello",
     "loadingText": "¡Atención! Este cuestionario fue generado con inteligencia artificial, que está en constante aprendizaje, por lo que pueden ocurrir errores.",
@@ -19,9 +19,8 @@
   "home": {
     "slogan": "Personalizado, Simple y Rápido 🤟",
     "youthStartAction": "Crear Actividad",
-    "practiceStartAction": "Crea una práctica"
-  },
-  "continueWithAI": {
+    "practiceStartAction": "Crea una práctica",
+    "wordsStartAction": "Crea una práctica",
     "advanced": "Avanzado",
     "youthForActions": "Actividades",
     "practiceForActions": "Practicar",
@@ -133,7 +132,7 @@
 
   "words": {
     "topic": {
-      "pageTitle": "¡Elijamos algo",
+      "pageTitle": "¿Qué practicamos ahora?",
       "select": "Selecciona un tema"
     },
     "predefined": {
@@ -145,7 +144,7 @@
       "ar-Practice": "Palabras útiles en árabe"
     },
     "vocab": {
-      "pageTitle": "¿Listo para practicar",
+      "pageTitle": "Palabras de práctica",
       "instructions": "Lista de práctica",
       "listNotification": "No hay palabras para practicar",
       "btnCreate": "Empezar",
@@ -207,6 +206,7 @@
       "createdBy": "Creado con:",
       "youthShareMessage": "Encontré un sitio que crea actividades con IA. ¡Vale la pena probarlo!",
       "practiceShareMessage": "Encontré un sitio que te ayuda a practicar cualquier tema con IA. ¡Vale la pena intentarlo!",
+      "wordsShareMessage": "Encontré un sitio genial para practicar vocabulario de forma fácil y sencilla en cualquier idioma. ¡Muy recomendable!",
       "shared2Clipboard": "Texto copiado. Compártelo en cualquier app.",
       "shareError": "Error al copiar el texto. Intenta de nuevo."
     },

@@ -9,11 +9,11 @@ function ContinueWithAI() {
 
   let productTitle = "";
   if (product === ProductType.Practice) {
-    productTitle = t("continueWithAI.practiceForActions");
+    productTitle = t("home.practiceForActions");
   } else if (product === ProductType.Youth) {
-    productTitle = t("continueWithAI.youthForActions");
+    productTitle = t("home.youthForActions");
   } else if (product === ProductType.Words) {
-    productTitle = t("continueWithAI.wordsForActions");
+    productTitle = t("home.wordsForActions");
   }
 
   let productColorClass = "";
@@ -31,19 +31,19 @@ function ContinueWithAI() {
   return (
     <h1 className={styles.logo}>
       <div className={styles[`word_1${dirPrefix}`]}>
-        <div className={styles[`word_1_1${dirPrefix}`]}>{t("continueWithAI.advanced")}</div>
-        <div className={styles[`word_1_2${dirPrefix}`]}>{t("continueWithAI.advanced")}</div>
+        <div className={styles[`word_1_1${dirPrefix}`]}>{t("home.advanced")}</div>
+        <div className={styles[`word_1_2${dirPrefix}`]}>{t("home.advanced")}</div>
       </div>
       <div className={`${styles[`word_2${dirPrefix}`]} ${productColorClass}`}>
         {productTitle}
       </div>
       <div className={styles[`word_3${dirPrefix}`]}>
-        <div className={styles[`word_3_1${dirPrefix}`]}>{t("continueWithAI.withPrefix")}</div>
-        <div className={styles[`word_3_2${dirPrefix}`]}>{t("continueWithAI.withPrefix")}</div>
+        <div className={styles[`word_3_1${dirPrefix}`]}>{t("home.withPrefix")}</div>
+        <div className={styles[`word_3_2${dirPrefix}`]}>{t("home.withPrefix")}</div>
       </div>
       <div className={styles[`word_4${dirPrefix}`]}>
-        <div className={styles[`word_4_1${dirPrefix}`]}>{t("continueWithAI.ai")}</div>
-        <div className={styles[`word_4_2${dirPrefix}`]}>{t("continueWithAI.ai")}</div>
+        <div className={styles[`word_4_1${dirPrefix}`]}>{t("home.ai")}</div>
+        <div className={styles[`word_4_2${dirPrefix}`]}>{t("home.ai")}</div>
       </div>
       <div className={styles[`sparks${dirPrefix}`]}>
         <div className={styles.small_spark} />

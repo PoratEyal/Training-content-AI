@@ -68,7 +68,7 @@ function WordsHomePage() {
       ) : (
         <section className={styles.button_section}>
           <StartBtn
-            text={t("home.practiceStartAction")}
+            text={t("home.wordsStartAction")}
             onClick={() =>
               startAsGuestOrUser({
                 currentUser,
