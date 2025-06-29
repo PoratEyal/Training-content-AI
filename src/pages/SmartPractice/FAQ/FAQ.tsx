@@ -20,7 +20,7 @@ const FAQ: React.FC = () => {
   }[];
 
   const faqSchema = useMemo(() => buildFaqSchema(faq), [faq]);
-  const title = t("faqPractice.title");
+  const title = t("common.FAQtitle");
 
   return (
     <PageLayout

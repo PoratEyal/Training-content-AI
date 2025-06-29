@@ -5,7 +5,8 @@
     "wordsAppName": "Aprendizaje y práctica de vocabulario",
     "btnContinue": "Continuar",
     "loadingHead": "Estamos trabajando en ello",
-    "loadingText": "¡Atención! Este cuestionario fue generado con inteligencia artificial, que está en constante aprendizaje, por lo que pueden ocurrir errores."
+    "loadingText": "¡Atención! Este cuestionario fue generado con inteligencia artificial, que está en constante aprendizaje, por lo que pueden ocurrir errores.",
+    "FAQtitle": "Preguntas frecuentes"
   },
 
   "aboutUs": {
@@ -238,8 +239,10 @@
     "title": "Términos de Servicio y Política de Privacidad",
     "acceptButton": "Aceptar"
   },
+
+
+
   "faq": {
-    "title": "Preguntas Frecuentes",
     "questions": [
       {
         "q": "¿Qué es ActivityWiz?",
@@ -320,7 +323,6 @@
     ]
   },
   "faqPractice": {
-    "title": "Preguntas frecuentes",
     "questions": [
       {
         "q": "¿Qué es ActivityWiz para practicar?",
@@ -351,5 +353,35 @@
         "a": "Por supuesto."
       }
     ]
+  },
+
+  "faqWords": {
+    "questions": [
+      {
+        "q": "¿Qué es ActivityWiz para Vocabulario?",
+        "a": "ActivityWiz para Vocabulario es una herramienta impulsada por IA para aprender y ampliar tu vocabulario en cualquier idioma. Simplemente elige un tema que te interese, y el sistema creará un cuestionario personalizado con preguntas de opción múltiple, incluyendo traducción, pronunciación y reproducción de audio, ayudándote a aprender de forma rápida, divertida y eficaz."
+      },
+      {
+        "q": "¿Cuesta dinero usar el sitio?",
+        "a": "No, el uso del sitio es gratuito y está abierto a todos."
+      },
+      {
+        "q": "¿A quién está dirigido el sitio?",
+        "a": "El sitio es adecuado para cualquier persona que quiera aprender vocabulario en cualquier idioma: niños, adolescentes y adultos."
+      },
+      {
+        "q": "¿Qué idiomas son compatibles?",
+        "a": "La interfaz del sistema es compatible con inglés, español, hebreo y árabe. Sin embargo, las traducciones de vocabulario están disponibles para cualquier idioma existente."
+      },
+      {
+        "q": "¿Cómo puedo contactar al equipo del sitio?",
+        "a": "Puedes enviarnos un mensaje a través del formulario de contacto en el sitio."
+      },
+      {
+        "q": "¿Puedo practicar el mismo tema nuevamente con preguntas diferentes?",
+        "a": "Por supuesto."
+      }
+    ]
   }
+
 }

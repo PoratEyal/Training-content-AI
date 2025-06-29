@@ -18,7 +18,7 @@ const FAQ: React.FC = () => {
   }[];
 
   const faqSchema = useMemo(() => buildFaqSchema(faq), [faq]);
-  const title = t("faq.title"); // We prefer putting it in the content and not in title for H1 SEO reasons
+  const title = t("common.FAQtitle");
 
   return (
     <PageLayout

@@ -5,7 +5,8 @@
     "wordsAppName": "Vocabulary Learning and Practice",
     "btnContinue": "Continue",
     "loadingHead": "We're on it",
-    "loadingText": "Note! This quiz was generated using AI, which is constantly learning, so errors may occur."
+    "loadingText": "Note! This quiz was generated using AI, which is constantly learning, so errors may occur.",
+    "FAQtitle": "FAQ"
   },
 
   "aboutUs": {
@@ -239,7 +240,6 @@
     "acceptButton": "Accept"
   },
   "faq": {
-    "title": "FAQ",
     "questions": [
       {
         "q": "What is ActivityWiz?",
@@ -320,7 +320,6 @@
     ]
   },
   "faqPractice": {
-    "title": "Frequently Asked Questions",
     "questions": [
       {
         "q": "What is ActivityWiz Practice?",
@@ -351,5 +350,35 @@
         "a": "Absolutely."
       }
     ]
+  },
+
+  "faqWords": {
+    "questions": [
+      {
+        "q": "What is ActivityWiz for Vocabulary?",
+        "a": "ActivityWiz for Vocabulary is an AI-powered tool for learning and expanding your vocabulary in any language. Simply choose a topic that interests you, and the system will create a personalized quiz with multiple-choice questions, including translation, pronunciation, and audio playback, helping you learn quickly, enjoyably, and effectively."
+      },
+      {
+        "q": "Does using the site cost money?",
+        "a": "No, using the site is free and open to everyone."
+      },
+      {
+        "q": "Who is the site suitable for?",
+        "a": "The site is suitable for anyone who wants to learn vocabulary in any language – children, teens, and adults."
+      },
+      {
+        "q": "Which languages are supported?",
+        "a": "The system interface supports English, Spanish, Hebrew, and Arabic. However, vocabulary translations are available for any existing language."
+      },
+      {
+        "q": "How can I contact the site team?",
+        "a": "You can send us a message through the contact form on the site."
+      },
+      {
+        "q": "Can I practice the same topic again with different questions?",
+        "a": "Absolutely."
+      }
+    ]
   }
+
 }

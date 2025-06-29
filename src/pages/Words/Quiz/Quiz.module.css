@@ -50,7 +50,7 @@
 
 .continueBtnContainer {
   position: fixed;
-  bottom: 130px;
+  bottom: 180px;
   left: 20%;
   transform: translateX(-50%);
   z-index: 1000;
@@ -58,7 +58,7 @@
 
 .circularProgressWrapper {
   position: fixed;
-  bottom: 130px;
+  bottom: 180px;
   left: 80%;
   transform: translateX(-50%);
   width: 75px;
