@@ -84,42 +84,51 @@ function Quiz() {
     setDone(false)
   }, [lang])
 
-  const handleSelect = (idx: number) => {
-    if (selected === null) setSelected(idx)
+const handleSelect = (idx: number) => {
+  if (selected !== null) return
+
+  setSelected(idx)
+
+  const currentQ = currentCycle[currentIdx]
+  const selectedAnswer = currentQ.options[idx]
+  const isCorrect = selectedAnswer === currentQ.correctAnswer
+
+  if (isCorrect) {
+    setCorrectCount(prev => prev + 1)
+  }
+}
+
+const handleNext = () => {
+
+  const currentQ = currentCycle[currentIdx]
+
+  const selectedAnswer = currentQ.options[selected]
+  const isWrong = selectedAnswer !== currentQ.correctAnswer
+
+  if (isWrong) {
+    setWrongQuestions(prev => [...prev, currentQ])
   }
 
-  const handleNext = () => {
-
-    const currentQ = currentCycle[currentIdx]
-
-    const selectedAnswer = currentQ.options[selected]
-    const isWrong = selectedAnswer !== currentQ.correctAnswer
-
-    if (isWrong) {
-      setWrongQuestions(prev => [...prev, currentQ])
+  if (currentIdx < currentCycle.length - 1) {
+    setCurrentIdx(currentIdx + 1)
+    setSelected(null)
+  } else {
+    if (wrongQuestions.length === 0 && !isWrong) {
+      setDone(true)
     } else {
-      setCorrectCount(prev => prev + 1)
-    }
-
-    if (currentIdx < currentCycle.length - 1) {
-      setCurrentIdx(currentIdx + 1)
+      const next = isWrong ? [...wrongQuestions, currentQ] : [...wrongQuestions]
+      const reshuffled = next.map(q => ({
+        ...q,
+        options: shuffleArray(q.options)
+      }))
+      setCurrentCycle(reshuffled)
+      setWrongQuestions([])
+      setCurrentIdx(0)
       setSelected(null)
-    } else {
-      if (wrongQuestions.length === 0 && !isWrong) {
-        setDone(true)
-      } else {
-        const next = isWrong ? [...wrongQuestions, currentQ] : [...wrongQuestions]
-        const reshuffled = next.map(q => ({
-          ...q,
-          options: shuffleArray(q.options)
-        }))
-        setCurrentCycle(reshuffled)
-        setWrongQuestions([])
-        setCurrentIdx(0)
-        setSelected(null)
-      }
     }
   }
+}
+
 
   const handleRestart = () => {
     const reshuffled = shuffleArray(fullCycle).map(q => ({

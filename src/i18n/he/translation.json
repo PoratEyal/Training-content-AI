@@ -157,7 +157,11 @@
       "pageTitle": "ועכשיו התרגול",
       "newPractice": "תרגול חדש",
       "donePractice": "סיימתי להפעם",
-      "speak": "אמור את המילה"
+      "speak": "אמור את המילה",
+      "feedback1": "עבודה נהדרת! אין עליך",
+      "feedback2": "כל הכבוד!",
+      "feedback3": "מצוין! הצלחת לענות על כל השאלות",
+      "feedback4": "יפה מאוד!"
     } 
   },
 
@@ -243,7 +247,7 @@
     "acceptButton": "אישור"
   },
 
-  "faq": {
+  "faqYouth": {
     "questions": [
       {
         "q": "מה זה ActivityWiz?",

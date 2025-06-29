@@ -155,7 +155,11 @@
       "pageTitle": "And now, the practice",
       "newPractice": "New Practice",
       "donePractice": "Done for now",
-      "speak": "Speak"
+      "speak": "Speak",
+      "feedback1": "Awesome job! You crushed it",
+      "feedback2": "Well done!",
+      "feedback3": "Nice! You nailed every question",
+      "feedback4": "Great work!"
     }
   },
 
@@ -239,7 +243,7 @@
     "title": "Terms of Service and Privacy Policy",
     "acceptButton": "Accept"
   },
-  "faq": {
+  "faqYouth": {
     "questions": [
       {
         "q": "What is ActivityWiz?",

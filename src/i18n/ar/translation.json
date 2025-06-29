@@ -154,7 +154,11 @@
       "pageTitle": "والآن التدريب",
       "newPractice": "تدريب جديد",
       "donePractice": "أنهيت لهذا اليوم",
-      "speak": "قل الكلمة"
+      "speak": "قل الكلمة",
+      "feedback1": "شغل ممتاز! أبدعت",
+      "feedback2": "أحسنت!",
+      "feedback3": "رائع! جاوبت على كل الأسئلة صح",
+      "feedback4": "عمل ممتاز!"
     }
   },
 
@@ -240,7 +244,7 @@
     "title": "شروط الخدمة وسياسة الخصوصية",
     "acceptButton": "أوافق"
   },
-  "faq": {
+  "faqYouth": {
     "questions": [
       {
         "q": "ما هو ActivityWiz؟",

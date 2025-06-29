@@ -12,7 +12,7 @@ const FAQ: React.FC = () => {
   const { t } = useTranslation();
   const { dir } = useLanguage();
 
-  const faq = t("faq.questions", { returnObjects: true }) as {
+  const faq = t("faqYouth.questions", { returnObjects: true }) as {
     q: string;
     a: string;
   }[];

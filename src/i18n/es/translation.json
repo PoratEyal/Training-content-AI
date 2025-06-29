@@ -154,7 +154,11 @@
       "pageTitle": "Ahora la práctica",
       "newPractice": "Nueva práctica",
       "donePractice": "Terminé por ahora",
-      "speak": "Di la palabra"
+      "speak": "Di la palabra",
+      "feedback1": "¡Excelente trabajo! Lo hiciste genial",
+      "feedback2": "¡Bien hecho!",
+      "feedback3": "¡Muy bien! Respondiste todo correctamente",
+      "feedback4": "¡Buen trabajo!"
     }
   },
   
@@ -242,7 +246,7 @@
 
 
 
-  "faq": {
+  "faqYouth": {
     "questions": [
       {
         "q": "¿Qué es ActivityWiz?",
