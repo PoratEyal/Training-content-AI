@@ -93,31 +93,39 @@ function WordsVocab() {
       try {
         const response = await fetch(`/Words/${topicValue}.json`)
 
-        // Even if response.ok === true, we check if the content is actually JSON
         const contentType = response.headers.get("Content-Type") || ""
         if (!contentType.includes("application/json")) {
-          notifyAlert(t("בשלב זה אין תמיכה בשאלון שלא הוגדר מראש"))
+          notifyAlert(t("words.vocab.noSupportMsg"))
           return
         }
 
         const data = await response.json()
-        const extractedText = data.map((item) => item.text).filter(Boolean).join("\n")
-        setOriginalText(extractedText)
         setTopicData(data)
+
+        // Use the translation key instead of "text"
+        const translationKey = `${lang}_Translate`
+        const extractedText = data
+          .map((item) => item[translationKey])
+          .filter(Boolean)
+          .join("\n")
+
+        setOriginalText(extractedText)
 
         const langDetected = detectLanguage(extractedText)
         setDetectedLang(langDetected)
 
       } catch (err) {
-        notifyAlert(t("wordsVocab.loadListError"))
+        notifyAlert(t("words.vocab.loadListError"))
       }
     }
+
 
     fetchWordsFile()
   }, [topicValue])
 
   // Handle form submission and create Words Quiz
   const handleSubmit = async (e) => {
+
     e.preventDefault()
 
     const originalLines = originalText.split("\n").filter(line => line.trim() !== "")
@@ -140,7 +148,7 @@ function WordsVocab() {
       sessionStorage.setItem("wordsQuizRaw", JSON.stringify(mergedQuiz))
       navigate(wordsQuizPath)
     } else {
-      notifyAlert(t("topic.error"))
+      notifyAlert(t("words.topic.generalError"))
     }
   }
 
@@ -150,7 +158,7 @@ function WordsVocab() {
         id="wordsVocab"
         productType={ProductType.Words}
         hasGreenBackground
-        hasHeader={{ goBack: () => navigate(wordsTopicPath), hasTitle: t("wordsVocab.title") }}
+        hasHeader={{ goBack: () => navigate(wordsTopicPath), hasTitle: t("words.vocab.pageTitle") }}
         hasAds={WORDS_AD_SLOT}
         hasNavBar
         index={false}
@@ -158,7 +166,7 @@ function WordsVocab() {
         <form onSubmit={handleSubmit} className={styles.topic_form_container}>
 
           <label htmlFor="wordsInput" className={styles.listLabel}>
-            {t("wordsVocab.instructions")}
+            {t("words.vocab.instructions")}
           </label>
 
           <div className={styles.textareaWrapper}>
@@ -167,14 +175,14 @@ function WordsVocab() {
               onChange={(e) => setOriginalText(e.target.value)}
               className={styles.textarea}
               rows={14}
-              placeholder={t("wordsVocab.TextAreaGuide")}
+              placeholder={t("words.vocab.listNotification")}
               readOnly
             />
           </div>
 
           <div className={styles.button_wrapper}>
             <MainBtn
-              text={loading ? t("wordsVocab.btnCreating") : t("wordsVocab.btnCreate")}
+              text={loading ? t("words.vocab.btnCreating") : t("words.vocab.btnCreate")}
               isDisabled={!originalText.trim() || loading}
               type="submit"
               height={42}

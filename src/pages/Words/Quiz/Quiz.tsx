@@ -30,7 +30,6 @@ type Question = {
 }
 
 function Quiz() {
-
   const navigate = useNavigate()
   const { t, i18n } = useTranslation()
   const lang = (i18n.language || "en").slice(0, 2)
@@ -45,6 +44,7 @@ function Quiz() {
   const [selected, setSelected] = useState<number | null>(null)
   const [wrongQuestions, setWrongQuestions] = useState<Question[]>([])
   const [done, setDone] = useState(false)
+  const [correctCount, setCorrectCount] = useState(0)
 
   useEffect(() => {
     enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_WordsQuiz, navigate, wordsHomePagePath)
@@ -80,6 +80,7 @@ function Quiz() {
     setCurrentIdx(0)
     setSelected(null)
     setWrongQuestions([])
+    setCorrectCount(0)
     setDone(false)
   }, [lang])
 
@@ -94,7 +95,11 @@ function Quiz() {
     const selectedAnswer = currentQ.options[selected]
     const isWrong = selectedAnswer !== currentQ.correctAnswer
 
-    if (isWrong) setWrongQuestions(prev => [...prev, currentQ])
+    if (isWrong) {
+      setWrongQuestions(prev => [...prev, currentQ])
+    } else {
+      setCorrectCount(prev => prev + 1)
+    }
 
     if (currentIdx < currentCycle.length - 1) {
       setCurrentIdx(currentIdx + 1)
@@ -125,6 +130,7 @@ function Quiz() {
     setCurrentIdx(0)
     setSelected(null)
     setWrongQuestions([])
+    setCorrectCount(0)
     setDone(false)
   }
 
@@ -136,11 +142,13 @@ function Quiz() {
     en: ["A", "B", "C", "D"]
   }[lang] || ["-", "-", "-", "-"]
 
+  const progressPercent = fullCycle.length > 0 ? Math.round((correctCount / fullCycle.length) * 100) : 0
+
   return (
     <PageLayout
       id="wordsQuiz"
       productType={ProductType.Words}
-      hasHeader={{ goBack: () => navigate(wordstopicPath), hasTitle: t("wordsQuiz.title") }}
+      hasHeader={{ goBack: () => navigate(wordstopicPath), hasTitle: t("words.quiz.pageTitle") }}
       hasAds={WORDS_AD_SLOT}
       hasGreenBackground
       hasNavBar
@@ -152,15 +160,19 @@ function Quiz() {
         <QuizContainer>
           <div className={styles.retryFabContainer}>
             <button onClick={handleRestart} className={`${styles.retryFab} ${styles.retryBtn}`}>
-              {t("wordsQuiz.newPractice")}
+              {t("words.quiz.newPractice")}
             </button>
             <button onClick={() => navigate(wordsHomePagePath)} className={`${styles.retryFab} ${styles.doneBtn}`}>
-              {t("wordsQuiz.done")}
+              {t("words.quiz.donePractice")}
             </button>
           </div>
         </QuizContainer>
       ) : (
         <QuizContainer>
+          <div className={styles.progressBarWrapper}>
+            <div className={styles.progressBar} style={{ width: `${progressPercent}%` }}></div>
+          </div>
+
           <div className={styles.questionBlock}>
             <div className={styles.questionText}>
               {q.question}
@@ -171,7 +183,7 @@ function Quiz() {
                 onClick={() => speakText(q.question)}
                 className={styles.speakerIcon}
                 role="button"
-                title={t("wordsQuiz.speak")}
+                title={t("words.quiz.speak")}
               >
                 🔊
               </span>

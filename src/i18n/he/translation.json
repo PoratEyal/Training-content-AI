@@ -124,32 +124,42 @@
     "shareMessage": "יצרתי שאלון בנושא \"{{topic}}\" – בואו נראה אם תצליחו יותר ממני!"
   },
 
-  "wordsVocab": {
-    "title": "בואו נכניס מילים",
-    "instructions": "רשימת המילים או הביטויים לתרגול",
-    "loadListError": "אירעה שגיאה בעת טעינת קובץ המילים. נסו שוב.",
-    "TextAreaGuide": "מילים לתרגול",
-    "tooManyLines": "באפשרותך להזין עד 35 שורות (כל שורה שאלה אחת).",
-    "btnCreate": "צאו לדרך",
-    "btnCreating": "יצירת התרגול",
-    "error": "אירעה שגיאה בעת יצירת השאלות. נסו שוב.",
-    "topicError": "מצטער, איני יכול ליצור שאלות בנושא שבחרת. אנא נסה להזין נושא אחר."
+
+  "words": {
+
+    "topic": {
+      "pageTitle": "איזה נושא נבחר?",
+      "select": "בחרו נושא"
+    },
+
+    "predefined": {
+      "hebrewPractice": "מילים שימושיות בעברית",
+      "arabicPractice": "מילים שימושיות בערבית",
+      "englishPractice": "מילים שימושיות באנגלית",
+      "spanishPractice": "מילים שימושיות בספרדית",
+      "italianPractice": "מילים שימושיות באיטלקית"
+    },
+
+    "vocab": {
+      "pageTitle": "מה נתרגל עכשיו?",
+      "instructions": "רשימת המילים או הביטויים לתרגול",
+      "listNotification": "אין מילים לתרגול",
+      "btnCreate": "צאו לדרך",
+      "btnCreating": "יצירת התרגול",
+      "noSupportMsg": "בשלב זה אין תמיכה בשאלון אשר לא הוגדר מראש",
+      "loadListError": "אירעה שגיאה בעת טעינת קובץ המילים. נסו שוב.",
+      "generalError": "אירעה שגיאה בעת יצירת השאלות. נסו שוב."
+    },
+
+    "quiz": {
+      "pageTitle": "ועכשיו התרגול",
+      "newPractice": "תרגול חדש",
+      "donePractice": "סיימתי להפעם",
+      "speak": "אמור את המילה"
+    } 
   },
 
-  "wordsPredefined": {
-    "hebrewPractice": "מילים שימושיות בעברית",
-    "arabicPractice": "מילים שימושיות בערבית",
-    "englishPractice": "מילים שימושיות באנגלית",
-    "spanishPractice": "מילים שימושיות בספרדית",
-    "italianPractice": "מילים שימושיות באיטלקית"
-  },
-
-  "wordsQuiz": {
-    "title": "ועכשיו לתרגול",
-    "newPractice": "תרגול חדש",
-    "done": "סיימתי להפעם"
-  },
-
+  
   "profile": {
     "dropOptInviteFriends": {
       "invite": "שתפו עם חברים"

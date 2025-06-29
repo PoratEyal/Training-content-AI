@@ -127,31 +127,34 @@
   },
 
 
-  "wordsVocab": {
-    "title": "Let's enter words",
-    "instructions": "The list of words or phrases to practice",
-    "loadListError": "An error occurred while loading the word file. Please try again.",
-    "TextAreaGuide": "Words to practice",
-    "tooManyLines": "You can enter up to 35 lines (one question per line).",
-    "btnCreate": "Let's go",
-    "btnCreating": "Creating the practice",
-    "error": "An error occurred while generating the questions. Please try again.",
-    "topicError": "Sorry, I can't generate questions for the selected topic. Please try a different one."
-  },
-
-
-  "wordsPredefined": {
-    "hebrewPractice": "Useful Words in Hebrew",
-    "arabicPractice": "Useful Words in Arabic",
-    "englishPractice": "Useful Words in English",
-    "spanishPractice": "Useful Words in Spanish",
-    "italianPractice": "Useful Words in Italian"
-  },
-
-  "wordsQuiz": {
-    "title": "Now for the Practice",
-    "newPractice": "New Practice",
-    "done": "Done for Now"
+  "words": {
+    "topic": {
+      "pageTitle": "Which topic shall we choose?",
+      "select": "Select a topic"
+    },
+    "predefined": {
+      "hebrewPractice": "Useful Words in Hebrew",
+      "arabicPractice": "Useful Words in Arabic",
+      "englishPractice": "Useful Words in English",
+      "spanishPractice": "Useful Words in Spanish",
+      "italianPractice": "Useful Words in Italian"
+    },
+    "vocab": {
+      "pageTitle": "What shall we practice now?",
+      "instructions": "List of words or expressions to practice",
+      "listNotification": "No words to practice",
+      "btnCreate": "Let's Start",
+      "btnCreating": "Creating Practice",
+      "noSupportMsg": "Currently, only predefined quizzes are supported",
+      "loadListError": "An error occurred while loading the word file. Please try again.",
+      "generalError": "An error occurred while creating the questions. Please try again."
+    },
+    "quiz": {
+      "pageTitle": "And now, the practice",
+      "newPractice": "New Practice",
+      "donePractice": "Done for now",
+      "speak": "Speak"
+    }
   },
 
   "profile": {

@@ -126,31 +126,34 @@
   },
 
 
-  "wordsVocab": {
-    "title": "Vamos a ingresar palabras",
-    "instructions": "La lista de palabras o frases para practicar",
-    "loadListError": "Ocurrió un error al cargar el archivo de palabras. Inténtalo de nuevo.",
-    "TextAreaGuide": "Palabras para practicar",
-    "tooManyLines": "Puedes ingresar hasta 35 líneas (una pregunta por línea).",
-    "btnCreate": "¡Vamos!",
-    "btnCreating": "Creando la práctica",
-    "error": "Ocurrió un error al generar las preguntas. Inténtalo de nuevo.",
-    "topicError": "Lo siento, no puedo generar preguntas para el tema seleccionado. Por favor, intenta con otro tema."
-  },
-
-
-  "wordsPredefined": {
-    "hebrewPractice": "Palabras útiles en hebreo",
-    "arabicPractice": "Palabras útiles en árabe",
-    "englishPractice": "Palabras útiles en inglés",
-    "spanishPractice": "Palabras útiles en español",
-    "italianPractice": "Palabras útiles en italiano"
-  },
-
-  "wordsQuiz": {
-    "title": "Y ahora a practicar",
-    "newPractice": "Nueva práctica",
-    "done": "He terminado por ahora"
+  "words": {
+    "topic": {
+      "pageTitle": "¿Qué tema elegimos?",
+      "select": "Selecciona un tema"
+    },
+    "predefined": {
+      "hebrewPractice": "Palabras útiles en hebreo",
+      "arabicPractice": "Palabras útiles en árabe",
+      "englishPractice": "Palabras útiles en inglés",
+      "spanishPractice": "Palabras útiles en español",
+      "italianPractice": "Palabras útiles en italiano"
+    },
+    "vocab": {
+      "pageTitle": "¿Qué practicamos ahora?",
+      "instructions": "Lista de palabras o expresiones para practicar",
+      "listNotification": "No hay palabras para practicar",
+      "btnCreate": "Empezar",
+      "btnCreating": "Creando práctica",
+      "noSupportMsg": "Por ahora, solo se admiten prácticas predefinidas",
+      "loadListError": "Ocurrió un error al cargar el archivo de palabras. Intenta de nuevo.",
+      "generalError": "Ocurrió un error al crear las preguntas. Intenta de nuevo."
+    },
+    "quiz": {
+      "pageTitle": "Ahora la práctica",
+      "newPractice": "Nueva práctica",
+      "donePractice": "Terminé por ahora",
+      "speak": "Di la palabra"
+    }
   },
   
 

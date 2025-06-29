@@ -28,16 +28,29 @@ function Topic() {
   const goBack = () => { navigate(wordsHomePagePath); };
 
   const dropDownOptions = [
-    { value: "englishPractice", label: t("wordsPredefined.englishPractice")},
-    { value: "spanishPractice", label: t("wordsPredefined.spanishPractice")},
-    { value: "italianPractice", label: t("wordsPredefined.italianPractice")},
-    { value: "hebrewPractice", label: t("wordsPredefined.hebrewPractice")},
-    { value: "arabicPractice", label: t("wordsPredefined.arabicPractice")}
+    { value: "englishPractice", label: t("words.predefined.englishPractice") },
+    { value: "spanishPractice", label: t("words.predefined.spanishPractice") },
+    { value: "italianPractice", label: t("words.predefined.italianPractice") },
+    { value: "hebrewPractice", label: t("words.predefined.hebrewPractice") },
+    { value: "arabicPractice", label: t("words.predefined.arabicPractice") }
   ]
 
   useEffect(() => { // Prevent direct access via URL
     enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_WordsTopic, navigate, wordsHomePagePath);
   }, []);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("WordsTopic")
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved)
+        if (parsed?.value && parsed?.label) {
+          setTopic(parsed)
+        }
+      } catch (e) {
+      }
+    }
+  }, [])
 
 
   const handleSubmit = async (e) => {
@@ -67,7 +80,7 @@ function Topic() {
         id="wordsTopic"
         productType={ProductType.Words}
         hasGreenBackground
-        hasHeader={{ goBack, hasTitle: t("topic.title") }}
+        hasHeader={{ goBack, hasTitle: t("words.topic.pageTitle") }}
         hasAds={WORDS_AD_SLOT}
         hasNavBar
         index={false}
@@ -76,10 +89,17 @@ function Topic() {
 
           <div className={styles.input}>
             <CreatableSelect
-              isClearable
-              onChange={(newValue) => setTopic(newValue)}
+              value={topic}
+              onChange={(newValue) => {
+                setTopic(newValue)
+                if (newValue?.value) {
+                  localStorage.setItem("WordsTopic", JSON.stringify(newValue))
+                } else {
+                  localStorage.removeItem("WordsTopic")
+                }
+              }}
               options={dropDownOptions}
-              placeholder={t("topic.topicPlaceholder")}
+              placeholder={t("words.topic.select")}
             />
           </div>
 

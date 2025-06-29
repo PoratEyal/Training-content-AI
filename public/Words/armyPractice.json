@@ -1,47 +1,47 @@
 [
   {
-    "text": "قف",
-    "he_Translate": "עצור",
+    "text": "وَقِف هون",
+    "he_Translate": "תעמוד",
     "he_Pronunciation": "ווקף"
   },
   {
     "text": "ارفع يديك",
-    "he_Translate": "הרם ידיים",
+    "he_Translate": "תרים ידיים",
     "he_Pronunciation": "אַרְפַע יְדֵיכּ"
   },
   {
-    "text": "التف",
-    "he_Translate": "הסתובב",
-    "he_Pronunciation": "אַלְתִף"
+    "text": "لف",
+    "he_Translate": "תסתובב",
+    "he_Pronunciation": "לִף"
   },
   {
-    "text": "افتح تمك",
+    "text": "اِفْتَح تُـمَّك",
     "he_Translate": "פתח את הפה",
     "he_Pronunciation": "אִפְתַח תֻמַّכּ"
   },
   {
-    "text": "لا تتحرك",
+    "text": "لا تِتْحَرَّك",
     "he_Translate": "אל תזוז",
     "he_Pronunciation": "לַא תִתְחַרַّכּ"
   },
   {
-    "text": "شو اسمك؟",
+    "text": "شو اِسْمَك",
     "he_Translate": "איך קוראים לך?",
     "he_Pronunciation": "שוּ אִסְמַכּ"
   },
   {
-    "text": "كم عمرك؟",
+    "text": "كَمْ عُمْرَك",
     "he_Translate": "בן כמה אתה?",
     "he_Pronunciation": "כַּם עֻמְרַכּ"
   },
   {
-    "text": "من وين إنت؟",
+    "text": "مِن وين إنتَ",
     "he_Translate": "מאיפה אתה?",
     "he_Pronunciation": "מִן וֵין אִנְתַ"
   },
   {
-    "text": "أرني هويتك",
-    "he_Translate": "תראה לי את התעודה",
+    "text": "وريني هويتك",
+    "he_Translate": "תראה לי את תעודת הזהות",
     "he_Pronunciation": "וַרִינִי הַוִיֵּיתַכּ"
   },
   {
@@ -75,17 +75,17 @@
     "he_Pronunciation": "הַדַא מוּ אִילַכּ"
   },
   {
-    "text": "هذا ممنوع",
+    "text": "هدا ممنوع",
     "he_Translate": "זה אסור",
     "he_Pronunciation": "הַדַא מַמְנוּעַ"
   },
   {
-    "text": "أين كنت قبل ساعة؟",
+    "text": "وين كنت قبل ساعة؟",
     "he_Translate": "איפה היית לפני שעה?",
-    "he_Pronunciation": "אֵין כֻּנְת קַבֶּל סָעַה?"
+    "he_Pronunciation": "וֵין כֻּנְת קַבֶּל סָעַה?"
   },
   {
-    "text": "من معك؟",
+    "text": "مين معك؟",
     "he_Translate": "מי איתך?",
     "he_Pronunciation": "מִין מַעַכּ?"
   },
@@ -100,9 +100,9 @@
     "he_Pronunciation": "אִפְתַח א-שַּנְטַה"
   },
   {
-    "text": "طلّع من جيوبك",
-    "he_Translate": "תוציא מהכיסים",
-    "he_Pronunciation": "טַלַּע מִן גִ'יוּבַּכּ"
+    "text": "طلع من جيابك",
+    "he_Translate": "תוציא מהכיסים שלך",
+    "he_Pronunciation": "טַלַּע מִן גְ'יָאבַּכּ"
   },
   {
     "text": "إنتَ موقوف",
@@ -130,9 +130,9 @@
     "he_Pronunciation": "שוּ פִי בַּלְגִ'יוּבּ?"
   },
   {
-    "text": "ليش معك كفّاز؟",
-    "he_Translate": "למה יש לך כפפה?",
-    "he_Pronunciation": "לֵיש מַעַכּ כַּפַּאז?"
+    "text": "ليش معك كْفوف؟",
+	"he_Translate": "למה יש לך כפפות?",
+	"he_Pronunciation": "לֵיש מַעַכּ כְּפוּף?"
   },
   {
     "text": "اقعد",
