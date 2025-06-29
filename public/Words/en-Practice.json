@@ -1,0 +1,115 @@
+{
+  "sourceLang": "en",
+  "items": [
+    {
+      "text": "hello",
+      "he_Translate": "שלום",
+      "he_Pronunciation": "הלו",
+      "ar_Translate": "مرحبا",
+      "ar_Pronunciation": "هَلو",
+      "es_Translate": "hola",
+      "es_Pronunciation": "jeló",
+      "en_Translate": "hello",
+      "en_Pronunciation": "hello"
+    },
+    {
+      "text": "thank you",
+      "he_Translate": "תודה",
+      "he_Pronunciation": "ת'נק יו",
+      "ar_Translate": "شكرا",
+      "ar_Pronunciation": "ثانك يو",
+      "es_Translate": "gracias",
+      "es_Pronunciation": "zank iu",
+      "en_Translate": "thank you",
+      "en_Pronunciation": "thank you"
+    },
+    {
+      "text": "please",
+      "he_Translate": "בבקשה",
+      "he_Pronunciation": "פליז",
+      "ar_Translate": "من فضلك",
+      "ar_Pronunciation": "بليز",
+      "es_Translate": "por favor",
+      "es_Pronunciation": "plis",
+      "en_Translate": "please",
+      "en_Pronunciation": "please"
+    },
+    {
+      "text": "bathroom",
+      "he_Translate": "שירותים",
+      "he_Pronunciation": "בַּתרום",
+      "ar_Translate": "حمام",
+      "ar_Pronunciation": "باثروم",
+      "es_Translate": "baño",
+      "es_Pronunciation": "bazrum",
+      "en_Translate": "bathroom",
+      "en_Pronunciation": "bathroom"
+    },
+    {
+      "text": "water",
+      "he_Translate": "מים",
+      "he_Pronunciation": "ווטר",
+      "ar_Translate": "ماء",
+      "ar_Pronunciation": "ووتر",
+      "es_Translate": "agua",
+      "es_Pronunciation": "guáter",
+      "en_Translate": "water",
+      "en_Pronunciation": "water"
+    },
+    {
+      "text": "food",
+      "he_Translate": "אוכל",
+      "he_Pronunciation": "פוד",
+      "ar_Translate": "طعام",
+      "ar_Pronunciation": "فود",
+      "es_Translate": "comida",
+      "es_Pronunciation": "fúd",
+      "en_Translate": "food",
+      "en_Pronunciation": "food"
+    },
+    {
+      "text": "how much is it",
+      "he_Translate": "כמה זה עולה",
+      "he_Pronunciation": "האו מאץ' איז איט",
+      "ar_Translate": "بكم هذا؟",
+      "ar_Pronunciation": "هاو ماتش إز إت",
+      "es_Translate": "¿cuánto cuesta?",
+      "es_Pronunciation": "jau mach is it",
+      "en_Translate": "how much is it",
+      "en_Pronunciation": "how much is it"
+    },
+    {
+      "text": "help",
+      "he_Translate": "עזרה",
+      "he_Pronunciation": "הלפ",
+      "ar_Translate": "مساعدة",
+      "ar_Pronunciation": "هلب",
+      "es_Translate": "ayuda",
+      "es_Pronunciation": "jelp",
+      "en_Translate": "help",
+      "en_Pronunciation": "help"
+    },
+    {
+      "text": "entrance",
+      "he_Translate": "כניסה",
+      "he_Pronunciation": "אֶנְטְרַנְס",
+      "ar_Translate": "دخول",
+      "ar_Pronunciation": "إنتْرَنس",
+      "es_Translate": "entrada",
+      "es_Pronunciation": "éntrans",
+      "en_Translate": "entrance",
+      "en_Pronunciation": "entrance"
+    },
+    {
+      "text": "I don't understand",
+      "he_Translate": "אני לא מבין",
+      "he_Pronunciation": "איי דונט אנדרסטנד",
+      "ar_Translate": "لا أفهم",
+      "ar_Pronunciation": "آي دونت أندرستاند",
+      "es_Translate": "no entiendo",
+      "es_Pronunciation": "ai dont anderstánd",
+      "en_Translate": "I don't understand",
+      "en_Pronunciation": "I don't understand"
+    }
+  ]
+}

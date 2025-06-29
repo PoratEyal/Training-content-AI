@@ -143,6 +143,7 @@ function Quiz() {
   }[lang] || ["-", "-", "-", "-"]
 
   const progressPercent = fullCycle.length > 0 ? Math.round((correctCount / fullCycle.length) * 100) : 0
+  const quizLang = sessionStorage.getItem("wordsQuizLang") || "en"
 
   return (
     <PageLayout
@@ -180,7 +181,7 @@ function Quiz() {
                 <span className={styles.pronunciation}> ({q.pronunciation})</span>
               )}
               <span
-                onClick={() => speakText(q.question)}
+                onClick={() => speakText(q.question, quizLang)}
                 className={styles.speakerIcon}
                 role="button"
                 title={t("words.quiz.speak")}

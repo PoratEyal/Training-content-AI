@@ -12,7 +12,8 @@ import { WORDS_AD_SLOT } from "../../../models/constants/adsSlot"
 import { createWordsQuiz } from "../../../hooks/useWordsQuestions"
 import { ProductPages } from "../../../models/enum/pages"
 import { enforcePageAccess } from "../../../utils/navigation"
-import { SupportedLang, detectLanguage } from "../../../utils/detectLanguage"
+import { SupportedLang } from "../../../utils/detectLanguage"
+import { logEvent } from "../../../utils/logEvent";
 import { useContentContext } from "../../../context/ContentContext"
 
 // --- Merges AI distractors and predefined jsons ---
@@ -92,36 +93,32 @@ function WordsVocab() {
     const fetchWordsFile = async () => {
       try {
         const response = await fetch(`/Words/${topicValue}.json`)
-
-        const contentType = response.headers.get("Content-Type") || ""
-        if (!contentType.includes("application/json")) {
-          notifyAlert(t("words.vocab.noSupportMsg"))
+        if (!response.ok) {
+          logEvent(`Words.Vocab.useEffect: /Words/${topicValue}.json not found`, "systemError")
           return
         }
 
         const data = await response.json()
-        setTopicData(data)
+        const { sourceLang, items } = data
 
-        // Use the translation key instead of "text"
-        const translationKey = `${lang}_Translate`
-        const extractedText = data
-          .map((item) => item[translationKey])
-          .filter(Boolean)
-          .join("\n")
+        if (!Array.isArray(items) || !sourceLang) {
+          logEvent(`Words.Vocab.useEffect: Invalid structure in /Words/${topicValue}.json`, "systemError")
+          return
+        }
 
+        const extractedText = items.map((item) => item.text).filter(Boolean).join("\n")
         setOriginalText(extractedText)
-
-        const langDetected = detectLanguage(extractedText)
-        setDetectedLang(langDetected)
+        setTopicData(items)
+        setDetectedLang(sourceLang)
 
       } catch (err) {
-        notifyAlert(t("words.vocab.loadListError"))
+        notifyAlert(t("wordsVocab.loadListError"))
       }
     }
 
-
     fetchWordsFile()
   }, [topicValue])
+
 
   // Handle form submission and create Words Quiz
   const handleSubmit = async (e) => {
@@ -146,6 +143,8 @@ function WordsVocab() {
       const distractorsJSON = JSON.parse(AI_distructorsCleaned)
       const mergedQuiz = mergeQuizData(topicDataJSON, distractorsJSON, lang)
       sessionStorage.setItem("wordsQuizRaw", JSON.stringify(mergedQuiz))
+      sessionStorage.setItem("wordsQuizLang", detectedLang)
+
       navigate(wordsQuizPath)
     } else {
       notifyAlert(t("words.topic.generalError"))

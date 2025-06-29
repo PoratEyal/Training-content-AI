@@ -18,11 +18,9 @@ const voiceMap: Partial<Record<SupportedLang, string>> = {
   tr: "Turkish Male",
 }
 
-export function speakText(text: string) {
+export function speakText(text: string, lang: string) {
   if (!window.responsiveVoice || typeof text !== "string" || !text.trim()) return
-
-  const lang = detectLanguage(text)
   const voice = voiceMap[lang] || "UK English Male"
-
   window.responsiveVoice.speak(text, voice, { rate: 0.8 })
 }
+

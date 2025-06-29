@@ -133,11 +133,12 @@
     },
 
     "predefined": {
-      "hebrewPractice": "מילים שימושיות בעברית",
-      "arabicPractice": "מילים שימושיות בערבית",
-      "englishPractice": "מילים שימושיות באנגלית",
-      "spanishPractice": "מילים שימושיות בספרדית",
-      "italianPractice": "מילים שימושיות באיטלקית"
+      "en-Practice": "מילים שימושיות באנגלית",
+      "es-Practice": "מילים שימושיות בספרדית",
+      "it-Practice": "מילים שימושיות באיטלקית",
+      "fr-Practice": "מילים שימושיות בצרפתית",
+      "he-Practice": "מילים שימושיות בעברית",
+      "ar-Practice": "מילים שימושיות בערבית"
     },
 
     "vocab": {

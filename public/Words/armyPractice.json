@@ -1,147 +1,150 @@
-[
-  {
-    "text": "وَقِف هون",
-    "he_Translate": "תעמוד",
-    "he_Pronunciation": "ווקף"
-  },
-  {
-    "text": "ارفع يديك",
-    "he_Translate": "תרים ידיים",
-    "he_Pronunciation": "אַרְפַע יְדֵיכּ"
-  },
-  {
-    "text": "لف",
-    "he_Translate": "תסתובב",
-    "he_Pronunciation": "לִף"
-  },
-  {
-    "text": "اِفْتَح تُـمَّك",
-    "he_Translate": "פתח את הפה",
-    "he_Pronunciation": "אִפְתַח תֻמַّכּ"
-  },
-  {
-    "text": "لا تِتْحَرَّك",
-    "he_Translate": "אל תזוז",
-    "he_Pronunciation": "לַא תִתְחַרַّכּ"
-  },
-  {
-    "text": "شو اِسْمَك",
-    "he_Translate": "איך קוראים לך?",
-    "he_Pronunciation": "שוּ אִסְמַכּ"
-  },
-  {
-    "text": "كَمْ عُمْرَك",
-    "he_Translate": "בן כמה אתה?",
-    "he_Pronunciation": "כַּם עֻמְרַכּ"
-  },
-  {
-    "text": "مِن وين إنتَ",
-    "he_Translate": "מאיפה אתה?",
-    "he_Pronunciation": "מִן וֵין אִנְתַ"
-  },
-  {
-    "text": "جيبلي هويتك",
-    "he_Translate": "תביא לי את תעודת הזהות",
-    "he_Pronunciation": "ג'יבְּלִי הַוִיֵּיתַכּ"
-  },
-  {
-    "text": "معك سلاح؟",
-    "he_Translate": "יש עליך נשק?",
-    "he_Pronunciation": "מַעַכּ סִלַאח?"
-  },
-  {
-    "text": "معك شي حاد؟",
-    "he_Translate": "יש עליך משהו חד?",
-    "he_Pronunciation": "מַעַכּ שִי חַאד?"
-  },
-  {
-    "text": "ارفع قميصك",
-    "he_Translate": "הרם את החולצה שלך",
-    "he_Pronunciation": "אַרְפַע קֻמֵיסַכּ"
-  },
-  {
-    "text": "اخلع قناعك",
-    "he_Translate": "הסר את המסכה שלך",
-    "he_Pronunciation": "אִכְלַע קִנַעַכּ"
-  },
-  {
-    "text": "ما فهمت",
-    "he_Translate": "לא הבנתי",
-    "he_Pronunciation": "מַא פְהִמֵת"
-  },
-  {
-    "text": "هدا مو إلك",
-    "he_Translate": "זה לא שלך",
-    "he_Pronunciation": "הַדַא מוּ אִילַכּ"
-  },
-  {
-    "text": "هدا ممنوع",
-    "he_Translate": "זה אסור",
-    "he_Pronunciation": "הַדַא מַמְנוּעַ"
-  },
-  {
-    "text": "وين كنت قبل ساعة؟",
-    "he_Translate": "איפה היית לפני שעה?",
-    "he_Pronunciation": "וֵין כֻּנְת קַבֶּל סָעַה?"
-  },
-  {
-    "text": "مين معك؟",
-    "he_Translate": "מי איתך?",
-    "he_Pronunciation": "מִין מַעַכּ?"
-  },
-  {
-    "text": "ساكن هون",
-    "he_Translate": "אתה גר פה?",
-    "he_Pronunciation": "סַאכֵּן הוֹן"
-  },
-  {
-    "text": "افتح الشنطة",
-    "he_Translate": "פתח את התיק",
-    "he_Pronunciation": "אִפְתַח א-שַּנְטַה"
-  },
-  {
-    "text": "طلع من جيابك",
-    "he_Translate": "תוציא מהכיסים שלך",
-    "he_Pronunciation": "טַלַּע מִן גְ'יָאבַּכּ"
-  },
-  {
-    "text": "إنتَ موقوف",
-    "he_Translate": "אתה עצור",
-    "he_Pronunciation": "אִנְתַ מַוְקוּף"
-  },
-  {
-    "text": "كله تمام",
-    "he_Translate": "הכל בסדר",
-    "he_Pronunciation": "כֻּלּוּ תַמַאם"
-  },
-  {
-    "text": "احكي شوي شوي",
-    "he_Translate": "דבר לאט לאט",
-    "he_Pronunciation": "אִחְכִּי שְוַי שְוַי"
-  },
-  {
-    "text": "شو في بالشنطة؟",
-    "he_Translate": "מה יש בתיק?",
-    "he_Pronunciation": "שוּ פִי בַּאלְשַנְטַה?"
-  },
-  {
-    "text": "شو في بالجيوب؟",
-    "he_Translate": "מה יש בכיסים?",
-    "he_Pronunciation": "שוּ פִי בַּלְגִ'יוּבּ?"
-  },
-  {
-    "text": "ليش معك كْفوف؟",
-	"he_Translate": "למה יש לך כפפות?",
-	"he_Pronunciation": "לֵיש מַעַכּ כְּפוּף?"
-  },
-  {
-    "text": "اقعد",
-    "he_Translate": "שב",
-    "he_Pronunciation": "אֻקְעֻד"
-  },
-  {
-    "text": "شيل هدومك",
-    "he_Translate": "תוריד את הבגדים שלך",
-    "he_Pronunciation": "שִיל הֻדוּמַכּ"
-  }
-]
+{
+  "sourceLang": "ar",
+  "items": [
+    {
+      "text": "وَقِف هون",
+      "he_Translate": "תעמוד",
+      "he_Pronunciation": "ווקף"
+    },
+    {
+      "text": "ارفع يديك",
+      "he_Translate": "תרים ידיים",
+      "he_Pronunciation": "אַרְפַע יְדֵיכּ"
+    },
+    {
+      "text": "لف",
+      "he_Translate": "תסתובב",
+      "he_Pronunciation": "לִף"
+    },
+    {
+      "text": "اِفْتَح تُـمَّك",
+      "he_Translate": "פתח את הפה",
+      "he_Pronunciation": "אִפְתַח תֻמַّכּ"
+    },
+    {
+      "text": "لا تِتْحَرَّك",
+      "he_Translate": "אל תזוז",
+      "he_Pronunciation": "לַא תִתְחַרַّכּ"
+    },
+    {
+      "text": "شو اِسْمَك",
+      "he_Translate": "איך קוראים לך?",
+      "he_Pronunciation": "שוּ אִסְמַכּ"
+    },
+    {
+      "text": "كَمْ عُمْرَك",
+      "he_Translate": "בן כמה אתה?",
+      "he_Pronunciation": "כַּם עֻמְרַכּ"
+    },
+    {
+      "text": "مِن وين إنتَ",
+      "he_Translate": "מאיפה אתה?",
+      "he_Pronunciation": "מִן וֵין אִנְתַ"
+    },
+    {
+      "text": "جيبلي هويتك",
+      "he_Translate": "תביא לי את תעודת הזהות",
+      "he_Pronunciation": "ג'יבְּלִי הַוִיֵּיתַכּ"
+    },
+    {
+      "text": "معك سلاح؟",
+      "he_Translate": "יש עליך נשק?",
+      "he_Pronunciation": "מַעַכּ סִלַאח?"
+    },
+    {
+      "text": "معك شي حاد؟",
+      "he_Translate": "יש עליך משהו חד?",
+      "he_Pronunciation": "מַעַכּ שִי חַאד?"
+    },
+    {
+      "text": "ارفع قميصك",
+      "he_Translate": "הרם את החולצה שלך",
+      "he_Pronunciation": "אַרְפַע קֻמֵיסַכּ"
+    },
+    {
+      "text": "اخلع قناعك",
+      "he_Translate": "הסר את המסכה שלך",
+      "he_Pronunciation": "אִכְלַע קִנַעַכּ"
+    },
+    {
+      "text": "ما فهمت",
+      "he_Translate": "לא הבנתי",
+      "he_Pronunciation": "מַא פְהִמֵת"
+    },
+    {
+      "text": "هدا مو إلك",
+      "he_Translate": "זה לא שלך",
+      "he_Pronunciation": "הַדַא מוּ אִילַכּ"
+    },
+    {
+      "text": "هدا ممنوع",
+      "he_Translate": "זה אסור",
+      "he_Pronunciation": "הַדַא מַמְנוּעַ"
+    },
+    {
+      "text": "وين كنت قبل ساعة؟",
+      "he_Translate": "איפה היית לפני שעה?",
+      "he_Pronunciation": "וֵין כֻּנְת קַבֶּל סָעַה?"
+    },
+    {
+      "text": "مين معك؟",
+      "he_Translate": "מי איתך?",
+      "he_Pronunciation": "מִין מַעַכּ?"
+    },
+    {
+      "text": "ساكن هون",
+      "he_Translate": "אתה גר פה?",
+      "he_Pronunciation": "סַאכֵּן הוֹן"
+    },
+    {
+      "text": "افتح الشنطة",
+      "he_Translate": "פתח את התיק",
+      "he_Pronunciation": "אִפְתַח א-שַּנְטַה"
+    },
+    {
+      "text": "طلع من جيابك",
+      "he_Translate": "תוציא מהכיסים שלך",
+      "he_Pronunciation": "טַלַּע מִן גְ'יָאבַּכּ"
+    },
+    {
+      "text": "إنتَ موقوف",
+      "he_Translate": "אתה עצור",
+      "he_Pronunciation": "אִנְתַ מַוְקוּף"
+    },
+    {
+      "text": "كله تمام",
+      "he_Translate": "הכל בסדר",
+      "he_Pronunciation": "כֻּלּוּ תַמַאם"
+    },
+    {
+      "text": "احكي شوي شوي",
+      "he_Translate": "דבר לאט לאט",
+      "he_Pronunciation": "אִחְכִּי שְוַי שְוַי"
+    },
+    {
+      "text": "شو في بالشنطة؟",
+      "he_Translate": "מה יש בתיק?",
+      "he_Pronunciation": "שוּ פִי בַּאלְשַנְטַה?"
+    },
+    {
+      "text": "شو في بالجيوب؟",
+      "he_Translate": "מה יש בכיסים?",
+      "he_Pronunciation": "שוּ פִי בַּלְגִ'יוּבּ?"
+    },
+    {
+      "text": "ليش معك كْفوف؟",
+    "he_Translate": "למה יש לך כפפות?",
+    "he_Pronunciation": "לֵיש מַעַכּ כְּפוּף?"
+    },
+    {
+      "text": "اقعد",
+      "he_Translate": "שב",
+      "he_Pronunciation": "אֻקְעֻד"
+    },
+    {
+      "text": "شيل هدومك",
+      "he_Translate": "תוריד את הבגדים שלך",
+      "he_Pronunciation": "שִיל הֻדוּמַכּ"
+    }
+  ]
+}

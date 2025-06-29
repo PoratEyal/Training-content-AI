@@ -28,11 +28,12 @@ function Topic() {
   const goBack = () => { navigate(wordsHomePagePath); };
 
   const dropDownOptions = [
-    { value: "englishPractice", label: t("words.predefined.englishPractice") },
-    { value: "spanishPractice", label: t("words.predefined.spanishPractice") },
-    { value: "italianPractice", label: t("words.predefined.italianPractice") },
-    { value: "hebrewPractice", label: t("words.predefined.hebrewPractice") },
-    { value: "arabicPractice", label: t("words.predefined.arabicPractice") }
+    { value: "en-Practice", label: t("words.predefined.en-Practice") },
+    { value: "es-Practice", label: t("words.predefined.es-Practice") },
+    { value: "it-Practice", label: t("words.predefined.it-Practice") },
+    { value: "fr-Practice", label: t("words.predefined.fr-Practice") },
+    { value: "he-Practice", label: t("words.predefined.he-Practice") },
+    { value: "ar-Practice", label: t("words.predefined.ar-Practice") }
   ]
 
   useEffect(() => { // Prevent direct access via URL

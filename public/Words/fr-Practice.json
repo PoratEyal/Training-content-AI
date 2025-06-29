@@ -1,0 +1,115 @@
+{
+  "sourceLang": "fr",
+  "items": [
+    {
+      "text": "bonjour",
+      "he_Translate": "שלום",
+      "he_Pronunciation": "בונז'ור",
+      "en_Translate": "hello",
+      "en_Pronunciation": "bon-zhoor",
+      "ar_Translate": "مرحبا",
+      "ar_Pronunciation": "بونجور",
+      "es_Translate": "hola",
+      "es_Pronunciation": "bonshur"
+    },
+    {
+      "text": "merci",
+      "he_Translate": "תודה",
+      "he_Pronunciation": "מרסי",
+      "en_Translate": "thank you",
+      "en_Pronunciation": "mehr-see",
+      "ar_Translate": "شكرا",
+      "ar_Pronunciation": "ميرسي",
+      "es_Translate": "gracias",
+      "es_Pronunciation": "mersí"
+    },
+    {
+      "text": "s'il vous plaît",
+      "he_Translate": "בבקשה",
+      "he_Pronunciation": "סיל ווּ פּלה",
+      "en_Translate": "please",
+      "en_Pronunciation": "seel voo pleh",
+      "ar_Translate": "من فضلك",
+      "ar_Pronunciation": "سيل فو بليه",
+      "es_Translate": "por favor",
+      "es_Pronunciation": "sil vu ple"
+    },
+    {
+      "text": "toilettes",
+      "he_Translate": "שירותים",
+      "he_Pronunciation": "טוּאַלֶט",
+      "en_Translate": "bathroom",
+      "en_Pronunciation": "twa-let",
+      "ar_Translate": "حمام",
+      "ar_Pronunciation": "تواليت",
+      "es_Translate": "baño",
+      "es_Pronunciation": "tualet"
+    },
+    {
+      "text": "eau",
+      "he_Translate": "מים",
+      "he_Pronunciation": "אוֹ",
+      "en_Translate": "water",
+      "en_Pronunciation": "oh",
+      "ar_Translate": "ماء",
+      "ar_Pronunciation": "أو",
+      "es_Translate": "agua",
+      "es_Pronunciation": "o"
+    },
+    {
+      "text": "nourriture",
+      "he_Translate": "אוכל",
+      "he_Pronunciation": "נוּרִיטוּר",
+      "en_Translate": "food",
+      "en_Pronunciation": "noo-ree-toor",
+      "ar_Translate": "طعام",
+      "ar_Pronunciation": "نوريتور",
+      "es_Translate": "comida",
+      "es_Pronunciation": "nuritur"
+    },
+    {
+      "text": "combien ça coûte?",
+      "he_Translate": "כמה זה עולה?",
+      "he_Pronunciation": "קומביין סה קוּט?",
+      "en_Translate": "how much does it cost?",
+      "en_Pronunciation": "kohm-byen sah koot",
+      "ar_Translate": "بكم هذا؟",
+      "ar_Pronunciation": "كومبيان سا كوت؟",
+      "es_Translate": "¿cuánto cuesta?",
+      "es_Pronunciation": "kombien sa kut"
+    },
+    {
+      "text": "aide",
+      "he_Translate": "עזרה",
+      "he_Pronunciation": "אֵד",
+      "en_Translate": "help",
+      "en_Pronunciation": "ed",
+      "ar_Translate": "مساعدة",
+      "ar_Pronunciation": "إيد",
+      "es_Translate": "ayuda",
+      "es_Pronunciation": "ed"
+    },
+    {
+      "text": "entrée",
+      "he_Translate": "כניסה",
+      "he_Pronunciation": "אָנְטְרֶה",
+      "en_Translate": "entrance",
+      "en_Pronunciation": "ahn-tray",
+      "ar_Translate": "دخول",
+      "ar_Pronunciation": "أونتريه",
+      "es_Translate": "entrada",
+      "es_Pronunciation": "antré"
+    },
+    {
+      "text": "je ne comprends pas",
+      "he_Translate": "אני לא מבין",
+      "he_Pronunciation": "זְ'ה נוֹ קוֹמְפְּרוֹן פַּה",
+      "en_Translate": "I don't understand",
+      "en_Pronunciation": "zhuh nuh kohm-prah pah",
+      "ar_Translate": "لا أفهم",
+      "ar_Pronunciation": "جو نو كومبران با",
+      "es_Translate": "no entiendo",
+      "es_Pronunciation": "shö nö kompran pa"
+    }
+  ]
+}

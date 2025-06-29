@@ -132,13 +132,14 @@
       "pageTitle": "Which topic shall we choose?",
       "select": "Select a topic"
     },
-    "predefined": {
-      "hebrewPractice": "Useful Words in Hebrew",
-      "arabicPractice": "Useful Words in Arabic",
-      "englishPractice": "Useful Words in English",
-      "spanishPractice": "Useful Words in Spanish",
-      "italianPractice": "Useful Words in Italian"
-    },
+  "predefined": {
+    "en-Practice": "Useful words in English",
+    "es-Practice": "Useful words in Spanish",
+    "it-Practice": "Useful words in Italian",
+    "fr-Practice": "Useful words in French",
+    "he-Practice": "Useful words in Hebrew",
+    "ar-Practice": "Useful words in Arabic"
+  },
     "vocab": {
       "pageTitle": "What shall we practice now?",
       "instructions": "List of words or expressions to practice",

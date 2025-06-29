@@ -131,13 +131,14 @@
       "pageTitle": "¿Qué tema elegimos?",
       "select": "Selecciona un tema"
     },
-    "predefined": {
-      "hebrewPractice": "Palabras útiles en hebreo",
-      "arabicPractice": "Palabras útiles en árabe",
-      "englishPractice": "Palabras útiles en inglés",
-      "spanishPractice": "Palabras útiles en español",
-      "italianPractice": "Palabras útiles en italiano"
-    },
+  "predefined": {
+    "en-Practice": "Palabras útiles en inglés",
+    "es-Practice": "Palabras útiles en español",
+    "it-Practice": "Palabras útiles en italiano",
+    "fr-Practice": "Palabras útiles en francés",
+    "he-Practice": "Palabras útiles en hebreo",
+    "ar-Practice": "Palabras útiles en árabe"
+  },
     "vocab": {
       "pageTitle": "¿Qué practicamos ahora?",
       "instructions": "Lista de palabras o expresiones para practicar",

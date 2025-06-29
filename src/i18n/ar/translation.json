@@ -131,13 +131,14 @@
       "pageTitle": "ما الموضوع الذي سنختاره؟",
       "select": "اختر موضوعًا"
     },
-    "predefined": {
-      "hebrewPractice": "كلمات مفيدة بالعبرية",
-      "arabicPractice": "كلمات مفيدة بالعربية",
-      "englishPractice": "كلمات مفيدة بالإنجليزية",
-      "spanishPractice": "كلمات مفيدة بالإسبانية",
-      "italianPractice": "كلمات مفيدة بالإيطالية"
-    },
+  "predefined": {
+    "en-Practice": "كلمات مفيدة بالإنجليزية",
+    "es-Practice": "كلمات مفيدة بالإسبانية",
+    "it-Practice": "كلمات مفيدة بالإيطالية",
+    "fr-Practice": "كلمات مفيدة بالفرنسية",
+    "he-Practice": "كلمات مفيدة بالعبرية",
+    "ar-Practice": "كلمات مفيدة بالعربية"
+  },
     "vocab": {
       "pageTitle": "ماذا سنتدرب الآن؟",
       "instructions": "قائمة الكلمات أو العبارات للتدريب",
