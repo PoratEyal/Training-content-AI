@@ -39,10 +39,21 @@ function DropOptInviteFriends() {
 
       shareTitle = t("common.youthAppName")
       shareUrl += "/youth"
-    } else {
+
+    } else if (product === ProductType.Practice) {
       shareText = t("articleOptions.share.practiceShareMessage")
       shareTitle = t("common.practiceAppName")
       shareUrl += "/practice"
+
+    } else if (product === ProductType.Words) {
+      shareText = t("articleOptions.share.practiceShareMessage")
+      shareTitle = t("common.practiceAppName")
+      shareUrl += "/words"
+
+    } else {
+      shareText = ""
+      shareTitle = ""
+      shareUrl += "/"
     }
 
     share(t, shareTitle, shareText, shareUrl)
