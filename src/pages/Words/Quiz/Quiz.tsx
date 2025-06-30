@@ -156,23 +156,7 @@ function Quiz() {
     en: ["A", "B", "C", "D"]
   }[lang] || ["-", "-", "-", "-"]
 
-  const [speechSupported, setSpeechSupported] = useState(false);
-
   const quizLang = sessionStorage.getItem("wordsQuizLang") || "en"
-  useEffect(() => {
-    const checkSpeechSupport = () => {
-      const voices = speechSynthesis.getVoices();
-      const supported = voices.some(voice => voice.lang.startsWith(quizLang));
-      setSpeechSupported(supported);
-    };
-
-    if (speechSynthesis.getVoices().length > 0) {
-      checkSpeechSupport();
-    } else {
-      window.speechSynthesis.onvoiceschanged = checkSpeechSupport;
-    }
-  }, [quizLang]);
-
 
   const progressPercent = fullCycle.length > 0 ? Math.round((correctCount / fullCycle.length) * 100) : 0
 
@@ -206,16 +190,14 @@ function Quiz() {
         <QuizContainer>
           <div className={styles.questionBlock}>
             <div className={styles.questionText}>
-              {speechSupported && (
-                <span
-                  onClick={() => speakText(q.question, quizLang)}
-                  className={styles.speakerIcon}
-                  role="button"
-                  title={t("words.quiz.speak")}
-                >
-                  🔊
-                </span>
-              )}{" "}
+              <span
+                onClick={() => speakText(q.question, quizLang)}
+                className={styles.speakerIcon}
+                role="button"
+                title={t("words.quiz.speak")}
+              >
+                🔊
+              </span>{" "}
 
               {q.question}
               {q.pronunciation && (
@@ -262,7 +244,7 @@ function Quiz() {
 
           <div className={styles.continueBtnContainer}>
             <button onClick={handleNext} className={styles.continueBtn}>
-              {t("quiz.btnContinue")}
+              {t("words.quiz.btnContinue")}
             </button>
           </div>
 
