@@ -134,16 +134,22 @@
 
     "topic": {
       "pageTitle": "מה נתרגל עכשיו?",
-      "select": "בחרו נושא"
+      "selectLangLabel": "אני רוצה ללמוד",
+      "selectLang": "בחרו שפה",
+      "subjectLabel": "נושא (לא חובה להזין)",
+      "subjectExample": "לדוגמא: מילים חשובות לתייר",
+      "radioLabel": "תבנה לי תרגול?",
+      "typeAutomatic": "אוטומטי בעזרת AI",
+      "typeManual": "אני אזין את המילים"
     },
 
     "predefined": {
-      "en-Practice": "מילים שימושיות באנגלית",
-      "es-Practice": "מילים שימושיות בספרדית",
-      "it-Practice": "מילים שימושיות באיטלקית",
-      "fr-Practice": "מילים שימושיות בצרפתית",
-      "he-Practice": "מילים שימושיות בעברית",
-      "ar-Practice": "מילים שימושיות בערבית"
+      "en-Practice": "אנגלית",
+      "es-Practice": "ספרדית",
+      "it-Practice": "איטלקית",
+      "fr-Practice": "צרפתית",
+      "he-Practice": "עברית",
+      "ar-Practice": "ערבית"
     },
 
     "vocab": {

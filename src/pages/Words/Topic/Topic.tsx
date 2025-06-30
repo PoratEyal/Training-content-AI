@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import CreatableSelect from "react-select/creatable"
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import route from "../../../router/route.json";
@@ -8,74 +7,184 @@ import MainBtn from "../../../components/MainBtn/MainBtn";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz";
 import { ProductType } from "../../../context/ProductType";
+import { createWordsQuiz } from "../../../hooks/useWordsQuestions"
 import { WORDS_AD_SLOT } from "../../../models/constants/adsSlot";
 import { ProductPages } from "../../../models/enum/pages";
 import { enforcePageAccess } from "../../../utils/navigation";
+import { translateWord } from "../../../utils/translateWord";
 import { useContentContext } from "../../../context/ContentContext";
-
 
 function Topic() {
 
-  const { t, i18n } = useTranslation()
-  const lang = i18n.language
-  const [topic, setTopic] = useState<{ value: string; label: string } | null>(null)
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
+  const navigate = useNavigate();
   const { currentPage, setCurrentPage } = useContentContext();
+
+  const supportedLangs = [
+    { label: t("words.predefined.en-Practice"), value: "en" },
+    { label: t("words.predefined.es-Practice"), value: "es" },
+    { label: t("words.predefined.fr-Practice"), value: "fr" },
+    { label: t("words.predefined.it-Practice"), value: "it" },
+    { label: t("words.predefined.he-Practice"), value: "he" },
+    { label: t("words.predefined.ar-Practice"), value: "ar" },
+  ].filter(item => item.value !== lang);
+
+  const [languageToLearn, setLanguageToLearn] = useState(() => {
+    const saved = localStorage.getItem("WordsLangToLearn") || "";
+    const validValues = supportedLangs.map(l => l.value);
+    return validValues.includes(saved) ? saved : "";
+  });
+  const [topicText, setTopicText] = useState(() =>
+    localStorage.getItem("WordsTopicText") || ""
+  );
+  const [mode, setMode] = useState<"ai" | "manual">(() => {
+    const saved = localStorage.getItem("WordsMode");
+    return saved === "manual" ? "manual" : "ai";
+  });
+
+  const [loading, setLoading] = useState(false);
 
   const wordsHomePagePath = route[`wordsHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsHomePageEn;
   const wordsVocabPath = route[`wordsVocab${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsVocabEn;
-  const goBack = () => { navigate(wordsHomePagePath); };
+  const wordsQuizPath = route[`wordsQuiz${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsQuizEn;
 
-  const dropDownOptions = [
-    { value: "en-Practice", label: t("words.predefined.en-Practice") },
-    { value: "es-Practice", label: t("words.predefined.es-Practice") },
-    { value: "it-Practice", label: t("words.predefined.it-Practice") },
-    { value: "fr-Practice", label: t("words.predefined.fr-Practice") },
-    { value: "he-Practice", label: t("words.predefined.he-Practice") },
-    { value: "ar-Practice", label: t("words.predefined.ar-Practice") }
-  ].filter(opt => !opt.value.startsWith(lang))
+  const goBack = () => {
+    navigate(wordsHomePagePath);
+  };
 
-
-  useEffect(() => { // Prevent direct access via URL
+  useEffect(() => {
     enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_WordsTopic, navigate, wordsHomePagePath);
   }, []);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("WordsTopic")
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved)
-        if (parsed?.value && parsed?.label) {
-          setTopic(parsed)
-        }
-      } catch (e) {
-      }
+  useEffect(() => { // Save to LocalStorage
+    localStorage.setItem("WordsLangToLearn", languageToLearn);
+  }, [languageToLearn]);
+
+  useEffect(() => { // Save to LocalStorage
+    localStorage.setItem("WordsTopicText", topicText);
+  }, [topicText]);
+
+  useEffect(() => { // Save to LocalStorage
+    localStorage.setItem("WordsMode", mode);
+  }, [mode]);
+
+
+  // Adds the correct translation to each word object using the Microsoft Translator API
+  async function addTranslationsToWords(generatedWordsJson: string, sourceLang: string, targetLang: string): Promise<
+    {
+      text: string;
+      pronunciation: string;
+      dist1: string;
+      dist2: string;
+      dist3: string;
+      correct: string | null;
+    }[]
+  > {
+    try {
+      const baseWords = JSON.parse(generatedWordsJson || "[]");
+
+      const translated = await Promise.all(
+        baseWords.map(async (item: any) => {
+          const translatedText = await translateWord(item.text, sourceLang, targetLang);
+          return {
+            ...item,
+            correct: translatedText // replaces `translate`
+          };
+        })
+      );
+
+      return translated;
+    } catch (err) {
+      console.error("❌ Failed to process generated words:", err);
+      return [];
     }
-  }, [])
-
-
-  const handleSubmit = async (e) => {
-
-    e.preventDefault()
-
-    let selectedValue = topic?.value?.trim()
-
-    if (!selectedValue && topic?.label) {
-      selectedValue = topic.label.trim()
-    }
-
-    // Special conditions for "Suspect arrest" and internal debug - We do not want to expose it in the dropdown
-    if (selectedValue === "מעצר")
-      selectedValue = "armyPractice"
-    else if (selectedValue === "בדיקות")
-      selectedValue = "_debug"
-
-    navigate(wordsVocabPath, { state: { topicValue: selectedValue } })
   }
 
 
+  // Cleans up code block formatting from Gemini JSON response before parsing
+  function cleanJSONResponse(text: string): string {
+    return text
+      .replace(/^```json\s*/, "")
+      .replace(/^```\s*/, "")
+      .replace(/```$/, "")
+      .trim();
+  }
 
+  // Replace any distractor that matches the correct translation with a combined distractor from the other two
+  function removeHebrewNiqqud(str: string): string {
+    return str.normalize("NFD").replace(/[\u0591-\u05C7]/g, "");
+  }
+
+  function fixDistractors(words: {
+    text: string;
+    pronunciation: string;
+    dist1: string;
+    dist2: string;
+    dist3: string;
+    correct: string | null;
+  }[]): typeof words {
+    return words.map(word => {
+      const { dist1, dist2, dist3, correct } = word;
+      if (!correct) return word;
+
+      const cleanCorrect = removeHebrewNiqqud(correct);
+      const distractors = [dist1, dist2, dist3];
+
+      const valid = distractors.filter(d => removeHebrewNiqqud(d) !== cleanCorrect);
+
+      if (valid.length === 3) return word;
+
+      const [a, b] = valid;
+      const combined = [a, b].filter(Boolean).join(" ");
+
+      const finalDistractors = [a, b, combined].filter(Boolean).slice(0, 3);
+      const [newDist1 = "", newDist2 = "", newDist3 = ""] = finalDistractors;
+
+      return {
+        ...word,
+        dist1: newDist1,
+        dist2: newDist2,
+        dist3: newDist3,
+      };
+    });
+  }
+
+  // Go Go Go
+  const handleSubmit = async (e) => {
+
+    e.preventDefault();
+
+    if (!languageToLearn || !mode) return;
+
+    setLoading(true);
+
+    try {
+
+      if (topicText === "מעצר") { // Specific case
+        const res = await fetch("/Words/army.json");
+        const json = await res.json();
+        sessionStorage.setItem("GeneratedWordsQuiz", JSON.stringify(json));
+        sessionStorage.setItem("wordsQuizLang", "ar")
+      }
+
+      else if (mode === "ai") {
+        const generateWithAI = await createWordsQuiz(topicText || null, languageToLearn, lang, 10);
+        const jsonClean = cleanJSONResponse(generateWithAI);
+        const jsonWithTranslation = await addTranslationsToWords(jsonClean, languageToLearn, lang);
+        const jsonWithFixedDisctractors = fixDistractors(jsonWithTranslation);
+        sessionStorage.setItem("GeneratedWordsQuiz", JSON.stringify(jsonWithFixedDisctractors));
+        sessionStorage.setItem("wordsQuizLang", languageToLearn)
+      }
+
+      navigate(wordsQuizPath);
+
+    } catch (err) {
+      console.error("❌ Error creating quiz:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -91,36 +200,70 @@ function Topic() {
         <form onSubmit={handleSubmit} className={styles.topic_form_container}>
 
           <div className={styles.input}>
-            <CreatableSelect
-              value={topic}
-              onChange={(newValue) => {
-                setTopic(newValue)
-                if (newValue?.value) {
-                  localStorage.setItem("WordsTopic", JSON.stringify(newValue))
-                } else {
-                  localStorage.removeItem("WordsTopic")
-                }
-              }}
-              options={dropDownOptions}
-              placeholder={t("words.topic.select")}
+            <label htmlFor="languageInput">{t("words.topic.selectLangLabel")}</label>
+            <select
+              id="languageSelect"
+              className={styles.languageSelect}
+              value={languageToLearn}
+              onChange={(e) => setLanguageToLearn(e.target.value)}
+            >
+              <option value="" disabled>{t("words.topic.selectLang")}</option>
+              {supportedLangs.map((lang) => (
+                <option key={lang.value} value={lang.value}>{lang.label}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className={styles.input}>
+            <label htmlFor="topicInput">{t("words.topic.subjectLabel")}</label>
+            <input
+              id="topicInput"
+              type="text"
+              placeholder={t("words.topic.subjectExample")}
+              value={topicText}
+              onChange={(e) => setTopicText(e.target.value)}
             />
+          </div>
+
+          <div className={styles.input}>
+            <label>{t("words.topic.radioLabel")}</label>
+            <label>
+              <input
+                type="radio"
+                value="ai"
+                checked={mode === "ai"}
+                onChange={() => setMode("ai")}
+              />
+              {t("words.topic.typeAutomatic")}
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="manual"
+                disabled
+                checked={mode === "manual"}
+                onChange={() => setMode("manual")}
+              />
+              {t("words.topic.typeManual")}
+            </label>
           </div>
 
           <div className={styles.button_wrapper}>
             <MainBtn
               text={t("common.btnContinue")}
-              isDisabled={!topic || loading}
+              isDisabled={!languageToLearn || !mode || loading}
               type="submit"
               height={42}
               func={handleSubmit}
             />
           </div>
+
         </form>
       </PageLayout>
 
       {loading && <LoadingQuiz />}
     </>
-  )
+  );
 }
 
-export default Topic
+export default Topic;

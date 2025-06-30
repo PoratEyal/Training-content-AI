@@ -132,18 +132,27 @@
 
 
   "words": {
+
     "topic": {
       "pageTitle": "ماذا سنتدرّب الآن؟",
-      "select": "اختر موضوعًا"
+      "selectLangLabel": "أريد أن أتعلم",
+      "selectLang": "اختر لغة",
+      "subjectLabel": "الموضوع (اختياري)",
+      "subjectExample": "مثال: كلمات مهمة للسائح",
+      "radioLabel": "هل أُنشئ لك تدريب؟",
+      "typeAutomatic": "تلقائي بمساعدة الذكاء الاصطناعي",
+      "typeManual": "سأدخل الكلمات يدويًا"
     },
+
     "predefined": {
-      "en-Practice": "كلمات مفيدة بالإنجليزية",
-      "es-Practice": "كلمات مفيدة بالإسبانية",
-      "it-Practice": "كلمات مفيدة بالإيطالية",
-      "fr-Practice": "كلمات مفيدة بالفرنسية",
-      "he-Practice": "كلمات مفيدة بالعبرية",
-      "ar-Practice": "كلمات مفيدة بالعربية"
+      "en-Practice": "الإنجليزية",
+      "es-Practice": "الإسبانية",
+      "it-Practice": "الإيطالية",
+      "fr-Practice": "الفرنسية",
+      "he-Practice": "العبرية",
+      "ar-Practice": "العربية"
     },
+
     "vocab": {
       "pageTitle": "كلمات للتدريب",
       "instructions": "قائمة الكلمات أو العبارات للتدريب",
@@ -154,6 +163,7 @@
       "loadListError": "حدث خطأ أثناء تحميل ملف الكلمات. حاول مرة أخرى.",
       "generalError": "حدث خطأ أثناء إنشاء الأسئلة. حاول مرة أخرى."
     },
+    
     "quiz": {
       "pageTitle": "والآن التدريب",
       "newPractice": "تدريب جديد",

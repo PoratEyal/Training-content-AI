@@ -1,18 +1,19 @@
-import { httpsCallable } from "firebase/functions"
-import { functions } from "../config/firebase"
+import { httpsCallable } from "firebase/functions";
+import { functions } from "../config/firebase";
 
 export const createWordsQuiz = async (
-  words: string,
+  topic: string | null,
   learningLang: string,
-  userLang: string
+  userLang: string,
+  count?: number
 ): Promise<string> => {
   try {
-    const getWords4Practice = httpsCallable(functions, "getWords4Practice")
-    const response = await getWords4Practice({ words, learningLang, userLang })
-    const { questions } = response.data as { questions: string }
-    return questions
+    const getWords4Practice = httpsCallable(functions, "getWords4Practice");
+    const response = await getWords4Practice({ topic, learningLang, userLang, count });
+    const { questions } = response.data as { questions: string };
+    return questions;
   } catch (error) {
-    return "" // Failed to create a quiz
+    console.error("❌ createWordsQuiz error:", error);
+    return ""; // Failed to create a quiz
   }
-}
-
+};

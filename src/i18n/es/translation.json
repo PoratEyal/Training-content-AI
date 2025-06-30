@@ -131,18 +131,27 @@
 
 
   "words": {
+
     "topic": {
       "pageTitle": "¿Qué practicamos ahora?",
-      "select": "Selecciona un tema"
+      "selectLangLabel": "Quiero aprender",
+      "selectLang": "Elige un idioma",
+      "subjectLabel": "Tema (opcional)",
+      "subjectExample": "Por ejemplo: palabras útiles para turistas",
+      "radioLabel": "¿Quieres que cree una práctica?",
+      "typeAutomatic": "Automático con ayuda de IA",
+      "typeManual": "Ingresaré las palabras manualmente"
     },
+
     "predefined": {
-      "en-Practice": "Palabras útiles en inglés",
-      "es-Practice": "Palabras útiles en español",
-      "it-Practice": "Palabras útiles en italiano",
-      "fr-Practice": "Palabras útiles en francés",
-      "he-Practice": "Palabras útiles en hebreo",
-      "ar-Practice": "Palabras útiles en árabe"
+      "en-Practice": "inglés",
+      "es-Practice": "español",
+      "it-Practice": "italiano",
+      "fr-Practice": "francés",
+      "he-Practice": "hebreo",
+      "ar-Practice": "árabe"
     },
+
     "vocab": {
       "pageTitle": "Palabras de práctica",
       "instructions": "Lista de práctica",
@@ -153,6 +162,7 @@
       "loadListError": "Ocurrió un error al cargar el archivo de palabras. Intenta de nuevo.",
       "generalError": "Ocurrió un error al crear las preguntas. Intenta de nuevo."
     },
+    
     "quiz": {
       "pageTitle": "Ahora la práctica",
       "newPractice": "Nueva práctica",

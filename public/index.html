@@ -62,7 +62,7 @@
         };
 
         const selectedVoice = langMap[langCode] || "US English Female";
-        originalSpeak(text, selectedVoice);
+        originalSpeak(text, selectedVoice, { rate: 0.8 });
       };
     });
   </script>

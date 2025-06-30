@@ -1,14 +1,18 @@
 import * as functions from "firebase-functions";
-import { getDistractorsWords } from "../service/Words/geminiAPI";
+import { getWordsFromAI } from "../service/Words/geminiAPI";
 import { Lang } from "../model/types/common";
 
 const getWords4Practice = functions.https.onCall(
-  
-  async (data: { words: string; learningLang: string; userLang: string }) => {
-    const { words, learningLang, userLang } = data;
+  async (data: { topic?: string; learningLang: string; userLang: string; count?: number }) => {
+    const { topic, learningLang, userLang, count } = data;
 
     try {
-      const questions = await getDistractorsWords(words.trim(), learningLang as Lang, userLang as Lang);
+      const questions = await getWordsFromAI(
+        topic || null,
+        learningLang as Lang,
+        userLang as Lang,
+        count || 10
+      );
       return { questions };
     } catch (error: any) {
       console.error("❌ Failed to generate words quiz:", error);

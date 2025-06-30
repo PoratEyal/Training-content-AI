@@ -52,7 +52,7 @@ function Quiz() {
   }, [])
 
   useEffect(() => {
-    const raw = sessionStorage.getItem("wordsQuizRaw")
+    const raw = sessionStorage.getItem("GeneratedWordsQuiz")
     if (!raw) {
       navigate(wordsHomePagePath)
       return

@@ -134,16 +134,24 @@
   "words": {
     "topic": {
       "pageTitle": "What will we practice?",
-      "select": "Select a topic"
+      "selectLangLabel": "I want to learn",
+      "selectLang": "Choose a language",
+      "subjectLabel": "Topic (optional)",
+      "subjectExample": "For example: useful words for tourists",
+      "radioLabel": "Should I create a practice for you?",
+      "typeAutomatic": "Automatic with AI",
+      "typeManual": "I will enter the words manually"
     },
+
     "predefined": {
-      "en-Practice": "Useful words in English",
-      "es-Practice": "Useful words in Spanish",
-      "it-Practice": "Useful words in Italian",
-      "fr-Practice": "Useful words in French",
-      "he-Practice": "Useful words in Hebrew",
-      "ar-Practice": "Useful words in Arabic"
+      "en-Practice": "English",
+      "es-Practice": "Spanish",
+      "it-Practice": "Italian",
+      "fr-Practice": "French",
+      "he-Practice": "Hebrew",
+      "ar-Practice": "Arabic"
     },
+
     "vocab": {
       "pageTitle": "Practice Words",
       "instructions": "List of words or expressions to practice",

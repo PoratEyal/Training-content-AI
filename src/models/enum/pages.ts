@@ -83,6 +83,7 @@ export const allowedTransitions: Record<ProductPages, ProductPages[]> = {
   [ProductPages.PAGE_WordsQuiz]:
     [
       ProductPages.PAGE_WordsHome,
+      ProductPages.PAGE_WordsTopic,
       ProductPages.PAGE_WordsVocab
     ]
 
