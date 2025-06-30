@@ -127,39 +127,51 @@ function Topic() {
     return str.normalize("NFD").replace(/[\u0591-\u05C7]/g, "");
   }
 
-  function fixDistractors(words: {
-    text: string;
-    pronunciation: string;
-    dist1: string;
-    dist2: string;
-    dist3: string;
-    correct: string | null;
-  }[]): typeof words {
+  function fixDistractors(
+    words: {
+      text: string;
+      pronunciation: string;
+      dist1: string;
+      dist2: string;
+      dist3: string;
+      correct: string | null;
+    }[],
+    lang: string
+  ): typeof words {
+    const shouldCleanNiqqud = lang === "he";
+
     return words.map(word => {
-      const { dist1, dist2, dist3, correct } = word;
+      let { dist1, dist2, dist3, correct } = word;
       if (!correct) return word;
 
-      const cleanCorrect = removeHebrewNiqqud(correct);
-      const distractors = [dist1, dist2, dist3];
+      const normalize = (text: string) => shouldCleanNiqqud ? removeHebrewNiqqud(text) : text;
 
-      const valid = distractors.filter(d => removeHebrewNiqqud(d) !== cleanCorrect);
+      const cleanCorrect = normalize(correct);
+      const cleanDist1 = normalize(dist1);
+      const cleanDist2 = normalize(dist2);
+      const cleanDist3 = normalize(dist3);
 
-      if (valid.length === 3) return word;
+      const distractors = [
+        { raw: dist1, clean: cleanDist1 },
+        { raw: dist2, clean: cleanDist2 },
+        { raw: dist3, clean: cleanDist3 },
+      ];
 
-      const [a, b] = valid;
-      const combined = [a, b].filter(Boolean).join(" ");
+      const valid = distractors.filter(d => d.clean !== cleanCorrect).map(d => d.raw);
 
-      const finalDistractors = [a, b, combined].filter(Boolean).slice(0, 3);
-      const [newDist1 = "", newDist2 = "", newDist3 = ""] = finalDistractors;
+      const [newDist1 = "", newDist2 = "", newDist3 = ""] = valid;
 
       return {
         ...word,
-        dist1: newDist1,
-        dist2: newDist2,
-        dist3: newDist3,
+        correct: cleanCorrect,
+        dist1: normalize(newDist1),
+        dist2: normalize(newDist2),
+        dist3: normalize(newDist3),
       };
     });
   }
+
+
 
   // Go Go Go
   const handleSubmit = async (e) => {
@@ -183,7 +195,7 @@ function Topic() {
         const generateWithAI = await createWordsQuiz(topicText || null, languageToLearn, lang, 10);
         const jsonClean = cleanJSONResponse(generateWithAI);
         const jsonWithTranslation = await addTranslationsToWords(jsonClean, languageToLearn, lang);
-        const jsonWithFixedDisctractors = fixDistractors(jsonWithTranslation);
+        const jsonWithFixedDisctractors = fixDistractors(jsonWithTranslation, lang);
         sessionStorage.setItem("GeneratedWordsQuiz", JSON.stringify(jsonWithFixedDisctractors));
         sessionStorage.setItem("wordsQuizLang", languageToLearn)
       }
