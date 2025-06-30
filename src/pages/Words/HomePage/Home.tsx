@@ -28,13 +28,16 @@ function WordsHomePage() {
   const { t, dir, lang } = useLanguage()
   const { cookieLimit, setLimitCookie } = useCookiesContext()
   const navigate = useNavigate()
-  const { currentUser, isLoggedIn } = useAuthContext()
+  const { currentUser, isLoggedIn, loading } = useAuthContext();
   const { signInWithGoogle } = useSignIn()
   const { setCurrentPage } = useContentContext()
 
   const homeSchema = useMemo(() => buildHomeSchema(lang, t("home.slogan")), [lang, t])
   const wordsTopicPath = route[`wordsTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsTopicEn
+
+  // UI is blocked (Loader is displayed) when we are not logged-in but we need to be logged in according to cookie
   const shouldBlockUI = !isLoggedIn && cookieLimit === GUEST_BLOCK_MustLogin
+
 
   useEffect(() => {
     setCurrentPage(ProductPages.PAGE_WordsHome);
@@ -61,7 +64,7 @@ function WordsHomePage() {
         </div>
       </div>
 
-      {shouldBlockUI ? (
+      {loading ? (
         <div className={styles.button_section_loading}>
           <PageLoading />
         </div>

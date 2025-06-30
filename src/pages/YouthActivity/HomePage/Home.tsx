@@ -29,7 +29,7 @@ function YouthHomePage() {
   const navigate = useNavigate()
   const { t, dir, lang } = useLanguage()
   const { cookieLimit, setLimitCookie } = useCookiesContext()
-  const { currentUser, isLoggedIn } = useAuthContext()
+  const { currentUser, isLoggedIn, loading } = useAuthContext();
   const { setCurrentPage } = useContentContext()
   const { useFetchSubjectsData } = useStaticContentContext()
   const { useFetchSavedData } = useSaveContext()
@@ -38,12 +38,15 @@ function YouthHomePage() {
 
   const homeSchema = useMemo(() => buildHomeSchema(lang, t("home.slogan")), [lang, t])
   const youthDetailsPath = route[`youthDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthDetailsEn
+
+  // UI is blocked (Loader is displayed) when we are not logged-in but we need to be logged in according to cookie
   const shouldBlockUI = !isLoggedIn && cookieLimit === GUEST_BLOCK_MustLogin
 
   useEffect(() => {
     setCurrentPage(ProductPages.PAGE_YouthHome);
     sessionStorage.setItem("lastVisitedPage", ProductPages.PAGE_YouthHome);
   }, []);
+
 
   return (
     <PageLayout
@@ -63,7 +66,7 @@ function YouthHomePage() {
         </div>
       </div>
 
-      {shouldBlockUI ? (
+      {loading ? (
         <div className={styles.button_section_loading}>
           <PageLoading />
         </div>
