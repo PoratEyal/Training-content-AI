@@ -24,10 +24,6 @@
     gap: 5px;
     margin: 0;
 }
-.hand_icon{
-    width: 18px;
-    height: 18px;
-}
 
 .button_section{
     display: flex;
@@ -49,22 +45,9 @@
     position: absolute;
     bottom: 162px;
     right: 45vw;
+    z-index: 100;
 }
 
-.install_button_div{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
-}
-
-.languageSwitcher {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    z-index: 1100;
-  }
-  
 
 
 @media (min-width: 550px) {
