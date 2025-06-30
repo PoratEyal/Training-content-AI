@@ -26,6 +26,17 @@ function Topic() {
     { label: t("words.predefined.es-Practice"), value: "es" },
     { label: t("words.predefined.fr-Practice"), value: "fr" },
     { label: t("words.predefined.it-Practice"), value: "it" },
+    { label: t("words.predefined.de-Practice"), value: "de" },
+    { label: t("words.predefined.zh-Practice"), value: "zh" },
+    { label: t("words.predefined.ro-Practice"), value: "ro" },
+    { label: t("words.predefined.el-Practice"), value: "el" },
+    { label: t("words.predefined.cy-Practice"), value: "cy" },
+    { label: t("words.predefined.tr-Practice"), value: "tr" },
+    { label: t("words.predefined.th-Practice"), value: "th" },
+    { label: t("words.predefined.nl-Practice"), value: "nl" },
+    { label: t("words.predefined.hu-Practice"), value: "hu" },
+    { label: t("words.predefined.cs-Practice"), value: "cs" },
+    { label: t("words.predefined.ka-Practice"), value: "ka" },
     { label: t("words.predefined.he-Practice"), value: "he" },
     { label: t("words.predefined.ar-Practice"), value: "ar" },
   ].filter(item => item.value !== lang);
@@ -225,7 +236,7 @@ function Topic() {
             />
           </div>
 
-          <div className={styles.input}>
+          <div className={styles.input} style={{ display: "none" }}>
             <label>{t("words.topic.radioLabel")}</label>
             <label>
               <input

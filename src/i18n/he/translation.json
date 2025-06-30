@@ -14,7 +14,6 @@
     "practiceAboutText": "תרגול חכם באמצעות בינה מלאכותית. בחרו כל נושא שתרצו – והמערכת תיצור עבורכם תרגול אישי תוך שניות. מתאים לכל אחד המחפש דרך פשוטה וממוקדת לתרגל ולהעמיק את ההבנה.",
     "wordsAboutText": "תרגול אוצר מילים בצורה חכמה ויעילה. הזינו מילים או בחרו נושא, ותקבלו תרגול מותאם אישית שיעזור לכם ללמוד, לזכור ולהבין טוב יותר – בכל שפה."
   },
-
   "home": {
     "slogan": "מותאם, פשוט ומהיר 🤟",
     "youthStartAction": "יצירת פעולות",
@@ -27,7 +26,6 @@
     "withPrefix": "ב-",
     "ai": "AI"
   },
-
   "navbar": {
     "home": "מסך הבית",
     "build": "יצירת פעולות",
@@ -35,7 +33,6 @@
     "myActivities": "הפעולות שלי",
     "practiceBuild": "תרגול"
   },
-  
   "details": {
     "title": "ספרו לנו על הקבוצה שלכם",
     "youthMovement": "תנועת נוער",
@@ -107,9 +104,7 @@
       "deleteError": "הפעולה לא נמחקה, אנא נסו שוב מאוחר יותר"
     }
   },
-
   "practice": {
-
     "topic": {
       "title": "בואו נבחר נושא",
       "topicPlaceholder": "הזינו נושא",
@@ -129,9 +124,7 @@
       "shareMessage": "יצרתי שאלון בנושא \"{{topic}}\" – בואו נראה אם תצליחו יותר ממני!"
     }
   },
-
   "words": {
-
     "topic": {
       "pageTitle": "מה נתרגל עכשיו?",
       "selectLangLabel": "אני רוצה ללמוד",
@@ -142,16 +135,25 @@
       "typeAutomatic": "אוטומטי בעזרת AI",
       "typeManual": "אני אזין את המילים"
     },
-
     "predefined": {
       "en-Practice": "אנגלית",
       "es-Practice": "ספרדית",
-      "it-Practice": "איטלקית",
       "fr-Practice": "צרפתית",
+      "it-Practice": "איטלקית",
+      "de-Practice": "גרמנית",
+      "zh-Practice": "סינית",
+      "ro-Practice": "רומנית",
+      "el-Practice": "יוונית",
+      "cy-Practice": "קפריסאית",
+      "tr-Practice": "טורקית",
+      "th-Practice": "תאילנדית",
+      "nl-Practice": "הולנדית",
+      "hu-Practice": "הונגרית",
+      "cs-Practice": "צ'כית",
+      "ka-Practice": "גאורגית",
       "he-Practice": "עברית",
       "ar-Practice": "ערבית"
     },
-
     "vocab": {
       "pageTitle": "המילים לתרגול",
       "instructions": "רשימת המילים או הביטויים לתרגול",
@@ -162,7 +164,6 @@
       "loadListError": "אירעה שגיאה בעת טעינת קובץ המילים. נסו שוב.",
       "generalError": "אירעה שגיאה בעת יצירת השאלות. נסו שוב."
     },
-
     "quiz": {
       "pageTitle": "ועכשיו התרגול",
       "newPractice": "תרגול חדש",
@@ -172,10 +173,8 @@
       "feedback2": "🎉 כל הכבוד!",
       "feedback3": "🎉 מצוין! הצלחת לענות על כל השאלות",
       "feedback4": "🎉 יפה מאוד!"
-    } 
+    }
   },
-
-  
   "profile": {
     "dropOptInviteFriends": {
       "invite": "שתפו עם חברים"
@@ -257,7 +256,6 @@
     "title": "תנאי שירות ומדיניות פרטיות",
     "acceptButton": "אישור"
   },
-
   "faqYouth": {
     "questions": [
       {

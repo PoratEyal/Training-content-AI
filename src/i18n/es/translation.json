@@ -8,14 +8,12 @@
     "loadingText": "¡Atención! Este cuestionario fue generado con inteligencia artificial, que está en constante aprendizaje, por lo que pueden ocurrir errores.",
     "FAQtitle": "Preguntas frecuentes"
   },
-
   "aboutUs": {
     "title": "Acerca de",
     "youthAboutText": "Crea actividades para jóvenes: desde una biblioteca de actividades listas hasta actividades personalizadas con inteligencia artificial. Ideal para guías que desean enriquecer la experiencia educativa y social.",
     "practiceAboutText": "Práctica inteligente con inteligencia artificial. Elige cualquier tema y el sistema generará un ejercicio personalizado en segundos. Perfecto para quienes buscan una forma sencilla y enfocada de practicar y profundizar su comprensión.",
     "wordsAboutText": "Entrenamiento de vocabulario de forma inteligente y eficiente. Ingresa palabras o elige un tema para obtener una práctica personalizada que te ayudará a aprender, recordar y comprender mejor – en cualquier idioma."
   },
-
   "home": {
     "slogan": "Personalizado, Simple y Rápido 🤟",
     "youthStartAction": "Crear Actividad",
@@ -106,9 +104,7 @@
       "deleteError": "La actividad no fue eliminada, por favor intenta nuevamente más tarde"
     }
   },
-
   "practice": {
-
     "topic": {
       "title": "Elijamos un tema",
       "topicPlaceholder": "Ingresa un tema",
@@ -128,10 +124,7 @@
       "shareMessage": "¡Creé un cuestionario sobre \"{{topic}}\" – veamos si puedes superarme!"
     }
   },
-
-
   "words": {
-
     "topic": {
       "pageTitle": "¿Qué practicamos ahora?",
       "selectLangLabel": "Quiero aprender",
@@ -142,16 +135,25 @@
       "typeAutomatic": "Automático con ayuda de IA",
       "typeManual": "Ingresaré las palabras manualmente"
     },
-
     "predefined": {
-      "en-Practice": "inglés",
-      "es-Practice": "español",
-      "it-Practice": "italiano",
-      "fr-Practice": "francés",
-      "he-Practice": "hebreo",
-      "ar-Practice": "árabe"
+      "en-Practice": "Inglés",
+      "es-Practice": "Español",
+      "fr-Practice": "Francés",
+      "it-Practice": "Italiano",
+      "de-Practice": "Alemán",
+      "zh-Practice": "Chino",
+      "ro-Practice": "Rumano",
+      "el-Practice": "Griego",
+      "cy-Practice": "Chipriota",
+      "tr-Practice": "Turco",
+      "th-Practice": "Tailandés",
+      "nl-Practice": "Holandés",
+      "hu-Practice": "Húngaro",
+      "cs-Practice": "Checo",
+      "ka-Practice": "Georgiano",
+      "he-Practice": "Hebreo",
+      "ar-Practice": "Árabe"
     },
-
     "vocab": {
       "pageTitle": "Palabras de práctica",
       "instructions": "Lista de práctica",
@@ -162,7 +164,6 @@
       "loadListError": "Ocurrió un error al cargar el archivo de palabras. Intenta de nuevo.",
       "generalError": "Ocurrió un error al crear las preguntas. Intenta de nuevo."
     },
-    
     "quiz": {
       "pageTitle": "Ahora la práctica",
       "newPractice": "Nueva práctica",
@@ -174,8 +175,6 @@
       "feedback4": "🎉 ¡Buen trabajo!"
     }
   },
-  
-
   "profile": {
     "dropOptInviteFriends": {
       "invite": "Compartir"
@@ -257,9 +256,6 @@
     "title": "Términos de Servicio y Política de Privacidad",
     "acceptButton": "Aceptar"
   },
-
-
-
   "faqYouth": {
     "questions": [
       {
@@ -372,7 +368,6 @@
       }
     ]
   },
-
   "faqWords": {
     "questions": [
       {
@@ -401,5 +396,4 @@
       }
     ]
   }
-
 }

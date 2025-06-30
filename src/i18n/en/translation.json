@@ -8,15 +8,12 @@
     "loadingText": "Note! This quiz is generated using AI, which is constantly learning, so errors may occur.",
     "FAQtitle": "FAQ"
   },
-
   "aboutUs": {
     "title": "About",
     "youthAboutText": "Create youth activities – from a library of ready-made activities to personalized ones generated with AI. Perfect for guides looking to enrich educational and social engagement.",
     "practiceAboutText": "Smart practice using AI. Choose any topic you like, and the system will generate a personal quiz in seconds. Ideal for anyone seeking a simple, focused way to practice and deepen understanding.",
     "wordsAboutText": "Vocabulary training made smart and efficient. Enter words or choose a topic to get a personalized practice that helps you learn, remember, and understand better – in any language."
   },
-
-
   "home": {
     "slogan": "Customized, Simple and Fast 🤟",
     "youthStartAction": "Create Activities",
@@ -107,9 +104,7 @@
       "deleteError": "The activity was not deleted, please try again later"
     }
   },
-
   "practice": {
-
     "topic": {
       "title": "Let's pick a topic",
       "topicPlaceholder": "Enter a topic",
@@ -129,8 +124,6 @@
       "shareMessage": "I created a quiz on \"{{topic}}\" – let's see if you can beat me!"
     }
   },
-
-
   "words": {
     "topic": {
       "pageTitle": "What will we practice?",
@@ -142,16 +135,25 @@
       "typeAutomatic": "Automatic with AI",
       "typeManual": "I will enter the words manually"
     },
-
     "predefined": {
       "en-Practice": "English",
       "es-Practice": "Spanish",
-      "it-Practice": "Italian",
       "fr-Practice": "French",
+      "it-Practice": "Italian",
+      "de-Practice": "German",
+      "zh-Practice": "Chinese",
+      "ro-Practice": "Romanian",
+      "el-Practice": "Greek",
+      "cy-Practice": "Cypriot",
+      "tr-Practice": "Turkish",
+      "th-Practice": "Thai",
+      "nl-Practice": "Dutch",
+      "hu-Practice": "Hungarian",
+      "cs-Practice": "Czech",
+      "ka-Practice": "Georgian",
       "he-Practice": "Hebrew",
       "ar-Practice": "Arabic"
     },
-
     "vocab": {
       "pageTitle": "Practice Words",
       "instructions": "List of words or expressions to practice",
@@ -173,7 +175,6 @@
       "feedback4": "🎉 Great work!"
     }
   },
-
   "profile": {
     "dropOptInviteFriends": {
       "invite": "Share with friends"
@@ -367,7 +368,6 @@
       }
     ]
   },
-
   "faqWords": {
     "questions": [
       {
@@ -396,5 +396,4 @@
       }
     ]
   }
-
 }

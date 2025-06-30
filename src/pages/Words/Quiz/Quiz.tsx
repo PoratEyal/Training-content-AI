@@ -30,6 +30,7 @@ type Question = {
 }
 
 function Quiz() {
+
   const navigate = useNavigate()
   const { t, i18n } = useTranslation()
   const lang = (i18n.language || "en").slice(0, 2)
@@ -155,8 +156,25 @@ function Quiz() {
     en: ["A", "B", "C", "D"]
   }[lang] || ["-", "-", "-", "-"]
 
-  const progressPercent = fullCycle.length > 0 ? Math.round((correctCount / fullCycle.length) * 100) : 0
+  const [speechSupported, setSpeechSupported] = useState(false);
+
   const quizLang = sessionStorage.getItem("wordsQuizLang") || "en"
+  useEffect(() => {
+    const checkSpeechSupport = () => {
+      const voices = speechSynthesis.getVoices();
+      const supported = voices.some(voice => voice.lang.startsWith(quizLang));
+      setSpeechSupported(supported);
+    };
+
+    if (speechSynthesis.getVoices().length > 0) {
+      checkSpeechSupport();
+    } else {
+      window.speechSynthesis.onvoiceschanged = checkSpeechSupport;
+    }
+  }, [quizLang]);
+
+
+  const progressPercent = fullCycle.length > 0 ? Math.round((correctCount / fullCycle.length) * 100) : 0
 
   return (
     <PageLayout
@@ -188,14 +206,17 @@ function Quiz() {
         <QuizContainer>
           <div className={styles.questionBlock}>
             <div className={styles.questionText}>
-              <span
-                onClick={() => speakText(q.question, quizLang)}
-                className={styles.speakerIcon}
-                role="button"
-                title={t("words.quiz.speak")}
-              >
-                🔊
-              </span>{" "}
+              {speechSupported && (
+                <span
+                  onClick={() => speakText(q.question, quizLang)}
+                  className={styles.speakerIcon}
+                  role="button"
+                  title={t("words.quiz.speak")}
+                >
+                  🔊
+                </span>
+              )}{" "}
+
               {q.question}
               {q.pronunciation && (
                 <span className={styles.pronunciation}> ({q.pronunciation})</span>

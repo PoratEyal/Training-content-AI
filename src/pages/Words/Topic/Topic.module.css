@@ -79,3 +79,7 @@ select:focus {
 :dir(rtl) .languageSelect {
   background-position: left 12px center;
 }
+
+.button_wrapper {
+  margin-top: 20px;
+}
