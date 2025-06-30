@@ -59,12 +59,12 @@ function Topic() {
     e.preventDefault()
 
     setLoading(true)
-    const result = await createQuiz(topic, lang, 10)
+    const result = await createQuiz(topic, lang, 10)  // LIOR: TO MAKE IT JSON
     setLoading(false)
 
     if (result) {
       if (!isValidQuiz(result)) {
-        alert(t("practice.topic.topicError"));
+        notifyAlert(t("practice.topic.topicError"));
         return
       }
 

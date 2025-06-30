@@ -17,11 +17,11 @@
   "home": {
     "slogan": "מותאם, פשוט ומהיר 🤟",
     "youthStartAction": "יצירת פעולות",
-    "practiceStartAction": "בואו נתרגל",
-    "wordsStartAction": "בואו נתרגל",
+    "practiceStartAction": "נתחיל?",
+    "wordsStartAction": "נתחיל?",
     "advanced": "מתקדמים",
     "youthForActions": "לפעולות",
-    "practiceForActions": "לתרגול",
+    "practiceForActions": "לתרגל",
     "wordsForActions": "לאוצר מילים",
     "withPrefix": "ב-",
     "ai": "AI"
@@ -107,8 +107,8 @@
   "practice": {
     "topic": {
       "title": "בואו נבחר נושא",
-      "topicPlaceholder": "הזינו נושא",
-      "examples": "לדוגמא: שברים פשוטים, כימיה לקראת בגרות, אנגלית כתה ה', לימוד נהיגה, טריוויה מוזיקה...",
+      "topicPlaceholder": "הזינו כל נושא שבא לכם",
+      "examples": "לדוגמא: שברים פשוטים, חידון מוזיקה, כימיה לקראת בגרות, טריוויה כללית, לימוד נהיגה...",
       "btnCreate": "צאו לדרך",
       "btnCreating": "יצירת התרגול",
       "error": "אירעה שגיאה בעת יצירת השאלות. נסו שוב.",
