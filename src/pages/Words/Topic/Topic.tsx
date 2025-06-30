@@ -6,6 +6,7 @@ import styles from "./Topic.module.css";
 import MainBtn from "../../../components/MainBtn/MainBtn";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz";
+import SelectDetails from "../../../components/SelectDetails/SelectDetails"
 import { ProductType } from "../../../context/ProductType";
 import { createWordsQuiz } from "../../../hooks/useWordsQuestions"
 import { WORDS_AD_SLOT } from "../../../models/constants/adsSlot";
@@ -224,17 +225,12 @@ function Topic() {
 
           <div className={styles.input}>
             <label htmlFor="languageInput">{t("words.topic.selectLangLabel")}</label>
-            <select
-              id="languageSelect"
-              className={styles.languageSelect}
-              value={languageToLearn}
-              onChange={(e) => setLanguageToLearn(e.target.value)}
-            >
-              <option value="" disabled>{t("words.topic.selectLang")}</option>
-              {supportedLangs.map((lang) => (
-                <option key={lang.value} value={lang.value}>{lang.label}</option>
-              ))}
-            </select>
+            <SelectDetails
+              data={supportedLangs}
+              placeholder={t("words.topic.selectLang")}
+              obj={languageToLearn}
+              setObj={setLanguageToLearn}
+            />
           </div>
 
           <div className={styles.input}>

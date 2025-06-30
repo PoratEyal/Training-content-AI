@@ -22,10 +22,10 @@
     border: 1px solid var(--select-border-color);
     padding-right: 25px;
     font-size: 16px;
-    border-radius: 30px;
+    border-radius: 15px;
     min-width: 70vw;
     width: 100%;
-    height: 38px;
+    height: 40px;
     font-family: var(--font-family);
     direction: rtl;
     background-color: var(--select-color);

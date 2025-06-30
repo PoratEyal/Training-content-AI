@@ -27,7 +27,7 @@ function DropOptInviteFriends() {
 
     let shareTitle = ""
     let shareText = ""
-    let shareUrl = `${WEBSITE_URL}/${lang}`
+    let shareUrl = `${WEBSITE_URL}`
 
     if (product === ProductType.Youth) {
       const youthActivityAIPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn

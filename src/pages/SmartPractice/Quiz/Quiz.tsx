@@ -214,7 +214,7 @@ const handleShare = (topic: string) => {
     t,
     t("common.practiceAppName"),
     t("practice.quiz.shareMessage", { topic }),
-    `${WEBSITE_URL}/${lang}/practice`
+    `${WEBSITE_URL}/practice`
   )
 }
 

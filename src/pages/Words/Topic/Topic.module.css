@@ -16,7 +16,7 @@
 }
 
 .input {
-  width: 80%;
+  width: 273px;
   display: flex;
   flex-direction: column;
 }
@@ -35,7 +35,7 @@
   border: 1px solid #ccc;
   border-radius: 12px;
   box-sizing: border-box;
-  background-color: white;
+  background-color: var(--select-color);
 }
 
 .input input[type="radio"] {
@@ -63,21 +63,6 @@ select {
 select:focus {
   border-color: #cccccc;
   outline: none;
-}
-
-.languageSelect {
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='black' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  padding-right: 12px;
-}
-
-:dir(ltr) .languageSelect {
-  background-position: right 12px center;
-}
-
-:dir(rtl) .languageSelect {
-  background-position: left 12px center;
 }
 
 .button_wrapper {
