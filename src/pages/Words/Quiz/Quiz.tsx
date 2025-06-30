@@ -262,7 +262,7 @@ function Quiz() {
 
           <div className={styles.continueBtnContainer}>
             <button onClick={handleNext} className={styles.continueBtn}>
-              {t("common.btnContinue")}
+              {t("quiz.btnContinue")}
             </button>
           </div>
 
