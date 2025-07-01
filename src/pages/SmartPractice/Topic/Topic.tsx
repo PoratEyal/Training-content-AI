@@ -45,12 +45,9 @@ function Topic() {
     enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_PracticeTopic, navigate, practiceHomePagePath);
   }, []);
 
-  useEffect(() => {
-    return () => {
-      localStorage.setItem("practiceTopic", topic);
-    };
+  useEffect(() => { // Save to LocalStorage
+    localStorage.setItem("practiceTopic", topic);
   }, [topic]);
-
 
   // Step 2: Clean raw Gemini JSON output
   // Cleans up code block formatting from Gemini JSON response before parsing

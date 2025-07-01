@@ -43,15 +43,15 @@ function Topic() {
   ].filter(item => item.value !== lang);
 
   const [languageToLearn, setLanguageToLearn] = useState(() => {
-    const saved = localStorage.getItem("WordsLangToLearn") || "";
+    const saved = localStorage.getItem("wordsLangToLearn") || "";
     const validValues = supportedLangs.map(l => l.value);
     return validValues.includes(saved) ? saved : "";
   });
   const [topicText, setTopicText] = useState(() =>
-    localStorage.getItem("WordsTopicText") || ""
+    localStorage.getItem("wordsTopic") || ""
   );
   const [mode, setMode] = useState<"ai" | "manual">(() => {
-    const saved = localStorage.getItem("WordsMode");
+    const saved = localStorage.getItem("wordsMode");
     return saved === "manual" ? "manual" : "ai";
   });
 
@@ -69,15 +69,15 @@ function Topic() {
   }, []);
 
   useEffect(() => { // Save to LocalStorage
-    localStorage.setItem("WordsLangToLearn", languageToLearn);
+    localStorage.setItem("wordsLangToLearn", languageToLearn);
   }, [languageToLearn]);
 
   useEffect(() => { // Save to LocalStorage
-    localStorage.setItem("WordsTopicText", topicText);
+    localStorage.setItem("wordsTopic", topicText);
   }, [topicText]);
 
   useEffect(() => { // Save to LocalStorage
-    localStorage.setItem("WordsMode", mode);
+    localStorage.setItem("wordsMode", mode);
   }, [mode]);
 
 
@@ -187,7 +187,7 @@ function Topic() {
       if (topicText === "מעצר") { // Specific case
         const res = await fetch("/Words/army.json");
         const json = await res.json();
-        sessionStorage.setItem("GeneratedWordsQuiz", JSON.stringify(json));
+        sessionStorage.setItem("generatedWordsQuiz", JSON.stringify(json));
         sessionStorage.setItem("wordsQuizLang", "ar")
       }
 
@@ -196,7 +196,7 @@ function Topic() {
         const jsonClean = cleanJSONResponse(generateWithAI);
         const jsonWithTranslation = await addTranslationsToWords(jsonClean, languageToLearn, lang);
         const jsonWithFixedDisctractors = fixDistractors(jsonWithTranslation, lang);
-        sessionStorage.setItem("GeneratedWordsQuiz", JSON.stringify(jsonWithFixedDisctractors));
+        sessionStorage.setItem("generatedWordsQuiz", JSON.stringify(jsonWithFixedDisctractors));
         sessionStorage.setItem("wordsQuizLang", languageToLearn)
       }
 
