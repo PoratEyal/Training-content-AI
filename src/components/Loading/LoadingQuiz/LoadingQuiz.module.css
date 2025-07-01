@@ -65,7 +65,7 @@
   height: 8px;
   display: block;
   background-color: var(--primary-color);
-  animation: progress 10s linear infinite;  /* Loader time */
+  animation: progress 11s linear infinite;  /* Loader time */
   border-radius: 16px;
   will-change: transform;
   width: 270px;

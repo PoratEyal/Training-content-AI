@@ -2,15 +2,15 @@
     "he": {
         "error": {
             "title": "שגיאה",
-            "message": "נתקלנו בבעיה ביצירת הפעולה. אנא נסו שוב."
+            "message": "אופס... נראה שמשהו השתבש. נסו שוב :)"
         },
         "safety": {
             "title": "שגיאה",
-            "message": "המערכת זיהתה שהתוכן שחיפשתם עלול להיות בעייתי ולכן חיפוש זה נחסם. אנו ממליצים ליצור פעולה אחרת."
+            "message": "נראה שהתוכן שחיפשתם עלול להיות בעייתי, ולכן החיפוש נחסם. נסו לנסח אחרת או לבחור נושא חדש :)"
         },
         "google": {
             "title": "שגיאה",
-            "message": "ההתחברות נכשלה. ייתכן שיש בעיית אינטרנט. נסו להתנתק (כפתור המשתמש למעלה) ולהתחבר שוב."
+            "message": "נראה שיש בעיה בהתחברות. נסו לרענן את הדף או להתנתק ולהתחבר שוב דרך כפתור המשתמש למעלה."
         },
         "notSaved": {
             "title": "שגיאה",
@@ -20,15 +20,15 @@
     "en": {
         "error": {
             "title": "Error",
-            "message": "We encountered an issue while creating the activity. Please try again."
+            "message": "Oops... something went wrong while creating your activity. Please try again."
         },
         "safety": {
             "title": "Error",
-            "message": "The system has identified that the content you are searching for may be unsafe, and the search has been blocked. We suggest creating a different activity."
+            "message": "Hmm... that topic might not be safe. Try something else"
         },
         "google": {
             "title": "Error",
-            "message": "The login failed. Please ensure you are connected to the internet and try again"
+            "message": "Login issue detected. Please refresh the page or log out and back in using the user button above."
         },
         "notSaved": {
             "title": "Error",
@@ -38,15 +38,15 @@
     "es": {
         "error": {
             "title": "Error",
-            "message": "Hemos encontrado un problema al crear la actividad. Por favor, inténtalo de nuevo."
+            "message": "Algo salió mal al crear la actividad. Inténtalo de nuevo en un momento."
         },
         "safety": {
             "title": "Error",
-            "message": "El sistema ha identificado que el contenido que buscas puede ser inseguro, y la búsqueda ha sido bloqueada. Sugerimos crear una actividad diferente."
+            "message": "Ese contenido podría no ser seguro. Prueba con otro tema :)"
         },
         "google": {
             "title": "Error",
-            "message": "El inicio de sesión falló. Por favor, asegúrate de estar conectado a internet e intenta nuevamente"
+            "message": "¿Problemas para iniciar sesión? Refresca la página o vuelve a entrar desde el menú superior."
         },
         "notSaved": {
             "title": "Error",
@@ -61,11 +61,11 @@
         },
         "safety": {
             "title": "خطأ",
-            "message": "حدد النظام أن المحتوى الذي تبحث عنه قد يكون غير آمن، وتم حظر البحث. نقترح إنشاء نشاط مختلف."
+            "message": "هذا المحتوى قد لا يكون آمنًا، لذلك أوقفنا البحث. جرّب فكرة أو نشاطًا آخر :)"
         },
         "google": {
             "title": "خطأ",
-            "message": "فشل تسجيل الدخول. يرجى التأكد من أنك متصل بالإنترنت وحاول مرة أخرى"
+            "message": "مشكلة في تسجيل الدخول؟ حدّث الصفحة أو سجّل خروج وارجع من الزر العلوي."
         },
         "notSaved": {
             "title": "خطأ",

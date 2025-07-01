@@ -1,7 +1,7 @@
 .options_collapse_container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   width: 100%;
   color: var(--text-color);
   -webkit-tap-highlight-color: transparent;
