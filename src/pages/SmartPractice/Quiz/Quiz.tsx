@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getAuth } from "firebase/auth"
 import { useTranslation } from "react-i18next"
 import route from "../../../router/route.json"
 import styles from "./Quiz.module.css"
@@ -8,18 +7,23 @@ import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
 import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz"
 import QuizContainer from "../../../components/SmartPractice/QuizContainer/QuizContainer"
 import { Icons } from "../../../components/Icons"
-import { createQuiz } from "../../../hooks/useQuestions"
 import { ProductType } from "../../../context/ProductType"
 import { useContentContext } from "../../../context/ContentContext"
 import { useShareTextOrLink } from "../../../utils/share"
-import { logEvent } from "../../../utils/logEvent"
 import { enforcePageAccess } from "../../../utils/navigation"
 import { PRACTICE_AD_SLOT } from "../../../models/constants/adsSlot"
 import { ProductPages } from "../../../models/enum/pages"
 import { WEBSITE_URL } from "../../../models/constants"
 
 
-type Question = {
+interface QuizItem {
+  question: string
+  correct: string
+  dist1: string
+  dist2: string
+  dist3: string
+}
+interface Question {
   question: string
   options: string[]
   correctIndex: number
@@ -31,61 +35,54 @@ function Quiz() {
   const { t, i18n } = useTranslation()
   const rawLang = i18n.language || "en"
   const lang = rawLang.slice(0, 2)
-  const { currentPage, setCurrentPage } = useContentContext();
+  const { currentPage, setCurrentPage } = useContentContext()
 
   const practiceHomePagePath = route[`practiceHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceHomePageEn
-  const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn
+  const practiceTopicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn
 
-  const goBack = () => { navigate(topicPath) }
+  const goBack = () => navigate(practiceTopicPath)
 
   const [questions, setQuestions] = useState<Question[]>([])
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>([])
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const topic = sessionStorage.getItem("practiceTopic") || ""
+  const topic = localStorage.getItem("practiceTopic") || ""
 
-  // Takes the raw text of the AI answer, extracts the questions and answers, and saves them to display in the quiz.
-  const loadQuestionsFromRaw = (raw: string) => {
-    const blocks = raw.split(/~\d+~/).map(b => b.trim()).filter(Boolean)
+  useEffect(() => {
+    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_PracticeQuiz, navigate, practiceHomePagePath)
+  }, [])
 
-    const parsed: Question[] = blocks.map((block) => {
-      const lines = block.split(/\n/).map(line => line.trim()).filter(Boolean)
-      const question = lines[0]
-      const options: string[] = []
-      let correctIndex = -1
+  useEffect(() => {
+    const raw = sessionStorage.getItem("practiceQuiz")
+    if (!raw) {
+      navigate(practiceHomePagePath)
+      return
+    }
 
-      lines.slice(1).forEach((line, index) => {
-        const match = line.match(/~[א-דA-Dأ-د]~\s*(.*)/)
-        if (!match) return
-
-        const text = match[1].trim()
-        const clean = text.replace(/\*\*/g, "")
-        options.push(clean)
-        if (text.includes("**")) correctIndex = index
-      })
-
-      return { question, options, correctIndex }
-    }).filter(q => q.options.length === 4 && q.correctIndex >= 0)
-
-    if (parsed.length === 0) return // silently ignore bad input
+    const items: QuizItem[] = JSON.parse(raw)
+    const parsed: Question[] = items.map(({ question, correct, dist1, dist2, dist3 }) => {
+      const options = shuffleArray([correct, dist1, dist2, dist3])
+      return {
+        question,
+        options,
+        correctIndex: options.indexOf(correct)
+      }
+    })
 
     setQuestions(parsed)
     setUserAnswers(new Array(parsed.length).fill(null))
-    setSubmitted(false)
-  }
-
-    useEffect(() => { // Prevent direct access via URL
-      enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_PracticeQuiz, navigate, practiceHomePagePath);
-    }, []);
-
-  useEffect(() => {
-    const raw = sessionStorage.getItem("practiceQuestions")
-    if (raw)  // On component load, get the quiz from sessionStorage and display it. If missing, redirect to the home page.
-      loadQuestionsFromRaw(raw)
-    else
-      navigate(practiceHomePagePath)
   }, [lang, navigate])
+
+
+  const shuffleArray = <T,>(arr: T[]): T[] => {
+    const a = [...arr]
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+        ;[a[i], a[j]] = [a[j], a[i]]
+    }
+    return a
+  }
 
   const handleSelect = (qIdx: number, optIdx: number) => {
     if (submitted) return
@@ -94,133 +91,29 @@ function Quiz() {
     setUserAnswers(updated)
   }
 
-  const handleSubmit = () => {
-    setSubmitted(true)
+  const handleSubmit = () => setSubmitted(true)
+
+  const share = useShareTextOrLink()
+  const handleShare = (topic: string) => {
+    share(
+      t,
+      t("common.practiceAppName"),
+      t("practice.quiz.shareMessage", { topic }),
+      `${WEBSITE_URL}/practice`
+    )
   }
-
-  // Generates a new quiz with 10 valid and unique questions (max 5 attempts). Replaces current questions if successful.
-  const handleRegenerate = async () => {
-
-    const prev = sessionStorage.getItem("practiceQuestions")
-    if (prev) {
-      sessionStorage.setItem("prevPracticeQuestions", prev)
-    }
-
-    setLoading(true)
-
-    const tryGenerateValidQuiz = async (attempt: number): Promise<string | null> => {
-      if (attempt > 5) return null
-
-      const prevQuestions = extractQuestionsFromRaw(sessionStorage.getItem("prevPracticeQuestions") || "")
-      const duplicateQuestions = new Set<string>()
-      const finalBlocks: string[] = []
-
-      // Helper function to add valid blocks to finalBlocks
-      const addValidBlocks = (raw: string | null) => {
-        if (!raw || raw.trim() === "") return
-
-        const blocks = raw.split(/~\d+~/).map(b => b.trim()).filter(Boolean)
-
-        for (const block of blocks) {
-          const lines = block.split(/\n/).map(line => line.trim()).filter(Boolean)
-          const question = lines[0]?.toLowerCase().trim()
-          if (!question) continue
-          if (prevQuestions.includes(question)) continue
-          if (duplicateQuestions.has(question)) continue
-
-          duplicateQuestions.add(question)
-          finalBlocks.push(block)
-        }
-      }
-
-      // first attempt
-      addValidBlocks(await createQuiz(topic, lang, 10))
-
-      // Validate question structure to ensure it's properly formatted
-      const getValidQuestionCount = (blocks: string[]): number => {
-        return blocks
-          .map(block => {
-            const lines = block.split(/\n/).map(l => l.trim()).filter(Boolean)
-            if (!lines[0]) return { options: [], correctIndex: -1 }
-
-            const options: string[] = []
-            let correctIndex = -1
-
-            lines.slice(1).forEach((line, index) => {
-              const match = line.match(/~[א-דA-Dأ-د]~\s*(.*)/)
-              if (!match) return
-              const text = match[1].trim()
-              options.push(text.replace(/\*\*/g, ""))
-              if (text.includes("**")) correctIndex = index
-            })
-
-            return { options, correctIndex }
-          })
-          .filter(q => q.options.length === 4 && q.correctIndex >= 0)
-          .length
-      }
-
-      // Request additional questions based on the actual number of valid ones
-      let validCount = getValidQuestionCount(finalBlocks)
-      while (validCount < 10 && attempt <= 5) {
-        const needed = 10 - validCount
-        addValidBlocks(await createQuiz(topic, lang, needed))
-        validCount = getValidQuestionCount(finalBlocks)
-        if (validCount >= 10) break
-        attempt++
-      }
-
-      if (validCount >= 5) {
-        const rawValidated = finalBlocks
-          .slice(0, 10) // Displays up to 10 questions, even if fewer are available
-          .map((b, idx) => `~${idx + 1}~\n${b}`)
-          .join("\n\n")
-
-        return rawValidated
-      } else {
-        return null // Only if fewer than 5 valid questions, return null to trigger error message
-      }
-    }
-
-
-    const finalRaw = await tryGenerateValidQuiz(1)
-
-    setLoading(false)
-
-    if (finalRaw) {
-      sessionStorage.setItem("practiceQuestions", finalRaw)
-      loadQuestionsFromRaw(finalRaw)
-    } else {
-      const auth = getAuth();
-      const user = auth.currentUser;
-      const userEmail = user?.email || "guest";
-      logEvent(`[Quiz]: Generation failed: less then 5 valid questions found (topic: ${topic}, lang: ${lang})`, userEmail);
-      alert(t("practice.quiz.FailMsg"))
-    }
-  }
-
-  const extractQuestionsFromRaw = (raw: string): string[] => {
-    const blocks = raw.split(/~\d+~/).map(b => b.trim()).filter(Boolean)
-    const questions = blocks.map(block => {
-      const lines = block.split(/\n/).map(line => line.trim()).filter(Boolean)
-      return lines[0].toLowerCase().trim()
-    })
-    return questions
-  }
-
-const share = useShareTextOrLink()
-const handleShare = (topic: string) => {
-  share(
-    t,
-    t("common.practiceAppName"),
-    t("practice.quiz.shareMessage", { topic }),
-    `${WEBSITE_URL}/practice`
-  )
-}
 
   const correctCount = questions.reduce((sum, q, idx) => {
     return sum + (userAnswers[idx] === q.correctIndex ? 1 : 0)
   }, 0)
+
+  const lettersMap: Record<string, string[]> = {
+    he: ['א', 'ב', 'ג', 'ד'],
+    ar: ['أ', 'ب', 'ج', 'د'],
+    es: ['A', 'B', 'C', 'D'],
+    en: ['A', 'B', 'C', 'D']
+  }
+  const letters = lettersMap[lang] || ['-', '-', '-', '-']
 
   return (
     <PageLayout
@@ -253,7 +146,13 @@ const handleShare = (topic: string) => {
               </div>
 
               <div className={styles.retryFabContainer}>
-                <button onClick={handleRegenerate} className={styles.retryFab}>
+                <button
+                  onClick={() => {
+                    sessionStorage.removeItem("practiceQuiz")
+                    navigate(practiceTopicPath)
+                  }}
+                  className={styles.retryFab}
+                >
                   {t("practice.quiz.newPractice")}
                 </button>
               </div>
@@ -262,15 +161,12 @@ const handleShare = (topic: string) => {
                 {t("practice.quiz.shareButton")}
                 <Icons.Share className={styles.shareIcon} />
               </button>
-
             </>
           )}
 
           {questions.map((q, qIdx) => (
             <div key={qIdx} className={styles.questionBlock}>
-              <div className={styles.questionText}>
-                {`${qIdx + 1}. ${q.question}`}
-              </div>
+              <div className={styles.questionText}>{`${qIdx + 1}. ${q.question}`}</div>
               <ul className={styles.optionList}>
                 {q.options.map((opt, optIdx) => {
                   const selectedIndex = userAnswers[qIdx]
@@ -279,14 +175,6 @@ const handleShare = (topic: string) => {
                   const isCorrectAnswer = submitted && q.correctIndex === optIdx
                   const isCorrectSelection = submitted && isAnswered && isSelected && optIdx === q.correctIndex
                   const isWrongSelection = submitted && isAnswered && isSelected && optIdx !== q.correctIndex
-
-                  const lettersMap: Record<string, string[]> = {
-                    he: ['א', 'ב', 'ג', 'ד'],
-                    ar: ['أ', 'ب', 'ج', 'د'],
-                    es: ['A', 'B', 'C', 'D'],
-                    en: ['A', 'B', 'C', 'D']
-                  }
-                  const letters = lettersMap[lang] || ['-', '-', '-', '-']
 
                   return (
                     <li
@@ -310,7 +198,6 @@ const handleShare = (topic: string) => {
               </ul>
             </div>
           ))}
-
 
           {!submitted && (
             <div className={styles.checkBtnContainer}>

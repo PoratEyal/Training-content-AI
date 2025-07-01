@@ -16,70 +16,106 @@ import { ProductPages } from "../../../models/enum/pages";
 import { enforcePageAccess } from "../../../utils/navigation";
 import { useContentContext } from "../../../context/ContentContext";
 
+type QuizItem = {
+  question: string;
+  correct: string;
+  dist1: string;
+  dist2: string;
+  dist3: string;
+};
 
 function Topic() {
-
-  const { t, i18n } = useTranslation()
-  const lang = i18n.language
-  const [topic, setTopic] = useState("")
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
+  const [topic, setTopic] = useState(() => localStorage.getItem("practiceTopic") || "");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const { currentPage, setCurrentPage } = useContentContext();
-  const { notifyAlert: notifyAlert } = useNotificationContext();
+  const { notifyAlert } = useNotificationContext();
 
   const practiceHomePagePath = route[`practiceHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceHomePageEn;
   const practiceQuizPath = route[`practiceQuiz${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceQuizEn;
-  const goBack = () => { navigate(practiceHomePagePath); };
 
-  useEffect(() => { // Prevent direct access via URL
+  const goBack = () => {
+    navigate(practiceHomePagePath);
+  };
+
+  useEffect(() => {
+    // Prevent direct access via URL
     enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_PracticeTopic, navigate, practiceHomePagePath);
   }, []);
 
-  // Checks if the given text contains at least one valid multiple-choice question block.
-  // Because if the request was invalid and the model returns a general message saying a quiz can't be generated, we want to display that message to the user.
-  const isValidQuiz = (text: string): boolean => {
-    const blocks = text.split(/~\d+~/).map(b => b.trim()).filter(Boolean)
+  useEffect(() => {
+    return () => {
+      localStorage.setItem("practiceTopic", topic);
+    };
+  }, [topic]);
 
-    const validCount = blocks.filter(block => {
-      const lines = block.split(/\n/).map(line => line.trim()).filter(Boolean)
-      if (!lines[0]) return false
 
-      const options = lines.slice(1).filter(line => /~[א-דA-Dأ-د]~/.test(line))
-      const hasCorrect = lines.some(line => /\*\*/.test(line))
-
-      return options.length === 4 && hasCorrect
-    }).length
-
-    return validCount > 0
+  // Step 2: Clean raw Gemini JSON output
+  // Cleans up code block formatting from Gemini JSON response before parsing
+  function cleanJson(text: string): string {
+    return text
+      .replace(/^```json\s*/, "")
+      .replace(/^```\s*/, "")
+      .replace(/```$/, "")
+      .trim();
   }
 
+  // Step 3: Remove duplicates and normalize structure
+  function removeDuplicateQ_A(items: any[]): QuizItem[] {
+    const seenQuestions = new Set<string>();
+    const normalize = (s: string) => s?.trim?.().toLowerCase?.();
 
-  const handleSubmit = async (e) => {
+    return items
+      .filter((item) => {
+        const q = item.question?.trim();
+        if (!q || seenQuestions.has(q)) return false;
+        seenQuestions.add(q);
+        return true;
+      })
+      .map((item) => {
+        const correct = item.correct?.trim();
+        const distractors = [item.dist1, item.dist2, item.dist3]
+          .map(d => d?.trim())
+          .filter(d => d && normalize(d) !== normalize(correct));
 
-    e.preventDefault()
+        const uniqueDistractors = [...new Set(distractors)].slice(0, 3);
+        const [dist1 = "", dist2 = "", dist3 = ""] = uniqueDistractors;
 
-    setLoading(true)
-    const result = await createQuiz(topic, lang, 10)  // LIOR: TO MAKE IT JSON
-    setLoading(false)
+        return {
+          question: item.question?.trim() || "",
+          correct,
+          dist1,
+          dist2,
+          dist3
+        };
+      });
+  }
 
-    if (result) {
-      if (!isValidQuiz(result)) {
-        notifyAlert(t("practice.topic.topicError"));
-        return
-      }
+  // Step 1: Handle submit
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const raw = await createQuiz(topic, lang, 10);
+      const cleanedJsonStr = cleanJson(raw);
+      const parsed = JSON.parse(cleanedJsonStr);
+      const final = removeDuplicateQ_A(parsed);
+      setLoading(false);
 
-      sessionStorage.setItem("practiceQuestions", result)
-      sessionStorage.setItem("practiceTopic", topic)
+      sessionStorage.setItem("practiceQuiz", JSON.stringify(final));
+      navigate(practiceQuizPath);
 
-      navigate(practiceQuizPath)
-    } else {
+    } catch (err) {
+      setLoading(false);
       const auth = getAuth();
       const user = auth.currentUser;
       const userEmail = user?.email || "guest";
       notifyAlert(t("practice.topic.error"));
       logEvent(`[Practice.Topic]: createQuiz failed, topic: ${topic}`, userEmail);
     }
-  }
+  };
 
   return (
     <>
@@ -120,7 +156,7 @@ function Topic() {
 
       {loading && <LoadingQuiz />}
     </>
-  )
+  );
 }
 
-export default Topic
+export default Topic;
