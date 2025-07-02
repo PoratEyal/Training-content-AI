@@ -2,7 +2,7 @@
 // This is a text input component for entering a subject, with a magic button to autofill suggestions
 // It adapts the layout to RTL languages and checks for blacklisted words
 //
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./SubjectInput.module.css";
 import { isInBlackList } from "../../utils/blackList";
 import MagicBtn from "../MagicBtn/MagicBtn";
@@ -32,6 +32,7 @@ function SubjectInput({
   const { isRTL, lang } = useLanguage();
   const { t } = useLanguage();
   const { notifySuccess: notifySuccess } = useNotificationContext();
+  const hasShownLimitMessage = useRef(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value;
@@ -39,10 +40,12 @@ function SubjectInput({
       const isBlackListed = isInBlackList(newValue, lang);
       setHasAlert(isBlackListed);
       setSubject(newValue);
+      hasShownLimitMessage.current = false;
+      
+    } else if (!hasShownLimitMessage.current) {
+      notifySuccess(t('buildActivity.subject.limit'), { container: 'top-center' });
+      hasShownLimitMessage.current = true;
     }
-    else
-      notifySuccess(t('buildActivity.subject.limit'));
-
   };
 
   const changeSubject = (newSubject: string) => {

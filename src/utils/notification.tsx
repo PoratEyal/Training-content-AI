@@ -1,9 +1,16 @@
 import { Store } from "react-notifications-component";
 
-type NotificationOptions = {
-    duration: number;
-    onScreen: boolean;
+export type NotificationOptions = {
+    duration?: number;
+    onScreen?: boolean;
     dir?: 'rtl' | 'ltr';
+    container?: 
+      | 'top-left' 
+      | 'top-right' 
+      | 'top-center' 
+      | 'bottom-left' 
+      | 'bottom-right' 
+      | 'bottom-center';
 };
 
 export const notification = (
@@ -21,9 +28,12 @@ export const notification = (
         ),
         type,
         insert: "bottom",
-        container: "bottom-center",
+        container: options?.container || "bottom-center",
         animationIn: ["animate__animated", "animate__fadeInUp"],
         animationOut: ["animate__animated", "animate__fadeOutDown"],
-        dismiss: { duration: options?.duration || 3000, onScreen: options?.onScreen ?? true }
-    })
+        dismiss: {
+            duration: options?.duration || 3500,
+            onScreen: options?.onScreen ?? true
+        }
+    });
 };

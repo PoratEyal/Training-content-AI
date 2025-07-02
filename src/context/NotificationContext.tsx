@@ -1,17 +1,17 @@
 import { createContext, useContext } from "react";
-import { notification } from "../utils/notification";
+import { notification, NotificationOptions } from "../utils/notification";
 import { useLanguage } from "../i18n/useLanguage";
 
 export type NotificationContextType = {
-    notifyError: (error: Error | string | undefined) => void;
-    notifyAlert: (message: string, duration?: number) => void;
-    notifySuccess: (message: string) => void;
+  notifyError: (error: Error | string | undefined, options?: NotificationOptions) => void;
+  notifyAlert: (message: string, options?: NotificationOptions) => void;
+  notifySuccess: (message: string, options?: NotificationOptions) => void;
 };
 
-export const defaultNotificationContext = {
-    notifyError: () => {},
-    notifyAlert: () => {},
-    notifySuccess: () => {},
+export const defaultNotificationContext: NotificationContextType = {
+  notifyError: () => {},
+  notifyAlert: () => {},
+  notifySuccess: () => {},
 };
 
 export const NotificationContext = createContext<NotificationContextType>(defaultNotificationContext);
@@ -19,35 +19,38 @@ export const NotificationContext = createContext<NotificationContextType>(defaul
 export const useNotificationContext = () => useContext(NotificationContext);
 
 export const NotificationContextProvider = ({ children }: { children: React.ReactNode }) => {
-    const { dir } = useLanguage();
+  const { dir } = useLanguage();
 
-    const notifyError = (error: Error | string | undefined) => {
-        notification("", error.toString().replace(/^Error:\s*/, ""), "danger", {
-            duration: 6000,
-            onScreen: true,
-            dir
-        });
-    };
+  const notifyError = (error: Error | string | undefined, options?: NotificationOptions) => {
+    notification("", error?.toString().replace(/^Error:\s*/, ""), "danger", {
+      duration: 6000,
+      onScreen: true,
+      dir,
+      ...options,
+    });
+  };
 
-    const notifyAlert = (error: Error | string | undefined) => {
-        notification("", error.toString().replace(/^Error:\s*/, ""), "info", {
-            duration: 6000,
-            onScreen: true,
-            dir
-        });
-    };
+  const notifyAlert = (message: string, options?: NotificationOptions) => {
+    notification("", message, "info", {
+      duration: 6000,
+      onScreen: true,
+      dir,
+      ...options,
+    });
+  };
 
-    const notifySuccess = (message: string) => {
-        notification("", message, "success", { 
-            duration: 2500, 
-            onScreen: false,
-            dir
-        });
-    };
+  const notifySuccess = (message: string, options?: NotificationOptions) => {
+    notification("", message, "success", {
+      duration: 2500,
+      onScreen: false,
+      dir,
+      ...options,
+    });
+  };
 
-    return (
-        <NotificationContext.Provider value={{ notifyError: notifyError, notifyAlert: notifyAlert, notifySuccess: notifySuccess }}>
-            {children}
-        </NotificationContext.Provider>
-    );
+  return (
+    <NotificationContext.Provider value={{ notifyError, notifyAlert, notifySuccess }}>
+      {children}
+    </NotificationContext.Provider>
+  );
 };

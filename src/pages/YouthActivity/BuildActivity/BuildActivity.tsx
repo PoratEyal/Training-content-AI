@@ -160,7 +160,7 @@ function BuildActivity() {
           title="Yellow sign with heart"
           alt="Yellow sign with heart"
           src={"/Youth/path.svg"}
-          width={90}
+          width={80}
           height={110}
         />
 
