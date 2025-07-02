@@ -134,18 +134,30 @@ function PageLayout({
 
         {hasAds !== "" ? (() => {
 
+          // Our internal Ads
           const path = location.pathname;
-          const showAd = path.includes("/he/youth/activity");
-          const auth = getAuth();
-          const user = auth.currentUser;
-          const userEmail = user?.email || "";
+          let specialAd = false;
+          let banners: string[] = [];
+          const currentMinutes = new Date().getMinutes();
+          const isEvenMinute = currentMinutes % 2 === 0;
 
-          if (productType === ProductType.Youth && showAd) {
-            const banners = ["/Practice/practiceBanner1.png", "/Practice/practiceBanner2.png", "/Practice/practiceBanner3.png", "/Practice/practiceBanner4.png"];
+          if (productType === ProductType.Words && path.includes("/he/words/quiz")) {
+            banners = ["/Practice/practiceBanner5.png", "/Practice/practiceBanner6.png"];
+            specialAd = true;
+          }
+          else if (productType === ProductType.Youth && path.includes("/he/youth/activity")) {
+            banners = ["/Practice/practiceBanner1.png", "/Practice/practiceBanner2.png", "/Practice/practiceBanner3.png", "/Practice/practiceBanner4.png"];
+            specialAd = true;
+          }
+
+          if (specialAd && isEvenMinute) {
             const randomIndex = Math.floor(Math.random() * banners.length);
             const bannerImage = banners[randomIndex];
 
             const handleBannerClick = () => {
+              const auth = getAuth();
+              const user = auth.currentUser;
+              const userEmail = user?.email || "";
               logEvent(bannerImage, userEmail);
             };
 
@@ -162,8 +174,10 @@ function PageLayout({
               </div>
             );
           }
+          else
+            // Google Ads
+            return <AdsSmall slot={hasAds} />;
 
-          return <AdsSmall slot={hasAds} />;  // Google Ad
         })() : null}
 
 
