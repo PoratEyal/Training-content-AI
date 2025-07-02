@@ -84,7 +84,7 @@ function WordsHomePage() {
                 navigate,
               })
             }
-            isDisabled={shouldBlockUI}
+            isDisabled={false}
           />
         </section>
       )}

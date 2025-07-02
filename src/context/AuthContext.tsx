@@ -146,11 +146,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     //
     const logout = async () => {
         try {
-            if (cookieLimit) {  // set limit cookie to a "must login" value
-                const lastWeek = new Date()
-                lastWeek.setDate(lastWeek.getDate() - 7)
-                setLimitCookie(lastWeek.toString())
-            }
             await auth.signOut();
             setCurrentUser(undefined);
             setIsLoggedIn(false);

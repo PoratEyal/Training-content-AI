@@ -84,7 +84,7 @@ function PracticeHomePage() {
                 navigate,
               })
             }
-            isDisabled={shouldBlockUI}
+            isDisabled={false}
           />
         </section>
       )}

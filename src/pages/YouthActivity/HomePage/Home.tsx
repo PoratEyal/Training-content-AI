@@ -87,7 +87,7 @@ function YouthHomePage() {
                 navigate,
               })
             }
-            isDisabled={shouldBlockUI}
+            isDisabled={false}
           />
         </section>
       )}
