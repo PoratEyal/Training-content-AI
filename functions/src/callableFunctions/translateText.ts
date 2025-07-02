@@ -32,7 +32,6 @@ const translateText = functions.https.onCall(
 
       return { translatedText: result[0].translations[0].text }
     } catch (err: any) {
-      console.error("Translation error:", err)
       throw new functions.https.HttpsError("internal", "Translation failed.")
     }
   }

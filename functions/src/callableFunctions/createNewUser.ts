@@ -28,7 +28,6 @@ const createNewUser = functions.https.onCall(
             }
             return { result: "error", message: "User is not authenticated." };
         } catch (error) {
-            console.error("Failed to add user.", error);
             return { result: "error", message: "Failed to create new user." };
         }
     },

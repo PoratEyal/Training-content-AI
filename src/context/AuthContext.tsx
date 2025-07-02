@@ -155,7 +155,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             setCurrentUser(undefined);
             setIsLoggedIn(false);
         } catch (error) {
-            logEvent("[AuthContext.logout]: Logout Error, " + error, "guest");
+            logEvent("[AuthContext.logout]: " + error, "guest");
         }
     };
 

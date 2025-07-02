@@ -81,7 +81,7 @@ function WordsVocab() {
       try {
         const response = await fetch(`/Words/${topicValue}.json`)
         if (!response.ok) {
-          logEvent(`Words.Vocab.useEffect: /Words/${topicValue}.json not found`, "systemError")
+          logEvent(`[Words.Vocab.useEffect]: ${topicValue} not found`, "systemError")
           return
         }
 
@@ -89,7 +89,7 @@ function WordsVocab() {
         const { sourceLang, items } = data
 
         if (!Array.isArray(items) || !sourceLang) {
-          logEvent(`Words.Vocab.useEffect: Invalid structure in /Words/${topicValue}.json`, "systemError")
+          logEvent(`[Words.Vocab.useEffect]: Invalid structure in /Words/${topicValue}.json`, "systemError")
           return
         }
 

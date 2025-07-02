@@ -45,7 +45,6 @@ const saveActivity = functions.https.onCall(
 
       return { result: "success", activity: updateActivity };
     } catch (error) {
-      console.error("Failed to retrieve activity.", error);
       return { result: "error", message: "Failed to retrieve activity." };
     }
   }

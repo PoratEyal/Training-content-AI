@@ -52,7 +52,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                 }
             } catch (error) {
                 notifyAlert(msg[lang].notSaved.message);
-                logEvent(`[SavedContext.getSavedActivities]: Failed to delete activity: ${error}`, userEmail);
+                logEvent(`[SavedContext.getSavedActivities]: ${error}`, userEmail);
             } finally {
                 setIsLoading(false);
             }
@@ -70,7 +70,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                     activityId: activityIdToDelete,
                 } as RemoveActivityRequest);
             } catch (error) {
-                logEvent(`[SavedContext.deleteActivity]: Failed to delete activity: ${activityIdToDelete}`, userEmail);
+                logEvent(`[SavedContext.deleteActivity]: ${activityIdToDelete}`, userEmail);
             }
         }
     };

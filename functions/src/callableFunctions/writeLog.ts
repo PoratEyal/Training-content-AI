@@ -24,7 +24,6 @@ const writeLog = functions.https.onCall(
 
       return { result: "success" };
     } catch (error) {
-      console.error("Error writing log: ", error);
       return { result: "error", message: "Failed to write log" };
     }
   }

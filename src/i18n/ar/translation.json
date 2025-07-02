@@ -42,12 +42,13 @@
     "lampAlt": "مصباح أصفر"
   },
   "buildActivity": {
-    "createTitle": "أنشئ نشاطك",
+    "createTitle": "هيا نُخطط للنشاط",
     "category": {
       "label": "الفئة"
     },
     "subject": {
-      "label": "الموضوع"
+      "label": "الموضوع",
+      "limit": "انقر على \"خيارات إضافية\" لإضافة المزيد من التفاصيل حول النشاط."
     },
     "place": {
       "label": "المكان"

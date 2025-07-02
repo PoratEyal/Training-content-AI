@@ -34,7 +34,6 @@ const removeSavedActivity = functions.https.onCall(
                 message: "Activity successfully removed.",
             };
         } catch (error) {
-            console.error("Error removing activity:", error);
             return {
                 result: "error",
                 message: "Failed to remove activity.",

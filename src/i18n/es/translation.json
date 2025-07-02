@@ -42,12 +42,13 @@
     "lampAlt": "Lámpara amarilla"
   },
   "buildActivity": {
-    "createTitle": "Crea tu Actividad",
+    "createTitle": "Vamos a planear la actividad",
     "category": {
       "label": "Categoría"
     },
     "subject": {
-      "label": "Tema"
+      "label": "Tema",
+      "limit": "Haz clic en \"Opciones adicionales\" para agregar más información sobre la actividad."
     },
     "place": {
       "label": "Ubicación"

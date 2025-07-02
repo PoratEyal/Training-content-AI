@@ -30,7 +30,6 @@ const getMsg = functions.https.onCall(
                 msg,
             };
         } catch (error) {
-            console.error("Error getting message: ", error);
             return {
                 result: "error",
                 message: "Failed to get message.",

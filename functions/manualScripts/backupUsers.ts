@@ -25,7 +25,6 @@ async function backupCollection(collectionName: string) {
 
     const backupPath = path.join(__dirname, `backupUsers.json`);
     fs.writeFileSync(backupPath, JSON.stringify(data, null, 2));
-    console.log(`✅ ${collectionName} backup saved to ${backupPath}`);
   } catch (error) {
     console.error(`❌ Error backing up ${collectionName}:`, error);
   }

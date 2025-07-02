@@ -1,5 +1,6 @@
 import { httpsCallable } from "firebase/functions";
 import { functions } from "../config/firebase";
+import { logEvent } from "../utils/logEvent";
 
 export const createWordsQuiz = async (
   topic: string | null,
@@ -13,7 +14,7 @@ export const createWordsQuiz = async (
     const { questions } = response.data as { questions: string };
     return questions;
   } catch (error) {
-    console.error("❌ createWordsQuiz error:", error);
+    logEvent("[useWordsQuestions]: getWords4Practice error: " + String(error), "guest");
     return ""; // Failed to create a quiz
   }
 };

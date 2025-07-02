@@ -49,7 +49,6 @@ const getStaticSubjectsHttp = functions.https.onCall(
             };
 
         } catch (error) {
-            console.error('Error fetching static subjects:', error);
             return {
                 result: "error",
                 message: "Failed to fetch static subjects."

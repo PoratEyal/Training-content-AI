@@ -126,17 +126,7 @@ function BuildActivity() {
     const { movement, ...detailsData } = data;
     try {
       const response = await fetchGetActivity({
-        category: category as CategoryName,
-        movement: movement.name,
-        ...detailsData,
-        subject,
-        time,
-        place,
-        religion,
-        contest,
-        tools,
-        info,
-        lang,
+        category: category as CategoryName, movement: movement.name, ...detailsData, subject, time, place, religion, contest, tools, info, lang,
       });
       if (
         (response.result === "success" || response.result === "safety") && response.activity
@@ -148,7 +138,7 @@ function BuildActivity() {
       notifyAlert(msg[lang].error.message);
       setClicked(false);
       const userEmail = currentUser?.email || "guest";
-      logEvent(`[buildActivity.submitHandler]: Failed to delete activity: ${msg[lang].error.message}`, userEmail);
+      logEvent(`[Build.submitHandler.fetchGetActivity]: ${msg[lang].error.message}`, userEmail);
     }
   };
 

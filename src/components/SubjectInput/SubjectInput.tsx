@@ -12,6 +12,7 @@ import magicHe from "../../models/resources/he/magic.json";
 import magicAr from "../../models/resources/ar/magic.json";
 import { CategoryName } from "../../models/types/movement";
 import { useLanguage } from "../../i18n/useLanguage";
+import { useNotificationContext } from "../../context/NotificationContext";
 
 type SubjectInputProps = {
   placeholder?: string;
@@ -29,14 +30,19 @@ function SubjectInput({
   setHasAlert,
 }: SubjectInputProps) {
   const { isRTL, lang } = useLanguage();
+  const { t } = useLanguage();
+  const { notifySuccess: notifySuccess } = useNotificationContext();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value;
-    if (newValue.length <= 30) {
+    if (newValue.length <= 21) {
       const isBlackListed = isInBlackList(newValue, lang);
       setHasAlert(isBlackListed);
       setSubject(newValue);
     }
+    else
+      notifySuccess(t('buildActivity.subject.limit'));
+
   };
 
   const changeSubject = (newSubject: string) => {

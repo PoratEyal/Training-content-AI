@@ -10,6 +10,7 @@ import route from "../../../router/route.json";
 import { YOUTH_CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
 import { StaticActivities } from "../../../models/types/activity";
 import { fetchIncrementActivityDisplayCount } from "../../../utils/fetch";
+import { logEvent } from "../../../utils/logEvent";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
 import styles from "../ContentActivities/ContentActivities.module.css";
@@ -49,7 +50,7 @@ function PopularActivities() {
     try {
       await fetchIncrementActivityDisplayCount(activity);
     } catch (error) {
-      console.error("Error incrementing activity display count:", error);
+      logEvent("[PopularActivities.handleActivityClick]: Error incrementing activity display count: " + String(error), "guest");
     }
   };
 

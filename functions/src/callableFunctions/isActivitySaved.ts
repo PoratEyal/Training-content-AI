@@ -35,7 +35,6 @@ const isActivitySaved = functions.https.onCall(
                 message: "Activity not found or doesn't belong to the user.",
             };
         } catch (error) {
-            console.error("Error checking activity:", error);
             return {
                 result: "error",
                 exists: false,

@@ -25,7 +25,6 @@ async function backupStaticActivities() {
 
     const backupPath = path.join(__dirname, "backupStaticActivities.json");
     fs.writeFileSync(backupPath, JSON.stringify(data, null, 2));
-    console.log(`✅ staticActivities backup saved to ${backupPath}`);
   } catch (error) {
     console.error("❌ Error backing up staticActivities:", error);
   }

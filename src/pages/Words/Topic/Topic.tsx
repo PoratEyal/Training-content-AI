@@ -13,6 +13,7 @@ import { WORDS_AD_SLOT } from "../../../models/constants/adsSlot";
 import { ProductPages } from "../../../models/enum/pages";
 import { enforcePageAccess } from "../../../utils/navigation";
 import { translateWord } from "../../../utils/translateWord";
+import { logEvent } from "../../../utils/logEvent";
 import { useContentContext } from "../../../context/ContentContext";
 
 function Topic() {
@@ -106,8 +107,9 @@ function Topic() {
       );
 
       return translated;
+
     } catch (err) {
-      console.error("❌ Failed to process generated words:", err);
+      logEvent("[Words.Topic]: Failed to process generated words: " + String(err), "guest");
       return [];
     }
   }
@@ -203,7 +205,8 @@ function Topic() {
       navigate(wordsQuizPath);
 
     } catch (err) {
-      console.error("❌ Error creating quiz:", err);
+      logEvent("[Words.Topic.handleSubmit]: Error creating quiz: " + String(err), "guest");
+
     } finally {
       setLoading(false);
     }

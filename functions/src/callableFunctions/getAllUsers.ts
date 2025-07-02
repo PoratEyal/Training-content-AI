@@ -12,7 +12,6 @@ const getAllUsers = functions.https.onCall(
         context: functions.https.CallableContext,
     ): Promise<getAllUsersResponse> => {
         if (!context.auth || context.auth.uid !== defineString("ADMIN").value()) {
-            console.error("User is not admin.", context?.auth?.uid);
             return { result: "error", message: "User is not authenticated." };
         }
         await admin.auth().setCustomUserClaims(context.auth.uid, { canEditUsers: true });

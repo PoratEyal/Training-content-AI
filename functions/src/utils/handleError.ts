@@ -22,19 +22,19 @@ export const handleGetActivityErrors = (
 
     switch (lang) {
         case "he":
-            message = "נכשל ניסיון לאחזר את הפעילות: המערכת חסמה את החיפוש עקב סיבות בטיחות.";
+            message = "הממ... נראה שהנושא הזה לא בטוח. בואו ננסה משהו אחר!";
             activityMessage = "המערכת מצאה שהתוכן שהנכם מחפשים עלול להיות בעייתי ולכן חיפוש זה נחסם. אנו ממליצים לנסות שוב עם נושא פעולה אחר.";
             break;
         case "es":
-            message = "No se pudo recuperar la actividad: la búsqueda fue bloqueada por razones de seguridad.";
+            message = "Ups... Parece que ese tema no es seguro. ¡Intenta con otro!";
             activityMessage = "El sistema detectó que el contenido solicitado podría ser problemático, por lo que la búsqueda fue bloqueada. Recomendamos intentar nuevamente con otro tema.";
             break;
         case "en":
-            message = "Failed to retrieve activity: Generative AI blocked the candidate due to safety concerns.";
+            message = "Oops... That topic might not be safe. Try something else!";
             activityMessage = "The system detected that the requested content might be problematic and therefore this search was blocked. We recommend trying again with a different topic.";
             break;
         case "ar":
-            message = "فشل في استرجاع النشاط: النظام حظر البحث لأسباب تتعلق بالسلامة.";
+            message = "عذرًا، يبدو أن هذا الموضوع غير آمن. جرّب موضوعًا آخر!";
             activityMessage = "اكتشف النظام أن المحتوى المطلوب قد يكون إشكاليًا، لذا تم حظر هذا البحث. نوصي بمحاولة البحث مرة أخرى بموضوع آخر.";
             break;
         default:
@@ -53,6 +53,5 @@ export const handleGetActivityErrors = (
             message,
         };
     }
-    console.error("Failed to retrieve activity.", error);
     return { result: "error", message };
 };

@@ -4,6 +4,7 @@ import { useLanguage } from "../../i18n/useLanguage"
 import { useNotificationContext } from "../../context/NotificationContext"
 import { useAuthContext } from "../../context/AuthContext"
 import emailjs from "emailjs-com"
+import { logEvent } from "../../utils/logEvent";
 
 type Props = {
   onClose: () => void
@@ -45,14 +46,13 @@ function PopupContactUs({ onClose }: Props) {
         "ZWKebkgRROVgM8nEV"
       )
       notifySuccess(t("contactUs.form.successMessage"))
-      setFormData({
-        email: currentUser?.email || "",
-        name: "",
-        message: "",
-      })
+      setFormData({ email: currentUser?.email || "", name: "", message: "", })
       onClose()
+
     } catch (error) {
-      console.error("❌ Failed to send contact form:", error)
+      const userEmail = currentUser?.email || "guest";
+      logEvent(`[ContactUs]: "Failed to send contactUs mail:", error}`, userEmail);
+
     } finally {
       setIsLoading(false)
     }

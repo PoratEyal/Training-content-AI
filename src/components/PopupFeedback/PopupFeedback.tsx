@@ -63,7 +63,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
       const auth = getAuth();
       const user = auth.currentUser;
       const userEmail = user?.email || "guest";
-      logEvent(`[PopupFeedback]: Error sending feedback email: ${error?.toString?.() || "unknown error"}`, userEmail);
+      logEvent(`[PopupFeedback]: Error sending feedback: ${error?.toString?.() || "unknown error"}`, userEmail);
     }
     finally {
       setIsLoading(false);

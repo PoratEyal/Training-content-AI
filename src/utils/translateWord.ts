@@ -1,5 +1,6 @@
 import { httpsCallable } from "firebase/functions"
 import { functions } from "../config/firebase"
+import { logEvent } from "../utils/logEvent";
 
 export async function translateWord(
   text: string,
@@ -12,7 +13,7 @@ export async function translateWord(
 
     return (result.data as any)?.translatedText || null
   } catch (error) {
-    console.error("Translation failed:", error)
+    logEvent("[translateWords]: Translation failed: " + String(error), "guest");
     return null
   }
 }

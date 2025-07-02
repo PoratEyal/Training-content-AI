@@ -26,7 +26,6 @@ const updateIsMsg = functions.https.onCall(
                 message: "Successfully updated user's isSendMsg status.",
             };
         } catch (error) {
-            console.error("Error updating user's isSendMsg status: ", error);
             return {
                 result: "error",
                 message: "Failed to update user's isSendMsg status.",

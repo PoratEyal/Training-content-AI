@@ -14,7 +14,6 @@ const getQuestions4Practice = functions.https.onCall(
       );
       return { questions };
     } catch (error: any) {
-      console.error("❌ Failed to generate questions:", error);
       throw new functions.https.HttpsError("internal", "Failed to generate questions.");
     }
   }

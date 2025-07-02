@@ -16,6 +16,7 @@ import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
 import route from "../../../router/route.json";
 import styles from "./ContentActivities.module.css";
+import { logEvent } from "../../../utils/logEvent";
 
 
 const ContentActivities: React.FC = () => {
@@ -57,7 +58,7 @@ const ContentActivities: React.FC = () => {
     try {
       await fetchIncrementActivityDisplayCount(activity);
     } catch (error) {
-      console.error("Error incrementing activity display count:", error);
+      logEvent("[ContentActivities.incrementActivityDisplayCount]: Error incrementing activity display count: " + String(error), "guest");
     }
   };
 

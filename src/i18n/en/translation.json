@@ -42,12 +42,13 @@
     "lampAlt": "Yellow lamp"
   },
   "buildActivity": {
-    "createTitle": "Create Your Activity",
+    "createTitle": "Let's plan the activity",
     "category": {
       "label": "Category"
     },
     "subject": {
-      "label": "Subject"
+      "label": "Subject",
+      "limit": "Click on \"More options\" to add additional details about the activity."
     },
     "place": {
       "label": "Location"

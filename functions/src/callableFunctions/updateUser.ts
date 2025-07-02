@@ -31,7 +31,6 @@ const updateUser = functions.https.onCall(
                 user: { ...user, movement: user.movement },
             };
         } catch (error) {
-            console.error("Error updating user: ", error);
             return {
                 result: "error",
                 message: "Failed to update user.",
