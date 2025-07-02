@@ -9,7 +9,6 @@ import { useSaveContext } from "../../../context/SavedContext"
 import { useStaticContentContext } from "../../../context/StaticContentContext"
 import { ProductType } from "../../../context/ProductType"
 import { useLanguage } from "../../../i18n/useLanguage"
-import { GUEST_BLOCK_MustLogin } from "../../../models/constants/cookie"
 import { YOUTH_HOME_AD_SLOT } from "../../../models/constants/adsSlot"
 import { buildHomeSchema } from "../../../models/schemaOrg"
 import route from "../../../router/route.json"
@@ -39,11 +38,6 @@ function YouthHomePage() {
   const homeSchema = useMemo(() => buildHomeSchema(lang, t("home.slogan")), [lang, t])
   const youthDetailsPath = route[`youthDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthDetailsEn
 
-  // UI is blocked (Loader is displayed) when we are not logged-in but we need to be logged in according to cookie
-  const shouldBlockUI = useMemo(() => {
-    return !isLoggedIn && cookieLimit === GUEST_BLOCK_MustLogin;
-  }, [isLoggedIn, cookieLimit]);
-
   useEffect(() => {
     setCurrentPage(ProductPages.PAGE_YouthHome);
     sessionStorage.setItem("lastVisitedPage", ProductPages.PAGE_YouthHome);
@@ -57,7 +51,7 @@ function YouthHomePage() {
       hasHeader={{}}
       hasAds={YOUTH_HOME_AD_SLOT}
       index={true}
-      hasNavBar={!shouldBlockUI}
+      hasNavBar={!loading}
     >
       <script type="application/ld+json">{JSON.stringify(homeSchema)}</script>
 

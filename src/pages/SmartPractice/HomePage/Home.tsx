@@ -10,7 +10,6 @@ import { useCookiesContext } from "../../../context/CookiesContext";
 import { useLanguage } from "../../../i18n/useLanguage";
 import useSignIn from "../../../hooks/useSignIn";
 import { ProductType } from "../../../context/ProductType";
-import { GUEST_BLOCK_MustLogin } from "../../../models/constants/cookie";
 import { PRACTICE_AD_SLOT } from "../../../models/constants/adsSlot";
 import { buildHomeSchema } from "../../../models/schemaOrg";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
@@ -35,11 +34,6 @@ function PracticeHomePage() {
   const homeSchema = useMemo(() => buildHomeSchema(lang, t("home.slogan")), [lang, t])
   const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn
 
-  // UI is blocked (Loader is displayed) when we are not logged-in but we need to be logged in according to cookie
-  const shouldBlockUI = useMemo(() => {
-    return !isLoggedIn && cookieLimit === GUEST_BLOCK_MustLogin;
-  }, [isLoggedIn, cookieLimit]);
-  
   useEffect(() => {
     setCurrentPage(ProductPages.PAGE_PracticeHome);
     sessionStorage.setItem("lastVisitedPage", ProductPages.PAGE_PracticeHome);
@@ -52,7 +46,7 @@ function PracticeHomePage() {
       hasHeader={{}}
       hasAds={PRACTICE_AD_SLOT}
       index={true}
-      hasNavBar={!shouldBlockUI}
+      hasNavBar={!loading}
     >
       <script type="application/ld+json">
         {JSON.stringify(homeSchema)}

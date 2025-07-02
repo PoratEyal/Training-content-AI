@@ -2,6 +2,12 @@
  * Provides global authentication context using Firebase.
  * Tracks user login state, handles sign-in via redirect, 
  * initializes user data, and manages logout and "what's new" messages.
+ *
+ * Keep this for future limit key debug: 
+ *               const lastWeek = new Date()
+ *               lastWeek.setDate(lastWeek.getDate() - 7)
+ *               setLimitCookie(lastWeek.toString())
+ * 
  */
 import { useEffect, createContext, useState, useContext, useRef } from "react";
 import { onAuthStateChanged } from "firebase/auth";
