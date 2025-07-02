@@ -36,8 +36,10 @@ function PracticeHomePage() {
   const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn
 
   // UI is blocked (Loader is displayed) when we are not logged-in but we need to be logged in according to cookie
-  const shouldBlockUI = !isLoggedIn && cookieLimit === GUEST_BLOCK_MustLogin
-
+  const shouldBlockUI = useMemo(() => {
+    return !isLoggedIn && cookieLimit === GUEST_BLOCK_MustLogin;
+  }, [isLoggedIn, cookieLimit]);
+  
   useEffect(() => {
     setCurrentPage(ProductPages.PAGE_PracticeHome);
     sessionStorage.setItem("lastVisitedPage", ProductPages.PAGE_PracticeHome);

@@ -36,8 +36,9 @@ function WordsHomePage() {
   const wordsTopicPath = route[`wordsTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsTopicEn
 
   // UI is blocked (Loader is displayed) when we are not logged-in but we need to be logged in according to cookie
-  const shouldBlockUI = !isLoggedIn && cookieLimit === GUEST_BLOCK_MustLogin
-
+  const shouldBlockUI = useMemo(() => {
+    return !isLoggedIn && cookieLimit === GUEST_BLOCK_MustLogin;
+  }, [isLoggedIn, cookieLimit]);
 
   useEffect(() => {
     setCurrentPage(ProductPages.PAGE_WordsHome);
