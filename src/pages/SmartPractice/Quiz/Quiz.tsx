@@ -6,12 +6,14 @@ import styles from "./Quiz.module.css"
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
 import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz"
 import QuizContainer from "../../../components/SmartPractice/QuizContainer/QuizContainer"
-import { Icons } from "../../../components/Icons"
 import { ProductType } from "../../../context/ProductType"
 import { useContentContext } from "../../../context/ContentContext"
 import { enforcePageAccess } from "../../../utils/navigation"
 import { PRACTICE_AD_SLOT } from "../../../models/constants/adsSlot"
 import { ProductPages } from "../../../models/enum/pages"
+import { CircularProgressbarWithChildren, buildStyles } from "react-circular-progressbar"
+import "react-circular-progressbar/dist/styles.css"
+
 
 interface QuizItem {
   question: string
@@ -42,7 +44,6 @@ function Quiz() {
   const [questions, setQuestions] = useState<Question[]>([])
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>([])
   const [submitted, setSubmitted] = useState(false)
-  const [showScore, setShowScore] = useState(true)
   const [loading, setLoading] = useState(false)
 
   const topic = localStorage.getItem("practiceTopic") || ""
@@ -103,18 +104,6 @@ function Quiz() {
   }
   const letters = lettersMap[lang] || ['-', '-', '-', '-']
 
-  const getScoreImage = () => {
-    const score = Math.round((correctCount / questions.length) * 100);
-    let category = "";
-
-    if (score <= 55) category = "Fail";
-    else if (score <= 79) category = "Pass";
-    else category = "Success";
-
-    const random = Math.floor(Math.random() * 3) + 1;
-    return `/Practice/score${category}${random}.png`;
-  };
-
   return (
     <PageLayout
       id="practiceQuiz"
@@ -129,47 +118,26 @@ function Quiz() {
         <LoadingQuiz />
       ) : (
         <QuizContainer>
-          {submitted && showScore && (
-            <div className={styles.scoreOverlay}>
-              <div className={styles.scoreBoxContainer}>
-
-                <button
-                  onClick={() => setShowScore(false)}
-                  className={styles.scoreCloseBtn}
-                >
-                  <Icons.cancel className={styles.scoreCloseIcon} />
-                </button>
-
-                <div className={styles.scoreTitle}>
-                  {t("practice.quiz.score")}
-                  {" "}
+          {submitted && (
+            <div className={`${styles.scoreBox} ${styles.fadeIn}`}>
+              <div className={styles.scoreCircle} />
+              <CircularProgressbarWithChildren
+                value={correctCount}
+                maxValue={questions.length}
+                strokeWidth={12}
+                styles={buildStyles({
+                  pathColor: "#86e381",
+                  trailColor: "#e6e6e6",
+                  strokeLinecap: "round",
+                })}
+              >
+                <div className={styles.percentageText}>
                   {Math.round((correctCount / questions.length) * 100)}%
                 </div>
-
-                <div className={styles.scoreImageContainer}>
-                  <img
-                    src={getScoreImage()}
-                    alt="score result"
-                    className={styles.scoreImage}
-                  />
-                </div>
-
-
-                <div className={styles.retryBtnContainer}>
-                  <button
-                    onClick={() => {
-                      sessionStorage.removeItem("practiceQuiz")
-                      navigate(practiceTopicPath)
-                    }}
-                    className={styles.retryBtn}
-                  >
-                    {t("practice.quiz.newPractice")}
-                  </button>
-                </div>
-
-              </div>
+              </CircularProgressbarWithChildren>
             </div>
           )}
+
 
 
           {questions.map((q, qIdx) => (
@@ -206,6 +174,9 @@ function Quiz() {
               </ul>
             </div>
           ))}
+          <div style={{ height: "100px", textAlign: "center", paddingTop: "40px", color: "#888" }}>
+            🎉
+          </div>
 
           <div className={styles.checkBtnContainer}>
             <button
