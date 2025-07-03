@@ -175,7 +175,7 @@ function Quiz() {
             </div>
           ))}
           <div style={{ height: "100px", textAlign: "center", paddingTop: "40px", color: "#888" }}>
-            🎉
+            {" "}
           </div>
 
           <div className={styles.checkBtnContainer}>

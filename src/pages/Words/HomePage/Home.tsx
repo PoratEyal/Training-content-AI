@@ -14,7 +14,7 @@ import { WORDS_AD_SLOT } from "../../../models/constants/adsSlot";
 import { buildHomeSchema } from "../../../models/schemaOrg";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
-import StartBtn from "../../../components/StartBtn/StartBtn";
+import MainBtn from "../../../components/MainBtn/MainBtn"
 import AboutUsCollapse from "../../../components/AboutUsCollapse/AboutUsCollapse";
 import ContinueWithAI from "../../../components/titles/ContinueWithAI/ContinueWithAI";
 import { startAsGuestOrUser } from "../../../utils/startAsGuestOrUser";
@@ -65,9 +65,9 @@ function WordsHomePage() {
         </div>
       ) : (
         <section className={styles.button_section}>
-          <StartBtn
-            text={t("home.wordsStartAction")}
-            onClick={() =>
+          <MainBtn
+            text={t("home.practiceStartAction")}
+            func={() =>
               startAsGuestOrUser({
                 currentUser,
                 isLoggedIn,
@@ -78,6 +78,7 @@ function WordsHomePage() {
                 navigate,
               })
             }
+            height={48} 
             isDisabled={false}
           />
         </section>
