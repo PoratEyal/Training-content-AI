@@ -32,7 +32,7 @@ export const notification = (
         animationIn: ["animate__animated", "animate__fadeInUp"],
         animationOut: ["animate__animated", "animate__fadeOutDown"],
         dismiss: {
-            duration: options?.duration || 3500,
+            duration: options?.duration || 5000,
             onScreen: options?.onScreen ?? true
         }
     });

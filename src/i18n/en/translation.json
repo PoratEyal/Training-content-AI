@@ -118,11 +118,9 @@
     "quiz": {
       "FailMsg": "Failed to generate the practice. If the problem persists, please contact us via the 'Contact Us' menu.",
       "score": "Score:",
-      "newPractice": "New Practice",
+      "newPractice": "Try again?",
       "check": "Check",
-      "shareButton": "Who’s better? Share now!",
-      "LinkinClipboard": "Link copied – share it with your friends",
-      "shareMessage": "I created a quiz on \"{{topic}}\" – let's see if you can beat me!"
+      "LinkinClipboard": "Link copied – share it with your friends"
     }
   },
   "words": {
@@ -167,7 +165,7 @@
     },
     "quiz": {
       "pageTitle": "Time to practice",
-      "newPractice": "New Practice",
+      "newPractice": "Try again?",
       "donePractice": "Done for now",
       "speak": "Speak",
       "btnContinue": "Next",

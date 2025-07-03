@@ -118,11 +118,9 @@
     "quiz": {
       "FailMsg": "La creación de la práctica falló. Si el problema persiste, por favor contáctanos a través del menú 'Contáctanos'.",
       "score": "Nota:",
-      "newPractice": "Repetir",
+      "newPractice": "¿Otra vez?",
       "check": "Revisar",
-      "shareButton": "¡Compártelo y reta a tus amigos!",
-      "LinkinClipboard": "¡Enlace copiado! Compártelo con tus amigos!",
-      "shareMessage": "¡Creé un cuestionario sobre \"{{topic}}\" – veamos si puedes superarme!"
+      "LinkinClipboard": "¡Enlace copiado! Compártelo con tus amigos!"
     }
   },
   "words": {
@@ -167,7 +165,7 @@
     },
     "quiz": {
       "pageTitle": "¡Hora de practicar!",
-      "newPractice": "Nueva práctica",
+      "newPractice": "¿Otra vez?",
       "donePractice": "Terminé por ahora",
       "speak": "Di la palabra",
       "btnContinue": "Sig.",

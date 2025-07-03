@@ -23,7 +23,7 @@ export const NotificationContextProvider = ({ children }: { children: React.Reac
 
   const notifyError = (error: Error | string | undefined, options?: NotificationOptions) => {
     notification("", error?.toString().replace(/^Error:\s*/, ""), "danger", {
-      duration: 6000,
+      duration: 5000,
       onScreen: true,
       dir,
       ...options,
@@ -32,7 +32,7 @@ export const NotificationContextProvider = ({ children }: { children: React.Reac
 
   const notifyAlert = (message: string, options?: NotificationOptions) => {
     notification("", message, "info", {
-      duration: 6000,
+      duration: 5000,
       onScreen: true,
       dir,
       ...options,
@@ -41,7 +41,7 @@ export const NotificationContextProvider = ({ children }: { children: React.Reac
 
   const notifySuccess = (message: string, options?: NotificationOptions) => {
     notification("", message, "success", {
-      duration: 2500,
+      duration: 5000,
       onScreen: false,
       dir,
       ...options,

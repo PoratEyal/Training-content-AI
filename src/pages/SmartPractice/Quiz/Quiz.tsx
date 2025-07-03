@@ -9,12 +9,9 @@ import QuizContainer from "../../../components/SmartPractice/QuizContainer/QuizC
 import { Icons } from "../../../components/Icons"
 import { ProductType } from "../../../context/ProductType"
 import { useContentContext } from "../../../context/ContentContext"
-import { useShareTextOrLink } from "../../../utils/share"
 import { enforcePageAccess } from "../../../utils/navigation"
 import { PRACTICE_AD_SLOT } from "../../../models/constants/adsSlot"
 import { ProductPages } from "../../../models/enum/pages"
-import { WEBSITE_URL } from "../../../models/constants"
-
 
 interface QuizItem {
   question: string
@@ -45,6 +42,7 @@ function Quiz() {
   const [questions, setQuestions] = useState<Question[]>([])
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>([])
   const [submitted, setSubmitted] = useState(false)
+  const [showScore, setShowScore] = useState(true)
   const [loading, setLoading] = useState(false)
 
   const topic = localStorage.getItem("practiceTopic") || ""
@@ -93,16 +91,6 @@ function Quiz() {
 
   const handleSubmit = () => setSubmitted(true)
 
-  const share = useShareTextOrLink()
-  const handleShare = (topic: string) => {
-    share(
-      t,
-      t("common.practiceAppName"),
-      t("practice.quiz.shareMessage", { topic }),
-      `${WEBSITE_URL}/practice`
-    )
-  }
-
   const correctCount = questions.reduce((sum, q, idx) => {
     return sum + (userAnswers[idx] === q.correctIndex ? 1 : 0)
   }, 0)
@@ -114,6 +102,18 @@ function Quiz() {
     en: ['A', 'B', 'C', 'D']
   }
   const letters = lettersMap[lang] || ['-', '-', '-', '-']
+
+  const getScoreImage = () => {
+    const score = Math.round((correctCount / questions.length) * 100);
+    let category = "";
+
+    if (score <= 55) category = "Fail";
+    else if (score <= 79) category = "Pass";
+    else category = "Success";
+
+    const random = Math.floor(Math.random() * 3) + 1;
+    return `/Practice/score${category}${random}.png`;
+  };
 
   return (
     <PageLayout
@@ -129,40 +129,48 @@ function Quiz() {
         <LoadingQuiz />
       ) : (
         <QuizContainer>
-          {submitted && (
-            <>
-              <div
-                id="scoreBox"
-                className={`${styles.scoreStar} ${correctCount / questions.length < 0.5 ? styles.scoreRed : correctCount / questions.length < 0.7 ? styles.scoreYellow : styles.scoreGreen}`}
-                onClick={() => {
-                  const star = document.getElementById("scoreBox")
-                  const share = document.getElementById("shareBtn")
-                  if (star) star.style.visibility = "hidden"
-                  if (share) share.style.display = "none"
-                }}
-              >
-                <Icons.cancel className={styles.scoreCloseIcon} />
-                <div>{t("practice.quiz.score")} {Math.round((correctCount / questions.length) * 100)}%</div>
-              </div>
+          {submitted && showScore && (
+            <div className={styles.scoreOverlay}>
+              <div className={styles.scoreBoxContainer}>
 
-              <div className={styles.retryFabContainer}>
                 <button
-                  onClick={() => {
-                    sessionStorage.removeItem("practiceQuiz")
-                    navigate(practiceTopicPath)
-                  }}
-                  className={styles.retryFab}
+                  onClick={() => setShowScore(false)}
+                  className={styles.scoreCloseBtn}
                 >
-                  {t("practice.quiz.newPractice")}
+                  <Icons.cancel className={styles.scoreCloseIcon} />
                 </button>
-              </div>
 
-              <button id="shareBtn" onClick={() => handleShare(topic)} className={styles.shareBox}>
-                {t("practice.quiz.shareButton")}
-                <Icons.Share className={styles.shareIcon} />
-              </button>
-            </>
+                <div className={styles.scoreTitle}>
+                  {t("practice.quiz.score")}
+                  {" "}
+                  {Math.round((correctCount / questions.length) * 100)}%
+                </div>
+
+                <div className={styles.scoreImageContainer}>
+                  <img
+                    src={getScoreImage()}
+                    alt="score result"
+                    className={styles.scoreImage}
+                  />
+                </div>
+
+
+                <div className={styles.retryBtnContainer}>
+                  <button
+                    onClick={() => {
+                      sessionStorage.removeItem("practiceQuiz")
+                      navigate(practiceTopicPath)
+                    }}
+                    className={styles.retryBtn}
+                  >
+                    {t("practice.quiz.newPractice")}
+                  </button>
+                </div>
+
+              </div>
+            </div>
           )}
+
 
           {questions.map((q, qIdx) => (
             <div key={qIdx} className={styles.questionBlock}>
@@ -199,11 +207,23 @@ function Quiz() {
             </div>
           ))}
 
-          {!submitted && (
-            <div className={styles.checkBtnContainer}>
-              <button onClick={handleSubmit} className={styles.checkBtn}>{t("practice.quiz.check")}</button>
-            </div>
-          )}
+          <div className={styles.checkBtnContainer}>
+            <button
+              onClick={() => {
+                if (!submitted) {
+                  handleSubmit()
+                } else {
+                  sessionStorage.removeItem("practiceQuiz")
+                  navigate(practiceTopicPath)
+                }
+              }}
+              className={styles.checkBtn}
+            >
+              {submitted ? t("practice.quiz.newPractice") : t("practice.quiz.check")}
+            </button>
+          </div>
+
+
         </QuizContainer>
       )}
     </PageLayout>
