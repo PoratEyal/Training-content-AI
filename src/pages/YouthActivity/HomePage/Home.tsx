@@ -20,6 +20,7 @@ import styles from "./Home.module.css"
 import { useContentContext } from "../../../context/ContentContext"
 import { ProductPages } from "../../../models/enum/pages"
 import { useEffect } from "react"
+import { StorageKey } from "../../../models/enum/storage";
 
 
 function YouthHomePage() {
@@ -40,7 +41,7 @@ function YouthHomePage() {
 
   useEffect(() => {
     setCurrentPage(ProductPages.PAGE_YouthHome);
-    sessionStorage.setItem("lastVisitedPage", ProductPages.PAGE_YouthHome);
+    sessionStorage.setItem(StorageKey.LAST_PAGE, ProductPages.PAGE_YouthHome);
   }, []);
 
 

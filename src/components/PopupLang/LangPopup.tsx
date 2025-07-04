@@ -16,6 +16,7 @@ import { ProductType } from "../../context/ProductType"
 import { fetchUpdateUser } from "../../utils/fetch"
 import route from "../../router/route.json"
 import styles from "./LangPopup.module.css"
+import { StorageKey } from "../../models/enum/storage";
 
 type LangPopupProps = {
   handleClose: () => void
@@ -54,7 +55,7 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
     setLoadingLang(newLang)
     setIsLoading(true)
 
-    localStorage.setItem("i18nextLng", newLang)
+    localStorage.setItem(StorageKey.SITE_LANG, newLang)
 
     if (currentUser) {
       const updatedUser = {

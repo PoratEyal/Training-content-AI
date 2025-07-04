@@ -1,6 +1,15 @@
-export enum SessionKey {
-    /* NAVIGATE = "navigateTo", */ // this session key is never used anywhere else in the codebase
-    DATA = "data",
-    ACTIVITY = "activity",
-    GENERATE = "generate",
+export enum StorageKey {
+    LAST_PAGE = "lastVisitedPage",
+    SITE_LANG = "i18nextLng",
+
+    YOUTH_DETAILS = "youthDetails",
+    YOUTH_ACTIVITY = "youthActivity",
+
+    PRACTICE_TOPIC = "practiceTopic",
+    PRACTICE_QUIZ = "practiceQuiz",
+
+    WORDS_LANG = "wordsLang",
+    WORDS_TOPIC = "wordsTopic",
+    WORDS_MODE = "wordsMode",
+    WORDS_QUIZ = "wordsQuiz",
 }

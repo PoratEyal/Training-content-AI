@@ -15,6 +15,7 @@ import { logEvent } from "../../../utils/logEvent";
 import { ProductPages } from "../../../models/enum/pages";
 import { enforcePageAccess } from "../../../utils/navigation";
 import { useContentContext } from "../../../context/ContentContext";
+import { StorageKey } from "../../../models/enum/storage";
 
 type QuizItem = {
   question: string;
@@ -27,7 +28,7 @@ type QuizItem = {
 function Topic() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
-  const [topic, setTopic] = useState(() => localStorage.getItem("practiceTopic") || "");
+  const [topic, setTopic] = useState(() => localStorage.getItem(StorageKey.PRACTICE_TOPIC) || "");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { currentPage, setCurrentPage } = useContentContext();
@@ -46,7 +47,7 @@ function Topic() {
   }, []);
 
   useEffect(() => { // Save to LocalStorage
-    localStorage.setItem("practiceTopic", topic);
+    localStorage.setItem(StorageKey.PRACTICE_TOPIC, topic);
   }, [topic]);
 
   // Step 2: Clean raw Gemini JSON output
@@ -101,7 +102,7 @@ function Topic() {
       const final = removeDuplicateQ_A(parsed);
       setLoading(false);
 
-      sessionStorage.setItem("practiceQuiz", JSON.stringify(final));
+      sessionStorage.setItem(StorageKey.PRACTICE_QUIZ, JSON.stringify(final));
       navigate(practiceQuizPath);
 
     } catch (err) {

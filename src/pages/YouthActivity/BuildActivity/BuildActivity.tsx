@@ -22,7 +22,7 @@ import msg from "../../../models/resources/errorMsg.json";
 import { ActivityTimeOptions, CategoryOptions, ContestOptions, PlaceOptions, ReligionOptions, ToolsOptions } from "../../../models/resources/select";
 import { Activity } from "../../../models/types/activity";
 import { CategoryName } from "../../../models/types/movement";
-import { SessionKey } from "../../../models/enum/storage";
+import { StorageKey } from "../../../models/enum/storage";
 import Session from "../../../utils/sessionStorage";
 import { fetchGetActivity, fetchUpdateUser } from "../../../utils/fetch";
 import route from "../../../router/route.json";
@@ -86,7 +86,7 @@ function BuildActivity() {
     const setStateFromSession = () => {
       try {
         if (!subject || subject === "") {
-          const sessionActivity: Activity | undefined = Session.get(SessionKey.ACTIVITY);
+          const sessionActivity: Activity | undefined = Session.get(StorageKey.YOUTH_ACTIVITY);
           if (sessionActivity) {
             setCategory(sessionActivity.category);
             setSubject(sessionActivity.subject);

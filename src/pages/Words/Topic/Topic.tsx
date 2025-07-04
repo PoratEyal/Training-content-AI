@@ -15,6 +15,7 @@ import { enforcePageAccess } from "../../../utils/navigation";
 import { translateWord } from "../../../utils/translateWord";
 import { logEvent } from "../../../utils/logEvent";
 import { useContentContext } from "../../../context/ContentContext";
+import { StorageKey } from "../../../models/enum/storage";
 
 function Topic() {
 
@@ -44,15 +45,15 @@ function Topic() {
   ].filter(item => item.value !== lang);
 
   const [languageToLearn, setLanguageToLearn] = useState(() => {
-    const saved = localStorage.getItem("wordsLangToLearn") || "";
+    const saved = localStorage.getItem(StorageKey.WORDS_LANG) || "";
     const validValues = supportedLangs.map(l => l.value);
     return validValues.includes(saved) ? saved : "";
   });
   const [topicText, setTopicText] = useState(() =>
-    localStorage.getItem("wordsTopic") || ""
+    localStorage.getItem(StorageKey.WORDS_TOPIC) || ""
   );
   const [mode, setMode] = useState<"ai" | "manual">(() => {
-    const saved = localStorage.getItem("wordsMode");
+    const saved = localStorage.getItem(StorageKey.WORDS_MODE);
     return saved === "manual" ? "manual" : "ai";
   });
 
@@ -70,15 +71,15 @@ function Topic() {
   }, []);
 
   useEffect(() => { // Save to LocalStorage
-    localStorage.setItem("wordsLangToLearn", languageToLearn);
+    localStorage.setItem(StorageKey.WORDS_LANG, languageToLearn);
   }, [languageToLearn]);
 
   useEffect(() => { // Save to LocalStorage
-    localStorage.setItem("wordsTopic", topicText);
+    localStorage.setItem(StorageKey.WORDS_TOPIC, topicText);
   }, [topicText]);
 
   useEffect(() => { // Save to LocalStorage
-    localStorage.setItem("wordsMode", mode);
+    localStorage.setItem(StorageKey.WORDS_MODE, mode);
   }, [mode]);
 
 
@@ -189,8 +190,8 @@ function Topic() {
       if (topicText === "מעצר") { // Specific case
         const res = await fetch("/Words/army.json");
         const json = await res.json();
-        sessionStorage.setItem("generatedWordsQuiz", JSON.stringify(json));
-        sessionStorage.setItem("wordsQuizLang", "ar")
+        sessionStorage.setItem(StorageKey.WORDS_QUIZ, JSON.stringify(json));
+        localStorage.setItem(StorageKey.WORDS_LANG, "ar")
       }
 
       else if (mode === "ai") {
@@ -198,8 +199,8 @@ function Topic() {
         const jsonClean = cleanJSONResponse(generateWithAI);
         const jsonWithTranslation = await addTranslationsToWords(jsonClean, languageToLearn, lang);
         const jsonWithFixedDisctractors = fixDistractors(jsonWithTranslation, lang);
-        sessionStorage.setItem("generatedWordsQuiz", JSON.stringify(jsonWithFixedDisctractors));
-        sessionStorage.setItem("wordsQuizLang", languageToLearn)
+        sessionStorage.setItem(StorageKey.WORDS_QUIZ, JSON.stringify(jsonWithFixedDisctractors));
+        localStorage.setItem(StorageKey.WORDS_LANG, languageToLearn)
       }
 
       navigate(wordsQuizPath);

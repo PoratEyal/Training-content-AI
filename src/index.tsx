@@ -12,6 +12,7 @@ import { initI18n } from "./i18n/i18n"
 
 import { ProductContext } from "./context/ProductContext"
 import { ProductType } from "./context/ProductType"
+import { StorageKey } from "./models/enum/storage";
 
 // Detect current product from URL path
 const detectProductFromPath = (path: string): ProductType => {
@@ -25,9 +26,9 @@ const detectCountryAndInit = async () => {
   let detectedLang
 
   // detect language
-  const langFromLocalStorage = localStorage.getItem("i18nextLng")
-  if (langFromLocalStorage) {
-    detectedLang = langFromLocalStorage
+  const siteLang = localStorage.getItem(StorageKey.SITE_LANG)
+  if (siteLang) {
+    detectedLang = siteLang
   } else {
     try {
       const response = await fetch("https://ipapi.co/json/")

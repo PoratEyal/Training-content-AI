@@ -20,7 +20,7 @@ import ContinueWithAI from "../../../components/titles/ContinueWithAI/ContinueWi
 import { startAsGuestOrUser } from "../../../utils/startAsGuestOrUser";
 import { useContentContext } from "../../../context/ContentContext";
 import { ProductPages } from "../../../models/enum/pages";
-
+import { StorageKey } from "../../../models/enum/storage";
 
 function WordsHomePage() {
 
@@ -36,7 +36,7 @@ function WordsHomePage() {
 
   useEffect(() => {
     setCurrentPage(ProductPages.PAGE_WordsHome);
-    sessionStorage.setItem("lastVisitedPage", ProductPages.PAGE_WordsHome);
+    sessionStorage.setItem(StorageKey.LAST_PAGE, ProductPages.PAGE_WordsHome);
   }, []);
 
   return (

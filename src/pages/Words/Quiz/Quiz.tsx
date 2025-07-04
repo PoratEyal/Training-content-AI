@@ -12,6 +12,7 @@ import { enforcePageAccess } from "../../../utils/navigation"
 import { speakText } from "../../../utils/speak"
 import { WORDS_AD_SLOT } from "../../../models/constants/adsSlot"
 import { ProductPages } from "../../../models/enum/pages"
+import { StorageKey } from "../../../models/enum/storage";
 
 function shuffleArray<T>(arr: T[]): T[] {
   const a = [...arr]
@@ -53,7 +54,7 @@ function Quiz() {
   }, [])
 
   useEffect(() => {
-    const raw = sessionStorage.getItem("generatedWordsQuiz")
+    const raw = sessionStorage.getItem(StorageKey.WORDS_QUIZ)
     if (!raw) {
       navigate(wordsHomePagePath)
       return
@@ -156,7 +157,7 @@ function Quiz() {
     en: ["A", "B", "C", "D"]
   }[lang] || ["-", "-", "-", "-"]
 
-  const quizLang = sessionStorage.getItem("wordsQuizLang") || "en"
+  const quizLang = localStorage.getItem(StorageKey.WORDS_LANG) || "en"
 
   const progressPercent = fullCycle.length > 0 ? Math.round((correctCount / fullCycle.length) * 100) : 0
 

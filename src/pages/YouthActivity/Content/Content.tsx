@@ -20,6 +20,7 @@ import { buildContentSchema } from "../../../models/schemaOrg";
 import route from "../../../router/route.json";
 import { ProductPages } from "../../../models/enum/pages";
 import styles from "./Content.module.css";
+import { StorageKey } from "../../../models/enum/storage";
 
 
 function Content() {
@@ -38,7 +39,7 @@ function Content() {
 
   useEffect(() => {
     setCurrentPage(ProductPages.PAGE_YouthStaticContent);
-    sessionStorage.setItem("lastVisitedPage", ProductPages.PAGE_YouthStaticContent);
+    sessionStorage.setItem(StorageKey.LAST_PAGE, ProductPages.PAGE_YouthStaticContent);
   }, []);
 
   const contentSchema = useMemo(

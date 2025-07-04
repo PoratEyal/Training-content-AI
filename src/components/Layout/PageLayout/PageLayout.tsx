@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 import { getAuth } from "firebase/auth";
+import { StorageKey } from "../../../models/enum/storage";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { getContent, getTitle } from "../../../models/resources/helmet";
 import { WEBSITE_URL } from "../../../models/constants";
@@ -142,11 +143,11 @@ function PageLayout({
           const currentMinutes = new Date().getMinutes();
           const isEvenMinute = currentMinutes % 2 === 0;
 
-          if (productType === ProductType.Words && path.includes("/he/words/quiz")) {
+          if (path.includes("/he/words/quiz")) {
             banners = ["/Practice/practiceBanner5.png", "/Practice/practiceBanner6.png"];
             specialAd = true;
           }
-          else if (productType === ProductType.Youth && path.includes("/he/youth/activity")) {
+          else if (path.includes("/he/youth/activity")) {
             banners = ["/Practice/practiceBanner1.png", "/Practice/practiceBanner2.png", "/Practice/practiceBanner3.png", "/Practice/practiceBanner4.png"];
             specialAd = true;
           }
@@ -156,6 +157,14 @@ function PageLayout({
             const bannerImage = banners[randomIndex];
 
             const handleBannerClick = () => {
+              // pass the subject to Practice product
+              if (productType === ProductType.Youth) {
+                const rawData = sessionStorage.getItem(StorageKey.YOUTH_ACTIVITY);
+                if (rawData) {
+                  const activityObj = JSON.parse(rawData);
+                  localStorage.setItem(StorageKey.PRACTICE_TOPIC, activityObj.subject);
+                }
+              }
               const auth = getAuth();
               const user = auth.currentUser;
               const userEmail = user?.email || "";

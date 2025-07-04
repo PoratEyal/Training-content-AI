@@ -20,6 +20,7 @@ import ContinueWithAI from "../../../components/titles/ContinueWithAI/ContinueWi
 import { startAsGuestOrUser } from "../../../utils/startAsGuestOrUser";
 import { useContentContext } from "../../../context/ContentContext";
 import { ProductPages } from "../../../models/enum/pages";
+import { StorageKey } from "../../../models/enum/storage";
 
 
 function PracticeHomePage() {
@@ -36,7 +37,7 @@ function PracticeHomePage() {
 
   useEffect(() => {
     setCurrentPage(ProductPages.PAGE_PracticeHome);
-    sessionStorage.setItem("lastVisitedPage", ProductPages.PAGE_PracticeHome);
+    sessionStorage.setItem(StorageKey.LAST_PAGE, ProductPages.PAGE_PracticeHome);
   }, []);
 
   return (

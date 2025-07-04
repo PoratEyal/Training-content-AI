@@ -1,4 +1,4 @@
-import { SessionKey } from "../models/enum/storage";
+import { StorageKey } from "../models/enum/storage";
 import { Movements } from "../models/resources/movment";
 import { Lng } from "../models/types/common";
 import Session from "./sessionStorage";
@@ -10,7 +10,7 @@ export const addSessionData = (lang: Lng, movement: string, grade: string, amoun
     const movementObj = movementKey ? Movements[lang][movementKey] : null;
     if (!movementObj) {
         const data = { movement: null, grade, amount, gender };
-        Session.set(SessionKey.DATA, data);
+        Session.set(StorageKey.YOUTH_DETAILS, data);
         return data;
     }
     const data = {
@@ -19,6 +19,6 @@ export const addSessionData = (lang: Lng, movement: string, grade: string, amoun
         amount: amount,
         gender: gender,
     };
-    Session.set(SessionKey.DATA, data);
+    Session.set(StorageKey.YOUTH_DETAILS, data);
     return data;
 };

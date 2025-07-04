@@ -3,7 +3,7 @@ import Session from "../utils/sessionStorage";
 import { addSessionData } from "../utils/movment";
 import { Activity } from "../models/types/activity";
 import { Movements } from "../models/resources/movment";
-import { SessionKey } from "../models/enum/storage";
+import { StorageKey } from "../models/enum/storage";
 import { DataType } from "../models/types/common";
 import { useAuthContext } from "./AuthContext";
 import { useLanguage } from "../i18n/useLanguage";
@@ -48,13 +48,13 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
     const setStateFromSession = () => {
         try {
             if (data === undefined) {
-                const sessionData: DataType | undefined = Session.get(SessionKey.DATA);
+                const sessionData: DataType | undefined = Session.get(StorageKey.YOUTH_DETAILS);
                 if (sessionData) {
                     setData(sessionData);
                 }
             }
             if (mainActivity === undefined) {
-                const sessionActivity: Activity | undefined = Session.get(SessionKey.ACTIVITY);
+                const sessionActivity: Activity | undefined = Session.get(StorageKey.YOUTH_ACTIVITY);
                 if (sessionActivity) {
                     setMainActivity(sessionActivity);
                 }
@@ -78,7 +78,7 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
     const updateDetails = (movement: string, grade: string, amount: string, gender: string) => {
         setData((prevData) => {
             const data = addSessionData(lang, movement, grade, amount, gender);
-            Session.set(SessionKey.DATA, data);
+            Session.set(StorageKey.YOUTH_DETAILS, data);
             return data;
         });
     };
@@ -90,12 +90,12 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
 
     const clearMainActivity = () => {
         setMainActivity(undefined);
-        Session.remove(SessionKey.ACTIVITY);
+        Session.remove(StorageKey.YOUTH_ACTIVITY);
     };
 
     const updateMainActivity = (activity: Activity) => {
         setMainActivity(activity);
-        Session.set(SessionKey.ACTIVITY, activity);
+        Session.set(StorageKey.YOUTH_ACTIVITY, activity);
     };
 
     return (

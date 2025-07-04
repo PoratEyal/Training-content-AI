@@ -13,6 +13,7 @@ import { PRACTICE_AD_SLOT } from "../../../models/constants/adsSlot"
 import { ProductPages } from "../../../models/enum/pages"
 import { CircularProgressbarWithChildren, buildStyles } from "react-circular-progressbar"
 import "react-circular-progressbar/dist/styles.css"
+import { StorageKey } from "../../../models/enum/storage";
 
 
 interface QuizItem {
@@ -46,14 +47,14 @@ function Quiz() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const topic = localStorage.getItem("practiceTopic") || ""
+  const topic = localStorage.getItem(StorageKey.PRACTICE_TOPIC) || ""
 
   useEffect(() => {
     enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_PracticeQuiz, navigate, practiceHomePagePath)
   }, [])
 
   useEffect(() => {
-    const raw = sessionStorage.getItem("practiceQuiz")
+    const raw = sessionStorage.getItem(StorageKey.PRACTICE_QUIZ)
     if (!raw) {
       navigate(practiceHomePagePath)
       return
@@ -184,7 +185,7 @@ function Quiz() {
                 if (!submitted) {
                   handleSubmit()
                 } else {
-                  sessionStorage.removeItem("practiceQuiz")
+                  sessionStorage.removeItem(StorageKey.PRACTICE_QUIZ)
                   navigate(practiceTopicPath)
                 }
               }}
