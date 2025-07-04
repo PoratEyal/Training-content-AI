@@ -105,9 +105,9 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
               lang={lng === "ar" ? "ar" : undefined}
             >
               {{
-                he: "עברית",
                 en: "English",
                 es: "Español",
+                he: "עברית",
                 ar: "العربية",
               }[lng]}
               {loadingLang === lng ? (

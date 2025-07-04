@@ -8,404 +8,403 @@ type LanguageSection = {
 };
 
 export const helmetJson: Record<Lng, LanguageSection> = {
+
     he: {
         contactUs: {
-            title: "צור קשר",
-            content: "נשמח לשמוע מכם! אם יש לכם שאלה, הערה או בקשה – אנחנו כאן בשבילכם."
+            title: "ActivityWiz – צור קשר",
+            content: "נשמח לשמוע מכם! אם יש לכם שאלה, הערה או בקשה – אנחנו כאן בשבילכם.",
         },
         privacyPolicy: {
-            title: "תנאי שירות",
-            content: "קראו על מדיניות הפרטיות והשימוש שלנו באתר."
+            title: "ActivityWiz – מדיניות פרטיות",
+            content: "קראו על מדיניות הפרטיות ותנאי השימוש באתר שלנו.",
         },
 
         home: {
-            title: "פעולות לתנועות נוער",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+            title: "ActivityWiz – פעולות לתנועות נוער",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מד\"צים ועוד.",
         },
         details: {
-            title: "פעולות לתנועות נוער",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+            title: "ActivityWiz – פעולות לתנועות נוער",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מד\"צים ועוד.",
         },
         build: {
-            title: "פעולות לתנועות נוער",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+            title: "ActivityWiz – פעולות לתנועות נוער",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מד\"צים ועוד.",
         },
         activity: {
-            title: "פעולות לתנועות נוער",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+            title: "ActivityWiz – פעולות לתנועות נוער",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מד\"צים ועוד.",
         },
         content: {
-            title: "פעולות לתנועות נוער - פעולות מוכנות",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+            title: "ActivityWiz – פעולות מוכנות לתנועות נוער",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מד\"צים ועוד.",
         },
         contentActivities: {
-            title: "פעולות לתנועות נוער - פעולות מוכנות",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+            title: "ActivityWiz – פעולות מוכנות לתנועות נוער",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מד\"צים ועוד.",
         },
         contentActivity: {
-            title: "פעולות לתנועות נוער - פעולות מוכנות",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+            title: "ActivityWiz – פעולות מוכנות לתנועות נוער",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מד\"צים ועוד.",
         },
         myactivities: {
-            title: "פעולות לתנועות נוער - פעולות שמורות",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+            title: "ActivityWiz – פעולות לתנועות נוער",
+            content: "צפו ונהלו את הפעולות האישיות שלכם, כולל פעולות ששמרתם או יצרתם בעזרת AI.",
         },
         savedActivity: {
-            title: "פעולות לתנועות נוער - פעולות שמורות",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+            title: "ActivityWiz – פעולות לתנועות נוער",
+            content: "צפו בפעולות ששמרתם – מוכנות להפעלה או להמשך עריכה.",
         },
         popularActivities: {
-            title: "פעולות לתנועות נוער - פעולות פופולריות",
-            content: "הפעולות הפופולריות ביותר - גלו את 10 הפעולות המובילות לפעילות קבוצתית, חינוכית ומהנה בתנועות נוער ובקבוצות שונות",
+            title: "ActivityWiz – פעולות פופולריות בתנועות נוער",
+            content: "הכירו את הפעולות המובילות – חינוכיות, מהנות ומוכנות לשימוש מידי בקבוצות נוער.",
         },
         edit: {
-            title: "פעולות לתנועות נוער - עריכה",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+            title: "ActivityWiz – פעולות לתנועות נוער",
+            content: "ערכו פעולה קיימת או התאם אותה אישית לצרכים שלכם בעזרת כלים חכמים.",
         },
         youthFaq: {
-            title: "פעולות לתנועות נוער - שאלות נפוצות",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד",
+            title: "ActivityWiz – שאלות נפוצות - פעולות לתנועות נוער",
+            content: "תשובות לשאלות נפוצות על יצירה, שמירה ושיתוף של פעולות בתנועות נוער.",
         },
 
         practiceHome: {
-            title: "תרגול עצמי חכם",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "ActivityWiz – תרגול עצמי חכם",
+            content: "צרו תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
         },
         practiceTopic: {
-            title: "תרגול עצמי חכם",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "ActivityWiz – תרגול עצמי חכם",
+            content: "צרו תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
         },
         practiceQuiz: {
-            title: "תרגול עצמי חכם",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "ActivityWiz – תרגול עצמי חכם",
+            content: "צרו תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
         },
         practiceFaq: {
-            title: "תרגול עצמי חכם - שאלות נפוצות",
-            content: "צור תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחר",
+            title: "ActivityWiz – שאלות נפוצות - תרגול עצמי חכם",
+            content: "צרו תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
         },
 
         wordsHome: {
-            title: "לימוד ותרגול אוצר מילים",
-            content: "תרגלו רשימת מילים בין שפות ולמדו את הפירוש בקלות וביעילות. הכלי המושלם ללמידת שפה, שיפור אוצר המילים וחיזוק הזיכרון",
+            title: "ActivityWiz – לימוד ותרגול אוצר מילים",
+            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
         wordsTopic: {
-            title: "לימוד ותרגול אוצר מילים",
-            content: "תרגלו רשימת מילים בין שפות ולמדו את הפירוש בקלות וביעילות. הכלי המושלם ללמידת שפה, שיפור אוצר המילים וחיזוק הזיכרון",
+            title: "ActivityWiz – לימוד ותרגול אוצר מילים",
+            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
         wordsVocab: {
-            title: "לימוד ותרגול אוצר מילים",
-            content: "תרגלו רשימת מילים בין שפות ולמדו את הפירוש בקלות וביעילות. הכלי המושלם ללמידת שפה, שיפור אוצר המילים וחיזוק הזיכרון",
+            title: "ActivityWiz – לימוד ותרגול אוצר מילים",
+            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
         wordsQuiz: {
-            title: "לימוד ותרגול אוצר מילים",
-            content: "תרגלו רשימת מילים בין שפות ולמדו את הפירוש בקלות וביעילות. הכלי המושלם ללמידת שפה, שיפור אוצר המילים וחיזוק הזיכרון",
+            title: "ActivityWiz – לימוד ותרגול אוצר מילים",
+            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
         wordsFaq: {
-            title: "לימוד ותרגול אוצר מילים - שאלות נפוצות",
-            content: "תרגלו רשימת מילים בין שפות ולמדו את הפירוש בקלות וביעילות. הכלי המושלם ללמידת שפה, שיפור אוצר המילים וחיזוק הזיכרון",
+            title: "ActivityWiz – שאלות נפוצות - לימוד ותרגול אוצר מילים",
+            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
-
     } as LanguageSection,
+
 
     en: {
         contactUs: {
-            title: "Contact us",
-            content: "We’d love to hear from you! If you have a question, comment, or request – we’re here for you.",
+            title: "ActivityWiz - Contact us",
+            content: "Have a question or suggestion? We’d love to hear from you – just reach out!",
         },
         privacyPolicy: {
-            title: "Privacy & Policy",
+            title: "ActivityWiz - Privacy Policy",
             content: "Read about our website’s privacy and usage policy.",
         },
 
         home: {
-            title: "Youth Movement Activities",
-            content: "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
+            title: "ActivityWiz - Youth Movement Activities",
+            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
         },
         details: {
-            title: "Youth Movement Activities",
-            content: "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
+            title: "ActivityWiz - Youth Movement Activities",
+            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
         },
         build: {
-            title: "Youth Movement Activities",
-            content: "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
+            title: "ActivityWiz - Youth Movement Activities",
+            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
         },
         activity: {
-            title: "Youth Movement Activities",
-            content: "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
+            title: "ActivityWiz - Youth Movement Activities",
+            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
         },
         content: {
-            title: "Youth Movement Activities - content",
-            content: "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
+            title: "ActivityWiz - Youth Movement Activities",
+            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
         },
         contentActivities: {
-            title: "Youth Movement Activities - content activities",
-            content: "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
+            title: "ActivityWiz - Youth Movement Activities",
+            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
         },
         contentActivity: {
-            title: "Youth Movement Activities - content activity",
-            content: "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
+            title: "ActivityWiz - Youth Movement Activities",
+            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
         },
         myactivities: {
-            title: "Youth Movement Activities - my activities",
-            content: "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
+            title: "ActivityWiz - Youth Movement Activities",
+            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
         },
         savedActivity: {
-            title: "Youth Movement Activities - saved activity",
-            content: "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
+            title: "ActivityWiz - Youth Movement Activities",
+            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
         },
         popularActivities: {
-            title: "Youth Movement Activities - popular activities",
-            content: "Most Popular Activities – Discover 10 top-rated activities for education, fun, and group engagement in youth movements and organizations.",
+            title: "ActivityWiz - Youth Movement Activities",
+            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
         },
         edit: {
-            title: "Youth Movement Activities - edit",
-            content: "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
+            title: "ActivityWiz - Youth Movement Activities",
+            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
         },
         youthFaq: {
-            title: "Youth Movement Activities - FAQ",
-            content: "A wide range of activities for youth leaders, with the option to create personalized ones using AI. Perfect for Scouts, youth groups, leadership programs, and more.",
+            title: "ActivityWiz - Youth Movement Activities - FAQ",
+            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
         },
 
         practiceHome: {
-            title: "Smart Self Practice",
-            content: "Create personalized practice in seconds using AI – on any topic you choose",
+            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic with Smart AI",
+            content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
         practiceTopic: {
-            title: "Smart Self Practice",
-            content: "Create personalized practice in seconds using AI – on any topic you choose",
+            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic with Smart AI",
+            content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
         practiceQuiz: {
-            title: "Smart Self Practice",
-            content: "Create personalized practice in seconds using AI – on any topic you choose",
+            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic with Smart AI",
+            content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
         practiceFaq: {
-            title: "Smart Self Practice – Frequently Asked Questions",
-            content: "Create personalized practice in seconds using AI – on any topic you choose",
+            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic with Smart AI - FAQ",
+            content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
 
 
         wordsHome: {
-            title: "Vocabulary Learning and Practice",
-            content: "Practice a list of words between languages and learn their meaning easily and efficiently. The perfect tool for language learning, vocabulary improvement, and memory enhancement",
+            title: "ActivityWiz Words – Learn & Practice Vocabulary",
+            content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
         wordsTopic: {
-            title: "Vocabulary Learning and Practice",
-            content: "Practice a list of words between languages and learn their meaning easily and efficiently. The perfect tool for language learning, vocabulary improvement, and memory enhancement",
+            title: "ActivityWiz Words – Learn & Practice Vocabulary",
+            content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
         wordsVocab: {
-            title: "Vocabulary Learning and Practice",
-            content: "Practice a list of words between languages and learn their meaning easily and efficiently. The perfect tool for language learning, vocabulary improvement, and memory enhancement",
+            title: "ActivityWiz Words – Learn & Practice Vocabulary",
+            content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
         wordsQuiz: {
-            title: "Vocabulary Learning and Practice",
-            content: "Practice a list of words between languages and learn their meaning easily and efficiently. The perfect tool for language learning, vocabulary improvement, and memory enhancement",
+            title: "ActivityWiz Words – Learn & Practice Vocabulary",
+            content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
         wordsFaq: {
-            title: "Vocabulary Learning and Practice",
-            content: "Practice a list of words between languages and learn their meaning easily and efficiently. The perfect tool for language learning, vocabulary improvement, and memory enhancement",
+            title: "ActivityWiz Words – Learn & Practice Vocabulary FAQ",
+            content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
 
     } as LanguageSection,
 
     ar: {
         contactUs: {
-            title: "أنشطة حركات الشباب - اتصل بنا",
-            content: "يسعدنا سماعكم! إذا كانت لديكم أي أسئلة أو ملاحظات أو طلبات – نحن هنا من أجلكم."
+            title: "ActivityWiz - اتصل بنا",
+            content: "هل لديك سؤال أو اقتراح؟ يسعدنا سماعك – لا تتردد في التواصل معنا!",
         },
         privacyPolicy: {
-            title: "الخصوصية والسياسة",
-            content: "اطلع على سياسة الخصوصية والاستخدام الخاصة بموقعنا."
+            title: "ActivityWiz - سياسة الخصوصية",
+            content: "اطّلع على سياسة الخصوصية وشروط الاستخدام الخاصة بموقعنا.",
         },
 
         home: {
-            title: "أنشطة حركات الشباب",
-            content: "مجموعة واسعة من الأنشطة لقادة الشباب، مع إمكانية إنشاء أنشطة مخصصة باستخدام الذكاء الاصطناعي. مثالية للكشافة، مجموعات الشباب، برامج القيادة والمزيد."
+            title: "ActivityWiz - فعاليات لحركات الشباب",
+            content: "أنشئ أو استكشف فعاليات لحركات الشباب باستخدام الذكاء الاصطناعي. مثالي للكشافة، وبرامج القيادة، والمجموعات التعليمية.",
         },
         details: {
-            title: "أنشطة حركات الشباب",
-            content: "مجموعة واسعة من الأنشطة لقادة الشباب، مع إمكانية إنشاء أنشطة مخصصة باستخدام الذكاء الاصطناعي. مثالية للكشافة، مجموعات الشباب، برامج القيادة والمزيد."
+            title: "ActivityWiz - فعاليات لحركات الشباب",
+            content: "أنشئ أو استكشف فعاليات لحركات الشباب باستخدام الذكاء الاصطناعي. مثالي للكشافة، وبرامج القيادة، والمجموعات التعليمية.",
         },
         build: {
-            title: "أنشطة حركات الشباب",
-            content: "مجموعة واسعة من الأنشطة لقادة الشباب، مع إمكانية إنشاء أنشطة مخصصة باستخدام الذكاء الاصطناعي. مثالية للكشافة، مجموعات الشباب، برامج القيادة والمزيد."
+            title: "ActivityWiz - فعاليات لحركات الشباب",
+            content: "أنشئ أو استكشف فعاليات لحركات الشباب باستخدام الذكاء الاصطناعي. مثالي للكشافة، وبرامج القيادة، والمجموعات التعليمية.",
         },
         activity: {
-            title: "أنشطة حركات الشباب",
-            content: "مجموعة واسعة من الأنشطة لقادة الشباب، مع إمكانية إنشاء أنشطة مخصصة باستخدام الذكاء الاصطناعي. مثالية للكشافة، مجموعات الشباب، برامج القيادة والمزيد."
+            title: "ActivityWiz - فعاليات لحركات الشباب",
+            content: "أنشئ أو استكشف فعاليات لحركات الشباب باستخدام الذكاء الاصطناعي. مثالي للكشافة، وبرامج القيادة، والمجموعات التعليمية.",
         },
         content: {
-            title: "أنشطة حركات الشباب - المحتوى",
-            content: "مجموعة واسعة من الأنشطة لقادة الشباب، مع إمكانية إنشاء أنشطة مخصصة باستخدام الذكاء الاصطناعي. مثالية للكشافة، مجموعات الشباب، برامج القيادة والمزيد."
+            title: "ActivityWiz - فعاليات لحركات الشباب",
+            content: "أنشئ أو استكشف فعاليات لحركات الشباب باستخدام الذكاء الاصطناعي. مثالي للكشافة، وبرامج القيادة، والمجموعات التعليمية.",
         },
         contentActivities: {
-            title: "أنشطة حركات الشباب - أنشطة المحتوى",
-            content: "مجموعة واسعة من الأنشطة لقادة الشباب، مع إمكانية إنشاء أنشطة مخصصة باستخدام الذكاء الاصطناعي. مثالية للكشافة، مجموعات الشباب، برامج القيادة والمزيد."
+            title: "ActivityWiz - فعاليات لحركات الشباب",
+            content: "أنشئ أو استكشف فعاليات لحركات الشباب باستخدام الذكاء الاصطناعي. مثالي للكشافة، وبرامج القيادة، والمجموعات التعليمية.",
         },
         contentActivity: {
-            title: "أنشطة حركات الشباب - نشاط المحتوى",
-            content: "مجموعة واسعة من الأنشطة لقادة الشباب، مع إمكانية إنشاء أنشطة مخصصة باستخدام الذكاء الاصطناعي. مثالية للكشافة، مجموعات الشباب، برامج القيادة والمزيد."
+            title: "ActivityWiz - فعاليات لحركات الشباب",
+            content: "أنشئ أو استكشف فعاليات لحركات الشباب باستخدام الذكاء الاصطناعي. مثالي للكشافة، وبرامج القيادة، والمجموعات التعليمية.",
         },
         myactivities: {
-            title: "أنشطة حركات الشباب - أنشطتي",
-            content: "مجموعة واسعة من الأنشطة لقادة الشباب، مع إمكانية إنشاء أنشطة مخصصة باستخدام الذكاء الاصطناعي. مثالية للكشافة، مجموعات الشباب، برامج القيادة والمزيد."
+            title: "ActivityWiz - فعاليات لحركات الشباب",
+            content: "أنشئ أو استكشف فعاليات لحركات الشباب باستخدام الذكاء الاصطناعي. مثالي للكشافة، وبرامج القيادة، والمجموعات التعليمية.",
         },
         savedActivity: {
-            title: "أنشطة حركات الشباب - نشاط محفوظ",
-            content: "مجموعة واسعة من الأنشطة لقادة الشباب، مع إمكانية إنشاء أنشطة مخصصة باستخدام الذكاء الاصطناعي. مثالية للكشافة، مجموعات الشباب، برامج القيادة والمزيد."
+            title: "ActivityWiz - فعاليات لحركات الشباب",
+            content: "أنشئ أو استكشف فعاليات لحركات الشباب باستخدام الذكاء الاصطناعي. مثالي للكشافة، وبرامج القيادة، والمجموعات التعليمية.",
         },
         popularActivities: {
-            title: "أنشطة حركات الشباب - الأنشطة الشائعة",
-            content: "الأنشطة الأكثر شيوعًا – اكتشف أفضل 10 أنشطة للتعليم، المرح، والتفاعل الجماعي في حركات الشباب والمنظمات."
+            title: "ActivityWiz - فعاليات لحركات الشباب",
+            content: "اكتشف أكثر الفعاليات شعبية للمجموعات الشبابية – تعليمية، ممتعة، وجاهزة للاستخدام.",
         },
         edit: {
-            title: "أنشطة حركات الشباب - تعديل",
-            content: "مجموعة واسعة من الأنشطة لقادة الشباب، مع إمكانية إنشاء أنشطة مخصصة باستخدام الذكاء الاصطناعي. مثالية للكشافة، مجموعات الشباب، برامج القيادة والمزيد."
+            title: "ActivityWiz - فعاليات لحركات الشباب",
+            content: "أنشئ أو استكشف فعاليات لحركات الشباب باستخدام الذكاء الاصطناعي. مثالي للكشافة، وبرامج القيادة، والمجموعات التعليمية.",
         },
         youthFaq: {
-            title: "أنشطة حركات الشباب - أسئلة متكررة",
-            content: "مجموعة واسعة من الأنشطة لقادة الشباب، مع إمكانية إنشاء أنشطة مخصصة باستخدام الذكاء الاصطناعي. مثالية للكشافة، مجموعات الشباب، برامج القيادة والمزيد."
+            title: "ActivityWiz - فعاليات لحركات الشباب - الأسئلة الشائعة",
+            content: "أنشئ أو استكشف فعاليات لحركات الشباب باستخدام الذكاء الاصطناعي. مثالي للكشافة، وبرامج القيادة، والمجموعات التعليمية.",
         },
 
         practiceHome: {
-            title: "تمرين ذاتي ذكي",
-            content: "أنشئ تمرينًا مخصصًا في ثوانٍ باستخدام الذكاء الاصطناعي – في أي موضوع تختاره"
+            title: "ActivityWiz Practice – أنشئ وتدرّب على أي موضوع فورًا باستخدام الذكاء الاصطناعي",
+            content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
         practiceTopic: {
-            title: "تمرين ذاتي ذكي",
-            content: "أنشئ تمرينًا مخصصًا في ثوانٍ باستخدام الذكاء الاصطناعي – في أي موضوع تختاره"
+            title: "ActivityWiz Practice – أنشئ وتدرّب على أي موضوع فورًا باستخدام الذكاء الاصطناعي",
+            content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
         practiceQuiz: {
-            title: "تمرين ذاتي ذكي",
-            content: "أنشئ تمرينًا مخصصًا في ثوانٍ باستخدام الذكاء الاصطناعي – في أي موضوع تختاره"
+            title: "ActivityWiz Practice – أنشئ وتدرّب على أي موضوع فورًا باستخدام الذكاء الاصطناعي",
+            content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
         practiceFaq: {
-            title: "تمرين ذاتي ذكي - الأسئلة الشائعة",
-            content: "أنشئ تمرينًا مخصصًا في ثوانٍ باستخدام الذكاء الاصطناعي – في أي موضوع تختاره"
+            title: "ActivityWiz Practice – الأسئلة الشائعة",
+            content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
-
 
         wordsHome: {
-            title: "تعلم وممارسة المفردات",
-            content: "تدرّب على قائمة كلمات بين اللغات وتعلّم معانيها بسهولة وكفاءة. الأداة المثالية لتعلم اللغات، تحسين المفردات، وتعزيز الذاكرة.",        
+            title: "ActivityWiz Words – تعلّم ودرّب مفرداتك",
+            content: "درّب على قوائم كلمات بين لغات مختلفة وتعلّم معانيها بسهولة وفعالية. الأداة المثالية لتعلّم اللغات، تحسين المفردات، وتقوية الذاكرة.",
         },
         wordsTopic: {
-            title: "تعلم وممارسة المفردات",
-            content: "تدرّب على قائمة كلمات بين اللغات وتعلّم معانيها بسهولة وكفاءة. الأداة المثالية لتعلم اللغات، تحسين المفردات، وتعزيز الذاكرة.",        
+            title: "ActivityWiz Words – تعلّم ودرّب مفرداتك",
+            content: "درّب على قوائم كلمات بين لغات مختلفة وتعلّم معانيها بسهولة وفعالية. الأداة المثالية لتعلّم اللغات، تحسين المفردات، وتقوية الذاكرة.",
         },
         wordsVocab: {
-            title: "تعلم وممارسة المفردات",
-            content: "تدرّب على قائمة كلمات بين اللغات وتعلّم معانيها بسهولة وكفاءة. الأداة المثالية لتعلم اللغات، تحسين المفردات، وتعزيز الذاكرة.",
+            title: "ActivityWiz Words – تعلّم ودرّب مفرداتك",
+            content: "درّب على قوائم كلمات بين لغات مختلفة وتعلّم معانيها بسهولة وفعالية. الأداة المثالية لتعلّم اللغات، تحسين المفردات، وتقوية الذاكرة.",
         },
         wordsQuiz: {
-            title: "تعلم وممارسة المفردات",
-            content: "تدرّب على قائمة كلمات بين اللغات وتعلّم معانيها بسهولة وكفاءة. الأداة المثالية لتعلم اللغات، تحسين المفردات، وتعزيز الذاكرة.",
+            title: "ActivityWiz Words – تعلّم ودرّب مفرداتك",
+            content: "درّب على قوائم كلمات بين لغات مختلفة وتعلّم معانيها بسهولة وفعالية. الأداة المثالية لتعلّم اللغات، تحسين المفردات، وتقوية الذاكرة.",
         },
         wordsFaq: {
-            title: "تعلم وممارسة المفردات",
-            content: "تدرّب على قائمة كلمات بين اللغات وتعلّم معانيها بسهولة وكفاءة. الأداة المثالية لتعلم اللغات، تحسين المفردات، وتعزيز الذاكرة.",
+            title: "ActivityWiz Words – الأسئلة الشائعة حول المفردات",
+            content: "درّب على قوائم كلمات بين لغات مختلفة وتعلّم معانيها بسهولة وفعالية. الأداة المثالية لتعلّم اللغات، تحسين المفردات، وتقوية الذاكرة.",
         },
-
     } as LanguageSection,
+
 
     es: {
         contactUs: {
-            title: "Actividades para movimientos juveniles - contáctenos",
-            content: "¡Nos encantaría saber de ti! Si tienes una pregunta, comentario o solicitud, estamos aquí para ayudarte.",
+            title: "ActivityWiz - Contáctanos",
+            content: "¿Tienes una pregunta o sugerencia? ¡Nos encantaría saber de ti!",
         },
         privacyPolicy: {
-            title: "Privacidad y política",
-            content: "Lee sobre nuestra política de privacidad y uso del sitio.",
+            title: "ActivityWiz - Política de Privacidad",
+            content: "Lee sobre nuestra política de privacidad y uso del sitio web.",
         },
 
         home: {
-            title: "Actividades para movimientos juveniles",
-            content: "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+            title: "ActivityWiz - Actividades para Movimientos Juveniles",
+            content: "Crea o explora actividades para movimientos juveniles con IA. Ideal para Scouts, programas de liderazgo y grupos educativos.",
         },
         details: {
-            title: "Actividades para movimientos juveniles",
-            content: "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+            title: "ActivityWiz - Actividades para Movimientos Juveniles",
+            content: "Crea o explora actividades para movimientos juveniles con IA. Ideal para Scouts, programas de liderazgo y grupos educativos.",
         },
         build: {
-            title: "Actividades para movimientos juveniles",
-            content: "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+            title: "ActivityWiz - Actividades para Movimientos Juveniles",
+            content: "Crea o explora actividades para movimientos juveniles con IA. Ideal para Scouts, programas de liderazgo y grupos educativos.",
         },
         activity: {
-            title: "Actividades para movimientos juveniles",
-            content: "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+            title: "ActivityWiz - Actividades para Movimientos Juveniles",
+            content: "Crea o explora actividades para movimientos juveniles con IA. Ideal para Scouts, programas de liderazgo y grupos educativos.",
         },
         content: {
-            title: "Actividades para movimientos juveniles - contenido",
-            content: "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+            title: "ActivityWiz - Actividades para Movimientos Juveniles",
+            content: "Crea o explora actividades para movimientos juveniles con IA. Ideal para Scouts, programas de liderazgo y grupos educativos.",
         },
         contentActivities: {
-            title: "Actividades para movimientos juveniles - actividades de contenido",
-            content: "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+            title: "ActivityWiz - Actividades para Movimientos Juveniles",
+            content: "Crea o explora actividades para movimientos juveniles con IA. Ideal para Scouts, programas de liderazgo y grupos educativos.",
         },
         contentActivity: {
-            title: "Actividades para movimientos juveniles - actividad de contenido",
-            content: "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+            title: "ActivityWiz - Actividades para Movimientos Juveniles",
+            content: "Crea o explora actividades para movimientos juveniles con IA. Ideal para Scouts, programas de liderazgo y grupos educativos.",
         },
         myactivities: {
-            title: "Actividades para movimientos juveniles - mis actividades",
-            content: "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+            title: "ActivityWiz - Actividades para Movimientos Juveniles",
+            content: "Crea o explora actividades para movimientos juveniles con IA. Ideal para Scouts, programas de liderazgo y grupos educativos.",
         },
         savedActivity: {
-            title: "Actividades para movimientos juveniles - actividad guardada",
-            content: "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+            title: "ActivityWiz - Actividades para Movimientos Juveniles",
+            content: "Crea o explora actividades para movimientos juveniles con IA. Ideal para Scouts, programas de liderazgo y grupos educativos.",
         },
         popularActivities: {
-            title: "Actividades para movimientos juveniles - actividades populares",
-            content: "Actividades más populares: descubra las 10 actividades mejor valoradas para educación, diversión y participación grupal en movimientos juveniles y otras organizaciones.",
+            title: "ActivityWiz - Actividades para Movimientos Juveniles",
+            content: "Descubre las actividades más populares para grupos juveniles: educativas, divertidas y listas para usar.",
         },
         edit: {
-            title: "Actividades para movimientos juveniles - edición",
-            content: "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+            title: "ActivityWiz - Actividades para Movimientos Juveniles",
+            content: "Crea o explora actividades para movimientos juveniles con IA. Ideal para Scouts, programas de liderazgo y grupos educativos.",
         },
         youthFaq: {
-            title: "Actividades para movimientos juveniles - preguntas frecuentes",
-            content: "Una amplia gama de actividades para líderes juveniles, con la opción de crear actividades personalizadas utilizando IA. Perfecto para Scouts, grupos juveniles, programas de liderazgo y más.",
+            title: "ActivityWiz - Actividades para Movimientos Juveniles - Preguntas Frecuentes",
+            content: "Crea o explora actividades para movimientos juveniles con IA. Ideal para Scouts, programas de liderazgo y grupos educativos.",
         },
 
         practiceHome: {
-            title: "Práctica personal inteligente",
-            content: "Crea una práctica personalizada en segundos con la ayuda de inteligencia artificial – sobre cualquier tema que elijas"
+            title: "ActivityWiz Practice – Crea y Practica Cualquier Tema al Instante con IA Inteligente",
+            content: "Mejora tu aprendizaje con IA – crea y resuelve cuestionarios personalizados sobre cualquier tema en segundos.",
         },
         practiceTopic: {
-            title: "Práctica personal inteligente",
-            content: "Crea una práctica personalizada en segundos con la ayuda de inteligencia artificial – sobre cualquier tema que elijas"
+            title: "ActivityWiz Practice – Crea y Practica Cualquier Tema al Instante con IA Inteligente",
+            content: "Mejora tu aprendizaje con IA – crea y resuelve cuestionarios personalizados sobre cualquier tema en segundos.",
         },
         practiceQuiz: {
-            title: "Práctica personal inteligente",
-            content: "Crea una práctica personalizada en segundos con la ayuda de inteligencia artificial – sobre cualquier tema que elijas"
+            title: "ActivityWiz Practice – Crea y Practica Cualquier Tema al Instante con IA Inteligente",
+            content: "Mejora tu aprendizaje con IA – crea y resuelve cuestionarios personalizados sobre cualquier tema en segundos.",
         },
         practiceFaq: {
-            title: "Práctica personal inteligente - Preguntas frecuentes",
-            content: "Crea una práctica personalizada en segundos con la ayuda de inteligencia artificial – sobre cualquier tema que elijas"
+            title: "ActivityWiz Practice – Crea y Practica Cualquier Tema al Instante con IA Inteligente - Preguntas Frecuentes",
+            content: "Mejora tu aprendizaje con IA – crea y resuelve cuestionarios personalizados sobre cualquier tema en segundos.",
         },
 
-        
         wordsHome: {
-            title: "Aprendizaje y práctica de vocabulario",
-            content: "Practica una lista de palabras entre idiomas y aprende su significado de forma fácil y eficaz. La herramienta perfecta para aprender idiomas, mejorar el vocabulario y reforzar la memoria"
+            title: "ActivityWiz Words – Aprende y Practica Vocabulario",
+            content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
         },
         wordsTopic: {
-            title: "Aprendizaje y práctica de vocabulario",
-            content: "Practica una lista de palabras entre idiomas y aprende su significado de forma fácil y eficaz. La herramienta perfecta para aprender idiomas, mejorar el vocabulario y reforzar la memoria"
+            title: "ActivityWiz Words – Aprende y Practica Vocabulario",
+            content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
         },
         wordsVocab: {
-            title: "Aprendizaje y práctica de vocabulario",
-            content: "Practica una lista de palabras entre idiomas y aprende su significado de forma fácil y eficaz. La herramienta perfecta para aprender idiomas, mejorar el vocabulario y reforzar la memoria"
+            title: "ActivityWiz Words – Aprende y Practica Vocabulario",
+            content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
         },
         wordsQuiz: {
-            title: "Aprendizaje y práctica de vocabulario",
-            content: "Practica una lista de palabras entre idiomas y aprende su significado de forma fácil y eficaz. La herramienta perfecta para aprender idiomas, mejorar el vocabulario y reforzar la memoria"
+            title: "ActivityWiz Words – Aprende y Practica Vocabulario",
+            content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
         },
         wordsFaq: {
-            title: "Aprendizaje y práctica de vocabulario",
-            content: "Practica una lista de palabras entre idiomas y aprende su significado de forma fácil y eficaz. La herramienta perfecta para aprender idiomas, mejorar el vocabulario y reforzar la memoria"
+            title: "ActivityWiz Words – Aprende y Practica Vocabulario - Preguntas Frecuentes",
+            content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
         },
-
     } as LanguageSection,
+
 };
 
 
