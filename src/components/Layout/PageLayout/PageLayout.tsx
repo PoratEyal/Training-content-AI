@@ -79,6 +79,7 @@ function PageLayout({
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
+        <meta name="language" content={lang} />
 
         {/* Open Graph metadata */}
         <meta property="og:title" content={pageTitle} />
