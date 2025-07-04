@@ -119,7 +119,7 @@ function Quiz() {
       ) : (
         <QuizContainer>
           {submitted && (
-            <div className={`${styles.scoreBox} ${styles.fadeIn}`}>
+            <div className={`${styles.scoreBoxContainer} ${styles.fadeIn}`}>
               <div className={styles.scoreCircle} />
               <CircularProgressbarWithChildren
                 value={correctCount}

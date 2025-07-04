@@ -109,7 +109,7 @@
     "topic": {
       "title": "Elijamos un tema",
       "topicPlaceholder": "Ingresa un tema",
-      "examples": "Ejemplos: Fracciones simples, química para la selectividad, inglés de quinto grado, teoría de conducción, trivia musical...",
+      "examples": "Por ejemplo: fracciones básicas, cuestionario de música, química para la secundaria, trivia general, teoría de conducción...",
       "btnCreate": "¡Vamos!",
       "btnCreating": "Creando práctica",
       "error": "Ocurrió un error al generar las preguntas. Intenta nuevamente.",

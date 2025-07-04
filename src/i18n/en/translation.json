@@ -109,7 +109,7 @@
     "topic": {
       "title": "Let's pick a topic",
       "topicPlaceholder": "Enter a topic",
-      "examples": "Examples: Simple fractions, chemistry for final exams, 5th grade English, driving theory, music trivia...",
+      "examples": "For example: basic fractions, music quiz, chemistry for matriculation, general trivia, driving theory...",
       "btnCreate": "Let’s go",
       "btnCreating": "Creating Practice",
       "error": "An error occurred while generating the questions. Please try again.",
