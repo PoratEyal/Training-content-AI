@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
-import { getAuth } from "firebase/auth";
 import { StorageKey } from "../../../models/enum/storage";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { getContent, getTitle } from "../../../models/resources/helmet";
@@ -9,6 +8,7 @@ import { WEBSITE_URL } from "../../../models/constants";
 import { HelmetPage } from "../../../models/types/common";
 import { ProductType } from "../../../context/ProductType";
 import { logEvent } from "../../../utils/logEvent";
+import { useShareTextOrLink } from "../../../utils/share"
 import Header from "../Header/Header";
 import YouthNavigationBar from "../NavigationBar/YouthNavigationBar";
 import PracticeNavigationBar from "../NavigationBar/PracticeNavigationBar";
@@ -16,6 +16,7 @@ import WordsNavigationBar from "../NavigationBar/WordsNavigationBar";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
 import AdsBig from "../../ads/AdsBig/AdsBig";
 import styles from "./PageLayout.module.css";
+import { Icons } from "../../Icons";
 
 type PageLayoutProps = {
   id: HelmetPage;
@@ -46,8 +47,9 @@ function PageLayout({
   index = true,
   title = "",
 }: PageLayoutProps) {
-  const { lang, dir } = useLanguage();
+  const { t, lang, dir } = useLanguage();
   const location = useLocation();
+  const share = useShareTextOrLink()
 
   // Force canonical to /[lang]/youth for language root pages (/en, /he, etc.) to avoid duplication
   // in the future if we will have a general homepage we will be able to remove it and just leave:
@@ -124,6 +126,7 @@ function PageLayout({
         }}
       >
 
+        {/* Header Area */}
         {hasHeader ? (
           <Header
             goBack={hasHeader.goBack}
@@ -132,58 +135,70 @@ function PageLayout({
           />
         ) : null}
 
+        {/* Main Page */}
         {children}
 
+        {/* Ads Area */}
         {hasAds !== "" ? (() => {
 
-          // Our internal Ads
-          const path = location.pathname;
-          let specialAd = false;
-          let banners: string[] = [];
-          const currentMinutes = new Date().getMinutes();
-          const isEvenMinute = currentMinutes % 2 === 0;
+          // Use case 1: Instructor is in the Practice product and wants to share a direct Practice link (with topic) to their group
+          if (productType === ProductType.Practice && localStorage.getItem(StorageKey.USER_TYPE) === "instructor") {
 
-          if (path.includes("/he/words/quiz")) {
-            banners = ["/Practice/practiceBanner5.png", "/Practice/practiceBanner6.png"];
-            specialAd = true;
-          }
-          else if (path.includes("/he/youth/activity")) {
-            banners = ["/Practice/practiceBanner1.png", "/Practice/practiceBanner2.png", "/Practice/practiceBanner3.png", "/Practice/practiceBanner4.png"];
-            specialAd = true;
+            const topic = localStorage.getItem(StorageKey.PRACTICE_TOPIC);
+            if (topic) {
+              const handleBannerClick = () => {
+                logEvent("practiceShare Banner Clicked", "");
+
+                const encodedTopic = encodeURIComponent(topic);
+
+                const shareText = t("articleOptions.share.practiceShareMessageInstructor")
+                const shareTitle = t("common.practiceAppName")
+                let shareUrl = `https://activitywiz.com/he/practice?topic=${encodedTopic}`
+                share(t, shareTitle, shareText, shareUrl)
+
+              };
+
+              return (
+                <div className={styles.customAdSlot} onClick={handleBannerClick} style={{ cursor: "pointer" }}>
+                  <div className={styles.bannerWithIcon}>
+                    <Icons.Share size={22} />
+                    <span>{t("articleOptions.share.practiceShareBannerText")}</span>
+                  </div>
+                </div>
+              );
+            }
+            return null;
           }
 
-          if (specialAd && isEvenMinute) {
+          // Use case 2: User in Youth Product + special case for instructor
+          else if (location.pathname.includes("/he/youth/activity")) {
+
+            const banners = ["/Practice/practiceBanner1.png", "/Practice/practiceBanner2.png", "/Practice/practiceBanner3.png", "/Practice/practiceBanner4.png"];
             const randomIndex = Math.floor(Math.random() * banners.length);
             const bannerImage = banners[randomIndex];
 
             const handleBannerClick = () => {
+
+              logEvent(bannerImage, "");
+
               // pass the subject to Practice product
-              if (productType === ProductType.Youth) {
-                const rawData = sessionStorage.getItem(StorageKey.YOUTH_ACTIVITY);
-                if (rawData) {
-                  const activityObj = JSON.parse(rawData);
-                  localStorage.setItem(StorageKey.PRACTICE_TOPIC, activityObj.subject);
-                }
+              const rawData = sessionStorage.getItem(StorageKey.YOUTH_ACTIVITY);
+              if (rawData) {
+                const activityObj = JSON.parse(rawData);
+                localStorage.setItem(StorageKey.PRACTICE_TOPIC, activityObj.subject);
+                localStorage.setItem(StorageKey.USER_TYPE, "instructor"); // Assumption: If the user is in the YOUTH product, they are acting as an instructor
               }
-              const auth = getAuth();
-              const user = auth.currentUser;
-              const userEmail = user?.email || "";
-              logEvent(bannerImage, userEmail);
+
+              window.open("https://activitywiz.com/he/practice", "_blank");
             };
 
             return (
-              <div className={styles.customAdSlot}>
-                <a
-                  href="https://activitywiz.com/practice"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={handleBannerClick}
-                >
-                  <img src={bannerImage} alt="ActivityWiz Practice" className={styles.customAdImage} />
-                </a>
+              <div className={styles.customAdSlot} onClick={handleBannerClick} style={{ cursor: "pointer" }}>
+                <img src={bannerImage} alt="ActivityWiz Practice" className={styles.customAdImage} />
               </div>
             );
           }
+
           else
             // Google Ads
             return <AdsSmall slot={hasAds} />;
@@ -191,6 +206,7 @@ function PageLayout({
         })() : null}
 
 
+        {/* Navigation Area */}
         {hasNavBar ? (
           productType === ProductType.Practice ? (
             <PracticeNavigationBar />
@@ -200,7 +216,7 @@ function PageLayout({
             <WordsNavigationBar />
           ) : null
         ) : null}
-      </section>
+      </section >
     </>
   );
 }

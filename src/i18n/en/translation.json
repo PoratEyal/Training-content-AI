@@ -215,6 +215,8 @@
       "createdBy": "Created with:",
       "youthShareMessage": "I found a website that builds activities with AI – worth trying!",
       "practiceShareMessage": "I found a website that helps you practice any topic with AI – worth trying!",
+      "practiceShareMessageInstructor": "You can play a short trivia game here based on the activity we did – give it a try and enjoy 🎯",
+      "practiceShareBannerText": "Share a practice on the activity topic with your group",
       "wordsShareMessage": "I found a great website for simple and easy vocabulary practice in any language – highly recommended!",
       "shared2Clipboard": "Text copied – share it in any app.",
       "shareError": "Failed to copy text – try again."

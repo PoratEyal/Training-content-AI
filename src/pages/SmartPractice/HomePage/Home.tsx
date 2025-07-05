@@ -2,7 +2,7 @@
 // Home page
 //
 import { useMemo, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import route from "../../../router/route.json";
 import styles from "./Home.module.css";
 import { useAuthContext } from "../../../context/AuthContext";
@@ -22,12 +22,12 @@ import { useContentContext } from "../../../context/ContentContext";
 import { ProductPages } from "../../../models/enum/pages";
 import { StorageKey } from "../../../models/enum/storage";
 
-
 function PracticeHomePage() {
 
   const { t, dir, lang } = useLanguage()
   const { cookieLimit, setLimitCookie } = useCookiesContext()
   const navigate = useNavigate()
+  const location = useLocation();
   const { currentUser, isLoggedIn, loading } = useAuthContext();
   const { signInWithGoogle } = useSignIn()
   const { setCurrentPage } = useContentContext()
@@ -35,10 +35,20 @@ function PracticeHomePage() {
   const homeSchema = useMemo(() => buildHomeSchema(lang, t("home.slogan")), [lang, t])
   const topicPath = route[`practiceTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.practiceTopicEn
 
+
   useEffect(() => {
     setCurrentPage(ProductPages.PAGE_PracticeHome);
     sessionStorage.setItem(StorageKey.LAST_PAGE, ProductPages.PAGE_PracticeHome);
   }, []);
+
+  useEffect(() => { // When somebody gets a URL with topic parameter
+    const searchParams = new URLSearchParams(location.search);
+    const topic = searchParams.get("topic");
+    if (topic) {
+      localStorage.setItem(StorageKey.PRACTICE_TOPIC, decodeURIComponent(topic));
+    }
+  }, [location.search]);
+
 
   return (
     <PageLayout
