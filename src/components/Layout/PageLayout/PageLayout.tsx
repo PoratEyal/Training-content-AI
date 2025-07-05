@@ -154,8 +154,8 @@ function PageLayout({
                 const shareTitle = t("common.practiceAppName")
                 let shareUrl = `https://activitywiz.com/he/practice?topic=${encodedTopic}`
                 const prettyUrl = "https://activitywiz.com/practice"
-                const shareText = `${t("articleOptions.share.practiceShareMessageInstructor")}\n\n${prettyUrl}`
-                share(t, shareTitle, shareText, shareUrl)
+                const shareText = `${t("articleOptions.share.practiceShareMessageInstructor")}\n\n${topic}\n${prettyUrl}`;
+                share(t, shareTitle, shareText)
 
               };
 
