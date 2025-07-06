@@ -6,7 +6,6 @@
 import "../../../components/ActivityOutput/Markdown.css";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import { getAuth } from "firebase/auth";
 import route from "../../../router/route.json";
 import styles from "./ContentActivity.module.css";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
@@ -62,10 +61,7 @@ function ContentActivity() {
       const response = await fetchGetStaticActivity({ contentName: contentId });
       setActivity(response.activity);
     } catch (error) {
-      const auth = getAuth();
-      const user = auth.currentUser;
-      const userEmail = user?.email || "guest";
-      logEvent(`[ContentActivity]: contentId=${contentId}, activityId=${activityId}, ${error?.toString?.() || "unknown error"}`, userEmail);
+      logEvent(`[LowPriority][ContentActivity.fetchActivity]: contentId=${contentId}, activityId=${activityId}, "URL not exist"}`, "");
     }
     finally {
       setIsActivityLoading(false);

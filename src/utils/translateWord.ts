@@ -13,7 +13,7 @@ export async function translateWord(
 
     return (result.data as any)?.translatedText || null
   } catch (error) {
-    logEvent("[translateWords]: Translation failed: " + String(error), "guest");
+    logEvent("[translateWords]: Translation failed: " + String(error), "");
     return null
   }
 }

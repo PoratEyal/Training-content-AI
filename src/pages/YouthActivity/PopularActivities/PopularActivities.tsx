@@ -50,7 +50,7 @@ function PopularActivities() {
     try {
       await fetchIncrementActivityDisplayCount(activity);
     } catch (error) {
-      logEvent("[PopularActivities.handleActivityClick]: Error incrementing activity display count: " + String(error), "guest");
+      logEvent("[PopularActivities.handleActivityClick]: Error incrementing activity display count: " + String(error), "");
     }
   };
 

@@ -110,7 +110,7 @@ function Topic() {
       return translated;
 
     } catch (err) {
-      logEvent("[Words.Topic]: Failed to process generated words: " + String(err), "guest");
+      logEvent("[Words.Topic]: Failed to process generated words: " + String(err), "");
       return [];
     }
   }
@@ -206,7 +206,7 @@ function Topic() {
       navigate(wordsQuizPath);
 
     } catch (err) {
-      logEvent("[Words.Topic.handleSubmit]: Error creating quiz: " + String(err), "guest");
+      logEvent("[Words.Topic.handleSubmit]: Error creating quiz: " + String(err), "");
 
     } finally {
       setLoading(false);

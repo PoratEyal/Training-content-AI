@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 initializeUser(user);
             else {
                 if (document.referrer?.includes("accounts.google")) {           // Those 2 line are redundent but left as legacy 2be on the safe side
-                    logEvent("[AuthContext.useEffect]: It’s highly unlikely that this block is ever reached.", "guest");
+                    logEvent("[AuthContext.useEffect]: It’s highly unlikely that this block is ever reached.", "");
                     setRedirectFailed(true);
                 }
                 setLoading(false);

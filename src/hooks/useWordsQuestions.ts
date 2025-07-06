@@ -14,7 +14,7 @@ export const createWordsQuiz = async (
     const { questions } = response.data as { questions: string };
     return questions;
   } catch (error) {
-    logEvent("[useWordsQuestions]: getWords4Practice error: " + String(error), "guest");
+    logEvent("[useWordsQuestions]: getWords4Practice error: " + String(error), "");
     return ""; // Failed to create a quiz
   }
 };

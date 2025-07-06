@@ -58,7 +58,7 @@ const ContentActivities: React.FC = () => {
     try {
       await fetchIncrementActivityDisplayCount(activity);
     } catch (error) {
-      logEvent("[ContentActivities.incrementActivityDisplayCount]: Error incrementing activity display count: " + String(error), "guest");
+      logEvent("[ContentActivities.incrementActivityDisplayCount]: Error incrementing activity count: " + String(error), "");
     }
   };
 
