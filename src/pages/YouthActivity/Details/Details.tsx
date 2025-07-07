@@ -83,7 +83,7 @@ function Details() {
           alt={t("details.lampAlt")}
           src="/Youth/lamp.svg"
           loading="lazy"
-          width={105}
+          width={95}
           height={109}
         />
 

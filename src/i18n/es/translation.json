@@ -19,8 +19,8 @@
     "youthStartAction": "Crear Actividad",
     "practiceStartAction": "Vamos allá",
     "wordsStartAction": "Vamos allá",
-    "advanced": "Avanzado",
-    "youthForActions": "Actividades",
+    "advanced": "Actividades",
+    "youthForActions": "avanzadas",
     "practiceForActions": "Practicar",
     "wordsForActions": "Vocabulario",
     "withPrefix": "con",
@@ -42,7 +42,7 @@
     "lampAlt": "Lámpara amarilla"
   },
   "buildActivity": {
-    "createTitle": "Vamos a planear la actividad",
+    "createTitle": "VA planear la actividad",
     "category": {
       "label": "Categoría"
     },
