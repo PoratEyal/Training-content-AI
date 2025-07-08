@@ -174,9 +174,11 @@ function PageLayout({
           // Use case 2: User in Youth Product + special case for instructor
           else if (location.pathname.includes("/he/youth/activity")) {
 
-            const banners = ["/Practice/practiceBanner1.png", "/Practice/practiceBanner2.png", "/Practice/practiceBanner3.png", "/Practice/practiceBanner4.png"];
-            const randomIndex = Math.floor(Math.random() * banners.length);
-            const bannerImage = banners[randomIndex];
+            //const banners = ["/Practice/practiceBanner1.png", "/Practice/practiceBanner2.png", "/Practice/practiceBanner3.png", "/Practice/practiceBanner4.png"];
+            //const randomIndex = Math.floor(Math.random() * banners.length);
+            //const bannerImage = banners[randomIndex];
+
+            const bannerImage = "/Practice/practiceBanner4.png";
 
             const handleBannerClick = () => {
 

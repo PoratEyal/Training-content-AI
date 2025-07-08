@@ -48,7 +48,7 @@ const useSignIn = () => {
                 lastWeek.setDate(lastWeek.getDate() - 7)
                 setLimitCookie(lastWeek.toString())
             }
-            logEvent(`[LowPriority][useSignIn.tsx.signInWithGoogle]: Exit login: ${error?.toString?.() || ""}`, "guest");
+            //logEvent(`[LowPriority][useSignIn.tsx.signInWithGoogle]: Exit login: ${error?.toString?.() || ""}`, "guest");
 
         } finally {
             navigate(homePagePath);
