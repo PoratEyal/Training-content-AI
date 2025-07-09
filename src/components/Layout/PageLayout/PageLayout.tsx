@@ -147,12 +147,11 @@ function PageLayout({
             const topic = localStorage.getItem(StorageKey.PRACTICE_TOPIC);
             if (topic) {
               const handleBannerClick = () => {
-                logEvent("practiceShare Banner Clicked", "");
+                logEvent("Practice Share Banner Clicked", "");
 
                 const encodedTopic = encodeURIComponent(topic);
 
                 const shareTitle = t("common.practiceAppName")
-                let shareUrl = `https://activitywiz.com/he/practice?topic=${encodedTopic}`
                 const prettyUrl = "https://activitywiz.com/practice"
                 const shareText = `${t("articleOptions.share.practiceShareMessageInstructor")}\n\n${topic}\n${prettyUrl}`;
                 share(t, shareTitle, shareText)
@@ -182,7 +181,7 @@ function PageLayout({
 
             const handleBannerClick = () => {
 
-              logEvent(bannerImage, "");
+              logEvent("Practice Banner Clicked", "");
 
               // pass the subject to Practice product
               const rawData = sessionStorage.getItem(StorageKey.YOUTH_ACTIVITY);

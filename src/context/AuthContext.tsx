@@ -12,7 +12,7 @@
 import { useEffect, createContext, useState, useContext, useRef } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../config/firebase";
-import { fetchCreateNewUser, fetchGetMsg } from "../utils/fetch";
+import { fetchCreateNewUser } from "../utils/fetch";
 import { fetchUpdateLastLogin } from "../utils/fetch";
 import { addSessionData } from "../utils/movment";
 import { initRawUser } from "../utils/user";
@@ -57,16 +57,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [redirectFailed, setRedirectFailed] = useState<boolean>(false);
     const { lang } = useLanguage();
 
-    useEffect(() => {                                                           // Logged-in status in Firebase
-        const unsubscribe = onAuthStateChanged(auth, (user) => {                // "Unsubscribe" = common Firebase name to stop listening to it
+    useEffect(() => {                                                   // Logged-in status in Firebase
+        const unsubscribe = onAuthStateChanged(auth, (user) => {        // "Unsubscribe" = common Firebase name to stop listening to it
 
             if (user)
                 initializeUser(user);
             else {
-                if (document.referrer?.includes("accounts.google")) {           // Those 2 line are redundent but left as legacy 2be on the safe side
-                    logEvent("[AuthContext.useEffect]: It’s highly unlikely that this block is ever reached.", "");
-                    setRedirectFailed(true);
-                }
+                //if (document.referrer?.includes("accounts.google")) {   // Those 2 line are redundent but left as legacy 2be on the safe side
+                //    logEvent("[AuthContext.useEffect]: It’s highly unlikely that this block is ever reached.", "");
+                //    setRedirectFailed(true);
+                //}
                 setLoading(false);
             }
         });
@@ -101,13 +101,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                     }
                     setCurrentUser(resultUser);
 
-                    //await checkIfNeedToSendMsg(resultUser);   // WhatsNew Message - Currently unused
-
                     setIsLoggedIn(true);
 
                     if (cookieLimit !== GUEST_BLOCK_MustLogin)
                         setLimitCookie(GUEST_BLOCK_MustLogin);
 
+                    logEvent("Login: ", resultUser?.email);
                     fetchUpdateLastLogin().catch((e) => {       // Keep "lastLogin" in DB
                         logEvent("[AuthContext.initializeUser]: Failed to update lastLogin in DB: " + e, resultUser?.email);
                     });
@@ -127,19 +126,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const blockRef = useRef<boolean>(true);
-
-    /*
-    const checkIfNeedToSendMsg = async (user: User) => {    // WhatsNew Message - Currently unused
-        if (user.isSendMsg && blockRef.current) {
-            const result = await fetchGetMsg(lang);
-            if (result.result === "success" && result.msg) {
-                const localizedMsg = lang === "en" ? result.msg.textEn : result.msg.textHe;
-                setWhatsNewMsg(localizedMsg);
-                blockRef.current = false;
-            }
-        }
-    };
-    */
 
     const setIsSendMsg = () => {                            // WhatsNew Message - Currently unused
         setCurrentUser((prev) => {
