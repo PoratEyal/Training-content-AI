@@ -187,7 +187,7 @@ function Topic() {
 
     try {
 
-      if (topicText === "מעצר") { // Specific case
+      if (topicText === "מעצר" || topicText === "0200") { // Specific case
         const res = await fetch("/Words/army.json");
         const json = await res.json();
         sessionStorage.setItem(StorageKey.WORDS_QUIZ, JSON.stringify(json));
