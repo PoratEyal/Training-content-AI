@@ -3,49 +3,12 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
    <url>
-      <loc>https://activitywiz.com/he</loc>
-      <xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he" />
-      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en" />
-      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es" />
-      <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar" />
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en" />
-      <priority>1.0</priority>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/en</loc>
-      <xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he" />
-      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en" />
-      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es" />
-      <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar" />
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en" />
-      <priority>1.0</priority>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/es</loc>
-      <xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he" />
-      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en" />
-      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es" />
-      <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar" />
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en" />
-      <priority>1.0</priority>
-   </url>
-   <url>
-      <loc>https://activitywiz.com/ar</loc>
-      <xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he" />
-      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en" />
-      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es" />
-      <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar" />
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en" />
-      <priority>1.0</priority>
-   </url>
-
-   <url>
       <loc>https://activitywiz.com/he/youth</loc>
       <xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/youth" />
       <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/youth" />
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/youth" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/youth" />
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/youth" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/he/youth" />
       <priority>1.0</priority>
    </url>
    <url>
@@ -84,7 +47,7 @@
       <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/youth/faq" />
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/youth/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/youth/faq" />
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/youth/faq" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/he/youth/faq" />
       <priority>0.8</priority>
    </url>
    <url>
@@ -124,6 +87,7 @@
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/he/youth/content" />
       <priority>0.8</priority>
    </url>
+   
    <url><loc>https://activitywiz.com/he/youth/content/popular</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/youth/content/popular" /></url>
    <url><loc>https://activitywiz.com/he/youth/content/games</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/youth/content/games" /></url>
    <url><loc>https://activitywiz.com/he/youth/content/holidays</loc><xhtml:link rel="alternate" hreflang="he" href="https://activitywiz.com/he/youth/content/holidays" /></url>
