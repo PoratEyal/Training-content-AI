@@ -137,8 +137,10 @@ function BuildActivity() {
     } catch (error) {
       notifyAlert(msg[lang].error.message);
       setClicked(false);
-      const userEmail = currentUser?.email || "guest";
-      logEvent(`[Build.submitHandler.fetchGetActivity]: ${msg[lang].error.message}`, userEmail);
+      logEvent(
+        `[BuildActivity.submitHandler]: ${msg[lang].error.message} | raw error: ${error instanceof Error ? error.message : JSON.stringify(error)}`,
+        currentUser?.email
+      );
     }
   };
 

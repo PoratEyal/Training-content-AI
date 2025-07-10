@@ -109,9 +109,8 @@ function Topic() {
       setLoading(false);
       const auth = getAuth();
       const user = auth.currentUser;
-      const userEmail = user?.email || "guest";
       notifyAlert(t("practice.topic.error"));
-      logEvent(`[Practice.Topic]: createQuiz failed, topic: ${topic}`, userEmail);
+      logEvent(`[Practice.Topic]: createQuiz failed, topic: ${topic}`, user?.email);
     }
   };
 

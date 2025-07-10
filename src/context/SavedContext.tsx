@@ -35,7 +35,6 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
     const [savedActivity, setSavedActivity] = useState<Activity[]>();
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const { lang } = useLanguage();
-    const userEmail = currentUser?.email || "guest";
 
     const getSavedActivities = async () => {
         if (currentUser && currentUser.id) {
@@ -52,7 +51,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                 }
             } catch (error) {
                 notifyAlert(msg[lang].notSaved.message);
-                logEvent(`[SavedContext.getSavedActivities]: ${error}`, userEmail);
+                logEvent(`[SavedContext.getSavedActivities]: ${error}`, currentUser?.email);
             } finally {
                 setIsLoading(false);
             }
@@ -70,7 +69,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                     activityId: activityIdToDelete,
                 } as RemoveActivityRequest);
             } catch (error) {
-                logEvent(`[SavedContext.deleteActivity]: ${activityIdToDelete}`, userEmail);
+                logEvent(`[SavedContext.deleteActivity]: ${activityIdToDelete}`, currentUser?.email);
             }
         }
     };

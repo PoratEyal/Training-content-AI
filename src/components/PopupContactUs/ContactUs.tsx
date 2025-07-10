@@ -50,8 +50,7 @@ function PopupContactUs({ onClose }: Props) {
       onClose()
 
     } catch (error) {
-      const userEmail = currentUser?.email || "guest";
-      logEvent(`[ContactUs]: "Failed to send contactUs mail:", error}`, userEmail);
+      logEvent(`[ContactUs]: "Failed to send contactUs mail:", error}`, currentUser?.email);
 
     } finally {
       setIsLoading(false)
