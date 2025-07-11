@@ -62,6 +62,7 @@ function Topic() {
 
   // Step 3: Remove duplicates and normalize structure
   function removeDuplicateQ_A(items: any[]): QuizItem[] {
+
     const seenQuestions = new Set<string>();
     const normalize = (s: string) => s?.trim?.().toLowerCase?.();
 
@@ -141,7 +142,7 @@ function Topic() {
 
           <div className={styles.button_wrapper}>
             <MainBtn
-              text={loading ? t("practice.topic.btnCreating") : t("practice.topic.btnCreate")}
+              text={t("practice.topic.btnCreate")}
               isDisabled={!topic.trim() || loading}
               type="submit"
               height={42}

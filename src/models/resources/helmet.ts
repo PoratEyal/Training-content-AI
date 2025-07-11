@@ -70,39 +70,39 @@ export const helmetJson: Record<Lng, LanguageSection> = {
 
         practiceHome: {
             title: "תרגול עצמי חכם – ActivityWiz",
-            content: "צרו תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
+            content: "צרו תרגול מאתגר ומותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
         },
         practiceTopic: {
             title: "תרגול עצמי חכם – ActivityWiz",
-            content: "צרו תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
+            content: "צרו תרגול מאתגר ומותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
         },
         practiceQuiz: {
             title: "תרגול עצמי חכם – ActivityWiz",
-            content: "צרו תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
+            content: "צרו תרגול מאתגר ומותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
         },
         practiceFaq: {
             title: "תרגול עצמי חכם - שאלות נפוצות – ActivityWiz",
-            content: "צרו תרגול מותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
+            content: "צרו תרגול מאתגר ומותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
         },
 
         wordsHome: {
-            title: "לימוד ותרגול אוצר מילים – ActivityWiz",
+            title: "תרגול אוצר מילים – ActivityWiz",
             content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
         wordsTopic: {
-            title: "לימוד ותרגול אוצר מילים – ActivityWiz",
+            title: "תרגול אוצר מילים – ActivityWiz",
             content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
         wordsVocab: {
-            title: "לימוד ותרגול אוצר מילים – ActivityWiz",
+            title: "תרגול אוצר מילים – ActivityWiz",
             content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
         wordsQuiz: {
-            title: "לימוד ותרגול אוצר מילים – ActivityWiz",
+            title: "תרגול אוצר מילים – ActivityWiz",
             content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
         wordsFaq: {
-            title: "לימוד ותרגול אוצר מילים - שאלות נפוצות – ActivityWiz",
+            title: "תרגול אוצר מילים - שאלות נפוצות – ActivityWiz",
             content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
     } as LanguageSection,
@@ -186,23 +186,23 @@ export const helmetJson: Record<Lng, LanguageSection> = {
 
 
         wordsHome: {
-            title: "ActivityWiz Words – Learn & Practice Vocabulary",
+            title: "ActivityWiz Words – Practice Vocabulary",
             content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
         wordsTopic: {
-            title: "ActivityWiz Words – Learn & Practice Vocabulary",
+            title: "ActivityWiz Words – Practice Vocabulary",
             content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
         wordsVocab: {
-            title: "ActivityWiz Words – Learn & Practice Vocabulary",
+            title: "ActivityWiz Words – Practice Vocabulary",
             content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
         wordsQuiz: {
-            title: "ActivityWiz Words – Learn & Practice Vocabulary",
+            title: "ActivityWiz Words – Practice Vocabulary",
             content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
         wordsFaq: {
-            title: "ActivityWiz Words – Learn & Practice Vocabulary FAQ",
+            title: "ActivityWiz Words – Practice Vocabulary FAQ",
             content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
 
@@ -268,19 +268,19 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
 
         practiceHome: {
-            title: "ActivityWiz Practice – أنشئ وتدرّب على أي موضوع فورًا باستخدام الذكاء الاصطناعي",
+            title: "ActivityWiz Practice – أنشئ تحديًا فوريًا بأي موضوع بالذكاء الاصطناعي",
             content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
         practiceTopic: {
-            title: "ActivityWiz Practice – أنشئ وتدرّب على أي موضوع فورًا باستخدام الذكاء الاصطناعي",
+            title: "ActivityWiz Practice – أنشئ تحديًا فوريًا بأي موضوع بالذكاء الاصطناعي",
             content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
         practiceQuiz: {
-            title: "ActivityWiz Practice – أنشئ وتدرّب على أي موضوع فورًا باستخدام الذكاء الاصطناعي",
+            title: "ActivityWiz Practice – أنشئ تحديًا فوريًا بأي موضوع بالذكاء الاصطناعي",
             content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
         practiceFaq: {
-            title: "ActivityWiz Practice – الأسئلة الشائعة",
+            title: "ActivityWiz Practice – أنشئ تحديًا فوريًا بأي موضوع بالذكاء الاصطناعي",
             content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
 
@@ -384,23 +384,23 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
 
         wordsHome: {
-            title: "ActivityWiz Words – Aprende y Practica Vocabulario",
+            title: "ActivityWiz Words – Practica Vocabulario",
             content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
         },
         wordsTopic: {
-            title: "ActivityWiz Words – Aprende y Practica Vocabulario",
+            title: "ActivityWiz Words – Practica Vocabulario",
             content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
         },
         wordsVocab: {
-            title: "ActivityWiz Words – Aprende y Practica Vocabulario",
+            title: "ActivityWiz Words – Practica Vocabulario",
             content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
         },
         wordsQuiz: {
-            title: "ActivityWiz Words – Aprende y Practica Vocabulario",
+            title: "ActivityWiz Words – Practica Vocabulario",
             content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
         },
         wordsFaq: {
-            title: "ActivityWiz Words – Aprende y Practica Vocabulario - Preguntas Frecuentes",
+            title: "ActivityWiz Words – Practica Vocabulario - Preguntas Frecuentes",
             content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
         },
     } as LanguageSection,

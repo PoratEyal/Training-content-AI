@@ -109,7 +109,7 @@ function WordsVocab() {
 
           <div className={styles.button_wrapper}>
             <MainBtn
-              text={loading ? t("words.vocab.btnCreating") : t("words.vocab.btnCreate")}
+              text={t("words.vocab.btnCreate")}
               isDisabled={!originalText.trim() || loading}
               type="submit"
               height={42}

@@ -21,7 +21,7 @@
     "wordsStartAction": "Vamos allá",
     "advanced": "Actividades",
     "youthForActions": "avanzadas",
-    "practiceForActions": "Practicar",
+    "practiceForActions": "Desafío",
     "wordsForActions": "Vocabulario",
     "withPrefix": "con",
     "ai": "IA"
@@ -109,10 +109,9 @@
     "topic": {
       "title": "Elijamos un tema",
       "topicPlaceholder": "Ingresa un tema",
-      "examples": "Por ejemplo: fracciones básicas, cuestionario de música, química para la secundaria, trivia general, teoría de conducción...",
+      "examples": "Ejemplos: Quiz de música, química para el examen de bachillerato, trivia general, Japón en el siglo XVIII...",
       "btnCreate": "¡Vamos!",
-      "btnCreating": "Creando práctica",
-      "error": "Ocurrió un error al generar las preguntas. Intenta nuevamente.",
+      "error": "Se produjo un inconveniente temporal al generar las preguntas. Por favor, inténtalo de nuevo.",
       "topicError": "Lo siento, no puedo generar preguntas sobre el tema que seleccionaste. Por favor, intenta con otro tema."
     },
     "quiz": {
@@ -158,7 +157,6 @@
       "instructions": "Lista de práctica",
       "listNotification": "No hay palabras para practicar",
       "btnCreate": "Empezar",
-      "btnCreating": "Creando práctica",
       "noSupportMsg": "Por ahora, solo se admiten prácticas predefinidas",
       "loadListError": "Ocurrió un error al cargar el archivo de palabras. Intenta de nuevo.",
       "generalError": "Ocurrió un error al crear las preguntas. Intenta de nuevo."
@@ -216,7 +214,7 @@
       "youthShareMessage": "Encontré un sitio que crea actividades con IA. ¡Vale la pena probarlo!",
       "practiceShareMessage": "Encontré un sitio que te ayuda a practicar cualquier tema con IA. ¡Vale la pena intentarlo!",
       "practiceShareMessageInstructor": "Pueden jugar aquí una trivia corta sobre la actividad que hicimos – ¡pruébenla y disfruten! 🎯",
-      "practiceShareBannerText": "Haz clic para compartir un ejercicio sobre el tema de la actividad",
+      "practiceShareBannerText": "Haz clic aquí para invitar a tu grupo a una actividad",
       "wordsShareMessage": "Encontré un sitio genial para practicar vocabulario de forma fácil y sencilla en cualquier idioma. ¡Muy recomendable!",
       "shared2Clipboard": "Texto copiado. Compártelo en cualquier app.",
       "shareError": "Error al copiar el texto. Intenta de nuevo."

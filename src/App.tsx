@@ -76,19 +76,15 @@ function App() {
       <Router>
         <LanguageRedirect />
         <Routes>
+          {/* Redirect /he, /en, /es, /ar to their respective /youth pages */}
+          {langs.map(lang => (
+            <Route key={`redirect-${lang}`} path={`/${lang}`} element={<Navigate to={`/${lang}/youth`} replace />} />
+          ))}
+
           {allRoutes.map(({ key, element }) =>
             langs.map(lang => {                                               // example: lang = "he"
               const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)    // example: langKey = "He"
               const basePath = route[`${key}${langKey}`]                      // example: route["youthHomePageHe"]
-
-              // Special case for youthHomePage: support both /he and /he/youth
-              if (key === "youthHomePage") {
-                return [
-                  <Route key={`${key}${lang}-base`} path={`/${lang}`} element={element} />,
-                  <Route key={`${key}${lang}-alt`} path={`/${lang}/youth`} element={element} />
-                ]
-              }
-
               return <Route key={`${key}${lang}`} path={basePath} element={element} />
             })
           )}
