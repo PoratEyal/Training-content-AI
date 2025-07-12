@@ -1,5 +1,4 @@
 import * as functions from "firebase-functions";
-import * as admin from "firebase-admin";
 import { CreateNewUserResponse } from "../model/types/response";
 import { CreateNewUserRequest } from "../model/types/request";
 import { CollectionDB } from "../model/enum/DB";
@@ -14,8 +13,6 @@ const createNewUser = functions.https.onCall(
         try {
             if (context.auth) {
                 const userId = context.auth.uid;
-                await admin.auth().setCustomUserClaims(context.auth.uid, { canEditUsers: true });
-
                 const userDoc = await db.collection(CollectionDB.USERS).doc(userId).get();
                 const userData = userDoc.data();
                 if (userDoc.exists && userData) {

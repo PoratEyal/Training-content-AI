@@ -8,14 +8,10 @@ import { db } from "../index";
 import { NOT_REGISTERED } from "../model/constants";
 
 const getAllActivities = functions.https.onCall(
-    async (
-        _: GetAllActivitiesRequest,
-        context: functions.https.CallableContext,
-    ): Promise<getAllActivitiesResponse> => {
+    async (_: GetAllActivitiesRequest, context: functions.https.CallableContext): Promise<getAllActivitiesResponse> => {
         if (!context.auth || context.auth.uid !== defineString("ADMIN").value()) {
             return { result: "error", message: "User is not authenticated." };
         }
-        await admin.auth().setCustomUserClaims(context.auth.uid, { canEditUsers: true });
 
         try {
             let query: admin.firestore.Query = db.collection(CollectionDB.ACTIVITY);
@@ -27,14 +23,16 @@ const getAllActivities = functions.https.onCall(
                 delete ac.activity;
                 return ac;
             });
-            if (data) {
-                return { result: "success", activities: data };
-            }
-            return { result: "success", message: "No activities." };
+
+            return data.length
+                ? { result: "success", activities: data }
+                : { result: "success", message: "No activities." };
+
         } catch (error) {
-            return { result: "error", message: "Something want wrong." };
+            return { result: "error", message: "Failed to load activities" };
         }
-    },
+    }
 );
+
 
 export default getAllActivities;

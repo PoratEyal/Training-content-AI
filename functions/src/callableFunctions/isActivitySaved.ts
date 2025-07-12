@@ -1,5 +1,5 @@
+// Looks like this function is never used
 import * as functions from "firebase-functions";
-import * as admin from "firebase-admin";
 import { CollectionDB } from "../model/enum/DB";
 import { db } from "../index";
 import { IsActivitySavedRequest } from "../model/types/request";
@@ -13,8 +13,6 @@ const isActivitySaved = functions.https.onCall(
         if (!context.auth) {
             return { result: "error", exists: false, message: "User is not authenticated." };
         }
-        await admin.auth().setCustomUserClaims(context.auth.uid, { canEditUsers: true });
-
         try {
             const { activityId, userId } = data;
 
