@@ -128,19 +128,18 @@ function BuildActivity() {
       const response = await fetchGetActivity({
         category: category as CategoryName, movement: movement.name, ...detailsData, subject, time, place, religion, contest, tools, info, lang,
       });
-      if (
-        (response.result === "success" || response.result === "safety") && response.activity
-      ) {
+      if (response.result === "success" && response.activity) {
         updateMainActivity({ ...response.activity });
         navigate(youthActivityAIPath);
+      } else {
+        notifyAlert(msg[lang].error.message);
+        setClicked(false);
+        logEvent(`[BuildActivity]: ${msg[lang].error.message} | serverMessage: ${response.message}`, currentUser?.email);
       }
     } catch (error) {
       notifyAlert(msg[lang].error.message);
       setClicked(false);
-      logEvent(
-        `[BuildActivity.submitHandler]: ${msg[lang].error.message} | raw error: ${error instanceof Error ? error.message : JSON.stringify(error)}`,
-        currentUser?.email
-      );
+      logEvent(`[BuildActivity.catch]: ${msg[lang].error.message} | ${error instanceof Error ? error.message : JSON.stringify(error)}`, currentUser?.email);
     }
   };
 
