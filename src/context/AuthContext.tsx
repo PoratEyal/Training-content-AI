@@ -82,6 +82,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     // initialize User Data, keep current User Data
     //
     const initializeUser = async (user: any) => {
+
         try {
             if (user && (user as GoogleUser)?.uid) {
 
@@ -89,8 +90,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 const rawUser = initRawUser(user);
                 const response = await fetchCreateNewUser({ rawUser }, lang);
 
-                if (response.user) {
+                if (response.result === "success" && response.user) {
                     resultUser = response.user;
+                } else {
+                    logEvent("[initializeUser]: unexpected result", JSON.stringify(response));
                 }
 
                 if (resultUser) {
