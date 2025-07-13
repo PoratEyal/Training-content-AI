@@ -18,8 +18,8 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 16px 24px;
-    color: #6A8BA7;
+    padding: 17px 24px;
+    color: #ca1f1fbd;
     border-radius: 12px;
     font-size: 1rem;
     font-weight: 500;
@@ -39,6 +39,7 @@
     text-align: center;
     z-index: 997;
     background-color: var(--background-color);
+    border-top: 1px solid #e0e0e05e;
 }
 
 .customAdImage {

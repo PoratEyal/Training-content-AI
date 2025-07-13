@@ -1,7 +1,7 @@
 /**
  * Provides global authentication context using Firebase.
  * Tracks user login state, handles sign-in via redirect, 
- * initializes user data, and manages logout and "what's new" messages.
+ * initializes user data, and manages logout
  *
  * Keep this for future limit key debug: 
  *               const lastWeek = new Date()
@@ -54,7 +54,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
     const [whatsNewMsg] = useState<string>("");
-    const [redirectFailed, setRedirectFailed] = useState<boolean>(false);
     const { lang } = useLanguage();
 
     useEffect(() => {                                                   // Logged-in status in Firebase
@@ -63,10 +62,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             if (user)
                 initializeUser(user);
             else {
-                //if (document.referrer?.includes("accounts.google")) {   // Those 2 line are redundent but left as legacy 2be on the safe side
-                //    logEvent("[AuthContext.useEffect]: It’s highly unlikely that this block is ever reached.", "");
-                //    setRedirectFailed(true);
-                //}
                 setLoading(false);
             }
         });
@@ -110,10 +105,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                         setLimitCookie(GUEST_BLOCK_MustLogin);
 
                     logEvent("Login: ", resultUser?.email);
-                    fetchUpdateLastLogin().catch((e) => {       // Keep "lastLogin" in DB
-                        logEvent("[AuthContext.initializeUser]: Failed to update lastLogin in DB: " + e, resultUser?.email);
-                    });
 
+                    if (auth.currentUser) { // In edge cases, this might fail and not be written to the DB
+                        fetchUpdateLastLogin().catch((e) => {       // Keep "lastLogin" in DB
+                            logEvent("[AuthContext.initializeUser]: Failed to update lastLogin in DB: " + e, resultUser?.email);
+                        });
+                    }
                     return;
                 }
 
