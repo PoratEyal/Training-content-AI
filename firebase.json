@@ -20,48 +20,127 @@
         "**/.*",
         "**/node_modules/**"
       ],
+      "redirects": [
+        {
+          "source": "/he",
+          "destination": "/he/youth",
+          "type": 301
+        },
+        {
+          "source": "/en",
+          "destination": "/en/youth",
+          "type": 301
+        },
+        {
+          "source": "/es",
+          "destination": "/es/youth",
+          "type": 301
+        },
+        {
+          "source": "/ar",
+          "destination": "/ar/youth",
+          "type": 301
+        }
+      ],
       "rewrites": [
-        { "source": "/BingSiteAuth.xml", "destination": "/index.html" },
-        { "source": "/practice", "destination": "/index.html" },
-        { "source": "/practice/**", "destination": "/index.html" },
-        { "source": "/he", "destination": "/index.html" },
-        { "source": "/he/**", "destination": "/index.html" },
-        { "source": "/en", "destination": "/index.html" },
-        { "source": "/en/**", "destination": "/index.html" },
-        { "source": "/es", "destination": "/index.html" },
-        { "source": "/es/**", "destination": "/index.html" },
-        { "source": "/ar", "destination": "/index.html" },
-        { "source": "/ar/**", "destination": "/index.html" },
-
-        { "source": "/youth", "destination": "/index.html" },
-        
-        { "source": "/he/youth", "destination": "/index.html" },
-        { "source": "/en/youth", "destination": "/index.html" },
-        { "source": "/es/youth", "destination": "/index.html" },
-        { "source": "/ar/youth", "destination": "/index.html" },
-
-        { "source": "**", "destination": "/index.html" }
+        {
+          "source": "/BingSiteAuth.xml",
+          "destination": "/index.html"
+        },
+        {
+          "source": "/practice",
+          "destination": "/index.html"
+        },
+        {
+          "source": "/practice/**",
+          "destination": "/index.html"
+        },
+        {
+          "source": "/he/**",
+          "destination": "/index.html"
+        },
+        {
+          "source": "/en/**",
+          "destination": "/index.html"
+        },
+        {
+          "source": "/es/**",
+          "destination": "/index.html"
+        },
+        {
+          "source": "/ar/**",
+          "destination": "/index.html"
+        },
+        {
+          "source": "/youth",
+          "destination": "/index.html"
+        },
+        {
+          "source": "/he/youth",
+          "destination": "/index.html"
+        },
+        {
+          "source": "/en/youth",
+          "destination": "/index.html"
+        },
+        {
+          "source": "/es/youth",
+          "destination": "/index.html"
+        },
+        {
+          "source": "/ar/youth",
+          "destination": "/index.html"
+        },
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
       ],
       "headers": [
         {
           "source": "/he/**",
-          "headers": [{ "key": "Content-Language", "value": "he" }]
+          "headers": [
+            {
+              "key": "Content-Language",
+              "value": "he"
+            }
+          ]
         },
         {
           "source": "/en/**",
-          "headers": [{ "key": "Content-Language", "value": "en" }]
+          "headers": [
+            {
+              "key": "Content-Language",
+              "value": "en"
+            }
+          ]
         },
         {
           "source": "/es/**",
-          "headers": [{ "key": "Content-Language", "value": "es" }]
+          "headers": [
+            {
+              "key": "Content-Language",
+              "value": "es"
+            }
+          ]
         },
         {
           "source": "/fr/**",
-          "headers": [{ "key": "Content-Language", "value": "fr" }]
+          "headers": [
+            {
+              "key": "Content-Language",
+              "value": "fr"
+            }
+          ]
         },
         {
           "source": "/ar/**",
-          "headers": [{ "key": "Content-Language", "value": "ar" }]
+          "headers": [
+            {
+              "key": "Content-Language",
+              "value": "ar"
+            }
+          ]
         }
       ]
     }
