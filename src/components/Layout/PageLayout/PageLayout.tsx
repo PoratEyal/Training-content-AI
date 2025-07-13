@@ -149,9 +149,10 @@ function PageLayout({
 
               const handleBannerClick = () => {
                 logEvent("Practice Share Banner Clicked", "");
+                const encodedTopic = encodeURIComponent(topic);
                 const shareTitle = t("common.practiceAppName")
-                const prettyUrl = "https://activitywiz.com/practice"
-                const shareText = `${t("articleOptions.share.practiceShareMessageInstructor")}\n\n${topic}\n${prettyUrl}`;
+                const shareUrl = `https://activitywiz.com/he/practice?topic=${encodedTopic}`;
+                const shareText = `${t("articleOptions.share.practiceShareMessageInstructor")}\n\n${topic}\n${shareUrl}`;
                 share(t, shareTitle, shareText)
               };
 
