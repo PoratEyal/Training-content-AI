@@ -1,0 +1,8 @@
+// Server - build server side
+cd .\functions\
+npm run build
+cd ..
+
+
+// Deploy
+npm run deploy
