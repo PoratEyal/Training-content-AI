@@ -100,7 +100,14 @@ function Topic() {
       const raw = await createQuiz(topic, lang, 10);
       const cleanedJsonStr = cleanJson(raw);
       const parsed = JSON.parse(cleanedJsonStr);
-      const final = removeDuplicateQ_A(parsed);
+      //const final = removeDuplicateQ_A(parsed);
+      let final;
+      try {
+        final = removeDuplicateQ_A(parsed);
+      } catch (err) {
+        throw new Error("❌ Failed at removeDuplicateQ_A: " + (err as Error).message);
+      }
+
       setLoading(false);
 
       sessionStorage.setItem(StorageKey.PRACTICE_QUIZ, JSON.stringify(final));
@@ -111,7 +118,7 @@ function Topic() {
       const auth = getAuth();
       const user = auth.currentUser;
       notifyAlert(t("practice.topic.error"));
-      logEvent(`[Practice.Topic]: createQuiz failed, topic: ${topic}`, user?.email);
+      logEvent(`[Practice.Topic]: failed, topic: ${topic}, error: ${err instanceof Error ? err.message : err}`, user?.email);
     }
   };
 

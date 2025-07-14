@@ -106,11 +106,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
                     logEvent("Login: ", resultUser?.email);
 
-                    if (auth.currentUser) { // In edge cases, this might fail and not be written to the DB
-                        fetchUpdateLastLogin().catch((e) => {       // Keep "lastLogin" in DB
-                            logEvent("[AuthContext.initializeUser]: Failed to update lastLogin in DB: " + e, resultUser?.email);
-                        });
-                    }
+                    //if (auth.currentUser) { // In edge cases, this might fail and not be written to the DB
+                    //    fetchUpdateLastLogin().catch((e) => {       // Keep "lastLogin" in DB
+                    //        logEvent("[AuthContext.initializeUser]: Failed to update lastLogin in DB: " + e, resultUser?.email);
+                    //    });
+                    //}
                     return;
                 }
 
