@@ -11,15 +11,29 @@ const getActivity = functions.https.onCall(
         data: GetActivityRequest,
         context: functions.https.CallableContext,
     ): Promise<GetActivityResponse> => {
-        let userId = context.auth?.uid || NOT_REGISTERED;
+        const userId = context.auth?.uid || NOT_REGISTERED;
+
         try {
-            const activityResult = await getMainActivity(data);
-            const activity = initActivityFromAI(activityResult, data, userId);
-            return { result: "success", activity: activity };
+            let activityResult;
+            try {
+                activityResult = await getMainActivity(data);
+            } catch (err) {
+                throw new Error(`[getMainActivity failed]: ${err instanceof Error ? err.message : String(err)}`);
+            }
+
+            let activity;
+            try {
+                activity = initActivityFromAI(activityResult, data, userId);
+            } catch (err) {
+                throw new Error(`[initActivityFromAI failed]: ${err instanceof Error ? err.message : String(err)}`);
+            }
+
+            return { result: "success", activity };
         } catch (error) {
             return handleGetActivityErrors(error, data, userId);
         }
-    },
+    }
 );
+
 
 export default getActivity;

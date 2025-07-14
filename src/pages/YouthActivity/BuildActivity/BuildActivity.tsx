@@ -139,7 +139,9 @@ function BuildActivity() {
     } catch (error) {
       notifyAlert(msg[lang].error.message);
       setClicked(false);
-      logEvent(`[BuildActivity.catch]: ${msg[lang].error.message} | ${error instanceof Error ? error.message : JSON.stringify(error)}`, currentUser?.email);
+      const errorMessage = error instanceof Error ? error.message : JSON.stringify(error);
+      const logMessage = `[BuildActivity.catch]: clientError: ${errorMessage} | subject: ${subject} | category: ${category} | place: ${place} | time: ${time} | religion: ${religion} | contest: ${contest} | tools: ${tools} | info: ${info} | lang: ${lang}`;
+      logEvent(logMessage, currentUser?.email);
     }
   };
 
