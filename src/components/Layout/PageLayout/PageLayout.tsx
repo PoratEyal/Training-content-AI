@@ -83,6 +83,7 @@ function PageLayout({
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
         <meta name="language" content={lang} />
+        <meta name="debug-lang" content={lang} />
 
         {/* Open Graph metadata */}
         <meta property="og:title" content={pageTitle} />
