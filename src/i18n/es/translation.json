@@ -227,7 +227,8 @@
       "removeSuccess": "Actividad eliminada de Mis Actividades",
       "removeError": "No se pudo eliminar la actividad, por favor intenta nuevamente"
     },
-    "edit": "Editar"
+    "edit": "Editar",
+    "game": "Juego Trivia"
   },
   "editor": {
     "save": {

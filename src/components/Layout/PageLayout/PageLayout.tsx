@@ -142,16 +142,16 @@ function PageLayout({
         {hasAds !== "" ? (() => {
 
           // Use case 1: Instructor is in the Practice product and wants to share a direct Practice link (with topic) to their group
-          if (location.pathname.includes("/he/practice/quiz") && localStorage.getItem(StorageKey.USER_TYPE) === "instructor") {
+          if (location.pathname.includes("/practice/quiz") && localStorage.getItem(StorageKey.USER_TYPE) === "instructor") {
 
             const topic = localStorage.getItem(StorageKey.PRACTICE_TOPIC);
             if (topic) {
 
               const handleBannerClick = () => {
-                logEvent("Practice Share Banner Clicked", "");
+                logEvent("מדריך שיתף טריוויה", "");
                 const encodedTopic = encodeURIComponent(topic);
                 const shareTitle = t("common.practiceAppName")
-                const shareUrl = `https://activitywiz.com/he/practice?topic=${encodedTopic}`;
+                const shareUrl = `https://activitywiz.com/${lang}/practice?topic=${encodedTopic}`;
                 const shareText = `${t("articleOptions.share.practiceShareMessageInstructor")}\n\n${topic}\n${shareUrl}`;
                 share(t, shareTitle, shareText)
               };
@@ -166,31 +166,6 @@ function PageLayout({
               );
             }
             return null;
-          }
-
-          // Use case 2: User in Youth Product + special case for instructor
-          else if (location.pathname.includes("/he/youth/activity")) {
-
-            const handleBannerClick = () => {
-              logEvent("Practice Banner Clicked", "");
-              const rawData = sessionStorage.getItem(StorageKey.YOUTH_ACTIVITY);  // pass the topic to Practice product
-              if (rawData) {
-                const activityObj = JSON.parse(rawData);
-                localStorage.setItem(StorageKey.PRACTICE_TOPIC, activityObj.subject);
-                localStorage.setItem(StorageKey.USER_TYPE, "instructor"); // Assumption: If the user is in the YOUTH product, they are acting as an instructor
-              }
-
-              window.open("https://activitywiz.com/he/practice", "_blank");
-            };
-
-            return (
-              <div className={styles.customAdSlot} onClick={handleBannerClick} style={{ cursor: "pointer" }}>
-                <div className={styles.bannerWithIcon}>
-                  <Icons.magic size={22} />
-                  <span>{t("articleOptions.share.practiceAdBannerText")}</span>
-                </div>
-              </div>
-            );
           }
 
           else

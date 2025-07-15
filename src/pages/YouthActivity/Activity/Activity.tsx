@@ -68,9 +68,9 @@ function Activity() {
           activity={mainActivity}
           activityRef={activityRef}
           hasSave={isLoggedIn}
-          hasEdit={isLoggedIn}
           hasCopy
           hasShare
+          hasGame
         />
       )}
     </PageLayout>

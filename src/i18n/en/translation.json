@@ -227,7 +227,8 @@
       "removeSuccess": "Activity removed from My Activities",
       "removeError": "Failed to remove activity, please try again"
     },
-    "edit": "Edit"
+    "edit": "Edit",
+    "game": "Trivia Game"
   },
   "editor": {
     "save": {

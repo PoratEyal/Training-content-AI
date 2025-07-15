@@ -3,6 +3,7 @@ import styles from "./ActivityArticle.module.css";
 import ArticleOptions from "../ArticleOptions/ArticleOptions";
 import ActivityOutput from "../ActivityOutput/ActivityOutput";
 import { Activity } from "../../models/types/activity";
+import ArtOptGame from "../options/article/ArtOptGame/ArtOptGame";
 import ArtOptEdit from "../options/article/ArtOptEdit/ArtOptEdit";
 import ArtOptSave from "../options/article/ArtOptSave/ArtOptSave";
 import ArtOptShare from "../options/article/ArtOptShare/ArtOptShare";
@@ -15,7 +16,9 @@ type ActivityArticleProps = {
     hasSave?: boolean;
     hasShare?: boolean;
     hasCopy?: boolean;
+    hasGame?: boolean;
 };
+
 
 const ActivityArticle: React.FC<ActivityArticleProps> = ({
     activity,
@@ -24,13 +27,16 @@ const ActivityArticle: React.FC<ActivityArticleProps> = ({
     hasSave,
     hasShare,
     hasCopy,
+    hasGame,
 }) => {
     const options = [
+        hasGame ? <ArtOptGame activity={activity} /> : null,
         hasEdit ? <ArtOptEdit activity={activity} /> : null,
         hasSave ? <ArtOptSave activity={activity} /> : null,
         hasShare ? <ArtOptShare activity={activity} /> : null,
         hasCopy ? <ArtOptCopy activity={activity} /> : null,
     ].filter(Boolean);
+
 
     return (
         <section className={styles.activity_data_container}>
