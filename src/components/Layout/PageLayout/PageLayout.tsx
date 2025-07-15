@@ -79,7 +79,7 @@ function PageLayout({
 
   return (
     <>
-      <Helmet>
+      <Helmet prioritizeSeoTags>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
         <meta name="language" content={lang} />
