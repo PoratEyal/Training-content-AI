@@ -84,6 +84,25 @@
       y.parentNode.insertBefore(t, y);
     })(window, document, "clarity", "script", "m184psh8kv");
   </script>
+
+  <script>
+    const userLang = window.location.pathname.startsWith('/he') ? 'he'
+      : window.location.pathname.startsWith('/ar') ? 'ar'
+        : window.location.pathname.startsWith('/es') ? 'es'
+          : 'en';
+
+    const userDir = ['he', 'ar'].includes(userLang) ? 'rtl' : 'ltr';
+
+    document.documentElement.lang = userLang;
+    document.documentElement.dir = userDir;
+
+    const metaDebug = document.createElement('meta');
+    metaDebug.name = 'debug-lang';
+    metaDebug.content = userLang;
+    document.head.appendChild(metaDebug);
+  </script>
+
+
 </body>
 
 </html>
