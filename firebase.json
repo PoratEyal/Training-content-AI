@@ -48,6 +48,39 @@
           "destination": "/index.html"
         },
         {
+          "source": "/he/words",
+          "destination": "/index.words.he.html"
+        },
+        {
+          "source": "/he/words/**",
+          "destination": "/index.words.he.html"
+        },
+        {
+          "source": "/en/words",
+          "destination": "/index.words.en.html"
+        },
+        {
+          "source": "/en/words/**",
+          "destination": "/index.words.en.html"
+        },
+        {
+          "source": "/es/words",
+          "destination": "/index.words.es.html"
+        },
+        {
+          "source": "/es/words/**",
+          "destination": "/index.words.es.html"
+        },
+        {
+          "source": "/ar/words",
+          "destination": "/index.words.ar.html"
+        },
+        {
+          "source": "/ar/words/**",
+          "destination": "/index.words.ar.html"
+        },
+
+        {
           "source": "/practice",
           "destination": "/index.html"
         },
