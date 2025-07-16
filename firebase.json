@@ -43,6 +43,22 @@
         }
       ],
       "rewrites": [
+        { 
+          "source": "/static/**",
+          "destination": "/static"
+        },
+        {
+          "source": "/logo192.png",
+          "destination": "/logo192.png"
+        },
+        {
+          "source": "/logo512.png",
+          "destination": "/logo512.png"
+        },
+        {
+          "source": "/manifest.json",
+          "destination": "/manifest.json"
+        },
         {
           "source": "/BingSiteAuth.xml",
           "destination": "/index.html"
@@ -79,7 +95,6 @@
           "source": "/ar/words/**",
           "destination": "/index.words.ar.html"
         },
-
         {
           "source": "/practice",
           "destination": "/index.html"

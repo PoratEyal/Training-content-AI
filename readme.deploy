@@ -6,3 +6,6 @@ cd ..
 
 // Deploy
 npm run deploy
+
+// Just create the index.html files in the build folder for debug
+npm run minify-indexes
