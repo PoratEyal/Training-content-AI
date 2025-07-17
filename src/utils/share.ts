@@ -2,7 +2,7 @@ import { TFunction } from "i18next"
 import { useNotificationContext } from "../context/NotificationContext"
 
 export const useShareTextOrLink = () => {
-  const { notifySuccess: handleSuccess, notifyAlert: notifyAlert } = useNotificationContext()
+  const { notifySuccess: notifySuccess, notifyAlert: notifyAlert } = useNotificationContext()
 
   return (t: TFunction, title: string, text: string, url?: string) => {
     if (navigator.share) {
@@ -17,7 +17,7 @@ export const useShareTextOrLink = () => {
       navigator.clipboard
         .writeText(fullText)
         .then(() => {
-          handleSuccess(t("share.shared2Clipboard"))
+          notifySuccess(t("share.shared2Clipboard"))
         })
         .catch(() => {
           notifyAlert(t("share.shareError"))

@@ -83,12 +83,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
                 let resultUser: User | undefined = undefined;
                 const rawUser = initRawUser(user);
-                const response = await fetchCreateNewUser({ rawUser }, lang);
+                const response = await fetchCreateNewUser({ rawUser });
 
                 if (response.result === "success" && response.user) {
                     resultUser = response.user;
                 } else {
-                    logEvent("[initializeUser]: unexpected result", JSON.stringify(response));
+                    logEvent("[AuthContext.initializeUser]", resultUser?.email);
                 }
 
                 if (resultUser) {

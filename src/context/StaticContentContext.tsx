@@ -4,6 +4,7 @@ import msg from "../models/resources/errorMsg.json";
 import { fetchStaticSubjects } from "../utils/fetch";
 import { StaticSubjects } from "../models/types/activity";
 import { useLanguage } from "../i18n/useLanguage";
+import { logEvent } from "../utils/logEvent";
 
 export type StaticContentContextType = {
     useFetchSubjectsData: () => void;
@@ -12,7 +13,7 @@ export type StaticContentContextType = {
 };
 
 export const defualtStaticContentContext: StaticContentContextType = {
-    useFetchSubjectsData: () => {},
+    useFetchSubjectsData: () => { },
     subjects: [],
     isLoading: true,
 };
@@ -37,6 +38,7 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
                 setSubjects(sortedSubjects);
             }
         } catch (error: any) {
+            logEvent(`[StaticContentContext.fetchSubjectsData]`, "");
             notifyAlert(msg[lang].error.message);
         } finally {
             setIsLoading(false);

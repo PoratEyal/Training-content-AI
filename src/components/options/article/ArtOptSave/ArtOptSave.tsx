@@ -1,9 +1,6 @@
 //
-// This component allows users to save or unsave an activity as a bookmark.
-// It supports toggling the saved state based on user interaction.
+// This component allows users to save or unsave an activity
 // It uses a cooldown to prevent rapid repeated actions (DDoS prevention).
-// The state of the activity is synchronized with the server and app contexts.
-// Dynamic translations are used for text, and layout direction adapts to the selected language.
 //
 import React, { useEffect, useState } from "react";
 import styles from "./ArtOptSave.module.css";
@@ -16,6 +13,7 @@ import { useQueryParam } from "../../../../hooks/useQueryParam";
 import { fetchSaveActivity } from "../../../../utils/fetch";
 import { SAVE_COOLDOWN } from "../../../../models/constants/time";
 import { useLanguage } from "../../../../i18n/useLanguage";
+import { logEvent } from "../../../../utils/logEvent";
 
 type ArtOptSaveProps = {
     activity: Activity;
@@ -26,10 +24,9 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
     const { currentParam, updateParam } = useQueryParam();
     const { currentUser } = useAuthContext();
     const { updateMainActivity } = useContentContext();
-    const { notifySuccess: handleSuccess, notifyAlert: notifyAlert } = useNotificationContext();
+    const { notifySuccess: notifySuccess, notifyAlert: notifyAlert } = useNotificationContext();
     const { getSavedActivities, deleteActivity } = useSaveContext();
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
-
     const [saved, setSaved] = useState<boolean>(false);
     const [activityId, setActivityId] = useState<string | undefined>();
 
@@ -43,12 +40,9 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
 
         try {
             setIsDisabled(true);
-            setTimeout(() => {
-                // prevent DDoS attacks
-                setIsDisabled(false);
-            }, SAVE_COOLDOWN);
-            updateParam(true);            handleSuccess(t('articleOptions.save.saveSuccess'));
-
+            setTimeout(() => { setIsDisabled(false); }, SAVE_COOLDOWN); // prevent DDoS attacks
+            updateParam(true);
+            notifySuccess(t('articleOptions.save.saveSuccess'));
             const res = await fetchSaveActivity(activity, lang);
             setActivityId(res.activity.id);
             updateMainActivity({ ...activity, id: res.activity.id } as Activity);
@@ -56,26 +50,24 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
             setSaved(true);
         } catch (error) {
             notifyAlert(t('articleOptions.save.saveError'));
+            logEvent(`[ArtOptSave.handleSave]`, currentUser?.email);
             updateParam(false);
         }
     };
 
     const handleUnsave = async () => {
-        // TODO: if navigate back I dont have the activity id for delete
         if (!currentUser?.id || !activityId) return;
 
         try {
             setIsDisabled(true);
-            setTimeout(() => {
-                // prevent DDoS attacks
-                setIsDisabled(false);
-            }, SAVE_COOLDOWN);
+            setTimeout(() => { setIsDisabled(false); }, SAVE_COOLDOWN); // prevent DDoS attacks
             updateParam(false);
-            handleSuccess(t('articleOptions.save.removeSuccess'));
+            notifySuccess(t('articleOptions.save.removeSuccess'));
             await deleteActivity(activityId);
             setSaved(false);
         } catch (error) {
             notifyAlert(t('articleOptions.save.removeError'));
+            logEvent(`[ArtOptSave.handleUnsave]`, currentUser?.email);
             updateParam(true);
         }
     };

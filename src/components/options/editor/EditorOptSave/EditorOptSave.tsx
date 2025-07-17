@@ -9,6 +9,7 @@ import { useNotificationContext } from "../../../../context/NotificationContext"
 import { useContentContext } from "../../../../context/ContentContext";
 import { useSaveContext } from "../../../../context/SavedContext";
 import { useLanguage } from "../../../../i18n/useLanguage";
+import { logEvent } from "../../../../utils/logEvent";
 
 type EditorOptSaveProps = {
     activity: Activity;
@@ -18,7 +19,7 @@ type EditorOptSaveProps = {
 const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) => {
     const { t, dir, lang } = useLanguage();
     const { updateMainActivity } = useContentContext();
-    const { notifySuccess: handleSuccess, notifyAlert: notifyAlert } = useNotificationContext();
+    const { notifySuccess: notifySuccess, notifyAlert: notifyAlert } = useNotificationContext();
     const { getSavedActivities } = useSaveContext();
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
     const [saved, setSaved] = useState<boolean>(false);
@@ -27,22 +28,18 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
         if (htmlContent && !isDisabled) {
             try {
                 setIsDisabled(true);
-                setTimeout(() => {
-                    // prevent DDoS attacks
-                    setIsDisabled(false);
-                }, SAVE_COOLDOWN);
-                handleSuccess(t("editor.save.saveSuccess"));
+                setTimeout(() => { setIsDisabled(false); }, SAVE_COOLDOWN); // prevent DDoS attacks
+                notifySuccess(t("editor.save.saveSuccess"));
                 setSaved(true);
                 const convertedContent = convertHTMLToContent(htmlContent);
                 const newUpdatedActivity = updateActivityWithContent(activity, convertedContent);
                 const res = await fetchSaveActivity(newUpdatedActivity, lang);
                 updateMainActivity({ ...newUpdatedActivity, id: res.activity.id } as Activity);
                 await getSavedActivities();
-                setTimeout(() => {
-                    setSaved(false);
-                }, 1000);
+                setTimeout(() => { setSaved(false); }, 1000);
             } catch (error) {
                 notifyAlert(t("editor.save.saveError"));
+                logEvent(`[EditorOptSave.handleSave]`, "");
                 setSaved(false);
             }
         }

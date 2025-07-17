@@ -125,22 +125,21 @@ function BuildActivity() {
     setClicked(true);
     const { movement, ...detailsData } = data;
     try {
-      const response = await fetchGetActivity({
-        category: category as CategoryName, movement: movement.name, ...detailsData, subject, time, place, religion, contest, tools, info, lang,
-      });
+      const response = await fetchGetActivity({ category: category as CategoryName, movement: movement.name, ...detailsData, subject, time, place, religion, contest, tools, info, lang, });
       if (response.result === "success" && response.activity) {
         updateMainActivity({ ...response.activity });
         navigate(youthActivityAIPath);
       } else {
         notifyAlert(msg[lang].error.message);
         setClicked(false);
-        logEvent(`[BuildActivity]: ${msg[lang].error.message} | serverMessage: ${response.message}`, currentUser?.email);
+        const errorText = msg[lang]?.error?.message || "Unexpected error";
+        logEvent(`[BuildActivity.else]: ${errorText} | serverMessage: ${String(response.message)}`, currentUser?.email);
       }
     } catch (error) {
       notifyAlert(msg[lang].error.message);
       setClicked(false);
-      const errorMessage = error instanceof Error ? error.message : JSON.stringify(error);
-      const logMessage = `[BuildActivity.catch]: clientError: ${errorMessage} | subject: ${subject} | category: ${category} | place: ${place} | time: ${time} | religion: ${religion} | contest: ${contest} | tools: ${tools} | info: ${info} | lang: ${lang}`;
+      const errorMessage = error instanceof Error && typeof error.message === "string" ? error.message : "Unknown error";
+      const logMessage = `[BuildActivity.catch]: Error: ${errorMessage} | subject: ${String(subject)} | category: ${String(category)} | place: ${String(place)} | time: ${String(time)} | religion: ${String(religion)} | contest: ${String(contest)} | tools: ${String(tools)} | info: ${String(info)} | lang: ${String(lang)}`;
       logEvent(logMessage, currentUser?.email);
     }
   };
