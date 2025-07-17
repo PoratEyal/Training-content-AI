@@ -68,7 +68,13 @@ function WordsHomePage() {
           th: "Thai Female",
           nl: "Dutch Female",
           hu: "Hungarian Female",
-          cs: "Czech Female"
+          cs: "Czech Female",
+          ru: "Russian Male",
+          pt: "Portuguese Male",
+          ja: "Japanese Male",
+          hi: "Hindi Male",
+          bn: "Bangla Male",
+          tr: "Turkish Male"
         };
         const voice = voices[langCode] || voices.en;
         speak(text, voice, { rate: 0.8 });
