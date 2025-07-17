@@ -3,6 +3,7 @@
 //
 import { useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import route from "../../../router/route.json";
 import styles from "./Home.module.css";
 import { useAuthContext } from "../../../context/AuthContext";
@@ -21,6 +22,7 @@ import { startAsGuestOrUser } from "../../../utils/startAsGuestOrUser";
 import { useContentContext } from "../../../context/ContentContext";
 import { ProductPages } from "../../../models/enum/pages";
 import { StorageKey } from "../../../models/enum/storage";
+import { logEvent } from "../../../utils/logEvent";
 
 function WordsHomePage() {
 
@@ -39,52 +41,53 @@ function WordsHomePage() {
     sessionStorage.setItem(StorageKey.LAST_PAGE, ProductPages.PAGE_WordsHome);
   }, []);
 
+
   useEffect(() => {
-    if (process.env.NODE_ENV !== "production") return;  // Speak is working ONLY in production
+    if (process.env.NODE_ENV !== "production") return;
 
-    const script = document.createElement("script");
-    script.src = "https://code.responsivevoice.org/responsivevoice.js?key=MrUBPkih";
-    script.async = true;
+    function setupSpeakControlled() {
+      try {
+        const originalSpeak = window.responsiveVoice?.speak;
+        if (!originalSpeak) return;
+        window.responsiveVoice.speak = () => { };
 
-    script.onload = () => {
-      const speak = window.responsiveVoice?.speak;
-      if (!speak) return;
+        window.speakControlled = (text, langCode) => {
+          if (typeof text !== "string" || !text.trim()) return;
 
-      window.responsiveVoice.speak = () => { };
-      window.speakControlled = (text, langCode) => {
-        if (typeof text !== "string" || !text.trim()) return;
-        const voices = {
-          he: "Hebrew Male",
-          en: "US English Female",
-          ar: "Arabic Male",
-          es: "Spanish Latin American Female",
-          fr: "French Female",
-          it: "Italian Female",
-          de: "Deutsch Male",
-          ko: "Korean Male",
-          zh: "Chinese Male",
-          ro: "Romanian Female",
-          el: "Greek Female",
-          th: "Thai Female",
-          nl: "Dutch Female",
-          hu: "Hungarian Female",
-          cs: "Czech Female",
-          ru: "Russian Male",
-          pt: "Portuguese Male",
-          ja: "Japanese Male",
-          hi: "Hindi Male",
-          bn: "Bangla Male",
-          tr: "Turkish Male"
+          const voices = {
+            he: "Hebrew Male",
+            en: "US English Female",
+            ar: "Arabic Male",
+            es: "Spanish Latin American Female",
+            fr: "French Female",
+            it: "Italian Female",
+            de: "Deutsch Male",
+            ko: "Korean Male",
+            zh: "Chinese Male",
+            ro: "Romanian Female",
+            el: "Greek Female",
+            th: "Thai Female",
+            nl: "Dutch Female",
+            hu: "Hungarian Female",
+            cs: "Czech Female",
+          };
+          const selectedVoice = voices[langCode] || "US English Female";
+          originalSpeak(text, selectedVoice, { rate: 0.8 });
         };
-        const voice = voices[langCode] || voices.en;
-        speak(text, voice, { rate: 0.8 });
-      };
-    };
+      } catch (e) {
+        logEvent("responsiveVoice setup error", "");
+      }
+    }
 
-    document.body.appendChild(script);
+    let interval = setInterval(() => {
+      if (window.responsiveVoice && window.responsiveVoice.speak) {
+        clearInterval(interval);
+        setupSpeakControlled();
+      }
+    }, 300);
 
     return () => {
-      document.body.removeChild(script);
+      clearInterval(interval);
     };
   }, []);
 
@@ -98,6 +101,14 @@ function WordsHomePage() {
       index={true}
       hasNavBar={!loading}
     >
+      <Helmet>
+        <script
+          src="https://code.responsivevoice.org/responsivevoice.js?key=MrUBPkih"
+          async
+          crossOrigin="anonymous"
+        ></script>
+      </Helmet>
+
       <script type="application/ld+json">
         {JSON.stringify(homeSchema)}
       </script>
