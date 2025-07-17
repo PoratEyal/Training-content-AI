@@ -96,48 +96,137 @@
           "destination": "/index.words.ar.html"
         },
         {
-          "source": "/practice",
-          "destination": "/index.html"
+          "source": "/he/words/faq",
+          "destination": "/index.words.he.html"
         },
         {
-          "source": "/practice/**",
-          "destination": "/index.html"
+          "source": "/en/words/faq",
+          "destination": "/index.words.en.html"
         },
         {
-          "source": "/he/**",
-          "destination": "/index.html"
+          "source": "/es/words/faq",
+          "destination": "/index.words.es.html"
         },
         {
-          "source": "/en/**",
-          "destination": "/index.html"
+          "source": "/ar/words/faq",
+          "destination": "/index.words.ar.html"
+        },
+
+
+        {
+          "source": "/he/practice",
+          "destination": "/index.practice.he.html"
         },
         {
-          "source": "/es/**",
-          "destination": "/index.html"
+          "source": "/he/practice/**",
+          "destination": "/index.practice.he.html"
         },
         {
-          "source": "/ar/**",
-          "destination": "/index.html"
+          "source": "/en/practice",
+          "destination": "/index.practice.en.html"
         },
         {
-          "source": "/youth",
-          "destination": "/index.html"
+          "source": "/en/practice/**",
+          "destination": "/index.practice.en.html"
         },
+        {
+          "source": "/es/practice",
+          "destination": "/index.practice.es.html"
+        },
+        {
+          "source": "/es/practice/**",
+          "destination": "/index.practice.es.html"
+        },
+        {
+          "source": "/ar/practice",
+          "destination": "/index.practice.ar.html"
+        },
+        {
+          "source": "/ar/practice/**",
+          "destination": "/index.practice.ar.html"
+        },
+        {
+          "source": "/he/practice/faq",
+          "destination": "/index.practice.he.html"
+        },
+        {
+          "source": "/en/practice/faq",
+          "destination": "/index.practice.en.html"
+        },
+        {
+          "source": "/es/practice/faq",
+          "destination": "/index.practice.es.html"
+        },
+        {
+          "source": "/ar/practice/faq",
+          "destination": "/index.practice.ar.html"
+        },
+
+
         {
           "source": "/he/youth",
-          "destination": "/index.html"
+          "destination": "/index.youth.he.html"
+        },
+        {
+          "source": "/he/youth/**",
+          "destination": "/index.youth.he.html"
         },
         {
           "source": "/en/youth",
-          "destination": "/index.html"
+          "destination": "/index.youth.en.html"
+        },
+        {
+          "source": "/en/youth/**",
+          "destination": "/index.youth.en.html"
         },
         {
           "source": "/es/youth",
-          "destination": "/index.html"
+          "destination": "/index.youth.es.html"
+        },
+        {
+          "source": "/es/youth/**",
+          "destination": "/index.youth.es.html"
         },
         {
           "source": "/ar/youth",
-          "destination": "/index.html"
+          "destination": "/index.youth.ar.html"
+        },
+        {
+          "source": "/ar/youth/**",
+          "destination": "/index.youth.ar.html"
+        },
+        {
+          "source": "/he/youth/faq",
+          "destination": "/index.youth.he.html"
+        },
+        {
+          "source": "/en/youth/faq",
+          "destination": "/index.youth.en.html"
+        },
+        {
+          "source": "/es/youth/faq",
+          "destination": "/index.youth.es.html"
+        },
+        {
+          "source": "/ar/youth/faq",
+          "destination": "/index.youth.ar.html"
+        },
+
+        {
+          "source": "/he/**",
+          "destination": "/index.youth.he.html"
+        },
+        {
+          "source": "/en/**",
+          "destination": "/index.youth.en.html"
+        },
+        {
+          "source": "/es/**",
+          "destination": "/index.youth.es.html"
+        },
+        {
+          "source": "/ar/**",
+          "destination": "/index.youth.ar.html"
         },
         {
           "source": "**",
