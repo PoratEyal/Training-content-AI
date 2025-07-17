@@ -61,7 +61,7 @@
         },
         {
           "source": "/BingSiteAuth.xml",
-          "destination": "/index.html"
+          "destination": "/BingSiteAuth.xml"
         },
         {
           "source": "/he/words",
@@ -228,11 +228,13 @@
           "source": "/ar/**",
           "destination": "/index.youth.ar.html"
         },
+
         {
           "source": "**",
-          "destination": "/index.html"
+          "destination": "/index.youth.he.html"
         }
       ],
+
       "headers": [
         {
           "source": "/he/**",
