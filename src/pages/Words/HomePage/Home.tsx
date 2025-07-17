@@ -39,6 +39,50 @@ function WordsHomePage() {
     sessionStorage.setItem(StorageKey.LAST_PAGE, ProductPages.PAGE_WordsHome);
   }, []);
 
+  useEffect(() => {
+    if (process.env.NODE_ENV !== "production") return;  // Speak is working ONLY in production
+
+    const script = document.createElement("script");
+    script.src = "https://code.responsivevoice.org/responsivevoice.js?key=MrUBPkih";
+    script.async = true;
+
+    script.onload = () => {
+      const speak = window.responsiveVoice?.speak;
+      if (!speak) return;
+
+      window.responsiveVoice.speak = () => { };
+      window.speakControlled = (text, langCode) => {
+        if (typeof text !== "string" || !text.trim()) return;
+        const voices = {
+          he: "Hebrew Male",
+          en: "US English Female",
+          ar: "Arabic Male",
+          es: "Spanish Latin American Female",
+          fr: "French Female",
+          it: "Italian Female",
+          de: "Deutsch Male",
+          ko: "Korean Male",
+          zh: "Chinese Male",
+          ro: "Romanian Female",
+          el: "Greek Female",
+          th: "Thai Female",
+          nl: "Dutch Female",
+          hu: "Hungarian Female",
+          cs: "Czech Female"
+        };
+        const voice = voices[langCode] || voices.en;
+        speak(text, voice, { rate: 0.8 });
+      };
+    };
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+
   return (
     <PageLayout
       id="wordsHome"
@@ -78,7 +122,7 @@ function WordsHomePage() {
                 navigate,
               })
             }
-            height={48} 
+            height={48}
             isDisabled={false}
           />
         </section>

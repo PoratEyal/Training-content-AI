@@ -51,7 +51,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development react-scripts start",
     "start:server": "cd functions && npm run build && firebase emulators:start --only functions",
-    "build": "cross-env NODE_ENV=production GENERATE_SOURCEMAP=false react-scripts build && node scripts/renameMain.js",
+    "build": "cross-env NODE_ENV=production GENERATE_SOURCEMAP=false react-scripts build && node scripts/renameMain.js && node scripts/removeIndex.js",
     "minify-indexes": "node scripts/minify-indexes.js",
     "deploy": "npm run build && npm run minify-indexes && firebase deploy",
     "deploy:staging": "firebase hosting:channel:deploy staging",

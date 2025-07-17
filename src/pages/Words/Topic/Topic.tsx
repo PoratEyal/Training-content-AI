@@ -33,13 +33,10 @@ function Topic() {
     { label: t("words.predefined.zh-Practice"), value: "zh" },
     { label: t("words.predefined.ro-Practice"), value: "ro" },
     { label: t("words.predefined.el-Practice"), value: "el" },
-    { label: t("words.predefined.cy-Practice"), value: "cy" },
-    { label: t("words.predefined.tr-Practice"), value: "tr" },
     { label: t("words.predefined.th-Practice"), value: "th" },
     { label: t("words.predefined.nl-Practice"), value: "nl" },
     { label: t("words.predefined.hu-Practice"), value: "hu" },
     { label: t("words.predefined.cs-Practice"), value: "cs" },
-    { label: t("words.predefined.ka-Practice"), value: "ka" },
     { label: t("words.predefined.he-Practice"), value: "he" },
     { label: t("words.predefined.ar-Practice"), value: "ar" },
   ].filter(item => item.value !== lang);
