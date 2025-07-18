@@ -1,45 +1,5 @@
 /* ------------------ Shared / Generic Styles ------------------ */
 
-.logo {
-  position: relative;
-  width: 251px;
-  height: 95px;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.sparks,
-.sparks_en,
-.arabicLogo .sparks {
-  position: absolute;
-}
-
-.big_spark,
-.small_spark {
-  background: var(--text-color);
-  clip-path: polygon(40% 40%, 50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%);
-}
-
-.big_spark {
-  height: 17px;
-  width: 17px;
-}
-
-.small_spark {
-  position: absolute;
-  top: -5px;
-  left: 10px;
-  height: 12px;
-  width: 12px;
-}
-
-.banner {
-  font-size: 46px;
-  position: absolute;
-  top: 80px;
-  right: -10px;
-  z-index: 50;
-}
-
 .youthColor {
   background-color: var(--primary-color);
 }
@@ -52,17 +12,77 @@
   background-color: var(--words-primary-color);
 }
 
+.logo {
+  position: relative;
+  width: 251px;
+  height: 95px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ------------ Sparks ------------ */
+.sparks {
+  position: absolute;
+  left: 0;
+  top: 35px;
+}
+
+.sparks_en {
+  position: absolute;
+  right: 0;
+  top: 40px;
+}
+
+.big_spark {
+  position: absolute;
+  background: var(--text-color);
+  clip-path: polygon(40% 40%, 50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%);
+  left: -5px;
+  height: 17px;
+  width: 17px;
+}
+
+.big_spark_en {
+  position: absolute;
+  background: var(--text-color);
+  clip-path: polygon(40% 40%, 50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%);
+  left: 22px;
+  height: 17px;
+  width: 17px;
+}
+
+.small_spark {
+  position: absolute;
+  background: var(--text-color);
+  clip-path: polygon(40% 40%, 50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%);
+  top: -5px;
+  left: 10px;
+  height: 12px;
+  width: 12px;
+}
+
+.small_spark_en {
+  position: absolute;
+  background: var(--text-color);
+  clip-path: polygon(40% 40%, 50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%);
+  top: -5px;
+  left: 10px;
+  height: 12px;
+  width: 12px;
+}
+
+
 /* ------------ RTL ------------ */
 .word_1 {
   position: absolute;
+  font-size: 42px;
   left: 40px;
-  top: 5px;
+  top: -5px;
   z-index: 2;
 }
 
 .word_2 {
   position: absolute;
-  left: 125px;
+  left: 135px;
   bottom: 4px;
   width: 125px;
   height: 47px;
@@ -90,14 +110,15 @@
 }
 
 .word_3 {
+  font-size: 36px;
   position: absolute;
-  left: 70px;
-  top: 52px;
+  left: 72px;
+  top: 53px;
 }
 
 .word_4 {
   position: absolute;
-  left: 15px;
+  left: 10px;
   top: 55px;
 }
 
@@ -109,15 +130,14 @@
   top: 0;
   left: 0;
   color: white;
-  font-size: 42px;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   -webkit-tap-highlight-color: transparent;
 }
 
 .word_1_1,
 .word_3_1 {
-  -webkit-text-stroke: 12px var(--text-color);
+  -webkit-text-stroke: 11px var(--text-color);
   -webkit-text-fill-color: white;
 }
 
@@ -125,29 +145,25 @@
 .word_4_2 {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 4px;
   color: var(--text-color);
-  font-size: 42px;
+  font-size: 36px;
   font-weight: 600;
   letter-spacing: 2px;
   -webkit-tap-highlight-color: transparent;
 }
 
 .word_4_1 {
-  -webkit-text-stroke: 12px var(--secondary-color);
+  -webkit-text-stroke: 10px var(--secondary-color);
   -webkit-text-fill-color: var(--text-color);
-}
-
-.sparks {
-  left: 0;
-  top: 35px;
 }
 
 /* ------------ English ------------ */
 .word_1_en {
   position: absolute;
+  font-size: 42px;
   left: 0;
-  top: 10px;
+  top: -5px;
   z-index: 2;
 }
 
@@ -182,14 +198,15 @@
 
 .word_3_en {
   position: absolute;
-  left: 115px;
+  font-size: 38px;
+  left: 117px;
   top: 59px;
 }
 
 .word_4_en {
   position: absolute;
   left: 220px;
-  top: 59px;
+  top: 61px;
 }
 
 .word_1_1_en,
@@ -200,7 +217,6 @@
   top: 0;
   left: 0;
   color: white;
-  font-size: 42px;
   font-weight: 600;
   letter-spacing: 2px;
   -webkit-tap-highlight-color: transparent;
@@ -216,21 +232,15 @@
 .word_4_2_en {
   position: absolute;
   top: 0;
-  left: 0;
+  left: -5px;
   color: var(--text-color);
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 600;
   letter-spacing: 2px;
   -webkit-tap-highlight-color: transparent;
 }
 
 .word_4_1_en {
-  -webkit-text-stroke: 12px var(--secondary-color);
+  -webkit-text-stroke: 10px var(--secondary-color);
   -webkit-text-fill-color: var(--text-color);
 }
-
-.sparks_en {
-  right: 0;
-  top: 30px;
-}
-

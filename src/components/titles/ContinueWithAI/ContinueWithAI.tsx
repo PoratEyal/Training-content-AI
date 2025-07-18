@@ -46,8 +46,8 @@ function ContinueWithAI() {
         <div className={styles[`word_4_2${dirPrefix}`]}>{t("home.ai")}</div>
       </div>
       <div className={styles[`sparks${dirPrefix}`]}>
-        <div className={styles.small_spark} />
-        <div className={styles.big_spark} />
+        <div className={styles[`small_spark${dirPrefix}`]} />
+        <div className={styles[`big_spark${dirPrefix}`]} />
       </div>
     </h1>
   )
