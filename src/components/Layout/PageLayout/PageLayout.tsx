@@ -169,7 +169,7 @@ function PageLayout({
           }
 
           // Use case 2: User in Youth Product + special case for instructor
-          else if (location.pathname.includes("/he/youth/activity") && new Date().getSeconds() % 2 === 0) {
+          else if (location.pathname.includes("/youth/activity") && new Date().getSeconds() % 2 === 0) {
             
             const handleBannerClick = () => {
               logEvent("מדריך לחץ באנר טריוויה", "");
