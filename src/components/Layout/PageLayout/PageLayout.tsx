@@ -168,6 +168,31 @@ function PageLayout({
             return null;
           }
 
+          // Use case 2: User in Youth Product + special case for instructor
+          else if (location.pathname.includes("/he/youth/activity") && new Date().getSeconds() % 2 === 0) {
+            
+            const handleBannerClick = () => {
+              logEvent("מדריך לחץ באנר טריוויה", "");
+              const rawData = sessionStorage.getItem(StorageKey.YOUTH_ACTIVITY);  // pass the topic to Practice product
+              if (rawData) {
+                const activityObj = JSON.parse(rawData);
+                localStorage.setItem(StorageKey.PRACTICE_TOPIC, activityObj.subject);
+                localStorage.setItem(StorageKey.USER_TYPE, "instructor"); // Assumption: If the user is in the YOUTH product, they are acting as an instructor
+              }
+
+              window.open(`https://activitywiz.com/${lang}/practice`, "_blank");
+            };
+
+            return (
+              <div className={styles.customAdSlot} onClick={handleBannerClick} style={{ cursor: "pointer" }}>
+                <div className={styles.bannerWithIcon}>
+                  <Icons.magic size={22} />
+                  <span>{t("articleOptions.share.practiceAdBannerText")}</span>
+                </div>
+              </div>
+            );
+          }
+
           else
             // Google Ads
             return <AdsSmall slot={hasAds} />;

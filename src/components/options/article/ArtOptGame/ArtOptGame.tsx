@@ -15,7 +15,7 @@ const ArtOptGame: React.FC<ArtOptGameProps> = ({ activity }) => {
     const { t, dir, lang } = useLanguage();
 
     const handleClick = () => {
-        logEvent("כפתור משחק נלחץ", "");
+        logEvent("מדריך לחץ כפתור טריוויה", "");
 
         localStorage.setItem(StorageKey.PRACTICE_TOPIC, activity.subject);
         localStorage.setItem(StorageKey.USER_TYPE, "instructor"); // Assume instructor role

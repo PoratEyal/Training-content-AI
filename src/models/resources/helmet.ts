@@ -11,7 +11,7 @@ export const helmetJson: Record<Lng, LanguageSection> = {
 
     he: {
         contactUs: {
-            title: "ActivityWiz – צור קשר",
+            title: "ActivityWiz – צרו קשר",
             content: "נשמח לשמוע מכם! אם יש לכם שאלה, הערה או בקשה – אנחנו כאן בשבילכם.",
         },
         privacyPolicy: {
@@ -21,51 +21,51 @@ export const helmetJson: Record<Lng, LanguageSection> = {
 
         home: {
             title: "פעולות לתנועות נוער – ActivityWiz",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מד\"צים ועוד.",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית. מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד.",
         },
         details: {
             title: "פעולות לתנועות נוער – ActivityWiz",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מד\"צים ועוד.",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית. מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד.",
         },
         build: {
             title: "פעולות לתנועות נוער – ActivityWiz",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מד\"צים ועוד.",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית. מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד.",
         },
         activity: {
             title: "פעולות לתנועות נוער – ActivityWiz",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מד\"צים ועוד.",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית. מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד.",
         },
         content: {
             title: "פעולות מוכנות לתנועות נוער – ActivityWiz",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מד\"צים ועוד.",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית. מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד.",
         },
         contentActivities: {
             title: "פעולות מוכנות לתנועות נוער – ActivityWiz",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מד\"צים ועוד.",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית. מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד.",
         },
         contentActivity: {
             title: "פעולות מוכנות לתנועות נוער – ActivityWiz",
-            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית (AI). מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מד\"צים ועוד.",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית. מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד.",
         },
         myactivities: {
             title: "פעולות לתנועות נוער – ActivityWiz",
-            content: "צפו ונהלו את הפעולות האישיות שלכם, כולל פעולות ששמרתם או יצרתם בעזרת AI.",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית. מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד.",
         },
         savedActivity: {
             title: "פעולות לתנועות נוער – ActivityWiz",
-            content: "צפו בפעולות ששמרתם – מוכנות להפעלה או להמשך עריכה.",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית. מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד.",
         },
         popularActivities: {
             title: "פעולות פופולריות לתנועות נוער – ActivityWiz",
-            content: "הכירו את הפעולות המובילות – חינוכיות, מהנות ומוכנות לשימוש מידי בקבוצות נוער.",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית. מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד.",
         },
         edit: {
             title: "פעולות לתנועות נוער – ActivityWiz",
-            content: "ערכו פעולה קיימת או התאם אותה אישית לצרכים שלכם בעזרת כלים חכמים.",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית. מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד.",
         },
         youthFaq: {
             title: "פעולות לתנועות נוער - שאלות נפוצות – ActivityWiz",
-            content: "תשובות לשאלות נפוצות על יצירה, שמירה ושיתוף של פעולות בתנועות נוער.",
+            content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית. מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד.",
         },
 
         practiceHome: {
@@ -120,67 +120,67 @@ export const helmetJson: Record<Lng, LanguageSection> = {
 
         home: {
             title: "ActivityWiz - Youth Movement Activities",
-            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
+            content: "Create or explore youth movement activities – ideal for Scouts, leadership programs, and educational guides.",
         },
         details: {
             title: "ActivityWiz - Youth Movement Activities",
-            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
+            content: "Create or explore youth movement activities – ideal for Scouts, leadership programs, and educational guides.",
         },
         build: {
             title: "ActivityWiz - Youth Movement Activities",
-            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
+            content: "Create or explore youth movement activities – ideal for Scouts, leadership programs, and educational guides.",
         },
         activity: {
             title: "ActivityWiz - Youth Movement Activities",
-            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
+            content: "Create or explore youth movement activities – ideal for Scouts, leadership programs, and educational guides.",
         },
         content: {
             title: "ActivityWiz - Youth Movement Activities",
-            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
+            content: "Create or explore youth movement activities – ideal for Scouts, leadership programs, and educational guides.",
         },
         contentActivities: {
             title: "ActivityWiz - Youth Movement Activities",
-            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
+            content: "Create or explore youth movement activities – ideal for Scouts, leadership programs, and educational guides.",
         },
         contentActivity: {
             title: "ActivityWiz - Youth Movement Activities",
-            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
+            content: "Create or explore youth movement activities – ideal for Scouts, leadership programs, and educational guides.",
         },
         myactivities: {
             title: "ActivityWiz - Youth Movement Activities",
-            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
+            content: "Create or explore youth movement activities – ideal for Scouts, leadership programs, and educational guides.",
         },
         savedActivity: {
             title: "ActivityWiz - Youth Movement Activities",
-            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
+            content: "Create or explore youth movement activities – ideal for Scouts, leadership programs, and educational guides.",
         },
         popularActivities: {
             title: "ActivityWiz - Youth Movement Activities",
-            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
+            content: "Create or explore youth movement activities – ideal for Scouts, leadership programs, and educational guides.",
         },
         edit: {
             title: "ActivityWiz - Youth Movement Activities",
-            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
+            content: "Create or explore youth movement activities – ideal for Scouts, leadership programs, and educational guides.",
         },
         youthFaq: {
             title: "ActivityWiz - Youth Movement Activities - FAQ",
-            content: "Create or explore youth movement activities with AI – ideal for Scouts, leadership programs, and educational guides.",
+            content: "Create or explore youth movement activities – ideal for Scouts, leadership programs, and educational guides.",
         },
 
         practiceHome: {
-            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic with Smart AI",
+            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic",
             content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
         practiceTopic: {
-            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic with Smart AI",
+            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic",
             content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
         practiceQuiz: {
-            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic with Smart AI",
+            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic",
             content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
         practiceFaq: {
-            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic with Smart AI - FAQ",
+            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic - FAQ",
             content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
 
@@ -256,7 +256,7 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
         popularActivities: {
             title: "ActivityWiz - فعاليات لحركات الشباب",
-            content: "اكتشف أكثر الفعاليات شعبية للمجموعات الشبابية – تعليمية، ممتعة، وجاهزة للاستخدام.",
+            content: "أنشئ أو استكشف فعاليات لحركات الشباب باستخدام الذكاء الاصطناعي. مثالي للكشافة، وبرامج القيادة، والمجموعات التعليمية.",
         },
         edit: {
             title: "ActivityWiz - فعاليات لحركات الشباب",
@@ -355,7 +355,7 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
         popularActivities: {
             title: "ActivityWiz - Actividades para Movimientos Juveniles",
-            content: "Descubre las actividades más populares para grupos juveniles: educativas, divertidas y listas para usar.",
+            content: "Crea o explora actividades para movimientos juveniles con IA. Ideal para Scouts, programas de liderazgo y grupos educativos.",
         },
         edit: {
             title: "ActivityWiz - Actividades para Movimientos Juveniles",
