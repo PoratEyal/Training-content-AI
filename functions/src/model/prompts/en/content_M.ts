@@ -1,5 +1,5 @@
-export const CONTANT_PROMPT_M = `Description: Creating an educational activity for a youth movement
-Activity details: Time: {0} Topic: {1} Target audience: {2} children, ages {3}, children's gender: {4} Location: {5} Additional notes: {6}
+export const CONTENT_PROMPT_M = `Description: Creating an educational activity for a youth movement
+Activity details: Time: {0}, Topic: {1}, Target audience: A group of {2} children aged {3}, Gender of the children: {4}, Location: {5}, Additional notes: {6}
 !!! MOST IMPORTANT: All activity details must be addressed. Use ONLY the following headings in this exact order !!!
 Mandatory structure:
 **Activity Topic:** [name]

@@ -12,7 +12,7 @@ export const Movements = {
             title: "צופים",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "פעילות תוכן",
                 },
                 {
@@ -34,7 +34,7 @@ export const Movements = {
             title: "הנוער העובד והלומד",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "מתודה מרכזית",
                 },
                 {
@@ -52,7 +52,7 @@ export const Movements = {
             title: "בני עקיבא",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "פעילות",
                 },
                 {
@@ -66,7 +66,7 @@ export const Movements = {
             title: "מכבי צעיר",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "פעילות",
                 },
                 {
@@ -80,7 +80,7 @@ export const Movements = {
             title: "המחנות העולים",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "פעילות",
                 },
                 {
@@ -94,7 +94,7 @@ export const Movements = {
             title: "השומר הצעיר",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "פעילות",
                 },
                 {
@@ -108,7 +108,7 @@ export const Movements = {
             title: "נוער לאומי ביתר",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "פעילות",
                 },
                 {
@@ -122,7 +122,7 @@ export const Movements = {
             title: "התנועה החדשה",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "פעילות",
                 },
                 {
@@ -136,7 +136,7 @@ export const Movements = {
             title: "ארגון המד״צים",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "פעילות",
                 },
                 {
@@ -150,7 +150,7 @@ export const Movements = {
             title: "מדריכי של״ח צעירים",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "פעילות",
                 },
                 {
@@ -164,7 +164,7 @@ export const Movements = {
             title: "חוגי סיירות",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "פעילות",
                 },
                 {
@@ -182,7 +182,7 @@ export const Movements = {
             title: "נוע״ם",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "פעילות",
                 },
                 {
@@ -196,7 +196,7 @@ export const Movements = {
             title: "האיחוד החקלאי",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "פעילות",
                 },
                 {
@@ -210,7 +210,7 @@ export const Movements = {
             title: "שינשינים",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "פעילות",
                 },
                 {
@@ -224,7 +224,7 @@ export const Movements = {
             title: "אחר",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "פעילות",
                 },
                 {
@@ -245,7 +245,7 @@ export const Movements = {
             title: "Scouts",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "Content Activity",
                 },
                 {
@@ -259,7 +259,7 @@ export const Movements = {
             title: "Youth Leadership Programs",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "Content Activity",
                 },
                 {
@@ -273,7 +273,7 @@ export const Movements = {
             title: "Faith-Based Youth Groups",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "Content Activity",
                 },
                 {
@@ -287,7 +287,7 @@ export const Movements = {
             title: "Environmental & Nature Groups",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "Content Activity",
                 },
                 {
@@ -301,7 +301,7 @@ export const Movements = {
             title: "Other",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "Content Activity",
                 },
                 {
@@ -318,7 +318,7 @@ export const Movements = {
             title: "Scouts",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "Actividad de Contenido",
                 },
                 {
@@ -332,7 +332,7 @@ export const Movements = {
             title: "Programas de Liderazgo Juvenil",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "Actividad de Contenido",
                 },
                 {
@@ -346,7 +346,7 @@ export const Movements = {
             title: "Grupos Juveniles Basados en la Fe",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "Actividad de Contenido",
                 },
                 {
@@ -360,7 +360,7 @@ export const Movements = {
             title: "Grupos de la Naturaleza",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "Actividad de Contenido",
                 },
                 {
@@ -374,7 +374,7 @@ export const Movements = {
             title: "Otro",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "Actividad de Contenido",
                 },
                 {
@@ -391,7 +391,7 @@ export const Movements = {
             title: "الكشافة",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "نشاط محتوى",
                 },
                 {
@@ -405,7 +405,7 @@ export const Movements = {
             title: "برامج القيادة للشباب",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "نشاط محتوى",
                 },
                 {
@@ -419,7 +419,7 @@ export const Movements = {
             title: "مجموعات الشباب القائمة على الإيمان",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "نشاط محتوى",
                 },
                 {
@@ -433,7 +433,7 @@ export const Movements = {
             title: "المجموعات البيئية والطبيعية",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "نشاط محتوى",
                 },
                 {
@@ -447,7 +447,7 @@ export const Movements = {
             title: "آخر",
             categories: [
                 {
-                    name: "contant",
+                    name: "content",
                     title: "نشاط محتوى",
                 },
                 {

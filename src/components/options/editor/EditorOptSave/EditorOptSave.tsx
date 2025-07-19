@@ -20,7 +20,7 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
     const { t, dir, lang } = useLanguage();
     const { updateMainActivity } = useContentContext();
     const { notifySuccess: notifySuccess, notifyAlert: notifyAlert } = useNotificationContext();
-    const { getSavedActivities } = useSaveContext();
+    const { saveActivity } = useSaveContext();
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
     const [saved, setSaved] = useState<boolean>(false);
 
@@ -35,7 +35,7 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
                 const newUpdatedActivity = updateActivityWithContent(activity, convertedContent);
                 const res = await fetchSaveActivity(newUpdatedActivity, lang);
                 updateMainActivity({ ...newUpdatedActivity, id: res.activity.id } as Activity);
-                await getSavedActivities();
+                await saveActivity();
                 setTimeout(() => { setSaved(false); }, 1000);
             } catch (error) {
                 notifyAlert(t("editor.save.saveError"));

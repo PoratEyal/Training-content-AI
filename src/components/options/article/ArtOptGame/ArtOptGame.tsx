@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./ArtOptGame.module.css";
 import { FaQuestionCircle } from "react-icons/fa";
 import { Activity } from "../../../../models/types/activity";
-import { useNotificationContext } from "../../../../context/NotificationContext";
 import { useLanguage } from "../../../../i18n/useLanguage";
 import { StorageKey } from "../../../../models/enum/storage";
 import { logEvent } from "../../../../utils/logEvent";

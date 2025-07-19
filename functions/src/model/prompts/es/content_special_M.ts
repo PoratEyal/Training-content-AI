@@ -1,4 +1,4 @@
-export const CONTANT_SPECIAL_PROMPT_S = `Descripción: Creando una actividad educativa para un movimiento juvenil
+export const CONTENT_SPECIAL_PROMPT_M = `Descripción: Creando una actividad educativa para un movimiento juvenil
 Detalles de la actividad: Tiempo: {0} Tema: {1} Público objetivo: {2} niños con necesidades especiales, edades {3}, género de los niños: {4} Ubicación: {5} Notas adicionales: {6}
 !!! MÁS IMPORTANTE: Debes incluir todos los detalles de la actividad. Usa SÓLO los siguientes encabezados en este orden exacto !!!
 Estructura obligatoria:

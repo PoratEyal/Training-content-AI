@@ -12,7 +12,7 @@ export type SaveContextType = {
     savedActivity: Activity[];
     isLoading: boolean;
     useFetchSavedData: () => void;
-    getSavedActivities: () => Promise<void>;
+    saveActivity: () => Promise<void>;
     deleteActivity: (activityIdToDelete: string) => Promise<void>;
 };
 
@@ -20,7 +20,7 @@ export const defualtSaveContext: SaveContextType = {
     savedActivity: [],
     isLoading: false,
     useFetchSavedData: () => { },
-    getSavedActivities: async () => { },
+    saveActivity: async () => { },
     deleteActivity: async () => { },
 }
 
@@ -36,7 +36,8 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const { lang } = useLanguage();
 
-    const getSavedActivities = async () => {
+    const saveActivity = async () => {
+
         if (currentUser && currentUser.id) {
             try {
                 setIsLoading(true);
@@ -51,7 +52,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                 }
             } catch (error) {
                 notifyAlert(msg[lang].notSaved.message);
-                logEvent(`[SavedContext.getSavedActivities]: ${error}`, currentUser?.email);
+                logEvent(`[SavedContext.saveActivity]: ${error}`, currentUser?.email);
             } finally {
                 setIsLoading(false);
             }
@@ -78,7 +79,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
     const useFetchSavedData = () => {
         useEffect(() => {
             if (!savedActivity || savedActivity?.length === 0) {
-                getSavedActivities();
+                saveActivity();
             }
         }, [currentUser]);
     };
@@ -89,7 +90,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                 savedActivity,
                 isLoading,
                 useFetchSavedData,
-                getSavedActivities,
+                saveActivity,
                 deleteActivity,
             }}
         >

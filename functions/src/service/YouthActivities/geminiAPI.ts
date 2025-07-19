@@ -47,73 +47,83 @@ const apiKey = geminiConfig?.apikey || process.env.API_KEY || "";
 const genAI = new GoogleGenerativeAI(apiKey);
 
 async function generateContent(prompt: string): Promise<string> {
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-    const result = await model.generateContent(prompt);
-    const response = result.response;
-    const text = response.text();
-    return text;
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+  const result = await model.generateContent(prompt);
+  const response = result.response;
+  const text = response.text();
+  return text;
 }
 
-
+const promptUtils = {
+  he: {
+    getMoreInfo: getMoreInfo_he,
+    getTools: getTools_he,
+    getSection: getSection_he,
+    getSafty: getSafty_he,
+    getPromptOptions: getPromptOptions_he,
+    promptPerGrade: promptPerGrade_he,
+  },
+  en: {
+    getMoreInfo: getMoreInfo_en,
+    getTools: getTools_en,
+    getSection: getSection_en,
+    getSafty: getSafty_en,
+    getPromptOptions: getPromptOptions_en,
+    promptPerGrade: promptPerGrade_en,
+  },
+  es: {
+    getMoreInfo: getMoreInfo_es,
+    getTools: getTools_es,
+    getSection: getSection_es,
+    getSafty: getSafty_es,
+    getPromptOptions: getPromptOptions_es,
+    promptPerGrade: promptPerGrade_es,
+  },
+  ar: {
+    getMoreInfo: getMoreInfo_ar,
+    getTools: getTools_ar,
+    getSection: getSection_ar,
+    getSafty: getSafty_ar,
+    getPromptOptions: getPromptOptions_ar,
+    promptPerGrade: promptPerGrade_ar,
+  },
+};
 
 const getPromptAndDetails = (activityDetails: ActivityDetails, lang: Lang): [string, string[]] => {
   //if (activityDetails.movement === "krembo")
   //  return getPromptAndDetailsForSpecialKids(activityDetails, lang);
 
-  const { category, grade, time, subject, amount, gender, place } = activityDetails;
-  const { religion, contest, tools: activityTools, info } = activityDetails;
+  const {
+    category,
+    grade,
+    time,
+    subject,
+    amount,
+    gender,
+    place,
+    religion,
+    contest,
+    tools: activityTools,
+    info,
+  } = activityDetails;
 
-  let moreInfo, tools, section, safty, promptOptions, prompt;
-  if (lang === "he") {
-    moreInfo = getMoreInfo_he(info);
-    tools = getTools_he(category, activityTools, religion);
-    section = getSection_he(category, time, place);
-    safty = getSafty_he(category, contest);
-    promptOptions = getPromptOptions_he(category);
-    prompt = promptPerGrade_he(grade, promptOptions);
+  const utils = promptUtils[lang] || promptUtils["en"];
 
-  } else if (lang === "en") {
-    moreInfo = getMoreInfo_en(info);
-    tools = getTools_en(category, activityTools, religion);
-    section = getSection_en(category, time, place);
-    safty = getSafty_en(category, contest);
-    promptOptions = getPromptOptions_en(category);
-    prompt = promptPerGrade_en(grade, promptOptions);
+  const moreInfo = utils.getMoreInfo(info);
+  const tools = utils.getTools(category, activityTools, religion);
+  const section = utils.getSection(category, time);
+  const safety = utils.getSafty(category, contest);
+  const promptOptions = utils.getPromptOptions(category);
+  const prompt = utils.promptPerGrade(grade, promptOptions);
 
-  } else if (lang === "es") {
-    moreInfo = getMoreInfo_es(info);
-    tools = getTools_es(category, activityTools, religion);
-    section = getSection_es(category, time, place);
-    safty = getSafty_es(category, contest);
-    promptOptions = getPromptOptions_es(category);
-    prompt = promptPerGrade_es(grade, promptOptions);
-
-  } else if (lang === "ar") {
-    moreInfo = getMoreInfo_ar(info);
-    tools = getTools_ar(category, activityTools, religion);
-    section = getSection_ar(category, time, place);
-    safty = getSafty_ar(category, contest);
-    promptOptions = getPromptOptions_ar(category);
-    prompt = promptPerGrade_ar(grade, promptOptions);
-    
-  } else {
-    // default fallback to English
-    moreInfo = getMoreInfo_en(info);
-    tools = getTools_en(category, activityTools, religion);
-    section = getSection_en(category, time, place);
-    safty = getSafty_en(category, contest);
-    promptOptions = getPromptOptions_en(category);
-    prompt = promptPerGrade_en(grade, promptOptions);
-  }
-
-  const details = [time, subject, amount, grade, gender, place, moreInfo, tools, section, safty];
+  const details = [time, subject, String(amount), grade, gender, place, moreInfo, tools, section, safety];
   return [prompt, details];
 };
 
 export async function getMainActivity(data: GetActivityRequest): Promise<string> {
-    const { lang, ...restData } = data;
-    const activityDetails = restData as ActivityDetails;
-    const [prompt, details] = getPromptAndDetails(activityDetails, lang);
-    const result = formatString(prompt, details);
-    return await generateContent(result);
+  const { lang, ...restData } = data;
+  const activityDetails = restData as ActivityDetails;
+  const [prompt, details] = getPromptAndDetails(activityDetails, lang);
+  const result = formatString(prompt, details);
+  return await generateContent(result);
 }

@@ -1,4 +1,4 @@
-export const CONTANT_SPECIAL_PROMPT_S = `Description: Creating an educational activity for a youth movement
+export const CONTENT_SPECIAL_PROMPT_S = `Description: Creating an educational activity for a youth movement
 Activity details: Time: {0} Topic: {1} Target audience: {2} children with special needs, ages {3}, children's gender: {4} Location: {5} Additional notes: {6}
 !!! MOST IMPORTANT: All activity details must be addressed. Use ONLY the following headings in this exact order !!!
 Mandatory structure:

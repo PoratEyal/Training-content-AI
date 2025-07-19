@@ -30,7 +30,7 @@ const getSavedActivities = functions.https.onCall(
             }
             return { result: "success", message: "No activities." };
         } catch (error) {
-            return { result: "error", message: "Something want wrong." };
+            return { result: "error", message: "error in getSavedActivities" };
         }
     },
 );

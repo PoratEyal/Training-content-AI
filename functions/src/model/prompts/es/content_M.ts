@@ -1,5 +1,5 @@
-export const CONTANT_PROMPT_B = `Descripción: Creando una actividad educativa para un movimiento juvenil
-Detalles de la actividad: Tiempo: {0} Tema: {1} Público objetivo: {2} niños, edades {3}, género de los niños: {4} Ubicación: {5} Notas adicionales: {6}
+export const CONTENT_PROMPT_M = `Descripción: Creando una actividad educativa para un movimiento juvenil
+Detalles de la actividad: Tiempo: {0}, Tema: {1}, Público objetivo: Grupo de {2} participantes de edad {3}, Género de los niños: {4}, Ubicación: {5}, Notas adicionales: {6}
 !!! MÁS IMPORTANTE: Debes incluir todos los detalles de la actividad. Usa SÓLO los siguientes encabezados en este orden exacto !!!
 Estructura obligatoria:
 **Tema de la Actividad:** [nombre]

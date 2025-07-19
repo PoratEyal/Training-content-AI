@@ -25,7 +25,7 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
     const { currentUser } = useAuthContext();
     const { updateMainActivity } = useContentContext();
     const { notifySuccess: notifySuccess, notifyAlert: notifyAlert } = useNotificationContext();
-    const { getSavedActivities, deleteActivity } = useSaveContext();
+    const { saveActivity, deleteActivity } = useSaveContext();
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
     const [saved, setSaved] = useState<boolean>(false);
     const [activityId, setActivityId] = useState<string | undefined>();
@@ -46,7 +46,7 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
             const res = await fetchSaveActivity(activity, lang);
             setActivityId(res.activity.id);
             updateMainActivity({ ...activity, id: res.activity.id } as Activity);
-            await getSavedActivities();
+            await saveActivity();
             setSaved(true);
         } catch (error) {
             notifyAlert(t('articleOptions.save.saveError'));
