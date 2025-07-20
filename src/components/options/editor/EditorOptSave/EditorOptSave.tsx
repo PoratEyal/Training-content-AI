@@ -28,8 +28,8 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
         if (htmlContent && !isDisabled) {
             try {
                 setIsDisabled(true);
-                setTimeout(() => { setIsDisabled(false); }, SAVE_COOLDOWN); // prevent DDoS attacks
                 notifySuccess(t("editor.save.saveSuccess"));
+                setTimeout(() => { setIsDisabled(false); }, SAVE_COOLDOWN); // prevent DDoS attacks
                 setSaved(true);
                 const convertedContent = convertHTMLToContent(htmlContent);
                 const newUpdatedActivity = updateActivityWithContent(activity, convertedContent);
@@ -38,9 +38,9 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
                 await saveActivity();
                 setTimeout(() => { setSaved(false); }, 1000);
             } catch (error) {
+                setSaved(false);
                 notifyAlert(t("editor.save.saveError"));
                 logEvent(`[EditorOptSave.handleSave]`, "");
-                setSaved(false);
             }
         }
     };

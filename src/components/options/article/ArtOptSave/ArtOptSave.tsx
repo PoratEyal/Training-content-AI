@@ -40,12 +40,12 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
 
         try {
             setIsDisabled(true);
+            notifySuccess(t('articleOptions.save.saveSuccess'));
             setTimeout(() => { setIsDisabled(false); }, SAVE_COOLDOWN); // prevent DDoS attacks
             updateParam(true);
             const res = await fetchSaveActivity(activity, lang);
             setActivityId(res.activity.id);
             updateMainActivity({ ...activity, id: res.activity.id } as Activity);
-            notifySuccess(t('articleOptions.save.saveSuccess'));
             await saveActivity();
             setSaved(true);
         } catch (error) {
@@ -60,9 +60,9 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
 
         try {
             setIsDisabled(true);
+            notifySuccess(t('articleOptions.save.removeSuccess'));
             setTimeout(() => { setIsDisabled(false); }, SAVE_COOLDOWN); // prevent DDoS attacks
             updateParam(false);
-            notifySuccess(t('articleOptions.save.removeSuccess'));
             await deleteActivity(activityId);
             setSaved(false);
         } catch (error) {
