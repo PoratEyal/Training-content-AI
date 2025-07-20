@@ -34,7 +34,6 @@ import PracticeFAQ from "./pages/SmartPractice/FAQ/FAQ"
 // Learn Words Language
 import WordsHomePage from "./pages/Words/HomePage/Home"
 import WordsTopic from "./pages/Words/Topic/Topic"
-import WordsVocab from "./pages/Words/Vocab-Unused/Vocab"
 import WordsQuiz from "./pages/Words/Quiz/Quiz"
 import WordsFAQ from "./pages/Words/FAQ/FAQ"
 
@@ -63,7 +62,6 @@ const allRoutes = [
   // Words
   { key: "wordsHomePage", element: <WordsHomePage /> },
   { key: "wordsTopic", element: <WordsTopic /> },
-  { key: "wordsVocab", element: <WordsVocab /> },
   { key: "wordsQuiz", element: <WordsQuiz /> },
   { key: "wordsFAQ", element: <WordsFAQ /> },
 

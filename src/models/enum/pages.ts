@@ -12,7 +12,6 @@ export enum ProductPages {
 
   PAGE_WordsHome = "wordsHome",
   PAGE_WordsTopic = "wordsTopic",
-  PAGE_WordsVocab = "wordsVocab",
   PAGE_WordsQuiz = "wordsQuiz"
 }
 
@@ -71,20 +70,12 @@ export const allowedTransitions: Record<ProductPages, ProductPages[]> = {
   [ProductPages.PAGE_WordsTopic]:
     [
       ProductPages.PAGE_WordsHome,
-      ProductPages.PAGE_WordsVocab,
-      ProductPages.PAGE_WordsQuiz
-    ],
-  [ProductPages.PAGE_WordsVocab]:
-    [
-      ProductPages.PAGE_WordsHome,
-      ProductPages.PAGE_WordsTopic,
       ProductPages.PAGE_WordsQuiz
     ],
   [ProductPages.PAGE_WordsQuiz]:
     [
       ProductPages.PAGE_WordsHome,
       ProductPages.PAGE_WordsTopic,
-      ProductPages.PAGE_WordsVocab
     ]
 
 };

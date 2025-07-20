@@ -36,10 +36,13 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
             if (response.result === "success" && response.subjects) {
                 const sortedSubjects = response.subjects.sort((a, b) => a.orderId - b.orderId);
                 setSubjects(sortedSubjects);
-            }
-        } catch (error: any) {
-            logEvent(`[StaticContentContext.fetchSubjectsData]`, "");
+            } else {
             notifyAlert(msg[lang].error.message);
+            logEvent(`[StaticContentContext.else]`, "");
+        }
+        } catch (error: any) {
+            //notifyAlert(msg[lang].error.message);
+            logEvent(`[StaticContentContext.catch]`, "");
         } finally {
             setIsLoading(false);
         }

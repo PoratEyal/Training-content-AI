@@ -42,16 +42,16 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
             setIsDisabled(true);
             setTimeout(() => { setIsDisabled(false); }, SAVE_COOLDOWN); // prevent DDoS attacks
             updateParam(true);
-            notifySuccess(t('articleOptions.save.saveSuccess'));
             const res = await fetchSaveActivity(activity, lang);
             setActivityId(res.activity.id);
             updateMainActivity({ ...activity, id: res.activity.id } as Activity);
+            notifySuccess(t('articleOptions.save.saveSuccess'));
             await saveActivity();
             setSaved(true);
         } catch (error) {
+            updateParam(false);
             notifyAlert(t('articleOptions.save.saveError'));
             logEvent(`[ArtOptSave.handleSave]`, currentUser?.email);
-            updateParam(false);
         }
     };
 
@@ -66,9 +66,9 @@ const ArtOptSave: React.FC<ArtOptSaveProps> = ({ activity }) => {
             await deleteActivity(activityId);
             setSaved(false);
         } catch (error) {
+            updateParam(true);
             notifyAlert(t('articleOptions.save.removeError'));
             logEvent(`[ArtOptSave.handleUnsave]`, currentUser?.email);
-            updateParam(true);
         }
     };
 
