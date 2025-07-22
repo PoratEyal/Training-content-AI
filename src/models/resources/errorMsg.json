@@ -2,7 +2,7 @@
     "he": {
         "error": {
             "title": "שגיאה",
-            "message": "אופס... נראה שמשהו השתבש. נסו שוב :)"
+            "message": "הפעולה לא הושלמה. אנא נסו שוב."
         },
         "safety": {
             "title": "שגיאה",
@@ -20,7 +20,7 @@
     "en": {
         "error": {
             "title": "Error",
-            "message": "Oops... something went wrong while creating your activity. Please try again."
+            "message": "The action was not completed. Please try again."
         },
         "safety": {
             "title": "Error",
@@ -38,7 +38,7 @@
     "es": {
         "error": {
             "title": "Error",
-            "message": "Algo salió mal al crear la actividad. Inténtalo de nuevo en un momento."
+            "message": "La acción no se completó. Por favor, inténtalo de nuevo."
         },
         "safety": {
             "title": "Error",
@@ -57,7 +57,7 @@
     "ar": {
         "error": {
             "title": "خطأ",
-            "message": "واجهنا مشكلة في إنشاء النشاط. يرجى المحاولة مرة أخرى."
+            "message": "لم تكتمل العملية. يرجى المحاولة مرة أخرى."
         },
         "safety": {
             "title": "خطأ",

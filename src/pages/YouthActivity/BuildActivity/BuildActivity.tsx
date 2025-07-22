@@ -135,7 +135,7 @@ function BuildActivity() {
         logEvent(`[BuildActivity.else]: ${errorText} | serverMessage: ${String(response.message)}`, currentUser?.email);
       }
     } catch (error) {
-      //notifyAlert(msg[lang].error.message);
+      notifyAlert(msg[lang].error.message);
       const errorMessage = error instanceof Error && typeof error.message === "string" ? error.message : "Unknown error";
       const logMessage = `[BuildActivity.catch]: Error: ${errorMessage} | subject: ${String(subject)} | category: ${String(category)} | place: ${String(place)} | time: ${String(time)} | religion: ${String(religion)} | contest: ${String(contest)} | tools: ${String(tools)} | info: ${String(info)} | lang: ${String(lang)}`;
       logEvent(logMessage, currentUser?.email);
