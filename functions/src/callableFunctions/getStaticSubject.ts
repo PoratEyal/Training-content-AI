@@ -49,9 +49,10 @@ const getStaticSubjectsHttp = functions.https.onCall(
             };
 
         } catch (error) {
+            const message = (error as Error)?.message || "unknown";
             return {
                 result: "error",
-                message: "Failed to fetch static subjects."
+                message: `Failed to fetch static subjects. (${message})`
             };
         }
     }

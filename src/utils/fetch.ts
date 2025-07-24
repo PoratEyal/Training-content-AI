@@ -90,10 +90,10 @@ export const fetchStaticSubjects = async (): Promise<staticSubjectsResponse> => 
         if (response.result === "success" && response.subjects) {
             return response;
         } else {
-            throw new Error("fetchStaticSubjects");
+            throw response;
         }
     } catch (error: any) {
-        throw new Error("fetchStaticSubjects");
+        throw error;
     }
 };
 
