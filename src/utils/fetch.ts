@@ -104,10 +104,10 @@ export const fetchGetStaticActivity = async (request: GetStaticActivityRequest,)
         if (response.result === "success" && response.activity) {
             return response;
         } else {
-            throw new Error("fetchGetStaticActivity");
+            throw response;
         }
     } catch (error: any) {
-        throw new Error("fetchGetStaticActivity");
+        throw error;
     }
 };
 
@@ -122,10 +122,10 @@ export const fetchIncrementActivityDisplayCount = async (activity: StaticActivit
         if (response.result === "success") {
             return response;
         } else {
-            throw new Error("fetchIncrementActivityDisplayCount");
+            throw response;
         }
     } catch (error: any) {
-        throw new Error("fetchIncrementActivityDisplayCount");
+        throw error;
     }
 };
 

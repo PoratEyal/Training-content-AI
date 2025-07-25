@@ -61,7 +61,8 @@ function ContentActivity() {
       const response = await fetchGetStaticActivity({ contentName: contentId });
       setActivity(response.activity);
     } catch (error) {
-      logEvent(`[LowPriority][ContentActivity.fetchActivity]: content=${contentId}, activity=${activityId}, "URL not exist"}`, "");
+      const message = error?.message || JSON.stringify(error);
+      logEvent(`[ContentActivity.fetchActivity]`, `content=${contentId}, activity=${activityId}, error=${message}`);
     }
     finally {
       setIsActivityLoading(false);
