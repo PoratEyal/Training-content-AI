@@ -4,6 +4,7 @@ import msg from "../models/resources/errorMsg.json";
 import { fetchStaticSubjects } from "../utils/fetch";
 import { StaticSubjects } from "../models/types/activity";
 import { useLanguage } from "../i18n/useLanguage";
+import { useAuthContext } from "../context/AuthContext";
 import { logEvent } from "../utils/logEvent";
 
 export type StaticContentContextType = {
@@ -28,22 +29,23 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
     const [subjects, setSubjects] = useState<StaticSubjects[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const { lang } = useLanguage();
+    const { currentUser } = useAuthContext();
 
     const fetchSubjectsData = async () => {
         setIsLoading(true);
         try {
-            const response = await fetchStaticSubjects();
+            const response = await fetchStaticSubjects();   // Happens once in the HomePage Youth
             if (response.result === "success" && response.subjects) {
                 const sortedSubjects = response.subjects.sort((a, b) => a.orderId - b.orderId);
                 setSubjects(sortedSubjects);
             } else {
                 notifyAlert(msg[lang].error.message);
-                logEvent(`[StaticContentContext.else]`, "");
+                logEvent(`[StaticContentContext.else]`, currentUser?.email || "");
             }
         } catch (error: any) {
             //notifyAlert(msg[lang].error.message);
             const message = error?.message || msg[lang].error.message;
-            logEvent(`[StaticContentContext.catch]: ${message}`, "");
+            logEvent(`[StaticContentContext.catch]: ${message}`, currentUser?.email || "");
         } finally {
             setIsLoading(false);
         }

@@ -25,7 +25,7 @@ import { StorageKey } from "../../../models/enum/storage";
 
 function Content() {
 
-  const { lang } = useLanguage();
+  const { t, lang } = useLanguage();
   const { subjects, isLoading, useFetchSubjectsData } = useStaticContentContext();
   const navigate = useNavigate();
   const { setCurrentPage } = useContentContext()
@@ -90,7 +90,7 @@ function Content() {
             ))}
           </section>
         ) : (
-          <div>לא נבחר נושא פעולה</div>
+          <div>{t("contentPage.noSubjectSelected")}</div>
         )}
       </article>
     </PageLayout>
