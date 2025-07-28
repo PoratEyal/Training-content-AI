@@ -62,7 +62,7 @@ function ContentActivity() {
       setActivity(response.activity);
     } catch (error) {
       const message = error?.message || JSON.stringify(error);
-      logEvent(`[ContentActivity.fetchActivity]`, `content=${contentId}, activity=${activityId}, error=${message}`);
+      logEvent(`[ContentActivity.fetchActivity]: content=${contentId}, activity=${activityId}, error=${message}`, currentUser?.email);
     }
     finally {
       setIsActivityLoading(false);
