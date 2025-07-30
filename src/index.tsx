@@ -26,8 +26,10 @@ const detectCountryAndInit = async () => {
 
   let detectedLang: Lng | undefined
   const langFromPath = window.location.pathname.split("/")[1] as Lng
+  const isGooglebot = /googlebot/i.test(navigator.userAgent)
 
-  if (["he", "en", "es", "ar"].includes(langFromPath)) { // First check Lang in the URL (Most important for Google SEO)
+  // First check Lang in the URL (Most important for Google SEO)
+  if (["he", "en", "es", "ar"].includes(langFromPath) && isGooglebot) {
     detectedLang = langFromPath
   } else {
     const siteLang = localStorage.getItem(StorageKey.SITE_LANG) as Lng | null
