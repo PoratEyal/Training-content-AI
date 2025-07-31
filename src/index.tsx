@@ -26,38 +26,34 @@ const detectCountryAndInit = async () => {
 
   let detectedLang: Lng | undefined
   const langFromPath = window.location.pathname.split("/")[1] as Lng
-  const isGooglebot = /googlebot/i.test(navigator.userAgent)
+  const userLang = localStorage.getItem(StorageKey.SITE_LANG) as Lng | null
 
-  // First check Lang in the URL (Most important for Google SEO)
-  if (["he", "en", "es", "ar"].includes(langFromPath) && isGooglebot) {
+  if (userLang && ["he", "en", "es", "ar"].includes(userLang))  // Check user saved lang
+    detectedLang = userLang
+  else if (["he", "en", "es", "ar"].includes(langFromPath))     // Check URL lang
     detectedLang = langFromPath
-  } else {
-    const siteLang = localStorage.getItem(StorageKey.SITE_LANG) as Lng | null
-    if (siteLang && ["he", "en", "es", "ar"].includes(siteLang)) {
-      detectedLang = siteLang
-    } else {
-      try {
-        const response = await fetch("https://ipapi.co/json/")
-        const data = await response.json()
-        const countryCode = data.country_code
-        const spanishSpeakingCountries = [
-          "AR", "BO", "CL", "CO", "CR", "CU", "DO", "EC",
-          "SV", "GQ", "GT", "HN", "MX", "NI", "PA", "PY",
-          "PE", "PR", "ES", "UY", "VE"
-        ]
-        const arabicSpeakingCountries = [
-          "DZ", "BH", "EG", "IQ", "JO", "KW", "LB", "LY",
-          "MA", "OM", "QA", "SA", "SD", "SY", "TN", "AE",
-          "YE"
-        ]
+  else {                                                        // Check Country
+    try {
+      const response = await fetch("https://ipapi.co/json/")
+      const data = await response.json()
+      const countryCode = data.country_code
+      const spanishSpeakingCountries = [
+        "AR", "BO", "CL", "CO", "CR", "CU", "DO", "EC",
+        "SV", "GQ", "GT", "HN", "MX", "NI", "PA", "PY",
+        "PE", "PR", "ES", "UY", "VE"
+      ]
+      const arabicSpeakingCountries = [
+        "DZ", "BH", "EG", "IQ", "JO", "KW", "LB", "LY",
+        "MA", "OM", "QA", "SA", "SD", "SY", "TN", "AE",
+        "YE"
+      ]
 
-        if (countryCode === "IL") detectedLang = "he"
-        else if (spanishSpeakingCountries.includes(countryCode)) detectedLang = "es"
-        else if (arabicSpeakingCountries.includes(countryCode)) detectedLang = "ar"
-        else detectedLang = "en"
-      } catch {
-        detectedLang = "en"
-      }
+      if (countryCode === "IL") detectedLang = "he"
+      else if (spanishSpeakingCountries.includes(countryCode)) detectedLang = "es"
+      else if (arabicSpeakingCountries.includes(countryCode)) detectedLang = "ar"
+      else detectedLang = "en"
+    } catch {
+      detectedLang = "en"
     }
   }
 
