@@ -44,51 +44,40 @@ function WordsHomePage() {
 
   useEffect(() => {
     if (process.env.NODE_ENV !== "production") return;
+    try {
+      const originalSpeak = window.responsiveVoice?.speak;
+      if (!originalSpeak) return;
 
-    function setupSpeakControlled() {
-      try {
-        const originalSpeak = window.responsiveVoice?.speak;
-        if (!originalSpeak) return;
-        window.responsiveVoice.speak = () => { };
+      // Disable direct use
+      window.responsiveVoice.speak = () => { };
 
-        window.speakControlled = (text, langCode) => {
-          if (typeof text !== "string" || !text.trim()) return;
+      // Controlled wrapper
+      window.speakControlled = (text, langCode) => {
+        if (typeof text !== "string" || !text.trim()) return;
 
-          const voices = {
-            he: "Hebrew Male",
-            en: "US English Female",
-            ar: "Arabic Male",
-            es: "Spanish Latin American Female",
-            fr: "French Female",
-            it: "Italian Female",
-            de: "Deutsch Male",
-            ko: "Korean Male",
-            zh: "Chinese Male",
-            ro: "Romanian Female",
-            el: "Greek Female",
-            th: "Thai Female",
-            nl: "Dutch Female",
-            hu: "Hungarian Female",
-            cs: "Czech Female",
-          };
-          const selectedVoice = voices[langCode] || "US English Female";
-          originalSpeak(text, selectedVoice, { rate: 0.8 });
+        const voices = {
+          he: "Hebrew Male",
+          en: "US English Female",
+          ar: "Arabic Male",
+          es: "Spanish Latin American Female",
+          fr: "French Female",
+          it: "Italian Female",
+          de: "Deutsch Male",
+          ko: "Korean Male",
+          zh: "Chinese Male",
+          ro: "Romanian Female",
+          el: "Greek Female",
+          th: "Thai Female",
+          nl: "Dutch Female",
+          hu: "Hungarian Female",
+          cs: "Czech Female",
         };
-      } catch (e) {
-        logEvent("responsiveVoice setup error", "");
-      }
+        const selectedVoice = voices[langCode] || "US English Female";
+        originalSpeak(text, selectedVoice, { rate: 0.8 });
+      };
+    } catch (e) {
+      logEvent("responsiveVoice setup error", "");
     }
-
-    let interval = setInterval(() => {
-      if (window.responsiveVoice && window.responsiveVoice.speak) {
-        clearInterval(interval);
-        setupSpeakControlled();
-      }
-    }, 300);
-
-    return () => {
-      clearInterval(interval);
-    };
   }, []);
 
 
@@ -101,13 +90,6 @@ function WordsHomePage() {
       index={true}
       hasNavBar={!loading}
     >
-      <Helmet>
-        <script
-          src="https://code.responsivevoice.org/responsivevoice.js?key=MrUBPkih"
-          async
-          crossOrigin="anonymous"
-        ></script>
-      </Helmet>
 
       <script type="application/ld+json">
         {JSON.stringify(homeSchema)}
