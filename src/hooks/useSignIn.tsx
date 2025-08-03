@@ -8,7 +8,6 @@ import { useProduct } from "../context/ProductContext";
 import { useLanguage } from "../i18n/useLanguage";
 import { useNavigate } from "react-router-dom";
 import { ProductType } from "../context/ProductType";
-import { logEvent } from "../utils/logEvent";
 import route from "../router/route.json";
 import { GUEST_BLOCK_MustLogin } from "../models/constants/cookie";
 
@@ -42,13 +41,12 @@ const useSignIn = () => {
         try {
             await signInNow(auth);
 
-        } catch (error: any) {
+        } catch (error: any) { // LowPriority: Exit login
             if (cookieLimit) {  // cleanup: set limit cookie to a "must login" value
                 const lastWeek = new Date()
                 lastWeek.setDate(lastWeek.getDate() - 7)
                 setLimitCookie(lastWeek.toString())
             }
-            //logEvent(`[LowPriority][useSignIn.tsx.signInWithGoogle]: Exit login: ${error?.toString?.() || ""}`, "guest");
 
         } finally {
             navigate(homePagePath);

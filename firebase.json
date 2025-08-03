@@ -162,6 +162,55 @@
           "destination": "/index.practice.ar.html"
         },
 
+        {
+          "source": "/he/event",
+          "destination": "/index.event.he.html"
+        },
+        {
+          "source": "/he/event/**",
+          "destination": "/index.event.he.html"
+        },
+        {
+          "source": "/en/event",
+          "destination": "/index.event.en.html"
+        },
+        {
+          "source": "/en/event/**",
+          "destination": "/index.event.en.html"
+        },
+        {
+          "source": "/es/event",
+          "destination": "/index.event.es.html"
+        },
+        {
+          "source": "/es/event/**",
+          "destination": "/index.event.es.html"
+        },
+        {
+          "source": "/ar/event",
+          "destination": "/index.event.ar.html"
+        },
+        {
+          "source": "/ar/event/**",
+          "destination": "/index.event.ar.html"
+        },
+        {
+          "source": "/he/event/faq",
+          "destination": "/index.event.he.html"
+        },
+        {
+          "source": "/en/event/faq",
+          "destination": "/index.event.en.html"
+        },
+        {
+          "source": "/es/event/faq",
+          "destination": "/index.event.es.html"
+        },
+        {
+          "source": "/ar/event/faq",
+          "destination": "/index.event.ar.html"
+        },
+
 
         {
           "source": "/he/youth",

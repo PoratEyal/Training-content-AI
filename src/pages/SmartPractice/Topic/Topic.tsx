@@ -10,7 +10,7 @@ import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz";
 import { ProductType } from "../../../context/ProductType";
 import { useNotificationContext } from "../../../context/NotificationContext";
 import { PRACTICE_AD_SLOT } from "../../../models/constants/adsSlot";
-import { createQuiz } from "../../../hooks/useQuestions";
+import { createQuiz } from "../../../hooks/generateQuestions";
 import { logEvent } from "../../../utils/logEvent";
 import { ProductPages } from "../../../models/enum/pages";
 import { enforcePageAccess } from "../../../utils/navigation";
@@ -100,7 +100,7 @@ function Topic() {
       const raw = await createQuiz(topic, lang, 10);
       const cleanedJsonStr = cleanJson(raw);
       const parsed = JSON.parse(cleanedJsonStr);
-      //const final = removeDuplicateQ_A(parsed);
+      //const final = removeDuplicateQ_A(parsed); // Lior
       let final;
       try {
         final = removeDuplicateQ_A(parsed);

@@ -6,6 +6,9 @@ export enum StorageKey {
     YOUTH_DETAILS = "youthDetails",
     YOUTH_ACTIVITY = "youthActivity",
 
+    EVENT_DETAILS = "eventDetails",
+    EVENT_ACTIVITY = "eventActivity",
+
     PRACTICE_TOPIC = "practiceTopic",
     PRACTICE_QUIZ = "practiceQuiz",
 

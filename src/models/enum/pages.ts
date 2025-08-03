@@ -6,6 +6,11 @@ export enum ProductPages {
   PAGE_YouthStaticContent = "youthStaticActivity",
   PAGE_YouthMyActivities = "youthMyActivities",
 
+  PAGE_EventHome = "eventHome",
+  PAGE_EventDetails = "eventDetails",
+  PAGE_EventBuild = "eventBuild",
+  PAGE_EventActivity = "eventActivity",
+
   PAGE_PracticeHome = "practiceHome",
   PAGE_PracticeTopic = "practiceTopic",
   PAGE_PracticeQuiz = "practiceQuiz",
@@ -49,6 +54,26 @@ export const allowedTransitions: Record<ProductPages, ProductPages[]> = {
       ProductPages.PAGE_YouthStaticContent,
       ProductPages.PAGE_YouthMyActivities
     ],
+
+  [ProductPages.PAGE_EventHome]:
+    [
+    ],
+  [ProductPages.PAGE_EventDetails]:
+    [
+      ProductPages.PAGE_EventHome,
+      ProductPages.PAGE_EventBuild,
+      ProductPages.PAGE_EventActivity
+    ],
+  [ProductPages.PAGE_EventBuild]:
+    [
+      ProductPages.PAGE_EventDetails,
+      ProductPages.PAGE_EventActivity
+    ],
+  [ProductPages.PAGE_EventActivity]:
+    [
+      ProductPages.PAGE_EventBuild
+    ],
+
 
   [ProductPages.PAGE_PracticeHome]:
     [

@@ -8,21 +8,25 @@ function ContinueWithAI() {
   const product = useProduct()
 
   let productTitle = "";
-  if (product === ProductType.Practice) {
-    productTitle = t("home.practiceForActions");
-  } else if (product === ProductType.Youth) {
+  if (product === ProductType.Youth) {
     productTitle = t("home.youthForActions");
+  } else if (product === ProductType.Event) {
+    productTitle = t("home.eventForActions");
+  } else if (product === ProductType.Practice) {
+    productTitle = t("home.practiceForActions");
   } else if (product === ProductType.Words) {
     productTitle = t("home.wordsForActions");
   }
 
   let productColorClass = "";
-  if (product === ProductType.Practice) {
-    productColorClass = styles.practiceColor;
-  } else if (product === ProductType.Youth) {
+  if (product === ProductType.Youth) {
     productColorClass = styles.youthColor;
+  } else if (product === ProductType.Event) {
+    productColorClass = styles.eventColor;
+  } else if (product === ProductType.Practice) {
+    productColorClass = styles.practiceColor;
   } else if (product === ProductType.Words) {
-    productColorClass = styles.langColor;
+    productColorClass = styles.wordsColor;
   }
 
 

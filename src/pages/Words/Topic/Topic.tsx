@@ -8,7 +8,7 @@ import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz";
 import SelectDetails from "../../../components/SelectDetails/SelectDetails"
 import { ProductType } from "../../../context/ProductType";
-import { createWordsQuiz } from "../../../hooks/useWordsQuestions"
+import { createWordsQuiz } from "../../../hooks/generateWordsQuestions"
 import { WORDS_AD_SLOT } from "../../../models/constants/adsSlot";
 import { ProductPages } from "../../../models/enum/pages";
 import { enforcePageAccess } from "../../../utils/navigation";

@@ -1,8 +1,3 @@
-//
-// This is a navigation option button for the Home page in the app’s bottom navbar.
-// It highlights itself when the current path matches the language-specific home page path.
-// The page adapts its routing dynamically based on the active language.
-//
 import styles from "../navbar.module.css";
 import route from "../../../../router/route.json";
 import { useLocation, useNavigate } from "react-router-dom";

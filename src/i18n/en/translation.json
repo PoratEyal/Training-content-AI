@@ -11,16 +11,19 @@
   "aboutUs": {
     "title": "About",
     "youthAboutText": "Create youth activities – from a library of ready-made activities to personalized ones generated with AI. Perfect for guides looking to enrich educational and social engagement.",
+    "eventAboutText": "Create personalized event activities in seconds – based on age, participants, location, and equipment. Fun, original, and effortless.",
     "practiceAboutText": "Smart practice using AI. Choose any topic you like, and the system will generate a personal quiz in seconds. Ideal for anyone seeking a simple, focused way to practice and deepen understanding.",
     "wordsAboutText": "Vocabulary training made smart and efficient. Enter words or choose a topic to get a personalized practice that helps you learn, remember, and understand better – in any language."
   },
   "home": {
     "slogan": "Customized, Simple and Fast 🤟",
     "youthStartAction": "Create",
+    "eventStartAction": "Create",
     "practiceStartAction": "Lets Go",
     "wordsStartAction": "Lets Go",
     "advanced": "Advanced",
     "youthForActions": "Activities",
+    "eventForActions": "Events",
     "practiceForActions": "Challenge",
     "wordsForActions": "Vocabulary",
     "withPrefix": "with",
@@ -41,8 +44,8 @@
     "gender": "Gender",
     "lampAlt": "Yellow lamp"
   },
-  "buildActivity": {
-    "createTitle": "Let's plan the activity",
+  "youthBuildActivity": {
+    "title": "Let's plan the activity",
     "category": {
       "label": "Category"
     },
@@ -103,6 +106,27 @@
       "message": "Are you sure you want to delete the activity {{activityName}}?",
       "deleteButton": "Delete",
       "deleteError": "The activity was not deleted, please try again later"
+    }
+  },
+  "eventDetails": {
+    "title": "Tell us about your event",
+    "event": "Event type, like birthday or party",
+    "moreDetails": "More details",
+    "limit": "To add more information, please use the 'Additional information' field.",
+    "lampAlt": "Lamp"
+  },
+  "eventBuildActivity": {
+    "title": "Let's plan the activity",
+    "age": "Participants' age",
+    "amount": "Number of participants",
+    "gender": "Gender",
+    "place": "Location",
+    "time": "Time",
+    "submit": "Go to activity",
+    "loading": "Creating activity",
+    "loadingActivity": {
+      "heading": "The activity is on its way",
+      "text": "Note! The activities are based on an AI system, so there may be inaccuracies. Please review the content before using it"
     }
   },
   "practice": {

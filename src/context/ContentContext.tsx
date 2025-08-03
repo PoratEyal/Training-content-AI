@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import Session from "../utils/sessionStorage";
 import { addSessionData } from "../utils/movment";
 import { Activity } from "../models/types/activity";
-import { Movements } from "../models/resources/movment";
+import { Movements } from "../models/resources/productYouth/movment";
 import { StorageKey } from "../models/enum/storage";
 import { DataType } from "../models/types/common";
 import { useAuthContext } from "./AuthContext";

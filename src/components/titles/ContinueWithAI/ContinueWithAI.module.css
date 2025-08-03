@@ -4,11 +4,15 @@
   background-color: var(--primary-color);
 }
 
+.eventColor {
+  background-color: var(--event-primary-color);
+}
+
 .practiceColor {
   background-color: var(--practice-primary-color);
 }
 
-.langColor {
+.wordsColor {
   background-color: var(--words-primary-color);
 }
 

@@ -19,7 +19,7 @@ import { useNotificationContext } from "../../../context/NotificationContext";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { YOUTH_BUILD_AD_SLOT } from "../../../models/constants/adsSlot";
 import msg from "../../../models/resources/errorMsg.json";
-import { ActivityTimeOptions, CategoryOptions, ContestOptions, PlaceOptions, ReligionOptions, ToolsOptions } from "../../../models/resources/select";
+import { ActivityTimeOptions, CategoryOptions, ContestOptions, PlaceOptions, ReligionOptions, ToolsOptions } from "../../../models/resources/productYouth/select";
 import { Activity } from "../../../models/types/activity";
 import { CategoryName } from "../../../models/types/movement";
 import { StorageKey } from "../../../models/enum/storage";
@@ -171,14 +171,14 @@ function BuildActivity() {
           <section className={styles.build_container}>
             <section className={styles.build_content}>
               <SelectDetails
-                placeholder={t("buildActivity.category.label")}
+                placeholder={t("youthBuildActivity.category.label")}
                 obj={category}
                 setObj={setCategory}
                 data={CategoryOptions(data?.movement?.categories || [])}
               />
 
               <SubjectInput
-                placeholder={t("buildActivity.subject.label")}
+                placeholder={t("youthBuildActivity.subject.label")}
                 setSubject={setSubject}
                 subject={subject}
                 category={category as CategoryName}
@@ -186,29 +186,29 @@ function BuildActivity() {
               />
 
               <SelectDetails
-                placeholder={t("buildActivity.place.label")}
+                placeholder={t("youthBuildActivity.place.label")}
                 obj={place}
                 setObj={setPlace}
                 data={PlaceOptions[lang]}
               />
 
               <SelectDetails
-                placeholder={t("buildActivity.time.label")}
+                placeholder={t("youthBuildActivity.time.label")}
                 obj={time}
                 setObj={setTime}
                 data={ActivityTimeOptions[lang]}
               />
 
-              <MoreOptionsCollapse text={t("buildActivity.moreOptions.title")}>
+              <MoreOptionsCollapse text={t("youthBuildActivity.moreOptions.title")}>
                 <SelectDetails
-                  placeholder={t("buildActivity.tools.label")}
+                  placeholder={t("youthBuildActivity.tools.label")}
                   obj={tools}
                   setObj={setTools}
                   data={ToolsOptions[lang]}
                 />
 
                 <SelectDetails
-                  placeholder={t("buildActivity.contest.label")}
+                  placeholder={t("youthBuildActivity.contest.label")}
                   obj={contest}
                   setObj={setContest}
                   data={ContestOptions[lang]}
@@ -216,7 +216,7 @@ function BuildActivity() {
 
                 {lang === "he" && (
                   <SelectDetails
-                    placeholder={t("buildActivity.religion.label")}
+                    placeholder={t("youthBuildActivity.religion.label")}
                     obj={religion}
                     setObj={setReligion}
                     data={ReligionOptions}
@@ -224,7 +224,7 @@ function BuildActivity() {
                 )}
 
                 <MoreDetailsInput
-                  placeholder={t("buildActivity.moreDetails.label")}
+                  placeholder={t("youthBuildActivity.moreDetails.label")}
                   text={info}
                   setText={setInfo}
                 />
@@ -240,12 +240,12 @@ function BuildActivity() {
                 <MainBtn
                   isDisabled={isDisabled}
                   height={42}
-                  text={t("buildActivity.submit")}
+                  text={t("youthBuildActivity.submit")}
                   func={submitHandler}
                 />
                 {hasAlert && (
                   <div className={styles.input_alert}>
-                    {t("buildActivity.alert")}
+                    {t("youthBuildActivity.alert")}
                   </div>
                 )}
               </div>

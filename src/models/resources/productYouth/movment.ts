@@ -1,4 +1,4 @@
-import { Movement } from "../types/movement";
+import { Movement } from "../../types/movement";
 
 /**
  * Dont forget to also update 

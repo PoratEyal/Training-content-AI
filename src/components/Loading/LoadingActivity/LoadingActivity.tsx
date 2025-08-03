@@ -8,8 +8,8 @@ function LoadingActivity() {
         <section className={styles.loading_activity}>
             <div className={styles.loading_main}>
                 <img className={styles.gif} src="/Common/loading.gif" alt="loading" />
-                <label className={styles.h2}>{t("buildActivity.loadingActivity.heading")}</label>
-                <label className={styles.text}>{t("buildActivity.loadingActivity.text")}</label>
+                <label className={styles.h2}>{t("youthBuildActivity.loadingActivity.heading")}</label>
+                <label className={styles.text}>{t("youthBuildActivity.loadingActivity.text")}</label>
                 <div className={styles.progress_bar}></div>
             </div>
         </section>

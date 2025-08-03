@@ -11,16 +11,19 @@
   "aboutUs": {
     "title": "Acerca de",
     "youthAboutText": "Crea actividades para jóvenes: desde una biblioteca de actividades listas hasta actividades personalizadas con inteligencia artificial. Ideal para guías que desean enriquecer la experiencia educativa y social.",
+    "eventAboutText": "Crea actividades personalizadas para eventos en segundos, según edad, participantes, lugar y materiales. Divertido, original y sin esfuerzo.",
     "practiceAboutText": "Práctica inteligente con inteligencia artificial. Elige cualquier tema y el sistema generará un ejercicio personalizado en segundos. Perfecto para quienes buscan una forma sencilla y enfocada de practicar y profundizar su comprensión.",
     "wordsAboutText": "Entrenamiento de vocabulario de forma inteligente y eficiente. Ingresa palabras o elige un tema para obtener una práctica personalizada que te ayudará a aprender, recordar y comprender mejor – en cualquier idioma."
   },
   "home": {
     "slogan": "Personalizado, Simple y Rápido 🤟",
     "youthStartAction": "Crear Actividad",
+    "eventStartAction": "Crear Actividad",
     "practiceStartAction": "Vamos allá",
     "wordsStartAction": "Vamos allá",
     "advanced": "Actividades",
     "youthForActions": "avanzadas",
+    "eventForActions": "Eventos",
     "practiceForActions": "Desafío",
     "wordsForActions": "Vocabulario",
     "withPrefix": "con",
@@ -41,8 +44,8 @@
     "gender": "Género",
     "lampAlt": "Lámpara amarilla"
   },
-  "buildActivity": {
-    "createTitle": "VA planear la actividad",
+  "youthBuildActivity": {
+    "title": "VA planear la actividad",
     "category": {
       "label": "Categoría"
     },
@@ -103,6 +106,27 @@
       "message": "¿Estás seguro de que deseas eliminar la actividad {{activityName}}?",
       "deleteButton": "Eliminar",
       "deleteError": "La actividad no fue eliminada, por favor intenta nuevamente más tarde"
+    }
+  },
+  "eventDetails": {
+    "title": "Cuéntanos sobre tu evento",
+    "event": "Tipo de evento, como cumpleaños o fiesta",
+    "moreDetails": "Más información",
+    "limit": "Para agregar más información, utiliza el campo \"Información adicional\".",
+    "lampAlt": "Lámpara"
+  },
+  "eventBuildActivity": {
+    "title": "Vamos a planear la actividad",
+    "age": "Edad de los participantes",
+    "amount": "Número de participantes",
+    "gender": "Género",
+    "place": "Ubicación",
+    "time": "Hora",
+    "submit": "Ir a la actividad",
+    "loading": "Creando actividad",
+    "loadingActivity": {
+      "heading": "La actividad está en camino",
+      "text": "¡Atención! Las actividades se basan en un sistema de inteligencia artificial, por lo que puede haber imprecisiones. Por favor, revisa el contenido antes de usarlo"
     }
   },
   "practice": {

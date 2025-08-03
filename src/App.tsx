@@ -25,6 +25,13 @@ import YouthMyActivityContent from "./pages/YouthActivity/MyActivityContent/MyAc
 import YouthFAQ from "./pages/YouthActivity/FAQ/FAQ"
 import YouthAdminPage from "./pages/YouthActivity/AdminPage/AdminPage"
 
+// Event Activities
+import EventHomePage from "./pages/Event/HomePage/Home"
+import EventDetails from "./pages/Event/Details/Details"
+import EventBuildActivity from "./pages/Event/BuildActivity/BuildActivity"
+import EventActivityAI from "./pages/Event/Activity/Activity"
+import EventFAQ from "./pages/Event/FAQ/FAQ"
+
 // Smart Practice
 import PracticeHomePage from "./pages/SmartPractice/HomePage/Home"
 import PracticeTopic from "./pages/SmartPractice/Topic/Topic"
@@ -52,6 +59,13 @@ const allRoutes = [
   { key: "youthMyActivities", element: <YouthMyActivities /> },
   { key: "youthMyActivityContent", element: <YouthMyActivityContent /> },
   { key: "youthFAQ", element: <YouthFAQ /> },
+
+  // Event
+  { key: "eventHomePage", element: <EventHomePage /> },
+  { key: "eventDetails", element: <EventDetails /> },
+  { key: "eventBuild", element: <EventBuildActivity /> },
+  { key: "eventActivityAI", element: <EventActivityAI /> },
+  { key: "eventFAQ", element: <EventFAQ /> },
 
   // Practice
   { key: "practiceHomePage", element: <PracticeHomePage /> },

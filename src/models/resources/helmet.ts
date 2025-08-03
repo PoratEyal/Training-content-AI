@@ -68,6 +68,28 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             content: "מגוון פעולות מוכנות למדריכי נוער, לצד אפשרות ליצור פעולות מותאמות אישית בעזרת בינה מלאכותית. מתאים לצופים, נוער עובד, בני עקיבא, השומר הצעיר, מדצים ועוד.",
         },
 
+        eventHome: {
+            title: "פעילויות מקוריות לאירועים – ActivityWiz",
+            content: "מחפשים רעיון מקורי וכיפי לאירוע? צרו פעילות מותאמת אישית בלחיצת כפתור – לפי גיל, מספר משתתפים, מקום וציוד שיש לכם. כל מה שצריך כדי להרים פעילות מעולה – בקלות ובמהירות.",
+        },
+        eventDetails: {
+            title: "פעילויות מקוריות לאירועים – ActivityWiz",
+            content: "מחפשים רעיון מקורי וכיפי לאירוע? צרו פעילות מותאמת אישית בלחיצת כפתור – לפי גיל, מספר משתתפים, מקום וציוד שיש לכם. כל מה שצריך כדי להרים פעילות מעולה – בקלות ובמהירות.",
+        },
+        eventBuild: {
+            title: "פעילויות מקוריות לאירועים – ActivityWiz",
+            content: "מחפשים רעיון מקורי וכיפי לאירוע? צרו פעילות מותאמת אישית בלחיצת כפתור – לפי גיל, מספר משתתפים, מקום וציוד שיש לכם. כל מה שצריך כדי להרים פעילות מעולה – בקלות ובמהירות.",
+        },
+        eventActivity: {
+            title: "פעילויות מקוריות לאירועים – ActivityWiz",
+            content: "מחפשים רעיון מקורי וכיפי לאירוע? צרו פעילות מותאמת אישית בלחיצת כפתור – לפי גיל, מספר משתתפים, מקום וציוד שיש לכם. כל מה שצריך כדי להרים פעילות מעולה – בקלות ובמהירות.",
+        },
+        eventFaq: {
+            title: "פעילויות מקוריות לאירועים – ActivityWiz",
+            content: "מחפשים רעיון מקורי וכיפי לאירוע? צרו פעילות מותאמת אישית בלחיצת כפתור – לפי גיל, מספר משתתפים, מקום וציוד שיש לכם. כל מה שצריך כדי להרים פעילות מעולה – בקלות ובמהירות.",
+        },
+        
+
         practiceHome: {
             title: "תרגול עצמי חכם – ActivityWiz",
             content: "צרו תרגול מאתגר ומותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
@@ -167,6 +189,27 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             content: "Create or explore youth movement activities – ideal for Scouts, leadership programs, and educational guides.",
         },
 
+        eventHome: {
+            title: "Original Event Activities – ActivityWiz",
+            content: "Looking for a fun and original idea for your event? Create a personalized activity with just one click – based on age, number of participants, location, and available equipment. Everything you need to plan a great activity – easily and quickly.",
+        },
+        eventDetails: {
+            title: "Original Event Activities – ActivityWiz",
+            content: "Looking for a fun and original idea for your event? Create a personalized activity with just one click – based on age, number of participants, location, and available equipment. Everything you need to plan a great activity – easily and quickly.",
+        },
+        eventBuild: {
+            title: "Original Event Activities – ActivityWiz",
+            content: "Looking for a fun and original idea for your event? Create a personalized activity with just one click – based on age, number of participants, location, and available equipment. Everything you need to plan a great activity – easily and quickly.",
+        },
+        eventActivity: {
+            title: "Original Event Activities – ActivityWiz",
+            content: "Looking for a fun and original idea for your event? Create a personalized activity with just one click – based on age, number of participants, location, and available equipment. Everything you need to plan a great activity – easily and quickly.",
+        },
+        eventFaq: {
+            title: "Original Event Activities – ActivityWiz",
+            content: "Looking for a fun and original idea for your event? Create a personalized activity with just one click – based on age, number of participants, location, and available equipment. Everything you need to plan a great activity – easily and quickly.",
+        },
+        
         practiceHome: {
             title: "ActivityWiz Practice – Instantly Create & Practice Any Topic",
             content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
@@ -267,6 +310,27 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             content: "أنشئ أو استكشف فعاليات لحركات الشباب باستخدام الذكاء الاصطناعي. مثالي للكشافة، وبرامج القيادة، والمجموعات التعليمية.",
         },
 
+        eventHome: {
+            title: "أنشطة أصلية للمناسبات – ActivityWiz",
+            content: "تبحثون عن فكرة ممتعة ومميزة لمناسبتكم؟ أنشئوا نشاطًا مخصصًا بضغطة زر – حسب العمر، عدد المشاركين، المكان والمعدات المتوفرة. كل ما تحتاجونه لتنظيم نشاط رائع – بسهولة وسرعة.",
+        },
+        eventDetails: {
+            title: "أنشطة أصلية للمناسبات – ActivityWiz",
+            content: "تبحثون عن فكرة ممتعة ومميزة لمناسبتكم؟ أنشئوا نشاطًا مخصصًا بضغطة زر – حسب العمر، عدد المشاركين، المكان والمعدات المتوفرة. كل ما تحتاجونه لتنظيم نشاط رائع – بسهولة وسرعة.",
+        },
+        eventBuild: {
+            title: "أنشطة أصلية للمناسبات – ActivityWiz",
+            content: "تبحثون عن فكرة ممتعة ومميزة لمناسبتكم؟ أنشئوا نشاطًا مخصصًا بضغطة زر – حسب العمر، عدد المشاركين، المكان والمعدات المتوفرة. كل ما تحتاجونه لتنظيم نشاط رائع – بسهولة وسرعة.",
+        },
+        eventActivity: {
+            title: "أنشطة أصلية للمناسبات – ActivityWiz",
+            content: "تبحثون عن فكرة ممتعة ومميزة لمناسبتكم؟ أنشئوا نشاطًا مخصصًا بضغطة زر – حسب العمر، عدد المشاركين، المكان والمعدات المتوفرة. كل ما تحتاجونه لتنظيم نشاط رائع – بسهولة وسرعة.",
+        },
+        eventFaq: {
+            title: "أنشطة أصلية للمناسبات – ActivityWiz",
+            content: "تبحثون عن فكرة ممتعة ومميزة لمناسبتكم؟ أنشئوا نشاطًا مخصصًا بضغطة زر – حسب العمر، عدد المشاركين، المكان والمعدات المتوفرة. كل ما تحتاجونه لتنظيم نشاط رائع – بسهولة وسرعة.",
+        },
+
         practiceHome: {
             title: "ActivityWiz Practice – أنشئ تحديًا فوريًا بأي موضوع بالذكاء الاصطناعي",
             content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
@@ -364,6 +428,27 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         youthFaq: {
             title: "ActivityWiz - Actividades para Movimientos Juveniles - Preguntas Frecuentes",
             content: "Crea o explora actividades para movimientos juveniles con IA. Ideal para Scouts, programas de liderazgo y grupos educativos.",
+        },
+
+        eventHome: {
+            title: "Actividades originales para eventos – ActivityWiz",
+            content: "¿Buscas una idea divertida y original para tu evento? Crea una actividad personalizada con solo un clic, según la edad, el número de participantes, el lugar y el equipo disponible. Todo lo que necesitas para organizar una gran actividad, fácil y rápido.",
+        },
+        eventDetails: {
+            title: "Actividades originales para eventos – ActivityWiz",
+            content: "¿Buscas una idea divertida y original para tu evento? Crea una actividad personalizada con solo un clic, según la edad, el número de participantes, el lugar y el equipo disponible. Todo lo que necesitas para organizar una gran actividad, fácil y rápido.",
+        },
+        eventBuild: {
+            title: "Actividades originales para eventos – ActivityWiz",
+            content: "¿Buscas una idea divertida y original para tu evento? Crea una actividad personalizada con solo un clic, según la edad, el número de participantes, el lugar y el equipo disponible. Todo lo que necesitas para organizar una gran actividad, fácil y rápido.",
+        },
+        eventActivity: {
+            title: "Actividades originales para eventos – ActivityWiz",
+            content: "¿Buscas una idea divertida y original para tu evento? Crea una actividad personalizada con solo un clic, según la edad, el número de participantes, el lugar y el equipo disponible. Todo lo que necesitas para organizar una gran actividad, fácil y rápido.",
+        },
+        eventFaq: {
+            title: "Actividades originales para eventos – ActivityWiz",
+            content: "¿Buscas una idea divertida y original para tu evento? Crea una actividad personalizada con solo un clic, según la edad, el número de participantes, el lugar y el equipo disponible. Todo lo que necesitas para organizar una gran actividad, fácil y rápido.",
         },
 
         practiceHome: {
