@@ -5,6 +5,8 @@ import { Activity } from "../../../../models/types/activity";
 import { useLanguage } from "../../../../i18n/useLanguage";
 import { StorageKey } from "../../../../models/enum/storage";
 import { logEvent } from "../../../../utils/logEvent";
+import { ProductType } from "../../../../context/ProductType";
+import { useProduct } from "../../../../context/ProductContext"
 
 type ArtOptGameProps = {
     activity: Activity;
@@ -12,12 +14,16 @@ type ArtOptGameProps = {
 
 const ArtOptGame: React.FC<ArtOptGameProps> = ({ activity }) => {
     const { t, dir, lang } = useLanguage();
+    const product = useProduct()
 
     const handleClick = () => {
-        logEvent("מדריך לחץ כפתור טריוויה", "");
+        logEvent("כפתור חידון לפעולה", "");
 
         localStorage.setItem(StorageKey.PRACTICE_TOPIC, activity.subject);
-        localStorage.setItem(StorageKey.USER_TYPE, "instructor"); // Assume instructor role
+        if (product === ProductType.Youth)
+            localStorage.setItem(StorageKey.USER_TYPE, "instructor"); // Assume instructor role
+        else
+            localStorage.setItem(StorageKey.USER_TYPE, "");
 
         window.open(`https://activitywiz.com/${lang}/practice`, "_blank");
     };

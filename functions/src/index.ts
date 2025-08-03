@@ -27,7 +27,10 @@ import incrementActivityDisplayCount from "./callableFunctions/incrementActivity
 import getStaticActivityHttp from "./callableFunctions/getStaticActivity";
 import addStaticActivity from "./callableFunctions/addStaticActivity";
 
-// SmartPractice 
+// Event
+import generateEvent from "./callableFunctions/generateEvent";
+
+// Practice 
 import getQuestions4Practice from "./callableFunctions/getQuestions4Practice";
 
 // Words Practice
@@ -67,7 +70,10 @@ exports.removeSavedActivity = removeSavedActivity;
 
 exports.addStaticActivity = addStaticActivity;
 
-// SmartPractice 
+// Event
+exports.generateEvent = generateEvent;
+
+// Practice
 exports.getQuestions4Practice = getQuestions4Practice;
 
 // Words Practice 

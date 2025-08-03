@@ -1,32 +1,73 @@
-//
-// This is the AI Generated Activity page, which displays a single activity article or the activity editor (if in edit mode).
-//
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ActivityArticle from "../../../components/ActivityArticle/ActivityArticle";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import RichTextEditor from "../../../components/RichTextEditor/RichTextEditor";
-import { useAuthContext } from "../../../context/AuthContext";
-import { useContentContext } from "../../../context/ContentContext";
-import { useEditorContext } from "../../../context/EditorContext";
 import { ProductType } from "../../../context/ProductType";
+import { useContentContext } from "../../../context/ContentContext"
 import { useLanguage } from "../../../i18n/useLanguage";
 import { EVENT_AD_SLOT } from "../../../models/constants/adsSlot";
 import { helmetJson } from "../../../models/resources/helmet";
 import route from "../../../router/route.json";
+import { StorageKey } from "../../../models/enum/storage";
 import { ProductPages } from "../../../models/enum/pages";
 import { enforcePageAccess } from "../../../utils/navigation";
+import { logEvent } from "../../../utils/logEvent";
+import { useAuthContext } from "../../../context/AuthContext"
+
+const jsonToMarkdownEvent = (raw: string, t: (key: string) => string): string => {
+  try {
+    const cleaned = raw
+      .replace(/^```json\s*/i, "")
+      .replace(/```$/i, "")
+      .trim();
+
+    const data = JSON.parse(cleaned);
+
+    let result = `### ${t("eventActivity.json.title")}: ${data.title}\n\n`;
+    result += `### ${t("eventActivity.json.summary")}:\n\n${data.summary}\n\n`;
+
+    if (Array.isArray(data.materials)) {
+      result += `### ${t("eventActivity.json.materials")}:\n\n`;
+      for (const item of data.materials) {
+        result += `* ${item}\n`;
+      }
+      result += `\n`;
+    }
+
+    if (Array.isArray(data.flow)) {
+      result += `### ${t("eventActivity.json.flow")}:\n\n`;
+      for (const section of data.flow) {
+        result += `1. **${section.title}**\n`;
+        result += `   ${section.description}\n`;
+        if (section.duration) {
+          result += `   (${section.duration})\n`;
+        }
+        result += `\n`;
+      }
+    }
+
+    if (Array.isArray(data.tips)) {
+      result += `### ${t("eventActivity.json.tips")}:\n\n`;
+      for (const tip of data.tips) {
+        result += `* ${tip}\n`;
+      }
+    }
+
+    return result.trim();
+  } catch (err) {
+    return t("error.invalidEventFormat") || "Invalid event format.";
+  }
+};
 
 
 function Activity() {
 
-  const { mainActivity, currentPage, setCurrentPage } = useContentContext();
-  const { isEdit, readOnlyMode } = useEditorContext();
-  const { isLoggedIn, currentUser } = useAuthContext();
-  const [newActivity, setNewActivity] = useState(false);
+  const [activityData, setActivityData] = useState<any>(null);
   const activityRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
+  const { currentPage, setCurrentPage } = useContentContext()
+  const { currentUser } = useAuthContext()
 
   const eventHomePagePath = route[`eventHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.eventHomePageEn;
   const eventBuildPath = route[`eventBuild${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.eventBuildEn;
@@ -35,35 +76,60 @@ function Activity() {
     navigate(eventBuildPath);
   };
 
-  useEffect(() => { // Prevent direct access via URL
+  useEffect(() => {
     enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_EventActivity, navigate, eventHomePagePath);
   }, []);
 
   useEffect(() => {
-    if (newActivity && activityRef.current) {
-      activityRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-      setNewActivity(false);
+    const rawEventDetails = sessionStorage.getItem(StorageKey.EVENT_DETAILS);
+    const rawEventActivity = sessionStorage.getItem(StorageKey.EVENT_ACTIVITY);
+
+    let eventDetails = null;
+    if (rawEventDetails) {
+      try {
+        eventDetails = JSON.parse(rawEventDetails);
+      } catch (e) {
+        logEvent(`[eventActivity]: "Invalid eventDetails:", e}`, currentUser?.email);
+      }
     }
-  }, [newActivity]);
+
+    if (rawEventActivity) {
+      try {
+        const parsed = JSON.parse(rawEventActivity);
+        const markdown = jsonToMarkdownEvent(parsed, t);
+        setActivityData({ result: markdown, eventDetails });
+      } catch (e) {
+        logEvent(`[eventActivity]: "Invalid eventActivity:", e}`, currentUser?.email);
+      }
+    }
+  }, []);
+
+
 
   return (
     <PageLayout
       id="eventActivity"
       productType={ProductType.Event}
       hasGreenBackground
-      hasHeader={{ goBack, hasTitle: mainActivity?.subject || undefined }}
+      hasHeader={{ goBack, hasTitle: `${t("eventActivity.activity")} ${activityData?.eventDetails?.event || ""}`.trim() }}
       title={helmetJson[lang].activity.title}
       hasAds={EVENT_AD_SLOT}
       hasNavBar
       index={false}
     >
-      {isEdit ? (
-        <RichTextEditor activity={mainActivity} />
-      ) : (
+      {activityData && (
         <ActivityArticle
-          activity={mainActivity}
+          activity={{
+            id: "event-preview",
+            activity: activityData.result,
+            createdAt: new Date().toISOString(),
+            savedAt: null, fetchCount: 0, category: "content",
+            subject: `${t("eventActivity.activity")} ${activityData?.eventDetails?.event || ""}`.trim(),
+            gender: "", amount: "",
+            place: "", time: "", tools: "", religion: "", grade: "", userId: "", likes: 0,
+          }}
           activityRef={activityRef}
-          hasSave={isLoggedIn}
+          hasSave={false}
           hasCopy
           hasShare
           hasGame

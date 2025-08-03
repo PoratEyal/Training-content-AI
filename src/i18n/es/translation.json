@@ -129,6 +129,16 @@
       "text": "¡Atención! Las actividades se basan en un sistema de inteligencia artificial, por lo que puede haber imprecisiones. Por favor, revisa el contenido antes de usarlo"
     }
   },
+  "eventActivity": {
+    "activity": "Actividad",
+    "json": {
+      "title": "Nombre del evento",
+      "summary": "Resumen del evento",
+      "materials": "Materiales necesarios",
+      "flow": "Desarrollo del evento",
+      "tips": "Consejos para el facilitador"
+    }
+  },
   "practice": {
     "topic": {
       "title": "Elijamos un tema",

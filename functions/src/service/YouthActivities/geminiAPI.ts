@@ -89,7 +89,7 @@ const promptUtils = {
   },
 };
 
-const getPromptAndDetails = (activityDetails: ActivityDetails, lang: Lang): [string, string[]] => {
+const buildPrompt = (activityDetails: ActivityDetails, lang: Lang): [string, string[]] => {
   //if (activityDetails.movement === "krembo")
   //  return getPromptAndDetailsForSpecialKids(activityDetails, lang);
 
@@ -123,7 +123,7 @@ const getPromptAndDetails = (activityDetails: ActivityDetails, lang: Lang): [str
 export async function getMainActivity(data: GetActivityRequest): Promise<string> {
   const { lang, ...restData } = data;
   const activityDetails = restData as ActivityDetails;
-  const [prompt, details] = getPromptAndDetails(activityDetails, lang);
+  const [prompt, details] = buildPrompt(activityDetails, lang);
   const result = formatString(prompt, details);
   return await generateContent(result);
 }

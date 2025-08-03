@@ -19,7 +19,6 @@ type EventDetails = {
 };
 
 const buildPrompt = (eventDetails: EventDetails, lang: Lang): string => {
-  
   const langDisplayName = {
     he: "Hebrew",
     en: "English",
@@ -28,33 +27,48 @@ const buildPrompt = (eventDetails: EventDetails, lang: Lang): string => {
   }[lang];
 
   return `
-You are a creative event planner.
-Create a unique and engaging event idea based on the following parameters.
-The entire response must be written in ${langDisplayName}.
+You are a creative and practical event planner.
+Your task is to generate a full and original event plan based on the following parameters.
 
-Parameters:
-- Event type: ${eventDetails.event}
-- Additional details: ${eventDetails.moreDetails}
-- Participant age range: ${eventDetails.age}
-- Number of participants: ${eventDetails.amount}
+- Return ONLY a valid raw JSON object (no markdown, no explanation, no intro, no comments).
+- The content must be written in ${langDisplayName}.
+- Make sure the result is well-formatted and readable.
+
+Event Parameters:
+- Event Type: ${eventDetails.event}
+- Additional Details: ${eventDetails.moreDetails || "None"}
+- Age Group: ${eventDetails.age}
+- Number of Participants: ${eventDetails.amount}
 - Gender: ${eventDetails.gender}
 - Location: ${eventDetails.place}
-- Time of day: ${eventDetails.time}
+- Duration: ${eventDetails.time}
 
-The output should include:
-1. A creative event name or theme
-2. A short paragraph describing the event and its vibe
-3. A suggested timeline or flow of the event activities
-4. Tips for setup or any special considerations
+JSON format:
+{
+  "title": "string (event title)",
+  "summary": "string (short engaging paragraph)",
+  "materials": ["string", "string", "..."],
+  "flow": [
+    {
+      "title": "string (stage name)",
+      "description": "string (what happens in this stage)",
+      "duration": "optional string like '10 minutes'"
+    }
+  ],
+  "tips": ["string", "string", "..."]
+}
 
-Keep the tone fun and accessible. Avoid repeating the input parameters verbatim. Add value by expanding creatively on the idea.
+Rules:
+- Prioritize games, group challenges, or hands-on activities over long explanations.
+- No violence, no risk. Keep it fun, age-appropriate, and inclusive.
+- Use simple materials that are easy to find.
 `.trim();
 };
 
 export async function generateEvent(event: string, moreDetails: string, age: string, amount: string, gender: string, place: string, time: string, lang: Lang): Promise<string> {
   const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
   const prompt = buildPrompt({ event, moreDetails, age, amount, gender, place, time }, lang);
-console.log("-------------------------------------------Prompt:\n", prompt);
   const result = await model.generateContent(prompt);
+  console.log(result.response.text())
   return result.response.text();
 }

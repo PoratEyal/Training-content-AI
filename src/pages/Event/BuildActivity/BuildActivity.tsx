@@ -17,6 +17,8 @@ import { ProductPages } from "../../../models/enum/pages";
 import Session from "../../../utils/sessionStorage";
 import { enforcePageAccess } from "../../../utils/navigation";
 import { generateEvent } from "../../../hooks/generateEvent";
+import { logEvent } from "../../../utils/logEvent";
+import { useAuthContext } from "../../../context/AuthContext"
 
 
 function BuildActivity() {
@@ -34,6 +36,7 @@ function BuildActivity() {
   const [clicked, setClicked] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [isInitialized, setIsInitialized] = useState(false);
+  const { currentUser } = useAuthContext()
 
   const eventHomePagePath = route[`eventHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.eventHomePageEn;
   const eventActivityPath = route[`eventActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.eventActivityAIEn;
@@ -87,15 +90,12 @@ function BuildActivity() {
       const result = await generateEvent(event, moreDetails, age, amount, gender, place, time, lang)
       if (result) {
         sessionStorage.setItem(StorageKey.EVENT_ACTIVITY, JSON.stringify(result));
-        //navigate(eventActivityPath)
+        navigate(eventActivityPath)
       } else {
-        //logEvent(`[Event.Build]: failed`, user?.email); // Lior
+        logEvent(`[Event.Build]: bad result`, currentUser?.email);
       }
     } catch (error) {
-      //const auth = getAuth();
-      //const user = auth.currentUser;
-      //notifyAlert(t("practice.topic.error"));
-      //logEvent(`[Event.Build]: failed`, user?.email);
+      logEvent(`[Event.Build]: catch – ${String(error?.message || error)}`, currentUser?.email);
     } finally {
       setClicked(false)
     }

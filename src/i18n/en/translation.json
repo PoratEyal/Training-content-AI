@@ -129,6 +129,16 @@
       "text": "Note! The activities are based on an AI system, so there may be inaccuracies. Please review the content before using it"
     }
   },
+  "eventActivity": {
+    "activity": "Activity",
+    "json": {
+      "title": "Event Title",
+      "summary": "Event Summary",
+      "materials": "Materials Needed",
+      "flow": "Event Flow",
+      "tips": "Facilitator Tips"
+    }
+  },
   "practice": {
     "topic": {
       "title": "Let's pick a topic",
