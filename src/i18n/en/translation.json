@@ -1,6 +1,7 @@
 {
   "common": {
     "youthAppName": "Youth Movement Activities",
+    "eventAppName": "EventWiz",
     "practiceAppName": "Smart Practice",
     "wordsAppName": "Smart Vocab",
     "btnContinue": "Continue",
@@ -29,12 +30,12 @@
     "withPrefix": "with",
     "ai": "AI"
   },
-  "navbar": {
+  "youthSep": "==============================================================================================================",
+  "youthNavbar": {
     "home": "Home",
     "build": "Create Activities",
     "content": "Ready-made Activities",
-    "myActivities": "My Activities",
-    "practiceBuild": "Practice"
+    "myActivities": "My Activities"
   },
   "details": {
     "title": "Tell Us About Your Group",
@@ -108,9 +109,15 @@
       "deleteError": "The activity was not deleted, please try again later"
     }
   },
+  "eventsSep": "==============================================================================================================",
+  "eventNavbar": {
+    "home": "Home",
+    "build": "Create activities"
+  },
   "eventDetails": {
     "title": "Tell us about your event",
-    "event": "Event type, like birthday or party",
+    "eventLable": "For example: birthday, party, team-building evening and more...",
+    "event": "Type of event",
     "moreDetails": "More details",
     "limit": "To add more information, please use the 'Additional information' field.",
     "lampAlt": "Lamp"
@@ -130,7 +137,6 @@
     }
   },
   "eventActivity": {
-    "activity": "Activity",
     "json": {
       "title": "Event Title",
       "summary": "Event Summary",
@@ -138,6 +144,11 @@
       "flow": "Event Flow",
       "tips": "Facilitator Tips"
     }
+  },
+  "practiceSep": "==============================================================================================================",
+  "practiceNavbar": {
+    "home": "Home",
+    "build": "Practice"
   },
   "practice": {
     "topic": {
@@ -155,6 +166,11 @@
       "check": "Check",
       "LinkinClipboard": "Link copied – share it with your friends"
     }
+  },
+  "wordsSep": "==============================================================================================================",
+  "wordsNavbar": {
+    "home": "Home",
+    "build": "Practice"
   },
   "words": {
     "topic": {
@@ -204,6 +220,7 @@
       "feedback4": "🎉 Great work!"
     }
   },
+  "miscSep": "==============================================================================================================",
   "profile": {
     "dropOptInviteFriends": {
       "invite": "Share with friends"
@@ -243,6 +260,8 @@
       "title": "Share",
       "createdBy": "Created with:",
       "youthShareMessage": "I found a website that builds activities with AI – worth trying!",
+      "eventShareMessage": "I found a website that creates activities for any event using AI — worth trying!",
+      "eventAdBannerText": "Click here to create a personalized activity for any event 🎯",
       "practiceShareMessage": "I found a website that helps you practice any topic with AI – worth trying!",
       "practiceShareMessageInstructor": "You can play a short trivia game here based on the activity we did – give it a try and enjoy 🎯",
       "practiceShareBannerText": "Click here to invite your group to join the activity",
@@ -288,6 +307,7 @@
     "title": "Terms of Service and Privacy Policy",
     "acceptButton": "Accept"
   },
+  "faqSep": "==============================================================================================================",
   "faqYouth": {
     "questions": [
       {
@@ -365,6 +385,42 @@
       {
         "q": "Are there activities suitable for mixed groups?",
         "a": "Yes. You can define group characteristics, and ActivityWiz will suggest activities tailored for diverse and inclusive groups."
+      }
+    ]
+  },
+  "faqEvent": {
+    "questions": [
+      {
+        "q": "What is ActivityWiz for events?",
+        "a": "ActivityWiz is a smart platform that helps you create fun activities for personal events – like birthdays, team nights, parties, and more – with just one click using AI."
+      },
+      {
+        "q": "Is the service free?",
+        "a": "Yes, the site is completely free and open to everyone."
+      },
+      {
+        "q": "What types of events is it suitable for?",
+        "a": "For any social or family event – birthdays, parties, team gatherings, group activities, and more."
+      },
+      {
+        "q": "How do I create an activity for my event?",
+        "a": "Just click 'Create Activity', fill in details like the type of event, participant ages, and location – and the system will generate a ready-to-use activity tailored to your event."
+      },
+      {
+        "q": "Can I share the activity with friends or participants?",
+        "a": "Absolutely! Every activity can be shared with a link or by copying the text."
+      },
+      {
+        "q": "What languages are supported on the site?",
+        "a": "The system supports Hebrew, English, Arabic, and Spanish. More languages will be added soon."
+      },
+      {
+        "q": "How can I contact the ActivityWiz team?",
+        "a": "You can reach us via the 'Contact Us' form on the website. We’ll be happy to help."
+      },
+      {
+        "q": "I don’t have much time to plan – can I get a quick, ready-made activity?",
+        "a": "Definitely. Our system will generate a complete activity for you in seconds – just enter the basic details, and it’s ready to go!"
       }
     ]
   },

@@ -6,7 +6,7 @@ import route from "../../../router/route.json";
 import styles from "./Topic.module.css";
 import MainBtn from "../../../components/MainBtn/MainBtn";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz";
+import LoadingActivity from "../../../components/Loading/LoadingActivity/LoadingActivity";
 import { ProductType } from "../../../context/ProductType";
 import { useNotificationContext } from "../../../context/NotificationContext";
 import { PRACTICE_AD_SLOT } from "../../../models/constants/adsSlot";
@@ -159,7 +159,7 @@ function Topic() {
         </form>
       </PageLayout>
 
-      {loading && <LoadingQuiz />}
+      {loading && <LoadingActivity />}
     </>
   );
 }

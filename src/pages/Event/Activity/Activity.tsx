@@ -23,7 +23,7 @@ const jsonToMarkdownEvent = (raw: string, t: (key: string) => string): string =>
 
     const data = JSON.parse(cleaned);
 
-    let result = `### ${t("eventActivity.json.title")}: ${data.title}\n\n`;
+    let result = `### ${data.title}\n\n`;
     result += `### ${t("eventActivity.json.summary")}:\n\n${data.summary}\n\n`;
 
     if (Array.isArray(data.materials)) {
@@ -111,7 +111,7 @@ function Activity() {
       id="eventActivity"
       productType={ProductType.Event}
       hasGreenBackground
-      hasHeader={{ goBack, hasTitle: `${t("eventActivity.activity")} ${activityData?.eventDetails?.event || ""}`.trim() }}
+      hasHeader={{ goBack, hasTitle: `${activityData?.eventDetails?.event || ""}`.trim() }}
       title={helmetJson[lang].activity.title}
       hasAds={EVENT_AD_SLOT}
       hasNavBar

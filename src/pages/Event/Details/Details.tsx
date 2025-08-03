@@ -103,6 +103,9 @@ function Details() {
               setEvent={setEvent}
               setHasAlert={setHasAlert}
             />
+            <label className={styles.label}>
+              {t("eventDetails.eventLable")}
+            </label>
             <MoreDetailsInput
               placeholder={t("eventDetails.moreDetails")}
               text={moreDetails}

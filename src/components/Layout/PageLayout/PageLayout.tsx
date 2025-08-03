@@ -170,26 +170,19 @@ function PageLayout({
             return null;
           }
 
-          // Use case 2: User in Youth Product + special case for instructor
+          // Use case 2: User in Youth Product and got the Event banner
           else if (location.pathname.includes("/youth/activity") && new Date().getSeconds() % 2 === 0) {
             
             const handleBannerClick = () => {
-              logEvent("מדריך לחץ באנר טריוויה", "");
-              const rawData = sessionStorage.getItem(StorageKey.YOUTH_ACTIVITY);  // pass the topic to Practice product
-              if (rawData) {
-                const activityObj = JSON.parse(rawData);
-                localStorage.setItem(StorageKey.PRACTICE_TOPIC, activityObj.subject);
-                localStorage.setItem(StorageKey.USER_TYPE, "instructor"); // Assumption: If the user is in the YOUTH product, they are acting as an instructor
-              }
-
-              window.open(`https://activitywiz.com/${lang}/practice`, "_blank");
+              logEvent("מדריך לחץ באנר ארועים", "");
+              window.open(`https://activitywiz.com/${lang}/event`, "_blank");
             };
 
             return (
               <div className={styles.customAdSlot} onClick={handleBannerClick} style={{ cursor: "pointer" }}>
                 <div className={styles.bannerWithIcon}>
                   <Icons.magic size={22} />
-                  <span>{t("articleOptions.share.practiceAdBannerText")}</span>
+                  <span>{t("articleOptions.share.eventAdBannerText")}</span>
                 </div>
               </div>
             );

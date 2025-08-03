@@ -23,12 +23,16 @@ function DropOptLogout({ handleClose }: DropdownOption) {
   const homePagePath = () => {
     const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)
     let homeKey = ""
-    if (product === ProductType.Practice)
+    if (product === ProductType.Youth)
+      homeKey = "youthHomePage"
+    else if (product === ProductType.Event)
+      homeKey = "eventHomePage"
+    else if (product === ProductType.Practice)
       homeKey = "practiceHomePage"
     else if (product === ProductType.Words)
       homeKey = "wordsHomePage"
     else
-      homeKey = "youthHomePage"
+      homeKey = "eventHomePage"
 
     return route[`${homeKey}${langKey}`] || route[`${homeKey}En`]
   }

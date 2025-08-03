@@ -21,12 +21,16 @@ function DropOptLang({ handleClose }: DropdownOption) {
   const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)
 
   let faqKey = ""
-  if (product === ProductType.Practice) {
+  if (product === ProductType.Youth) {
+    faqKey = "youthFAQ"
+  } else if (product === ProductType.Event) {
+    faqKey = "eventFAQ"
+  } else if (product === ProductType.Practice) {
     faqKey = "practiceFAQ"
   } else if (product === ProductType.Words) {
     faqKey = "wordsFAQ"
   } else {
-    faqKey = "youthFAQ"
+    faqKey = "eventFAQ"
   }
   const faqPath = route[`${faqKey}${langKey}`] || route[`${faqKey}En`]
 

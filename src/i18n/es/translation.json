@@ -1,6 +1,7 @@
 {
   "common": {
     "youthAppName": "Actividades para movimientos juveniles",
+    "eventAppName": "EventoGenio",
     "practiceAppName": "Práctica personal inteligente",
     "wordsAppName": "Vocabulario Inteligente",
     "btnContinue": "Continuar",
@@ -29,12 +30,12 @@
     "withPrefix": "con",
     "ai": "IA"
   },
-  "navbar": {
+  "youthSep": "==============================================================================================================",
+  "youthNavbar": {
     "home": "Inicio",
     "build": "Crear Actividad",
     "content": "Contenido",
-    "myActivities": "Mis Actividades",
-    "practiceBuild": "Práctica"
+    "myActivities": "Mis Actividades"
   },
   "details": {
     "title": "Cuéntanos sobre tu grupo",
@@ -108,9 +109,15 @@
       "deleteError": "La actividad no fue eliminada, por favor intenta nuevamente más tarde"
     }
   },
+  "eventsSep": "==============================================================================================================",
+  "eventNavbar": {
+    "home": "Inicio",
+    "build": "Crear actividades"
+  },
   "eventDetails": {
     "title": "Cuéntanos sobre tu evento",
-    "event": "Tipo de evento, como cumpleaños o fiesta",
+    "eventLable": "Por ejemplo, cumpleaños, fiesta, noche de integración y más...",
+    "event": "Tipo de evento",
     "moreDetails": "Más información",
     "limit": "Para agregar más información, utiliza el campo \"Información adicional\".",
     "lampAlt": "Lámpara"
@@ -130,7 +137,6 @@
     }
   },
   "eventActivity": {
-    "activity": "Actividad",
     "json": {
       "title": "Nombre del evento",
       "summary": "Resumen del evento",
@@ -138,6 +144,11 @@
       "flow": "Desarrollo del evento",
       "tips": "Consejos para el facilitador"
     }
+  },
+  "practiceSep": "==============================================================================================================",
+  "practiceNavbar": {
+    "home": "Inicio",
+    "build": "Práctica"
   },
   "practice": {
     "topic": {
@@ -155,6 +166,11 @@
       "check": "Revisar",
       "LinkinClipboard": "¡Enlace copiado! Compártelo con tus amigos!"
     }
+  },
+  "wordsSep": "==============================================================================================================",
+  "wordsNavbar": {
+    "home": "Inicio",
+    "build": "Práctica"
   },
   "words": {
     "topic": {
@@ -204,6 +220,7 @@
       "feedback4": "🎉 ¡Buen trabajo!"
     }
   },
+  "miscSep": "==============================================================================================================",
   "profile": {
     "dropOptInviteFriends": {
       "invite": "Compartir"
@@ -243,6 +260,8 @@
       "title": "Compartir",
       "createdBy": "Creado con:",
       "youthShareMessage": "Encontré un sitio que crea actividades con IA. ¡Vale la pena probarlo!",
+      "eventShareMessage": "Encontré un sitio que crea actividades para cualquier evento con inteligencia artificial, ¡vale la pena probarlo!",
+      "eventAdBannerText": "Haz clic aquí para crear una actividad personalizada para cualquier evento 🎯",
       "practiceShareMessage": "Encontré un sitio que te ayuda a practicar cualquier tema con IA. ¡Vale la pena intentarlo!",
       "practiceShareMessageInstructor": "Pueden jugar aquí una trivia corta sobre la actividad que hicimos – ¡pruébenla y disfruten! 🎯",
       "practiceShareBannerText": "Haz clic aquí para invitar a tu grupo a una actividad",
@@ -259,7 +278,7 @@
       "removeError": "No se pudo eliminar la actividad, por favor intenta nuevamente"
     },
     "edit": "Editar",
-    "game": "Trivia rápida"
+    "game": "Quiz desafiante"
   },
   "editor": {
     "save": {
@@ -288,6 +307,7 @@
     "title": "Términos de Servicio y Política de Privacidad",
     "acceptButton": "Aceptar"
   },
+  "faqSep": "==============================================================================================================",
   "faqYouth": {
     "questions": [
       {
@@ -365,6 +385,42 @@
       {
         "q": "¿Hay actividades adecuadas para grupos mixtos?",
         "a": "Sí. Puedes definir las características de tu grupo y ActivityWiz te sugerirá actividades adaptadas para grupos diversos e inclusivos."
+      }
+    ]
+  },
+  "faqEvent": {
+    "questions": [
+      {
+        "q": "¿Qué es ActivityWiz para eventos?",
+        "a": "ActivityWiz es una plataforma inteligente que te permite crear actividades divertidas para eventos personales – como cumpleaños, reuniones de equipo, fiestas y más – con solo un clic, utilizando inteligencia artificial."
+      },
+      {
+        "q": "¿El servicio es gratuito?",
+        "a": "Sí, el uso del sitio es completamente gratuito y abierto para todos."
+      },
+      {
+        "q": "¿Para qué tipos de eventos es adecuado?",
+        "a": "Para cualquier evento social o familiar – cumpleaños, fiestas, eventos de equipo, actividades grupales, y más."
+      },
+      {
+        "q": "¿Cómo creo una actividad para mi evento?",
+        "a": "Solo tienes que hacer clic en 'Crear actividad', completar algunos datos como el tipo de evento, la edad de los participantes y el lugar – y el sistema generará una actividad lista, adaptada a tu evento."
+      },
+      {
+        "q": "¿Se puede compartir la actividad con amigos o participantes?",
+        "a": "¡Por supuesto! Cada actividad se puede compartir fácilmente mediante un enlace o copiando el texto."
+      },
+      {
+        "q": "¿En qué idiomas se puede usar el sitio?",
+        "a": "El sistema admite hebreo, inglés, árabe y español. Se agregarán más idiomas en el futuro."
+      },
+      {
+        "q": "¿Cómo me comunico con el equipo de ActivityWiz?",
+        "a": "Puedes contactarnos a través del formulario de 'Contacto' en el sitio web. Estaremos encantados de ayudarte."
+      },
+      {
+        "q": "No tengo mucho tiempo para planificar – ¿puedo obtener una actividad rápida y lista?",
+        "a": "¡Claro que sí! Nuestro sistema generará una actividad completa en segundos – solo ingresa los detalles básicos, ¡y listo!"
       }
     ]
   },

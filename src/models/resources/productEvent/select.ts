@@ -142,25 +142,29 @@ export const ActivityTimeOptions = {
     he: [
         { value: "Half hour", label: "חצי שעה" },
         { value: "One hour", label: "שעה" },
-        { value: "One and a half hours", label: "שעה וחצי" },
+        { value: "Two hours", label: "שעתיים" },
+        { value: "Three hours", label: "שלוש שעות" },
     ] as SelectOption[],
 
     en: [
         { value: "Half hour", label: "Half hour" },
         { value: "One hour", label: "Hour" },
-        { value: "One and a half hours", label: "Hour and a half" },
+        { value: "Two hours", label: "Two hours" },
+        { value: "Three hours", label: "Three hours" },
     ] as SelectOption[],
 
     es: [
         { value: "Half hour", label: "Media hora" },
         { value: "One hour", label: "Hora" },
-        { value: "One and a half hours", label: "Hora y media" },
+        { value: "Two hours", label: "Dos horas" },
+        { value: "Three hours", label: "Tres horas" },
     ] as SelectOption[],
 
     ar: [
         { value: "Half hour", label: "نصف ساعة" },
         { value: "One hour", label: "ساعة" },
-        { value: "One and a half hours", label: "ساعة ونصف" },
+        { value: "Two hours", label: "ساعتان" },
+        { value: "Three hours", label: "ثلاث ساعات" },
     ] as SelectOption[],
 };
 

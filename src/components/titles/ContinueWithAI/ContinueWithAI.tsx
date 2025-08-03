@@ -7,28 +7,22 @@ function ContinueWithAI() {
   const { t, isRTL } = useLanguage()
   const product = useProduct()
 
-  let productTitle = "";
-  if (product === ProductType.Youth) {
-    productTitle = t("home.youthForActions");
-  } else if (product === ProductType.Event) {
-    productTitle = t("home.eventForActions");
-  } else if (product === ProductType.Practice) {
-    productTitle = t("home.practiceForActions");
-  } else if (product === ProductType.Words) {
-    productTitle = t("home.wordsForActions");
-  }
+  let productTitle = ""
+  let productColorClass = ""
 
-  let productColorClass = "";
   if (product === ProductType.Youth) {
-    productColorClass = styles.youthColor;
+    productTitle = t("home.youthForActions")
+    productColorClass = styles.youthColor
   } else if (product === ProductType.Event) {
-    productColorClass = styles.eventColor;
+    productTitle = t("home.eventForActions")
+    productColorClass = styles.eventColor
   } else if (product === ProductType.Practice) {
-    productColorClass = styles.practiceColor;
+    productTitle = t("home.practiceForActions")
+    productColorClass = styles.practiceColor
   } else if (product === ProductType.Words) {
-    productColorClass = styles.wordsColor;
+    productTitle = t("home.wordsForActions")
+    productColorClass = styles.wordsColor
   }
-
 
   const dirPrefix = isRTL ? "" : "_en"
 

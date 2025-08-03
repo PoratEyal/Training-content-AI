@@ -35,10 +35,12 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
   const homePagePath = (newLang: string) => {
     const capitalizedLang = newLang.charAt(0).toUpperCase() + newLang.slice(1)
     switch (product) {
-      case ProductType.Practice:
-        return route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn
       case ProductType.Youth:
         return route[`youthHomePage${capitalizedLang}`] || route.youthHomePageEn
+      case ProductType.Event:
+        return route[`eventHomePage${capitalizedLang}`] || route.eventHomePageEn
+      case ProductType.Practice:
+        return route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn
       case ProductType.Words:
         return route[`wordsHomePage${capitalizedLang}`] || route.wordsHomePageEn
       default:

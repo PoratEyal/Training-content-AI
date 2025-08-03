@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next"
 import route from "../../../router/route.json"
 import styles from "./Quiz.module.css"
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
-import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz"
+import LoadingActivity from "../../../components/Loading/LoadingActivity/LoadingActivity";
 import QuizContainer from "../../../components/SmartPractice/QuizContainer/QuizContainer"
 import { ProductType } from "../../../context/ProductType"
 import { useContentContext } from "../../../context/ContentContext"
@@ -116,7 +116,7 @@ function Quiz() {
       index={false}
     >
       {loading ? (
-        <LoadingQuiz />
+        <LoadingActivity />
       ) : (
         <QuizContainer>
           {submitted && (

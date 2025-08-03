@@ -19,15 +19,17 @@ const useSignIn = () => {
     const navigate = useNavigate();
     const product = useProduct();
     const langKey = lang.charAt(0).toUpperCase() + lang.slice(1);
-    const isPractice = product === ProductType.Practice;
 
-    let homePagePath = route.youthHomePageEn; // fallback
+    let homePagePath = route.eventHomePageEn; // fallback
     switch (product) {
-        case ProductType.Practice:
-            homePagePath = route[`practiceHomePage${langKey}`] || route.practiceHomePageEn;
-            break;
         case ProductType.Youth:
             homePagePath = route[`youthHomePage${langKey}`] || route.youthHomePageEn;
+            break;
+        case ProductType.Event:
+            homePagePath = route[`eventHomePage${langKey}`] || route.eventHomePageEn;
+            break;
+        case ProductType.Practice:
+            homePagePath = route[`practiceHomePage${langKey}`] || route.practiceHomePageEn;
             break;
         case ProductType.Words:
             homePagePath = route[`wordsHomePage${langKey}`] || route.wordsHomePageEn;

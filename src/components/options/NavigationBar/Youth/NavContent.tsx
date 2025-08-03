@@ -28,7 +28,7 @@ const NavOptContent = () => {
       className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
     >
       <Icons.output className={styles.icon} />
-      <span className={styles.text}>{t("navbar.content")}</span>
+      <span className={styles.text}>{t("youthNavbar.content")}</span>
     </div>
   );
 };

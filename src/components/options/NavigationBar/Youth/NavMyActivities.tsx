@@ -27,7 +27,7 @@ const NavOptMyActivities = () => {
       className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
     >
       <Icons.bookmark className={styles.icon} />
-      <span className={styles.text}>{t("navbar.myActivities")}</span>
+      <span className={styles.text}>{t("youthNavbar.myActivities")}</span>
     </div>
   );
 };

@@ -69,6 +69,5 @@ export async function generateEvent(event: string, moreDetails: string, age: str
   const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
   const prompt = buildPrompt({ event, moreDetails, age, amount, gender, place, time }, lang);
   const result = await model.generateContent(prompt);
-  console.log(result.response.text())
   return result.response.text();
 }

@@ -5,7 +5,7 @@ import route from "../../../router/route.json";
 import styles from "./Topic.module.css";
 import MainBtn from "../../../components/MainBtn/MainBtn";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import LoadingQuiz from "../../../components/Loading/LoadingQuiz/LoadingQuiz";
+import LoadingActivity from "../../../components/Loading/LoadingActivity/LoadingActivity";
 import SelectDetails from "../../../components/SelectDetails/SelectDetails"
 import { ProductType } from "../../../context/ProductType";
 import { createWordsQuiz } from "../../../hooks/generateWordsQuestions"
@@ -280,7 +280,7 @@ function Topic() {
         </form>
       </PageLayout>
 
-      {loading && <LoadingQuiz />}
+      {loading && <LoadingActivity />}
     </>
   );
 }
