@@ -22,6 +22,11 @@
       ],
       "redirects": [
         {
+          "source": "/",
+          "destination": "/he/youth",
+          "type": 301
+        },
+        {
           "source": "/he",
           "destination": "/he/youth",
           "type": 301
@@ -43,7 +48,7 @@
         }
       ],
       "rewrites": [
-        { 
+        {
           "source": "/static/**",
           "destination": "/static"
         },
@@ -111,8 +116,6 @@
           "source": "/ar/words/faq",
           "destination": "/index.words.ar.html"
         },
-
-
         {
           "source": "/he/practice",
           "destination": "/index.practice.he.html"
@@ -161,7 +164,6 @@
           "source": "/ar/practice/faq",
           "destination": "/index.practice.ar.html"
         },
-
         {
           "source": "/he/event",
           "destination": "/index.event.he.html"
@@ -210,8 +212,6 @@
           "source": "/ar/event/faq",
           "destination": "/index.event.ar.html"
         },
-
-
         {
           "source": "/he/youth",
           "destination": "/index.youth.he.html"
@@ -260,7 +260,6 @@
           "source": "/ar/youth/faq",
           "destination": "/index.youth.ar.html"
         },
-
         {
           "source": "/he/**",
           "destination": "/index.youth.he.html"
@@ -277,13 +276,11 @@
           "source": "/ar/**",
           "destination": "/index.youth.ar.html"
         },
-
         {
           "source": "**",
           "destination": "/index.youth.en.html"
         }
       ],
-
       "headers": [
         {
           "source": "/he/**",
