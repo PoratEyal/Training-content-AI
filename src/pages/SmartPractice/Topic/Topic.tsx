@@ -100,7 +100,6 @@ function Topic() {
       const raw = await createQuiz(topic, lang, 10);
       const cleanedJsonStr = cleanJson(raw);
       const parsed = JSON.parse(cleanedJsonStr);
-      //const final = removeDuplicateQ_A(parsed); // Lior
       let final;
       try {
         final = removeDuplicateQ_A(parsed);
