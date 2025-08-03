@@ -83,3 +83,27 @@ import translateText from "./callableFunctions/translateText"
 exports.translateText = translateText
 
 exports.app = functions.https.onRequest(app);
+
+// Handle redirect Language
+const redirectApp = express();
+
+redirectApp.get("*", (req, res) => {
+  const langHeader = req.header("accept-language")?.toLowerCase() || "";
+  let lang = "he";  // Currently Hard coded to fallback always to hebrew. Lior 2 Fix
+
+  if (langHeader.includes("he")) {
+    lang = "he";
+  } else if (langHeader.includes("es")) {
+    lang = "es";
+  } else if (langHeader.includes("ar")) {
+    lang = "ar";
+  }
+
+  const originalPath = req.path.replace(/^\/+/, "");
+  const redirectTo = `/${lang}/${originalPath}`;
+  res.redirect(301, redirectTo);
+});
+
+
+
+exports.redirectToLang = functions.https.onRequest(redirectApp);

@@ -49,6 +49,34 @@
       ],
       "rewrites": [
         {
+          "source": "/youth",
+          "function": {
+            "functionId": "redirectToLang",
+            "region": "us-central1"
+          }
+        },
+        {
+          "source": "/event",
+          "function": {
+            "functionId": "redirectToLang",
+            "region": "us-central1"
+          }
+        },
+        {
+          "source": "/practice",
+          "function": {
+            "functionId": "redirectToLang",
+            "region": "us-central1"
+          }
+        },
+        {
+          "source": "/words",
+          "function": {
+            "functionId": "redirectToLang",
+            "region": "us-central1"
+          }
+        },
+        {
           "source": "/static/**",
           "destination": "/static"
         },
