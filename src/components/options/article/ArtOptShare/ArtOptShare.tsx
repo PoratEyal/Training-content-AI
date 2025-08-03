@@ -6,16 +6,25 @@ import { formatWhatsUp } from "../../../../utils/format"
 import { useLanguage } from "../../../../i18n/useLanguage"
 import { useShareTextOrLink } from "../../../../utils/share"
 import { Icons } from "../../../Icons"
+import { ProductType } from "../../../../context/ProductType";
+import { useProduct } from "../../../../context/ProductContext"
 
 type ArtOptShareProps = { activity: Activity }
 
 const ArtOptShare: React.FC<ArtOptShareProps> = ({ activity }) => {
-  const { t, dir , lang} = useLanguage()
+  const { t, dir, lang } = useLanguage()
   const share = useShareTextOrLink()
+  const product = useProduct()
 
   const handleShare = () => {
     const text = formatWhatsUp(activity?.activity)
-    share(t, t("common.youthAppName"), text, `${WEBSITE_URL}/youth`)
+    if (product === ProductType.Youth) {
+      share(t, t("common.youthAppName"), text, `${WEBSITE_URL}/youth`)
+    } else if (product === ProductType.Event) {
+      share(t, t("common.youthAppName"), text, `${WEBSITE_URL}/event`)
+    } else {
+      share(t, t("common.youthAppName"), text, `${WEBSITE_URL}`)
+    }
   }
 
   return (

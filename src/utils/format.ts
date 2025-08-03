@@ -12,8 +12,7 @@ export const formatWhatsUp = (text: string | undefined) => {
 }
 
 export const formatCopy = (text: string) => {
-    const title = i18n.t("articleOptions.share.createdBy",
-        "Activity created by:")
+    const title = i18n.t("articleOptions.share.createdBy", "Activity created by:")
     const br = "\n"
     const result = text.replace(/\*+/g, "") + br + br + title + br + WEBSITE_URL
     return result

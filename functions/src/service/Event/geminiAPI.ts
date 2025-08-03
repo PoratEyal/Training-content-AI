@@ -60,8 +60,11 @@ JSON format:
 
 Rules:
 - Prioritize games, group challenges, or hands-on activities over long explanations.
-- No violence, no risk. Keep it fun, age-appropriate, and inclusive.
+- No risk. Keep it fun, age-appropriate, and inclusive.
 - Use simple materials that are easy to find.
+- Limit the "materials" list to a maximum of 5 items.
+- Provide a **detailed explanation** for each activity in the "flow" section. Each description should include: what the facilitator does, what the participants do, and what the goal of the stage is. Avoid vague or general descriptions.
+- Include at least 4 distinct stages in the "flow" section unless otherwise implied by duration.
 `.trim();
 };
 

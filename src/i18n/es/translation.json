@@ -123,13 +123,13 @@
     "lampAlt": "Lámpara"
   },
   "eventBuildActivity": {
-    "title": "Vamos a planear la actividad",
+    "title": "Planeemos tu actividad",
     "age": "Edad de los participantes",
     "amount": "Número de participantes",
     "gender": "Género",
     "place": "Ubicación",
     "time": "Hora",
-    "submit": "Ir a la actividad",
+    "submit": "Crear actividad",
     "loading": "Creando actividad",
     "loadingActivity": {
       "heading": "La actividad está en camino",

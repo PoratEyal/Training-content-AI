@@ -25,7 +25,7 @@ export const AgeOptions = {
     ] as SelectOption[],
 
     es: [
-        { value: "Kindergarten (ages 3–6)", label: "Niños jardín" },
+        { value: "Kindergarten (ages 3–6)", label: "Edades 3–6" },
         { value: "Children (ages 6–12)", label: "Edades 6–12" },
         { value: "Young teens (ages 13–15)", label: "Edades 13–15" },
         { value: "Older teens (ages 16–18)", label: "Edades 16–18" },
@@ -36,53 +36,52 @@ export const AgeOptions = {
     ] as SelectOption[],
 
     ar: [
-        { value: "Kindergarten (ages 3–6)", label: "روضة" },
-        { value: "Children (ages 6–12)", label: "الأعمار 6–12" },
-        { value: "Young teens (ages 13–15)", label: "الأعمار 13–15" },
-        { value: "Older teens (ages 16–18)", label: "الأعمار 16–18" },
-        { value: "Young adults (ages 19–30)", label: "الأعمار 19–30" },
-        { value: "Adults (ages 30–50)", label: "الأعمار 30–50" },
-        { value: "Older adults (ages 50–70)", label: "الأعمار 50–70" },
-        { value: "Seniors (ages 70 and above)", label: "الأعمار 70+" }
+        { value: "Kindergarten (ages 3–6)", label: "الأعمار: من 3 إلى 6" },
+        { value: "Children (ages 6–12)", label: "الأعمار: من 6 إلى 12" },
+        { value: "Young teens (ages 13–15)", label: "الأعمار: من 13 إلى 15" },
+        { value: "Older teens (ages 16–18)", label: "الأعمار: من 16 إلى 18" },
+        { value: "Young adults (ages 19–30)", label: "الأعمار: من 19 إلى 30" },
+        { value: "Adults (ages 30–50)", label: "الأعمار: من 30 إلى 50" },
+        { value: "Older adults (ages 50–70)", label: "الأعمار: من 50 إلى 70" },
+        { value: "Seniors (ages 70 and above)", label: "الأعمار: 70 فما فوق" }
     ] as SelectOption[],
 };
 
 
 export const AmountOptions = {
     he: [
-        { value: "1-5", label: "1-5" },
-        { value: "5-10", label: "5-10" },
-        { value: "10-20", label: "10-20" },
-        { value: "20-30", label: "20-30" },
-        { value: "30-50", label: "30-50" },
-        { value: "60+", label: "60+" },
+        { value: "1-5", label: "1–5 משתתפים" },
+        { value: "5-10", label: "5–10 משתתפים" },
+        { value: "10-20", label: "10–20 משתתפים" },
+        { value: "20-30", label: "20–30 משתתפים" },
+        { value: "30-50", label: "30–50 משתתפים" },
+        { value: "60+", label: "60+ משתתפים" },
     ] as SelectOption[],
     en: [
-        { value: "1-5", label: "1-5" },
-        { value: "5-10", label: "5-10" },
-        { value: "10-20", label: "10-20" },
-        { value: "20-30", label: "20-30" },
-        { value: "30-50", label: "30-50" },
-        { value: "60+", label: "60+" },
+        { value: "1-5", label: "1–5 participants" },
+        { value: "5-10", label: "5–10 participants" },
+        { value: "10-20", label: "10–20 participants" },
+        { value: "20-30", label: "20–30 participants" },
+        { value: "30-50", label: "30–50 participants" },
+        { value: "60+", label: "60+ participants" },
     ] as SelectOption[],
     es: [
-        { value: "1-5", label: "1-5" },
-        { value: "5-10", label: "5-10" },
-        { value: "10-20", label: "10-20" },
-        { value: "20-30", label: "20-30" },
-        { value: "30-50", label: "30-50" },
-        { value: "60+", label: "60+" },
+        { value: "1-5", label: "1–5 personas" },
+        { value: "5-10", label: "5–10 personas" },
+        { value: "10-20", label: "10–20 personas" },
+        { value: "20-30", label: "20–30 personas" },
+        { value: "30-50", label: "30–50 personas" },
+        { value: "60+", label: "60+ personas" },
     ] as SelectOption[],
     ar: [
-        { value: "1-5", label: "1-5" },
-        { value: "5-10", label: "5-10" },
-        { value: "10-20", label: "10-20" },
-        { value: "20-30", label: "20-30" },
-        { value: "30-50", label: "30-50" },
-        { value: "60+", label: "60+" },
+        { value: "1-5", label: "من 1 إلى 5 مشاركين" },
+        { value: "5-10", label: "من 5 إلى 10 مشاركين" },
+        { value: "10-20", label: "من 10 إلى 20 مشاركين" },
+        { value: "20-30", label: "من 20 إلى 30 مشاركين" },
+        { value: "30-50", label: "من 30 إلى 50 مشاركين" },
+        { value: "60+", label: "أكثر من 60 مشارك" }
     ] as SelectOption[],
 };
-
 
 export const PlaceOptions = {
     he: [
@@ -104,9 +103,9 @@ export const PlaceOptions = {
     ] as SelectOption[],
 
     ar: [
-        { value: "No location preference", label: "أي" },
-        { value: "Indoor", label: "داخلية" },
-        { value: "Outdoor", label: "خارجية" },
+        { value: "No location preference", label: "أي مكان" },
+        { value: "Indoor", label: "داخل" },
+        { value: "Outdoor", label: "خارج" },
     ] as SelectOption[],
 };
 
@@ -133,7 +132,7 @@ export const GenderOptions = {
     ar: [
         { value: "man", label: "ذكور" },
         { value: "woman", label: "إناث" },
-        { value: "mixed gender", label: "مختلط" },
+        { value: "mixed gender", label: "مجموعة مختلطة" },
     ] as SelectOption[],
 };
 

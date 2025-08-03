@@ -112,7 +112,7 @@ function Details() {
               setText={setMoreDetails}
             />
           </div>
-          <div className={isRTL ? styles.RTLDir : styles.LTRDir}>
+          <div style={{ direction: isRTL ? "ltr" : "rtl" }}>
             <MainBtn
               text={t("common.btnContinue")}
               isDisabled={!event}

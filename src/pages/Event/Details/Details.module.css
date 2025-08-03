@@ -33,7 +33,6 @@
   line-height: 1.5;
   display: block;
   width: 100%;
-  text-align: right;
 }
 
 .selects_btn {
@@ -45,33 +44,14 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-.loading_mock_selection_container {
-    position: relative;
-    min-height: 350px;
-    height: 300px;
-    min-width: 70vw;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .details_content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
+    width: 300px;
 }
-
-.RTLDir {
-    direction: ltr;
-}
-
-.LTRDir {
-    direction: rtl;
-}
-
 
 @media (min-width: 550px) {
     .details_content {

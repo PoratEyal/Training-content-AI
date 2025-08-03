@@ -56,15 +56,6 @@
     margin-bottom: 20px;
 }
 
-.RTLDir {
-    direction: ltr;
-}
-
-.LTRDir {
-    direction: rtl;
-}
-
-
 @media (min-width: 550px) {
     .details_content {
         margin-top: 20px;

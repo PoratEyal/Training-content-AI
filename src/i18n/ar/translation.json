@@ -123,13 +123,13 @@
     "lampAlt": "مصباح"
   },
   "eventBuildActivity": {
-    "title": "هيا نخطط للنشاط",
+    "title": "لنخطط نشاطًا ممتعًا!",
     "age": "عمر المشاركين",
     "amount": "عدد المشاركين",
     "gender": "الجنس",
     "place": "الموقع",
     "time": "الوقت",
-    "submit": "إلى النشاط",
+    "submit": "أنشئ النشاط",
     "loading": "يتم إنشاء النشاط",
     "loadingActivity": {
       "heading": "النشاط في الطريق",
