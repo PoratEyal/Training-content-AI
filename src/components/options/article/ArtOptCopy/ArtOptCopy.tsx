@@ -5,6 +5,7 @@ import { Activity } from "../../../../models/types/activity";
 import { formatCopy } from "../../../../utils/format";
 import { useNotificationContext } from "../../../../context/NotificationContext";
 import { useLanguage } from "../../../../i18n/useLanguage";
+import { useProduct } from "../../../../context/ProductContext"
 
 type ArtOptCopyProps = {
     activity: Activity;
@@ -13,9 +14,11 @@ type ArtOptCopyProps = {
 const ArtOptCopy: React.FC<ArtOptCopyProps> = ({ activity }) => {
     const { t, dir } = useLanguage();
     const { notifySuccess: notifySuccess, notifyAlert: notifyAlert } = useNotificationContext();
+    const product = useProduct();
+
 
     const handleClick = () => {
-        const textToCopy = formatCopy(activity.activity);
+        const textToCopy = formatCopy(activity.activity,product);
         navigator.clipboard
             .writeText(textToCopy)
             .then(() => {

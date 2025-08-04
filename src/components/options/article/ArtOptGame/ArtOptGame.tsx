@@ -21,11 +21,9 @@ const ArtOptGame: React.FC<ArtOptGameProps> = ({ activity }) => {
 
         if (product === ProductType.Youth) {
             localStorage.setItem(StorageKey.PRACTICE_TOPIC, activity.subject);
-            localStorage.setItem(StorageKey.USER_TYPE, "instructor"); // Assume instructor role
         }
         else {
             localStorage.setItem(StorageKey.PRACTICE_TOPIC, "");
-            localStorage.setItem(StorageKey.USER_TYPE, "");
         }
         window.open(`https://activitywiz.com/${lang}/practice`, "_blank");
     };

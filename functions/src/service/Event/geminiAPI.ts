@@ -63,8 +63,10 @@ Rules:
 - No risk. Keep it fun, age-appropriate, and inclusive.
 - Use simple materials that are easy to find.
 - Limit the "materials" list to a maximum of 4 items.
-- Provide a **detailed explanation** for each activity in the "flow" section. Each description should include: what the facilitator does, what the participants do, and what the goal of the stage is. Avoid vague or general descriptions.
-- Include at least 4 distinct stages in the "flow" section unless otherwise implied by duration.
+- Provide a detailed explanation for each activity in the "flow" section. Each description should include: what the facilitator does, what the participants do, and what the goal of the stage is. Avoid vague or general descriptions.
+- If a stage includes any discussion questions, quiz questions, or example prompts, include at least 2 specific examples (clearly written, not placeholders).
+- Include at least 4 distinct stages in the "flow" section.
+- If the event duration is longer than 2 hours, include at least 7 different stages in the flow.
 `.trim();
 };
 

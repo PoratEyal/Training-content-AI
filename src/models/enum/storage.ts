@@ -1,7 +1,6 @@
 export enum StorageKey {
     LAST_PAGE = "lastVisitedPage",
     SITE_LANG = "i18nextLng",
-    USER_TYPE = "userType",
 
     YOUTH_DETAILS = "youthDetails",
     YOUTH_ACTIVITY = "youthActivity",

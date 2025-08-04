@@ -1,5 +1,6 @@
 import { WEBSITE_URL } from "../models/constants"
 import i18n from "i18next"
+import { ProductType } from "../context/ProductType";
 
 export const formatWhatsUp = (text: string | undefined) => {
     if (!text) {
@@ -11,12 +12,24 @@ export const formatWhatsUp = (text: string | undefined) => {
     return result
 }
 
-export const formatCopy = (text: string) => {
-    const title = i18n.t("articleOptions.share.createdBy", "Activity created by:")
-    const br = "\n"
-    const result = text.replace(/\*+/g, "") + br + br + title + br + WEBSITE_URL
-    return result
-}
+export const formatCopy = (text: string, product: ProductType) => {
+  const title = i18n.t("articleOptions.share.createdBy", "Created by:");
+  const br = "\n";
+  const cleanedText = text.replace(/\*+/g, "");
+
+  const pathMap: Record<ProductType, string> = {
+    [ProductType.Youth]: "/youth",
+    [ProductType.Event]: "/event",
+    [ProductType.Practice]: "/practice",
+    [ProductType.Words]: "/words",
+    [ProductType.Unknown]: ""
+  };
+
+  const path = pathMap[product] || "";
+  return `${cleanedText}${br}${br}${title}${br}${WEBSITE_URL}${path}`;
+};
+
+
 
 export const convertContentToHTML = (text: string) => {
     const lines = text.split("\n")

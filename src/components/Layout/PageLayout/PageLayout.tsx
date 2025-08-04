@@ -143,38 +143,37 @@ function PageLayout({
         {/* Ads Area */}
         {hasAds !== "" ? (() => {
 
-          // Use case 1: Instructor is in the Practice product and wants to share a direct Practice link (with topic) to their group
-          if (location.pathname.includes("/practice/quiz") && localStorage.getItem(StorageKey.USER_TYPE) === "instructor") {
+          // My Banner (Share Practice Product) in Practice Product
+          const path = location.pathname;
+          if (path.includes("/practice/quiz")) {
 
-            const topic = localStorage.getItem(StorageKey.PRACTICE_TOPIC);
-            if (topic) {
+            const topic = localStorage.getItem(StorageKey.PRACTICE_TOPIC); // if exist
 
-              const handleBannerClick = () => {
-                logEvent("מדריך שיתף טריוויה", "");
-                const encodedTopic = encodeURIComponent(topic);
-                const shareTitle = t("common.practiceAppName")
-                const shareUrl = `https://activitywiz.com/${lang}/practice?topic=${encodedTopic}`;
-                const shareText = `${t("articleOptions.share.practiceShareMessageInstructor")}\n\n${topic}\n${shareUrl}`;
-                share(t, shareTitle, shareText)
-              };
+            const handleBannerClick = () => {
+              logEvent("Practice/Quiz - Practice Shared by instructor ", "");
+              const encodedTopic = encodeURIComponent(topic);
+              const shareTitle = t("common.practiceAppName")
+              const shareUrl = `https://activitywiz.com/${lang}/practice?topic=${encodedTopic}`;
+              const shareText = `${t("articleOptions.share.practiceShareMessageInstructor")}\n\n${topic}\n${shareUrl}`;
+              share(t, shareTitle, shareText)
+            };
 
-              return (
-                <div className={styles.customAdSlot} onClick={handleBannerClick} style={{ cursor: "pointer" }}>
-                  <div className={styles.bannerWithIcon}>
-                    <Icons.Share size={22} />
-                    <span>{t("articleOptions.share.practiceShareBannerText")}</span>
-                  </div>
+            return (
+              <div className={styles.customAdSlot} onClick={handleBannerClick} style={{ cursor: "pointer" }}>
+                <div className={styles.bannerWithIcon}>
+                  <Icons.Share size={22} />
+                  <span>{t("articleOptions.share.practiceShareBannerText")}</span>
                 </div>
-              );
-            }
+              </div>
+            );
             return null;
           }
 
-          // Use case 2: User in Youth Product and got the Event banner
-          else if (location.pathname.includes("/youth/activity") && new Date().getSeconds() % 2 === 0) {
-            
+          // Event Product Banner in Youth Product
+          else if (path.includes("/youth/activity")) {
+
             const handleBannerClick = () => {
-              logEvent("מדריך לחץ באנר ארועים", "");
+              logEvent("Youth/Activity - Event Banner Clicked", "");
               window.open(`https://activitywiz.com/${lang}/event`, "_blank");
             };
 
