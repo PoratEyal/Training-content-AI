@@ -8,7 +8,7 @@ import DontHaveActivity from "../../../components/DontHaveActivity/DontHaveActiv
 import MyActivitiesTitle from "../../../components/titles/MyActivitiesTitle/MyActivitiesTitle"
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
 import PageLoading from "../../../components/Loading/PageLoading/PageLoading"
-import SavedActivityRow from "../../../components/SavedActivityRow/SavedActivityRow"
+import SavedActivityRow from "../../../components/ProductYouth/SavedActivityRow/SavedActivityRow"
 import { useSaveContext } from "../../../context/SavedContext"
 import { ProductType } from "../../../context/ProductType"
 import { useLanguage } from "../../../i18n/useLanguage"

@@ -5,7 +5,7 @@ import route from "../../../router/route.json"
 import styles from "./Quiz.module.css"
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
 import LoadingActivity from "../../../components/Loading/LoadingActivity/LoadingActivity";
-import QuizContainer from "../../../components/SmartPractice/QuizContainer/QuizContainer"
+import QuizContainer from "../../../components/ProductPractice/QuizContainer/QuizContainer"
 import { ProductType } from "../../../context/ProductType"
 import { useContentContext } from "../../../context/ContentContext"
 import { enforcePageAccess } from "../../../utils/navigation"

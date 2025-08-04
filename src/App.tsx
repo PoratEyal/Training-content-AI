@@ -33,10 +33,10 @@ import EventActivityAI from "./pages/Event/Activity/Activity"
 import EventFAQ from "./pages/Event/FAQ/FAQ"
 
 // Smart Practice
-import PracticeHomePage from "./pages/SmartPractice/HomePage/Home"
-import PracticeTopic from "./pages/SmartPractice/Topic/Topic"
-import PracticeQuiz from "./pages/SmartPractice/Quiz/Quiz"
-import PracticeFAQ from "./pages/SmartPractice/FAQ/FAQ"
+import PracticeHomePage from "./pages/Practice/HomePage/Home"
+import PracticeTopic from "./pages/Practice/Topic/Topic"
+import PracticeQuiz from "./pages/Practice/Quiz/Quiz"
+import PracticeFAQ from "./pages/Practice/FAQ/FAQ"
 
 // Learn Words Language
 import WordsHomePage from "./pages/Words/HomePage/Home"

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import styles from "./EventInput.module.css";
-import { useLanguage } from "../../i18n/useLanguage";
-import { useNotificationContext } from "../../context/NotificationContext";
+import { useLanguage } from "../../../i18n/useLanguage";
+import { useNotificationContext } from "../../../context/NotificationContext";
 
 type EventInputProps = {
   placeholder?: string;

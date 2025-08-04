@@ -6,10 +6,10 @@
 //
 import React from "react";
 import styles from "./SavedActivityRow.module.css";
-import { Activity } from "../../models/types/activity";
+import { Activity } from "../../../models/types/activity";
 import { useNavigate } from "react-router-dom";
-import route from "../../router/route.json";
-import { useLanguage } from "../../i18n/useLanguage";
+import route from "../../../router/route.json";
+import { useLanguage } from "../../../i18n/useLanguage";
 
 type SavedActivityRowProps = {
   activity: Activity;

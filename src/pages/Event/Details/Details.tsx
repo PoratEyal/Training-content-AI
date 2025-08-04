@@ -1,6 +1,6 @@
 import MainBtn from "../../../components/MainBtn/MainBtn";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
-import EventInput from "../../../components/EventInput/EventInput";
+import EventInput from "../../../components/ProductEvent/EventInput/EventInput";
 import MoreDetailsInput from "../../../components/MoreDetailsInput/MoreDetailsInput";
 import TellUsAboutYourEvent from "../../../components/titles/TellUsAboutYourEvent/TellUsAboutYourEvent";
 import { useContentContext } from "../../../context/ContentContext";

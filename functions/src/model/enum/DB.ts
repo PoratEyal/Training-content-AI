@@ -5,5 +5,4 @@ export enum CollectionDB {
     MSG = "messages",
     STATIC_ACTIVITY = "staticActivities",
     TEST = "test",
-    USERS_SmartPractice = "usersMain",
 }
