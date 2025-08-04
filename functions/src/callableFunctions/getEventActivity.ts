@@ -1,12 +1,13 @@
 import * as functions from "firebase-functions"
-import { generateEvent } from "../service/Event/geminiAPI"
+import { generateEventActivityAI } from "../service/Event/geminiAPI"
 import { Lang } from "../model/types/common"
 
-const generateEventHandler = functions.https.onCall(async (data, context) => {
+export const getEventActivity = functions.https.onCall(async (data, context) => {
+  
   const { event, moreDetails, age, amount, gender, place, time, lang } = data
 
   try {
-    const result = await generateEvent(
+    const result = await generateEventActivityAI(
       event,
       moreDetails,
       age,
@@ -22,4 +23,4 @@ const generateEventHandler = functions.https.onCall(async (data, context) => {
   }
 })
 
-export default generateEventHandler
+export default getEventActivity;

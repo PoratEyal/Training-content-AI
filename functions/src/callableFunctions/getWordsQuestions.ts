@@ -1,13 +1,13 @@
 import * as functions from "firebase-functions";
-import { getWordsFromAI } from "../service/Words/geminiAPI";
+import { generateWordsAI } from "../service/Words/geminiAPI";
 import { Lang } from "../model/types/common";
 
-const getWords4Practice = functions.https.onCall(
+export const getWordsQuestions = functions.https.onCall(
   async (data: { topic?: string; learningLang: string; userLang: string; count?: number }) => {
     const { topic, learningLang, userLang, count } = data;
 
     try {
-      const questions = await getWordsFromAI(
+      const questions = await generateWordsAI(
         topic || null,
         learningLang as Lang,
         userLang as Lang,
@@ -20,4 +20,4 @@ const getWords4Practice = functions.https.onCall(
   }
 );
 
-export default getWords4Practice;
+export default getWordsQuestions;

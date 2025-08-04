@@ -16,7 +16,7 @@ import { StorageKey } from "../../../models/enum/storage";
 import { ProductPages } from "../../../models/enum/pages";
 import Session from "../../../utils/sessionStorage";
 import { enforcePageAccess } from "../../../utils/navigation";
-import { generateEvent } from "../../../hooks/generateEvent";
+import { generateEventActivity } from "../../../hooks/generateEventActivity";
 import { logEvent } from "../../../utils/logEvent";
 import { useAuthContext } from "../../../context/AuthContext"
 
@@ -87,7 +87,7 @@ function BuildActivity() {
   const submitHandler = async () => {
     setClicked(true)
     try {
-      const result = await generateEvent(event, moreDetails, age, amount, gender, place, time, lang)
+      const result = await generateEventActivity(event, moreDetails, age, amount, gender, place, time, lang)
       if (result) {
         sessionStorage.setItem(StorageKey.EVENT_ACTIVITY, JSON.stringify(result));
         navigate(eventActivityPath)

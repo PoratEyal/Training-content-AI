@@ -10,7 +10,7 @@ import LoadingActivity from "../../../components/Loading/LoadingActivity/Loading
 import { ProductType } from "../../../context/ProductType";
 import { useNotificationContext } from "../../../context/NotificationContext";
 import { PRACTICE_AD_SLOT } from "../../../models/constants/adsSlot";
-import { createQuiz } from "../../../hooks/generateQuestions";
+import { generatePracticeQuestions } from "../../../hooks/generatePracticeQuestions";
 import { logEvent } from "../../../utils/logEvent";
 import { ProductPages } from "../../../models/enum/pages";
 import { enforcePageAccess } from "../../../utils/navigation";
@@ -97,7 +97,7 @@ function Topic() {
     e.preventDefault();
     setLoading(true);
     try {
-      const raw = await createQuiz(topic, lang, 10);
+      const raw = await generatePracticeQuestions(topic, lang, 10);
       const cleanedJsonStr = cleanJson(raw);
       const parsed = JSON.parse(cleanedJsonStr);
       let final;

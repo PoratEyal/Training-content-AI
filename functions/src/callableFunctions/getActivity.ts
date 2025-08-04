@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import { GetActivityRequest } from "../model/types/request";
 import { NOT_REGISTERED } from "../model/constants";
-import { getMainActivity } from "../service/YouthActivities/geminiAPI";
+import { generateYouthActivityAI } from "../service/Youth/geminiAPI";
 import { initActivityFromAI } from "../utils/activity";
 import { GetActivityResponse } from "../model/types/response";
 import { handleGetActivityErrors } from "../utils/handleError";
@@ -16,7 +16,7 @@ const getActivity = functions.https.onCall(
         try {
             let activityResult;
             try {
-                activityResult = await getMainActivity(data);
+                activityResult = await generateYouthActivityAI(data);
             } catch (err) {
                 throw new Error(`[getMainActivity failed]: ${err instanceof Error ? err.message : String(err)}`);
             }

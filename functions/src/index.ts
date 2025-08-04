@@ -3,46 +3,46 @@ import express from "express";
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 
-// Common
-import ping from './callableFunctions/ping';
+// === Init ===
+admin.initializeApp();
+const app = express();
+app.use(cors());
+const db = admin.firestore();
+export { db };
+
+// === Common Functions ===
+import ping from "./callableFunctions/ping";
 import updateLastLogin from "./callableFunctions/updateLastLogin";
 import sendMsg from "./callableFunctions/sendMsg";
 import getMsg from "./callableFunctions/getMsg";
 import updateIsMsg from "./callableFunctions/updateIsMsg";
-import writeLog from "./callableFunctions/writeLog";
+import writeLogEvent from "./callableFunctions/writeLogEvent";
+import redirectToLang from "./callableFunctions/redirectToLang";
+import createNewUser from "./callableFunctions/createNewUser";
+import getUserById from "./callableFunctions/getUserById";
+import updateUser from "./callableFunctions/updateUser";
 
-// Youth Activities
-import getActivity from "./callableFunctions/getActivity"
-import updateActivityLikes from "./callableFunctions/updateActivityLikes"
-import createNewUser from "./callableFunctions/createNewUser"
-import getUserById from "./callableFunctions/getUserById"
-import updateUser from "./callableFunctions/updateUser"
-
+// === Youth Activities ===
+import getActivity from "./callableFunctions/getActivity";
 import getSavedActivities from "./callableFunctions/getSavedActivities";
 import saveActivity from "./callableFunctions/saveActivity";
 import removeSavedActivity from "./callableFunctions/removeSavedActivity";
-
 import getStaticSubjectsHttp from "./callableFunctions/getStaticSubject";
 import incrementActivityDisplayCount from "./callableFunctions/incrementActivityDisplayCount";
 import getStaticActivityHttp from "./callableFunctions/getStaticActivity";
 import addStaticActivity from "./callableFunctions/addStaticActivity";
 
-// Event
-import generateEvent from "./callableFunctions/generateEvent";
+// === Event ===
+import getEventActivity from "./callableFunctions/getEventActivity";
 
-// Practice 
-import getQuestions4Practice from "./callableFunctions/getQuestions4Practice";
+// === Practice ===
+import getPracticeQuestions from "./callableFunctions/getPracticeQuestions";
 
-// Words Practice
-import getWords4Practice from "./callableFunctions/getWords4Practice";
+// === Words ===
+import getWordsQuestions from "./callableFunctions/getWordsQuestions";
+import translateText from "./callableFunctions/translateText";
 
-
-const app = express();
-app.use(cors());
-
-admin.initializeApp();
-const db = admin.firestore();
-export { db };
+// === Export Functions ===
 
 // Common
 exports.ping = ping;
@@ -50,60 +50,31 @@ exports.updateLastLogin = updateLastLogin;
 exports.sendMsg = sendMsg;
 exports.getMsg = getMsg;
 exports.updateIsMsg = updateIsMsg;
-export { writeLog };
-
-// Youth Activities
-exports.getActivity = getActivity;
-exports.updateLikes = updateActivityLikes;
-
 exports.createNewUser = createNewUser;
 exports.updateUser = updateUser;
 exports.getUserById = getUserById;
+exports.redirectToLang = redirectToLang;
+exports.writeLogEvent = writeLogEvent;
 
-exports.getStaticSubjectsHttp = getStaticSubjectsHttp;
-exports.getStaticActivity = getStaticActivityHttp;
-exports.incrementActivityDisplayCount = incrementActivityDisplayCount;
-
+// Youth Activities
+exports.getActivity = getActivity;
 exports.getSavedActivities = getSavedActivities;
 exports.saveActivity = saveActivity;
 exports.removeSavedActivity = removeSavedActivity;
-
+exports.getStaticSubjectsHttp = getStaticSubjectsHttp;
+exports.incrementActivityDisplayCount = incrementActivityDisplayCount;
+exports.getStaticActivity = getStaticActivityHttp;
 exports.addStaticActivity = addStaticActivity;
 
 // Event
-exports.generateEvent = generateEvent;
+exports.getEventActivity = getEventActivity;
 
 // Practice
-exports.getQuestions4Practice = getQuestions4Practice;
+exports.getPracticeQuestions = getPracticeQuestions;
 
-// Words Practice 
-exports.getWords4Practice = getWords4Practice;
+// Words
+exports.getWordsQuestions = getWordsQuestions;
+exports.translateText = translateText;
 
-import translateText from "./callableFunctions/translateText"
-exports.translateText = translateText
-
+// Express App
 exports.app = functions.https.onRequest(app);
-
-// Handle redirect Language
-const redirectApp = express();
-
-redirectApp.get("*", (req, res) => {
-  const langHeader = req.header("accept-language")?.toLowerCase() || "";
-  let lang = "he";  // Currently Hard coded to fallback always to hebrew. Lior 2 Fix
-
-  if (langHeader.includes("he")) {
-    lang = "he";
-  } else if (langHeader.includes("es")) {
-    lang = "es";
-  } else if (langHeader.includes("ar")) {
-    lang = "ar";
-  }
-
-  const originalPath = req.path.replace(/^\/+/, "");
-  const redirectTo = `/${lang}/${originalPath}`;
-  res.redirect(301, redirectTo);
-});
-
-
-
-exports.redirectToLang = functions.https.onRequest(redirectApp);

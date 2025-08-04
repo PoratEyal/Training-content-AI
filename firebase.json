@@ -22,11 +22,6 @@
       ],
       "redirects": [
         {
-          "source": "/",
-          "destination": "/he/youth",
-          "type": 301
-        },
-        {
           "source": "/he",
           "destination": "/he/youth",
           "type": 301
@@ -48,6 +43,13 @@
         }
       ],
       "rewrites": [
+        {
+          "source": "/",
+          "function": {
+            "functionId": "redirectToLang",
+            "region": "us-central1"
+          }
+        },
         {
           "source": "/youth",
           "function": {

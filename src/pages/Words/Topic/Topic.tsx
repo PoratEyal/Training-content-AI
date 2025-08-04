@@ -8,7 +8,7 @@ import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import LoadingActivity from "../../../components/Loading/LoadingActivity/LoadingActivity";
 import SelectDetails from "../../../components/SelectDetails/SelectDetails"
 import { ProductType } from "../../../context/ProductType";
-import { createWordsQuiz } from "../../../hooks/generateWordsQuestions"
+import { generateWordsQuestions } from "../../../hooks/generateWordsQuestions"
 import { WORDS_AD_SLOT } from "../../../models/constants/adsSlot";
 import { ProductPages } from "../../../models/enum/pages";
 import { enforcePageAccess } from "../../../utils/navigation";
@@ -192,7 +192,7 @@ function Topic() {
       }
 
       else if (mode === "ai") {
-        const generateWithAI = await createWordsQuiz(topicText || null, languageToLearn, lang, 10);
+        const generateWithAI = await generateWordsQuestions(topicText || null, languageToLearn, lang, 10);
         const jsonClean = cleanJSONResponse(generateWithAI);
         const jsonWithTranslation = await addTranslationsToWords(jsonClean, languageToLearn, lang);
         const jsonWithFixedDisctractors = fixDistractors(jsonWithTranslation, lang);

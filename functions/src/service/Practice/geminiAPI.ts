@@ -41,7 +41,7 @@ Guidelines:
 `.trim();
 };
 
-export async function getSmartPracticeQuestions(topic: string, count: number = 10, lang: Lang): Promise<string> {
+export async function generatePracticeAI(topic: string, count: number = 10, lang: Lang): Promise<string> {
   const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
   const prompt = buildPrompt(topic, count, lang);
   const result = await model.generateContent(prompt);

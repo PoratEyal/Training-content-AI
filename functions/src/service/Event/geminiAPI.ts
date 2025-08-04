@@ -62,13 +62,13 @@ Rules:
 - Prioritize games, group challenges, or hands-on activities over long explanations.
 - No risk. Keep it fun, age-appropriate, and inclusive.
 - Use simple materials that are easy to find.
-- Limit the "materials" list to a maximum of 5 items.
+- Limit the "materials" list to a maximum of 4 items.
 - Provide a **detailed explanation** for each activity in the "flow" section. Each description should include: what the facilitator does, what the participants do, and what the goal of the stage is. Avoid vague or general descriptions.
 - Include at least 4 distinct stages in the "flow" section unless otherwise implied by duration.
 `.trim();
 };
 
-export async function generateEvent(event: string, moreDetails: string, age: string, amount: string, gender: string, place: string, time: string, lang: Lang): Promise<string> {
+export async function generateEventActivityAI(event: string, moreDetails: string, age: string, amount: string, gender: string, place: string, time: string, lang: Lang): Promise<string> {
   const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
   const prompt = buildPrompt({ event, moreDetails, age, amount, gender, place, time }, lang);
   const result = await model.generateContent(prompt);

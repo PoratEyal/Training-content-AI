@@ -3,7 +3,6 @@ import {
     GetActivityRequest,
     GetStaticActivityRequest,
     RemoveActivityRequest,
-    UpdateActivityLikesRequest,
     UpdateUserRequest,
 } from "../models/types/api/request";
 import {
@@ -13,7 +12,6 @@ import {
     GetMsgResponse,
     GetStaticActivityResponse,
     SendMsgResponse,
-    UpdateActivityLikesResponse,
     UpdateIsMsgResponse,
     UpdateUserResponse,
     getAllActivitiesResponse,
@@ -132,12 +130,6 @@ export const fetchIncrementActivityDisplayCount = async (activity: StaticActivit
 //
 // Unused
 //
-export const fetchUpdateActivityLikes = async (request: UpdateActivityLikesRequest,): Promise<UpdateActivityLikesResponse> => {
-    const updateActivityLikesFunc = httpsCallable(functions, "updateLikes");
-    const response = (await updateActivityLikesFunc(request)).data as UpdateActivityLikesResponse;
-    return response;
-};
-
 export const fetchUpdateLastLogin = async (): Promise<void> => {
     const updateLastLoginFunc = httpsCallable(functions, "updateLastLogin");
     const response = (await updateLastLoginFunc()).data as { result: string };

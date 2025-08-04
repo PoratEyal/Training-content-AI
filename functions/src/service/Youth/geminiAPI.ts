@@ -120,7 +120,7 @@ const buildPrompt = (activityDetails: ActivityDetails, lang: Lang): [string, str
   return [prompt, details];
 };
 
-export async function getMainActivity(data: GetActivityRequest): Promise<string> {
+export async function generateYouthActivityAI(data: GetActivityRequest): Promise<string> {
   const { lang, ...restData } = data;
   const activityDetails = restData as ActivityDetails;
   const [prompt, details] = buildPrompt(activityDetails, lang);

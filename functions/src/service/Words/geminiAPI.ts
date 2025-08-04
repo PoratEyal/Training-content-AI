@@ -50,7 +50,7 @@ Guidelines:
 };
 
 // Create the quiz with the provided parameters
-export async function getWordsFromAI(topic: string | null, pLearningLang: Lang, pUserLang: Lang, count: number = 10): Promise<string> {
+export async function generateWordsAI(topic: string | null, pLearningLang: Lang, pUserLang: Lang, count: number = 10): Promise<string> {
   const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
   const prompt = buildPrompt(topic, pLearningLang, pUserLang, count);
   const result = await model.generateContent(prompt);

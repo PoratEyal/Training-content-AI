@@ -11,7 +11,7 @@ type WriteLogResponse = {
   message?: string;
 };
 
-const writeLog = functions.https.onCall(
+export const writeLogEvent = functions.https.onCall(
   async (data: WriteLogRequest): Promise<WriteLogResponse> => {
     const { userID, data: logData } = data;
 
@@ -29,4 +29,4 @@ const writeLog = functions.https.onCall(
   }
 );
 
-export default writeLog;
+export default writeLogEvent;

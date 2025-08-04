@@ -1,6 +1,7 @@
 // Delete logs by userID
-// cd C:\Dev\ActivityWiz\functions\manualScripts
-// run: npx ts-node deleteLogsByUser.ts
+// Run:
+// cd .\functions\manualScripts\
+// npx ts-node deleteLogsByUser.ts
 
 import * as admin from "firebase-admin";
 
