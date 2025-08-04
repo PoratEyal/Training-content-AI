@@ -33,21 +33,14 @@ const detectCountryAndInit = async () => {
     detectedLang = userLang
   else if (["he", "en", "es", "ar"].includes(langFromPath))     // Check URL lang
     detectedLang = langFromPath
-  else {                                                        // Check Country
+  else if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+    console.log("[index.tsx client]: Only for localhost debug")
     try {
       const response = await fetch("https://ipapi.co/json/")
       const data = await response.json()
       const countryCode = data.country_code
-      const spanishSpeakingCountries = [
-        "AR", "BO", "CL", "CO", "CR", "CU", "DO", "EC",
-        "SV", "GQ", "GT", "HN", "MX", "NI", "PA", "PY",
-        "PE", "PR", "ES", "UY", "VE"
-      ]
-      const arabicSpeakingCountries = [
-        "DZ", "BH", "EG", "IQ", "JO", "KW", "LB", "LY",
-        "MA", "OM", "QA", "SA", "SD", "SY", "TN", "AE",
-        "YE"
-      ]
+      const spanishSpeakingCountries = ["AR", "BO", "CL", "CO", "CR", "CU", "DO", "EC", "SV", "GQ", "GT", "HN", "MX", "NI", "PA", "PY", "PE", "PR", "ES", "UY", "VE"]
+      const arabicSpeakingCountries = ["DZ", "BH", "EG", "IQ", "JO", "KW", "LB", "LY", "MA", "OM", "QA", "SA", "SD", "SY", "TN", "AE", "YE"]
 
       if (countryCode === "IL") detectedLang = "he"
       else if (spanishSpeakingCountries.includes(countryCode)) detectedLang = "es"
@@ -57,7 +50,9 @@ const detectCountryAndInit = async () => {
       detectedLang = "en"
     }
   }
-
+  else {                                                        // Fallback to mostly used country
+    detectedLang = "he"
+  }
   await initI18n(detectedLang)
 
   const rootEl = document.getElementById("root")
