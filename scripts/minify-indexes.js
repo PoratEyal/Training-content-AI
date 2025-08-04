@@ -1,14 +1,11 @@
 const { execSync } = require("child_process");
 
 const files = [
-  "index.words.he.html",
-  "index.words.en.html",
-  "index.words.es.html",
-  "index.words.ar.html",
   "index.youth.he.html",
   "index.youth.en.html",
   "index.youth.es.html",
   "index.youth.ar.html",
+  "index.youth.content.he.html",
   "index.event.he.html",
   "index.event.en.html",
   "index.event.es.html",
@@ -17,6 +14,10 @@ const files = [
   "index.practice.en.html",
   "index.practice.es.html",
   "index.practice.ar.html",
+  "index.words.he.html",
+  "index.words.en.html",
+  "index.words.es.html",
+  "index.words.ar.html",
 ];
 
 files.forEach((file) => {
