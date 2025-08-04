@@ -103,6 +103,10 @@
           "destination": "/index.youth.he.html"
         },
         {
+          "source": "/he/youth/content",
+          "destination": "/index.youth.content.he.html"
+        },
+        {
           "source": "/he/youth/content/**",
           "destination": "/index.youth.content.he.html"
         },
