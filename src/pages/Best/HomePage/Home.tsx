@@ -16,7 +16,7 @@ import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
 import MainBtn from "../../../components/MainBtn/MainBtn"
 import AboutUsCollapse from "../../../components/AboutUsCollapse/AboutUsCollapse";
-import ContinueWithAI from "../../../components/titles/ContinueWithAI/ContinueWithAI";
+import HomePageTitle from "../../../components/titles/bestHomePageTitle/bestHomePageTitle";
 import { startAsGuestOrUser } from "../../../utils/startAsGuestOrUser";
 import { useContentContext } from "../../../context/ContentContext";
 import { ProductPages } from "../../../models/enum/pages";
@@ -55,10 +55,7 @@ function BestHomePage() {
       </script>
 
       <div className={styles.logo_text_div}>
-        <ContinueWithAI />
-        <div className={styles.home_lable} style={{ direction: dir }}>
-          <span>{t("home.slogan")}</span>
-        </div>
+        <HomePageTitle />
       </div>
 
       {loading ? (

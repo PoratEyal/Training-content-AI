@@ -2,6 +2,7 @@
   "common": {
     "youthAppName": "Youth Movement Activities",
     "eventAppName": "EventWiz",
+    "bestAppName": "Who’s the Smartest?",
     "practiceAppName": "Knowledge Challenge",
     "wordsAppName": "Smart Vocab",
     "btnContinue": "Continue",
@@ -14,6 +15,7 @@
     "title": "About",
     "youthAboutText": "Create youth activities – from a library of ready-made activities to personalized ones generated with AI. Perfect for guides looking to enrich educational and social engagement.",
     "eventAboutText": "Create a personalized activity for any event – with AI that tailors the activity to age, number of participants, location, and more. Each activity is generated just for you, at the click of a button and within seconds.",
+    "bestAboutText": "Competitions between groups like boys vs. girls or kids vs. adults. Join an existing competition or create a new one, and see which team wins.",
     "practiceAboutText": "A knowledge challenge powered by AI. Choose any topic you like, and the system will generate a personalized quiz in seconds. Perfect for anyone looking for a simple and focused way to deepen their knowledge.",
     "wordsAboutText": "Vocabulary training made smart and efficient. Enter words or choose a topic to get a personalized practice that helps you learn, remember, and understand better – in any language."
   },
@@ -21,6 +23,7 @@
     "slogan": "Customized, Simple and Fast 🤟",
     "youthStartAction": "Create",
     "eventStartAction": "Create activity",
+    "bestStartAction": "Lets Go",
     "practiceStartAction": "Lets Go",
     "wordsStartAction": "Lets Go",
     "advanced": "Advanced",
@@ -144,6 +147,13 @@
       "flow": "Event Flow",
       "tips": "Facilitator Tips"
     }
+  },
+  "bestSep": "==============================================================================================================",
+  "bestNavbar": {
+    "home": "Home",
+    "play": "Play Now",
+    "create": "Create Competition",
+    "hof": "Hall of Fame"
   },
   "practiceSep": "==============================================================================================================",
   "practiceNavbar": {

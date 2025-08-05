@@ -121,9 +121,9 @@ function PageLayout({
         style={{
           backgroundColor: (() => {
             if (!hasGreenBackground) return "var(--background-color)";
-            if (productType === ProductType.Youth) return "var(--primary-color)";
+            if (productType === ProductType.Youth) return "var(--youth-primary-color)";
             if (productType === ProductType.Event) return "var(--event-primary-color)";
-            if (productType === ProductType.Best) return "var(--words-primary-color)";
+            if (productType === ProductType.Best) return "var(--best-primary-color)";
             if (productType === ProductType.Practice) return "var(--practice-primary-color)";
             if (productType === ProductType.Words) return "var(--words-primary-color)";
             return "var(--background-color)";

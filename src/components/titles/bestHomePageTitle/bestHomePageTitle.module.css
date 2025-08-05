@@ -1,0 +1,120 @@
+/* ------------------ Shared / Generic Styles ------------------ */
+
+.bestColor {
+  background-color: var(--best-primary-color);
+}
+
+.logo {
+  position: relative;
+  margin-top: 40px;
+  width: 251px;
+  height: 95px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ------------ Sparks ------------ */
+.sparks {
+  position: absolute;
+  left: 0;
+}
+
+.sparks_en {
+  position: absolute;
+  right: 0;
+  top: 40px;
+}
+
+.big_spark {
+  position: absolute;
+  background: var(--text-color);
+  clip-path: polygon(40% 40%, 50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%);
+  left: -5px;
+  height: 17px;
+  width: 17px;
+}
+
+.big_spark_en {
+  position: absolute;
+  background: var(--text-color);
+  clip-path: polygon(40% 40%, 50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%);
+  left: 22px;
+  height: 17px;
+  width: 17px;
+}
+
+.small_spark {
+  position: absolute;
+  background: var(--text-color);
+  clip-path: polygon(40% 40%, 50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%);
+  top: -5px;
+  left: 10px;
+  height: 12px;
+  width: 12px;
+}
+
+.small_spark_en {
+  position: absolute;
+  background: var(--text-color);
+  clip-path: polygon(40% 40%, 50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%);
+  top: -5px;
+  left: 10px;
+  height: 12px;
+  width: 12px;
+}
+
+
+/* ------------ RTL ------------ */
+.word_2 {
+  position: absolute;
+  bottom: 3px;
+  width: 240px;
+  height: 78px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  color: white;
+  font-size: 30px;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.word_2::after {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  content: "";
+  width: 226px;
+  height: 64px;
+  border-radius: 10px;
+  border: 2px solid var(--secondary-color);
+}
+
+/* ------------ English ------------ */
+.word_2_en {
+  position: absolute;
+  bottom: 0px;
+  width: 320px;
+  height: 78px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  color: white;
+  font-size: 30px;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.word_2_en::after {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  content: "";
+  width: 306px;
+  height: 64px;
+  border-radius: 10px;
+  border: 2px solid var(--secondary-color);
+}

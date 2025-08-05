@@ -9,7 +9,7 @@ import { startAsGuestOrUser } from "../../../../utils/startAsGuestOrUser"
 import { useAuthContext } from "../../../../context/AuthContext"
 import useSignIn from "../../../../hooks/useSignIn"
 
-const NavOptQuiz = () => {
+const NavOptPlay = () => {
 
   const { t, lang } = useLanguage();
   const { cookieLimit, setLimitCookie } = useCookiesContext();
@@ -45,9 +45,9 @@ const NavOptQuiz = () => {
       className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
     >
       <Icons.magic className={styles.icon} />
-      <span className={styles.text}>{t("bestNavbar.build")}</span>
+      <span className={styles.text}>{t("bestNavbar.play")}</span>
     </div>
   );
 };
 
-export default NavOptQuiz;
+export default NavOptPlay;

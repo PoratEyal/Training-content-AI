@@ -7,7 +7,7 @@
   font-size: 22px;
   font-weight: 500;
   margin: 0;
-  color: var(--primary-color);
+  color: var(--youth-primary-color);
   text-align: start; /* RTL/LTR aware */
   margin-bottom: 10px; /* add vertical margin for balance */
 }

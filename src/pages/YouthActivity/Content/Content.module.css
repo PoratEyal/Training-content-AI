@@ -57,7 +57,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   text-decoration: none;
-  border: 0px solid var(--primary-color);
+  border: 0px solid var(--youth-primary-color);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -74,7 +74,7 @@
 }
 
 .icon {
-  color: var(--primary-color);
+  color: var(--youth-primary-color);
   font-size: 25px;
 }
 
@@ -84,7 +84,7 @@
   font-weight: 550;
   letter-spacing: 1px;
   color: #333;
-  color: var(--primary-color);
+  color: var(--youth-primary-color);
 }
 
 @media (min-width: 550px) {

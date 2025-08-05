@@ -2,6 +2,7 @@
   "common": {
     "youthAppName": "Actividades para movimientos juveniles",
     "eventAppName": "EventoGenio",
+    "bestAppName": "¿Quién es el más inteligente?",
     "practiceAppName": "Desafío de Conocimiento",
     "wordsAppName": "Vocabulario Inteligente",
     "btnContinue": "Continuar",
@@ -14,6 +15,7 @@
     "title": "Acerca de",
     "youthAboutText": "Crea actividades para jóvenes: desde una biblioteca de actividades listas hasta actividades personalizadas con inteligencia artificial. Ideal para guías que desean enriquecer la experiencia educativa y social.",
     "eventAboutText": "Crea una actividad personalizada para cualquier evento, con inteligencia artificial que adapta la actividad según la edad, el número de participantes, el lugar y más. Cada actividad se genera especialmente para ti, con solo un clic y en cuestión de segundos.",
+    "bestAboutText": "Competiciones entre grupos como niños contra niñas o jóvenes contra adultos. Únete a una competición existente o crea una nueva, y descubre qué equipo gana.",
     "practiceAboutText": "Un desafío de conocimiento impulsado por IA. Elige cualquier tema que desees y el sistema generará un cuestionario personalizado en segundos. Perfecto para cualquiera que busque una forma sencilla y enfocada de profundizar su conocimiento.",
     "wordsAboutText": "Entrenamiento de vocabulario de forma inteligente y eficiente. Ingresa palabras o elige un tema para obtener una práctica personalizada que te ayudará a aprender, recordar y comprender mejor – en cualquier idioma."
   },
@@ -21,6 +23,7 @@
     "slogan": "Personalizado, Simple y Rápido 🤟",
     "youthStartAction": "Crear Actividad",
     "eventStartAction": "Crear Actividad",
+    "bestStartAction": "Vamos allá",
     "practiceStartAction": "Vamos allá",
     "wordsStartAction": "Vamos allá",
     "advanced": "Actividades",
@@ -144,6 +147,13 @@
       "flow": "Desarrollo del evento",
       "tips": "Consejos para el facilitador"
     }
+  },
+  "bestSep": "==============================================================================================================",
+  "bestNavbar": {
+    "home": "Inicio",
+    "play": "Jugar ahora",
+    "create": "Crear competencia",
+    "hof": "Salón de la fama"
   },
   "practiceSep": "==============================================================================================================",
   "practiceNavbar": {
