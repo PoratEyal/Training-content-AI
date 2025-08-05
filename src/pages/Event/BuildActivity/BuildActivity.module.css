@@ -34,9 +34,10 @@
     flex-direction: column;
     gap: 5px;
     min-height: 355px;
-    height: calc(100% - 100px - var(--ads-height));
+    height: calc(100% - 50px - var(--ads-height));
     width: 100%;
     overflow-y: scroll;
+    z-index: 1000;
 }
 
 .loading_mock_selection_container {
