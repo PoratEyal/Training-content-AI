@@ -200,14 +200,14 @@ function PageLayout({
 
         {/* Navigation Area */}
         {hasNavBar ? (
-          productType === ProductType.Practice ? (
-            <PracticeNavigationBar />
-          ) : productType === ProductType.Youth ? (
+          productType === ProductType.Youth ? (
             <YouthNavigationBar />
           ) : productType === ProductType.Event ? (
             <EventNavigationBar />
           ) : productType === ProductType.Best ? (
             <BestNavigationBar />
+          ) : productType === ProductType.Practice ? (
+            <PracticeNavigationBar />
           ) : productType === ProductType.Words ? (
             <WordsNavigationBar />
           ) : null

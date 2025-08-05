@@ -32,7 +32,7 @@ function BestHomePage() {
   const { setCurrentPage } = useContentContext()
 
   const bestSchema = useMemo(() => buildHomeSchema(lang, t("home.slogan")), [lang, t])
-  const bestTopicPath = route[`wordsTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsTopicEn
+  const besthomePath = route[`bestHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.bestHomePageEn
 
   useEffect(() => {
     setCurrentPage(ProductPages.PAGE_WordsHome);
@@ -68,7 +68,7 @@ function BestHomePage() {
       ) : (
         <section className={styles.button_section}>
           <MainBtn
-            text={t("home.practiceStartAction")}
+            text={t("home.bestStartAction")}
             func={() =>
               startAsGuestOrUser({
                 currentUser,
@@ -76,7 +76,7 @@ function BestHomePage() {
                 cookieLimit,
                 setLimitCookie,
                 signInWithGoogle,
-                navigateTo: bestTopicPath,
+                navigateTo: besthomePath,
                 navigate,
               })
             }
@@ -88,7 +88,7 @@ function BestHomePage() {
 
       <div className={styles.about_div}>
         <AboutUsCollapse>
-          <p>{t("aboutUs.wordsAboutText")}</p>
+          <p>{t("aboutUs.bestAboutText")}</p>
         </AboutUsCollapse>
       </div>
 

@@ -19,12 +19,12 @@ const NavOptQuiz = () => {
   const { currentUser, isLoggedIn } = useAuthContext()
   const { signInWithGoogle } = useSignIn()
 
-  const topicPath = route[`wordsTopic${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.wordsTopicEn;
+  const homePath = route[`bestHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.bestHomePageEn;
   const quizPath = route[`bestQuiz${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.bestQuizEn;
 
   useEffect(() => {
-    setIsSelected(location.pathname === topicPath || location.pathname === quizPath);
-  }, [location.pathname, topicPath, quizPath]);
+    setIsSelected(location.pathname === homePath || location.pathname === quizPath);
+  }, [location.pathname, homePath, quizPath]);
 
   const handleClick = () => {
     startAsGuestOrUser({
@@ -33,7 +33,7 @@ const NavOptQuiz = () => {
       cookieLimit,
       setLimitCookie,
       signInWithGoogle,
-      navigateTo: topicPath,
+      navigateTo: homePath,
       navigate
     })
   }
@@ -45,7 +45,7 @@ const NavOptQuiz = () => {
       className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
     >
       <Icons.magic className={styles.icon} />
-      <span className={styles.text}>{t("wordsNavbar.build")}</span>
+      <span className={styles.text}>{t("bestNavbar.build")}</span>
     </div>
   );
 };
