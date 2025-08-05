@@ -26,10 +26,12 @@ const jsonToMarkdownEvent = (raw: string, t: (key: string) => string): string =>
     let result = `### ${data.title}\n\n`;
     result += `### ${t("eventActivity.json.summary")}:\n\n${data.summary}\n\n`;
 
-    if (Array.isArray(data.materials)) {
+    if (Array.isArray(data.materials) && data.materials.some(item => item.trim() !== "")) {
       result += `### ${t("eventActivity.json.materials")}:\n\n`;
       for (const item of data.materials) {
-        result += `* ${item}\n`;
+        if (item.trim() !== "") {
+          result += `* ${item}\n`;
+        }
       }
       result += `\n`;
     }
@@ -46,12 +48,15 @@ const jsonToMarkdownEvent = (raw: string, t: (key: string) => string): string =>
       }
     }
 
-    if (Array.isArray(data.tips)) {
+    if (Array.isArray(data.tips) && data.tips.some(tip => tip.trim() !== "")) {
       result += `### ${t("eventActivity.json.tips")}:\n\n`;
       for (const tip of data.tips) {
-        result += `* ${tip}\n`;
+        if (tip.trim() !== "") {
+          result += `* ${tip}\n`;
+        }
       }
     }
+
 
     return result.trim();
   } catch (err) {

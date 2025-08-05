@@ -1,6 +1,36 @@
 import { SelectOption } from "../../types/common";
 import { Category } from "../../types/movement";
 
+export const ActivityTimeOptions = {
+    he: [
+        { value: "Half hour", label: "חצי שעה" },
+        { value: "One hour", label: "שעה" },
+        { value: "Two hours", label: "שעתיים" },
+        { value: "Three hours", label: "שלוש שעות" },
+    ] as SelectOption[],
+
+    en: [
+        { value: "Half hour", label: "Half hour" },
+        { value: "One hour", label: "Hour" },
+        { value: "Two hours", label: "Two hours" },
+        { value: "Three hours", label: "Three hours" },
+    ] as SelectOption[],
+
+    es: [
+        { value: "Half hour", label: "Media hora" },
+        { value: "One hour", label: "Hora" },
+        { value: "Two hours", label: "Dos horas" },
+        { value: "Three hours", label: "Tres horas" },
+    ] as SelectOption[],
+
+    ar: [
+        { value: "Half hour", label: "نصف ساعة" },
+        { value: "One hour", label: "ساعة" },
+        { value: "Two hours", label: "ساعتان" },
+        { value: "Three hours", label: "ثلاث ساعات" },
+    ] as SelectOption[],
+};
+
 export const AgeOptions = {
     he: [
         { value: "Kindergarten (ages 3–6)", label: "ילדי גן" },
@@ -153,36 +183,24 @@ export const GenderOptions = {
 };
 
 
-export const ActivityTimeOptions = {
+export const MaterialsOptions = {
     he: [
-        { value: "Half hour", label: "חצי שעה" },
-        { value: "One hour", label: "שעה" },
-        { value: "Two hours", label: "שעתיים" },
-        { value: "Three hours", label: "שלוש שעות" },
+        { value: "any", label: "לא משנה" },
+        { value: "no materials", label: "ללא ציוד עזר" },
     ] as SelectOption[],
-
     en: [
-        { value: "Half hour", label: "Half hour" },
-        { value: "One hour", label: "Hour" },
-        { value: "Two hours", label: "Two hours" },
-        { value: "Three hours", label: "Three hours" },
+        { value: "any", label: "Any" },
+        { value: "no materials", label: "No materials required" },
     ] as SelectOption[],
-
     es: [
-        { value: "Half hour", label: "Media hora" },
-        { value: "One hour", label: "Hora" },
-        { value: "Two hours", label: "Dos horas" },
-        { value: "Three hours", label: "Tres horas" },
+        { value: "any", label: "Cualquiera" },
+        { value: "no materials", label: "Sin materiales" },
     ] as SelectOption[],
-
     ar: [
-        { value: "Half hour", label: "نصف ساعة" },
-        { value: "One hour", label: "ساعة" },
-        { value: "Two hours", label: "ساعتان" },
-        { value: "Three hours", label: "ثلاث ساعات" },
+        { value: "any", label: "أيًّا كان" },
+        { value: "no materials", label: "بدون مواد" },
     ] as SelectOption[],
 };
-
 
 export const CategoryOptions = (options: Category[]): SelectOption[] => {
     return options.map((option) => {

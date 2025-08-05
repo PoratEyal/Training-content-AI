@@ -4,17 +4,18 @@ import { Lang } from "../model/types/common"
 
 export const getEventActivity = functions.https.onCall(async (data, context) => {
   
-  const { event, moreDetails, age, amount, gender, place, time, lang } = data
+  const { event, moreDetails, duration, age, amount, gender, place, materials, lang } = data
 
   try {
     const result = await generateEventActivityAI(
       event,
       moreDetails,
+      duration,
       age,
       amount,
       gender,
       place,
-      time,
+      materials,
       lang as Lang
     )
     return { result }

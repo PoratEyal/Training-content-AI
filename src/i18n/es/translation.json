@@ -118,6 +118,7 @@
     "eventLable": "Por ejemplo, cumpleaños, fiesta, noche de integración y más...",
     "event": "Tipo de evento",
     "moreDetails": "Más información",
+    "duration": "Duración de la actividad",
     "limit": "Para agregar más información, utiliza el campo \"Información adicional\".",
     "lampAlt": "Lámpara"
   },
@@ -127,7 +128,7 @@
     "amount": "Número de participantes",
     "gender": "Género",
     "place": "Ubicación",
-    "time": "Hora",
+    "materials": "Materiales",
     "submit": "Crear actividad",
     "loading": "Creando actividad",
     "loadingActivity": {

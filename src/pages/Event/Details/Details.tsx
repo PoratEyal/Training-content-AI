@@ -3,6 +3,8 @@ import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import EventInput from "../../../components/ProductEvent/EventInput/EventInput";
 import MoreDetailsInput from "../../../components/MoreDetailsInput/MoreDetailsInput";
 import TellUsAboutYourEvent from "../../../components/titles/TellUsAboutYourEvent/TellUsAboutYourEvent";
+import SelectDetails from "../../../components/SelectDetails/SelectDetails";
+import { ActivityTimeOptions } from "../../../models/resources/productEvent/select";
 import { useContentContext } from "../../../context/ContentContext";
 import { ProductType } from "../../../context/ProductType";
 import { useLanguage } from "../../../i18n/useLanguage";
@@ -23,6 +25,7 @@ function Details() {
 
   const [event, setEvent] = useState("");
   const [moreDetails, setMoreDetails] = useState("");
+  const [duration, setDuration] = useState("");
   const [hasAlert, setHasAlert] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
 
@@ -41,6 +44,7 @@ function Details() {
     if (savedDetails) {
       setEvent(savedDetails.event || "");
       setMoreDetails(savedDetails.moreDetails || "");
+      setDuration(savedDetails.duration || "");
     }
     setIsInitialized(true);
   }, []);
@@ -53,9 +57,10 @@ function Details() {
         ...existing,
         event,
         moreDetails,
+        duration,
       });
     }
-  }, [event, moreDetails, isInitialized]);
+  }, [event, moreDetails, duration, isInitialized]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -111,11 +116,18 @@ function Details() {
               text={moreDetails}
               setText={setMoreDetails}
             />
+            <div style={{ height: "10px" }} />
+            <SelectDetails
+              placeholder={t("eventDetails.duration")}
+              obj={duration}
+              setObj={setDuration}
+              data={ActivityTimeOptions[lang]}
+            />
           </div>
           <div style={{ direction: isRTL ? "ltr" : "rtl" }}>
             <MainBtn
               text={t("common.btnContinue")}
-              isDisabled={!event}
+              isDisabled={!(event && duration)}
               type="submit"
               func={handleSubmit}
               height={42}

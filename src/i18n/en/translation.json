@@ -118,6 +118,7 @@
     "eventLable": "For example: birthday, party, team-building evening and more...",
     "event": "Type of event",
     "moreDetails": "More details",
+    "duration": "Activity Duration",
     "limit": "To add more information, please use the 'Additional information' field.",
     "lampAlt": "Lamp"
   },
@@ -127,7 +128,7 @@
     "amount": "Number of participants",
     "gender": "Gender",
     "place": "Location",
-    "time": "Time",
+    "materials": "Materials",
     "submit": "Create activity",
     "loading": "Creating activity",
     "loadingActivity": {

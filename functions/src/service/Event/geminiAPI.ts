@@ -11,11 +11,12 @@ const genAI = new GoogleGenerativeAI(apiKey);
 type EventDetails = {
   event: string;
   moreDetails: string;
+  duration: string;
   age: string;
   amount: string;
   gender: string;
   place: string;
-  time: string;
+  materials: string;
 };
 
 const buildPrompt = (eventDetails: EventDetails, lang: Lang): string => {
@@ -37,11 +38,12 @@ Your task is to generate a full and original event plan based on the following p
 Event Parameters:
 - Event Type: ${eventDetails.event}
 - Additional Details: ${eventDetails.moreDetails || "None"}
+- Duration: ${eventDetails.duration}
 - Age Group: ${eventDetails.age}
 - Number of Participants: ${eventDetails.amount}
 - Gender: ${eventDetails.gender}
 - Location: ${eventDetails.place}
-- Duration: ${eventDetails.time}
+- Materials Constraint: ${eventDetails.materials}
 
 JSON format:
 {
@@ -62,7 +64,7 @@ Rules:
 - Prioritize games, group challenges, or hands-on activities over long explanations.
 - No risk. Keep it fun, age-appropriate, and inclusive.
 - Use simple materials that are easy to find.
-- Limit the "materials" list to a maximum of 4 items.
+- If "Materials Constraint" is "no materials", avoid using any physical items in the activity steps. If it's "any", you may use simple items.
 - Provide a detailed explanation for each activity in the "flow" section. Each description should include: what the facilitator does, what the participants do, and what the goal of the stage is. Avoid vague or general descriptions.
 - If a stage includes any discussion questions, quiz questions, or example prompts, include at least 2 specific examples (clearly written, not placeholders).
 - Include at least 4 distinct stages in the "flow" section.
@@ -70,9 +72,9 @@ Rules:
 `.trim();
 };
 
-export async function generateEventActivityAI(event: string, moreDetails: string, age: string, amount: string, gender: string, place: string, time: string, lang: Lang): Promise<string> {
+export async function generateEventActivityAI(event: string, moreDetails: string, duration: string, age: string, amount: string, gender: string, place: string, materials: string, lang: Lang): Promise<string> {
   const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-  const prompt = buildPrompt({ event, moreDetails, age, amount, gender, place, time }, lang);
+  const prompt = buildPrompt({ event, moreDetails, duration, age, amount, gender, place, materials }, lang);
   const result = await model.generateContent(prompt);
   return result.response.text();
 }

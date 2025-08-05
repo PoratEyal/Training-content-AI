@@ -11,7 +11,7 @@ import { useContentContext } from "../../../context/ContentContext";
 import { ProductType } from "../../../context/ProductType";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { EVENT_AD_SLOT } from "../../../models/constants/adsSlot";
-import { AgeOptions, AmountOptions, GenderOptions, PlaceOptions, ActivityTimeOptions } from "../../../models/resources/productEvent/select";
+import { AgeOptions, AmountOptions, GenderOptions, PlaceOptions, MaterialsOptions } from "../../../models/resources/productEvent/select";
 import { StorageKey } from "../../../models/enum/storage";
 import { ProductPages } from "../../../models/enum/pages";
 import Session from "../../../utils/sessionStorage";
@@ -28,11 +28,12 @@ function BuildActivity() {
 
   const [event, setEvent] = useState("");
   const [moreDetails, setMoreDetails] = useState("");
+  const [duration, setDuration] = useState("");
   const [age, setAge] = useState("");
   const [amount, setAmount] = useState("");
   const [gender, setGender] = useState("");
   const [place, setPlace] = useState("");
-  const [time, setTime] = useState("");
+  const [materials, setMaterials] = useState("");
   const [clicked, setClicked] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [isInitialized, setIsInitialized] = useState(false);
@@ -55,11 +56,12 @@ function BuildActivity() {
     if (saved) {
       setEvent(saved.event || "");
       setMoreDetails(saved.moreDetails || "");
+      setDuration(saved.duration || "");
       setAge(saved.age || "");
       setAmount(saved.amount || "");
       setGender(saved.gender || "");
       setPlace(saved.place || "");
-      setTime(saved.time || "");
+      setMaterials(saved.materials || "");
     }
     setIsInitialized(true);
   }, []);
@@ -69,25 +71,26 @@ function BuildActivity() {
       Session.set(StorageKey.EVENT_DETAILS, {
         event,
         moreDetails,
+        duration,
         age,
         amount,
         gender,
         place,
-        time,
+        materials,
       });
     }
-  }, [event, moreDetails, age, amount, gender, place, time, isInitialized]);
+  }, [event, moreDetails, duration, age, amount, gender, place, materials, isInitialized]);
 
   useEffect(() => {
-    const allFilled = event.trim() && age && amount && gender && place && time;
+    const allFilled = event.trim() && age && amount && gender && place && materials;
     setIsDisabled(!allFilled);
-  }, [event, age, amount, gender, place, time]);
+  }, [event, age, amount, gender, place, materials]);
 
 
   const submitHandler = async () => {
     setClicked(true)
     try {
-      const result = await generateEventActivity(event, moreDetails, age, amount, gender, place, time, lang)
+      const result = await generateEventActivity(event, moreDetails, duration, age, amount, gender, place, materials, lang)
       if (result) {
         sessionStorage.setItem(StorageKey.EVENT_ACTIVITY, JSON.stringify(result));
         navigate(eventActivityPath)
@@ -150,10 +153,10 @@ function BuildActivity() {
                 data={PlaceOptions[lang]}
               />
               <SelectDetails
-                placeholder={t("eventBuildActivity.time")}
-                obj={time}
-                setObj={setTime}
-                data={ActivityTimeOptions[lang]}
+                placeholder={t("eventBuildActivity.materials")}
+                obj={materials}
+                setObj={setMaterials}
+                data={MaterialsOptions[lang]}
               />
               <div className={isRTL ? `${styles.btn_div} ${styles.rtl_btn}` : styles.btn_div}>
                 <MainBtn
