@@ -20,7 +20,6 @@ import { useCookiesContext } from "./CookiesContext";
 import { useLanguage } from "../i18n/useLanguage";
 import { GoogleUser, User } from "../models/types/user";
 import { GUEST_BLOCK_MustLogin } from "../models/constants/cookie";
-import msg from "../models/resources/errorMsg.json";
 import { logEvent } from "../utils/logEvent";
 
 
@@ -28,7 +27,6 @@ export type AuthContextType = {
     currentUser: User | undefined;
     isLoggedIn: boolean;
     loading: boolean;
-    setIsSendMsg: () => void;
     logout: () => Promise<void>;
     whatsNewMsg: string;
     setCurrentUser: (user: User) => void;
@@ -38,7 +36,6 @@ export const defaultAuthContext: AuthContextType = {
     currentUser: null,
     isLoggedIn: false,
     loading: true,
-    setIsSendMsg: () => { },
     logout: async () => { },
     whatsNewMsg: "",
     setCurrentUser: () => { },
@@ -106,11 +103,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
                     logEvent("Login: ", resultUser?.email);
 
-                    //if (auth.currentUser) { // In edge cases, this might fail and not be written to the DB
-                    //    fetchUpdateLastLogin().catch((e) => {       // Keep "lastLogin" in DB
-                    //        logEvent("[AuthContext.initializeUser]: Failed to update lastLogin in DB: " + e, resultUser?.email);
-                    //    });
-                    //}
+                    //if (auth.currentUser)
+                    //    fetchUpdateLastLogin()
                     return;
                 }
 
@@ -118,20 +112,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 setIsLoggedIn(false);
             }
         } catch (error) {
-            logEvent("[AuthContext.initializeUser]: Failed to initialize User: " + msg[lang].google.message, "guest");
+            logEvent("[AuthContext.initializeUser]: Failed to initialize User: Might be login error", "");
 
         } finally {
-            setLoading(false);  // Used for an error scenario and sets the profile menu enabled
+            setLoading(false);  // Sets the profile menu enabled
         }
     };
 
     const blockRef = useRef<boolean>(true);
-
-    const setIsSendMsg = () => {                            // WhatsNew Message - Currently unused
-        setCurrentUser((prev) => {
-            return prev ? { ...prev, isSendMsg: false } : prev;
-        });
-    };
 
     //
     // Logout
@@ -155,7 +143,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 isLoggedIn,
                 loading,
                 logout,
-                setIsSendMsg,
                 whatsNewMsg,
                 setCurrentUser,
             }}

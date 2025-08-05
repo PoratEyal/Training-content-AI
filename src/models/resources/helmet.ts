@@ -91,19 +91,19 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         
 
         practiceHome: {
-            title: "תרגול עצמי חכם – ActivityWiz",
+            title: "אתגר הידע – ActivityWiz",
             content: "צרו תרגול מאתגר ומותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
         },
         practiceTopic: {
-            title: "תרגול עצמי חכם – ActivityWiz",
+            title: "אתגר הידע – ActivityWiz",
             content: "צרו תרגול מאתגר ומותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
         },
         practiceQuiz: {
-            title: "תרגול עצמי חכם – ActivityWiz",
+            title: "אתגר הידע – ActivityWiz",
             content: "צרו תרגול מאתגר ומותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
         },
         practiceFaq: {
-            title: "תרגול עצמי חכם - שאלות נפוצות – ActivityWiz",
+            title: "אתגר הידע - שאלות נפוצות – ActivityWiz",
             content: "צרו תרגול מאתגר ומותאם אישית תוך שניות בעזרת בינה מלאכותית – בכל נושא שתבחרו.",
         },
 
@@ -211,19 +211,19 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
         
         practiceHome: {
-            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic",
+            title: "ActivityWiz Practice – Knowledge Challenge",
             content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
         practiceTopic: {
-            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic",
+            title: "ActivityWiz Practice – Knowledge Challenge",
             content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
         practiceQuiz: {
-            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic",
+            title: "ActivityWiz Practice – Knowledge Challenge",
             content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
         practiceFaq: {
-            title: "ActivityWiz Practice – Instantly Create & Practice Any Topic - FAQ",
+            title: "ActivityWiz Practice – Knowledge Challenge - FAQ",
             content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
 
@@ -332,19 +332,19 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
 
         practiceHome: {
-            title: "ActivityWiz Practice – أنشئ تحديًا فوريًا بأي موضوع بالذكاء الاصطناعي",
+            title: "ActivityWiz Practice – تحدي المعرفة",
             content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
         practiceTopic: {
-            title: "ActivityWiz Practice – أنشئ تحديًا فوريًا بأي موضوع بالذكاء الاصطناعي",
+            title: "ActivityWiz Practice – تحدي المعرفة",
             content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
         practiceQuiz: {
-            title: "ActivityWiz Practice – أنشئ تحديًا فوريًا بأي موضوع بالذكاء الاصطناعي",
+            title: "ActivityWiz Practice – تحدي المعرفة",
             content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
         practiceFaq: {
-            title: "ActivityWiz Practice – أنشئ تحديًا فوريًا بأي موضوع بالذكاء الاصطناعي",
+            title: "ActivityWiz Practice – تحدي المعرفة",
             content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
 
@@ -452,19 +452,19 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
 
         practiceHome: {
-            title: "ActivityWiz Practice – Crea y Practica Cualquier Tema al Instante con IA Inteligente",
+            title: "ActivityWiz Practice – Desafío de Conocimiento",
             content: "Mejora tu aprendizaje con IA – crea y resuelve cuestionarios personalizados sobre cualquier tema en segundos.",
         },
         practiceTopic: {
-            title: "ActivityWiz Practice – Crea y Practica Cualquier Tema al Instante con IA Inteligente",
+            title: "ActivityWiz Practice – Desafío de Conocimiento",
             content: "Mejora tu aprendizaje con IA – crea y resuelve cuestionarios personalizados sobre cualquier tema en segundos.",
         },
         practiceQuiz: {
-            title: "ActivityWiz Practice – Crea y Practica Cualquier Tema al Instante con IA Inteligente",
+            title: "ActivityWiz Practice – Desafío de Conocimiento",
             content: "Mejora tu aprendizaje con IA – crea y resuelve cuestionarios personalizados sobre cualquier tema en segundos.",
         },
         practiceFaq: {
-            title: "ActivityWiz Practice – Crea y Practica Cualquier Tema al Instante con IA Inteligente - Preguntas Frecuentes",
+            title: "ActivityWiz Practice – Desafío de Conocimiento - Preguntas Frecuentes",
             content: "Mejora tu aprendizaje con IA – crea y resuelve cuestionarios personalizados sobre cualquier tema en segundos.",
         },
 

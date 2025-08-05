@@ -2,18 +2,19 @@
   "common": {
     "youthAppName": "Youth Movement Activities",
     "eventAppName": "EventWiz",
-    "practiceAppName": "Smart Practice",
+    "practiceAppName": "Knowledge Challenge",
     "wordsAppName": "Smart Vocab",
     "btnContinue": "Continue",
     "loadingHead": "We're on it",
     "loadingText": "Note! This quiz is generated using AI, which is constantly learning, so errors may occur.",
-    "FAQtitle": "FAQ"
+    "FAQtitle": "FAQ",
+    "errorMsg": "The action was not completed. Please try again."
   },
   "aboutUs": {
     "title": "About",
     "youthAboutText": "Create youth activities – from a library of ready-made activities to personalized ones generated with AI. Perfect for guides looking to enrich educational and social engagement.",
-    "eventAboutText": "Create personalized event activities in seconds – based on age, participants, location, and equipment. Fun, original, and effortless.",
-    "practiceAboutText": "Smart practice using AI. Choose any topic you like, and the system will generate a personal quiz in seconds. Ideal for anyone seeking a simple, focused way to practice and deepen understanding.",
+    "eventAboutText": "Create a personalized activity for any event – with AI that tailors the activity to age, number of participants, location, and more. Each activity is generated just for you, at the click of a button and within seconds.",
+    "practiceAboutText": "A knowledge challenge powered by AI. Choose any topic you like, and the system will generate a personalized quiz in seconds. Perfect for anyone looking for a simple and focused way to deepen their knowledge.",
     "wordsAboutText": "Vocabulary training made smart and efficient. Enter words or choose a topic to get a personalized practice that helps you learn, remember, and understand better – in any language."
   },
   "home": {
@@ -98,9 +99,7 @@
       "title": "You haven't saved any activities yet.",
       "mainTextLine1": "When you create a new activity, use the save button to keep it here and easily access it later"
     },
-    "myActivities": {
-      "title": "My Activities"
-    },
+    "myActivitiesTitle": "My Activities",
     "myActivityUpdate": "Updated on",
     "deletePopup": {
       "title": "Delete Activity",

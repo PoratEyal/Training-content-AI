@@ -24,7 +24,6 @@ import {
 } from "../models/types/api/response";
 import { functions } from "../config/firebase";
 import { httpsCallable } from "firebase/functions";
-import msg from "../models/resources/errorMsg.json";
 import { Activity, StaticActivities } from "../models/types/activity";
 import { Lng as Lang } from "../models/types/common";
 
@@ -40,7 +39,7 @@ export const fetchCreateNewUser = async (request: CreateNewUserRequest,): Promis
     if (response.result === "success" && response.user) {
         return response;
     } else {
-        throw new Error(msg.en.error.message);
+        throw new Error("fetchCreateNewUser");
     }
 };
 
@@ -128,23 +127,13 @@ export const fetchIncrementActivityDisplayCount = async (activity: StaticActivit
 };
 
 //
-// Unused
+//  Currently Unused
 //
 export const fetchUpdateLastLogin = async (): Promise<void> => {
     const updateLastLoginFunc = httpsCallable(functions, "updateLastLogin");
     const response = (await updateLastLoginFunc()).data as { result: string };
     if (response.result !== "success") {
-        throw new Error("Failed to update last login");
-    }
-};
-
-export const fetchGetMsg = async (lang: Lang): Promise<GetMsgResponse> => {
-    const getMsgFunc = httpsCallable(functions, "getMsg");
-    const response = (await getMsgFunc()).data as GetMsgResponse;
-    if (response.result === "success") {
-        return response;
-    } else {
-        throw new Error(msg.en.error.message);
+        throw new Error("fetchUpdateLastLogin");
     }
 };
 
@@ -166,7 +155,7 @@ export const fetchGetActivities = async (): Promise<getAllActivitiesResponse> =>
     if (response.result === "success") {
         return response;
     } else {
-        throw new Error(msg.en.error.message);
+        throw new Error("fetchGetActivities");
     }
 };
 
@@ -177,7 +166,7 @@ export const fetchGetUsers = async (): Promise<getAllUsersResponse> => {
     if (response.result === "success") {
         return response;
     } else {
-        throw new Error(msg.en.error.message);
+        throw new Error("fetchGetUsers");
     }
 };
 
@@ -187,7 +176,7 @@ export const fetchSendMsg = async (password: string): Promise<SendMsgResponse> =
     if (response.result === "success") {
         return response;
     } else {
-        throw new Error(msg.en.error.message);
+        throw new Error("fetchSendMsg");
     }
 };
 
@@ -198,9 +187,9 @@ export const fetchAddStaticActivity = async (activityText: string, activityId: s
         if (response.result === "success") {
             return response;
         } else {
-            throw new Error(msg.en.error.message);
+            throw new Error("fetchAddStaticActivity");
         }
     } catch (error: any) {
-        throw new Error(msg.en.error.message);
+        throw error;
     }
 };

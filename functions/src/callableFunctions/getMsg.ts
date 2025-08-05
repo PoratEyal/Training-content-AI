@@ -1,3 +1,6 @@
+//
+//  Currently Unused
+//
 import * as functions from "firebase-functions";
 import { CollectionDB } from "../model/enum/DB";
 import { db } from "../index";

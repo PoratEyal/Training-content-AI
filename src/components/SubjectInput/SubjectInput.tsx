@@ -4,7 +4,6 @@
 //
 import React, { useRef } from "react";
 import styles from "./SubjectInput.module.css";
-import { isInBlackList } from "../../utils/blackList";
 import MagicBtn from "../MagicBtn/MagicBtn";
 import magicEn from "../../models/resources/en/magic.json";
 import magicEs from "../../models/resources/es/magic.json";
@@ -37,11 +36,10 @@ function SubjectInput({
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value;
     if (newValue.length <= 21) {
-      const isBlackListed = isInBlackList(newValue, lang);
-      setHasAlert(isBlackListed);
+      setHasAlert(false);
       setSubject(newValue);
       hasShownLimitMessage.current = false;
-      
+
     } else if (!hasShownLimitMessage.current) {
       notifySuccess(t('youthBuildActivity.subject.limit'), { container: 'top-center' });
       hasShownLimitMessage.current = true;

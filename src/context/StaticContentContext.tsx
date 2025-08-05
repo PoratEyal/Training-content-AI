@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNotificationContext } from "./NotificationContext";
-import msg from "../models/resources/errorMsg.json";
 import { fetchStaticSubjects } from "../utils/fetch";
 import { StaticSubjects } from "../models/types/activity";
 import { useLanguage } from "../i18n/useLanguage";
@@ -28,7 +27,7 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
     const { notifyAlert: notifyAlert } = useNotificationContext();
     const [subjects, setSubjects] = useState<StaticSubjects[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const { lang } = useLanguage();
+    const { t } = useLanguage();
     const { currentUser } = useAuthContext();
 
     const fetchSubjectsData = async () => {
@@ -39,12 +38,11 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
                 const sortedSubjects = response.subjects.sort((a, b) => a.orderId - b.orderId);
                 setSubjects(sortedSubjects);
             } else {
-                notifyAlert(msg[lang].error.message);
+                notifyAlert(t("common.errorMsg"));
                 logEvent(`[StaticContentContext.else]`, currentUser?.email || "");
             }
         } catch (error: any) {
-            //notifyAlert(msg[lang].error.message);
-            const message = error?.message || msg[lang].error.message;
+            const message = error?.message;
             logEvent(`[StaticContentContext.catch]: ${message}`, currentUser?.email || "");
         } finally {
             setIsLoading(false);

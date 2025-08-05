@@ -18,7 +18,6 @@ import { ProductType } from "../../../context/ProductType";
 import { useNotificationContext } from "../../../context/NotificationContext";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { YOUTH_BUILD_AD_SLOT } from "../../../models/constants/adsSlot";
-import msg from "../../../models/resources/errorMsg.json";
 import { ActivityTimeOptions, CategoryOptions, ContestOptions, PlaceOptions, ReligionOptions, ToolsOptions } from "../../../models/resources/productYouth/select";
 import { Activity } from "../../../models/types/activity";
 import { CategoryName } from "../../../models/types/movement";
@@ -130,12 +129,11 @@ function BuildActivity() {
         updateMainActivity({ ...response.activity });
         navigate(youthActivityAIPath);
       } else {
-        notifyAlert(msg[lang].error.message);
-        const errorText = msg[lang]?.error?.message || "Unexpected error";
-        logEvent(`[BuildActivity.else]: ${errorText} | serverMessage: ${String(response.message)}`, currentUser?.email);
+        notifyAlert(t("common.errorMsg"));
+        logEvent(`[BuildActivity.else]: serverMessage: ${String(response.message)}`, currentUser?.email);
       }
     } catch (error) {
-      notifyAlert(msg[lang].error.message);
+      notifyAlert(t("common.errorMsg"));
       const errorMessage = error instanceof Error && typeof error.message === "string" ? error.message : "Unknown error";
       const logMessage = `[BuildActivity.catch]: Error: ${errorMessage} | subject: ${String(subject)} | category: ${String(category)} | place: ${String(place)} | time: ${String(time)} | religion: ${String(religion)} | contest: ${String(contest)} | tools: ${String(tools)} | info: ${String(info)} | lang: ${String(lang)}`;
       logEvent(logMessage, currentUser?.email);

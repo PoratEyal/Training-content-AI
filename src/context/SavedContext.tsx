@@ -6,7 +6,6 @@ import { useLanguage } from "../i18n/useLanguage";
 import { RemoveActivityRequest } from "../models/types/api/request";
 import { fetchGetSavedActivities, fetchRemoveActivity } from "../utils/fetch";
 import { logEvent } from "../utils/logEvent";
-import msg from "../models/resources/errorMsg.json";
 
 export type SaveContextType = {
     savedActivity: Activity[];
@@ -34,7 +33,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
     const { notifyAlert: notifyAlert } = useNotificationContext();
     const [savedActivity, setSavedActivity] = useState<Activity[]>();
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const { lang } = useLanguage();
+    const { t } = useLanguage();
 
     const saveActivity = async () => {
 
@@ -51,7 +50,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                     setSavedActivity(sortedActivities);
                 }
             } catch (error) {
-                notifyAlert(msg[lang].notSaved.message);
+                notifyAlert(t("editor.save.saveError"));
                 logEvent(`[SavedContext.saveActivity]: ${error}`, currentUser?.email);
             } finally {
                 setIsLoading(false);

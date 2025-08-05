@@ -11,15 +11,12 @@ const db = admin.firestore();
 export { db };
 
 // === Common Functions ===
-import ping from "./callableFunctions/ping";
 import updateLastLogin from "./callableFunctions/updateLastLogin";
 import sendMsg from "./callableFunctions/sendMsg";
-import getMsg from "./callableFunctions/getMsg";
 import updateIsMsg from "./callableFunctions/updateIsMsg";
 import writeLogEvent from "./callableFunctions/writeLogEvent";
 import redirectToLang from "./callableFunctions/redirectToLang";
 import createNewUser from "./callableFunctions/createNewUser";
-import getUserById from "./callableFunctions/getUserById";
 import updateUser from "./callableFunctions/updateUser";
 
 // === Youth Activities ===
@@ -45,14 +42,11 @@ import translateText from "./callableFunctions/translateText";
 // === Export Functions ===
 
 // Common
-exports.ping = ping;
 exports.updateLastLogin = updateLastLogin;
 exports.sendMsg = sendMsg;
-exports.getMsg = getMsg;
 exports.updateIsMsg = updateIsMsg;
 exports.createNewUser = createNewUser;
 exports.updateUser = updateUser;
-exports.getUserById = getUserById;
 exports.redirectToLang = redirectToLang;
 exports.writeLogEvent = writeLogEvent;
 

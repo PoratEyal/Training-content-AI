@@ -1,4 +1,6 @@
-// Looks like this function is never used
+//
+//  Currently Unused
+//
 import * as functions from "firebase-functions";
 import { CollectionDB } from "../model/enum/DB";
 import { GetUserByIdRequest } from "../model/types/request";

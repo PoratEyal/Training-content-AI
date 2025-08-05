@@ -2,18 +2,19 @@
   "common": {
     "youthAppName": "Actividades para movimientos juveniles",
     "eventAppName": "EventoGenio",
-    "practiceAppName": "Práctica personal inteligente",
+    "practiceAppName": "Desafío de Conocimiento",
     "wordsAppName": "Vocabulario Inteligente",
     "btnContinue": "Continuar",
     "loadingHead": "Estamos trabajando en ello",
     "loadingText": "¡Atención! Este cuestionario fue generado con inteligencia artificial, que está en constante aprendizaje, por lo que pueden ocurrir errores.",
-    "FAQtitle": "Preguntas frecuentes"
+    "FAQtitle": "Preguntas frecuentes",
+    "errorMsg": "La acción no se completó. Por favor, inténtalo de nuevo."
   },
   "aboutUs": {
     "title": "Acerca de",
     "youthAboutText": "Crea actividades para jóvenes: desde una biblioteca de actividades listas hasta actividades personalizadas con inteligencia artificial. Ideal para guías que desean enriquecer la experiencia educativa y social.",
-    "eventAboutText": "Crea actividades personalizadas para eventos en segundos, según edad, participantes, lugar y materiales. Divertido, original y sin esfuerzo.",
-    "practiceAboutText": "Práctica inteligente con inteligencia artificial. Elige cualquier tema y el sistema generará un ejercicio personalizado en segundos. Perfecto para quienes buscan una forma sencilla y enfocada de practicar y profundizar su comprensión.",
+    "eventAboutText": "Crea una actividad personalizada para cualquier evento, con inteligencia artificial que adapta la actividad según la edad, el número de participantes, el lugar y más. Cada actividad se genera especialmente para ti, con solo un clic y en cuestión de segundos.",
+    "practiceAboutText": "Un desafío de conocimiento impulsado por IA. Elige cualquier tema que desees y el sistema generará un cuestionario personalizado en segundos. Perfecto para cualquiera que busque una forma sencilla y enfocada de profundizar su conocimiento.",
     "wordsAboutText": "Entrenamiento de vocabulario de forma inteligente y eficiente. Ingresa palabras o elige un tema para obtener una práctica personalizada que te ayudará a aprender, recordar y comprender mejor – en cualquier idioma."
   },
   "home": {
@@ -98,9 +99,7 @@
       "title": "Aún no has guardado ninguna actividad.",
       "mainTextLine1": "Cuando crees una nueva actividad, utiliza el botón de guardar para mantenerla aquí y acceder fácilmente más tarde"
     },
-    "myActivities": {
-      "title": "Mis Actividades"
-    },
+    "myActivitiesTitle": "Mis Actividades",
     "myActivityUpdate": "Actualizado",
     "deletePopup": {
       "title": "Eliminar Actividad",
