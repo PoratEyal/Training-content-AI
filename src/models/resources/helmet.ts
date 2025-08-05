@@ -88,7 +88,19 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             title: "פעילויות מקוריות לאירועים – ActivityWiz",
             content: "מחפשים רעיון מקורי וכיפי לאירוע? צרו פעילות מותאמת אישית בלחיצת כפתור – לפי גיל, מספר משתתפים, מקום וציוד שיש לכם. כל מה שצריך כדי להרים פעילות מעולה – בקלות ובמהירות.",
         },
-        
+
+        bestHome: {
+            title: "מי הכי חכם – ActivityWiz",
+            content: "שחקו בתחרויות טריוויה בין קבוצות כמו בנים מול בנות או ילדים מול מבוגרים, וגלו מי הכי חכם. אפשר להצטרף לתחרויות קיימות או לפתוח תחרות חדשה ולתרום נקודות לקבוצה שלכם דרך משחקים כיפיים.",
+        },
+        bestQuiz: {
+            title: "מי הכי חכם – ActivityWiz",
+            content: "שחקו בתחרויות טריוויה בין קבוצות כמו בנים מול בנות או ילדים מול מבוגרים, וגלו מי הכי חכם. אפשר להצטרף לתחרויות קיימות או לפתוח תחרות חדשה ולתרום נקודות לקבוצה שלכם דרך משחקים כיפיים.",
+        },
+        bestFaq: {
+            title: "מי הכי חכם - שאלות נפוצות – ActivityWiz",
+            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
+        },
 
         practiceHome: {
             title: "אתגר הידע – ActivityWiz",
@@ -112,10 +124,6 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
         wordsTopic: {
-            title: "תרגול אוצר מילים – ActivityWiz",
-            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
-        },
-        wordsVocab: {
             title: "תרגול אוצר מילים – ActivityWiz",
             content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
@@ -209,21 +217,35 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             title: "Original Event Activities – ActivityWiz",
             content: "Looking for a fun and original idea for your event? Create a personalized activity with just one click – based on age, number of participants, location, and available equipment. Everything you need to plan a great activity – easily and quickly.",
         },
-        
+
+        bestHome: {
+            title: "ActivityWiz - Who’s the Smartest",
+            content: "Join trivia competitions between groups like boys vs. girls or kids vs. adults and find out which team is the smartest. You can join existing competitions or create a new one and earn points for your team through fun games.",
+        },
+        bestQuiz: {
+            title: "ActivityWiz - Who’s the Smartest",
+            content: "Join trivia competitions between groups like boys vs. girls or kids vs. adults and find out which team is the smartest. You can join existing competitions or create a new one and earn points for your team through fun games.",
+        },
+        bestFaq: {
+            title: "ActivityWiz - Who’s the Smartest",
+            content: "Practice vocabulary and phrases across languages and learn their meanings easily and efficiently. Perfect for language learning, memory enhancement, and expanding your vocabulary.",
+        },
+
+
         practiceHome: {
-            title: "ActivityWiz Practice – Knowledge Challenge",
+            title: "ActivityWiz – Knowledge Challenge",
             content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
         practiceTopic: {
-            title: "ActivityWiz Practice – Knowledge Challenge",
+            title: "ActivityWiz – Knowledge Challenge",
             content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
         practiceQuiz: {
-            title: "ActivityWiz Practice – Knowledge Challenge",
+            title: "ActivityWiz – Knowledge Challenge",
             content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
         practiceFaq: {
-            title: "ActivityWiz Practice – Knowledge Challenge - FAQ",
+            title: "ActivityWiz – Knowledge Challenge - FAQ",
             content: "Boost learning with smart AI – instantly create and solve personalized quizzes on any topic.",
         },
 
@@ -233,10 +255,6 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
         wordsTopic: {
-            title: "ActivityWiz Words – Practice Vocabulary",
-            content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
-        },
-        wordsVocab: {
             title: "ActivityWiz Words – Practice Vocabulary",
             content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
@@ -331,20 +349,33 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             content: "تبحثون عن فكرة ممتعة ومميزة لمناسبتكم؟ أنشئوا نشاطًا مخصصًا بضغطة زر – حسب العمر، عدد المشاركين، المكان والمعدات المتوفرة. كل ما تحتاجونه لتنظيم نشاط رائع – بسهولة وسرعة.",
         },
 
+        bestHome: {
+            title: "ActivityWiz - من الأذكى؟",
+            content: "انضم إلى مسابقات معلومات عامة بين مجموعات مثل الأولاد ضد البنات أو الأطفال ضد الكبار واكتشف أي فريق هو الأذكى. يمكنك الانضمام إلى مسابقات قائمة أو إنشاء مسابقة جديدة وكسب نقاط لفريقك من خلال ألعاب ممتعة.",
+        },
+        bestQuiz: {
+            title: "ActivityWiz - من الأذكى؟",
+            content: "انضم إلى مسابقات معلومات عامة بين مجموعات مثل الأولاد ضد البنات أو الأطفال ضد الكبار واكتشف أي فريق هو الأذكى. يمكنك الانضمام إلى مسابقات قائمة أو إنشاء مسابقة جديدة وكسب نقاط لفريقك من خلال ألعاب ممتعة.",
+        },
+        bestFaq: {
+            title: "ActivityWiz - من الأذكى؟",
+            content: "تدرّب على المفردات والتعابير بين اللغات وتعلّم معانيها بسهولة وفعالية. مثالي لتعلم اللغات، وتقوية الذاكرة، وتوسيع المفردات.",
+        },
+
         practiceHome: {
-            title: "ActivityWiz Practice – تحدي المعرفة",
+            title: "ActivityWiz – تحدي المعرفة",
             content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
         practiceTopic: {
-            title: "ActivityWiz Practice – تحدي المعرفة",
+            title: "ActivityWiz – تحدي المعرفة",
             content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
         practiceQuiz: {
-            title: "ActivityWiz Practice – تحدي المعرفة",
+            title: "ActivityWiz – تحدي المعرفة",
             content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
         practiceFaq: {
-            title: "ActivityWiz Practice – تحدي المعرفة",
+            title: "ActivityWiz – تحدي المعرفة",
             content: "عزّز تعلمك بالذكاء الاصطناعي – أنشئ واختبر تمارين شخصية لأي موضوع في ثوانٍ.",
         },
 
@@ -353,10 +384,6 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             content: "درّب على قوائم كلمات بين لغات مختلفة وتعلّم معانيها بسهولة وفعالية. الأداة المثالية لتعلّم اللغات، تحسين المفردات، وتقوية الذاكرة.",
         },
         wordsTopic: {
-            title: "ActivityWiz Words – تعلّم ودرّب مفرداتك",
-            content: "درّب على قوائم كلمات بين لغات مختلفة وتعلّم معانيها بسهولة وفعالية. الأداة المثالية لتعلّم اللغات، تحسين المفردات، وتقوية الذاكرة.",
-        },
-        wordsVocab: {
             title: "ActivityWiz Words – تعلّم ودرّب مفرداتك",
             content: "درّب على قوائم كلمات بين لغات مختلفة وتعلّم معانيها بسهولة وفعالية. الأداة المثالية لتعلّم اللغات، تحسين المفردات، وتقوية الذاكرة.",
         },
@@ -451,32 +478,44 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             content: "¿Buscas una idea divertida y original para tu evento? Crea una actividad personalizada con solo un clic, según la edad, el número de participantes, el lugar y el equipo disponible. Todo lo que necesitas para organizar una gran actividad, fácil y rápido.",
         },
 
+
+        bestHome: {
+            title: "ActivityWiz - ¿Quién es el más inteligente?",
+            content: "Únete a competiciones de trivia entre grupos como chicos vs. chicas o niños vs. adultos y descubre qué equipo es el más inteligente. Puedes unirte a competiciones existentes o crear una nueva y ganar puntos para tu equipo a través de juegos divertidos.",
+        },
+        bestQuiz: {
+            title: "ActivityWiz - ¿Quién es el más inteligente?",
+            content: "Únete a competiciones de trivia entre grupos como chicos vs. chicas o niños vs. adultos y descubre qué equipo es el más inteligente. Puedes unirte a competiciones existentes o crear una nueva y ganar puntos para tu equipo a través de juegos divertidos.",
+        },
+        bestFaq: {
+            title: "ActivityWiz - ¿Quién es el más inteligente?",
+            content: "Practica vocabulario y frases en diferentes idiomas y aprende sus significados de forma fácil y eficaz. Perfecto para aprender idiomas, mejorar la memoria y ampliar tu vocabulario.",
+        },
+
+
         practiceHome: {
-            title: "ActivityWiz Practice – Desafío de Conocimiento",
+            title: "ActivityWiz – Desafío de Conocimiento",
             content: "Mejora tu aprendizaje con IA – crea y resuelve cuestionarios personalizados sobre cualquier tema en segundos.",
         },
         practiceTopic: {
-            title: "ActivityWiz Practice – Desafío de Conocimiento",
+            title: "ActivityWiz – Desafío de Conocimiento",
             content: "Mejora tu aprendizaje con IA – crea y resuelve cuestionarios personalizados sobre cualquier tema en segundos.",
         },
         practiceQuiz: {
-            title: "ActivityWiz Practice – Desafío de Conocimiento",
+            title: "ActivityWiz – Desafío de Conocimiento",
             content: "Mejora tu aprendizaje con IA – crea y resuelve cuestionarios personalizados sobre cualquier tema en segundos.",
         },
         practiceFaq: {
-            title: "ActivityWiz Practice – Desafío de Conocimiento - Preguntas Frecuentes",
+            title: "ActivityWiz – Desafío de Conocimiento - Preguntas Frecuentes",
             content: "Mejora tu aprendizaje con IA – crea y resuelve cuestionarios personalizados sobre cualquier tema en segundos.",
         },
+
 
         wordsHome: {
             title: "ActivityWiz Words – Practica Vocabulario",
             content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
         },
         wordsTopic: {
-            title: "ActivityWiz Words – Practica Vocabulario",
-            content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
-        },
-        wordsVocab: {
             title: "ActivityWiz Words – Practica Vocabulario",
             content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
         },

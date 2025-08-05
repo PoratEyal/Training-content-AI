@@ -83,6 +83,22 @@
   "eventFAQEs": "/es/event/faq",
   "eventFAQAr": "/ar/event/faq",
 
+  
+  "bestHomePageHe": "/he/best",
+  "bestHomePageEn": "/en/best",
+  "bestHomePageEs": "/es/best",
+  "bestHomePageAr": "/ar/best",
+
+  "bestQuizHe": "/he/best/quiz",
+  "bestQuizEn": "/en/best/quiz",
+  "bestQuizEs": "/es/best/quiz",
+  "bestQuizAr": "/ar/best/quiz",
+
+  "bestFAQHe": "/he/best/faq",
+  "bestFAQEn": "/en/best/faq",
+  "bestFAQEs": "/es/best/faq",
+  "bestFAQAr": "/ar/best/faq",
+
 
   "practiceHomePageHe": "/he/practice",
   "practiceHomePageEn": "/en/practice",
@@ -114,11 +130,6 @@
   "wordsTopicEn": "/en/words/topic",
   "wordsTopicEs": "/es/words/topic",
   "wordsTopicAr": "/ar/words/topic",
-
-  "wordsVocabHe": "/he/words/vocab",
-  "wordsVocabEn": "/en/words/vocab",
-  "wordsVocabEs": "/es/words/vocab",
-  "wordsVocabAr": "/ar/words/vocab",
 
   "wordsQuizHe": "/he/words/quiz",
   "wordsQuizEn": "/en/words/quiz",

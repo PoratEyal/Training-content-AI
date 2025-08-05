@@ -1,0 +1,188 @@
+.optionList {
+  list-style: none;
+  padding: 0;
+}
+
+.optionItem {
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.optionSelected {
+  background-color: #d0e8ff;
+}
+
+.optionCorrect {
+  background-color: #c8f7c5;
+}
+
+.optionWrong {
+  background-color: #f7c5c5;
+}
+
+.correctBold {
+  font-weight: 600;
+}
+
+.questionText {
+  width: 100%;
+  line-height: 1.6;
+  font-size: 20px;
+}
+
+.pronunciation {
+  font-size: 0.9em;
+  color: #666;
+  margin-inline-start: 6px;
+}
+
+.speakerIcon {
+  cursor: pointer;
+  margin-inline-start: 12px;
+  font-size: 24px;
+  vertical-align: middle;
+  user-select: none;
+}
+
+.continueBtnContainer {
+  position: fixed;
+  bottom: 180px;
+  left: 20%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.circularProgressWrapper {
+  position: fixed;
+  bottom: 180px;
+  left: 80%;
+  transform: translateX(-50%);
+  width: 75px;
+  height: 75px;
+  z-index: 1001;
+}
+
+:dir(ltr) .continueBtnContainer {
+  left: 80%;
+}
+
+:dir(ltr) .circularProgressWrapper {
+  left: 20%;
+}
+
+.continueBtn {
+  background-color: var(--words-primary-color);
+  color: white;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+:dir(ltr) .continueBtn {
+  font-size: 16px;
+}
+
+.continueBtn:active {
+  transform: scale(0.96);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.circularProgress {
+  width: 100%;
+  height: 100%;
+}
+
+.circularProgress .bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+}
+
+.circularProgress .fg {
+  fill: none;
+  stroke: #4caf50;
+  stroke-width: 3.8;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.4s ease;
+}
+
+.circularProgress .percentage {
+  fill: #333;
+  font-size: 0.5em;
+  text-anchor: middle;
+}
+
+.retryFabContainer {
+  position: fixed;
+  bottom: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+  z-index: 1000;
+}
+
+.retryFab {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.retryBtn {
+  background-color: var(--words-primary-color);
+  color: white;
+  font-size: 16px;
+}
+
+.doneBtn {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  font-size: 16px;
+}
+
+.retryFab:active {
+  transform: scale(0.96);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.feedbackText {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 50px;
+  line-height: 1.6;
+}
+
+@media (min-width: 550px) {
+  .questionBlock {
+    margin-bottom: 20px;
+    margin-inline: auto;
+    max-width: 360px;
+    padding-inline: 16px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+
+  .continueBtnContainer,
+  .retryFabContainer,
+  .circularProgressWrapper {
+    position: absolute;
+  }
+}

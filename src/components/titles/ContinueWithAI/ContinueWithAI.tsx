@@ -16,6 +16,9 @@ function ContinueWithAI() {
   } else if (product === ProductType.Event) {
     productTitle = t("home.eventForActions")
     productColorClass = styles.eventColor
+  } else if (product === ProductType.Best) {
+    productTitle = t("home.eventForActions")
+    productColorClass = styles.eventColor
   } else if (product === ProductType.Practice) {
     productTitle = t("home.practiceForActions")
     productColorClass = styles.practiceColor

@@ -13,6 +13,7 @@ import { useShareTextOrLink } from "../../../utils/share"
 import Header from "../Header/Header";
 import YouthNavigationBar from "../NavigationBar/YouthNavigationBar";
 import EventNavigationBar from "../NavigationBar/EventNavigationBar";
+import BestNavigationBar from "../NavigationBar/BestNavigationBar";
 import PracticeNavigationBar from "../NavigationBar/PracticeNavigationBar";
 import WordsNavigationBar from "../NavigationBar/WordsNavigationBar";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
@@ -122,6 +123,7 @@ function PageLayout({
             if (!hasGreenBackground) return "var(--background-color)";
             if (productType === ProductType.Youth) return "var(--primary-color)";
             if (productType === ProductType.Event) return "var(--event-primary-color)";
+            if (productType === ProductType.Best) return "var(--words-primary-color)";
             if (productType === ProductType.Practice) return "var(--practice-primary-color)";
             if (productType === ProductType.Words) return "var(--words-primary-color)";
             return "var(--background-color)";
@@ -204,6 +206,8 @@ function PageLayout({
             <YouthNavigationBar />
           ) : productType === ProductType.Event ? (
             <EventNavigationBar />
+          ) : productType === ProductType.Best ? (
+            <BestNavigationBar />
           ) : productType === ProductType.Words ? (
             <WordsNavigationBar />
           ) : null

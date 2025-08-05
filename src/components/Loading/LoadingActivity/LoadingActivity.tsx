@@ -19,6 +19,10 @@ function LoadingActivity() {
             heading = t("eventBuildActivity.loadingActivity.heading");
             text = t("eventBuildActivity.loadingActivity.text");
             break;
+        case ProductType.Best:
+            heading = t("common.loadingHead");
+            text = t("common.loadingText");
+            break;
         case ProductType.Practice:
             heading = t("common.loadingHead");
             text = t("common.loadingText");

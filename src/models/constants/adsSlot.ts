@@ -7,6 +7,8 @@ export const YOUTH_MY_ACTIVITIES_AD_SLOT = "5975540586";
 
 export const EVENT_AD_SLOT = "1599279207";
 
+export const BEST_AD_SLOT = "7111584045";
+
 export const PRACTICE_AD_SLOT = "1878457755";
 
 export const WORDS_AD_SLOT = "6916947850";

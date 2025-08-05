@@ -39,6 +39,8 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
         return route[`youthHomePage${capitalizedLang}`] || route.youthHomePageEn
       case ProductType.Event:
         return route[`eventHomePage${capitalizedLang}`] || route.eventHomePageEn
+      case ProductType.Best:
+        return route[`bestHomePage${capitalizedLang}`] || route.bestHomePageEn
       case ProductType.Practice:
         return route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn
       case ProductType.Words:

@@ -25,6 +25,8 @@ function DropOptLang({ handleClose }: DropdownOption) {
     faqKey = "youthFAQ"
   } else if (product === ProductType.Event) {
     faqKey = "eventFAQ"
+  } else if (product === ProductType.Best) {
+    faqKey = "bestFAQ"
   } else if (product === ProductType.Practice) {
     faqKey = "practiceFAQ"
   } else if (product === ProductType.Words) {

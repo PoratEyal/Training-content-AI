@@ -27,6 +27,8 @@ function DropOptLogout({ handleClose }: DropdownOption) {
       homeKey = "youthHomePage"
     else if (product === ProductType.Event)
       homeKey = "eventHomePage"
+    else if (product === ProductType.Best)
+      homeKey = "bestHomePage"
     else if (product === ProductType.Practice)
       homeKey = "practiceHomePage"
     else if (product === ProductType.Words)

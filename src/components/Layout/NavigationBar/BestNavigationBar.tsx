@@ -2,17 +2,17 @@
 // This file defines the UnderBar component, which shows a bottom navigation bar
 //
 import styles from "./NavigationBar.module.css";
-import NavBuild from "../../options/NavigationBar/Event/NavBuild";
-import NavHome from "../../options/NavigationBar/Event/NavHome";
+import NavTopic from "../../options/NavigationBar/Best/NavQuiz";
+import NavHome from "../../options/NavigationBar/Best/NavHome";
 
-const EventNavigationBar = () => {
+const BestNavigationBar = () => {
 
     return (
         <nav className={styles.navbar_container}>
             <NavHome />
-            <NavBuild />
+            <NavTopic />
         </nav>
     );
 };
 
-export default EventNavigationBar;
+export default BestNavigationBar;
