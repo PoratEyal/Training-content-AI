@@ -34,13 +34,11 @@ export const ActivityTimeOptions = {
 export const AgeOptions = {
     he: [
         { value: "Kindergarten (ages 3–6)", label: "ילדי גן" },
-        { value: "Children (ages 6–12)", label: "ילדים" },
-        { value: "Children (ages 13–18)", label: "נוער" },
-        { value: "Adult (ages 20 and above)", label: "בוגרים" },
         { value: "Children (ages 6–9)", label: "גילאי 6–9" },
         { value: "Children (ages 10–12)", label: "גילאי 10–12" },
         { value: "Young teens (ages 13–15)", label: "גילאי 13–15" },
         { value: "Older teens (ages 16–18)", label: "גילאי 16–18" },
+        { value: "Adult (ages 20 and above)", label: "בוגרים" },
         { value: "Young adults (ages 19–30)", label: "גילאי 19–30" },
         { value: "Adults (ages 30–50)", label: "גילאי 30–50" },
         { value: "Older adults (ages 50–70)", label: "גילאי 50–70" },
@@ -49,13 +47,11 @@ export const AgeOptions = {
 
     en: [
         { value: "Kindergarten (ages 3–6)", label: "Kindergarten" },
-        { value: "Children (ages 6–12)", label: "Children" },
-        { value: "Children (ages 13–18)", label: "Teens" },
-        { value: "Adult (ages 20 and above)", label: "Adults" },
         { value: "Children (ages 6–9)", label: "Ages 6–9" },
         { value: "Children (ages 10–12)", label: "Ages 10–12" },
         { value: "Young teens (ages 13–15)", label: "Ages 13–15" },
         { value: "Older teens (ages 16–18)", label: "Ages 16–18" },
+        { value: "Adult (ages 20 and above)", label: "Adults" },
         { value: "Young adults (ages 19–30)", label: "Ages 19–30" },
         { value: "Adults (ages 30–50)", label: "Ages 30–50" },
         { value: "Older adults (ages 50–70)", label: "Ages 50–70" },
@@ -64,13 +60,11 @@ export const AgeOptions = {
 
     es: [
         { value: "Kindergarten (ages 3–6)", label: "Jardín de infancia" },
-        { value: "Children (ages 6–12)", label: "Niños" },
-        { value: "Children (ages 13–18)", label: "Adolescentes" },
-        { value: "Adult (ages 20 and above)", label: "Adultos" },
         { value: "Children (ages 6–9)", label: "Edades 6–9" },
         { value: "Children (ages 10–12)", label: "Edades 10–12" },
         { value: "Young teens (ages 13–15)", label: "Edades 13–15" },
         { value: "Older teens (ages 16–18)", label: "Edades 16–18" },
+        { value: "Adult (ages 20 and above)", label: "Adultos" },
         { value: "Young adults (ages 19–30)", label: "Edades 19–30" },
         { value: "Adults (ages 30–50)", label: "Edades 30–50" },
         { value: "Older adults (ages 50–70)", label: "Edades 50–70" },
@@ -79,13 +73,11 @@ export const AgeOptions = {
 
     ar: [
         { value: "Kindergarten (ages 3–6)", label: "رياض الأطفال" },
-        { value: "Children (ages 6–12)", label: "أطفال" },
-        { value: "Children (ages 13–18)", label: "مراهقون" },
-        { value: "Adult (ages 20 and above)", label: "بالغون" },
         { value: "Children (ages 6–9)", label: "الأعمار: من 6 إلى 9" },
         { value: "Children (ages 10–12)", label: "الأعمار: من 10 إلى 12" },
         { value: "Young teens (ages 13–15)", label: "الأعمار: من 13 إلى 15" },
         { value: "Older teens (ages 16–18)", label: "الأعمار: من 16 إلى 18" },
+        { value: "Adult (ages 20 and above)", label: "بالغون" },
         { value: "Young adults (ages 19–30)", label: "الأعمار: من 19 إلى 30" },
         { value: "Adults (ages 30–50)", label: "الأعمار: من 30 إلى 50" },
         { value: "Older adults (ages 50–70)", label: "الأعمار: من 50 إلى 70" },
