@@ -76,7 +76,7 @@ function WordsHomePage() {
         originalSpeak(text, selectedVoice, { rate: 0.8 });
       };
     } catch (e) {
-      logEvent("responsiveVoice setup error", "");
+      logEvent("responsiveVoice setup error", currentUser?.email);
     }
   }, []);
 

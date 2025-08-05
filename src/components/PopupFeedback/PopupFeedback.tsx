@@ -21,12 +21,12 @@ type ReviewPopupProps = {
 
 const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
   const { t, dir } = useLanguage();
+  const { currentUser } = useAuthContext();
 
   const [textInput, setTextInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPopup, setShowPopup] = useState<boolean>(false);
 
-  const { currentUser } = useAuthContext();
 
   // initialise EmailJS once
   useEffect(() => {
@@ -60,9 +60,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
       await fetchUpdateIsMsg(currentUser.id);
 
     } catch (error) {
-      const auth = getAuth();
-      const user = auth.currentUser;
-      logEvent(`[PopupFeedback]: Error sending feedback: ${error?.toString?.() || "unknown error"}`, user?.email);
+      logEvent(`[PopupFeedback]: Error sending feedback: ${error?.toString?.() || "unknown error"}`, currentUser?.email);
     }
     finally {
       setIsLoading(false);

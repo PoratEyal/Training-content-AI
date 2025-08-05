@@ -7,6 +7,7 @@ import { getContent, getTitle } from "../../../models/resources/helmet";
 import { WEBSITE_URL } from "../../../models/constants";
 import { HelmetPage } from "../../../models/types/common";
 import { ProductType } from "../../../context/ProductType";
+import { useAuthContext } from "../../../context/AuthContext";
 import { logEvent } from "../../../utils/logEvent";
 import { useShareTextOrLink } from "../../../utils/share"
 import Header from "../Header/Header";
@@ -49,6 +50,7 @@ function PageLayout({
   title = "",
 }: PageLayoutProps) {
   const { t, lang, dir } = useLanguage();
+  const { currentUser } = useAuthContext();
   const location = useLocation();
   const share = useShareTextOrLink()
 
@@ -150,7 +152,7 @@ function PageLayout({
             const topic = localStorage.getItem(StorageKey.PRACTICE_TOPIC); // if exist
 
             const handleBannerClick = () => {
-              logEvent("Practice/Quiz - Practice Shared by instructor ", "");
+              logEvent("Practice/Quiz - Practice Shared", currentUser?.email);
               const encodedTopic = encodeURIComponent(topic);
               const shareTitle = t("common.practiceAppName")
               const shareUrl = `https://activitywiz.com/${lang}/practice?topic=${encodedTopic}`;
@@ -173,7 +175,7 @@ function PageLayout({
           else if (path.includes("/youth/activity")) {
 
             const handleBannerClick = () => {
-              logEvent("Youth/Activity - Event Banner Clicked", "");
+              logEvent("Youth/Activity - Event Banner Clicked", currentUser?.email);
               window.open(`https://activitywiz.com/${lang}/event`, "_blank");
             };
 

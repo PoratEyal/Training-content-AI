@@ -39,11 +39,11 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
                 setSubjects(sortedSubjects);
             } else {
                 notifyAlert(t("common.errorMsg"));
-                logEvent(`[StaticContentContext.else]`, currentUser?.email || "");
+                logEvent(`[StaticContentContext.else]`, currentUser?.email);
             }
         } catch (error: any) {
             const message = error?.message;
-            logEvent(`[StaticContentContext.catch]: ${message}`, currentUser?.email || "");
+            logEvent(`[StaticContentContext.catch]: ${message}`, currentUser?.email);
         } finally {
             setIsLoading(false);
         }

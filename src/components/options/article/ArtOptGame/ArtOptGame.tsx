@@ -7,6 +7,7 @@ import { StorageKey } from "../../../../models/enum/storage";
 import { logEvent } from "../../../../utils/logEvent";
 import { ProductType } from "../../../../context/ProductType";
 import { useProduct } from "../../../../context/ProductContext"
+import { useAuthContext } from "../../../../context/AuthContext";
 
 type ArtOptGameProps = {
     activity: Activity;
@@ -14,10 +15,11 @@ type ArtOptGameProps = {
 
 const ArtOptGame: React.FC<ArtOptGameProps> = ({ activity }) => {
     const { t, dir, lang } = useLanguage();
+    const { currentUser } = useAuthContext();
     const product = useProduct()
 
     const handleClick = () => {
-        logEvent("כפתור חידון לפעולה", "");
+        logEvent("Game Menu Button - Practice Clicked", currentUser?.email);
 
         if (product === ProductType.Youth) {
             localStorage.setItem(StorageKey.PRACTICE_TOPIC, activity.subject);
