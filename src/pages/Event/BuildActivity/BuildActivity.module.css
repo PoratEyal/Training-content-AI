@@ -33,8 +33,8 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    min-height: 355px;
-    height: calc(100% - 60px - var(--ads-height));
+    min-height: 335px;
+    height: calc(100% - 88px - var(--ads-height));
     width: 100%;
     overflow-y: scroll;
     z-index: 1000;
