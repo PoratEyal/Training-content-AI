@@ -129,31 +129,31 @@ function BuildActivity() {
           <section className={styles.build_container}>
             <section className={styles.build_content}>
               <SelectDetails
-                placeholder={t("eventBuildActivity.age")}
+                placeholder={t("event.BuildActivity.age")}
                 obj={age}
                 setObj={setAge}
                 data={AgeOptions[lang]}
               />
               <SelectDetails
-                placeholder={t("eventBuildActivity.amount")}
+                placeholder={t("event.BuildActivity.amount")}
                 obj={amount}
                 setObj={setAmount}
                 data={AmountOptions[lang]}
               />
               <SelectDetails
-                placeholder={t("eventBuildActivity.gender")}
+                placeholder={t("event.BuildActivity.gender")}
                 obj={gender}
                 setObj={setGender}
                 data={GenderOptions[lang]}
               />
               <SelectDetails
-                placeholder={t("eventBuildActivity.place")}
+                placeholder={t("event.BuildActivity.place")}
                 obj={place}
                 setObj={setPlace}
                 data={PlaceOptions[lang]}
               />
               <SelectDetails
-                placeholder={t("eventBuildActivity.materials")}
+                placeholder={t("event.BuildActivity.materials")}
                 obj={materials}
                 setObj={setMaterials}
                 data={MaterialsOptions[lang]}
@@ -162,7 +162,7 @@ function BuildActivity() {
                 <MainBtn
                   isDisabled={isDisabled}
                   height={42}
-                  text={t("eventBuildActivity.submit")}
+                  text={t("event.BuildActivity.submit")}
                   func={submitHandler}
                 />
               </div>

@@ -14,7 +14,7 @@ const FAQ: React.FC = () => {
   const { dir } = useLanguage();
   const product = useProduct()
 
-  const faq = t("faqWords.questions", { returnObjects: true }) as {
+  const faq = t("faq.words.questions", { returnObjects: true }) as {
     q: string;
     a: string;
   }[];
@@ -26,7 +26,7 @@ const FAQ: React.FC = () => {
     <PageLayout
       id="wordsFaq"
       productType={ProductType.Words}
-      hasHeader={{ isBlur: true }}
+      hasHeader={{ }}
       hasNavBar
       index={true}
     >

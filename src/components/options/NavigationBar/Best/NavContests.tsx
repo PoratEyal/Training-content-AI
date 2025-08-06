@@ -9,7 +9,7 @@ import { startAsGuestOrUser } from "../../../../utils/startAsGuestOrUser"
 import { useAuthContext } from "../../../../context/AuthContext"
 import useSignIn from "../../../../hooks/useSignIn"
 
-const NavOptPlay = () => {
+const NavOptHof = () => {
 
   const { t, lang } = useLanguage();
   const { cookieLimit, setLimitCookie } = useCookiesContext();
@@ -19,12 +19,11 @@ const NavOptPlay = () => {
   const { currentUser, isLoggedIn } = useAuthContext()
   const { signInWithGoogle } = useSignIn()
 
-  const homePath = route[`bestHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.bestHomePageEn;
-  const quizPath = route[`bestQuiz${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.bestQuizEn;
+  const bestContestsPath = route[`bestContests${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.bestContestsEn;
 
   useEffect(() => {
-    setIsSelected(location.pathname === homePath || location.pathname === quizPath);
-  }, [location.pathname, homePath, quizPath]);
+    setIsSelected(location.pathname === bestContestsPath);
+  }, [location.pathname, bestContestsPath]);
 
   const handleClick = () => {
     startAsGuestOrUser({
@@ -33,7 +32,7 @@ const NavOptPlay = () => {
       cookieLimit,
       setLimitCookie,
       signInWithGoogle,
-      navigateTo: homePath,
+      navigateTo: bestContestsPath,
       navigate
     })
   }
@@ -44,10 +43,10 @@ const NavOptPlay = () => {
       onClick={handleClick}
       className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
     >
-      <Icons.magic className={styles.icon} />
-      <span className={styles.text}>{t("bestNavbar.play")}</span>
+      <Icons.chart className={styles.icon} />
+      <span className={styles.text}>{t("best.Navbar.contests")}</span>
     </div>
   );
 };
 
-export default NavOptPlay;
+export default NavOptHof;

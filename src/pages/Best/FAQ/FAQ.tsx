@@ -24,9 +24,9 @@ const FAQ: React.FC = () => {
 
   return (
     <PageLayout
-      id="wordsFaq"
+      id="bestFaq"
       productType={ProductType.Best}
-      hasHeader={{ isBlur: true }}
+      hasHeader={{ }}
       hasNavBar
       index={true}
     >

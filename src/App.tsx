@@ -34,7 +34,8 @@ import EventFAQ from "./pages/Event/FAQ/FAQ"
 
 // Who's Best?
 import BestHomePage from "./pages/Best/HomePage/Home"
-import BestQuiz from "./pages/Best/Quiz/Quiz"
+import BestContests from "./pages/Best/Contests/Contests"
+import BestHof from "./pages/Best/Hof/Hof"
 import BestFAQ from "./pages/Best/FAQ/FAQ"
 
 // Smart Practice
@@ -74,7 +75,8 @@ const allRoutes = [
 
   // Who's Best?
   { key: "bestHomePage", element: <BestHomePage /> },
-  { key: "bestQuiz", element: <BestQuiz /> },
+  { key: "bestContests", element: <BestContests /> },
+  { key: "bestHof", element: <BestHof /> },
   { key: "bestFAQ", element: <BestFAQ /> },
 
   // Practice

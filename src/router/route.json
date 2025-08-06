@@ -89,10 +89,15 @@
   "bestHomePageEs": "/es/best",
   "bestHomePageAr": "/ar/best",
 
-  "bestQuizHe": "/he/best/quiz",
-  "bestQuizEn": "/en/best/quiz",
-  "bestQuizEs": "/es/best/quiz",
-  "bestQuizAr": "/ar/best/quiz",
+  "bestContestsHe": "/he/best/contests",
+  "bestContestsEn": "/en/best/contests",
+  "bestContestsEs": "/es/best/contests",
+  "bestContestsAr": "/ar/best/contests",
+
+  "bestHofHe": "/he/best/hof",
+  "bestHofEn": "/en/best/hof",
+  "bestHofEs": "/es/best/hof",
+  "bestHofAr": "/ar/best/hof",
 
   "bestFAQHe": "/he/best/faq",
   "bestFAQEn": "/en/best/faq",

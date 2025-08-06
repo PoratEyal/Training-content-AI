@@ -10,8 +10,8 @@ function CreateYourActivity() {
 
   const title =
     productType === ProductType.Event
-      ? t("eventBuildActivity.title")
-      : t("youthBuildActivity.title");
+      ? t("event.BuildActivity.title")
+      : t("youth.BuildActivity.title");
 
   return (
     <div

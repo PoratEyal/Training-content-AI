@@ -26,7 +26,7 @@ function EventInput({
       setEvent(newValue);
       hasShownLimitMessage.current = false;
     } else if (!hasShownLimitMessage.current) {
-      notifySuccess(t("eventDetails.limit"), { container: "top-center" });
+      notifySuccess(t("event.Details.limit"), { container: "top-center" });
       hasShownLimitMessage.current = true;
     }
   };

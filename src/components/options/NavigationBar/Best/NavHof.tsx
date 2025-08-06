@@ -19,12 +19,11 @@ const NavOptHof = () => {
   const { currentUser, isLoggedIn } = useAuthContext()
   const { signInWithGoogle } = useSignIn()
 
-  const homePath = route[`bestHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.bestHomePageEn;
-  const quizPath = route[`bestQuiz${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.bestQuizEn;
+  const bestHofPath = route[`bestHof${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.bestHofEn;
 
   useEffect(() => {
-    setIsSelected(location.pathname === homePath || location.pathname === quizPath);
-  }, [location.pathname, homePath, quizPath]);
+    setIsSelected(location.pathname === bestHofPath);
+  }, [location.pathname, bestHofPath]);
 
   const handleClick = () => {
     startAsGuestOrUser({
@@ -33,7 +32,7 @@ const NavOptHof = () => {
       cookieLimit,
       setLimitCookie,
       signInWithGoogle,
-      navigateTo: homePath,
+      navigateTo: bestHofPath,
       navigate
     })
   }
@@ -44,8 +43,8 @@ const NavOptHof = () => {
       onClick={handleClick}
       className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
     >
-      <Icons.magic className={styles.icon} />
-      <span className={styles.text}>{t("bestNavbar.hof")}</span>
+      <Icons.FaTrophy className={styles.icon} />
+      <span className={styles.text}>{t("best.Navbar.hof")}</span>
     </div>
   );
 };

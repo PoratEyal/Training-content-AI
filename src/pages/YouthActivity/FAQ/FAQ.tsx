@@ -12,7 +12,7 @@ const FAQ: React.FC = () => {
   const { t } = useTranslation();
   const { dir } = useLanguage();
 
-  const faq = t("faqYouth.questions", { returnObjects: true }) as {
+  const faq = t("faq.youth.questions", { returnObjects: true }) as {
     q: string;
     a: string;
   }[];
@@ -24,7 +24,7 @@ const FAQ: React.FC = () => {
     <PageLayout
       id="youthFaq"
       productType={ProductType.Youth}
-      hasHeader={{ isBlur: true }}
+      hasHeader={{ }}
       hasNavBar
       index={true}
     >

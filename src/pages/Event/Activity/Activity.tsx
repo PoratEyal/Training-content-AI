@@ -24,10 +24,10 @@ const jsonToMarkdownEvent = (raw: string, t: (key: string) => string): string =>
     const data = JSON.parse(cleaned);
 
     let result = `### ${data.title}\n\n`;
-    result += `### ${t("eventActivity.json.summary")}:\n\n${data.summary}\n\n`;
+    result += `### ${t("event.Activity.json.summary")}:\n\n${data.summary}\n\n`;
 
     if (Array.isArray(data.materials) && data.materials.some(item => item.trim() !== "")) {
-      result += `### ${t("eventActivity.json.materials")}:\n\n`;
+      result += `### ${t("event.Activity.json.materials")}:\n\n`;
       for (const item of data.materials) {
         if (item.trim() !== "") {
           result += `* ${item}\n`;
@@ -37,7 +37,7 @@ const jsonToMarkdownEvent = (raw: string, t: (key: string) => string): string =>
     }
 
     if (Array.isArray(data.flow)) {
-      result += `### ${t("eventActivity.json.flow")}:\n\n`;
+      result += `### ${t("event.Activity.json.flow")}:\n\n`;
       for (const section of data.flow) {
         result += `1. **${section.title}**\n`;
         result += `   ${section.description}\n`;
@@ -49,7 +49,7 @@ const jsonToMarkdownEvent = (raw: string, t: (key: string) => string): string =>
     }
 
     if (Array.isArray(data.tips) && data.tips.some(tip => tip.trim() !== "")) {
-      result += `### ${t("eventActivity.json.tips")}:\n\n`;
+      result += `### ${t("event.Activity.json.tips")}:\n\n`;
       for (const tip of data.tips) {
         if (tip.trim() !== "") {
           result += `* ${tip}\n`;
@@ -129,7 +129,7 @@ function Activity() {
             activity: activityData.result,
             createdAt: new Date().toISOString(),
             savedAt: null, fetchCount: 0, category: "content",
-            subject: `${t("eventActivity.activity")} ${activityData?.eventDetails?.event || ""}`.trim(),
+            subject: `${t("event.Activity.activity")} ${activityData?.eventDetails?.event || ""}`.trim(),
             gender: "", amount: "",
             place: "", time: "", tools: "", religion: "", grade: "", userId: "", likes: 0,
           }}

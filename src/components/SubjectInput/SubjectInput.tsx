@@ -41,7 +41,7 @@ function SubjectInput({
       hasShownLimitMessage.current = false;
 
     } else if (!hasShownLimitMessage.current) {
-      notifySuccess(t('youthBuildActivity.subject.limit'), { container: 'top-center' });
+      notifySuccess(t('youth.BuildActivity.subject.limit'), { container: 'top-center' });
       hasShownLimitMessage.current = true;
     }
   };

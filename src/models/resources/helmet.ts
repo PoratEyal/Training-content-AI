@@ -93,7 +93,11 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             title: "מי הכי חכם – ActivityWiz",
             content: "שחקו בתחרויות טריוויה בין קבוצות כמו בנים מול בנות או ילדים מול מבוגרים, וגלו מי הכי חכם. אפשר להצטרף לתחרויות קיימות או לפתוח תחרות חדשה ולתרום נקודות לקבוצה שלכם דרך משחקים כיפיים.",
         },
-        bestQuiz: {
+        bestContests: {
+            title: "מי הכי חכם – ActivityWiz",
+            content: "שחקו בתחרויות טריוויה בין קבוצות כמו בנים מול בנות או ילדים מול מבוגרים, וגלו מי הכי חכם. אפשר להצטרף לתחרויות קיימות או לפתוח תחרות חדשה ולתרום נקודות לקבוצה שלכם דרך משחקים כיפיים.",
+        },
+        bestHof: {
             title: "מי הכי חכם – ActivityWiz",
             content: "שחקו בתחרויות טריוויה בין קבוצות כמו בנים מול בנות או ילדים מול מבוגרים, וגלו מי הכי חכם. אפשר להצטרף לתחרויות קיימות או לפתוח תחרות חדשה ולתרום נקודות לקבוצה שלכם דרך משחקים כיפיים.",
         },
@@ -222,7 +226,11 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             title: "ActivityWiz - Who’s the Smartest",
             content: "Join trivia competitions between groups like boys vs. girls or kids vs. adults and find out which team is the smartest. You can join existing competitions or create a new one and earn points for your team through fun games.",
         },
-        bestQuiz: {
+        bestContests: {
+            title: "ActivityWiz - Who’s the Smartest",
+            content: "Join trivia competitions between groups like boys vs. girls or kids vs. adults and find out which team is the smartest. You can join existing competitions or create a new one and earn points for your team through fun games.",
+        },
+        bestHof: {
             title: "ActivityWiz - Who’s the Smartest",
             content: "Join trivia competitions between groups like boys vs. girls or kids vs. adults and find out which team is the smartest. You can join existing competitions or create a new one and earn points for your team through fun games.",
         },
@@ -353,7 +361,11 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             title: "ActivityWiz - من الأذكى؟",
             content: "انضم إلى مسابقات معلومات عامة بين مجموعات مثل الأولاد ضد البنات أو الأطفال ضد الكبار واكتشف أي فريق هو الأذكى. يمكنك الانضمام إلى مسابقات قائمة أو إنشاء مسابقة جديدة وكسب نقاط لفريقك من خلال ألعاب ممتعة.",
         },
-        bestQuiz: {
+        bestContests: {
+            title: "ActivityWiz - من الأذكى؟",
+            content: "انضم إلى مسابقات معلومات عامة بين مجموعات مثل الأولاد ضد البنات أو الأطفال ضد الكبار واكتشف أي فريق هو الأذكى. يمكنك الانضمام إلى مسابقات قائمة أو إنشاء مسابقة جديدة وكسب نقاط لفريقك من خلال ألعاب ممتعة.",
+        },
+        bestHof: {
             title: "ActivityWiz - من الأذكى؟",
             content: "انضم إلى مسابقات معلومات عامة بين مجموعات مثل الأولاد ضد البنات أو الأطفال ضد الكبار واكتشف أي فريق هو الأذكى. يمكنك الانضمام إلى مسابقات قائمة أو إنشاء مسابقة جديدة وكسب نقاط لفريقك من خلال ألعاب ممتعة.",
         },
@@ -483,7 +495,11 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             title: "ActivityWiz - ¿Quién es el más inteligente?",
             content: "Únete a competiciones de trivia entre grupos como chicos vs. chicas o niños vs. adultos y descubre qué equipo es el más inteligente. Puedes unirte a competiciones existentes o crear una nueva y ganar puntos para tu equipo a través de juegos divertidos.",
         },
-        bestQuiz: {
+        bestContests: {
+            title: "ActivityWiz - ¿Quién es el más inteligente?",
+            content: "Únete a competiciones de trivia entre grupos como chicos vs. chicas o niños vs. adultos y descubre qué equipo es el más inteligente. Puedes unirte a competiciones existentes o crear una nueva y ganar puntos para tu equipo a través de juegos divertidos.",
+        },
+        bestHof: {
             title: "ActivityWiz - ¿Quién es el más inteligente?",
             content: "Únete a competiciones de trivia entre grupos como chicos vs. chicas o niños vs. adultos y descubre qué equipo es el más inteligente. Puedes unirte a competiciones existentes o crear una nueva y ganar puntos para tu equipo a través de juegos divertidos.",
         },

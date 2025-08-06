@@ -23,7 +23,7 @@ const NavOptHome = () => {
       className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
     >
       <Icons.home className={styles.icon} />
-      <span className={styles.text}>{t("wordsNavbar.home")}</span>
+      <span className={styles.text}>{t("words.Navbar.home")}</span>
     </div>
   );
 };

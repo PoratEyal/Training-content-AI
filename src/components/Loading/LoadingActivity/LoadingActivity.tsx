@@ -12,12 +12,12 @@ function LoadingActivity() {
 
     switch (product) {
         case ProductType.Youth:
-            heading = t("youthBuildActivity.loadingActivity.heading");
-            text = t("youthBuildActivity.loadingActivity.text");
+            heading = t("youth.BuildActivity.loadingActivity.heading");
+            text = t("youth.BuildActivity.loadingActivity.text");
             break;
         case ProductType.Event:
-            heading = t("eventBuildActivity.loadingActivity.heading");
-            text = t("eventBuildActivity.loadingActivity.text");
+            heading = t("event.BuildActivity.loadingActivity.heading");
+            text = t("event.BuildActivity.loadingActivity.text");
             break;
         case ProductType.Best:
             heading = t("common.loadingHead");

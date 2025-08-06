@@ -62,7 +62,7 @@ const ContentActivities: React.FC = () => {
     }
   };
 
-  const title = subject?.metaTitle || t("contentActivities.loading");
+  const title = subject?.metaTitle || t("youth.contentActivities.loading");
 
   return (
     <PageLayout

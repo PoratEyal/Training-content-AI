@@ -92,8 +92,8 @@ function Details() {
       >
         <img
           className={`${styles.lamp_img} ${isRTL ? styles.lamp_img_rtl : styles.lamp_img_ltr}`}
-          title={t("eventDetails.lampAlt")}
-          alt={t("eventDetails.lampAlt")}
+          title={t("event.Details.lampAlt")}
+          alt={t("event.Details.lampAlt")}
           src="/Event/lamp.svg"
           loading="lazy"
           width={95}
@@ -103,22 +103,22 @@ function Details() {
         <div className={styles.selects_btn}>
           <div className={styles.details_content}>
             <EventInput
-              placeholder={t("eventDetails.event")}
+              placeholder={t("event.Details.event")}
               event={event}
               setEvent={setEvent}
               setHasAlert={setHasAlert}
             />
             <label className={styles.label}>
-              {t("eventDetails.eventLable")}
+              {t("event.Details.eventLable")}
             </label>
             <MoreDetailsInput
-              placeholder={t("eventDetails.moreDetails")}
+              placeholder={t("event.Details.moreDetails")}
               text={moreDetails}
               setText={setMoreDetails}
             />
             <div style={{ height: "10px" }} />
             <SelectDetails
-              placeholder={t("eventDetails.duration")}
+              placeholder={t("event.Details.duration")}
               obj={duration}
               setObj={setDuration}
               data={ActivityTimeOptions[lang]}

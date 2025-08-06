@@ -90,7 +90,7 @@ function Content() {
             ))}
           </section>
         ) : (
-          <div>{t("contentPage.noSubjectSelected")}</div>
+          <div>{t("youth.contentPage.noSubjectSelected")}</div>
         )}
       </article>
     </PageLayout>

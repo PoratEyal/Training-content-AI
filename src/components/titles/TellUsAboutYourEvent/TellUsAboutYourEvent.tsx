@@ -10,7 +10,7 @@ function TellUsAboutYourGroup() {
             style={{ direction: dir }}
         >
             <h1>
-                {t("eventDetails.title")}
+                {t("event.Details.title")}
             </h1>
         </div>
     );

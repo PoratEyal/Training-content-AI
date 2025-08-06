@@ -169,14 +169,14 @@ function BuildActivity() {
           <section className={styles.build_container}>
             <section className={styles.build_content}>
               <SelectDetails
-                placeholder={t("youthBuildActivity.category.label")}
+                placeholder={t("youth.BuildActivity.category.label")}
                 obj={category}
                 setObj={setCategory}
                 data={CategoryOptions(data?.movement?.categories || [])}
               />
 
               <SubjectInput
-                placeholder={t("youthBuildActivity.subject.label")}
+                placeholder={t("youth.BuildActivity.subject.label")}
                 setSubject={setSubject}
                 subject={subject}
                 category={category as CategoryName}
@@ -184,29 +184,29 @@ function BuildActivity() {
               />
 
               <SelectDetails
-                placeholder={t("youthBuildActivity.place.label")}
+                placeholder={t("youth.BuildActivity.place.label")}
                 obj={place}
                 setObj={setPlace}
                 data={PlaceOptions[lang]}
               />
 
               <SelectDetails
-                placeholder={t("youthBuildActivity.time.label")}
+                placeholder={t("youth.BuildActivity.time.label")}
                 obj={time}
                 setObj={setTime}
                 data={ActivityTimeOptions[lang]}
               />
 
-              <MoreOptionsCollapse text={t("youthBuildActivity.moreOptions.title")}>
+              <MoreOptionsCollapse text={t("youth.BuildActivity.moreOptions.title")}>
                 <SelectDetails
-                  placeholder={t("youthBuildActivity.tools.label")}
+                  placeholder={t("youth.BuildActivity.tools.label")}
                   obj={tools}
                   setObj={setTools}
                   data={ToolsOptions[lang]}
                 />
 
                 <SelectDetails
-                  placeholder={t("youthBuildActivity.contest.label")}
+                  placeholder={t("youth.BuildActivity.contest.label")}
                   obj={contest}
                   setObj={setContest}
                   data={ContestOptions[lang]}
@@ -214,7 +214,7 @@ function BuildActivity() {
 
                 {lang === "he" && (
                   <SelectDetails
-                    placeholder={t("youthBuildActivity.religion.label")}
+                    placeholder={t("youth.BuildActivity.religion.label")}
                     obj={religion}
                     setObj={setReligion}
                     data={ReligionOptions}
@@ -222,7 +222,7 @@ function BuildActivity() {
                 )}
 
                 <MoreDetailsInput
-                  placeholder={t("youthBuildActivity.moreDetails.label")}
+                  placeholder={t("youth.BuildActivity.moreDetails.label")}
                   text={info}
                   setText={setInfo}
                 />
@@ -238,12 +238,12 @@ function BuildActivity() {
                 <MainBtn
                   isDisabled={isDisabled}
                   height={42}
-                  text={t("youthBuildActivity.submit")}
+                  text={t("youth.BuildActivity.submit")}
                   func={submitHandler}
                 />
                 {hasAlert && (
                   <div className={styles.input_alert}>
-                    {t("youthBuildActivity.alert")}
+                    {t("youth.BuildActivity.alert")}
                   </div>
                 )}
               </div>

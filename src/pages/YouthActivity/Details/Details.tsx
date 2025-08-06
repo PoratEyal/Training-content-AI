@@ -79,8 +79,8 @@ function Details() {
       >
         <img
           className={`${styles.lamp_img} ${isRTL ? styles.lamp_img_rtl : styles.lamp_img_ltr}`}
-          title={t("details.lampAlt")}
-          alt={t("details.lampAlt")}
+          title={t("youth.details.lampAlt")}
+          alt={t("youth.details.lampAlt")}
           src="/Youth/lamp.svg"
           loading="lazy"
           width={95}
@@ -91,25 +91,25 @@ function Details() {
           <div className={styles.details_content}>
             <SelectDetails
               data={MovmentsOptions[lang]}
-              placeholder={t("details.youthMovement")}
+              placeholder={t("youth.details.youthMovement")}
               obj={movement}
               setObj={setMovement}
             />
             <SelectDetails
               data={GradeOptions[lang]}
-              placeholder={t("details.grade")}
+              placeholder={t("youth.details.grade")}
               obj={classLevel}
               setObj={setClassLevel}
             />
             <SelectDetails
               data={AmountOptions[lang]}
-              placeholder={t("details.numberOfChildren")}
+              placeholder={t("youth.details.numberOfChildren")}
               obj={numberOfChildren}
               setObj={setNumberOfChildren}
             />
             <SelectDetails
               data={GenderOptions[lang]}
-              placeholder={t("details.gender")}
+              placeholder={t("youth.details.gender")}
               obj={gender}
               setObj={setGender}
             />
