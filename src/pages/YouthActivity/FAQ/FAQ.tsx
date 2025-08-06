@@ -8,7 +8,7 @@ import React, { useMemo } from "react";
 import { ProductType } from "../../../context/ProductType"
 
 const FAQ: React.FC = () => {
-  
+
   const { t } = useTranslation();
   const { dir } = useLanguage();
 
@@ -24,24 +24,26 @@ const FAQ: React.FC = () => {
     <PageLayout
       id="youthFaq"
       productType={ProductType.Youth}
-      hasHeader={{ }}
+      hasHeader={{}}
       hasNavBar
       index={true}
     >
       <FadeEffect hasFade>
-        <article className={styles.faq_article} dir={dir}>
-          <section>
-            <h1 className={styles.faq_title}>{title}</h1>
+        <div className={styles.faq_scrollable_wrapper}>
+          <article className={styles.faq_article} dir={dir}>
+            <section>
+              <h1 className={styles.faq_title}>{title}</h1>
 
-            {faq.map(({ q, a }, idx) => (
-              <div key={idx} className={styles.faq_item}>
-                <div className={styles.faq_q}>{q}</div>
-                <div className={styles.faq_a}>{a}</div>
-              </div>
-            ))}
-            <div style={{ height: "20px" }}></div>
-          </section>
-        </article>
+              {faq.map(({ q, a }, idx) => (
+                <div key={idx} className={styles.faq_item}>
+                  <div className={styles.faq_q}>{q}</div>
+                  <div className={styles.faq_a}>{a}</div>
+                </div>
+              ))}
+              <div style={{ height: "20px" }}></div>
+            </section>
+          </article>
+        </div>
       </FadeEffect>
 
       <script type="application/ld+json">

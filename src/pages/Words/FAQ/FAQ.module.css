@@ -60,14 +60,23 @@
   direction: inherit;
 }
 
-/* Responsive adjustments */
+/* Only Mobile */
+@media (max-width: 549px) {
+
+  .faq_scrollable_wrapper {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+}
+
+/* Desktop */
 @media (min-width: 550px) {
   .title, .faq_title {
     font-size: 24px;
-  }
-}
-@media (max-width: 549px) {
-  .faq_article {
-    padding-top: 60px;
   }
 }
