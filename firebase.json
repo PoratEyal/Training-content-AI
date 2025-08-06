@@ -44,6 +44,20 @@
       ],
       "rewrites": [
         {
+          "source": "/content/**",
+          "function": {
+            "functionId": "noContent410",
+            "region": "us-central1"
+          }
+        },
+        {
+          "source": "/he/content/**",
+          "function": {
+            "functionId": "noContent410",
+            "region": "us-central1"
+          }
+        },
+        {
           "source": "/",
           "function": {
             "functionId": "redirectToLang",
