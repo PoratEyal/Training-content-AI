@@ -116,7 +116,7 @@ function Details() {
               text={moreDetails}
               setText={setMoreDetails}
             />
-            <div style={{ height: "10px" }} />
+            <div style={{ height: "17px" }} />
             <SelectDetails
               placeholder={t("event.Details.duration")}
               obj={duration}

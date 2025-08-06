@@ -123,7 +123,7 @@
       "title": "Tell us about your event",
       "eventLable": "For example: birthday, party, team-building activity, classroom activity, family picnic, and more...",
       "event": "Type of event",
-      "moreDetails": "More details",
+      "moreDetails": "More details (optional)",
       "duration": "Activity Duration",
       "limit": "To add more information, please use the 'Additional information' field.",
       "lampAlt": "Lamp"

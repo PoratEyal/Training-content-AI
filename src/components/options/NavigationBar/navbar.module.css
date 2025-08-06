@@ -12,31 +12,23 @@
 }
 
 .text {
+    font-weight: 450;
+    color: gray;
     font-size: 12px;
     transition: font-size 0.3s ease, color 0.3s ease;
 }
 
-/* מצב רגיל */
 .navbar_icon {
-    color: var(--nav-color) !important;
+    color: #888888 !important;
 }
 
-/* מצב נבחר - שינויים בולטים */
 .navbar_icon_selected {
-    color: #789A56;
-}
-
-.navbar_icon_selected .text {
-    font-weight: 450;
-    color: #789A56;
-}
-
-/* אנימציית popIn לאייקון */
-.navbar_icon_selected .icon {
+    color: rgba(0, 0, 0, 0.801);
     animation: popIn 0.3s ease forwards;
 }
 
 .icon {
+    animation: popIn 0.3s ease forwards;
     transition: transform 0.3s ease, color 0.3s ease;
     width: 20px;
     height: 20px;
@@ -46,14 +38,15 @@
     transform: scale(1.1);
 }
 
-/* Keyframes לאנימציית popIn */
 @keyframes popIn {
     0% {
         transform: scale(1) rotate(0deg);
     }
+
     50% {
         transform: scale(1.2) rotate(5deg);
     }
+
     100% {
         transform: scale(1) rotate(0deg);
     }
