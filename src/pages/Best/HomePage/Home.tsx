@@ -54,16 +54,16 @@ function BestHomePage() {
         {JSON.stringify(bestSchema)}
       </script>
 
-      <div className={styles.logo_text_div}>
+      <div className={styles.slogan_big}>
         <HomePageTitle />
       </div>
 
       {loading ? (
-        <div className={styles.button_section_loading}>
+        <div className={styles.submit_btn_loading}>
           <PageLoading />
         </div>
       ) : (
-        <section className={styles.button_section}>
+        <section className={styles.submit_btn}>
           <MainBtn
             text={t("home.bestStartAction")}
             func={() =>

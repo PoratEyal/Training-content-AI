@@ -87,41 +87,43 @@ function Details() {
           height={109}
         />
 
-        <div className={styles.input_area}>
-          <div className={styles.details_content}>
-            <SelectDetails
-              data={MovmentsOptions[lang]}
-              placeholder={t("youth.details.youthMovement")}
-              obj={movement}
-              setObj={setMovement}
-            />
-            <SelectDetails
-              data={GradeOptions[lang]}
-              placeholder={t("youth.details.grade")}
-              obj={classLevel}
-              setObj={setClassLevel}
-            />
-            <SelectDetails
-              data={AmountOptions[lang]}
-              placeholder={t("youth.details.numberOfChildren")}
-              obj={numberOfChildren}
-              setObj={setNumberOfChildren}
-            />
-            <SelectDetails
-              data={GenderOptions[lang]}
-              placeholder={t("youth.details.gender")}
-              obj={gender}
-              setObj={setGender}
-            />
-          </div>
-          <div style={{ direction: isRTL ? "ltr" : "rtl" }}>
-            <MainBtn
-              text={t("common.btnContinue")}
-              isDisabled={isDisabled}
-              type="submit"
-              func={handleSubmit}
-              height={42}
-            />
+        <div className={styles.scroll_area}>
+          <div className={styles.input_area_align}>
+            <div className={styles.input_area_gap}>
+              <SelectDetails
+                data={MovmentsOptions[lang]}
+                placeholder={t("youth.details.youthMovement")}
+                obj={movement}
+                setObj={setMovement}
+              />
+              <SelectDetails
+                data={GradeOptions[lang]}
+                placeholder={t("youth.details.grade")}
+                obj={classLevel}
+                setObj={setClassLevel}
+              />
+              <SelectDetails
+                data={AmountOptions[lang]}
+                placeholder={t("youth.details.numberOfChildren")}
+                obj={numberOfChildren}
+                setObj={setNumberOfChildren}
+              />
+              <SelectDetails
+                data={GenderOptions[lang]}
+                placeholder={t("youth.details.gender")}
+                obj={gender}
+                setObj={setGender}
+              />
+              <div className={isRTL ? `${styles.submit_btn} ${styles.submit_btn_rtl}` : styles.submit_btn}>
+                <MainBtn
+                  text={t("common.btnContinue")}
+                  isDisabled={isDisabled}
+                  type="submit"
+                  func={handleSubmit}
+                  height={42}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </form>

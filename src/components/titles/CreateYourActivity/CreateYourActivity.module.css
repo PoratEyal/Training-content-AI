@@ -5,6 +5,7 @@
     right: 60px;
     -webkit-tap-highlight-color: transparent;
     direction: rtl;
+    z-index: 301;
   }
   
   .create_your_activity_title h1 {

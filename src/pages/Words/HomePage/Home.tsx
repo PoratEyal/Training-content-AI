@@ -95,19 +95,19 @@ function WordsHomePage() {
         {JSON.stringify(homeSchema)}
       </script>
 
-      <div className={styles.logo_text_div}>
+      <div className={styles.slogan_big}>
         <ContinueWithAI />
-        <div className={styles.home_lable} style={{ direction: dir }}>
+        <div className={styles.slogan_small} style={{ direction: dir }}>
           <span>{t("home.slogan")}</span>
         </div>
       </div>
 
       {loading ? (
-        <div className={styles.button_section_loading}>
+        <div className={styles.submit_btn_loading}>
           <PageLoading />
         </div>
       ) : (
-        <section className={styles.button_section}>
+        <section className={styles.submit_btn}>
           <MainBtn
             text={t("home.practiceStartAction")}
             func={() =>

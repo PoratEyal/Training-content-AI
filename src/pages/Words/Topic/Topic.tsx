@@ -184,8 +184,8 @@ function Topic() {
 
     try {
 
-      if (topicText === "מעצר" || topicText === "0200") { // Specific case
-        const res = await fetch("/Words/army.json");
+      if (topicText === "testlp") { // QA case
+        const res = await fetch("/Words/test.json");
         const json = await res.json();
         sessionStorage.setItem(StorageKey.WORDS_QUIZ, JSON.stringify(json));
         localStorage.setItem(StorageKey.WORDS_LANG, "ar")

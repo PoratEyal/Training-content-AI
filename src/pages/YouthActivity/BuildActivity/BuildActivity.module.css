@@ -10,14 +10,14 @@
     left: 0;
     bottom: 0;
     top: 100px;
-    width: 100vw;
+    width: 100%;
 }
 
 .path_img {
     z-index: 300;
     position: absolute;
     top: -90px;
-    left: 58px;
+    left: 53px;
 }
 
 .path_img_ltr {

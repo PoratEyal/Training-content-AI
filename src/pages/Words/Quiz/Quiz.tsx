@@ -48,6 +48,7 @@ function Quiz() {
   const [done, setDone] = useState(false)
   const [correctCount, setCorrectCount] = useState(0)
   const [feedbackText, setFeedbackText] = useState("")
+  const topicTitle = localStorage.getItem(StorageKey.WORDS_TOPIC)
 
   useEffect(() => {
     enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_WordsQuiz, navigate, wordsHomePagePath)
@@ -165,7 +166,7 @@ function Quiz() {
     <PageLayout
       id="wordsQuiz"
       productType={ProductType.Words}
-      hasHeader={{ goBack: () => navigate(wordstopicPath), hasTitle: t("words.quiz.pageTitle") }}
+      hasHeader={{ goBack: () => navigate(wordstopicPath), hasTitle: topicTitle }}
       hasAds={WORDS_AD_SLOT}
       hasGreenBackground
       hasNavBar
@@ -224,29 +225,29 @@ function Quiz() {
                 )
               })}
             </ul>
-          </div>
-
-          <div className={styles.circularProgressWrapper}>
-            <svg className={styles.circularProgress} viewBox="0 0 36 36">
-              <path
-                className={styles.bg}
-                d="M18 2.0845         a 15.9155 15.9155 0 0 1 0 31.831         a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
-              <path
-                className={styles.fg}
-                strokeDasharray={`${progressPercent}, 100`}
-                d="M18 2.0845         a 15.9155 15.9155 0 0 1 0 31.831         a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
-              <text x="18" y="20.35" className={styles.percentage}>
-                {progressPercent}%
-              </text>
-            </svg>
-          </div>
-
-          <div className={styles.continueBtnContainer}>
-            <button onClick={handleNext} className={styles.continueBtn}>
-              {t("words.quiz.btnContinue")}
-            </button>
+            <div className={styles.controlsRow}>
+              <div className={styles.continueBtnContainer}>
+                <button onClick={handleNext} className={styles.continueBtn}>
+                  {t("words.quiz.btnContinue")}
+                </button>
+              </div>
+              <div className={styles.circularProgressWrapper}>
+                <svg className={styles.circularProgress} viewBox="0 0 36 36">
+                  <path
+                    className={styles.bg}
+                    d="M18 2.0845         a 15.9155 15.9155 0 0 1 0 31.831         a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path
+                    className={styles.fg}
+                    strokeDasharray={`${progressPercent}, 100`}
+                    d="M18 2.0845         a 15.9155 15.9155 0 0 1 0 31.831         a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <text x="18" y="20.35" className={styles.percentage}>
+                    {progressPercent}%
+                  </text>
+                </svg>
+              </div>
+            </div>
           </div>
 
         </QuizContainer>

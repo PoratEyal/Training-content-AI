@@ -215,17 +215,7 @@
       "he-Practice": "Hebreo",
       "ar-Practice": "Árabe"
     },
-    "vocab": {
-      "pageTitle": "Palabras de práctica",
-      "instructions": "Lista de práctica",
-      "listNotification": "No hay palabras para practicar",
-      "btnCreate": "Empezar",
-      "noSupportMsg": "Por ahora, solo se admiten prácticas predefinidas",
-      "loadListError": "Ocurrió un error al cargar el archivo de palabras. Intenta de nuevo.",
-      "generalError": "Ocurrió un error al crear las preguntas. Intenta de nuevo."
-    },
     "quiz": {
-      "pageTitle": "¡Hora de practicar!",
       "newPractice": "¿Otra vez?",
       "donePractice": "Terminé por ahora",
       "speak": "Di la palabra",

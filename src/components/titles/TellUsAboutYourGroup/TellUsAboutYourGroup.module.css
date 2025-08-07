@@ -3,6 +3,7 @@
     position: absolute;
     top: 15px;
     -webkit-tap-highlight-color: transparent;
+    z-index: 100;
 }
 
 .tell_us_title_rtl {

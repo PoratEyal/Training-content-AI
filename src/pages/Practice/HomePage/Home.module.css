@@ -1,4 +1,4 @@
-.logo_text_div{
+.slogan_big{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,7 +7,7 @@
     margin-top: 1vh;
 }
 
-.home_lable{
+.slogan_small{
     padding-top: 5px;
     padding-bottom: 7px;
     padding-right: 5px;
@@ -25,7 +25,7 @@
     margin: 0;
 }
 
-.button_section{
+.submit_btn{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,7 +33,7 @@
     margin-top: 65px;
 }
 
-.button_section_loading{
+.submit_btn_loading{
     margin-top: 65px;
     display: flex;
     flex-direction: column;
@@ -51,10 +51,10 @@
 
 
 @media (min-width: 550px) {
-    .logo_text_div{
+    .slogan_big{
         margin-top: 0px;
     }
-    .button_section{
+    .submit_btn{
         margin-top: 40px;
     }
     body {
@@ -75,5 +75,15 @@
     
     .about_div{
         right: 45%;
+    }
+}
+
+@media (max-height: 600px) {
+    .submit_btn {
+        margin-top: 35px;
+    }
+
+    .about_div {
+        display: none;
     }
 }

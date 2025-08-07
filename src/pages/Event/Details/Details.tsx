@@ -85,11 +85,7 @@ function Details() {
       index={false}
     >
       <TellUsAboutYourEvent />
-      <form
-        onSubmit={handleSubmit}
-        className={styles.form_container}
-        style={{ direction: dir }}
-      >
+      <form onSubmit={handleSubmit} className={styles.form_container} style={{ direction: dir }}>
         <img
           className={`${styles.lamp_img} ${isRTL ? styles.lamp_img_rtl : styles.lamp_img_ltr}`}
           title={t("event.Details.lampAlt")}
@@ -100,40 +96,44 @@ function Details() {
           height={109}
         />
 
-        <div className={styles.input_area}>
-          <div className={styles.details_content}>
-            <EventInput
-              placeholder={t("event.Details.event")}
-              event={event}
-              setEvent={setEvent}
-              setHasAlert={setHasAlert}
-            />
-            <label className={styles.label}>
-              {t("event.Details.eventLable")}
-            </label>
-            <MoreDetailsInput
-              placeholder={t("event.Details.moreDetails")}
-              text={moreDetails}
-              setText={setMoreDetails}
-            />
-            <div style={{ height: "17px" }} />
-            <SelectDetails
-              placeholder={t("event.Details.duration")}
-              obj={duration}
-              setObj={setDuration}
-              data={ActivityTimeOptions[lang]}
-            />
-          </div>
-          <div style={{ direction: isRTL ? "ltr" : "rtl" }}>
-            <MainBtn
-              text={t("common.btnContinue")}
-              isDisabled={!(event && duration)}
-              type="submit"
-              func={handleSubmit}
-              height={42}
-            />
+        <div className={styles.scroll_area}>
+          <div className={styles.input_area_align}>
+            <div className={styles.input_area_gap}>
+              <EventInput
+                placeholder={t("event.Details.event")}
+                event={event}
+                setEvent={setEvent}
+                setHasAlert={setHasAlert}
+              />
+              <label className={styles.label}>
+                {t("event.Details.eventLable")}
+              </label>
+              <MoreDetailsInput
+                placeholder={t("event.Details.moreDetails")}
+                text={moreDetails}
+                setText={setMoreDetails}
+              />
+              <div style={{ height: "14px" }} />
+              <SelectDetails
+                placeholder={t("event.Details.duration")}
+                obj={duration}
+                setObj={setDuration}
+                data={ActivityTimeOptions[lang]}
+              />
+              <div style={{ height: "14px" }} />
+              <div className={isRTL ? `${styles.submit_btn} ${styles.submit_btn_rtl}` : styles.submit_btn}>
+                <MainBtn
+                  text={t("common.btnContinue")}
+                  isDisabled={!(event && duration)}
+                  type="submit"
+                  func={handleSubmit}
+                  height={42}
+                />
+              </div>
+            </div>
           </div>
         </div>
+
       </form>
     </PageLayout>
   );
