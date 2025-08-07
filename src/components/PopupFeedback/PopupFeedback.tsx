@@ -99,7 +99,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ msg, handleClose }) => {
           </div>
         </form>
 
-        <div className={styles.btn_div}>
+        <div className={styles.submit_btn}>
           <button
             type="button"
             onClick={handleSubmit}

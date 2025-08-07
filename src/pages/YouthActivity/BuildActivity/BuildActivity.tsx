@@ -155,9 +155,9 @@ function BuildActivity() {
     >
       <CreateYourActivity />
 
-      <div className={styles.build_form_container}>
+      <div className={styles.form_container}>
         <img
-          className={isRTL ? styles.path_img : `${styles.path_img} ${styles.ltr_path}`}
+          className={isRTL ? styles.path_img : `${styles.path_img} ${styles.path_img_ltr}`}
           title="Yellow sign with heart"
           alt="Yellow sign with heart"
           src={"/Youth/path.svg"}
@@ -165,9 +165,9 @@ function BuildActivity() {
           height={110}
         />
 
-        <div className={styles.selects_btn}>
-          <section className={styles.build_container}>
-            <section className={styles.build_content}>
+        <div className={styles.scroll_area}>
+          <section className={styles.input_area_align}>
+            <section className={styles.input_area_gap}>
               <SelectDetails
                 placeholder={t("youth.BuildActivity.category.label")}
                 obj={category}
@@ -231,8 +231,8 @@ function BuildActivity() {
               <div
                 className={
                   isRTL
-                    ? `${styles.btn_div} ${styles.rtl_btn}`
-                    : styles.btn_div
+                    ? `${styles.submit_btn} ${styles.submit_btn_rtl}`
+                    : styles.submit_btn
                 }
               >
                 <MainBtn

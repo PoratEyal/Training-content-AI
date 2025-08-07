@@ -41,7 +41,7 @@
   font-style: italic;
 }
 
-.selects_btn {
+.input_area {
   margin-top: 35px;
   display: flex;
   flex-direction: column;
@@ -51,15 +51,4 @@
 
 .button_wrapper {
   margin-top: 50px;
-}
-
-.loading_mock_selection_container {
-  position: relative;
-  min-height: 350px;
-  height: 300px;
-  min-width: 70vw;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

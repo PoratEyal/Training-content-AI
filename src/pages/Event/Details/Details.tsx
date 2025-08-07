@@ -87,7 +87,7 @@ function Details() {
       <TellUsAboutYourEvent />
       <form
         onSubmit={handleSubmit}
-        className={styles.details_form_container}
+        className={styles.form_container}
         style={{ direction: dir }}
       >
         <img
@@ -100,7 +100,7 @@ function Details() {
           height={109}
         />
 
-        <div className={styles.selects_btn}>
+        <div className={styles.input_area}>
           <div className={styles.details_content}>
             <EventInput
               placeholder={t("event.Details.event")}

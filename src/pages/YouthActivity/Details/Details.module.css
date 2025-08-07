@@ -1,4 +1,4 @@
-.details_form_container {
+.form_container {
     background-color: var(--background-color);
     display: flex;
     flex-direction: column;
@@ -28,24 +28,13 @@
     right: 40px;
 }
 
-.selects_btn {
+.input_area {
     margin-top: 35px;
     position: absolute;
     display: flex;
     flex-direction: column;
     gap: 5px;
     -webkit-tap-highlight-color: transparent;
-}
-
-.loading_mock_selection_container {
-    position: relative;
-    min-height: 350px;
-    height: 300px;
-    min-width: 70vw;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .details_content {

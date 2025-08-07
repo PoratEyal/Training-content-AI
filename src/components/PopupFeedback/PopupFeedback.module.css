@@ -129,7 +129,7 @@
   border: 1px solid #ccc;
 }
 
-.btn_div {
+.submit_btn {
   width: 100%;
   display: flex;
   flex-direction: column;

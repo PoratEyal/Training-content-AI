@@ -1,4 +1,4 @@
-.build_form_container {
+.form_container {
     background-color: var(--background-color);
     display: flex;
     flex-direction: column;
@@ -20,46 +20,30 @@
     left: 58px;
 }
 
-.ltr_path {
+.path_img_ltr {
     left: auto;
     right: 57px;
 }
 
 
-.selects_btn {
-    margin-top: 35px;
+.scroll_area {
     position: absolute;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    min-height: 335px;
-    height: calc(100% - 88px - var(--ads-height));
+    margin-top: 35px;
+    min-height: calc(100% - 35px - 45px - var(--ads-height));
+    height: calc(100% - 35px - 45px - var(--ads-height));  /* 35px=margin-top, 45px=unknown */
     width: 100%;
     overflow-y: scroll;
-    z-index: 1000;
+    z-index: 999;   /* less then ad=1000 */
 }
 
-.loading_mock_selection_container {
-    position: relative;
-    min-height: 350px;
-    height: 300px;
-    min-width: 70vw;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.build_container {
-    /* height: 300px; */
+.input_area_align {
     height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.build_content {
+.input_area_gap {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -70,42 +54,34 @@
 }
 
 
-.btn_div {
+.submit_btn {
     position: relative;
     box-sizing: border-box;
     direction: rtl;
     display: flex;
     width: 100%;
     -webkit-tap-highlight-color: transparent;
-    margin-bottom: 8vh;
+    margin-bottom: 4vh;
 }
 
-.rtl_btn {
+.submit_btn_rtl {
     direction: ltr;
 }
 
-.input_alert {
-    position: absolute;
-    top: 40px;
-    color: var(--error-color);
-    font-size: 10px;
-    margin-top: 5px;
-    text-align: center;
-}
 
 @media (min-width: 550px) {
-    .build_form_container {
+    .form_container {
         width: 100%;
         scrollbar-width: none;
         -ms-overflow-style: none;
         margin-bottom: 10px;
     }
 
-    .build_form_container::-webkit-scrollbar {
+    .form_container::-webkit-scrollbar {
         display: none;
     }
 
-    .build_content {
+    .input_area_gap {
         width: 70%;
         gap: 17px;
         padding-bottom: 10px;

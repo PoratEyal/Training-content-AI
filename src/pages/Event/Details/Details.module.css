@@ -1,4 +1,4 @@
-.details_form_container {
+.form_container {
     background-color: var(--background-color);
     display: flex;
     flex-direction: column;
@@ -35,7 +35,7 @@
   width: 100%;
 }
 
-.selects_btn {
+.input_area {
     margin-top: 30px;
     position: absolute;
     display: flex;
