@@ -193,7 +193,10 @@ function PageLayout({
 
           else
             // Google Ads
-            return <AdsSmall slot={hasAds} />;
+            if (window.location.href.includes("localhost:3000")) {
+              return <div className="ads-small-slot" style={{ backgroundColor: "orange" }} />;
+            }
+          return <AdsSmall slot={hasAds} />;
 
         })() : null}
 

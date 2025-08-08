@@ -1,4 +1,4 @@
-.topic_form_container {
+.form_container {
   background-color: var(--background-color);
   display: flex;
   flex-direction: column;

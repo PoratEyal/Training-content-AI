@@ -7,7 +7,7 @@
     "wordsAppName": "Vocabulario Inteligente",
     "btnContinue": "Continuar",
     "loadingHead": "Estamos trabajando en ello",
-    "loadingText": "¡Atención! Este cuestionario fue generado con inteligencia artificial, que está en constante aprendizaje, por lo que pueden ocurrir errores.",
+    "loadingText": "Atención: Este contenido es generado por IA, está en aprendizaje continuo y puede contener errores.",
     "FAQtitle": "Preguntas frecuentes",
     "errorMsg": "La acción no se completó. Por favor, inténtalo de nuevo."
   },
@@ -80,10 +80,6 @@
       "moreOptions": {
         "title": "Más Opciones"
       },
-      "loadingActivity": {
-        "heading": "La actividad está en camino",
-        "text": "Nota: Estas actividades son generadas por IA. Recomendamos revisarlas antes de usarlas para asegurar su relevancia y precisión."
-      },
       "submit": "Crear Actividad",
       "loading": "Creando tu actividad..."
     },
@@ -136,11 +132,7 @@
       "place": "Ubicación",
       "materials": "Materiales",
       "submit": "Crear actividad",
-      "loading": "Creando actividad",
-      "loadingActivity": {
-        "heading": "La actividad está en camino",
-        "text": "¡Atención! Las actividades se basan en un sistema de inteligencia artificial, por lo que puede haber imprecisiones. Por favor, revisa el contenido antes de usarlo"
-      }
+      "loading": "Creando actividad"
     },
     "Activity": {
       "json": {

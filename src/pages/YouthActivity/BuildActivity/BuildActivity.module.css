@@ -14,7 +14,7 @@
 }
 
 .path_img {
-    z-index: 300;
+    z-index: 9000;
     position: absolute;
     top: -90px;
     left: 53px;

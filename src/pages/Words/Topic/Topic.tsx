@@ -221,7 +221,7 @@ function Topic() {
         hasNavBar
         index={false}
       >
-        <form onSubmit={handleSubmit} className={styles.topic_form_container}>
+        <form onSubmit={handleSubmit} className={styles.form_container}>
 
           <div className={styles.input}>
             <label htmlFor="languageInput">{t("words.topic.selectLangLabel")}</label>

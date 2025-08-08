@@ -132,7 +132,7 @@ function Topic() {
         hasNavBar
         index={false}
       >
-        <form onSubmit={handleSubmit} className={styles.topic_form_container}>
+        <form onSubmit={handleSubmit} className={styles.form_container}>
           <input
             id="topicInput"
             type="text"
