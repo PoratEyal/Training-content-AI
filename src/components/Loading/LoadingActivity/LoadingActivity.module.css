@@ -4,7 +4,7 @@
 
 .loadingOverlay {
   z-index: 999;
-  background: #FFF8DC;
+  background-color: var(--background-color);
   border-top-left-radius: 37px;
   border-top-right-radius: 37px;
 }
