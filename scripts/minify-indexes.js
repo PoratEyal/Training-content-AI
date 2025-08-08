@@ -25,7 +25,7 @@ const files = [
 ];
 
 files.forEach((file) => {
-  const input = `public/${file}`;
+  const input = `public/index/${file}`;
   const output = `build/${file}`;
   execSync(
     `npx html-minifier-terser ${input} -o ${output} --collapse-whitespace --remove-comments --remove-attribute-quotes --minify-css true --minify-js true`,
