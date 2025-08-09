@@ -48,7 +48,7 @@ function BuildActivity() {
   const [tools, setTools] = useState<string>("");
   const [info, setInfo] = useState<string>("");
 
-  const [clicked, setClicked] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const navigate = useNavigate();
   const lockRef = useRef(true);
@@ -121,7 +121,7 @@ function BuildActivity() {
 
   const submitHandler = async () => {
 
-    setClicked(true);
+    setLoading(true);
     const { movement, ...detailsData } = data;
     try {
       const response = await fetchGetActivity({ category: category as CategoryName, movement: movement.name, ...detailsData, subject, time, place, religion, contest, tools, info, lang, });
@@ -139,7 +139,7 @@ function BuildActivity() {
       logEvent(logMessage, currentUser?.email);
     }
     finally {
-      setClicked(false);
+      setLoading(false);
     }
   };
 
@@ -152,6 +152,7 @@ function BuildActivity() {
       hasAds={YOUTH_BUILD_AD_SLOT}
       index={false}
       hasNavBar
+      navDisabled={loading}
     >
       <CreateYourActivity />
 
@@ -251,7 +252,7 @@ function BuildActivity() {
           </section>
         </div>
       </div>
-      {clicked && <LoadingActivity />}
+      {loading && <LoadingActivity />}
     </PageLayout>
   );
 }

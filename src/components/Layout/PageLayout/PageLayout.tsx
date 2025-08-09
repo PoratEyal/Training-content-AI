@@ -37,6 +37,7 @@ type PageLayoutProps = {
   index?: boolean;
   children: React.ReactNode;
   title?: string;
+  navDisabled?: boolean;
 };
 
 function PageLayout({
@@ -49,6 +50,7 @@ function PageLayout({
   hasNavBar = false,
   index = true,
   title = "",
+  navDisabled = false,
 }: PageLayoutProps) {
   const { t, lang, dir } = useLanguage();
   const { currentUser } = useAuthContext();
@@ -203,22 +205,23 @@ function PageLayout({
 
         {/* Navigation Area */}
         {hasNavBar ? (
-          productType === ProductType.Youth ? (
-            <YouthNavigationBar />
-          ) : productType === ProductType.Event ? (
-            <EventNavigationBar />
-          ) : productType === ProductType.Best ? (
-            <BestNavigationBar />
-          ) : productType === ProductType.Practice ? (
-            <PracticeNavigationBar />
-          ) : productType === ProductType.Words ? (
-            <WordsNavigationBar />
-          ) : null
+          <div style={{ pointerEvents: navDisabled ? "none" : "auto" }}>
+            {productType === ProductType.Youth ? (
+              <YouthNavigationBar />
+            ) : productType === ProductType.Event ? (
+              <EventNavigationBar />
+            ) : productType === ProductType.Best ? (
+              <BestNavigationBar />
+            ) : productType === ProductType.Practice ? (
+              <PracticeNavigationBar />
+            ) : productType === ProductType.Words ? (
+              <WordsNavigationBar />
+            ) : null}
+          </div>
         ) : null}
       </section >
     </>
   );
 }
-
 
 export default PageLayout;

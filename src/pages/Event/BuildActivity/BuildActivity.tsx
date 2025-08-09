@@ -34,7 +34,7 @@ function BuildActivity() {
   const [gender, setGender] = useState("");
   const [place, setPlace] = useState("");
   const [materials, setMaterials] = useState("");
-  const [clicked, setClicked] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [isInitialized, setIsInitialized] = useState(false);
   const { currentUser } = useAuthContext()
@@ -88,7 +88,7 @@ function BuildActivity() {
 
 
   const submitHandler = async () => {
-    setClicked(true)
+    setLoading(true)
     try {
       const result = await generateEventActivity(event, moreDetails, duration, age, amount, gender, place, materials, lang)
       if (result) {
@@ -100,7 +100,7 @@ function BuildActivity() {
     } catch (error) {
       logEvent(`[Event.Build]: catch – ${String(error?.message || error)}`, currentUser?.email);
     } finally {
-      setClicked(false)
+      setLoading(false)
     }
   }
 
@@ -113,6 +113,7 @@ function BuildActivity() {
       hasAds={EVENT_AD_SLOT}
       index={false}
       hasNavBar
+      navDisabled={loading}
     >
       <CreateYourActivity />
       <div className={styles.form_container}>
@@ -170,7 +171,7 @@ function BuildActivity() {
           </section>
         </div>
       </div>
-      {clicked && <LoadingActivity />}
+      {loading && <LoadingActivity />}
     </PageLayout>
   );
 }

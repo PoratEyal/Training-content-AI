@@ -130,6 +130,7 @@ function Topic() {
         hasHeader={{ goBack, hasTitle: t("practice.topic.title") }}
         hasAds={PRACTICE_AD_SLOT}
         hasNavBar
+        navDisabled={loading}
         index={false}
       >
         <form onSubmit={handleSubmit} className={styles.form_container}>
