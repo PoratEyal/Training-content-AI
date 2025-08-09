@@ -136,10 +136,9 @@
     },
     "Activity": {
       "json": {
-        "title": "Event Title",
-        "summary": "Event Summary",
+        "summary": "Activity Summary",
         "materials": "Materials Needed",
-        "flow": "Event Flow",
+        "flow": "Activity Flow",
         "tips": "Facilitator Tips"
       }
     }
@@ -277,13 +276,13 @@
     "share": {
       "title": "Share",
       "createdBy": "Created with:",
-      "youthShareMessage": "I found a website that builds activities with AI – worth trying!",
-      "eventShareMessage": "I found a website that creates activities for any event using AI — worth trying!",
+      "youthShareMessage": "I found a website that builds activities with AI – worth trying! 🔥",
+      "eventShareMessage": "I found a website that creates activities for any event using AI — worth trying! 🔥",
+      "practiceShareMessage": "I found a site that creates practice exercises or trivia in any topic within seconds using AI – worth trying! 🔥",
+      "wordsShareMessage": "I found a great website for simple and easy vocabulary practice in any language – highly recommended! 🔥",
       "eventAdBannerText": "Click here to create a personalized activity for any event 🎯",
-      "practiceShareMessage": "I found a website that helps you practice any topic with AI – worth trying!",
       "practiceShareMessageInstructor": "You can play a short trivia game here based on the activity we did – give it a try and enjoy 🎯",
       "practiceShareBannerText": "Click here to share the trivia challenge",
-      "wordsShareMessage": "I found a great website for simple and easy vocabulary practice in any language – highly recommended!",
       "shared2Clipboard": "Text copied – share it in any app.",
       "shareError": "Failed to copy text – try again."
     },
