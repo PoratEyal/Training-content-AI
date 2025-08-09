@@ -31,7 +31,7 @@ function BestHomePage() {
   const { signInWithGoogle } = useSignIn()
   const { setCurrentPage } = useContentContext()
 
-  const bestSchema = useMemo(() => buildHomeSchema(lang, t("home.slogan")), [lang, t])
+  const bestSchema = useMemo(() => buildHomeSchema(lang, t("common.slogan")), [lang, t])
   const besthomePath = route[`bestHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.bestHomePageEn
 
   useEffect(() => {
@@ -65,7 +65,7 @@ function BestHomePage() {
       ) : (
         <section className={styles.submit_btn}>
           <MainBtn
-            text={t("home.bestStartAction")}
+            text={t("best.home.startAction")}
             func={() =>
               startAsGuestOrUser({
                 currentUser,

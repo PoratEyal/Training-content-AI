@@ -59,7 +59,7 @@ function YouthHomePage() {
       <div className={styles.slogan_big}>
         <ContinueWithAI />
         <div className={styles.slogan_small} style={{ direction: dir }}>
-          <span>{t("home.slogan")}</span>
+          <span>{t("common.slogan")}</span>
         </div>
       </div>
 
@@ -70,7 +70,7 @@ function YouthHomePage() {
       ) : (
         <section className={styles.submit_btn}>
           <StartBtn
-            text={t("home.youthStartAction")}
+            text={t("youth.home.startAction")}
             onClick={() =>
               startAsGuestOrUser({
                 currentUser,

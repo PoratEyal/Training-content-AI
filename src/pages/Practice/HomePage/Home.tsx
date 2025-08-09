@@ -66,7 +66,7 @@ function PracticeHomePage() {
       <div className={styles.slogan_big}>
         <ContinueWithAI />
         <div className={styles.slogan_small} style={{ direction: dir }}>
-          <span>{t("home.slogan")}</span>
+          <span>{t("common.slogan")}</span>
         </div>
       </div>
 
@@ -77,7 +77,7 @@ function PracticeHomePage() {
       ) : (
         <section className={styles.submit_btn}>
           <MainBtn
-            text={t("home.practiceStartAction")}
+            text={t("practice.home.startAction")}
             func={() =>
               startAsGuestOrUser({
                 currentUser,

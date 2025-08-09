@@ -194,7 +194,7 @@ function PageLayout({
           else
             // Google Ads
             if (window.location.href.includes("localhost:3000")) {
-              return <div className="ads-small-slot" style={{ backgroundColor: "orange" }} />;
+              return <div className="ads-small-slot" style={{ backgroundColor: "#ffa5001c" }} />;
             }
           return <AdsSmall slot={hasAds} />;
 

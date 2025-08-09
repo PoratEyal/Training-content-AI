@@ -5,6 +5,7 @@
     "bestAppName": "¿Quién es el más inteligente?",
     "practiceAppName": "Desafío de Conocimiento",
     "wordsAppName": "Vocabulario Inteligente",
+    "slogan": "Personalizado, Simple y Rápido 🤟",
     "btnContinue": "Continuar",
     "loadingHead": "Estamos trabajando en ello",
     "loadingText": "Atención: Este contenido es generado por IA, está en aprendizaje continuo y puede contener errores.",
@@ -19,21 +20,6 @@
     "practiceAboutText": "Un desafío de conocimiento impulsado por IA. Elige cualquier tema que desees y el sistema generará un cuestionario personalizado en segundos. Perfecto para cualquiera que busque una forma sencilla y enfocada de profundizar su conocimiento.",
     "wordsAboutText": "Entrenamiento de vocabulario de forma inteligente y eficiente. Ingresa palabras o elige un tema para obtener una práctica personalizada que te ayudará a aprender, recordar y comprender mejor – en cualquier idioma."
   },
-  "home": {
-    "slogan": "Personalizado, Simple y Rápido 🤟",
-    "youthStartAction": "Crear Actividad",
-    "eventStartAction": "Crear Actividad",
-    "bestStartAction": "Vamos allá",
-    "practiceStartAction": "Vamos allá",
-    "wordsStartAction": "Vamos allá",
-    "advanced": "Actividades",
-    "youthForActions": "avanzadas",
-    "eventForActions": "Eventos",
-    "practiceForActions": "Desafío",
-    "wordsForActions": "Vocabulario",
-    "withPrefix": "con",
-    "ai": "IA"
-  },
   "youthSep": "==============================================================================================================",
   "youth": {
     "Navbar": {
@@ -41,6 +27,13 @@
       "build": "Crear Actividad",
       "content": "Contenido",
       "myActivities": "Mis Actividades"
+    },
+    "home": {
+      "advanced": "Crear",
+      "forActions": "Actividades",
+      "withPrefix": "con",
+      "ai": "IA",
+      "startAction": "Crear Actividad"
     },
     "details": {
       "title": "Cuéntanos sobre tu grupo",
@@ -115,10 +108,17 @@
       "home": "Inicio",
       "build": "Crear actividades"
     },
+    "home": {
+      "advanced": "Crear",
+      "forActions": "Eventos",
+      "withPrefix": "con",
+      "ai": "IA",
+      "startAction": "Crear Actividad"
+    },
     "Details": {
       "title": "Cuéntanos sobre tu evento",
       "eventLable": "Por ejemplo: cumpleaños, fiesta, actividad de integración, actividad en el aula, picnic familiar y más...",
-      "event": "Tipo de evento",
+      "event": "Tipo de evento/actividad",
       "moreDetails": "Más detalles (opcional)",
       "duration": "Duración de la actividad",
       "limit": "Para agregar más información, utiliza el campo \"Información adicional\".",
@@ -151,6 +151,12 @@
       "play": "Jugar ahora",
       "create": "Crear competencia",
       "hof": "Salón de la fama"
+    },
+    "home": {
+      "advanced": "Crear",
+      "withPrefix": "con",
+      "ai": "IA",
+      "startAction": "Vamos allá"
     }
   },
   "practiceSep": "==============================================================================================================",
@@ -158,6 +164,13 @@
     "Navbar": {
       "home": "Inicio",
       "build": "Crear cuestionario"
+    },
+    "home": {
+      "advanced": "Crear",
+      "forActions": "Desafíos",
+      "withPrefix": "con",
+      "ai": "IA",
+      "startAction": "Vamos allá"
     },
     "topic": {
       "title": "Elijamos un tema",
@@ -180,6 +193,13 @@
     "Navbar": {
       "home": "Inicio",
       "build": "Práctica"
+    },
+    "home": {
+      "advanced": "Mejorar",
+      "forActions": "Vocabulario",
+      "withPrefix": "con",
+      "ai": "IA",
+      "startAction": "Vamos allá"
     },
     "topic": {
       "pageTitle": "¿Qué practicamos ahora?",
@@ -310,7 +330,7 @@
     "youth": {
       "questions": [
         {
-          "q": "¿Qué es ActivityWiz?",
+          "q": "¿Qué es ActivityWiz para movimientos juveniles?",
           "a": "ActivityWiz es una plataforma inteligente para crear actividades personalizadas para instructores y educadores. Puedes usarla para acceder a actividades listas para usar o generar nuevas automáticamente mediante inteligencia artificial."
         },
         {
@@ -390,8 +410,8 @@
     "event": {
       "questions": [
         {
-          "q": "¿Qué es ActivityWiz para eventos?",
-          "a": "ActivityWiz es una plataforma inteligente que te permite crear actividades divertidas para eventos personales – como cumpleaños, reuniones de equipo, fiestas y más – con solo un clic, utilizando inteligencia artificial."
+          "q": "¿Qué es ActivityWiz para actividades y juegos?",
+          "a": "ActivityWiz es una plataforma inteligente que te permite crear actividades y juegos personalizados para cualquier evento, grupo o reunión, con solo un clic y con la ayuda de la inteligencia artificial."
         },
         {
           "q": "¿El servicio es gratuito?",

@@ -69,24 +69,24 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
 
         eventHome: {
-            title: "פעילויות מקוריות לאירועים – ActivityWiz",
-            content: "רעיונות לפעילויות ליום הולדת, ערב צוות, מסיבה או אירוע משפחתי – צרו פעילות מותאמת אישית בעזרת בינה מלאכותית. לפי גיל, משתתפים, מקום וציוד – בקלות ובמהירות.",
+            title: "פעילויות והפעלות לכל אירוע ומטרה עם ActivityWiz",
+            content: "רעיונות לפעילויות והפעלות לכל אירוע, קבוצה או מפגש – צרו פעילות מותאמת אישית בעזרת בינה מלאכותית. לפי גיל, מספר משתתפים, מקום וציוד – בקלות ובמהירות.",
         },
         eventDetails: {
-            title: "פעילויות מקוריות לאירועים – ActivityWiz",
-            content: "רעיונות לפעילויות ליום הולדת, ערב צוות, מסיבה או אירוע משפחתי – צרו פעילות מותאמת אישית בעזרת בינה מלאכותית. לפי גיל, משתתפים, מקום וציוד – בקלות ובמהירות.",
+            title: "פעילויות והפעלות לכל אירוע ומטרה עם ActivityWiz",
+            content: "רעיונות לפעילויות והפעלות לכל אירוע, קבוצה או מפגש – צרו פעילות מותאמת אישית בעזרת בינה מלאכותית. לפי גיל, מספר משתתפים, מקום וציוד – בקלות ובמהירות.",
         },
         eventBuild: {
-            title: "פעילויות מקוריות לאירועים – ActivityWiz",
-            content: "רעיונות לפעילויות ליום הולדת, ערב צוות, מסיבה או אירוע משפחתי – צרו פעילות מותאמת אישית בעזרת בינה מלאכותית. לפי גיל, משתתפים, מקום וציוד – בקלות ובמהירות.",
+            title: "פעילויות והפעלות לכל אירוע ומטרה עם ActivityWiz",
+            content: "רעיונות לפעילויות והפעלות לכל אירוע, קבוצה או מפגש – צרו פעילות מותאמת אישית בעזרת בינה מלאכותית. לפי גיל, מספר משתתפים, מקום וציוד – בקלות ובמהירות.",
         },
         eventActivity: {
-            title: "פעילויות מקוריות לאירועים – ActivityWiz",
-            content: "רעיונות לפעילויות ליום הולדת, ערב צוות, מסיבה או אירוע משפחתי – צרו פעילות מותאמת אישית בעזרת בינה מלאכותית. לפי גיל, משתתפים, מקום וציוד – בקלות ובמהירות.",
+            title: "פעילויות והפעלות לכל אירוע ומטרה עם ActivityWiz",
+            content: "רעיונות לפעילויות והפעלות לכל אירוע, קבוצה או מפגש – צרו פעילות מותאמת אישית בעזרת בינה מלאכותית. לפי גיל, מספר משתתפים, מקום וציוד – בקלות ובמהירות.",
         },
         eventFaq: {
-            title: "פעילויות מקוריות לאירועים – ActivityWiz",
-            content: "רעיונות לפעילויות ליום הולדת, ערב צוות, מסיבה או אירוע משפחתי – צרו פעילות מותאמת אישית בעזרת בינה מלאכותית. לפי גיל, משתתפים, מקום וציוד – בקלות ובמהירות.",
+            title: "פעילויות והפעלות לכל אירוע ומטרה עם ActivityWiz",
+            content: "רעיונות לפעילויות והפעלות לכל אירוע, קבוצה או מפגש – צרו פעילות מותאמת אישית בעזרת בינה מלאכותית. לפי גיל, מספר משתתפים, מקום וציוד – בקלות ובמהירות.",
         },
 
         bestHome: {
@@ -125,19 +125,19 @@ export const helmetJson: Record<Lng, LanguageSection> = {
 
         wordsHome: {
             title: "תרגול אוצר מילים – ActivityWiz",
-            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
+            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בעזרת בינה מלאכותית – בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
         wordsTopic: {
             title: "תרגול אוצר מילים – ActivityWiz",
-            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
+            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בעזרת בינה מלאכותית – בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
         wordsQuiz: {
             title: "תרגול אוצר מילים – ActivityWiz",
-            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
+            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בעזרת בינה מלאכותית – בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
         wordsFaq: {
             title: "תרגול אוצר מילים - שאלות נפוצות – ActivityWiz",
-            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
+            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בעזרת בינה מלאכותית – בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
         },
     } as LanguageSection,
 
@@ -202,28 +202,28 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
 
         eventHome: {
-            title: "Original Event Activities – ActivityWiz",
-            content: "Looking for a fun and original idea for your event? Create a personalized activity with just one click – based on age, number of participants, location, and available equipment. Everything you need to plan a great activity – easily and quickly.",
+            title: "Original Activities with ActivityWiz",
+            content: "Ideas for activities and games for any event, group, or gathering – create a personalized activity with the help of AI. Based on age, number of participants, location, and equipment – easily and quickly.",
         },
         eventDetails: {
-            title: "Original Event Activities – ActivityWiz",
-            content: "Looking for a fun and original idea for your event? Create a personalized activity with just one click – based on age, number of participants, location, and available equipment. Everything you need to plan a great activity – easily and quickly.",
+            title: "Original Activities with ActivityWiz",
+            content: "Ideas for activities and games for any event, group, or gathering – create a personalized activity with the help of AI. Based on age, number of participants, location, and equipment – easily and quickly.",
         },
         eventBuild: {
-            title: "Original Event Activities – ActivityWiz",
-            content: "Looking for a fun and original idea for your event? Create a personalized activity with just one click – based on age, number of participants, location, and available equipment. Everything you need to plan a great activity – easily and quickly.",
+            title: "Original Activities with ActivityWiz",
+            content: "Ideas for activities and games for any event, group, or gathering – create a personalized activity with the help of AI. Based on age, number of participants, location, and equipment – easily and quickly.",
         },
         eventActivity: {
-            title: "Original Event Activities – ActivityWiz",
-            content: "Looking for a fun and original idea for your event? Create a personalized activity with just one click – based on age, number of participants, location, and available equipment. Everything you need to plan a great activity – easily and quickly.",
+            title: "Original Activities with ActivityWiz",
+            content: "Ideas for activities and games for any event, group, or gathering – create a personalized activity with the help of AI. Based on age, number of participants, location, and equipment – easily and quickly.",
         },
         eventFaq: {
-            title: "Original Event Activities – ActivityWiz",
-            content: "Looking for a fun and original idea for your event? Create a personalized activity with just one click – based on age, number of participants, location, and available equipment. Everything you need to plan a great activity – easily and quickly.",
+            title: "Original Activities with ActivityWiz",
+            content: "Ideas for activities and games for any event, group, or gathering – create a personalized activity with the help of AI. Based on age, number of participants, location, and equipment – easily and quickly.",
         },
 
         bestHome: {
-            title: "ActivityWiz - Who’s the Smartest",
+            title: "Original Activities with ActivityWiz",
             content: "Join trivia competitions between groups like boys vs. girls or kids vs. adults and find out which team is the smartest. You can join existing competitions or create a new one and earn points for your team through fun games.",
         },
         bestContests: {
@@ -260,19 +260,19 @@ export const helmetJson: Record<Lng, LanguageSection> = {
 
         wordsHome: {
             title: "ActivityWiz Words – Practice Vocabulary",
-            content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
+            content: "Practice words and phrases between languages and learn their meaning easily with the help of AI. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
         wordsTopic: {
             title: "ActivityWiz Words – Practice Vocabulary",
-            content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
+            content: "Practice words and phrases between languages and learn their meaning easily with the help of AI. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
         wordsQuiz: {
             title: "ActivityWiz Words – Practice Vocabulary",
-            content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
+            content: "Practice words and phrases between languages and learn their meaning easily with the help of AI. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
         wordsFaq: {
             title: "ActivityWiz Words – Practice Vocabulary FAQ",
-            content: "Practice words between languages and learn their meaning easily. A smart tool for language learning, improving vocabulary, and strengthening memory.",
+            content: "Practice words and phrases between languages and learn their meaning easily with the help of AI. A smart tool for language learning, improving vocabulary, and strengthening memory.",
         },
 
     } as LanguageSection,
@@ -337,24 +337,24 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
 
         eventHome: {
-            title: "أنشطة أصلية للمناسبات – ActivityWiz",
-            content: "تبحثون عن فكرة ممتعة ومميزة لمناسبتكم؟ أنشئوا نشاطًا مخصصًا بضغطة زر – حسب العمر، عدد المشاركين، المكان والمعدات المتوفرة. كل ما تحتاجونه لتنظيم نشاط رائع – بسهولة وسرعة.",
+            title: "أنشطة أصلية مع ActivityWiz",
+            content: "أفكار لأنشطة وفعاليات لأي مناسبة أو مجموعة أو لقاء – أنشئ نشاطًا مخصصًا بمساعدة الذكاء الاصطناعي. بناءً على العمر وعدد المشاركين والمكان والمعدات – بسهولة وسرعة.",
         },
         eventDetails: {
-            title: "أنشطة أصلية للمناسبات – ActivityWiz",
-            content: "تبحثون عن فكرة ممتعة ومميزة لمناسبتكم؟ أنشئوا نشاطًا مخصصًا بضغطة زر – حسب العمر، عدد المشاركين، المكان والمعدات المتوفرة. كل ما تحتاجونه لتنظيم نشاط رائع – بسهولة وسرعة.",
+            title: "أنشطة أصلية مع ActivityWiz",
+            content: "أفكار لأنشطة وفعاليات لأي مناسبة أو مجموعة أو لقاء – أنشئ نشاطًا مخصصًا بمساعدة الذكاء الاصطناعي. بناءً على العمر وعدد المشاركين والمكان والمعدات – بسهولة وسرعة.",
         },
         eventBuild: {
-            title: "أنشطة أصلية للمناسبات – ActivityWiz",
-            content: "تبحثون عن فكرة ممتعة ومميزة لمناسبتكم؟ أنشئوا نشاطًا مخصصًا بضغطة زر – حسب العمر، عدد المشاركين، المكان والمعدات المتوفرة. كل ما تحتاجونه لتنظيم نشاط رائع – بسهولة وسرعة.",
+            title: "أنشطة أصلية مع ActivityWiz",
+            content: "أفكار لأنشطة وفعاليات لأي مناسبة أو مجموعة أو لقاء – أنشئ نشاطًا مخصصًا بمساعدة الذكاء الاصطناعي. بناءً على العمر وعدد المشاركين والمكان والمعدات – بسهولة وسرعة.",
         },
         eventActivity: {
-            title: "أنشطة أصلية للمناسبات – ActivityWiz",
-            content: "تبحثون عن فكرة ممتعة ومميزة لمناسبتكم؟ أنشئوا نشاطًا مخصصًا بضغطة زر – حسب العمر، عدد المشاركين، المكان والمعدات المتوفرة. كل ما تحتاجونه لتنظيم نشاط رائع – بسهولة وسرعة.",
+            title: "أنشطة أصلية مع ActivityWiz",
+            content: "أفكار لأنشطة وفعاليات لأي مناسبة أو مجموعة أو لقاء – أنشئ نشاطًا مخصصًا بمساعدة الذكاء الاصطناعي. بناءً على العمر وعدد المشاركين والمكان والمعدات – بسهولة وسرعة.",
         },
         eventFaq: {
-            title: "أنشطة أصلية للمناسبات – ActivityWiz",
-            content: "تبحثون عن فكرة ممتعة ومميزة لمناسبتكم؟ أنشئوا نشاطًا مخصصًا بضغطة زر – حسب العمر، عدد المشاركين، المكان والمعدات المتوفرة. كل ما تحتاجونه لتنظيم نشاط رائع – بسهولة وسرعة.",
+            title: "أنشطة أصلية مع ActivityWiz",
+            content: "أفكار لأنشطة وفعاليات لأي مناسبة أو مجموعة أو لقاء – أنشئ نشاطًا مخصصًا بمساعدة الذكاء الاصطناعي. بناءً على العمر وعدد المشاركين والمكان والمعدات – بسهولة وسرعة.",
         },
 
         bestHome: {
@@ -393,19 +393,19 @@ export const helmetJson: Record<Lng, LanguageSection> = {
 
         wordsHome: {
             title: "ActivityWiz Words – تعلّم ودرّب مفرداتك",
-            content: "درّب على قوائم كلمات بين لغات مختلفة وتعلّم معانيها بسهولة وفعالية. الأداة المثالية لتعلّم اللغات، تحسين المفردات، وتقوية الذاكرة.",
+            content: "تدرّب على الكلمات والعبارات بين اللغات وتعلّم معناها بسهولة بمساعدة الذكاء الاصطناعي. أداة ذكية لتعلّم اللغات، وتحسين المفردات، وتقوية الذاكرة.",
         },
         wordsTopic: {
             title: "ActivityWiz Words – تعلّم ودرّب مفرداتك",
-            content: "درّب على قوائم كلمات بين لغات مختلفة وتعلّم معانيها بسهولة وفعالية. الأداة المثالية لتعلّم اللغات، تحسين المفردات، وتقوية الذاكرة.",
+            content: "تدرّب على الكلمات والعبارات بين اللغات وتعلّم معناها بسهولة بمساعدة الذكاء الاصطناعي. أداة ذكية لتعلّم اللغات، وتحسين المفردات، وتقوية الذاكرة.",
         },
         wordsQuiz: {
             title: "ActivityWiz Words – تعلّم ودرّب مفرداتك",
-            content: "درّب على قوائم كلمات بين لغات مختلفة وتعلّم معانيها بسهولة وفعالية. الأداة المثالية لتعلّم اللغات، تحسين المفردات، وتقوية الذاكرة.",
+            content: "تدرّب على الكلمات والعبارات بين اللغات وتعلّم معناها بسهولة بمساعدة الذكاء الاصطناعي. أداة ذكية لتعلّم اللغات، وتحسين المفردات، وتقوية الذاكرة.",
         },
         wordsFaq: {
             title: "ActivityWiz Words – الأسئلة الشائعة حول المفردات",
-            content: "درّب على قوائم كلمات بين لغات مختلفة وتعلّم معانيها بسهولة وفعالية. الأداة المثالية لتعلّم اللغات، تحسين المفردات، وتقوية الذاكرة.",
+            content: "تدرّب على الكلمات والعبارات بين اللغات وتعلّم معناها بسهولة بمساعدة الذكاء الاصطناعي. أداة ذكية لتعلّم اللغات، وتحسين المفردات، وتقوية الذاكرة.",
         },
     } as LanguageSection,
 
@@ -470,24 +470,24 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
 
         eventHome: {
-            title: "Actividades originales para eventos – ActivityWiz",
-            content: "¿Buscas una idea divertida y original para tu evento? Crea una actividad personalizada con solo un clic, según la edad, el número de participantes, el lugar y el equipo disponible. Todo lo que necesitas para organizar una gran actividad, fácil y rápido.",
+            title: "Actividades originales con ActivityWiz",
+            content: "Ideas para actividades y juegos para cualquier evento, grupo o reunión: crea una actividad personalizada con la ayuda de la inteligencia artificial. Según la edad, el número de participantes, el lugar y el equipo, de forma fácil y rápida.",
         },
         eventDetails: {
-            title: "Actividades originales para eventos – ActivityWiz",
-            content: "¿Buscas una idea divertida y original para tu evento? Crea una actividad personalizada con solo un clic, según la edad, el número de participantes, el lugar y el equipo disponible. Todo lo que necesitas para organizar una gran actividad, fácil y rápido.",
+            title: "Actividades originales con ActivityWiz",
+            content: "Ideas para actividades y juegos para cualquier evento, grupo o reunión: crea una actividad personalizada con la ayuda de la inteligencia artificial. Según la edad, el número de participantes, el lugar y el equipo, de forma fácil y rápida.",
         },
         eventBuild: {
-            title: "Actividades originales para eventos – ActivityWiz",
-            content: "¿Buscas una idea divertida y original para tu evento? Crea una actividad personalizada con solo un clic, según la edad, el número de participantes, el lugar y el equipo disponible. Todo lo que necesitas para organizar una gran actividad, fácil y rápido.",
+            title: "Actividades originales con ActivityWiz",
+            content: "Ideas para actividades y juegos para cualquier evento, grupo o reunión: crea una actividad personalizada con la ayuda de la inteligencia artificial. Según la edad, el número de participantes, el lugar y el equipo, de forma fácil y rápida.",
         },
         eventActivity: {
-            title: "Actividades originales para eventos – ActivityWiz",
-            content: "¿Buscas una idea divertida y original para tu evento? Crea una actividad personalizada con solo un clic, según la edad, el número de participantes, el lugar y el equipo disponible. Todo lo que necesitas para organizar una gran actividad, fácil y rápido.",
+            title: "Actividades originales con ActivityWiz",
+            content: "Ideas para actividades y juegos para cualquier evento, grupo o reunión: crea una actividad personalizada con la ayuda de la inteligencia artificial. Según la edad, el número de participantes, el lugar y el equipo, de forma fácil y rápida.",
         },
         eventFaq: {
-            title: "Actividades originales para eventos – ActivityWiz",
-            content: "¿Buscas una idea divertida y original para tu evento? Crea una actividad personalizada con solo un clic, según la edad, el número de participantes, el lugar y el equipo disponible. Todo lo que necesitas para organizar una gran actividad, fácil y rápido.",
+            title: "Actividades originales con ActivityWiz",
+            content: "Ideas para actividades y juegos para cualquier evento, grupo o reunión: crea una actividad personalizada con la ayuda de la inteligencia artificial. Según la edad, el número de participantes, el lugar y el equipo, de forma fácil y rápida.",
         },
 
 
@@ -529,19 +529,19 @@ export const helmetJson: Record<Lng, LanguageSection> = {
 
         wordsHome: {
             title: "ActivityWiz Words – Practica Vocabulario",
-            content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
+            content: "Practica palabras y frases entre idiomas y aprende su significado fácilmente con la ayuda de la inteligencia artificial. Una herramienta inteligente para el aprendizaje de idiomas, mejorar el vocabulario y fortalecer la memoria.",
         },
         wordsTopic: {
             title: "ActivityWiz Words – Practica Vocabulario",
-            content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
+            content: "Practica palabras y frases entre idiomas y aprende su significado fácilmente con la ayuda de la inteligencia artificial. Una herramienta inteligente para el aprendizaje de idiomas, mejorar el vocabulario y fortalecer la memoria.",
         },
         wordsQuiz: {
             title: "ActivityWiz Words – Practica Vocabulario",
-            content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
+            content: "Practica palabras y frases entre idiomas y aprende su significado fácilmente con la ayuda de la inteligencia artificial. Una herramienta inteligente para el aprendizaje de idiomas, mejorar el vocabulario y fortalecer la memoria.",
         },
         wordsFaq: {
             title: "ActivityWiz Words – Practica Vocabulario - Preguntas Frecuentes",
-            content: "Practica listas de palabras entre idiomas y aprende sus significados fácilmente. La herramienta perfecta para aprender idiomas, mejorar vocabulario y reforzar la memoria.",
+            content: "Practica palabras y frases entre idiomas y aprende su significado fácilmente con la ayuda de la inteligencia artificial. Una herramienta inteligente para el aprendizaje de idiomas, mejorar el vocabulario y fortalecer la memoria.",
         },
     } as LanguageSection,
 
