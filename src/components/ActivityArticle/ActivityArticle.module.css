@@ -34,7 +34,7 @@
 
 .padding {
     width: 100%;
-    height: calc(var(--ads-height) + 45px); /* articleOptions=45, */
+    height: calc(var(--ads-height) + 10px);
 }
 
 
