@@ -23,6 +23,7 @@ type LangPopupProps = {
 }
 
 const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
+
   const { changeLang, lang } = useLanguage()
   const { currentUser, setCurrentUser } = useAuthContext()
   const { clearAll } = useContentContext()
@@ -56,26 +57,19 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
   }
 
   const changeLanguage = async (newLang: string) => {
+
     setLoadingLang(newLang)
     setIsLoading(true)
 
     localStorage.setItem(StorageKey.SITE_LANG, newLang)
 
-    if (currentUser) {
-      const updatedUser = {
-        ...currentUser,
-        movement: {
-          movement: null,
-          grade: null,
-          gender: null,
-          amount: null,
-        },
-      }
-
+    if (currentUser) {  // Clean user data from DB
+      const updatedUser = { ...currentUser, movement: { movement: null, grade: null, gender: null, amount: null, }, }
       await fetchUpdateUser({ user: updatedUser })
       setCurrentUser(updatedUser)
-      clearAll()  // Clean all data from Session Storage, MUST BE AT THE END OF THE FUNCTION !!!
     }
+
+    clearAll()  // Cleans all session storage relevant keys and clean the Data element. MUST BE AT THE END OF THE FUNCTION !!!
 
     changeLang(newLang)
     closePopup(() => {
@@ -103,9 +97,8 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
             <button
               key={lng}
               onClick={() => changeLanguage(lng)}
-              className={`${styles.languageButton} ${
-                lang === lng ? styles.selected : ""
-              }`}
+              className={`${styles.languageButton} ${lang === lng ? styles.selected : ""
+                }`}
               disabled={lang === lng}
               lang={lng === "ar" ? "ar" : undefined}
             >

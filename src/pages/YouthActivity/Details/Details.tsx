@@ -96,24 +96,28 @@ function Details() {
                 obj={movement}
                 setObj={setMovement}
               />
+              <div style={{ height: "20px" }}></div>
               <SelectDetails
                 data={GradeOptions[lang]}
                 placeholder={t("youth.details.grade")}
                 obj={classLevel}
                 setObj={setClassLevel}
               />
+              <div style={{ height: "20px" }}></div>
               <SelectDetails
                 data={AmountOptions[lang]}
                 placeholder={t("youth.details.numberOfChildren")}
                 obj={numberOfChildren}
                 setObj={setNumberOfChildren}
               />
+              <div style={{ height: "20px" }}></div>
               <SelectDetails
                 data={GenderOptions[lang]}
                 placeholder={t("youth.details.gender")}
                 obj={gender}
                 setObj={setGender}
               />
+              <div style={{ height: "20px" }}></div>
               <div className={isRTL ? `${styles.submit_btn} ${styles.submit_btn_rtl}` : styles.submit_btn}>
                 <MainBtn
                   text={t("common.btnContinue")}

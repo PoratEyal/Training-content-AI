@@ -50,7 +50,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
     width: unset;
     padding-bottom: unset;
 }
@@ -83,7 +82,6 @@
 
     .input_area_gap {
         width: 70%;
-        gap: 17px;
         padding-bottom: 10px;
     }
 }

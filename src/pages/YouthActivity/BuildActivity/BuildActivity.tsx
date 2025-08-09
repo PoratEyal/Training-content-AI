@@ -175,7 +175,7 @@ function BuildActivity() {
                 setObj={setCategory}
                 data={CategoryOptions(data?.movement?.categories || [])}
               />
-
+              <div style={{ height: "20px" }}></div>
               <SubjectInput
                 placeholder={t("youth.BuildActivity.subject.label")}
                 setSubject={setSubject}
@@ -183,45 +183,51 @@ function BuildActivity() {
                 category={category as CategoryName}
                 setHasAlert={setHasAlert}
               />
-
+              <div style={{ height: "20px" }}></div>
               <SelectDetails
                 placeholder={t("youth.BuildActivity.place.label")}
                 obj={place}
                 setObj={setPlace}
                 data={PlaceOptions[lang]}
               />
-
+              <div style={{ height: "20px" }}></div>
               <SelectDetails
                 placeholder={t("youth.BuildActivity.time.label")}
                 obj={time}
                 setObj={setTime}
                 data={ActivityTimeOptions[lang]}
               />
+              <div style={{ height: "20px" }}></div>
 
               <MoreOptionsCollapse text={t("youth.BuildActivity.moreOptions.title")}>
+
+                <div style={{ height: "20px" }}></div>
                 <SelectDetails
                   placeholder={t("youth.BuildActivity.tools.label")}
                   obj={tools}
                   setObj={setTools}
                   data={ToolsOptions[lang]}
                 />
-
+                <div style={{ height: "20px" }}></div>
                 <SelectDetails
                   placeholder={t("youth.BuildActivity.contest.label")}
                   obj={contest}
                   setObj={setContest}
                   data={ContestOptions[lang]}
                 />
-
                 {lang === "he" && (
-                  <SelectDetails
-                    placeholder={t("youth.BuildActivity.religion.label")}
-                    obj={religion}
-                    setObj={setReligion}
-                    data={ReligionOptions}
-                  />
+                  <>
+                    <div style={{ height: 20 }}></div>
+                    <SelectDetails
+                      placeholder={t("youth.BuildActivity.religion.label")}
+                      obj={religion}
+                      setObj={setReligion}
+                      data={ReligionOptions}
+                    />
+                  </>
                 )}
 
+                <div style={{ height: "20px" }}></div>
                 <MoreDetailsInput
                   placeholder={t("youth.BuildActivity.moreDetails.label")}
                   text={info}
@@ -229,12 +235,9 @@ function BuildActivity() {
                 />
               </MoreOptionsCollapse>
 
+              <div style={{ height: "20px" }}></div>
               <div
-                className={
-                  isRTL
-                    ? `${styles.submit_btn} ${styles.submit_btn_rtl}`
-                    : styles.submit_btn
-                }
+                className={isRTL ? `${styles.submit_btn} ${styles.submit_btn_rtl}` : styles.submit_btn}
               >
                 <MainBtn
                   isDisabled={isDisabled}
