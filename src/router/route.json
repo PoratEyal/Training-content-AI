@@ -1,6 +1,11 @@
 {
   "statusHe": "/status",
   "adminHe": "/admin/msg",
+  
+  "privacyPolicyHe": "/he/privacy",
+  "privacyPolicyEn": "/en/privacy",
+  "privacyPolicyEs": "/es/privacy",
+  "privacyPolicyAr": "/ar/privacy",
 
   "youthHomePageHe": "/he/youth",
   "youthHomePageEn": "/en/youth",

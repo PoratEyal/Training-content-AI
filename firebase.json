@@ -367,6 +367,28 @@
           "source": "/ar/words/**",
           "destination": "/index.words.ar.html"
         },
+
+        {
+          "source": "/he/privacy",
+          "destination": "/index.privacy.he.html"
+        },
+        {
+          "source": "/en/privacy",
+          "destination": "/index.privacy.en.html"
+        },
+        {
+          "source": "/es/privacy",
+          "destination": "/index.privacy.es.html"
+        },
+        {
+          "source": "/ar/privacy",
+          "destination": "/index.privacy.ar.html"
+        },
+        {
+          "source": "/privacy",
+          "destination": "/index.privacy.en.html"
+        },
+
         {
           "source": "/he/**",
           "destination": "/index.youth.he.html"

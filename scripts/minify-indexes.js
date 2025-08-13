@@ -42,6 +42,11 @@ const files = [
   "index.words.faq.en.html",
   "index.words.faq.es.html",
   "index.words.faq.ar.html",
+  "index.privacy.he.html",
+  "index.privacy.en.html",
+  "index.privacy.es.html",
+  "index.privacy.ar.html",
+
 ];
 
 files.forEach((file) => {

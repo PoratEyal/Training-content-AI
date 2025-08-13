@@ -10,6 +10,7 @@ import "./App.css"
 import Providers from "./router/Providers"
 import LanguageRedirect from "./components/LanguageRedirect"
 import FallbackRedirect from "./components/FallbackRedirect"
+import PrivacyPolicy from "./pages/Common/Privacy/Privacy"
 
 // Youth Activities
 import YouthHomePage from "./pages/YouthActivity/HomePage/Home"
@@ -53,6 +54,9 @@ import WordsFAQ from "./pages/Words/FAQ/FAQ"
 import { supportedLangs as langs } from "./i18n/languages"
 
 const allRoutes = [
+  // Common
+  { key: "privacyPolicy", element: <PrivacyPolicy /> },
+
   // Youth
   { key: "youthHomePage", element: <YouthHomePage /> },
   { key: "youthDetails", element: <YouthDetails /> },
