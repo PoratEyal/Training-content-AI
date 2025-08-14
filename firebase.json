@@ -128,6 +128,38 @@
           "destination": "/index.youth.content.he.html"
         },
         {
+          "source": "/he/youth/content/friendship",
+          "destination": "/index.youth.content.friendship.he.html"
+        },
+        {
+          "source": "/he/youth/content/friendship/**",
+          "destination": "/index.youth.content.friendship.he.html"
+        },
+        {
+          "source": "/he/youth/content/games",
+          "destination": "/index.youth.content.games.he.html"
+        },
+        {
+          "source": "/he/youth/content/games/**",
+          "destination": "/index.youth.content.games.he.html"
+        },
+        {
+          "source": "/he/youth/content/holidays",
+          "destination": "/index.youth.content.holidays.he.html"
+        },
+        {
+          "source": "/he/youth/content/holidays/**",
+          "destination": "/index.youth.content.holidays.he.html"
+        },
+        {
+          "source": "/he/youth/content/intro",
+          "destination": "/index.youth.content.intro.he.html"
+        },
+        {
+          "source": "/he/youth/content/intro/**",
+          "destination": "/index.youth.content.intro.he.html"
+        },
+        {
           "source": "/he/youth/content/**",
           "destination": "/index.youth.content.he.html"
         },
