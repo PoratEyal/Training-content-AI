@@ -83,9 +83,26 @@ function PageLayout({
   const pageTitle = getTitle(id, lang, title);
   const pageDescription = getContent(id, lang, title);
 
+  const path = location.pathname;
+  const isYouthContent = /^\/(he|en|es|ar)\/youth\/content(?:\/|$)/.test(path);
+
+  //* Canonical and hreflang
+  const linksForHelmet = isYouthContent
+    ? [
+      { rel: "canonical", href: canonicalUrl }, // content only in hebrew
+      { rel: "alternate", href: alternateHe, hrefLang: "he" },
+    ]
+    : [
+      { rel: "canonical", href: canonicalUrl },
+      { rel: "alternate", href: alternateHe, hrefLang: "he" },
+      { rel: "alternate", href: alternateEn, hrefLang: "en" },
+      { rel: "alternate", href: alternateEs, hrefLang: "es" },
+      { rel: "alternate", href: alternateAr, hrefLang: "ar" },
+    ];
+
   return (
     <>
-      <Helmet prioritizeSeoTags>
+      <Helmet prioritizeSeoTags link={linksForHelmet}>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
         <meta name="language" content={lang} />
@@ -101,14 +118,6 @@ function PageLayout({
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={`${WEBSITE_URL}/logo512.png`} />
-
-        {/* Canonical and hreflang */}
-        <link rel="canonical" href={canonicalUrl} />
-        <link rel="alternate" href={alternateHe} hrefLang="he" />
-        <link rel="alternate" href={alternateEn} hrefLang="en" />
-        <link rel="alternate" href={alternateEs} hrefLang="es" />
-        <link rel="alternate" href={alternateAr} hrefLang="ar" />
-        <link rel="alternate" href={alternateEn} hrefLang="x-default" />
 
         {/* Robots */}
         <meta
@@ -150,7 +159,6 @@ function PageLayout({
         {hasAds !== "" ? (() => {
 
           // My Banner (Share Practice Product) in Practice Product
-          const path = location.pathname;
           if (path.includes("/practice/quiz")) {
 
             const topic = localStorage.getItem(StorageKey.PRACTICE_TOPIC); // if exist
