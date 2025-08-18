@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import styles from "./AboutUsCollapse.module.css";
 import Collapse from "../core/Collapse/Collapse";
 import useToggle from "../../hooks/useToggle";
@@ -14,6 +14,15 @@ const AboutUsCollapse: React.FC<AboutUsCollapseProps> = ({ children }) => {
     const [isOpen, toggle, close] = useToggle(false);
     const modalRef = useRef<any>(null);
     useClickOutside(modalRef, () => close());
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            toggle()
+        }, 500)
+
+        return () => clearTimeout(timer)
+    }, [])
+
 
     const handleCollapse = () => {
         toggle();
