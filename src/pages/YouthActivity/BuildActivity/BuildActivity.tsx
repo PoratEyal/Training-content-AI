@@ -123,7 +123,8 @@ function BuildActivity() {
 
     setLoading(true);
     const { movement, ...detailsData } = data;
-    logEvent(`_Subject: ${subject}`, currentUser?.email);
+    logEvent(`subject: ${String(subject)} | religion: ${String(religion)} | contest: ${String(contest)} | tools: ${String(tools)} | info: ${String(info)}`, currentUser?.email
+    );
     try {
       const response = await fetchGetActivity({ category: category as CategoryName, movement: movement.name, ...detailsData, subject, time, place, religion, contest, tools, info, lang, });
       if (response.result === "success" && response.activity) {
@@ -136,7 +137,7 @@ function BuildActivity() {
     } catch (error) {
       notifyAlert(t("common.errorMsg"));
       const errorMessage = error instanceof Error && typeof error.message === "string" ? error.message : "Unknown error";
-      const logMessage = `[BuildActivity.catch]: Error: ${errorMessage} | subject: ${String(subject)} | category: ${String(category)} | place: ${String(place)} | time: ${String(time)} | religion: ${String(religion)} | contest: ${String(contest)} | tools: ${String(tools)} | info: ${String(info)} | lang: ${String(lang)}`;
+      const logMessage = `[BuildActivity.catch]: Error: ${errorMessage} | subject: ${String(subject)} | category: ${String(category)} | place: ${String(place)} | time: ${String(time)} | religion: ${String(religion)} | contest: ${String(contest)} | tools: ${String(tools)} | info: ${String(info)}`;
       logEvent(logMessage, currentUser?.email);
     }
     finally {
