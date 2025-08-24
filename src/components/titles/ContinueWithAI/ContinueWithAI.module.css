@@ -86,10 +86,10 @@
 /* ------------ RTL ------------ */
 .word_1 {
   position: absolute;
-  font-size: 42px;
+  font-size: 38px;
   top: -10px;
   z-index: 2;
-  left: 54%;
+  left: 55%;
   transform: translateX(-50%);
 }
 
@@ -141,7 +141,7 @@
 }
 
 .word_3 {
-  font-size: 30px;
+  font-size: 32px;
   position: absolute;
   left: 65px;
   top: 53px;
@@ -175,7 +175,7 @@
   top: 0;
   left: 4px;
   color: var(--text-color);
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 600;
   letter-spacing: 2px;
   -webkit-tap-highlight-color: transparent;
@@ -189,7 +189,7 @@
 /* ------------ LTR ------------ */
 .word_1_ltr {
   position: absolute;
-  font-size: 42px;
+  font-size: 38px;
   top: -5px;
   z-index: 2;
   left: 50%;
@@ -250,7 +250,7 @@
 
 .word_3_ltr {
   position: absolute;
-  font-size: 32px;
+  font-size: 34px;
   left: 138px;
   top: 59px;
 }
@@ -273,7 +273,7 @@
 
 .word_4_ltr {
   position: absolute;
-  left: 225px;
+  left: 230px;
   top: 61px;
 }
 
@@ -283,7 +283,7 @@
   top: 0;
   left: -5px;
   color: var(--text-color);
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 600;
   letter-spacing: 2px;
   -webkit-tap-highlight-color: transparent;
