@@ -94,8 +94,12 @@ function Topic() {
 
   // Step 1: Handle submit
   const handleSubmit = async (e: React.FormEvent) => {
+
     e.preventDefault();
     setLoading(true);
+    const auth = getAuth();
+    const user = auth.currentUser;
+    logEvent(`Practice - Topic: ${String(topic)}`, user?.email)
     try {
       const raw = await generatePracticeQuestions(topic, lang, 10);
       const cleanedJsonStr = cleanJson(raw);
@@ -114,8 +118,6 @@ function Topic() {
 
     } catch (err) {
       setLoading(false);
-      const auth = getAuth();
-      const user = auth.currentUser;
       notifyAlert(t("practice.topic.error"));
       logEvent(`[Practice.Topic]: failed, topic: ${topic}, error: ${err instanceof Error ? err.message : err}`, user?.email);
     }
