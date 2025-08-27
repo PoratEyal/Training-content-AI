@@ -60,7 +60,8 @@ const jsonToMarkdownEvent = (raw: string, t: (key: string) => string): string =>
 
     return result.trim();
   } catch (err) {
-    return t("error.invalidEventFormat") || "Invalid event format.";
+    logEvent(`[eventActivity]: "The result was too long and trancated by geminiAPI.ts"`, "");
+    return t("common.errorMsg") || "Invalid event format.";
   }
 };
 

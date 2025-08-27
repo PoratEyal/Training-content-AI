@@ -176,7 +176,6 @@
       "topicPlaceholder": "Ingresa un tema",
       "examples": "Ejemplos: Quiz de música, química para el examen de bachillerato, trivia general, Japón en el siglo XVIII...",
       "btnCreate": "¡Vamos!",
-      "error": "Se produjo un inconveniente temporal al generar las preguntas. Por favor, inténtalo de nuevo.",
       "topicError": "Lo siento, no puedo generar preguntas sobre el tema que seleccionaste. Por favor, intenta con otro tema."
     },
     "quiz": {

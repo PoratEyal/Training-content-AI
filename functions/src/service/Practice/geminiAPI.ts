@@ -2,11 +2,27 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Lang } from "../../model/types/common";
 import * as functions from "firebase-functions";
 
-// Production: geminiConfig?.apikey
-// Dev Emulator: process.env.API_KEY
 const geminiConfig = functions.config()?.gemini;
-const apiKey = geminiConfig?.apikey || process.env.API_KEY || "";
+const apiKey = geminiConfig?.apikey || process.env.API_KEY || "";   // Dev Emulator: process.env.API_KEY
 const genAI = new GoogleGenerativeAI(apiKey);
+
+// Allow only specific models for security reasons
+const ALLOWED_MODELS = new Set([
+  "gemini-2.0-flash"
+]);
+
+function assertAllowedModel(model: string) {
+  if (!ALLOWED_MODELS.has(model)) {
+    throw new Error(`Model "${model}" is not allowed`);
+  }
+}
+
+// Extra guard – block any image-capable models by name pattern
+function assertNotImageModel(model: string) {
+  if (/imagen|image-preview|image|photo|vision/i.test(model)) {
+    throw new Error("Image generation models are blocked");
+  }
+}
 
 const buildPrompt = (topic: string, count: number, lang: Lang): string => {
   const langDisplayName = {
@@ -42,7 +58,11 @@ Guidelines:
 };
 
 export async function generatePracticeAI(topic: string, count: number = 10, lang: Lang): Promise<string> {
-  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+  const requestedModel = "gemini-2.0-flash";
+  assertAllowedModel(requestedModel);
+  assertNotImageModel(requestedModel);
+  const generationConfig = { maxOutputTokens: 2000, };
+  const model = genAI.getGenerativeModel({ model: requestedModel, generationConfig, });
   const prompt = buildPrompt(topic, count, lang);
   const result = await model.generateContent(prompt);
   return result.response.text();

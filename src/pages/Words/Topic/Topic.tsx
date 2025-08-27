@@ -115,17 +115,27 @@ function Topic() {
 
   // Cleans up code block formatting from Gemini JSON response before parsing
   function cleanJSONResponse(text: string): string {
-    return text
-      .replace(/^```json\s*/, "")
-      .replace(/^```\s*/, "")
-      .replace(/```$/, "")
-      .trim();
+    try {
+      return text
+        .replace(/^```json\s*/, "")
+        .replace(/^```\s*/, "")
+        .replace(/```$/, "")
+        .trim();
+    } catch (err) {
+      return "Error cleaning JSON response: " + err;
+    }
   }
+
 
   // Replace any distractor that matches the correct translation with a combined distractor from the other two
   function removeHebrewNiqqud(str: string): string {
-    return str.normalize("NFD").replace(/[\u0591-\u05C7]/g, "");
+    try {
+      return str.normalize("NFD").replace(/[\u0591-\u05C7]/g, "");
+    } catch (err) {
+      return "Error removing Hebrew niqqud: " + err;
+    }
   }
+
 
   function fixDistractors(
     words: {
@@ -172,8 +182,6 @@ function Topic() {
   }
 
 
-
-  // Go Go Go
   const handleSubmit = async (e) => {
 
     e.preventDefault();

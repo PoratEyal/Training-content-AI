@@ -118,7 +118,7 @@ function Topic() {
 
     } catch (err) {
       setLoading(false);
-      notifyAlert(t("practice.topic.error"));
+      notifyAlert(t("common.errorMsg"));
       logEvent(`[Practice.Topic]: failed, topic: ${topic}, error: ${err instanceof Error ? err.message : err}`, user?.email);
     }
   };

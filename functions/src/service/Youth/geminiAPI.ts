@@ -1,37 +1,21 @@
 import {
-  getMoreInfo as getMoreInfo_he,
-  getPromptOptions as getPromptOptions_he,
-  getSafty as getSafty_he,
-  getSection as getSection_he,
-  getTools as getTools_he,
-  promptPerGrade as promptPerGrade_he,
+  getMoreInfo as getMoreInfo_he, getPromptOptions as getPromptOptions_he, getSafty as getSafty_he,
+  getSection as getSection_he, getTools as getTools_he, promptPerGrade as promptPerGrade_he,
 } from "../../utils/he/prompt";
 
 import {
-  getMoreInfo as getMoreInfo_en,
-  getPromptOptions as getPromptOptions_en,
-  getSafty as getSafty_en,
-  getSection as getSection_en,
-  getTools as getTools_en,
-  promptPerGrade as promptPerGrade_en,
+  getMoreInfo as getMoreInfo_en, getPromptOptions as getPromptOptions_en, getSafty as getSafty_en,
+  getSection as getSection_en, getTools as getTools_en, promptPerGrade as promptPerGrade_en,
 } from "../../utils/en/prompt";
 
 import {
-  getMoreInfo as getMoreInfo_es,
-  getPromptOptions as getPromptOptions_es,
-  getSafty as getSafty_es,
-  getSection as getSection_es,
-  getTools as getTools_es,
-  promptPerGrade as promptPerGrade_es,
+  getMoreInfo as getMoreInfo_es, getPromptOptions as getPromptOptions_es, getSafty as getSafty_es,
+  getSection as getSection_es, getTools as getTools_es, promptPerGrade as promptPerGrade_es,
 } from "../../utils/es/prompt";
 
 import {
-  getMoreInfo as getMoreInfo_ar,
-  getPromptOptions as getPromptOptions_ar,
-  getSafty as getSafty_ar,
-  getSection as getSection_ar,
-  getTools as getTools_ar,
-  promptPerGrade as promptPerGrade_ar,
+  getMoreInfo as getMoreInfo_ar, getPromptOptions as getPromptOptions_ar, getSafty as getSafty_ar,
+  getSection as getSection_ar, getTools as getTools_ar, promptPerGrade as promptPerGrade_ar,
 } from "../../utils/ar/prompt";
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
@@ -46,8 +30,30 @@ const geminiConfig = functions.config()?.gemini;
 const apiKey = geminiConfig?.apikey || process.env.API_KEY || "";
 const genAI = new GoogleGenerativeAI(apiKey);
 
+// Allow only specific models for security reasons
+const ALLOWED_MODELS = new Set([
+  "gemini-2.0-flash"
+]);
+
+function assertAllowedModel(model: string) {
+  if (!ALLOWED_MODELS.has(model)) {
+    throw new Error(`Model "${model}" is not allowed`);
+  }
+}
+
+// Extra guard – block any image-capable models by name pattern
+function assertNotImageModel(model: string) {
+  if (/imagen|image-preview|image|photo|vision/i.test(model)) {
+    throw new Error("Image generation models are blocked");
+  }
+}
+
 async function generateContent(prompt: string): Promise<string> {
-  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+  const requestedModel = "gemini-2.0-flash";
+  assertAllowedModel(requestedModel);
+  assertNotImageModel(requestedModel);
+  const generationConfig = { maxOutputTokens: 2000, };
+  const model = genAI.getGenerativeModel({ model: requestedModel, generationConfig, });
   const result = await model.generateContent(prompt);
   const response = result.response;
   const text = response.text();

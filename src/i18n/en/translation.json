@@ -176,7 +176,6 @@
       "topicPlaceholder": "Enter a topic",
       "examples": "For example: Music quiz, chemistry for the matriculation exam, general trivia, Japan in the 18th century...",
       "btnCreate": "Let’s go",
-      "error": "A temporary issue occurred while generating the questions. Please try again.",
       "topicError": "Sorry, I can't generate questions for the topic you selected. Please try a different topic."
     },
     "quiz": {
