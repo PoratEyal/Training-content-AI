@@ -1,6 +1,6 @@
 // Backup DB table
 // cd C:\Dev\ActivityWiz\functions\manualScripts>
-// run: npx ts-node <script-name>.ts
+// run: npx ts-node backupActivity.ts
 
 import * as admin from "firebase-admin";
 import * as fs from "fs";

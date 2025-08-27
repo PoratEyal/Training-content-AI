@@ -1,6 +1,7 @@
 // Backup DB table
 // cd C:\Dev\ActivityWiz\functions\manualScripts>
-// run: npx ts-node backupUsers.ts
+// run: npx ts-node backupLog.ts
+
 import * as admin from "firebase-admin";
 import * as fs from "fs";
 import * as path from "path";
@@ -14,21 +15,20 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-async function backupCollection(collectionName: string) {
+async function backupActivity() {
   try {
-    const snapshot = await db.collection(collectionName).get();
+    const snapshot = await db.collection("logs").get();
     const data: Record<string, any> = {};
 
     snapshot.forEach((doc) => {
       data[doc.id] = doc.data();
     });
 
-    const backupPath = path.join(__dirname, `backupUsers.json`);
+    const backupPath = path.join(__dirname, "backupLog.json");
     fs.writeFileSync(backupPath, JSON.stringify(data, null, 2));
   } catch (error) {
-    console.error(`❌ Error backing up ${collectionName}:`, error);
+    console.error("❌ Error backing up activity:", error);
   }
 }
 
-// הפעלת גיבוי עבור users
-backupCollection("users");
+backupActivity();
