@@ -24,7 +24,7 @@ import YouthContentActivity from "./pages/YouthActivity/ContentActivity/ContentA
 import YouthMyActivities from "./pages/YouthActivity/MyActivities/MyActivities"
 import YouthMyActivityContent from "./pages/YouthActivity/MyActivityContent/MyActivityContent"
 import YouthFAQ from "./pages/YouthActivity/FAQ/FAQ"
-import YouthAdminPage from "./pages/YouthActivity/AdminPage/AdminPage"
+import YouthAddActivity from "./pages/YouthActivity/AdminPage/addActivity"
 
 // Event Activities
 import EventHomePage from "./pages/Event/HomePage/Home"
@@ -69,6 +69,7 @@ const allRoutes = [
   { key: "youthMyActivities", element: <YouthMyActivities /> },
   { key: "youthMyActivityContent", element: <YouthMyActivityContent /> },
   { key: "youthFAQ", element: <YouthFAQ /> },
+  { key: "YouthAddActivity", element: <YouthAddActivity /> },
 
   // Event
   { key: "eventHomePage", element: <EventHomePage /> },
@@ -118,7 +119,7 @@ function App() {
           )}
 
           {/* Admin route – Heb only */}
-          <Route path={route.adminHe} element={<YouthAdminPage />} />
+          <Route path={route.adminAddActivity} element={<YouthAddActivity />} />
 
           {/* Fallback for undefined routes */}
           <Route path="*" element={<FallbackRedirect />} />

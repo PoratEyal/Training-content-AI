@@ -1,32 +1,15 @@
 //
-// This is an Admin page with two functionalities:
-// 1️⃣ Allows adding a static activity by providing an ID and text, then submitting it to the backend
-// 2️⃣ Allows sending a message to the backend using a password field
-// The page uses a noindex meta tag to prevent search engine indexing
+// This is an Admin page 
+// Add a static activity by providing an ID and text, then submitting it to the backend
 //
 import React, { useState } from "react";
-import { fetchAddStaticActivity, fetchSendMsg } from "../../../utils/fetch";
+import { fetchAddStaticActivity } from "../../../utils/fetch";
 import { Helmet } from "react-helmet-async";
 
 const Admin: React.FC = () => {
-    const [pass, setPass] = useState<string>("");
-    const [result, setResult] = useState<string>("");
     const [activityText, setActivityText] = useState<string>("");
     const [activityId, setActivityId] = useState<string>("");
     const [addActivityResult, setAddActivityResult] = useState<string>("");
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!pass || pass !== "") {
-            setResult("loading...");
-            const response = await fetchSendMsg(pass);
-            if (response.result === "success") {
-                setResult("success");
-            } else {
-                setResult("error");
-            }
-        }
-    };
 
     const handleAddActivity = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -94,15 +77,10 @@ const Admin: React.FC = () => {
                     <button type="submit">Add Activity</button>
                 </form>
                 <p>{addActivityResult}</p>
-
-                <form action="submit" onSubmit={handleSubmit}>
-                    <button type="submit">send msg</button>
-                    <input type="password" value={pass} onChange={(e) => setPass(e.target.value)} />
-                </form>
-                <p>{result}</p>
             </section>
         </>
     );
 };
 
 export default Admin;
+
