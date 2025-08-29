@@ -74,7 +74,7 @@ const Admin: React.FC = () => {
                             display: "block",
                         }}
                     />
-                    <button type="submit">Add Activity</button>
+                    <button type="submit">Update Activity</button>
                 </form>
                 <p>{addActivityResult}</p>
             </section>

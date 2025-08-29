@@ -69,7 +69,7 @@ const allRoutes = [
   { key: "youthMyActivities", element: <YouthMyActivities /> },
   { key: "youthMyActivityContent", element: <YouthMyActivityContent /> },
   { key: "youthFAQ", element: <YouthFAQ /> },
-  { key: "YouthAddActivity", element: <YouthAddActivity /> },
+  { key: "youthAddActivity", element: <YouthAddActivity /> },
 
   // Event
   { key: "eventHomePage", element: <EventHomePage /> },
@@ -117,9 +117,6 @@ function App() {
               return <Route key={`${key}${lang}`} path={basePath} element={element} />
             })
           )}
-
-          {/* Admin route – Heb only */}
-          <Route path={route.adminAddActivity} element={<YouthAddActivity />} />
 
           {/* Fallback for undefined routes */}
           <Route path="*" element={<FallbackRedirect />} />
