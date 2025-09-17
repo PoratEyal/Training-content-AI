@@ -106,14 +106,14 @@
   "event": {
     "Navbar": {
       "home": "מסך הבית",
-      "build": "יצירת פעילות"
+      "build": "יצירת אירוע"
     },
     "home": {
       "advanced": "מתקדמים",
       "forActions": "להפעלות",
       "withPrefix": "עם",
       "ai": "AI",
-      "startAction": "יצירת פעילות"
+      "startAction": "יצירת אירוע"
     },
     "Details": {
       "title": "ספרו לנו על האירוע שלכם",
