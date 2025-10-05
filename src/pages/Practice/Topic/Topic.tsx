@@ -53,11 +53,17 @@ function Topic() {
   // Step 2: Clean raw Gemini JSON output
   // Cleans up code block formatting from Gemini JSON response before parsing
   function cleanJson(text: string): string {
-    return text
-      .replace(/^```json\s*/, "")
-      .replace(/^```\s*/, "")
-      .replace(/```$/, "")
+    let cleaned = text
+      .replace(/```json|```/g, "")
+      .replace(/[\u201C\u201D]/g, '"')
+      .replace(/,[ \t\r\n]*(?=[}\]])/g, "")
       .trim();
+
+    // Extract JSON array only if extra text surrounds it
+    const match = cleaned.match(/\[.*\]/s);
+    if (match) cleaned = match[0];
+
+    return cleaned;
   }
 
   // Step 3: Remove duplicates and normalize structure

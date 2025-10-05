@@ -1,7 +1,7 @@
 // Delete logs by userID
 // Run:
 // cd .\functions\manualScripts\
-// npx ts-node deleteLogsByUser.ts
+// run: npx ts-node deleteLogsByUser.ts
 
 import * as admin from "firebase-admin";
 

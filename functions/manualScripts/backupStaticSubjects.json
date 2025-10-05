@@ -120,8 +120,8 @@
       "/staticActivities/ccScxMjKKmcYImAXgCNi",
       "/staticActivities/Y5vlbYfnEnJTIcZjnV9m"
     ],
-    "orderId": 160,
-    "icon": "TbConfetti"
+    "icon": "TbConfetti",
+    "orderId": 5
   },
   "e1n1MQMIjWphKEYXirFj": {
     "icon": "FaStarOfDavid",
@@ -168,7 +168,6 @@
     "metaTitle": "חגים ומועדים",
     "name": "holidays",
     "metaDescription": "פעולות ומשחקים לתנועות נוער, רעיונות לפעילויות יצירתיות, חגי ישראל, חגים, מועדים",
-    "orderId": 90,
     "activities": [
       "/staticActivities/74XVTeqJGPNYc0FTc9VO",
       "/staticActivities/cwUv39l89MAZxbkTxHM6",
@@ -190,7 +189,8 @@
       "/staticActivities/Wg2nIahYLtPZBPzUvG31",
       "/staticActivities/TrG9a37RNIagyouZlxlv",
       "/staticActivities/ZDrKB63vFHMpuqIrMmMz"
-    ]
+    ],
+    "orderId": 8
   },
   "r0EQUxfS5MSOXUXcXaVy": {
     "icon": "BiSolidCameraMovie",

@@ -1,6 +1,6 @@
 // Backup DB table
-// cd C:\Dev\ActivityWiz\functions\manualScripts>
-// run: npx ts-node <script-name>.ts
+// cd .\functions\manualScripts\
+// run: npx ts-node backupStaticSubjects.ts
 import * as admin from "firebase-admin";
 import * as fs from "fs";
 import * as path from "path";
