@@ -70,7 +70,7 @@ JSON format:
     {
       "title": "string (stage name)",
       "description": "string (what happens in this stage)",
-      "duration": "optional string like '10 minutes'"
+      "duration": "optional string in ${langDisplayName} like '10 דקות' or '45 minutes'",
     }
   ],
   "tips": ["string", "string", "..."]
@@ -84,7 +84,8 @@ Rules:
 - Provide a detailed explanation for each activity in the "flow" section. Each description should include: what the facilitator does, what the participants do, and what the goal of the stage is. Avoid vague or general descriptions.
 - If a stage includes any discussion questions, quiz questions, or example prompts, include at least 2 specific examples (clearly written, not placeholders).
 - Include at least 4 distinct stages in the "flow" section.
-- If the event duration is longer than 2 hours, include at least 7 different stages in the flow.
+- Do not include a concluding recap or discussion stage
+- If the event includes a trivia or quiz stage, add this link at the end of that stage’s description: “https://activitywiz.com/practice”
 `.trim();
 };
 
