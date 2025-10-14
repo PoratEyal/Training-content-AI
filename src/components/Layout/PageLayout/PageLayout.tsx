@@ -56,6 +56,7 @@ function PageLayout({
   const { currentUser } = useAuthContext();
   const location = useLocation();
   const share = useShareTextOrLink()
+  const isLoggedIn = !!currentUser?.email;
 
   // Force canonical to /[lang]/youth for language root pages (/en, /he, etc.) to avoid duplication
   // in the future if we will have a general homepage we will be able to remove it and just leave:
@@ -184,7 +185,7 @@ function PageLayout({
           }
 
           // Event Product Banner in Youth Product
-          else if (path.includes("/youth/activity")) {
+          else if (path.includes("/youth/activity") && !isLoggedIn) {
 
             const handleBannerClick = () => {
               logEvent("Youth/Activity - Event Banner Clicked", currentUser?.email);
