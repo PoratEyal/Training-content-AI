@@ -119,7 +119,7 @@ export const Movements = {
         } as Movement,
         hadasha: {
             name: "hadasha",
-            title: "התנועה החדשה",
+            title: "הנוער השומר",
             categories: [
                 {
                     name: "content",
