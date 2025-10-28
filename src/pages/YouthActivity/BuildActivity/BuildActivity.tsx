@@ -123,7 +123,7 @@ function BuildActivity() {
 
     setLoading(true);
     const { movement, ...detailsData } = data;
-    logEvent(`Youth - subject: ${String(subject)} | religion: ${String(religion)} | contest: ${String(contest)} | tools: ${String(tools)} | info: ${String(info)}`, currentUser?.email
+    logEvent(`Youth - subject: ${String(subject)} | info: ${String(info)}`, currentUser?.email
     );
     try {
       const response = await fetchGetActivity({ category: category as CategoryName, movement: movement.name, ...detailsData, subject, time, place, religion, contest, tools, info, lang, });

@@ -19,7 +19,7 @@ const ArtOptGame: React.FC<ArtOptGameProps> = ({ activity }) => {
     const product = useProduct()
 
     const handleClick = () => {
-        logEvent("Game Menu Button - Practice Clicked", currentUser?.email);
+        //logEvent("Game Menu Button - Practice Clicked", currentUser?.email);
 
         if (product === ProductType.Youth) {
             localStorage.setItem(StorageKey.PRACTICE_TOPIC, activity.subject);

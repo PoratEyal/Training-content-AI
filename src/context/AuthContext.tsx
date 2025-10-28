@@ -101,7 +101,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                     if (cookieLimit !== GUEST_BLOCK_MustLogin)
                         setLimitCookie(GUEST_BLOCK_MustLogin);
 
-                    logEvent("Login: ", resultUser?.email);
+                    //logEvent("Login: ", resultUser?.email);
 
                     //if (auth.currentUser)
                     //    fetchUpdateLastLogin()
