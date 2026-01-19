@@ -8,7 +8,7 @@ const genAI = new GoogleGenerativeAI(apiKey);
 
 // Allow only specific models for security reasons
 const ALLOWED_MODELS = new Set([
-  "gemini-2.0-flash"
+  "gemini-2.5-flash-lite"
 ]);
 
 function assertAllowedModel(model: string) {
@@ -58,7 +58,7 @@ Guidelines:
 };
 
 export async function generatePracticeAI(topic: string, count: number = 10, lang: Lang): Promise<string> {
-  const requestedModel = "gemini-2.0-flash";
+  const requestedModel = "gemini-2.5-flash-lite";
   assertAllowedModel(requestedModel);
   assertNotImageModel(requestedModel);
   const generationConfig = { maxOutputTokens: 2000, };

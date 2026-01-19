@@ -8,7 +8,7 @@ const genAI = new GoogleGenerativeAI(apiKey);
 
 // Allow only specific models for security reasons
 const ALLOWED_MODELS = new Set([
-  "gemini-2.0-flash"
+  "gemini-2.5-flash-lite"
 ]);
 
 function assertAllowedModel(model: string) {
@@ -69,7 +69,7 @@ Guidelines:
 
 // Create the quiz with the provided parameters
 export async function generateWordsAI(topic: string | null, pLearningLang: Lang, pUserLang: Lang, count: number = 10): Promise<string> {
-  const requestedModel = "gemini-2.0-flash";
+  const requestedModel = "gemini-2.5-flash-lite";
   assertAllowedModel(requestedModel);
   assertNotImageModel(requestedModel);
   const generationConfig = { maxOutputTokens: 2000, };
