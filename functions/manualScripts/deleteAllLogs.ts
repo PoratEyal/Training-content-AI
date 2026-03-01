@@ -21,14 +21,25 @@ async function deleteAllLogs() {
   }
 
   console.log(`🧹 Deleting ${querySnapshot.size} log(s)...`);
-  const batch = db.batch();
+  let count = 0;
+  let batch = db.batch();
 
-  querySnapshot.forEach((doc) => {
+  for (const doc of querySnapshot.docs) {
     batch.delete(doc.ref);
-  });
+    count++;
 
-  await batch.commit();
-  console.log("✅ All logs deleted.");
+    if (count % 500 === 0) {
+      await batch.commit();
+      batch = db.batch();
+      console.log(`🧹 Deleted ${count} logs...`);
+    }
+  }
+
+  if (count % 500 !== 0) {
+    await batch.commit();
+  }
+
+  console.log(`✅ All ${count} logs deleted.`);
 }
 
 deleteAllLogs();
