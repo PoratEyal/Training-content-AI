@@ -165,7 +165,7 @@ function PageLayout({
             const topic = localStorage.getItem(StorageKey.PRACTICE_TOPIC); // if exist
 
             const handleBannerClick = () => {
-              logEvent("Practice/Quiz - Practice Shared", currentUser?.email);
+              //logEvent("Practice/Quiz - Practice Shared", currentUser?.email);
               const encodedTopic = encodeURIComponent(topic);
               const shareTitle = t("common.practiceAppName")
               const shareUrl = `https://activitywiz.com/${lang}/practice?topic=${encodedTopic}`;
