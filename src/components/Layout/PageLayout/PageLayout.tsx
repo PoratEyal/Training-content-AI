@@ -188,7 +188,7 @@ function PageLayout({
           else if (path.includes("/youth/activity") && !isLoggedIn) {
 
             const handleBannerClick = () => {
-              logEvent("Youth/Activity - Event Banner Clicked", currentUser?.email);
+              //logEvent("Youth/Activity - Event Banner Clicked", currentUser?.email);
               window.open(`https://activitywiz.com/${lang}/event`, "_blank");
             };
 
