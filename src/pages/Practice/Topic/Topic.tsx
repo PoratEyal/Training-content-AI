@@ -60,7 +60,7 @@ function Topic() {
       .trim();
 
     // Extract JSON array only if extra text surrounds it
-    const match = cleaned.match(/\[.*\]/s);
+    const match = cleaned.match(/\[[\s\S]*\]/);
     if (match) cleaned = match[0];
 
     return cleaned;
@@ -105,7 +105,7 @@ function Topic() {
     setLoading(true);
     const auth = getAuth();
     const user = auth.currentUser;
-    logEvent(`Practice - Topic: ${String(topic)}`, user?.email)
+    //logEvent(`Practice - Topic: ${String(topic)}`, user?.email)
     try {
       const raw = await generatePracticeQuestions(topic, lang, 10);
       const cleanedJsonStr = cleanJson(raw);

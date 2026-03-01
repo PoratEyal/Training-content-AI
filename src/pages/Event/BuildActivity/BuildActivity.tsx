@@ -90,7 +90,7 @@ function BuildActivity() {
   const submitHandler = async () => {
 
     setLoading(true)
-    logEvent(`Event - Name: ${String(event)} | moreDetails: ${String(moreDetails)} | duration: ${String(duration)} | age: ${String(age)} | amount: ${String(amount)} | gender: ${String(gender)} | place: ${String(place)} | materials: ${String(materials)}}`, currentUser?.email)
+    //logEvent(`Event - Name: ${String(event)} | moreDetails: ${String(moreDetails)} | duration: ${String(duration)} | age: ${String(age)} | amount: ${String(amount)} | gender: ${String(gender)} | place: ${String(place)} | materials: ${String(materials)}}`, currentUser?.email)
     try {
       const result = await generateEventActivity(event, moreDetails, duration, age, amount, gender, place, materials, lang)
       if (result) {
