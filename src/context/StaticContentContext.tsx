@@ -42,7 +42,10 @@ export const StaticContentProvider = ({ children }: { children: React.ReactNode 
                 logEvent(`[StaticContentContext.else]`, currentUser?.email);
             }
         } catch (error: any) {
-            const message = error?.message;
+            let message = error?.message || "internal";
+            if (error?.result === "error" && error?.message) {
+                message = error.message;
+            }
             logEvent(`[StaticContentContext.catch]: ${message}`, currentUser?.email);
         } finally {
             setIsLoading(false);
