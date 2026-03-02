@@ -10,7 +10,8 @@
     "loadingHead": "Estamos trabajando en ello",
     "loadingText": "Atención: Este contenido es generado por IA, está en aprendizaje continuo y puede contener errores.",
     "FAQtitle": "Preguntas frecuentes",
-    "errorMsg": "La acción no se completó. Por favor, inténtalo de nuevo."
+    "errorMsg": "La acción no se completó. Por favor, inténtalo de nuevo.",
+    "errorMsgHighDemand": "El sistema está saturado en este momento. Por favor, intente de nuevo."
   },
   "aboutUs": {
     "title": "Acerca de",

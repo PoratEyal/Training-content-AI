@@ -130,16 +130,17 @@ function BuildActivity() {
         updateMainActivity({ ...response.activity });
         navigate(youthActivityAIPath);
       } else {
-        notifyAlert(t("common.errorMsg"));
-        logEvent(`[BuildActivity.else]: serverMessage: ${String(response.message)}`, currentUser?.email);
+        const is503 = typeof response.message === "string" && (response.message.includes("503") || response.message.toLowerCase().includes("service unavailable") || response.message.toLowerCase().includes("high demand"));
+        notifyAlert(t(is503 ? "common.errorMsgHighDemand" : "common.errorMsg"));
+        logEvent(`[BuildActivity.else]: serverMessage: ${String(response.message)}`, currentUser?.email); // after seeing it works we can remove the log
       }
     } catch (error) {
-      notifyAlert(t("common.errorMsg"));
       const errorMessage = error instanceof Error && typeof error.message === "string" ? error.message : "Unknown error";
+      const is503 = errorMessage.includes("503") || errorMessage.toLowerCase().includes("service unavailable") || errorMessage.toLowerCase().includes("high demand");
+      notifyAlert(t(is503 ? "common.errorMsgHighDemand" : "common.errorMsg"));
       const logMessage = `[BuildActivity.catch]: Error: ${errorMessage} | subject: ${String(subject)} | category: ${String(category)} | place: ${String(place)} | time: ${String(time)} | religion: ${String(religion)} | contest: ${String(contest)} | tools: ${String(tools)} | info: ${String(info)}`;
-      logEvent(logMessage, currentUser?.email);
-    }
-    finally {
+      logEvent(logMessage, currentUser?.email); // after seeing it works we can remove the log
+    } finally {
       setLoading(false);
     }
   };

@@ -10,7 +10,8 @@
     "loadingHead": "We're on it",
     "loadingText": "Note: This content is AI-generated, continuously learning, and may contain errors.",
     "FAQtitle": "FAQ",
-    "errorMsg": "The action was not completed. Please try again."
+    "errorMsg": "The action was not completed. Please try again.",
+    "errorMsgHighDemand": "The system is currently under high load. Please try again."
   },
   "aboutUs": {
     "title": "About",
