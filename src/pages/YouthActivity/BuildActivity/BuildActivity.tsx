@@ -132,7 +132,7 @@ function BuildActivity() {
       } else {
         const is503 = typeof response.message === "string" && (response.message.includes("503") || response.message.toLowerCase().includes("service unavailable") || response.message.toLowerCase().includes("high demand"));
         notifyAlert(t(is503 ? "common.errorMsgHighDemand" : "common.errorMsg"));
-        logEvent(`[BuildActivity.else]: serverMessage: ${String(response.message)}`, currentUser?.email); // after seeing it works we can remove the log
+        //logEvent(`[BuildActivity.else]: serverMessage: ${String(response.message)}`, currentUser?.email); // after seeing it works we can remove the log
       }
     } catch (error) {
       const errorMessage = error instanceof Error && typeof error.message === "string" ? error.message : "Unknown error";

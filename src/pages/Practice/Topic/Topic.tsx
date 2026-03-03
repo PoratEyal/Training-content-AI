@@ -108,7 +108,15 @@ function Topic() {
     //logEvent(`Practice - Topic: ${String(topic)}`, user?.email)
     try {
       const raw = await generatePracticeQuestions(topic, lang, 10);
+      if (!raw) {
+        throw new Error("Empty response from question generator");
+      }
+
       const cleanedJsonStr = cleanJson(raw);
+      if (!cleanedJsonStr) {
+        throw new Error("Cleaned JSON string is empty");
+      }
+
       const parsed = JSON.parse(cleanedJsonStr);
       let final;
       try {
@@ -125,6 +133,7 @@ function Topic() {
     } catch (err) {
       setLoading(false);
       notifyAlert(t("common.errorMsg"));
+      // Log improved, need to follow up on the error message
       logEvent(`[Practice.Topic]: failed, topic: ${topic}, error: ${err instanceof Error ? err.message : err}`, user?.email);
     }
   };
