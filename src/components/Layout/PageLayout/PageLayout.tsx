@@ -184,6 +184,7 @@ function PageLayout({
             return null;
           }
 
+          /*
           // Event Product Banner in Youth Product
           else if (path.includes("/youth/activity") && !isLoggedIn) {
 
@@ -201,6 +202,7 @@ function PageLayout({
               </div>
             );
           }
+          */
 
           else
             // Google Ads
