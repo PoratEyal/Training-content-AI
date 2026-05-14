@@ -9,14 +9,14 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    top: 65px;
+    top: 75px;
     width: 100%;
 }
 
 .path_img {
     z-index: 9000;
     position: absolute;
-    top: -60px;
+    top: -70px;
     left: 65px;
     width: 65px;
     height: auto;
