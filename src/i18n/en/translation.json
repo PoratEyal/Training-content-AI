@@ -45,7 +45,7 @@
       "lampAlt": "Yellow lamp"
     },
     "BuildActivity": {
-      "title": "Let's plan the activity",
+      "title": "Plan Your Activity",
       "category": {
         "label": "Category"
       },
@@ -126,7 +126,7 @@
       "lampAlt": "Lamp"
     },
     "BuildActivity": {
-      "title": "Let's plan the activity",
+      "title": "Plan the activity",
       "age": "Participants' age",
       "amount": "Number of participants",
       "gender": "Gender",

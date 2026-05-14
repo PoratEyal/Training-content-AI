@@ -24,6 +24,7 @@ import { formatString } from "../../utils/format";
 //import { getPromptAndDetailsForSpecialKids } from "../../utils/specialKids";
 import { GetActivityRequest } from "../../model/types/request";
 import { Lang } from "../../model/types/common";
+import { getPromptAndDetailsForAkiva } from "../../utils/akiva";
 import * as functions from "firebase-functions";
 
 const geminiConfig = functions.config()?.gemini;
@@ -52,8 +53,8 @@ async function generateContent(prompt: string): Promise<string> {
   const requestedModel = "gemini-2.5-flash-lite";
   assertAllowedModel(requestedModel);
   assertNotImageModel(requestedModel);
-  const generationConfig = { maxOutputTokens: 2000, };
-  const model = genAI.getGenerativeModel({ model: requestedModel, generationConfig, });
+  const generationConfig = { maxOutputTokens: 2000 };
+  const model = genAI.getGenerativeModel({ model: requestedModel, generationConfig });
   const result = await model.generateContent(prompt);
   const response = result.response;
   const text = response.text();
@@ -96,8 +97,8 @@ const promptUtils = {
 };
 
 const buildPrompt = (activityDetails: ActivityDetails, lang: Lang): [string, string[]] => {
-  //if (activityDetails.movement === "krembo")
-  //  return getPromptAndDetailsForSpecialKids(activityDetails, lang);
+  if (activityDetails.movement === "akiva")
+    return getPromptAndDetailsForAkiva(activityDetails, lang);
 
   const {
     category,
@@ -131,5 +132,15 @@ export async function generateYouthActivityAI(data: GetActivityRequest): Promise
   const activityDetails = restData as ActivityDetails;
   const [prompt, details] = buildPrompt(activityDetails, lang);
   const result = formatString(prompt, details);
-  return await generateContent(result);
+  const aiResponse = await generateContent(result);
+
+  const disclaimers: Record<string, string> = {
+    he: "\n\n---\n**שימו לב: התוכן מבוסס בינה מלאכותית והוא בגדר הצעה בלבד – עברו על הפעולה, ודאו שהמקורות מדויקים והתאימו אותה לצרכים שלכם בשטח.**",
+    en: "\n\n---\n**Please note: The content is AI-based and is a suggestion only – review the activity, ensure the sources are accurate and adapt it to your needs in the field.**",
+    es: "\n\n---\n**Atención: El contenido se basa en inteligencia artificial y es solo una sugerencia – revise la actividad, asegúrese de que las fuentes sean precisas y adáptela a sus necesidades en el terreno.**",
+    ar: "\n\n---\n**يرجى الملاحظة: المحتوى يعتمد على الذكاء الاصطناعي وهو مجرد اقتراح – راجع النشاط، وتأكد من دقة المصادر وقم بملاءמته لاحتياجاتك في الميدان.**",
+  };
+
+  const disclaimer = disclaimers[lang] || disclaimers["en"];
+  return aiResponse + disclaimer;
 }

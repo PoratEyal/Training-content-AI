@@ -45,7 +45,7 @@
       "lampAlt": "Lámpara amarilla"
     },
     "BuildActivity": {
-      "title": "VA planear la actividad",
+      "title": "Planear actividad",
       "category": {
         "label": "Categoría"
       },
@@ -126,7 +126,7 @@
       "lampAlt": "Lámpara"
     },
     "BuildActivity": {
-      "title": "Planeemos tu actividad",
+      "title": "Planear actividad",
       "age": "Edad de los participantes",
       "amount": "Número de participantes",
       "gender": "Género",

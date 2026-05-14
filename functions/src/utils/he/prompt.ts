@@ -161,7 +161,8 @@ export const getMoreInfo = (info: string | undefined): string => {
 
 export const getTools = (category: CategoryName, tools: string | undefined, religion: string | undefined): string => {
     if (tools === "ללא ציוד") return "**ציוד נדרש:** אסור להשתמש בציוד!";
-    else if (religion === "מותאם לשומרי שבת") return "**ציוד נדרש:** (אין להשתמש בחומרי גלם יקרים, מצגת, סרטון, טלפונים כלי עבודה או כלי נגינה)!";
+    else if (religion === "מותאם לשומרי שבת")
+        return "**דגשי שבת:** הפעילות ללא כתיבה, יצירה או שימוש במכשירי חשמל וטלפונים. יש להכין את כל הציוד המודפס מראש!";
     else {
         switch (category) {
             case "pointOfView":

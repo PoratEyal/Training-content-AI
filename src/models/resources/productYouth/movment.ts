@@ -13,7 +13,7 @@ export const Movements = {
             categories: [
                 {
                     name: "content",
-                    title: "פעילות תוכן",
+                    title: "פעולת תוכן",
                 },
                 {
                     name: "pointOfView",
@@ -53,11 +53,11 @@ export const Movements = {
             categories: [
                 {
                     name: "content",
-                    title: "פעילות",
+                    title: "פעולה ערכית",
                 },
                 {
                     name: "playTime",
-                    title: "משחק",
+                    title: "משחקי גיבוש",
                 },
             ],
         } as Movement,
@@ -67,11 +67,11 @@ export const Movements = {
             categories: [
                 {
                     name: "content",
-                    title: "פעילות",
+                    title: "פעולה ערכית",
                 },
                 {
                     name: "playTime",
-                    title: "משחק",
+                    title: "משחקי גיבוש",
                 },
             ],
         } as Movement,
@@ -81,11 +81,11 @@ export const Movements = {
             categories: [
                 {
                     name: "content",
-                    title: "פעילות",
+                    title: "פעולה ערכית",
                 },
                 {
                     name: "playTime",
-                    title: "משחק",
+                    title: "משחקי קבוצה",
                 },
             ],
         } as Movement,
@@ -95,11 +95,11 @@ export const Movements = {
             categories: [
                 {
                     name: "content",
-                    title: "פעילות",
+                    title: "פעולה ערכית",
                 },
                 {
                     name: "playTime",
-                    title: "משחק",
+                    title: "משחק קבוצתי",
                 },
             ],
         } as Movement,
@@ -109,11 +109,11 @@ export const Movements = {
             categories: [
                 {
                     name: "content",
-                    title: "פעילות",
+                    title: "פעולה ערכית",
                 },
                 {
                     name: "playTime",
-                    title: "משחק",
+                    title: "משחקי גיבוש",
                 },
             ],
         } as Movement,
@@ -123,11 +123,11 @@ export const Movements = {
             categories: [
                 {
                     name: "content",
-                    title: "פעילות",
+                    title: "פעולה ערכית",
                 },
                 {
                     name: "playTime",
-                    title: "משחק",
+                    title: "משחקי גיבוש",
                 },
             ],
         } as Movement,
@@ -137,11 +137,11 @@ export const Movements = {
             categories: [
                 {
                     name: "content",
-                    title: "פעילות",
+                    title: "פעולה ערכית",
                 },
                 {
                     name: "playTime",
-                    title: "משחק",
+                    title: "משחקי קבוצה",
                 },
             ],
         } as Movement,
@@ -151,11 +151,11 @@ export const Movements = {
             categories: [
                 {
                     name: "content",
-                    title: "פעילות",
+                    title: "פעילות תוכן",
                 },
                 {
                     name: "playTime",
-                    title: "משחק",
+                    title: "משחק שטח",
                 },
             ],
         } as Movement,
@@ -165,7 +165,7 @@ export const Movements = {
             categories: [
                 {
                     name: "content",
-                    title: "פעילות",
+                    title: "פעילות שטח",
                 },
                 {
                     name: "survival",
@@ -183,11 +183,11 @@ export const Movements = {
             categories: [
                 {
                     name: "content",
-                    title: "פעילות",
+                    title: "פעולה ערכית",
                 },
                 {
                     name: "playTime",
-                    title: "משחק",
+                    title: "משחק קבוצתי",
                 },
             ],
         } as Movement,
@@ -197,11 +197,11 @@ export const Movements = {
             categories: [
                 {
                     name: "content",
-                    title: "פעילות",
+                    title: "פעולה ערכית",
                 },
                 {
                     name: "playTime",
-                    title: "משחק",
+                    title: "משחק קבוצתי",
                 },
             ],
         } as Movement,
@@ -211,11 +211,11 @@ export const Movements = {
             categories: [
                 {
                     name: "content",
-                    title: "פעילות",
+                    title: "פעילות תוכן",
                 },
                 {
                     name: "playTime",
-                    title: "משחק",
+                    title: "משחק גיבוש",
                 },
             ],
         } as Movement,
@@ -238,7 +238,7 @@ export const Movements = {
             ],
         } as Movement,
     },
-    
+
     en: {
         scouts: {
             name: "Scouts",

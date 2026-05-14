@@ -32,10 +32,12 @@
     position: absolute;
     margin-top: 35px;
     min-height: calc(100% - 35px - 45px - var(--ads-height));
-    height: calc(100% - 35px - 45px - var(--ads-height));  /* 35px=margin-top, 45px=unknown */
+    height: calc(100% - 35px - 45px - var(--ads-height));
+    /* 35px=margin-top, 45px=unknown */
     width: 100%;
     overflow-y: scroll;
-    z-index: 999;   /* less then ad=1000 */
+    z-index: 999;
+    /* less then ad=1000 */
 }
 
 .input_area_align {
@@ -55,17 +57,17 @@
 }
 
 .submit_btn {
-  position: relative;
-  box-sizing: border-box;
-  direction: rtl;
-  display: flex;
-  width: 100%;
-  -webkit-tap-highlight-color: transparent;
-  margin-bottom: 4vh;
+    position: relative;
+    box-sizing: border-box;
+    direction: rtl;
+    display: flex;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+    margin-bottom: 4vh;
 }
 
 .submit_btn_rtl {
-  direction: ltr;
+    direction: ltr;
 }
 
 @media (min-width: 550px) {

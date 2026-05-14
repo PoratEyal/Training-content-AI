@@ -9,31 +9,34 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    top: 100px;
+    top: 65px;
     width: 100%;
 }
 
 .path_img {
     z-index: 9000;
     position: absolute;
-    top: -90px;
-    left: 58px;
+    top: -70px;
+    left: 65px;
+    width: 60px;
+    height: auto;
 }
 
 .path_img_ltr {
     left: auto;
     right: 57px;
+    width: 55px;
+    height: auto;
 }
-
 
 .scroll_area {
     position: absolute;
     margin-top: 35px;
     min-height: calc(100% - 35px - 45px - var(--ads-height));
-    height: calc(100% - 35px - 45px - var(--ads-height));  /* 35px=margin-top, 45px=unknown */
+    height: calc(100% - 35px - 45px - var(--ads-height));
     width: 100%;
     overflow-y: scroll;
-    z-index: 999;   /* less then ad=1000 */
+    z-index: 999;
 }
 
 .input_area_align {
