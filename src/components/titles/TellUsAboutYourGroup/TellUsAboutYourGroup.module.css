@@ -1,7 +1,7 @@
 .tell_us_title {
     width: 190px;
     position: absolute;
-    top: 3px;
+    top: 7px;
     -webkit-tap-highlight-color: transparent;
     z-index: 100;
 }
