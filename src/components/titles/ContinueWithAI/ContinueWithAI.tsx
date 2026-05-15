@@ -6,7 +6,6 @@ import { ProductType } from "../../../context/ProductType"
 const productKeyMap = {
   [ProductType.Youth]: "youth",
   [ProductType.Event]: "event",
-  [ProductType.Best]: "best",
   [ProductType.Practice]: "practice",
   [ProductType.Words]: "words",
   [ProductType.Unknown]: "unknown",
@@ -15,7 +14,6 @@ const productKeyMap = {
 const productColorClassMap = {
   [ProductType.Youth]: styles.youthColor,
   [ProductType.Event]: styles.eventColor,
-  [ProductType.Best]: styles.bestColor,
   [ProductType.Practice]: styles.practiceColor,
   [ProductType.Words]: styles.wordsColor,
   [ProductType.Unknown]: styles.defaultColor,

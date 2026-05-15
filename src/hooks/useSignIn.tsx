@@ -28,9 +28,6 @@ const useSignIn = () => {
         case ProductType.Event:
             homePagePath = route[`eventHomePage${langKey}`] || route.eventHomePageEn;
             break;
-        case ProductType.Best:
-            homePagePath = route[`bestHomePage${langKey}`] || route.bestHomePageEn;
-            break;
         case ProductType.Practice:
             homePagePath = route[`practiceHomePage${langKey}`] || route.practiceHomePageEn;
             break;

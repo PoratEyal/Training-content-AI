@@ -18,7 +18,6 @@ import { StorageKey } from "./models/enum/storage";
 const detectProductFromPath = (path: string): ProductType => {
   if (path.includes("/youth")) return ProductType.Youth
   if (path.includes("/event")) return ProductType.Event
-  if (path.includes("/best")) return ProductType.Best
   if (path.includes("/practice")) return ProductType.Practice
   if (path.includes("/words")) return ProductType.Words
   return ProductType.Youth

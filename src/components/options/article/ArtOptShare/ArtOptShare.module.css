@@ -30,4 +30,5 @@
     color: var(--primary-color);
     font-size: 12px;
     font-weight: 450;
+    white-space: nowrap;
 }

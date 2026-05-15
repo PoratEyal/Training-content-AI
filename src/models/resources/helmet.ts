@@ -89,22 +89,6 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             content: "רעיונות לפעילויות והפעלות לכל אירוע, קבוצה או מפגש – צרו פעילות מותאמת אישית בעזרת בינה מלאכותית. לפי גיל, מספר משתתפים, מקום וציוד – בקלות ובמהירות.",
         },
 
-        bestHome: {
-            title: "מי הכי חכם – ActivityWiz",
-            content: "שחקו בתחרויות טריוויה בין קבוצות כמו בנים מול בנות או ילדים מול מבוגרים, וגלו מי הכי חכם. אפשר להצטרף לתחרויות קיימות או לפתוח תחרות חדשה ולתרום נקודות לקבוצה שלכם דרך משחקים כיפיים.",
-        },
-        bestContests: {
-            title: "מי הכי חכם – ActivityWiz",
-            content: "שחקו בתחרויות טריוויה בין קבוצות כמו בנים מול בנות או ילדים מול מבוגרים, וגלו מי הכי חכם. אפשר להצטרף לתחרויות קיימות או לפתוח תחרות חדשה ולתרום נקודות לקבוצה שלכם דרך משחקים כיפיים.",
-        },
-        bestHof: {
-            title: "מי הכי חכם – ActivityWiz",
-            content: "שחקו בתחרויות טריוויה בין קבוצות כמו בנים מול בנות או ילדים מול מבוגרים, וגלו מי הכי חכם. אפשר להצטרף לתחרויות קיימות או לפתוח תחרות חדשה ולתרום נקודות לקבוצה שלכם דרך משחקים כיפיים.",
-        },
-        bestFaq: {
-            title: "מי הכי חכם - שאלות נפוצות – ActivityWiz",
-            content: "תרגלו מילים וביטויים בין שפות ולמדו את משמעותם בקלות וביעילות. מתאים ללמידת שפות, חיזוק הזיכרון והעשרת אוצר המילים.",
-        },
 
         practiceHome: {
             title: "אתגר הידע – ActivityWiz",
@@ -222,22 +206,6 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             content: "Ideas for activities and games for any event, group, or gathering – create a personalized activity with the help of AI. Based on age, number of participants, location, and equipment – easily and quickly.",
         },
 
-        bestHome: {
-            title: "Original Activities with ActivityWiz",
-            content: "Join trivia competitions between groups like boys vs. girls or kids vs. adults and find out which team is the smartest. You can join existing competitions or create a new one and earn points for your team through fun games.",
-        },
-        bestContests: {
-            title: "ActivityWiz - Who’s the Smartest",
-            content: "Join trivia competitions between groups like boys vs. girls or kids vs. adults and find out which team is the smartest. You can join existing competitions or create a new one and earn points for your team through fun games.",
-        },
-        bestHof: {
-            title: "ActivityWiz - Who’s the Smartest",
-            content: "Join trivia competitions between groups like boys vs. girls or kids vs. adults and find out which team is the smartest. You can join existing competitions or create a new one and earn points for your team through fun games.",
-        },
-        bestFaq: {
-            title: "ActivityWiz - Who’s the Smartest",
-            content: "Practice vocabulary and phrases across languages and learn their meanings easily and efficiently. Perfect for language learning, memory enhancement, and expanding your vocabulary.",
-        },
 
 
         practiceHome: {
@@ -357,22 +325,6 @@ export const helmetJson: Record<Lng, LanguageSection> = {
             content: "أفكار لأنشطة وفعاليات لأي مناسبة أو مجموعة أو لقاء – أنشئ نشاطًا مخصصًا بمساعدة الذكاء الاصطناعي. بناءً على العمر وعدد المشاركين والمكان والمعدات – بسهولة وسرعة.",
         },
 
-        bestHome: {
-            title: "ActivityWiz - من الأذكى؟",
-            content: "انضم إلى مسابقات معلومات عامة بين مجموعات مثل الأولاد ضد البنات أو الأطفال ضد الكبار واكتشف أي فريق هو الأذكى. يمكنك الانضمام إلى مسابقات قائمة أو إنشاء مسابقة جديدة وكسب نقاط لفريقك من خلال ألعاب ممتعة.",
-        },
-        bestContests: {
-            title: "ActivityWiz - من الأذكى؟",
-            content: "انضم إلى مسابقات معلومات عامة بين مجموعات مثل الأولاد ضد البنات أو الأطفال ضد الكبار واكتشف أي فريق هو الأذكى. يمكنك الانضمام إلى مسابقات قائمة أو إنشاء مسابقة جديدة وكسب نقاط لفريقك من خلال ألعاب ممتعة.",
-        },
-        bestHof: {
-            title: "ActivityWiz - من الأذكى؟",
-            content: "انضم إلى مسابقات معلومات عامة بين مجموعات مثل الأولاد ضد البنات أو الأطفال ضد الكبار واكتشف أي فريق هو الأذكى. يمكنك الانضمام إلى مسابقات قائمة أو إنشاء مسابقة جديدة وكسب نقاط لفريقك من خلال ألعاب ممتعة.",
-        },
-        bestFaq: {
-            title: "ActivityWiz - من الأذكى؟",
-            content: "تدرّب على المفردات والتعابير بين اللغات وتعلّم معانيها بسهولة وفعالية. مثالي لتعلم اللغات، وتقوية الذاكرة، وتوسيع المفردات.",
-        },
 
         practiceHome: {
             title: "ActivityWiz – تحدي المعرفة",
@@ -491,22 +443,6 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
 
 
-        bestHome: {
-            title: "ActivityWiz - ¿Quién es el más inteligente?",
-            content: "Únete a competiciones de trivia entre grupos como chicos vs. chicas o niños vs. adultos y descubre qué equipo es el más inteligente. Puedes unirte a competiciones existentes o crear una nueva y ganar puntos para tu equipo a través de juegos divertidos.",
-        },
-        bestContests: {
-            title: "ActivityWiz - ¿Quién es el más inteligente?",
-            content: "Únete a competiciones de trivia entre grupos como chicos vs. chicas o niños vs. adultos y descubre qué equipo es el más inteligente. Puedes unirte a competiciones existentes o crear una nueva y ganar puntos para tu equipo a través de juegos divertidos.",
-        },
-        bestHof: {
-            title: "ActivityWiz - ¿Quién es el más inteligente?",
-            content: "Únete a competiciones de trivia entre grupos como chicos vs. chicas o niños vs. adultos y descubre qué equipo es el más inteligente. Puedes unirte a competiciones existentes o crear una nueva y ganar puntos para tu equipo a través de juegos divertidos.",
-        },
-        bestFaq: {
-            title: "ActivityWiz - ¿Quién es el más inteligente?",
-            content: "Practica vocabulario y frases en diferentes idiomas y aprende sus significados de forma fácil y eficaz. Perfecto para aprender idiomas, mejorar la memoria y ampliar tu vocabulario.",
-        },
 
 
         practiceHome: {

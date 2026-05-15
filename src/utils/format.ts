@@ -20,7 +20,6 @@ export const formatCopy = (text: string, product: ProductType) => {
   const pathMap: Record<ProductType, string> = {
     [ProductType.Youth]: "/youth",
     [ProductType.Event]: "/event",
-    [ProductType.Best]: "/best",
     [ProductType.Practice]: "/practice",
     [ProductType.Words]: "/words",
     [ProductType.Unknown]: ""

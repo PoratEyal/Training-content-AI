@@ -8,9 +8,6 @@
   background-color: var(--event-primary-color);
 }
 
-.bestColor {
-  background-color: var(--best-primary-color);
-}
 
 .practiceColor {
   background-color: var(--practice-primary-color);

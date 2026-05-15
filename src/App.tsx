@@ -33,11 +33,6 @@ import EventBuildActivity from "./pages/Event/BuildActivity/BuildActivity"
 import EventActivityAI from "./pages/Event/Activity/Activity"
 import EventFAQ from "./pages/Event/FAQ/FAQ"
 
-// Who's Best?
-import BestHomePage from "./pages/Best/HomePage/Home"
-import BestContests from "./pages/Best/Contests/Contests"
-import BestHof from "./pages/Best/Hof/Hof"
-import BestFAQ from "./pages/Best/FAQ/FAQ"
 
 // Smart Practice
 import PracticeHomePage from "./pages/Practice/HomePage/Home"
@@ -78,11 +73,6 @@ const allRoutes = [
   { key: "eventActivityAI", element: <EventActivityAI /> },
   { key: "eventFAQ", element: <EventFAQ /> },
 
-  // Who's Best?
-  { key: "bestHomePage", element: <BestHomePage /> },
-  { key: "bestContests", element: <BestContests /> },
-  { key: "bestHof", element: <BestHof /> },
-  { key: "bestFAQ", element: <BestFAQ /> },
 
   // Practice
   { key: "practiceHomePage", element: <PracticeHomePage /> },

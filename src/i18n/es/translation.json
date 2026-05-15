@@ -2,7 +2,6 @@
   "common": {
     "youthAppName": "Actividades para movimientos juveniles",
     "eventAppName": "EventoGenio",
-    "bestAppName": "¿Quién es el más inteligente?",
     "practiceAppName": "Desafío de Conocimiento",
     "wordsAppName": "Vocabulario Inteligente",
     "slogan": "Personalizado, Simple y Rápido 🤟",
@@ -17,7 +16,6 @@
     "title": "Acerca de",
     "youthAboutText": "Crea actividades para jóvenes: desde una biblioteca de actividades listas hasta actividades personalizadas con inteligencia artificial. Ideal para guías que desean enriquecer la experiencia educativa y social.",
     "eventAboutText": "Crea una actividad personalizada para cualquier evento, con inteligencia artificial que adapta la actividad según la edad, el número de participantes, el lugar y más. Cada actividad se genera especialmente para ti, con solo un clic y en cuestión de segundos.",
-    "bestAboutText": "Competiciones entre grupos como niños contra niñas o jóvenes contra adultos. Únete a una competición existente o crea una nueva, y descubre qué equipo gana.",
     "practiceAboutText": "Un desafío de conocimiento impulsado por IA. Elige cualquier tema que desees y el sistema generará un cuestionario personalizado en segundos. Perfecto para cualquiera que busque una forma sencilla y enfocada de profundizar su conocimiento.",
     "wordsAboutText": "Entrenamiento de vocabulario de forma inteligente y eficiente. Ingresa palabras o elige un tema para obtener una práctica personalizada que te ayudará a aprender, recordar y comprender mejor – en cualquier idioma."
   },
@@ -142,21 +140,6 @@
         "flow": "Desarrollo de la actividad",
         "tips": "Consejos para el facilitador"
       }
-    }
-  },
-  "bestSep": "==============================================================================================================",
-  "best": {
-    "Navbar": {
-      "home": "Inicio",
-      "play": "Jugar ahora",
-      "create": "Crear competencia",
-      "hof": "Salón de la fama"
-    },
-    "home": {
-      "advanced": "Crear",
-      "withPrefix": "con",
-      "ai": "IA",
-      "startAction": "Vamos allá"
     }
   },
   "practiceSep": "==============================================================================================================",
@@ -330,115 +313,51 @@
       "questions": [
         {
           "q": "¿Qué es ActivityWiz para movimientos juveniles?",
-          "a": "ActivityWiz es una plataforma inteligente para crear actividades personalizadas para instructores y educadores. Puedes usarla para acceder a actividades listas para usar o generar nuevas automáticamente mediante inteligencia artificial."
+          "a": "ActivityWiz es una plataforma inteligente para crear actividades personalizadas para instructores y educadores. Puedes acceder a actividades listas para usar o generar nuevas mediante inteligencia artificial."
         },
         {
           "q": "¿El sitio es gratuito?",
-          "a": "Sí."
+          "a": "Sí, el uso del sitio es gratuito y está abierto para todos."
         },
         {
           "q": "¿Para quién es el sitio?",
           "a": "Para cualquier persona que lidere grupos: líderes de movimientos juveniles, maestros, educadores, padres, consejeros adolescentes, comandantes del ejército y más."
         },
         {
-          "q": "¿Cómo creo una actividad personalizada?",
-          "a": "Selecciona la opción 'Crear actividad' y completa algunos detalles simples. El sistema generará una actividad lista para usar adaptada a tus necesidades."
-        },
-        {
-          "q": "¿Puedo compartir actividades con otros?",
-          "a": "¡Sí! Cada actividad se puede compartir mediante un enlace o copiando el contenido al portapapeles."
-        },
-        {
-          "q": "¿Puedo editar una actividad generada automáticamente?",
-          "a": "Sí. Puedes editar manualmente cualquier actividad para que se ajuste a tu estilo y necesidades de grupo."
-        },
-        {
-          "q": "¿Puedo guardar las actividades que creo para usarlas después?",
-          "a": "Sí. Una vez que te registres, podrás guardar cualquier actividad que hayas creado y acceder o actualizarla en cualquier momento."
+          "q": "¿Puedo guardar y editar las actividades que cree para usarlas después?",
+          "a": "Sí. Después de iniciar sesión, podrás guardar cualquier actividad que hayas creado y actualizarla en cualquier momento a través de tu área personal de usuario."
         },
         {
           "q": "¿Qué idiomas son compatibles?",
           "a": "El sistema es compatible con inglés, español, hebreo y árabe. Se agregarán más idiomas en el futuro."
         },
         {
-          "q": "¿Cómo puedo contactar al equipo de ActivityWiz?",
-          "a": "Puedes contactarnos a través del formulario en el sitio."
-        },
-        {
-          "q": "¿Dónde puedo encontrar ideas para actividades para Scouts o movimientos juveniles?",
-          "a": "Te invitamos a visitar ActivityWiz, donde encontrarás una amplia variedad de actividades listas para usar o podrás generar las tuyas al instante usando inteligencia artificial."
-        },
-        {
-          "q": "¿Cómo creo una actividad educativa adecuada para un grupo de edad específico?",
-          "a": "En ActivityWiz puedes seleccionar el grupo de edad objetivo y el sistema te sugerirá una actividad completa adaptada a esa edad, que incluye apertura, contenido y cierre."
-        },
-        {
-          "q": "¿Existe una forma de crear una actividad grupal que no requiera mucho equipo?",
-          "a": "Claro que sí. En ActivityWiz puedes filtrar actividades que requieran poco o ningún material, y la plataforma te proporcionará opciones acordes."
-        },
-        {
-          "q": "Estoy buscando actividades listas para usar en un campamento. ¿Hay algo así en línea?",
-          "a": "Sí. ActivityWiz ofrece actividades basadas en temas, edad, tipo de grupo y nivel de energía—perfectas para campamentos, escuelas y organizaciones juveniles."
-        },
-        {
-          "q": "Tengo una idea para una actividad—¿cómo puedo convertirla en un plan estructurado completo?",
-          "a": "Con ActivityWiz, puedes ingresar tu idea y obtener una actividad completa sugerida, incluyendo estructura, pasos y orientación para el instructor."
-        },
-        {
-          "q": "¿Cómo puedo crear una actividad que sea educativa y divertida a la vez?",
-          "a": "Eso es precisamente para lo que está diseñado ActivityWiz. Puedes crear una actividad completa que incluya estructura, contenido y reflexión, manteniéndola atractiva y adecuada para la edad."
-        },
-        {
-          "q": "¿Existe algún sitio que organice actividades por valores como el trabajo en equipo o la responsabilidad?",
-          "a": "Sí. ActivityWiz te permite buscar o generar actividades por valores, objetivos educativos y necesidades del grupo como empatía, colaboración y liderazgo."
-        },
-        {
           "q": "Necesito una actividad para mañana y no tengo tiempo—¿alguna solución rápida?",
-          "a": "Sí. Con ActivityWiz puedes generar una actividad completa en segundos. Solo define el objetivo, el grupo de edad y la duración—y obtendrás un plan listo para usar."
-        },
-        {
-          "q": "¿Cómo sé cuál actividad se adapta mejor a mi grupo?",
-          "a": "ActivityWiz te ayuda a elegir actividades en función de la edad, el tamaño del grupo, el nivel de energía y el tiempo disponible, para darte un ajuste perfecto al instante."
-        },
-        {
-          "q": "¿Hay actividades adecuadas para grupos mixtos?",
-          "a": "Sí. Puedes definir las características de tu grupo y ActivityWiz te sugerirá actividades adaptadas para grupos diversos e inclusivos."
+          "a": "Claro que sí. En ActivityWiz puedes generar una actividad completa con solo un clic: solo define el objetivo, la edad y la duración, y obtendrás un plan listo para usar de inmediato."
         }
       ]
     },
     "event": {
       "questions": [
         {
-          "q": "¿Qué es ActivityWiz para actividades y juegos?",
-          "a": "ActivityWiz es una plataforma inteligente que te permite crear actividades y juegos personalizados para cualquier evento, grupo o reunión, con solo un clic y con la ayuda de la inteligencia artificial."
+          "q": "¿Qué es ActivityWiz para crear actividades y juegos en eventos?",
+          "a": "ActivityWiz es una plataforma inteligente que te permite crear actividades y juegos personalizados—para cualquier evento, grupo o reunión—con solo un clic, utilizando inteligencia artificial."
         },
         {
           "q": "¿El servicio es gratuito?",
-          "a": "Sí, el uso del sitio es completamente gratuito y abierto para todos."
+          "a": "Sí, el uso del sitio es gratuito y está abierto para todos."
         },
         {
           "q": "¿Para qué tipos de eventos es adecuado?",
-          "a": "Para cualquier evento social o familiar – cumpleaños, fiestas, eventos de equipo, actividades grupales, y más."
-        },
-        {
-          "q": "¿Cómo creo una actividad para mi evento?",
-          "a": "Solo tienes que hacer clic en 'Crear actividad', completar algunos datos como el tipo de evento, la edad de los participantes y el lugar – y el sistema generará una actividad lista, adaptada a tu evento."
+          "a": "Para cualquier evento social o familiar—cumpleaños, fiestas, actividades de integración, dinámicas grupales y más."
         },
         {
           "q": "¿Se puede compartir la actividad con amigos o participantes?",
-          "a": "¡Por supuesto! Cada actividad se puede compartir fácilmente mediante un enlace o copiando el texto."
+          "a": "Por supuesto. Cada actividad se puede compartir con un clic, ya sea mediante un enlace o copiando el texto."
         },
         {
-          "q": "¿En qué idiomas se puede usar el sitio?",
-          "a": "El sistema admite hebreo, inglés, árabe y español. Se agregarán más idiomas en el futuro."
-        },
-        {
-          "q": "¿Cómo me comunico con el equipo de ActivityWiz?",
-          "a": "Puedes contactarnos a través del formulario de 'Contacto' en el sitio web. Estaremos encantados de ayudarte."
-        },
-        {
-          "q": "No tengo mucho tiempo para planificar – ¿puedo obtener una actividad rápida y lista?",
-          "a": "¡Claro que sí! Nuestro sistema generará una actividad completa en segundos – solo ingresa los detalles básicos, ¡y listo!"
+          "q": "¿Qué idiomas se pueden usar en el sitio?",
+          "a": "El sistema es compatible con hebreo, inglés, árabe y español. Se agregarán más idiomas en el futuro."
         }
       ]
     },
@@ -446,27 +365,19 @@
       "questions": [
         {
           "q": "¿Qué es ActivityWiz para practicar?",
-          "a": "ActivityWiz para practicar es una herramienta que te ayuda a entrenar sobre temas de forma inteligente. Escribes un tema que te interesa, y el sistema genera un cuestionario con preguntas de opción múltiple para que puedas evaluar tus conocimientos y aprender de manera divertida y sencilla."
+          "a": "ActivityWiz para practicar es una herramienta que te ayuda a entrenar sobre diversos temas de forma inteligente. Escribes un tema que te interese y el sistema genera un cuestionario de opción múltiple para que evalúes tus conocimientos y aprendas de manera divertida y sencilla."
         },
         {
           "q": "¿El uso del sitio cuesta dinero?",
-          "a": "No, el uso del sitio es gratuito y abierto para todos."
+          "a": "No, el uso del sitio es gratuito y está abierto para todos."
         },
         {
           "q": "¿A quién está dirigido el sitio?",
           "a": "El sitio es adecuado para cualquier persona que quiera practicar temas variados, estudiar de forma independiente o simplemente disfrutar de una trivia inteligente y divertida: niños, adolescentes y adultos."
         },
         {
-          "q": "¿Cómo se crea una práctica personalizada?",
-          "a": "Muy fácil: en la página de creación de práctica escribes el tema que te interesa, haces clic en el botón y el sistema generará una práctica con preguntas de opción múltiple adaptadas exactamente a lo que pediste."
-        },
-        {
           "q": "¿Qué idiomas están disponibles?",
           "a": "El sistema admite inglés, español, hebreo y árabe. Se agregarán más idiomas en el futuro."
-        },
-        {
-          "q": "¿Cómo puedo contactar al equipo del sitio?",
-          "a": "Puedes enviarnos un mensaje a través del formulario de contacto en el sitio."
         },
         {
           "q": "¿Puedo practicar el mismo tema con preguntas diferentes?",
@@ -477,8 +388,8 @@
     "words": {
       "questions": [
         {
-          "q": "¿Qué es ActivityWiz para Vocabulario?",
-          "a": "ActivityWiz para Vocabulario es una herramienta impulsada por IA para aprender y ampliar tu vocabulario en cualquier idioma. Simplemente elige un tema que te interese, y el sistema creará un cuestionario personalizado con preguntas de opción múltiple, incluyendo traducción, pronunciación y reproducción de audio, ayudándote a aprender de forma rápida, divertida y eficaz."
+          "q": "¿Qué es ActivityWiz para vocabulario?",
+          "a": "ActivityWiz para vocabulario es una herramienta impulsada por IA para aprender y ampliar tu vocabulario en cualquier idioma. Simplemente elige un tema que te interese—y el sistema creará una práctica personalizada con preguntas de opción múltiple, incluyendo traducción, pronunciación y audio, ayudándote a aprender de forma rápida y eficaz."
         },
         {
           "q": "¿Cuesta dinero usar el sitio?",
@@ -491,14 +402,6 @@
         {
           "q": "¿Qué idiomas son compatibles?",
           "a": "La interfaz del sistema es compatible con inglés, español, hebreo y árabe. Sin embargo, las traducciones de vocabulario están disponibles para cualquier idioma existente."
-        },
-        {
-          "q": "¿Cómo puedo contactar al equipo del sitio?",
-          "a": "Puedes enviarnos un mensaje a través del formulario de contacto en el sitio."
-        },
-        {
-          "q": "¿Puedo practicar el mismo tema nuevamente con preguntas diferentes?",
-          "a": "Por supuesto."
         }
       ]
     }
