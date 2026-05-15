@@ -78,13 +78,7 @@
             "region": "us-central1"
           }
         },
-        {
-          "source": "/best",
-          "function": {
-            "functionId": "redirectToLang",
-            "region": "us-central1"
-          }
-        },
+
         {
           "source": "/practice",
           "function": {
@@ -255,54 +249,7 @@
           "source": "/ar/event/**",
           "destination": "/index.event.ar.html"
         },
-        {
-          "source": "/he/best",
-          "destination": "/index.best.he.html"
-        },
-        {
-          "source": "/he/best/faq",
-          "destination": "/index.best.faq.he.html"
-        },
-        {
-          "source": "/he/best/**",
-          "destination": "/index.best.he.html"
-        },
-        {
-          "source": "/en/best",
-          "destination": "/index.best.en.html"
-        },
-        {
-          "source": "/en/best/faq",
-          "destination": "/index.best.faq.en.html"
-        },
-        {
-          "source": "/en/best/**",
-          "destination": "/index.best.en.html"
-        },
-        {
-          "source": "/es/best",
-          "destination": "/index.best.es.html"
-        },
-        {
-          "source": "/es/best/faq",
-          "destination": "/index.best.faq.es.html"
-        },
-        {
-          "source": "/es/best/**",
-          "destination": "/index.best.es.html"
-        },
-        {
-          "source": "/ar/best",
-          "destination": "/index.best.ar.html"
-        },
-        {
-          "source": "/ar/best/faq",
-          "destination": "/index.best.faq.ar.html"
-        },
-        {
-          "source": "/ar/best/**",
-          "destination": "/index.best.ar.html"
-        },
+
         {
           "source": "/he/practice",
           "destination": "/index.practice.he.html"
