@@ -18,6 +18,11 @@ import {
   getSection as getSection_ar, getTools as getTools_ar, promptPerGrade as promptPerGrade_ar,
 } from "../../utils/ar/prompt";
 
+import {
+  getMoreInfo as getMoreInfo_fr, getPromptOptions as getPromptOptions_fr, getSafty as getSafty_fr,
+  getSection as getSection_fr, getTools as getTools_fr, promptPerGrade as promptPerGrade_fr,
+} from "../../utils/fr/prompt";
+
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { ActivityDetails } from "../../model/types/activity";
 import { formatString } from "../../utils/format";
@@ -94,6 +99,14 @@ const promptUtils = {
     getPromptOptions: getPromptOptions_ar,
     promptPerGrade: promptPerGrade_ar,
   },
+  fr: {
+    getMoreInfo: getMoreInfo_fr,
+    getTools: getTools_fr,
+    getSection: getSection_fr,
+    getSafty: getSafty_fr,
+    getPromptOptions: getPromptOptions_fr,
+    promptPerGrade: promptPerGrade_fr,
+  },
 };
 
 const buildPrompt = (activityDetails: ActivityDetails, lang: Lang): [string, string[]] => {
@@ -139,6 +152,7 @@ export async function generateYouthActivityAI(data: GetActivityRequest): Promise
     en: "\n\n---\n**Please note: The content is AI-based and is a suggestion only – review the activity, ensure the sources are accurate and adapt it to your needs in the field.**",
     es: "\n\n---\n**Atención: El contenido se basa en inteligencia artificial y es solo una sugerencia – revise la actividad, asegúrese de que las fuentes sean precisas y adáptela a sus necesidades en el terreno.**",
     ar: "\n\n---\n**يرجى الملاحظة: المحتوى يعتمد على الذكاء الاصطناعي وهو مجرد اقتراح – راجع النشاط، وتأكد من دقة المصادر وقم بملاءמته لاحتياجاتك في الميدان.**",
+    fr: "\n\n---\n**Veuillez noter: Le contenu est basé sur l'IA et n'est qu'une suggestion – révisez l'activité, assurez-vous que les sources sont exactes et adaptez-la à vos besoins sur le terrain.**",
   };
 
   const disclaimer = disclaimers[lang] || disclaimers["en"];

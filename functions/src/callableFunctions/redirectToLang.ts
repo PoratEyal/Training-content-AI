@@ -20,10 +20,12 @@ redirectApp.get("*", async (req, res) => {
       const countryCode = geo?.country?.toUpperCase() || "";
       const spanishSpeakingCountries = ["AR", "BO", "CL", "CO", "CR", "CU", "DO", "EC", "SV", "GQ", "GT", "HN", "MX", "NI", "PA", "PY", "PE", "PR", "ES", "UY", "VE"];
       const arabicSpeakingCountries = ["DZ", "BH", "EG", "IQ", "JO", "KW", "LB", "LY", "MA", "OM", "QA", "SA", "SD", "SY", "TN", "AE", "YE"];
+      const frenchSpeakingCountries = ["FR", "BE", "CH", "LU", "CD", "CI", "CM", "SN", "MG", "BF", "NE", "ML", "GN", "TG", "BJ", "RW", "BI", "DJ", "KM", "SC", "MU", "GA", "CG", "CF", "TD", "MC"];
 
       if (countryCode === "IL") lang = "he";
       else if (spanishSpeakingCountries.includes(countryCode)) lang = "es";
       else if (arabicSpeakingCountries.includes(countryCode)) lang = "ar";
+      else if (frenchSpeakingCountries.includes(countryCode)) lang = "fr";
       else lang = "en";
     }
   } catch (error) {

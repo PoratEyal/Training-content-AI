@@ -54,7 +54,7 @@
   position: absolute;
   background: var(--text-color);
   clip-path: polygon(40% 40%, 50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%);
-  left: 20px;
+  left: 30px;
   height: 17px;
   width: 17px;
 }
@@ -74,7 +74,7 @@
   background: var(--text-color);
   clip-path: polygon(40% 40%, 50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%);
   top: -5px;
-  left: 10px;
+  left: 20px;
   height: 12px;
   width: 12px;
 }
@@ -278,7 +278,7 @@
 .word_4_2_ltr {
   position: absolute;
   top: 0;
-  left: -5px;
+  left: 0px;
   color: var(--text-color);
   font-size: 34px;
   font-weight: 600;

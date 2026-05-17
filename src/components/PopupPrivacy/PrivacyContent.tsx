@@ -3,6 +3,7 @@ import policyHe from "../../models/resources/he/policy.json"
 import policyEn from "../../models/resources/en/policy.json"
 import policyEs from "../../models/resources/es/policy.json"
 import policyAr from "../../models/resources/ar/policy.json"
+import policyFr from "../../models/resources/fr/policy.json"
 import { useLanguage } from "../../i18n/useLanguage"
 
 type Props = {
@@ -17,6 +18,7 @@ function PopupPrivacy({ onClose }: Props) {
     en: policyEn,
     es: policyEs,
     ar: policyAr,
+    fr: policyFr,
   }
   const currentPolicy = policyMap[lang] || policyEn
 

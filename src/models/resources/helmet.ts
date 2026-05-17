@@ -481,6 +481,121 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
     } as LanguageSection,
 
+    fr: {
+        contactUs: {
+            title: "ActivityWiz - Contactez-nous",
+            content: "Vous avez une question ou une suggestion ? Nous serions ravis de vous entendre !",
+        },
+        privacyPolicy: {
+            title: "ActivityWiz - Politique de confidentialité",
+            content: "Lisez notre politique de confidentialité et les conditions d'utilisation de notre site.",
+        },
+
+        home: {
+            title: "ActivityWiz - Activités pour mouvements de jeunesse",
+            content: "Créez ou explorez des activités pour mouvements de jeunesse avec l'IA. Idéal pour les Scouts, les programmes de leadership et les groupes éducatifs.",
+        },
+        details: {
+            title: "ActivityWiz - Activités pour mouvements de jeunesse",
+            content: "Créez ou explorez des activités pour mouvements de jeunesse avec l'IA. Idéal pour les Scouts, les programmes de leadership et les groupes éducatifs.",
+        },
+        build: {
+            title: "ActivityWiz - Activités pour mouvements de jeunesse",
+            content: "Créez ou explorez des activités pour mouvements de jeunesse avec l'IA. Idéal pour les Scouts, les programmes de leadership et les groupes éducatifs.",
+        },
+        activity: {
+            title: "ActivityWiz - Activités pour mouvements de jeunesse",
+            content: "Créez ou explorez des activités pour mouvements de jeunesse avec l'IA. Idéal pour les Scouts, les programmes de leadership et les groupes éducatifs.",
+        },
+        content: {
+            title: "ActivityWiz - Activités pour mouvements de jeunesse",
+            content: "Créez ou explorez des activités pour mouvements de jeunesse avec l'IA. Idéal pour les Scouts, les programmes de leadership et les groupes éducatifs.",
+        },
+        contentActivities: {
+            title: "ActivityWiz - Activités pour mouvements de jeunesse",
+            content: "Créez ou explorez des activités pour mouvements de jeunesse avec l'IA. Idéal pour les Scouts, les programmes de leadership et les groupes éducatifs.",
+        },
+        contentActivity: {
+            title: "ActivityWiz - Activités pour mouvements de jeunesse",
+            content: "Créez ou explorez des activités pour mouvements de jeunesse avec l'IA. Idéal pour les Scouts, les programmes de leadership et les groupes éducatifs.",
+        },
+        myactivities: {
+            title: "ActivityWiz - Activités pour mouvements de jeunesse",
+            content: "Créez ou explorez des activités pour mouvements de jeunesse avec l'IA. Idéal pour les Scouts, les programmes de leadership et les groupes éducatifs.",
+        },
+        savedActivity: {
+            title: "ActivityWiz - Activités pour mouvements de jeunesse",
+            content: "Créez ou explorez des activités pour mouvements de jeunesse avec l'IA. Idéal pour les Scouts, les programmes de leadership et les groupes éducatifs.",
+        },
+        popularActivities: {
+            title: "ActivityWiz - Activités pour mouvements de jeunesse",
+            content: "Créez ou explorez des activités pour mouvements de jeunesse avec l'IA. Idéal pour les Scouts, les programmes de leadership et les groupes éducatifs.",
+        },
+        edit: {
+            title: "ActivityWiz - Activités pour mouvements de jeunesse",
+            content: "Créez ou explorez des activités pour mouvements de jeunesse avec l'IA. Idéal pour les Scouts, les programmes de leadership et les groupes éducatifs.",
+        },
+        youthFaq: {
+            title: "ActivityWiz - Activités pour mouvements de jeunesse - FAQ",
+            content: "Créez ou explorez des activités pour mouvements de jeunesse avec l'IA. Idéal pour les Scouts, les programmes de leadership et les groupes éducatifs.",
+        },
+
+        eventHome: {
+            title: "Activités originales avec ActivityWiz",
+            content: "Des idées d'activités et de jeux pour tout événement, groupe ou rassemblement – créez une activité personnalisée grâce à l'IA. En fonction de l'âge, du nombre de participants, du lieu et du matériel – facilement et rapidement.",
+        },
+        eventDetails: {
+            title: "Activités originales avec ActivityWiz",
+            content: "Des idées d'activités et de jeux pour tout événement, groupe ou rassemblement – créez une activité personnalisée grâce à l'IA. En fonction de l'âge, du nombre de participants, du lieu et du matériel – facilement et rapidement.",
+        },
+        eventBuild: {
+            title: "Activités originales avec ActivityWiz",
+            content: "Des idées d'activités et de jeux pour tout événement, groupe ou rassemblement – créez une activité personnalisée grâce à l'IA. En fonction de l'âge, du nombre de participants, du lieu et du matériel – facilement et rapidement.",
+        },
+        eventActivity: {
+            title: "Activités originales avec ActivityWiz",
+            content: "Des idées d'activités et de jeux pour tout événement, groupe ou rassemblement – créez une activité personnalisée grâce à l'IA. En fonction de l'âge, du nombre de participants, du lieu et du matériel – facilement et rapidement.",
+        },
+        eventFaq: {
+            title: "Activités originales avec ActivityWiz",
+            content: "Des idées d'activités et de jeux pour tout événement, groupe ou rassemblement – créez une activité personnalisée grâce à l'IA. En fonction de l'âge, du nombre de participants, du lieu et du matériel – facilement et rapidement.",
+        },
+
+        practiceHome: {
+            title: "ActivityWiz – Défi de Connaissances",
+            content: "Boostez votre apprentissage avec l'IA – créez et résolvez des quiz personnalisés sur n'importe quel sujet en quelques secondes.",
+        },
+        practiceTopic: {
+            title: "ActivityWiz – Défi de Connaissances",
+            content: "Boostez votre apprentissage avec l'IA – créez et résolvez des quiz personnalisés sur n'importe quel sujet en quelques secondes.",
+        },
+        practiceQuiz: {
+            title: "ActivityWiz – Défi de Connaissances",
+            content: "Boostez votre apprentissage avec l'IA – créez et résolvez des quiz personnalisés sur n'importe quel sujet en quelques secondes.",
+        },
+        practiceFaq: {
+            title: "ActivityWiz – Défi de Connaissances - FAQ",
+            content: "Boostez votre apprentissage avec l'IA – créez et résolvez des quiz personnalisés sur n'importe quel sujet en quelques secondes.",
+        },
+
+        wordsHome: {
+            title: "ActivityWiz Words – Pratiquer le vocabulaire",
+            content: "Entraînez-vous sur des mots et des expressions entre les langues et apprenez leur signification facilement grâce à l'IA. Un outil intelligent pour l'apprentissage des langues, l'amélioration du vocabulaire et le renforcement de la mémoire.",
+        },
+        wordsTopic: {
+            title: "ActivityWiz Words – Pratiquer le vocabulaire",
+            content: "Entraînez-vous sur des mots et des expressions entre les langues et apprenez leur signification facilement grâce à l'IA. Un outil intelligent pour l'apprentissage des langues, l'amélioration du vocabulaire et le renforcement de la mémoire.",
+        },
+        wordsQuiz: {
+            title: "ActivityWiz Words – Pratiquer le vocabulaire",
+            content: "Entraînez-vous sur des mots et des expressions entre les langues et apprenez leur signification facilement grâce à l'IA. Un outil intelligent pour l'apprentissage des langues, l'amélioration du vocabulaire et le renforcement de la mémoire.",
+        },
+        wordsFaq: {
+            title: "ActivityWiz Words – FAQ sur le vocabulaire",
+            content: "Entraînez-vous sur des mots et des expressions entre les langues et apprenez leur signification facilement grâce à l'IA. Un outil intelligent pour l'apprentissage des langues, l'amélioration du vocabulaire et le renforcement de la mémoire.",
+        },
+    } as LanguageSection,
+
 };
 
 

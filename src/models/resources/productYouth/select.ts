@@ -41,6 +41,13 @@ export const MovmentsOptions = {
         { value: Movements.ar.environmentalAndNatureGroups.name, label: Movements.ar.environmentalAndNatureGroups.title },
         { value: Movements.ar.other.name, label: Movements.ar.other.title }
     ] as SelectOption[],
+    fr: [
+        { value: Movements.fr.youthLeadershipPrograms.name, label: Movements.fr.youthLeadershipPrograms.title },
+        { value: Movements.fr.scouts.name, label: Movements.fr.scouts.title },
+        { value: Movements.fr.faithBasedYouthGroups.name, label: Movements.fr.faithBasedYouthGroups.title },
+        { value: Movements.fr.environmentalAndNatureGroups.name, label: Movements.fr.environmentalAndNatureGroups.title },
+        { value: Movements.fr.other.name, label: Movements.fr.other.title }
+    ] as SelectOption[],
 };
 
 export const GradeOptions = {
@@ -100,6 +107,20 @@ export const GradeOptions = {
         { value: "الصف 11", label: "الصف 11" },
         { value: "الصف 12", label: "الصف 12" },
     ] as SelectOption[],
+    fr: [
+        { value: "1ère année", label: "1ère année" },
+        { value: "2ème année", label: "2ème année" },
+        { value: "3ème année", label: "3ème année" },
+        { value: "4ème année", label: "4ème année" },
+        { value: "5ème année", label: "5ème année" },
+        { value: "6ème année", label: "6ème année" },
+        { value: "7ème année", label: "7ème année" },
+        { value: "8ème année", label: "8ème année" },
+        { value: "9ème année", label: "9ème année" },
+        { value: "10ème année", label: "10ème année" },
+        { value: "11ème année", label: "11ème année" },
+        { value: "12ème année", label: "12ème année" },
+    ] as SelectOption[],
 };
 
 
@@ -136,6 +157,14 @@ export const AmountOptions = {
         { value: "30-50", label: "30-50" },
         { value: "60+", label: "60+" },
     ] as SelectOption[],
+    fr: [
+        { value: "1-5", label: "1-5" },
+        { value: "5-10", label: "5-10" },
+        { value: "10-20", label: "10-20" },
+        { value: "20-30", label: "20-30" },
+        { value: "30-50", label: "30-50" },
+        { value: "60+", label: "60+" },
+    ] as SelectOption[],
 };
 
 
@@ -159,6 +188,11 @@ export const PlaceOptions = {
         { value: "غير محدد", label: "أي" },
         { value: "داخلية", label: "داخلية" },
         { value: "خارجية", label: "خارجية" },
+    ] as SelectOption[],
+    fr: [
+        { value: "non spécifié", label: "N'importe quel" },
+        { value: "intérieur", label: "Intérieur" },
+        { value: "extérieur", label: "Extérieur" },
     ] as SelectOption[],
 };
 
@@ -184,6 +218,11 @@ export const GenderOptions = {
         { value: "بنات", label: "بنات" },
         { value: "مختلط", label: "مختلط" },
     ] as SelectOption[],
+    fr: [
+        { value: "hommes", label: "Hommes" },
+        { value: "femmes", label: "Femmes" },
+        { value: "mixte", label: "Mixte" },
+    ] as SelectOption[],
 };
 
 
@@ -208,6 +247,11 @@ export const ActivityTimeOptions = {
         { value: "ساعة", label: "ساعة" },
         { value: "ساعة ونصف", label: "ساعة ونصف" },
     ] as SelectOption[],
+    fr: [
+        { value: "30 minutes", label: "30 minutes" },
+        { value: "1 heure", label: "1 heure" },
+        { value: "1h30", label: "1h30" },
+    ] as SelectOption[],
 };
 
 export const ContestOptions = {
@@ -231,6 +275,11 @@ export const ContestOptions = {
         { value: "مع مجموعات", label: "فرق" },
         { value: "بدون مجموعات", label: "بدون فرق" },
     ] as SelectOption[],
+    fr: [
+        { value: "non spécifié", label: "N'importe quel" },
+        { value: "avec groupes", label: "Équipes" },
+        { value: "sans groupes", label: "Sans équipes" },
+    ] as SelectOption[],
 };
 
 
@@ -250,6 +299,10 @@ export const ToolsOptions = {
     ar: [
         { value: "غير محدد", label: "أي" },
         { value: "بدون مواد", label: "بدون مواد" },
+    ] as SelectOption[],
+    fr: [
+        { value: "non spécifié", label: "N'importe quel" },
+        { value: "sans matériel", label: "Sans matériel" },
     ] as SelectOption[],
 };
 

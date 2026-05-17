@@ -29,6 +29,7 @@ const langName: Record<Lang, string> = {
   en: "English",
   ar: "Arabic",
   es: "Spanish",
+  fr: "French",
 };
 
 const buildPrompt = (

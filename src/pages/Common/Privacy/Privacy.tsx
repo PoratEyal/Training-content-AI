@@ -10,6 +10,7 @@ import policyHe from "../../../models/resources/he/policy.json"
 import policyEn from "../../../models/resources/en/policy.json"
 import policyEs from "../../../models/resources/es/policy.json"
 import policyAr from "../../../models/resources/ar/policy.json"
+import policyFr from "../../../models/resources/fr/policy.json"
 
 import { useTranslation } from "react-i18next"
 
@@ -22,6 +23,7 @@ const Terms: React.FC = () => {
     en: policyEn,
     es: policyEs,
     ar: policyAr,
+    fr: policyFr,
   }
   const currentPolicy = policyMap[lang] || policyEn
 

@@ -73,18 +73,19 @@ function PageLayout({
     document.documentElement.dir = dir;
   }, [lang, dir]);
 
-  const restOfPath = location.pathname.replace(/^\/(he|en|es|ar)/, "") || "/";
+  const restOfPath = location.pathname.replace(/^\/(he|en|es|ar|fr)/, "") || "/";
 
   const alternateHe = `${WEBSITE_URL}/he${restOfPath}`;
   const alternateEn = `${WEBSITE_URL}/en${restOfPath}`;
   const alternateEs = `${WEBSITE_URL}/es${restOfPath}`;
+  const alternateFr = `${WEBSITE_URL}/fr${restOfPath}`;
   const alternateAr = `${WEBSITE_URL}/ar${restOfPath}`;
 
   const pageTitle = getTitle(id, lang, title);
   const pageDescription = getContent(id, lang, title);
 
   const path = location.pathname;
-  const isYouthContent = /^\/(he|en|es|ar)\/youth\/content(?:\/|$)/.test(path);
+  const isYouthContent = /^\/(he|en|es|ar|fr)\/youth\/content(?:\/|$)/.test(path);
 
   //* Canonical and hreflang
   const linksForHelmet = isYouthContent
@@ -97,6 +98,7 @@ function PageLayout({
       { rel: "alternate", href: alternateHe, hrefLang: "he" },
       { rel: "alternate", href: alternateEn, hrefLang: "en" },
       { rel: "alternate", href: alternateEs, hrefLang: "es" },
+      { rel: "alternate", href: alternateFr, hrefLang: "fr" },
       { rel: "alternate", href: alternateAr, hrefLang: "ar" },
     ];
 

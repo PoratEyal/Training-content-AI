@@ -7,6 +7,7 @@ import policyHe from "../../models/resources/he/policy.json";
 import policyEn from "../../models/resources/en/policy.json";
 import policyEs from "../../models/resources/es/policy.json";
 import policyAr from "../../models/resources/ar/policy.json";
+import policyFr from "../../models/resources/fr/policy.json";
 import Popup from "../core/Popup/Popup";
 import MainBtn from "../MainBtn/MainBtn";
 import { useLanguage } from "../../i18n/useLanguage";
@@ -23,6 +24,8 @@ function TSCs({ handleAccept }) {
         return policyAr;
       case "es":
         return policyEs;
+      case "fr":
+        return policyFr;
       case "en":
       default:
         return policyEn;

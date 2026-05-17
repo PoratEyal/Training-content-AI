@@ -9,6 +9,7 @@ import magicEn from "../../models/resources/en/magic.json";
 import magicEs from "../../models/resources/es/magic.json";
 import magicHe from "../../models/resources/he/magic.json";
 import magicAr from "../../models/resources/ar/magic.json";
+import magicFr from "../../models/resources/fr/magic.json";
 import { CategoryName } from "../../models/types/movement";
 import { useLanguage } from "../../i18n/useLanguage";
 import { useNotificationContext } from "../../context/NotificationContext";
@@ -60,6 +61,9 @@ function SubjectInput({
       break;
     case "es":
       magicOptions = magicEs[category];
+      break;
+    case "fr":
+      magicOptions = magicFr[category];
       break;
     case "en":
     default:

@@ -1,0 +1,50 @@
+{
+    "p0": {
+        "label": "",
+        "text": "L'utilisation de l'application constitue un accord complet avec les termes de cette politique. L'utilisateur s'engage et est tenu de lire attentivement toutes les sections de la politique avant d'utiliser l'application et assumera l'entière responsabilité de tout malentendu ou non-respect de ses termes."
+    },
+    "p1": {
+        "label": "L'application est actuellement en phase de test et nous visons à l'améliorer en continu. Nous apprécierions vos retours si vous rencontrez des problèmes ou des dysfonctionnements.",
+        "text": "L'utilisation de l'application se fait à vos propres risques et nous n'assumons aucune responsabilité pour tout dommage pouvant résulter de son utilisation."
+    },
+    "p2": {
+        "label": "Politique de confidentialité :",
+        "text": "Nous utilisons des cookies et les données fournies volontairement par les utilisateurs (telles que le nom, l'adresse e-mail et le contenu des messages) pour améliorer l'expérience de l'application et analyser des données statistiques. Nous pouvons périodiquement effectuer des tests d'utilisabilité pour améliorer l'interface utilisateur."
+    },
+    "p3": {
+        "label": "Services publicitaires :",
+        "text": "Nous utilisons les services publicitaires de Google, tels que Google AdSense, pour afficher des annonces sur le site. Google et ses partenaires peuvent utiliser des cookies et d'autres technologies de suivi pour collecter des informations sur votre activité sur notre site et diffuser des annonces personnalisées. Vous pouvez gérer vos préférences pour les annonces personnalisées via les paramètres des annonces de Google."
+    },
+    "p4": {
+        "label": "Droits d'auteur :",
+        "text": "Tous les droits sur l'application, y compris les droits d'auteur, les conceptions, le code et les données, nous appartiennent ou appartiennent à des sources autorisées."
+    },
+    "p5": {
+        "label": "Responsabilité :",
+        "text": "Nous fournissons l'application telle quelle et n'offrons aucune garantie, expresse ou implicite, à son sujet. Nous ne sommes pas responsables des dommages directs, indirects, consécutifs ou spéciaux pouvant découler de l'utilisation de l'application."
+    },
+    "p6": {
+        "label": "Accessibilité :",
+        "text": "L'application est utilisable par les personnes handicapées grâce aux fonctionnalités d'accessibilité intégrées au système d'exploitation."
+    },
+    "p7": {
+        "label": "Limitation de responsabilité :",
+        "text": "Nous utilisons Microsoft Clarity pour améliorer l'expérience utilisateur. Les données d'utilisation du site, telles que les clics, le défilement, le temps passé, les cartes de chaleur et les enregistrements des actions des utilisateurs, sont stockées à l'aide de cookies. Pour plus d'informations sur la manière dont Microsoft collecte les données, consultez la déclaration de confidentialité de Microsoft."
+    },
+    "p8": {
+        "label": "Juridiction et règlement des litiges :",
+        "text": "Tout litige découlant de l'application est soumis à la compétence exclusive des tribunaux compétents d'Israël."
+    },
+    "p9": {
+        "label": "Modifications :",
+        "text": "Nous pouvons mettre à jour cette politique de temps à autre en publiant une nouvelle version sur notre site. Vous devriez consulter cette page régulièrement pour vous assurer que tout est clair."
+    },
+    "p10": {
+        "label": "E-mail :",
+        "email": "contact.activitywiz@gmail.com",
+        "text1": "Nous sommes disponibles pour répondre",
+        "text2": "par e-mail",
+        "text3": "pour toute question, commentaire ou demande.",
+        "text4": "Contactez-nous"
+    }
+}

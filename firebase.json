@@ -40,6 +40,11 @@
           "source": "/ar",
           "destination": "/ar/youth",
           "type": 301
+        },
+        {
+          "source": "/fr",
+          "destination": "/fr/youth",
+          "type": 301
         }
       ],
       "rewrites": [
@@ -202,6 +207,18 @@
           "destination": "/index.youth.ar.html"
         },
         {
+          "source": "/fr/youth",
+          "destination": "/index.youth.fr.html"
+        },
+        {
+          "source": "/fr/youth/faq",
+          "destination": "/index.youth.faq.fr.html"
+        },
+        {
+          "source": "/fr/youth/**",
+          "destination": "/index.youth.fr.html"
+        },
+        {
           "source": "/he/event",
           "destination": "/index.event.he.html"
         },
@@ -248,6 +265,18 @@
         {
           "source": "/ar/event/**",
           "destination": "/index.event.ar.html"
+        },
+        {
+          "source": "/fr/event",
+          "destination": "/index.event.fr.html"
+        },
+        {
+          "source": "/fr/event/faq",
+          "destination": "/index.event.faq.fr.html"
+        },
+        {
+          "source": "/fr/event/**",
+          "destination": "/index.event.fr.html"
         },
 
         {
@@ -299,6 +328,18 @@
           "destination": "/index.practice.ar.html"
         },
         {
+          "source": "/fr/practice",
+          "destination": "/index.practice.fr.html"
+        },
+        {
+          "source": "/fr/practice/faq",
+          "destination": "/index.practice.faq.fr.html"
+        },
+        {
+          "source": "/fr/practice/**",
+          "destination": "/index.practice.fr.html"
+        },
+        {
           "source": "/he/words",
           "destination": "/index.words.he.html"
         },
@@ -346,6 +387,18 @@
           "source": "/ar/words/**",
           "destination": "/index.words.ar.html"
         },
+        {
+          "source": "/fr/words",
+          "destination": "/index.words.fr.html"
+        },
+        {
+          "source": "/fr/words/faq",
+          "destination": "/index.words.faq.fr.html"
+        },
+        {
+          "source": "/fr/words/**",
+          "destination": "/index.words.fr.html"
+        },
 
         {
           "source": "/he/privacy",
@@ -362,6 +415,10 @@
         {
           "source": "/ar/privacy",
           "destination": "/index.privacy.ar.html"
+        },
+        {
+          "source": "/fr/privacy",
+          "destination": "/index.privacy.fr.html"
         },
         {
           "source": "/privacy",
@@ -383,6 +440,10 @@
         {
           "source": "/ar/**",
           "destination": "/index.youth.ar.html"
+        },
+        {
+          "source": "/fr/**",
+          "destination": "/index.youth.fr.html"
         },
         {
           "source": "**",
@@ -423,6 +484,15 @@
             {
               "key": "Content-Language",
               "value": "ar"
+            }
+          ]
+        },
+        {
+          "source": "/fr/**",
+          "headers": [
+            {
+              "key": "Content-Language",
+              "value": "fr"
             }
           ]
         }

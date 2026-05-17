@@ -29,9 +29,9 @@ const detectCountryAndInit = async () => {
   const langFromPath = window.location.pathname.split("/")[1] as Lng
   const userLang = localStorage.getItem(StorageKey.SITE_LANG) as Lng | null
 
-  if (userLang && ["he", "en", "es", "ar"].includes(userLang))  // Check user saved lang
+  if (userLang && ["he", "en", "es", "ar", "fr"].includes(userLang))  // Check user saved lang
     detectedLang = userLang
-  else if (["he", "en", "es", "ar"].includes(langFromPath))     // Check URL lang
+  else if (["he", "en", "es", "ar", "fr"].includes(langFromPath))     // Check URL lang
     detectedLang = langFromPath
   else if (typeof window !== "undefined" && window.location.hostname === "localhost") {
     console.log("[index.tsx client]: Only for localhost debug")

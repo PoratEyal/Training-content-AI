@@ -29,7 +29,8 @@ const buildPrompt = (topic: string, count: number, lang: Lang): string => {
     he: "Hebrew",
     en: "English",
     ar: "Arabic",
-    es: "Spanish"
+    es: "Spanish",
+    fr: "French"
   }[lang];
 
   return `

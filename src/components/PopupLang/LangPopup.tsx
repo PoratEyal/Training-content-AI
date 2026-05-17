@@ -91,7 +91,7 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className={styles.buttonContainer}>
-          {["he", "en", "es", "ar"].map((lng) => (
+          {["he", "en", "es", "fr", "ar"].map((lng) => (
             <button
               key={lng}
               onClick={() => changeLanguage(lng)}
@@ -105,6 +105,7 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
                 es: "Español",
                 he: "עברית",
                 ar: "العربية",
+                fr: "Français",
               }[lng]}
               {loadingLang === lng ? (
                 <span className={styles.checkmark}>

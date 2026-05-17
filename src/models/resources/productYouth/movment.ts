@@ -456,5 +456,48 @@ export const Movements = {
                 }
             ],
         } as Movement
+    },
+
+    fr: {
+        scouts: {
+            name: "Scouts",
+            title: "Scouts",
+            categories: [
+                { name: "content", title: "Activité thématique" },
+                { name: "playTime", title: "Activité ludique" },
+            ],
+        } as Movement,
+        youthLeadershipPrograms: {
+            name: "YouthLeadershipPrograms",
+            title: "Programmes de Leadership",
+            categories: [
+                { name: "content", title: "Activité thématique" },
+                { name: "playTime", title: "Activité ludique" },
+            ],
+        } as Movement,
+        faithBasedYouthGroups: {
+            name: "FaithBasedYouthGroups",
+            title: "Groupes Confessionnels",
+            categories: [
+                { name: "content", title: "Activité thématique" },
+                { name: "playTime", title: "Activité ludique" },
+            ],
+        } as Movement,
+        environmentalAndNatureGroups: {
+            name: "EnvironmentalAndNatureGroups",
+            title: "Groupes Environnementaux",
+            categories: [
+                { name: "content", title: "Activité thématique" },
+                { name: "playTime", title: "Activité ludique" },
+            ],
+        } as Movement,
+        other: {
+            name: "other",
+            title: "Autre",
+            categories: [
+                { name: "content", title: "Activité thématique" },
+                { name: "playTime", title: "Activité ludique" },
+            ],
+        } as Movement
     }
 };

@@ -3,7 +3,8 @@ import { initReactI18next } from "react-i18next";
 import translationEN from "./en/translation.json";
 import translationHE from "./he/translation.json";
 import translationES from "./es/translation.json";
-import translationAR from "./ar/translation.json"; 
+import translationAR from "./ar/translation.json";
+import translationFR from "./fr/translation.json"; 
 import { Lng } from "../models/types/common";
 
 const resources: Record<Lng, { translation: any }> = {
@@ -11,6 +12,7 @@ const resources: Record<Lng, { translation: any }> = {
   he: { translation: translationHE },
   es: { translation: translationES },
   ar: { translation: translationAR },
+  fr: { translation: translationFR },
 };
 
 export const initI18n = async (detectedLang: Lng) => {
@@ -19,7 +21,7 @@ export const initI18n = async (detectedLang: Lng) => {
     .init({
       lng: detectedLang,
       resources,
-      supportedLngs: ["en", "he", "es", "ar"],
+      supportedLngs: ["en", "he", "es", "ar", "fr"],
       fallbackLng: "en",
       interpolation: { escapeValue: false },
     });
