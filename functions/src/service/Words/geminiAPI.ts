@@ -69,13 +69,35 @@ Guidelines:
 };
 
 // Create the quiz with the provided parameters
-export async function generateWordsAI(topic: string | null, pLearningLang: Lang, pUserLang: Lang, count: number = 10): Promise<string> {
+export async function generateWordsAI(
+  topic: string | null,
+  pLearningLang: Lang,
+  pUserLang: Lang,
+  count: number = 10,
+  retries = 3,
+  delayMs = 1500
+): Promise<string> {
   const requestedModel = "gemini-2.5-flash-lite";
   assertAllowedModel(requestedModel);
   assertNotImageModel(requestedModel);
   const generationConfig = { maxOutputTokens: 2000, };
   const model = genAI.getGenerativeModel({ model: requestedModel, generationConfig, });
   const prompt = buildPrompt(topic, pLearningLang, pUserLang, count);
-  const result = await model.generateContent(prompt);
-  return result.response.text();
+
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const result = await model.generateContent(prompt);
+      return result.response.text();
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : String(error);
+      const isTransient = errorMsg.includes("503") || errorMsg.toLowerCase().includes("service unavailable") || errorMsg.toLowerCase().includes("overloaded");
+      if (isTransient && attempt < retries) {
+        await new Promise((resolve) => setTimeout(resolve, delayMs));
+        delayMs *= 2;
+      } else {
+        throw error;
+      }
+    }
+  }
+  throw new Error("Failed to generate content after retries");
 }

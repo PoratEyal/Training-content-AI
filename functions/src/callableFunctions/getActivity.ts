@@ -5,6 +5,7 @@ import { generateYouthActivityAI } from "../service/Youth/geminiAPI";
 import { initActivityFromAI } from "../utils/activity";
 import { GetActivityResponse } from "../model/types/response";
 import { handleGetActivityErrors } from "../utils/handleError";
+import { db } from "../index";
 
 const getActivity = functions.https.onCall(
     async (
@@ -30,6 +31,16 @@ const getActivity = functions.https.onCall(
 
             return { result: "success", activity };
         } catch (error) {
+            const errorMsg = error instanceof Error ? error.message : String(error);
+            try {
+                await db.collection("logs").add({
+                    timestamp: new Date(),
+                    userID: userId || "guest",
+                    data: `[getActivity error]: ${errorMsg} | subject: ${data.subject} | category: ${data.category}`,
+                });
+            } catch (logErr) {
+                console.error("Failed to write to logs collection:", logErr);
+            }
             return handleGetActivityErrors(error, data, userId);
         }
     }
