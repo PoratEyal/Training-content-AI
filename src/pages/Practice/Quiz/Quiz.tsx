@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next"
 import route from "../../../router/route.json"
 import styles from "./Quiz.module.css"
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout"
-import LoadingActivity from "../../../components/Loading/LoadingActivity/LoadingActivity";
 import QuizContainer from "../../../components/ProductPractice/QuizContainer/QuizContainer"
 import { ProductType } from "../../../context/ProductType"
 import { useContentContext } from "../../../context/ContentContext"
@@ -45,7 +44,6 @@ function Quiz() {
   const [questions, setQuestions] = useState<Question[]>([])
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>([])
   const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
 
   const topic = localStorage.getItem(StorageKey.PRACTICE_TOPIC) || ""
 
@@ -115,10 +113,7 @@ function Quiz() {
       hasNavBar
       index={false}
     >
-      {loading ? (
-        <LoadingActivity />
-      ) : (
-        <QuizContainer>
+      <QuizContainer>
           {submitted && (
             <div className={`${styles.scoreBoxContainer} ${styles.fadeIn}`}>
               <div className={styles.scoreCircle} />
@@ -197,7 +192,6 @@ function Quiz() {
 
 
         </QuizContainer>
-      )}
     </PageLayout>
   )
 }

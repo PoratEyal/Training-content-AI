@@ -49,10 +49,6 @@ function Topic() {
   const [topicText, setTopicText] = useState(() =>
     localStorage.getItem(StorageKey.WORDS_TOPIC) || ""
   );
-  const [mode, setMode] = useState<"ai" | "manual">(() => {
-    const saved = localStorage.getItem(StorageKey.WORDS_MODE);
-    return saved === "manual" ? "manual" : "ai";
-  });
 
   const [loading, setLoading] = useState(false);
 
@@ -74,10 +70,6 @@ function Topic() {
   useEffect(() => { // Save to LocalStorage
     localStorage.setItem(StorageKey.WORDS_TOPIC, topicText);
   }, [topicText]);
-
-  useEffect(() => { // Save to LocalStorage
-    localStorage.setItem(StorageKey.WORDS_MODE, mode);
-  }, [mode]);
 
 
   // Adds the correct translation to each word object using the Microsoft Translator API
@@ -186,27 +178,18 @@ function Topic() {
 
     e.preventDefault();
 
-    if (!languageToLearn || !mode) return;
+    if (!languageToLearn) return;
 
     setLoading(true);
 
     try {
 
-      if (topicText === "testlp") { // QA case
-        const res = await fetch("/Words/test.json");
-        const json = await res.json();
-        sessionStorage.setItem(StorageKey.WORDS_QUIZ, JSON.stringify(json));
-        localStorage.setItem(StorageKey.WORDS_LANG, "ar")
-      }
-
-      else if (mode === "ai") {
-        const generateWithAI = await generateWordsQuestions(topicText || null, languageToLearn, lang, 10);
-        const jsonClean = cleanJSONResponse(generateWithAI);
-        const jsonWithTranslation = await addTranslationsToWords(jsonClean, languageToLearn, lang);
-        const jsonWithFixedDisctractors = fixDistractors(jsonWithTranslation, lang);
-        sessionStorage.setItem(StorageKey.WORDS_QUIZ, JSON.stringify(jsonWithFixedDisctractors));
-        localStorage.setItem(StorageKey.WORDS_LANG, languageToLearn)
-      }
+      const generateWithAI = await generateWordsQuestions(topicText || null, languageToLearn, lang, 10);
+      const jsonClean = cleanJSONResponse(generateWithAI);
+      const jsonWithTranslation = await addTranslationsToWords(jsonClean, languageToLearn, lang);
+      const jsonWithFixedDisctractors = fixDistractors(jsonWithTranslation, lang);
+      sessionStorage.setItem(StorageKey.WORDS_QUIZ, JSON.stringify(jsonWithFixedDisctractors));
+      localStorage.setItem(StorageKey.WORDS_LANG, languageToLearn);
 
       navigate(wordsQuizPath);
 
@@ -253,33 +236,10 @@ function Topic() {
             />
           </div>
 
-          <div className={styles.input} style={{ display: "none" }}>
-            <label>{t("words.topic.radioLabel")}</label>
-            <label>
-              <input
-                type="radio"
-                value="ai"
-                checked={mode === "ai"}
-                onChange={() => setMode("ai")}
-              />
-              {t("words.topic.typeAutomatic")}
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="manual"
-                disabled
-                checked={mode === "manual"}
-                onChange={() => setMode("manual")}
-              />
-              {t("words.topic.typeManual")}
-            </label>
-          </div>
-
           <div className={styles.button_wrapper}>
             <MainBtn
               text={t("common.btnContinue")}
-              isDisabled={!languageToLearn || !mode || loading}
+              isDisabled={!languageToLearn || loading}
               type="submit"
               height={42}
               func={handleSubmit}

@@ -35,7 +35,7 @@ import styles from "./BuildActivity.module.css"
 function BuildActivity() {
 
   const { t, isRTL, lang } = useLanguage();
-  const { notifyAlert: notifyAlert } = useNotificationContext();
+  const { notifyAlert } = useNotificationContext();
   const { data, updateMainActivity, currentPage, setCurrentPage } = useContentContext();
   const { isLoggedIn, currentUser, setCurrentUser } = useAuthContext();
 

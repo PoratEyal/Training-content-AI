@@ -3,7 +3,6 @@
 //
 import { useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import route from "../../../router/route.json";
 import styles from "./Home.module.css";
 import { useAuthContext } from "../../../context/AuthContext";

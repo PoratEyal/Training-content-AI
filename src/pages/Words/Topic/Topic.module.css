@@ -37,34 +37,6 @@
   box-sizing: border-box;
   background-color: var(--select-color);
 }
-
-.input input[type="radio"] {
-  margin-right: 8px;
-  margin-left: 4px;
-}
-
-.input label:not(:first-child) {
-  font-weight: 350;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 0;
-}
-
-select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  background-color: white;
-  font-size: 16px;
-}
-
-select:focus {
-  border-color: #cccccc;
-  outline: none;
-}
-
 .button_wrapper {
   margin-top: 20px;
 }

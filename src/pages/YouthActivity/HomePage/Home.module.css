@@ -78,7 +78,7 @@
     }
 }
 
-@media (max-height: 600px) {
+@media (max-height: 620px) {
     .submit_btn {
         margin-top: 35px;
     }

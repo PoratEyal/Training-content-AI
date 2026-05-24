@@ -26,7 +26,6 @@ function Details() {
   const [event, setEvent] = useState("");
   const [moreDetails, setMoreDetails] = useState("");
   const [duration, setDuration] = useState("");
-  const [hasAlert, setHasAlert] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
 
   const eventBuildPath = route[`eventBuild${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.eventBuildEn;
@@ -103,7 +102,6 @@ function Details() {
                 placeholder={t("event.Details.event")}
                 event={event}
                 setEvent={setEvent}
-                setHasAlert={setHasAlert}
               />
               <label className={styles.label}>
                 {t("event.Details.eventLable")}

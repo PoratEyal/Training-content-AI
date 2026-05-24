@@ -22,7 +22,7 @@ function Activity() {
 
   const { mainActivity, currentPage, setCurrentPage } = useContentContext();
   const { isEdit, readOnlyMode } = useEditorContext();
-  const { isLoggedIn, currentUser } = useAuthContext();
+  const { isLoggedIn } = useAuthContext();
   const [newActivity, setNewActivity] = useState(false);
   const activityRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();

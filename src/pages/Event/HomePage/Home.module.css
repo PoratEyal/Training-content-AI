@@ -1,4 +1,4 @@
-.slogan_big{
+.slogan_big {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,7 +7,7 @@
     margin-top: 1vh;
 }
 
-.slogan_small{
+.slogan_small {
     padding-top: 5px;
     padding-bottom: 7px;
     padding-right: 5px;
@@ -25,7 +25,7 @@
     margin: 0;
 }
 
-.submit_btn{
+.submit_btn {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,7 +33,7 @@
     margin-top: 65px;
 }
 
-.submit_btn_loading{
+.submit_btn_loading {
     margin-top: 65px;
     display: flex;
     flex-direction: column;
@@ -41,7 +41,7 @@
     align-items: center;
 }
 
-.about_div{
+.about_div {
     position: absolute;
     bottom: 162px;
     right: 45vw;
@@ -49,14 +49,16 @@
 
 
 @media (min-width: 550px) {
-    .slogan_big{
+    .slogan_big {
         margin-top: 0px;
     }
-    .submit_btn{
+
+    .submit_btn {
         margin-top: 40px;
     }
+
     body {
-        background-color: var(--background-color); 
+        background-color: var(--background-color);
         background-size: cover;
         background-attachment: fixed;
         min-height: 100vh;
@@ -66,17 +68,17 @@
         justify-content: center;
         align-items: center;
     }
-    
+
     body::before {
         content: none;
     }
-    
-    .about_div{
+
+    .about_div {
         right: 45%;
     }
 }
 
-@media (max-height: 600px) {
+@media (max-height: 620px) {
     .submit_btn {
         margin-top: 35px;
     }

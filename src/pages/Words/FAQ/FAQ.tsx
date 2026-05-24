@@ -6,13 +6,11 @@ import { useTranslation } from "react-i18next";
 import { buildFaqSchema } from "../../../models/schemaOrg";
 import { ProductType } from "../../../context/ProductType";
 import React, { useMemo } from "react";
-import { useProduct } from "../../../context/ProductContext"
 
 const FAQ: React.FC = () => {
 
   const { t } = useTranslation();
   const { dir } = useLanguage();
-  const product = useProduct()
 
   const faq = t("faq.words.questions", { returnObjects: true }) as {
     q: string;

@@ -15,7 +15,7 @@ import policyFr from "../../../models/resources/fr/policy.json"
 import { useTranslation } from "react-i18next"
 
 const Terms: React.FC = () => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const { dir, lang } = useLanguage()
 
   const policyMap: Record<string, any> = {

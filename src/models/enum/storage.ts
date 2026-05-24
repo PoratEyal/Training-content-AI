@@ -13,6 +13,5 @@ export enum StorageKey {
 
     WORDS_LANG = "wordsLang",
     WORDS_TOPIC = "wordsTopic",
-    WORDS_MODE = "wordsMode",
     WORDS_QUIZ = "wordsQuiz",
 }

@@ -7,14 +7,12 @@ type EventInputProps = {
   placeholder?: string;
   event: string;
   setEvent: React.Dispatch<React.SetStateAction<string>>;
-  setHasAlert: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 function EventInput({
   placeholder,
   event,
   setEvent,
-  setHasAlert,
 }: EventInputProps) {
   const { isRTL, lang, t } = useLanguage();
   const { notifySuccess } = useNotificationContext();
