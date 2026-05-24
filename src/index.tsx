@@ -29,8 +29,27 @@ const detectCountryAndInit = async () => {
   const langFromPath = window.location.pathname.split("/")[1] as Lng
   const userLang = localStorage.getItem(StorageKey.SITE_LANG) as Lng | null
 
+  // Check browser language preferences if no manual choice has been saved
+  const getBrowserLang = (): Lng | null => {
+    if (typeof navigator === "undefined") return null
+    const preferredLanguages = navigator.languages || [navigator.language]
+    const normalizedLangs = preferredLanguages.map(lang => lang.split("-")[0].toLowerCase())
+
+    if (normalizedLangs.includes("he")) return "he"
+
+    const otherLangs = ["es", "ar", "fr"]
+    for (const lang of normalizedLangs) {
+      if (otherLangs.includes(lang)) return lang as Lng
+    }
+    return null
+  }
+
+  const browserLang = getBrowserLang()
+
   if (userLang && ["he", "en", "es", "ar", "fr"].includes(userLang))  // Check user saved lang
     detectedLang = userLang
+  else if (langFromPath === "en" && browserLang)                      // User prefers another language but landed on English URL
+    detectedLang = browserLang
   else if (["he", "en", "es", "ar", "fr"].includes(langFromPath))     // Check URL lang
     detectedLang = langFromPath
   else if (typeof window !== "undefined" && window.location.hostname === "localhost") {
