@@ -242,6 +242,12 @@
     },
     "dropOptLang": {
       "lang": "שפה"
+    },
+    "dropOptPractice": {
+      "practice": "חידון אתגרי"
+    },
+    "dropOptEvent": {
+      "event": "יצירת אירוע"
     }
   },
   "reviewPopup": {

@@ -2,8 +2,10 @@
 // This file sets up all the website's pages
 // It switches to the right page when someone clicks a link and handles the languages
 //
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from "react-router-dom"
 import { ReactNotifications } from "react-notifications-component"
+import { ProductContext } from "./context/ProductContext"
+import { ProductType } from "./context/ProductType"
 import "react-notifications-component/dist/theme.css"
 import route from "./router/route.json"
 import "./App.css"
@@ -88,29 +90,50 @@ const allRoutes = [
 
 ]
 
+const detectProductFromPath = (path: string): ProductType => {
+  if (path.includes("/youth")) return ProductType.Youth
+  if (path.includes("/event")) return ProductType.Event
+  if (path.includes("/practice")) return ProductType.Practice
+  if (path.includes("/words")) return ProductType.Words
+  return ProductType.Youth
+}
+
+function ProductProvider({ children }: { children: React.ReactNode }) {
+  const location = useLocation()
+  const product = detectProductFromPath(location.pathname)
+
+  return (
+    <ProductContext.Provider value={product}>
+      {children}
+    </ProductContext.Provider>
+  )
+}
+
 function App() {
   return (
     <Providers>
       <ReactNotifications className="react-notifications" />
       <Router>
-        <LanguageRedirect />
-        <Routes>
-          {/* Redirect /he, /en, /es, /ar to their respective /youth pages */}
-          {langs.map(lang => (
-            <Route key={`redirect-${lang}`} path={`/${lang}`} element={<Navigate to={`/${lang}/youth`} replace />} />
-          ))}
+        <ProductProvider>
+          <LanguageRedirect />
+          <Routes>
+            {/* Redirect /he, /en, /es, /ar to their respective /youth pages */}
+            {langs.map(lang => (
+              <Route key={`redirect-${lang}`} path={`/${lang}`} element={<Navigate to={`/${lang}/youth`} replace />} />
+            ))}
 
-          {allRoutes.map(({ key, element }) =>
-            langs.map(lang => {                                               // example: lang = "he"
-              const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)    // example: langKey = "He"
-              const basePath = route[`${key}${langKey}`]                      // example: route["youthHomePageHe"]
-              return <Route key={`${key}${lang}`} path={basePath} element={element} />
-            })
-          )}
+            {allRoutes.map(({ key, element }) =>
+              langs.map(lang => {                                               // example: lang = "he"
+                const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)    // example: langKey = "He"
+                const basePath = route[`${key}${langKey}`]                      // example: route["youthHomePageHe"]
+                return <Route key={`${key}${lang}`} path={basePath} element={element} />
+              })
+            )}
 
-          {/* Fallback for undefined routes */}
-          <Route path="*" element={<FallbackRedirect />} />
-        </Routes>
+            {/* Fallback for undefined routes */}
+            <Route path="*" element={<FallbackRedirect />} />
+          </Routes>
+        </ProductProvider>
       </Router>
     </Providers>
   )

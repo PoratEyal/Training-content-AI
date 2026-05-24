@@ -242,6 +242,12 @@
     },
     "dropOptLang": {
       "lang": "Idioma"
+    },
+    "dropOptPractice": {
+      "practice": "Quiz de desafío"
+    },
+    "dropOptEvent": {
+      "event": "Crear Evento"
     }
   },
   "reviewPopup": {

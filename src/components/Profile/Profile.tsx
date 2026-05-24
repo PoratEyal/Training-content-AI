@@ -4,10 +4,14 @@ import DropOptContactUs from "../options/dropdown/DropOptContactUs"
 import DropOptFAQ from "../options/dropdown/DropOptFAQ"
 import DropOptInviteFriends from "../options/dropdown/DropOptInviteFriends"
 import DropOptLang from "../options/dropdown/DropOptLang"
+import DropOptPractice from "../options/dropdown/DropOptPractice"
+import DropOptEvent from "../options/dropdown/DropOptEvent"
 import DropOptLogout from "../options/dropdown/DropOptLogout"
 import DropOptPrivacy from "../options/dropdown/DropOptPrivacy"
 import DropOptSignIn from "../options/dropdown/DropOptSignIn"
 import { useAuthContext } from "../../context/AuthContext"
+import { useProduct } from "../../context/ProductContext"
+import { ProductType } from "../../context/ProductType"
 import useToggle from "../../hooks/useToggle"
 import styles from "./Profile.module.css"
 
@@ -21,6 +25,7 @@ type ProfileProps = {
 
 function Profile({ img, isLoading, openLangPopup, openPrivacyPopup, openContactPopup }: ProfileProps) {
   const { isLoggedIn } = useAuthContext()
+  const product = useProduct()
   const [isOpen, toggle, close] = useToggle(false)
 
   return (
@@ -57,6 +62,9 @@ function Profile({ img, isLoading, openLangPopup, openPrivacyPopup, openContactP
           <DropOptPrivacy handleClose={close} openPrivacyPopup={openPrivacyPopup} />
           <DropOptFAQ handleClose={close} />
           <DropOptLang handleClose={close} openLangPopup={openLangPopup} />
+          {product === ProductType.Youth && <hr className={styles.dropdown_divider} />}
+          {product === ProductType.Youth && <DropOptPractice handleClose={close} />}
+          {product === ProductType.Youth && <DropOptEvent handleClose={close} />}
           <hr className={styles.dropdown_divider} />
           {isLoggedIn ? (
             <DropOptLogout handleClose={close} />

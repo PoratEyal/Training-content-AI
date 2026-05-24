@@ -243,6 +243,12 @@
     },
     "dropOptLang": {
       "lang": "اللغة"
+    },
+    "dropOptPractice": {
+      "practice": "تحدي المعرفة"
+    },
+    "dropOptEvent": {
+      "event": "إنشاء فعالية"
     }
   },
   "reviewPopup": {
