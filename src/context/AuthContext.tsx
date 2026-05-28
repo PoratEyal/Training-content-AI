@@ -111,9 +111,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 setCurrentUser(undefined);
                 setIsLoggedIn(false);
             }
-        } catch (error) {
-            logEvent("[AuthContext.initializeUser]: Failed to initialize User: Might be login error", "");
-
+        } catch (error: any) {
+            const errorMsg = error instanceof Error ? error.message : String(error);
+            logEvent(`[AuthContext.initializeUser]: Failed to initialize User: ${errorMsg}`, "");
         } finally {
             setLoading(false);  // Sets the profile menu enabled
         }

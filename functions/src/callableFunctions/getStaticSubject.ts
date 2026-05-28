@@ -2,7 +2,9 @@ import * as functions from "firebase-functions";
 import { db } from "../index";
 import { GetStaticSubjectsResponse } from "../model/types/response";
 
-const getStaticSubjectsHttp = functions.https.onCall(
+const getStaticSubjectsHttp = functions.runWith({
+    timeoutSeconds: 90,
+}).https.onCall(
     async (
         data: void,
         context: functions.https.CallableContext

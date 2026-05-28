@@ -7,7 +7,9 @@ import { GetActivityResponse } from "../model/types/response";
 import { handleGetActivityErrors } from "../utils/handleError";
 import { db } from "../index";
 
-const getActivity = functions.https.onCall(
+const getActivity = functions.runWith({
+    timeoutSeconds: 90,
+}).https.onCall(
     async (
         data: GetActivityRequest,
         context: functions.https.CallableContext,

@@ -9,7 +9,6 @@ import {
     AddStaticActivityResponse,
     CreateNewUserResponse,
     GetActivityResponse,
-    GetMsgResponse,
     GetStaticActivityResponse,
     SendMsgResponse,
     UpdateIsMsgResponse,
@@ -39,7 +38,7 @@ export const fetchCreateNewUser = async (request: CreateNewUserRequest,): Promis
     if (response.result === "success" && response.user) {
         return response;
     } else {
-        throw new Error("fetchCreateNewUser");
+        throw new Error(response.message || "fetchCreateNewUser");
     }
 };
 
@@ -58,7 +57,7 @@ export const fetchGetSavedActivities = async (userId: string,): Promise<getSaved
     if (response.result === "success") {
         return response;
     } else {
-        throw new Error("fetchGetSavedActivities");
+        throw new Error(response.message || "fetchGetSavedActivities");
     }
 };
 
@@ -68,7 +67,7 @@ export const fetchSaveActivity = async (activity: Activity, lang: Lang): Promise
     if (response.result === "success") {
         return response;
     } else {
-        throw new Error("fetchSaveActivity");
+        throw new Error(response.message || "fetchSaveActivity");
     }
 };
 
@@ -155,7 +154,7 @@ export const fetchGetActivities = async (): Promise<getAllActivitiesResponse> =>
     if (response.result === "success") {
         return response;
     } else {
-        throw new Error("fetchGetActivities");
+        throw new Error(response.message || "fetchGetActivities");
     }
 };
 
@@ -166,7 +165,7 @@ export const fetchGetUsers = async (): Promise<getAllUsersResponse> => {
     if (response.result === "success") {
         return response;
     } else {
-        throw new Error("fetchGetUsers");
+        throw new Error(response.message || "fetchGetUsers");
     }
 };
 
@@ -176,7 +175,7 @@ export const fetchSendMsg = async (password: string): Promise<SendMsgResponse> =
     if (response.result === "success") {
         return response;
     } else {
-        throw new Error("fetchSendMsg");
+        throw new Error(response.message || "fetchSendMsg");
     }
 };
 
@@ -187,7 +186,7 @@ export const fetchAddStaticActivity = async (activityText: string, activityId: s
         if (response.result === "success") {
             return response;
         } else {
-            throw new Error("fetchAddStaticActivity");
+            throw new Error(response.message || "fetchAddStaticActivity");
         }
     } catch (error: any) {
         throw error;

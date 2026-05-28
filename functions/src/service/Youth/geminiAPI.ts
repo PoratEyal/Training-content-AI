@@ -69,7 +69,15 @@ async function generateContent(prompt: string, retries = 3, delayMs = 1500): Pro
       return text;
     } catch (error) {
       const errorMsg = error instanceof Error ? error.message : String(error);
-      const isTransient = errorMsg.includes("503") || errorMsg.toLowerCase().includes("service unavailable") || errorMsg.toLowerCase().includes("overloaded");
+      const isTransient =
+        errorMsg.includes("500") ||
+        errorMsg.includes("503") ||
+        errorMsg.includes("504") ||
+        errorMsg.includes("429") ||
+        errorMsg.toLowerCase().includes("internal error") ||
+        errorMsg.toLowerCase().includes("service unavailable") ||
+        errorMsg.toLowerCase().includes("overloaded") ||
+        errorMsg.toLowerCase().includes("resource exhausted");
       if (isTransient && attempt < retries) {
         await new Promise((resolve) => setTimeout(resolve, delayMs));
         delayMs *= 2;

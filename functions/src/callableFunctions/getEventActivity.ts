@@ -3,8 +3,10 @@ import { generateEventActivityAI } from "../service/Event/geminiAPI"
 import { Lang } from "../model/types/common"
 import { db } from "../index"
 
-export const getEventActivity = functions.https.onCall(async (data, context) => {
-  
+export const getEventActivity = functions.runWith({
+  timeoutSeconds: 90,
+}).https.onCall(async (data, context) => {
+
   const { event, moreDetails, duration, age, amount, gender, place, materials, lang } = data
 
   try {
