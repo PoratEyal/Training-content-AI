@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenerativeAI, SchemaType } from "@google/generative-ai";
 import { Lang } from "../../model/types/common";
 import * as functions from "firebase-functions";
 
@@ -106,7 +106,38 @@ export async function generateEventActivityAI(
   const requestedModel = "gemini-2.5-flash-lite";
   assertAllowedModel(requestedModel);
   assertNotImageModel(requestedModel);
-  const generationConfig = { maxOutputTokens: 2000, };
+  const generationConfig = {
+    maxOutputTokens: 2000,
+    responseMimeType: "application/json",
+    responseSchema: {
+      type: SchemaType.OBJECT as SchemaType.OBJECT,
+      properties: {
+        title: { type: SchemaType.STRING as SchemaType.STRING },
+        summary: { type: SchemaType.STRING as SchemaType.STRING },
+        materials: {
+          type: SchemaType.ARRAY as SchemaType.ARRAY,
+          items: { type: SchemaType.STRING as SchemaType.STRING }
+        },
+        flow: {
+          type: SchemaType.ARRAY as SchemaType.ARRAY,
+          items: {
+            type: SchemaType.OBJECT as SchemaType.OBJECT,
+            properties: {
+              title: { type: SchemaType.STRING as SchemaType.STRING },
+              description: { type: SchemaType.STRING as SchemaType.STRING },
+              duration: { type: SchemaType.STRING as SchemaType.STRING }
+            },
+            required: ["title", "description"]
+          }
+        },
+        tips: {
+          type: SchemaType.ARRAY as SchemaType.ARRAY,
+          items: { type: SchemaType.STRING as SchemaType.STRING }
+        }
+      },
+      required: ["title", "summary", "materials", "flow", "tips"]
+    }
+  };
   const model = genAI.getGenerativeModel({ model: requestedModel, generationConfig, });
   const prompt = buildPrompt({ event, moreDetails, duration, age, amount, gender, place, materials }, lang);
 

@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenerativeAI, SchemaType } from "@google/generative-ai";
 import * as functions from "firebase-functions";
 import { Lang } from "../../model/types/common";
 
@@ -80,7 +80,24 @@ export async function generateWordsAI(
   const requestedModel = "gemini-2.5-flash-lite";
   assertAllowedModel(requestedModel);
   assertNotImageModel(requestedModel);
-  const generationConfig = { maxOutputTokens: 2000, };
+  const generationConfig = {
+    maxOutputTokens: 2000,
+    responseMimeType: "application/json",
+    responseSchema: {
+      type: SchemaType.ARRAY as SchemaType.ARRAY,
+      items: {
+        type: SchemaType.OBJECT as SchemaType.OBJECT,
+        properties: {
+          text: { type: SchemaType.STRING as SchemaType.STRING },
+          pronunciation: { type: SchemaType.STRING as SchemaType.STRING },
+          dist1: { type: SchemaType.STRING as SchemaType.STRING },
+          dist2: { type: SchemaType.STRING as SchemaType.STRING },
+          dist3: { type: SchemaType.STRING as SchemaType.STRING }
+        },
+        required: ["text", "pronunciation", "dist1", "dist2", "dist3"],
+      }
+    }
+  };
   const model = genAI.getGenerativeModel({ model: requestedModel, generationConfig, });
   const prompt = buildPrompt(topic, pLearningLang, pUserLang, count);
 
