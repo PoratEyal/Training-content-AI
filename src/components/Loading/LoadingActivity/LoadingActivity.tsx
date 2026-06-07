@@ -25,8 +25,12 @@ function LoadingActivity() {
         const bottomNav = document.querySelector<HTMLElement>('nav[class^="NavigationBar_"], nav[class*="NavigationBar_"]');
 
         const candidates = [c.bottom];
-        if (ads) candidates.push(ads.getBoundingClientRect().top);
-        if (bottomNav) candidates.push(bottomNav.getBoundingClientRect().top);
+        if (ads && ads.getBoundingClientRect().height > 0) {
+            candidates.push(ads.getBoundingClientRect().top);
+        }
+        if (bottomNav && bottomNav.getBoundingClientRect().height > 0) {
+            candidates.push(bottomNav.getBoundingClientRect().top);
+        }
 
         const bottomLimit = Math.min(...candidates);
 

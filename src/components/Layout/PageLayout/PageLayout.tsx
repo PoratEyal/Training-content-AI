@@ -8,7 +8,6 @@ import { WEBSITE_URL } from "../../../models/constants";
 import { HelmetPage } from "../../../models/types/common";
 import { ProductType } from "../../../context/ProductType";
 import { useAuthContext } from "../../../context/AuthContext";
-import { logEvent } from "../../../utils/logEvent";
 import { useShareTextOrLink } from "../../../utils/share"
 import Header from "../Header/Header";
 import YouthNavigationBar from "../NavigationBar/YouthNavigationBar";
@@ -17,6 +16,7 @@ import PracticeNavigationBar from "../NavigationBar/PracticeNavigationBar";
 import WordsNavigationBar from "../NavigationBar/WordsNavigationBar";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
 import AdsBig from "../../ads/AdsBig/AdsBig";
+import { Adsense } from "@ctrl/react-adsense";
 import styles from "./PageLayout.module.css";
 import { Icons } from "../../Icons";
 
@@ -129,106 +129,117 @@ function PageLayout({
         />
       </Helmet>
 
-      <section
-        className={styles.pageContainer}
-        style={{
-          backgroundColor: (() => {
-            if (!hasGreenBackground) return "var(--background-color)";
-            if (productType === ProductType.Youth) return "var(--youth-primary-color)";
-            if (productType === ProductType.Event) return "var(--event-primary-color)";
-            if (productType === ProductType.Practice) return "var(--practice-primary-color)";
-            if (productType === ProductType.Words) return "var(--words-primary-color)";
-            return "var(--background-color)";
-          })(),
-          direction: dir,
-        }}
-      >
+      <div className={styles.layoutWrapper}>
+        <div className={`${styles.sidebarAd} ${styles.leftAd}`}>
+          {window.location.href.includes("localhost:3000") ? (
+            <div style={{ width: "160px", height: "600px", backgroundColor: "#FFF1D8", border: "1px dashed #e7d8ba", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", color: "#8b8b8b" }}>
+              מודעת צד (160x600)
+            </div>
+          ) : (
+            <Adsense
+              className="ads-sidebar-slot"
+              client="ca-pub-9858822058074702"
+              slot="6260212628"
+              style={{ display: "inline-block", width: "160px", height: "600px" }}
+            />
+          )}
+        </div>
 
-        {/* Header Area */}
-        {hasHeader ? (
-          <Header
-            goBack={hasHeader.goBack}
-            isBlur={hasHeader.isBlur}
-            hasTitle={hasHeader.hasTitle}
-          />
-        ) : null}
+        <section
+          className={styles.pageContainer}
+          style={{
+            backgroundColor: (() => {
+              if (!hasGreenBackground) return "var(--background-color)";
+              if (productType === ProductType.Youth) return "var(--youth-primary-color)";
+              if (productType === ProductType.Event) return "var(--event-primary-color)";
+              if (productType === ProductType.Practice) return "var(--practice-primary-color)";
+              if (productType === ProductType.Words) return "var(--words-primary-color)";
+              return "var(--background-color)";
+            })(),
+            direction: dir,
+          }}
+        >
 
-        {/* Main Page */}
-        {children}
+          {/* Header Area */}
+          {hasHeader ? (
+            <Header
+              goBack={hasHeader.goBack}
+              isBlur={hasHeader.isBlur}
+              hasTitle={hasHeader.hasTitle}
+            />
+          ) : null}
 
-        {/* Ads Area */}
-        {hasAds !== "" ? (() => {
+          {/* Main Page */}
+          {children}
 
-          // My Banner (Share Practice Product) in Practice Product
-          if (path.includes("/practice/quiz")) {
+          {/* Ads Area */}
+          {hasAds !== "" ? (() => {
 
-            const topic = localStorage.getItem(StorageKey.PRACTICE_TOPIC); // if exist
+            // My Banner (Share Practice Product) in Practice Product
+            if (path.includes("/practice/quiz")) {
 
-            const handleBannerClick = () => {
-              //logEvent("Practice/Quiz - Practice Shared", currentUser?.email);
-              const encodedTopic = encodeURIComponent(topic);
-              const shareTitle = t("common.practiceAppName")
-              const shareUrl = `https://activitywiz.com/${lang}/practice?topic=${encodedTopic}`;
-              const shareText = `${t("articleOptions.share.practiceShareMessageInstructor")}\n\n${topic}\n${shareUrl}`;
-              share(t, shareTitle, shareText)
-            };
+              const topic = localStorage.getItem(StorageKey.PRACTICE_TOPIC); // if exist
 
-            return (
-              <div className={styles.customAdSlot} onClick={handleBannerClick} style={{ cursor: "pointer" }}>
-                <div className={styles.bannerWithIcon}>
-                  <Icons.Share size={22} />
-                  <span>{t("articleOptions.share.practiceShareBannerText")}</span>
+              const handleBannerClick = () => {
+                const encodedTopic = encodeURIComponent(topic || "");
+                const shareTitle = t("common.practiceAppName")
+                const shareUrl = `https://activitywiz.com/${lang}/practice?topic=${encodedTopic}`;
+                const shareText = `${t("articleOptions.share.practiceShareMessageInstructor")}\n\n${topic}\n${shareUrl}`;
+                share(t, shareTitle, shareText)
+              };
+
+              return (
+                <div className={styles.customAdSlot} onClick={handleBannerClick} style={{ cursor: "pointer" }}>
+                  <div className={styles.bannerWithIcon}>
+                    <Icons.Share size={22} />
+                    <span>{t("articleOptions.share.practiceShareBannerText")}</span>
+                  </div>
                 </div>
-              </div>
-            );
-            return null;
-          }
-
-          /*
-          // Event Product Banner in Youth Product
-          else if (path.includes("/youth/activity") && !isLoggedIn) {
-
-            const handleBannerClick = () => {
-              //logEvent("Youth/Activity - Event Banner Clicked", currentUser?.email);
-              window.open(`https://activitywiz.com/${lang}/event`, "_blank");
-            };
-
-            return (
-              <div className={styles.customAdSlot} onClick={handleBannerClick} style={{ cursor: "pointer" }}>
-                <div className={styles.bannerWithIcon}>
-                  <Icons.magic size={22} />
-                  <span>{t("articleOptions.share.eventAdBannerText")}</span>
-                </div>
-              </div>
-            );
-          }
-          */
-
-          else
-            // Google Ads
-            if (window.location.href.includes("localhost:3000")) {
-              return <div className="ads-small-slot" style={{ backgroundColor: "#FFF1D8" }} />;
+              );
+              return null;
             }
-          return <AdsSmall slot={hasAds} />;
 
-        })() : null}
+            else
+              // Google Ads
+              if (window.location.href.includes("localhost:3000")) {
+                return <div className="ads-small-slot" style={{ backgroundColor: "#FFF1D8" }} />;
+              }
+            return <AdsSmall slot={hasAds} />;
+
+          })() : null}
 
 
-        {/* Navigation Area */}
-        {hasNavBar ? (
-          <div style={{ pointerEvents: navDisabled ? "none" : "auto" }}>
-            {productType === ProductType.Youth ? (
-              <YouthNavigationBar />
-            ) : productType === ProductType.Event ? (
-              <EventNavigationBar />
-            ) : productType === ProductType.Practice ? (
-              <PracticeNavigationBar />
-            ) : productType === ProductType.Words ? (
-              <WordsNavigationBar />
-            ) : null}
-          </div>
-        ) : null}
-      </section >
+          {/* Navigation Area */}
+          {hasNavBar ? (
+            <div style={{ pointerEvents: navDisabled ? "none" : "auto" }}>
+              {productType === ProductType.Youth ? (
+                <YouthNavigationBar />
+              ) : productType === ProductType.Event ? (
+                <EventNavigationBar />
+              ) : productType === ProductType.Practice ? (
+                <PracticeNavigationBar />
+              ) : productType === ProductType.Words ? (
+                <WordsNavigationBar />
+              ) : null}
+            </div>
+          ) : null}
+        </section >
+
+        <div className={`${styles.sidebarAd} ${styles.rightAd}`}>
+          {window.location.href.includes("localhost:3000") ? (
+            <div style={{ width: "160px", height: "600px", backgroundColor: "#FFF1D8", border: "1px dashed #e7d8ba", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", color: "#8b8b8b" }}>
+              מודעת צד (160x600)
+            </div>
+          ) : (
+            <Adsense
+              className="ads-sidebar-slot"
+              client="ca-pub-9858822058074702"
+              slot="6260212628"
+              style={{ display: "inline-block", width: "160px", height: "600px" }}
+            />
+          )}
+        </div>
+      </div>
     </>
   );
 }
