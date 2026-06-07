@@ -13,7 +13,7 @@ Directives:
 - Asegúrate de seguir la estructura y no la cambies.
 - Adapta las preguntas de discusión para niños pequeños
 - Preferencia por juegos, cuestionarios y creación de diálogo en lugar de hablar mucho por parte del instructor
-- Si hay cuestionarios, preguntas o listas, incluye 6 ejemplos.
+- Si hay cuestionarios, preguntas o listas, incluye 4 ejemplos.
 - Evita temas violentos, ofensivos o que puedan causar incomodidad.
 - Incluye toda la información necesaria para el instructor con explicaciones detalladas para que no necesite buscar información adicional en otras fuentes.
 - ATENCIÓN CON EL FRANCÉS: Evita traducciones literales del inglés. Usa giros naturales. Por ejemplo, escribe "experts pour poser des questions" o "experts en la matière" en lieu et place de "en poser des questions".

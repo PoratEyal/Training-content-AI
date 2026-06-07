@@ -58,7 +58,7 @@ async function generateContent(prompt: string, retries = 3, delayMs = 1500): Pro
   const requestedModel = "gemini-2.5-flash-lite";
   assertAllowedModel(requestedModel);
   assertNotImageModel(requestedModel);
-  const generationConfig = { maxOutputTokens: 2000 };
+  const generationConfig = { maxOutputTokens: 900 };
   const model = genAI.getGenerativeModel({ model: requestedModel, generationConfig });
 
   for (let attempt = 1; attempt <= retries; attempt++) {
