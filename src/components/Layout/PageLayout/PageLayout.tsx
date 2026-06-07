@@ -132,15 +132,15 @@ function PageLayout({
       <div className={styles.layoutWrapper}>
         <div className={`${styles.sidebarAd} ${styles.leftAd}`}>
           {window.location.href.includes("localhost:3000") ? (
-            <div style={{ width: "160px", height: "600px", backgroundColor: "#FFF1D8", border: "1px dashed #e7d8ba", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", color: "#8b8b8b" }}>
-              מודעת צד (160x600)
+            <div style={{ width: "300px", height: "600px", backgroundColor: "#FFF1D8", border: "1px dashed #e7d8ba", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", color: "#8b8b8b" }}>
+              מודעת צד (300x600)
             </div>
           ) : (
             <Adsense
               className="ads-sidebar-slot"
               client="ca-pub-9858822058074702"
               slot="6260212628"
-              style={{ display: "inline-block", width: "160px", height: "600px" }}
+              style={{ display: "inline-block", width: "300px", height: "600px" }}
             />
           )}
         </div>
@@ -227,15 +227,15 @@ function PageLayout({
 
         <div className={`${styles.sidebarAd} ${styles.rightAd}`}>
           {window.location.href.includes("localhost:3000") ? (
-            <div style={{ width: "160px", height: "600px", backgroundColor: "#FFF1D8", border: "1px dashed #e7d8ba", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", color: "#8b8b8b" }}>
-              מודעת צד (160x600)
+            <div style={{ width: "300px", height: "600px", backgroundColor: "#FFF1D8", border: "1px dashed #e7d8ba", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", color: "#8b8b8b" }}>
+              מודעת צד (300x600)
             </div>
           ) : (
             <Adsense
               className="ads-sidebar-slot"
               client="ca-pub-9858822058074702"
               slot="6260212628"
-              style={{ display: "inline-block", width: "160px", height: "600px" }}
+              style={{ display: "inline-block", width: "300px", height: "600px" }}
             />
           )}
         </div>

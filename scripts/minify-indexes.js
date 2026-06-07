@@ -54,6 +54,9 @@ const files = [
 
 ];
 
+const fs = require("fs");
+const version = Date.now();
+
 files.forEach((file) => {
   const input = `public/index/${file}`;
   const output = `build/${file}`;
@@ -61,6 +64,13 @@ files.forEach((file) => {
     `npx html-minifier-terser ${input} -o ${output} --collapse-whitespace --remove-comments --remove-attribute-quotes --minify-css true --minify-js true`,
     { stdio: "inherit" }
   );
+
+  if (fs.existsSync(output)) {
+    let content = fs.readFileSync(output, "utf8");
+    content = content.replace(/\/static\/js\/main\.js/g, `/static/js/main.js?v=${version}`);
+    content = content.replace(/\/static\/css\/main\.css/g, `/static/css/main.css?v=${version}`);
+    fs.writeFileSync(output, content, "utf8");
+  }
 });
 
-console.log("🎉 All HTML files minified successfully!");
+console.log(`🎉 All HTML files minified and versioned (v=${version}) successfully!`);

@@ -93,7 +93,7 @@
 
     .sidebarAd {
         display: block;
-        width: 160px;
+        width: 300px;
         height: 600px;
         flex-shrink: 0;
     }

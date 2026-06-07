@@ -457,6 +457,10 @@
             {
               "key": "Content-Language",
               "value": "he-IL"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, must-revalidate"
             }
           ]
         },
@@ -466,6 +470,10 @@
             {
               "key": "Content-Language",
               "value": "en"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, must-revalidate"
             }
           ]
         },
@@ -475,6 +483,10 @@
             {
               "key": "Content-Language",
               "value": "es"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, must-revalidate"
             }
           ]
         },
@@ -484,6 +496,10 @@
             {
               "key": "Content-Language",
               "value": "ar"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, must-revalidate"
             }
           ]
         },
@@ -493,6 +509,10 @@
             {
               "key": "Content-Language",
               "value": "fr"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, must-revalidate"
             }
           ]
         }
