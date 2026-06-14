@@ -12,6 +12,7 @@ export const MovmentsOptions = {
         { value: Movements.he.shomer.name, label: Movements.he.shomer.title },
         { value: Movements.he.bitar.name, label: Movements.he.bitar.title },
         { value: Movements.he.hadasha.name, label: Movements.he.hadasha.title },
+        { value: Movements.he.netzach.name, label: Movements.he.netzach.title },
         { value: Movements.he.medtchim.name, label: Movements.he.medtchim.title },
         { value: Movements.he.meshachim.name, label: Movements.he.meshachim.title },
         { value: Movements.he.sayarut.name, label: Movements.he.sayarut.title },

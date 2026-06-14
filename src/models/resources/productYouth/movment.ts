@@ -131,6 +131,20 @@ export const Movements = {
                 },
             ],
         } as Movement,
+        netzach: {
+            name: "netzach",
+            title: "נצח ישראל",
+            categories: [
+                {
+                    name: "content",
+                    title: "פעולה ערכית",
+                },
+                {
+                    name: "playTime",
+                    title: "משחקי גיבוש",
+                },
+            ],
+        } as Movement,
         medtchim: {
             name: "medtchim",
             title: "ארגון המד״צים",

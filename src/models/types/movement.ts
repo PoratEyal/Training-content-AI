@@ -20,6 +20,7 @@ export type MovementName =
     | "shomer"
     | "bitar"
     | "hadasha"
+    | "netzach"
     | "medtchim"
     | "krembo"
     | "meshachim"
