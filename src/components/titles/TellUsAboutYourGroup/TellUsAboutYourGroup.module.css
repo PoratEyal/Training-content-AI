@@ -1,7 +1,7 @@
 .tell_us_title {
     width: 190px;
     position: absolute;
-    top: 7px;
+    top: 15px;
     -webkit-tap-highlight-color: transparent;
     z-index: 100;
 }
@@ -21,28 +21,6 @@
     position: relative;
     line-height: 32px;
     margin: 0;
-    width: 187px;
+    width: 190px;
     letter-spacing: 1px;
-}
-
-.tell_us_title img {
-    position: absolute;
-    top: 66px;
-}
-
-/* Language-specific overrides for image position */
-.he img {
-    left: 102px;
-}
-
-.en img {
-    left: 50px;
-}
-
-.es img {
-    left: 92px;
-}
-
-.ar img {
-    right: 5px;
 }

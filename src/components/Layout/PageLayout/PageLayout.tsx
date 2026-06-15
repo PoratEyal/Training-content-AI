@@ -60,11 +60,11 @@ function PageLayout({
   // Force canonical to /[lang]/youth for language root pages (/en, /he, etc.) to avoid duplication
   // in the future if we will have a general homepage we will be able to remove it and just leave:
   // const canonicalUrl = `${WEBSITE_URL}${location.pathname}`;
-  const isLangRoot = /^\/(he|en|es|ar)\/?$/.test(location.pathname)
-  const isLangYouth = /^\/(he|en|es|ar)\/youth\/?$/.test(location.pathname)
+  const isLangRoot = /^\/(he|en|es|ar|fr|pt)\/?$/.test(location.pathname)
+  const isLangYouth = /^\/(he|en|es|ar|fr|pt)\/youth\/?$/.test(location.pathname)
   const canonicalUrl =
     isLangRoot || isLangYouth
-      ? `${WEBSITE_URL}${location.pathname.replace(/\/(he|en|es|ar)\/?$/, "/$1/youth")}`
+      ? `${WEBSITE_URL}${location.pathname.replace(/\/(he|en|es|ar|fr|pt)\/?$/, "/$1/youth")}`
       : `${WEBSITE_URL}${location.pathname}`
 
   // Set <html lang> and <html dir> directly
@@ -73,19 +73,20 @@ function PageLayout({
     document.documentElement.dir = dir;
   }, [lang, dir]);
 
-  const restOfPath = location.pathname.replace(/^\/(he|en|es|ar|fr)/, "") || "/";
+  const restOfPath = location.pathname.replace(/^\/(he|en|es|ar|fr|pt)/, "") || "/";
 
   const alternateHe = `${WEBSITE_URL}/he${restOfPath}`;
   const alternateEn = `${WEBSITE_URL}/en${restOfPath}`;
   const alternateEs = `${WEBSITE_URL}/es${restOfPath}`;
   const alternateFr = `${WEBSITE_URL}/fr${restOfPath}`;
   const alternateAr = `${WEBSITE_URL}/ar${restOfPath}`;
+  const alternatePt = `${WEBSITE_URL}/pt${restOfPath}`;
 
   const pageTitle = getTitle(id, lang, title);
   const pageDescription = getContent(id, lang, title);
 
   const path = location.pathname;
-  const isYouthContent = /^\/(he|en|es|ar|fr)\/youth\/content(?:\/|$)/.test(path);
+  const isYouthContent = /^\/(he|en|es|ar|fr|pt)\/youth\/content(?:\/|$)/.test(path);
 
   //* Canonical and hreflang
   const linksForHelmet = isYouthContent
@@ -100,6 +101,7 @@ function PageLayout({
       { rel: "alternate", href: alternateEs, hrefLang: "es" },
       { rel: "alternate", href: alternateFr, hrefLang: "fr" },
       { rel: "alternate", href: alternateAr, hrefLang: "ar" },
+      { rel: "alternate", href: alternatePt, hrefLang: "pt-BR" },
     ];
 
   return (

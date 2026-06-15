@@ -37,7 +37,7 @@ const detectCountryAndInit = async () => {
 
     if (normalizedLangs.includes("he")) return "he"
 
-    const otherLangs = ["es", "ar", "fr"]
+    const otherLangs = ["es", "ar", "fr", "pt"]
     for (const lang of normalizedLangs) {
       if (otherLangs.includes(lang)) return lang as Lng
     }
@@ -46,11 +46,11 @@ const detectCountryAndInit = async () => {
 
   const browserLang = getBrowserLang()
 
-  if (userLang && ["he", "en", "es", "ar", "fr"].includes(userLang))  // Check user saved lang
+  if (userLang && ["he", "en", "es", "ar", "fr", "pt"].includes(userLang))  // Check user saved lang
     detectedLang = userLang
-  else if (langFromPath === "en" && browserLang)                      // User prefers another language but landed on English URL
+  else if (langFromPath === "en" && browserLang)                             // User prefers another language but landed on English URL
     detectedLang = browserLang
-  else if (["he", "en", "es", "ar", "fr"].includes(langFromPath))     // Check URL lang
+  else if (["he", "en", "es", "ar", "fr", "pt"].includes(langFromPath))     // Check URL lang
     detectedLang = langFromPath
   else if (typeof window !== "undefined" && window.location.hostname === "localhost") {
     console.log("[index.tsx client]: Only for localhost debug")
@@ -60,17 +60,19 @@ const detectCountryAndInit = async () => {
       const countryCode = data.country_code
       const spanishSpeakingCountries = ["AR", "BO", "CL", "CO", "CR", "CU", "DO", "EC", "SV", "GQ", "GT", "HN", "MX", "NI", "PA", "PY", "PE", "PR", "ES", "UY", "VE"]
       const arabicSpeakingCountries = ["DZ", "BH", "EG", "IQ", "JO", "KW", "LB", "LY", "MA", "OM", "QA", "SA", "SD", "SY", "TN", "AE", "YE"]
+      const portugueseSpeakingCountries = ["BR", "PT", "AO", "MZ", "CV", "GW", "ST", "TL"]
 
       if (countryCode === "IL") detectedLang = "he"
       else if (spanishSpeakingCountries.includes(countryCode)) detectedLang = "es"
       else if (arabicSpeakingCountries.includes(countryCode)) detectedLang = "ar"
+      else if (portugueseSpeakingCountries.includes(countryCode)) detectedLang = "pt"
       else detectedLang = "en"
     } catch {
       detectedLang = "en"
     }
   }
   else {                                                        // Fallback to mostly used country
-    detectedLang = "he"
+    detectedLang = "en"
   }
   await initI18n(detectedLang)
 

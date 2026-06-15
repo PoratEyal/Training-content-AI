@@ -12,14 +12,6 @@ function TellUsAboutYourGroup() {
             <h1>
                 {t("youth.details.title")}
             </h1>
-            <img
-                title={t("youth.details.yellowLineAlt", "Yellow line image")}
-                alt={t("youth.details.yellowLineAlt", "Yellow line image")}
-                src={"/Youth/detailsLine.svg"}
-                loading="lazy"
-                width={90}
-                height={5}
-            />
         </div>
     );
 }

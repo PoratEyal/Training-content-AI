@@ -23,6 +23,11 @@ import {
   getSection as getSection_fr, getTools as getTools_fr, promptPerGrade as promptPerGrade_fr,
 } from "../../utils/fr/prompt";
 
+import {
+  getMoreInfo as getMoreInfo_pt, getPromptOptions as getPromptOptions_pt, getSafty as getSafty_pt,
+  getSection as getSection_pt, getTools as getTools_pt, promptPerGrade as promptPerGrade_pt,
+} from "../../utils/pt/prompt";
+
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { ActivityDetails } from "../../model/types/activity";
 import { formatString } from "../../utils/format";
@@ -130,6 +135,14 @@ const promptUtils = {
     getPromptOptions: getPromptOptions_fr,
     promptPerGrade: promptPerGrade_fr,
   },
+  pt: {
+    getMoreInfo: getMoreInfo_pt,
+    getTools: getTools_pt,
+    getSection: getSection_pt,
+    getSafty: getSafty_pt,
+    getPromptOptions: getPromptOptions_pt,
+    promptPerGrade: promptPerGrade_pt,
+  },
 };
 
 const buildPrompt = (activityDetails: ActivityDetails, lang: Lang): [string, string[]] => {
@@ -171,11 +184,12 @@ export async function generateYouthActivityAI(data: GetActivityRequest): Promise
   const aiResponse = await generateContent(result);
 
   const disclaimers: Record<string, string> = {
-    he: "\n\n---\n**שימו לב: התוכן מבוסס בינה מלאכותית והוא בגדר הצעה בלבד – עברו על הפעולה, ודאו שהמקורות מדויקים והתאימו אותה לצרכים שלכם בשטח.**",
-    en: "\n\n---\n**Please note: The content is AI-based and is a suggestion only – review the activity, ensure the sources are accurate and adapt it to your needs in the field.**",
-    es: "\n\n---\n**Atención: El contenido se basa en inteligencia artificial y es solo una sugerencia – revise la actividad, asegúrese de que las fuentes sean precisas y adáptela a sus necesidades en el terreno.**",
-    ar: "\n\n---\n**يرجى الملاحظة: المحتوى يعتمد على الذكاء الاصطناعي وهو مجرد اقتراح – راجع النشاط، وتأكد من دقة المصادر وقم بملاءמته لاحتياجاتك في الميدان.**",
-    fr: "\n\n---\n**Veuillez noter: Le contenu est basé sur l'IA et n'est qu'une suggestion – révisez l'activité, assurez-vous que les sources sont exactes et adaptez-la à vos besoins sur le terrain.**",
+    he: "\n\n---\n**שימו לב: התוכן מבוסס בינה מלאכותית והוא בגדר הצעה בלבד – עברו על הפעולה, התאימו אותה לצרכים שלכם והבטיחו שהיא בטוחה ומתאימה לשטח.**",
+    en: "\n\n---\n**Please note: The content is AI-based and is a suggestion only – review the activity and adapt it to your group's needs in the field.**",
+    es: "\n\n---\n**Atención: El contenido se basa en inteligencia artificial y es solo una sugerencia – revise la actividad y adáptela a las necesidades de su grupo en el terreno.**",
+    ar: "\n\n---\n**يرجى الملاحظة: المحتوى يعتمد على الذكاء الاصطناعي وهو مجرد اقتراح – راجع النشاط وقم بملاءمته لاحتياجات مجموعتك في الميدان.**",
+    fr: "\n\n---\n**Veuillez noter: Le contenu est basé sur l'IA et n'est qu'une suggestion – révisez l'activité et adaptez-la aux besoins de votre groupe sur le terrain.**",
+    pt: "\n\n---\n**Atenção: O conteúdo é baseado em Inteligência Artificial e serve apenas como sugestão – revise a atividade e adapte-a às necessidades do seu grupo em campo.**",
   };
 
   const disclaimer = disclaimers[lang] || disclaimers["en"];

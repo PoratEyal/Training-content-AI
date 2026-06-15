@@ -14,9 +14,9 @@
   },
   "aboutUs": {
     "title": "About",
-    "youthAboutText": "Create youth activities – from a library of ready-made activities to personalized ones generated with AI. Perfect for guides looking to enrich educational and social engagement.",
+    "youthAboutText": "Create personalized youth activities generated with AI. Perfect for guides looking to enrich educational and social engagement.",
     "eventAboutText": "Create a personalized activity for any event – with AI that tailors the activity to age, number of participants, location, and more. Each activity is generated just for you, at the click of a button and within seconds.",
-    "practiceAboutText": "A knowledge challenge powered by AI. Choose any topic you like, and the system will generate a personalized quiz in seconds. Perfect for anyone looking for a simple and focused way to deepen their knowledge.",
+    "practiceAboutText": "Desafio de conhecimento com IA. Escolha qualquer tema e o sistema gera um quiz personalizado em segundos. Perfeito para aprender e dominar novos assuntos de forma simples.",
     "wordsAboutText": "Vocabulary training made smart and efficient. Enter words or choose a topic to get a personalized practice that helps you learn, remember, and understand better – in any language."
   },
   "youthSep": "==============================================================================================================",
@@ -35,7 +35,7 @@
       "startAction": "Create"
     },
     "details": {
-      "title": "Tell Us About Your Group",
+      "title": "Your Group",
       "youthMovement": "Youth Movement",
       "grade": "Grade Level",
       "numberOfChildren": "Number of Children",
@@ -115,7 +115,7 @@
       "startAction": "Create activity"
     },
     "Details": {
-      "title": "Tell us about your event",
+      "title": "Your Event",
       "eventLable": "For example: birthday, party, team-building activity, classroom activity, family picnic, and more...",
       "event": "Event/Activity Type",
       "moreDetails": "More details (optional)",
@@ -207,7 +207,8 @@
       "hu-Practice": "Hungarian",
       "cs-Practice": "Czech",
       "he-Practice": "Hebrew",
-      "ar-Practice": "Arabic"
+      "ar-Practice": "Arabic",
+      "pt-Practice": "Portuguese"
     },
     "quiz": {
       "newPractice": "Try again?",
@@ -334,10 +335,6 @@
           "a": "Yes. After logging in, you can save any activity you've created and update it anytime through your personal user area."
         },
         {
-          "q": "Which languages are supported?",
-          "a": "The system supports English, Spanish, Hebrew, and Arabic. More languages will be added in the future."
-        },
-        {
           "q": "I need an activity for tomorrow and have no time—any quick solution?",
           "a": "Absolutely. On ActivityWiz, you can generate a complete activity at the click of a button—just enter the goal, age, and duration, and you'll get a full plan for immediate use."
         }
@@ -360,10 +357,6 @@
         {
           "q": "Can I share the activity with friends or participants?",
           "a": "Absolutely. Every activity can be shared with a click—via a link or by copying the text."
-        },
-        {
-          "q": "What languages can be used on the site?",
-          "a": "The system supports Hebrew, English, Arabic, and Spanish. More languages will be added in the future."
         }
       ]
     },
@@ -380,10 +373,6 @@
         {
           "q": "Who is the site for?",
           "a": "The site is suitable for anyone who wants to practice different topics, learn independently, or simply enjoy smart and fun trivia—children, teens, and adults."
-        },
-        {
-          "q": "Which languages are supported?",
-          "a": "The system supports English, Spanish, Hebrew, and Arabic. More languages will be added in the future."
         },
         {
           "q": "Can I practice the same topic again with different questions?",
@@ -404,10 +393,6 @@
         {
           "q": "Who is the site for?",
           "a": "The site is suitable for anyone who wants to learn vocabulary in any language—children, teens, and adults."
-        },
-        {
-          "q": "Which languages are supported?",
-          "a": "The system interface supports English, Spanish, Hebrew, and Arabic. However, vocabulary translations are available for any existing language."
         }
       ]
     }

@@ -39,6 +39,7 @@ function Topic() {
     { label: t("words.predefined.cs-Practice"), value: "cs" },
     { label: t("words.predefined.he-Practice"), value: "he" },
     { label: t("words.predefined.ar-Practice"), value: "ar" },
+    { label: t("words.predefined.pt-Practice"), value: "pt" },
   ].filter(item => item.value !== lang);
 
   const [languageToLearn, setLanguageToLearn] = useState(() => {

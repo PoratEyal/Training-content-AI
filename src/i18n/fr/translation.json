@@ -14,7 +14,7 @@
   },
   "aboutUs": {
     "title": "À propos",
-    "youthAboutText": "Créez des activités pour les jeunes – depuis une bibliothèque d'activités prêtes à l'emploi jusqu'à des activités personnalisées générées par l'IA. Idéal pour les animateurs qui souhaitent enrichir l'engagement éducatif et social.",
+    "youthAboutText": "Créez des activités personnalisées pour les jeunes générées par l'IA. Idéal pour les animateurs qui souhaitent enrichir l'engagement éducatif et social.",
     "eventAboutText": "Créez une activité personnalisée pour n'importe quel événement – avec une IA qui adapte l'activité selon l'âge, le nombre de participants, le lieu et bien plus. Chaque activité est générée spécialement pour vous, en un clic et en quelques secondes.",
     "practiceAboutText": "Un défi de connaissances propulsé par l'IA. Choisissez n'importe quel sujet et le système générera un quiz personnalisé en quelques secondes. Parfait pour toute personne cherchant un moyen simple et ciblé d'approfondir ses connaissances.",
     "wordsAboutText": "Entraînement au vocabulaire intelligent et efficace. Entrez des mots ou choisissez un thème pour obtenir une pratique personnalisée qui vous aide à apprendre, mémoriser et comprendre mieux – dans n'importe quelle langue."
@@ -35,7 +35,7 @@
       "startAction": "Créer"
     },
     "details": {
-      "title": "Parlez-nous de votre groupe",
+      "title": "Votre groupe",
       "youthMovement": "Mouvement de jeunesse",
       "grade": "Niveau scolaire",
       "numberOfChildren": "Nombre de participants",
@@ -207,7 +207,8 @@
       "hu-Practice": "Hongrois",
       "cs-Practice": "Tchèque",
       "he-Practice": "Hébreu",
-      "ar-Practice": "Arabe"
+      "ar-Practice": "Arabe",
+      "pt-Practice": "Portugais"
     },
     "quiz": {
       "newPractice": "Réessayer ?",
@@ -334,10 +335,6 @@
           "a": "Oui. Après connexion, vous pouvez enregistrer toute activité créée et la mettre à jour à tout moment via votre espace personnel."
         },
         {
-          "q": "Quelles langues sont prises en charge ?",
-          "a": "Le système prend en charge l'anglais, l'espagnol, l'hébreu, l'arabe et le français. D'autres langues seront ajoutées à l'avenir."
-        },
-        {
           "q": "J'ai besoin d'une activité pour demain et je n'ai pas le temps – une solution rapide ?",
           "a": "Absolument. Sur ActivityWiz, vous pouvez générer une activité complète en un clic – entrez simplement l'objectif, l'âge et la durée, et vous obtiendrez un plan complet prêt à l'emploi immédiatement."
         }
@@ -360,10 +357,6 @@
         {
           "q": "Puis-je partager l'activité avec des amis ou des participants ?",
           "a": "Absolument. Chaque activité peut être partagée en un clic – via un lien ou en copiant le texte."
-        },
-        {
-          "q": "Quelles langues peut-on utiliser sur le site ?",
-          "a": "Le système prend en charge l'hébreu, l'anglais, l'arabe, l'espagnol et le français. D'autres langues seront ajoutées à l'avenir."
         }
       ]
     },
@@ -380,10 +373,6 @@
         {
           "q": "À qui s'adresse le site ?",
           "a": "Le site convient à toute personne souhaitant pratiquer différents sujets, apprendre de manière autonome ou simplement profiter d'un quiz intelligent et amusant – enfants, adolescents et adultes."
-        },
-        {
-          "q": "Quelles langues sont prises en charge ?",
-          "a": "Le système prend en charge l'anglais, l'espagnol, l'hébreu, l'arabe et le français. D'autres langues seront ajoutées à l'avenir."
         },
         {
           "q": "Puis-je pratiquer le même sujet avec des questions différentes ?",
@@ -404,10 +393,6 @@
         {
           "q": "À qui s'adresse le site ?",
           "a": "Le site convient à toute personne souhaitant apprendre du vocabulaire dans n'importe quelle langue – enfants, adolescents et adultes."
-        },
-        {
-          "q": "Quelles langues sont prises en charge ?",
-          "a": "L'interface du système prend en charge l'anglais, l'espagnol, l'hébreu, l'arabe et le français. Cependant, les traductions de vocabulaire sont disponibles pour toutes les langues existantes."
         }
       ]
     }

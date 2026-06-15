@@ -596,6 +596,121 @@ export const helmetJson: Record<Lng, LanguageSection> = {
         },
     } as LanguageSection,
 
+    pt: {
+        contactUs: {
+            title: "ActivityWiz - Entre em contato",
+            content: "Tem uma pergunta ou sugestão? Gostaríamos muito de ouvir você – basta entrar em contato!",
+        },
+        privacyPolicy: {
+            title: "ActivityWiz - Política de Privacidade",
+            content: "Leia sobre a política de privacidade e uso do nosso site.",
+        },
+
+        home: {
+            title: "ActivityWiz - Atividades de Movimento Juvenil",
+            content: "Crie ou explore atividades de movimento juvenil – ideal para Escoteiros, programas de liderança e guias educativos.",
+        },
+        details: {
+            title: "ActivityWiz - Atividades de Movimento Juvenil",
+            content: "Crie ou explore atividades de movimento juvenil – ideal para Escoteiros, programas de liderança e guias educativos.",
+        },
+        build: {
+            title: "ActivityWiz - Atividades de Movimento Juvenil",
+            content: "Crie ou explore atividades de movimento juvenil – ideal para Escoteiros, programas de liderança e guias educativos.",
+        },
+        activity: {
+            title: "ActivityWiz - Atividades de Movimento Juvenil",
+            content: "Crie ou explore atividades de movimento juvenil – ideal para Escoteiros, programas de liderança e guias educativos.",
+        },
+        content: {
+            title: "ActivityWiz - Atividades de Movimento Juvenil",
+            content: "Crie ou explore atividades de movimento juvenil – ideal para Escoteiros, programas de liderança e guias educativos.",
+        },
+        contentActivities: {
+            title: "ActivityWiz - Atividades de Movimento Juvenil",
+            content: "Crie ou explore atividades de movimento juvenil – ideal para Escoteiros, programas de liderança e guias educativos.",
+        },
+        contentActivity: {
+            title: "ActivityWiz - Atividades de Movimento Juvenil",
+            content: "Crie ou explore atividades de movimento juvenil – ideal para Escoteiros, programas de liderança e guias educativos.",
+        },
+        myactivities: {
+            title: "ActivityWiz - Atividades de Movimento Juvenil",
+            content: "Crie ou explore atividades de movimento juvenil – ideal para Escoteiros, programas de liderança e guias educativos.",
+        },
+        savedActivity: {
+            title: "ActivityWiz - Atividades de Movimento Juvenil",
+            content: "Crie ou explore atividades de movimento juvenil – ideal para Escoteiros, programas de liderança e guias educativos.",
+        },
+        popularActivities: {
+            title: "ActivityWiz - Atividades de Movimento Juvenil",
+            content: "Crie ou explore atividades de movimento juvenil – ideal para Escoteiros, programas de liderança e guias educativos.",
+        },
+        edit: {
+            title: "ActivityWiz - Atividades de Movimento Juvenil",
+            content: "Crie ou explore atividades de movimento juvenil – ideal para Escoteiros, programas de liderança e guias educativos.",
+        },
+        youthFaq: {
+            title: "ActivityWiz - Atividades de Movimento Juvenil - FAQ",
+            content: "Crie ou explore atividades de movimento juvenil – ideal para Escoteiros, programas de liderança e guias educativos.",
+        },
+
+        eventHome: {
+            title: "Atividades Originais com ActivityWiz",
+            content: "Ideias para atividades e jogos para qualquer evento, grupo ou reunião – crie uma atividade personalizada com a ajuda da IA. Com base na idade, número de participantes, local e equipamento – fácil e rápido.",
+        },
+        eventDetails: {
+            title: "Atividades Originais com ActivityWiz",
+            content: "Ideias para atividades e jogos para qualquer evento, grupo ou reunião – crie uma atividade personalizada com a ajuda da IA. Com base na idade, número de participantes, local e equipamento – fácil e rápido.",
+        },
+        eventBuild: {
+            title: "Atividades Originais com ActivityWiz",
+            content: "Ideias para atividades e jogos para qualquer evento, grupo ou reunião – crie uma atividade personalizada com a ajuda da IA. Com base na idade, número de participantes, local e equipamento – fácil e rápido.",
+        },
+        eventActivity: {
+            title: "Atividades Originais com ActivityWiz",
+            content: "Ideias para atividades e jogos para qualquer evento, grupo ou reunião – crie uma atividade personalizada com a ajuda da IA. Com base na idade, número de participantes, local e equipamento – fácil e rápido.",
+        },
+        eventFaq: {
+            title: "Atividades Originais com ActivityWiz",
+            content: "Ideias para atividades e jogos para qualquer evento, grupo ou reunião – crie uma atividade personalizada com a ajuda da IA. Com base na idade, número de participantes, local e equipamento – fácil e rápido.",
+        },
+
+        practiceHome: {
+            title: "ActivityWiz – Desafio de Conhecimento",
+            content: "Aumente o aprendizado com IA inteligente – crie e resolva questionários personalizados instantaneamente sobre qualquer assunto.",
+        },
+        practiceTopic: {
+            title: "ActivityWiz – Desafio de Conhecimento",
+            content: "Aumente o aprendizado com IA inteligente – crie e resolva questionários personalizados instantaneamente sobre qualquer assunto.",
+        },
+        practiceQuiz: {
+            title: "ActivityWiz – Desafio de Conhecimento",
+            content: "Aumente o aprendizado com IA inteligente – crie e resolva questionários personalizados instantaneamente sobre qualquer assunto.",
+        },
+        practiceFaq: {
+            title: "ActivityWiz – Desafio de Conhecimento - FAQ",
+            content: "Aumente o aprendizado com IA inteligente – crie e resolva questionários personalizados instantaneamente sobre qualquer assunto.",
+        },
+
+        wordsHome: {
+            title: "ActivityWiz Words – Praticar Vocabulário",
+            content: "Pratique palavras e frases entre idiomas e aprenda o significado facilmente com a ajuda da IA. Uma ferramenta inteligente para aprendizado de idiomas, melhora de vocabulário e fortalecimento da memória.",
+        },
+        wordsTopic: {
+            title: "ActivityWiz Words – Praticar Vocabulário",
+            content: "Pratique palavras e frases entre idiomas e aprenda o significado facilmente com a ajuda da IA. Uma ferramenta inteligente para aprendizado de idiomas, melhora de vocabulário e fortalecimento da memória.",
+        },
+        wordsQuiz: {
+            title: "ActivityWiz Words – Praticar Vocabulário",
+            content: "Pratique palavras e frases entre idiomas e aprenda o significado facilmente com a ajuda da IA. Uma ferramenta inteligente para aprendizado de idiomas, melhora de vocabulário e fortalecimento da memória.",
+        },
+        wordsFaq: {
+            title: "ActivityWiz Words – Praticar Vocabulário FAQ",
+            content: "Pratique palavras e frases entre idiomas e aprenda o significado facilmente com a ajuda da IA. Uma ferramenta inteligente para aprendizado de idiomas, melhora de vocabulário e fortalecimento da memória.",
+        },
+    } as LanguageSection,
+
 };
 
 

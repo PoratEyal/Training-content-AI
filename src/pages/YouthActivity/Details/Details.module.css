@@ -9,23 +9,23 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    top: 85px;
+    top: 65px;
     width: 100%;
 }
 
 .lamp_img {
     z-index: 2;
     position: absolute;
-    top: -80px;
+    top: -75px;
+    width: 85px;
 }
 
 .lamp_img_rtl {
-    left: 40px;
+    left: 45px;
 }
 
 .lamp_img_ltr {
-
-    right: 40px;
+    right: 45px;
 }
 
 .scroll_area {
@@ -33,11 +33,9 @@
     margin-top: 35px;
     min-height: calc(100% - 35px - 45px - var(--ads-height));
     height: calc(100% - 35px - 45px - var(--ads-height));
-    /* 35px=margin-top, 45px=unknown */
     width: 100%;
     overflow-y: scroll;
     z-index: 999;
-    /* less then ad=1000 */
 }
 
 .input_area_align {

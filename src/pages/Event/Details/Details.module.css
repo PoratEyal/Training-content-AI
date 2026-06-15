@@ -9,14 +9,15 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    top: 100px;
+    top: 65px;
     width: 100%;
 }
 
 .lamp_img {
     z-index: 2;
     position: absolute;
-    top: -80px;
+    top: -75px;
+    width: 85px;
 }
 
 .lamp_img_rtl {
@@ -24,26 +25,25 @@
 }
 
 .lamp_img_ltr {
-
     right: 40px;
 }
 
 .label {
-  font-size: 13px;
-  margin-bottom: 10px;
-  line-height: 1.5;
-  display: block;
-  width: 100%;
+    font-size: 13px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    display: block;
+    width: 100%;
 }
 
 .scroll_area {
     position: absolute;
     margin-top: 35px;
     min-height: calc(100% - 35px - 45px - var(--ads-height));
-    height: calc(100% - 35px - 45px - var(--ads-height));  /* 35px=margin-top, 45px=unknown */
+    height: calc(100% - 35px - 45px - var(--ads-height));
     width: 100%;
     overflow-y: scroll;
-    z-index: 999;   /* less then ad=1000 */
+    z-index: 999;
 }
 
 .input_area_align {

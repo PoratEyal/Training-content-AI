@@ -33,7 +33,7 @@ export const MovmentsOptions = {
         { value: Movements.es.scouts.name, label: Movements.es.scouts.title },
         { value: Movements.es.faithBasedYouthGroups.name, label: Movements.es.faithBasedYouthGroups.title },
         { value: Movements.es.environmentalAndNatureGroups.name, label: Movements.es.environmentalAndNatureGroups.title },
-        { value: Movements.es.other.name, label: Movements.en.other.title }
+        { value: Movements.es.other.name, label: Movements.es.other.title }
     ] as SelectOption[],
     ar: [
         { value: Movements.ar.youthLeadershipPrograms.name, label: Movements.ar.youthLeadershipPrograms.title },
@@ -48,6 +48,14 @@ export const MovmentsOptions = {
         { value: Movements.fr.faithBasedYouthGroups.name, label: Movements.fr.faithBasedYouthGroups.title },
         { value: Movements.fr.environmentalAndNatureGroups.name, label: Movements.fr.environmentalAndNatureGroups.title },
         { value: Movements.fr.other.name, label: Movements.fr.other.title }
+    ] as SelectOption[],
+    pt: [
+        { value: Movements.pt.youthLeadershipPrograms.name, label: Movements.pt.youthLeadershipPrograms.title },
+        { value: Movements.pt.scouts.name, label: Movements.pt.scouts.title },
+        { value: Movements.pt.faithBasedYouthGroups.name, label: Movements.pt.faithBasedYouthGroups.title },
+        { value: Movements.pt.environmentalAndNatureGroups.name, label: Movements.pt.environmentalAndNatureGroups.title },
+        { value: Movements.pt.netzach.name, label: Movements.pt.netzach.title },
+        { value: Movements.pt.other.name, label: Movements.pt.other.title }
     ] as SelectOption[],
 };
 
@@ -122,6 +130,20 @@ export const GradeOptions = {
         { value: "11ème année", label: "11ème année" },
         { value: "12ème année", label: "12ème année" },
     ] as SelectOption[],
+    pt: [
+        { value: "1º ano", label: "1º ano" },
+        { value: "2º ano", label: "2º ano" },
+        { value: "3º ano", label: "3º ano" },
+        { value: "4º ano", label: "4º ano" },
+        { value: "5º ano", label: "5º ano" },
+        { value: "6º ano", label: "6º ano" },
+        { value: "7º ano", label: "7º ano" },
+        { value: "8º ano", label: "8º ano" },
+        { value: "9º ano", label: "9º ano" },
+        { value: "10º ano", label: "10º ano" },
+        { value: "11º ano", label: "11º ano" },
+        { value: "12º ano", label: "12º ano" },
+    ] as SelectOption[],
 };
 
 
@@ -166,6 +188,14 @@ export const AmountOptions = {
         { value: "30-50", label: "30-50" },
         { value: "60+", label: "60+" },
     ] as SelectOption[],
+    pt: [
+        { value: "1-5", label: "1-5" },
+        { value: "5-10", label: "5-10" },
+        { value: "10-20", label: "10-20" },
+        { value: "20-30", label: "20-30" },
+        { value: "30-50", label: "30-50" },
+        { value: "60+", label: "60+" },
+    ] as SelectOption[],
 };
 
 
@@ -194,6 +224,11 @@ export const PlaceOptions = {
         { value: "non spécifié", label: "N'importe quel" },
         { value: "intérieur", label: "Intérieur" },
         { value: "extérieur", label: "Extérieur" },
+    ] as SelectOption[],
+    pt: [
+        { value: "não especificado", label: "Qualquer" },
+        { value: "Ambiente fechado", label: "Ambiente fechado" },
+        { value: "Ao ar livre", label: "Ao ar livre" },
     ] as SelectOption[],
 };
 
@@ -224,6 +259,11 @@ export const GenderOptions = {
         { value: "femmes", label: "Femmes" },
         { value: "mixte", label: "Mixte" },
     ] as SelectOption[],
+    pt: [
+        { value: "meninos", label: "Meninos" },
+        { value: "meninas", label: "Meninas" },
+        { value: "misto", label: "Misto" },
+    ] as SelectOption[],
 };
 
 
@@ -253,6 +293,11 @@ export const ActivityTimeOptions = {
         { value: "1 heure", label: "1 heure" },
         { value: "1h30", label: "1h30" },
     ] as SelectOption[],
+    pt: [
+        { value: "meia hora", label: "Meia hora" },
+        { value: "uma hora", label: "Uma hora" },
+        { value: "uma hora e meia", label: "Uma hora e meia" },
+    ] as SelectOption[],
 };
 
 export const ContestOptions = {
@@ -281,6 +326,11 @@ export const ContestOptions = {
         { value: "avec groupes", label: "Équipes" },
         { value: "sans groupes", label: "Sans équipes" },
     ] as SelectOption[],
+    pt: [
+        { value: "não especificado", label: "Qualquer" },
+        { value: "com grupos", label: "Equipes" },
+        { value: "sem grupos", label: "Sem equipes" },
+    ] as SelectOption[],
 };
 
 
@@ -304,6 +354,10 @@ export const ToolsOptions = {
     fr: [
         { value: "non spécifié", label: "N'importe quel" },
         { value: "sans matériel", label: "Sans matériel" },
+    ] as SelectOption[],
+    pt: [
+        { value: "não especificado", label: "Qualquer" },
+        { value: "sem material", label: "Sem materiais" },
     ] as SelectOption[],
 };
 

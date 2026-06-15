@@ -153,10 +153,12 @@ function Quiz() {
   const q = currentCycle[currentIdx]
   const letters = {
     he: ["א", "ב", "ג", "ד"],
-    ar: ["أ", "ب", "ج", "د"],
+    ar: ["أ", "ب", "ج", "ד"],
     es: ["A", "B", "C", "D"],
-    en: ["A", "B", "C", "D"]
-  }[lang] || ["-", "-", "-", "-"]
+    en: ["A", "B", "C", "D"],
+    pt: ["A", "B", "C", "D"],
+    fr: ["A", "B", "C", "D"]
+  }[lang] || ["A", "B", "C", "D"]
 
   const quizLang = localStorage.getItem(StorageKey.WORDS_LANG) || "en"
 

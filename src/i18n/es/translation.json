@@ -14,7 +14,7 @@
   },
   "aboutUs": {
     "title": "Acerca de",
-    "youthAboutText": "Crea actividades para jóvenes: desde una biblioteca de actividades listas hasta actividades personalizadas con inteligencia artificial. Ideal para guías que desean enriquecer la experiencia educativa y social.",
+    "youthAboutText": "Crea actividades personalizadas para jóvenes generadas com IA. Ideal para guías que desean enriquecer la experiencia educativa y social.",
     "eventAboutText": "Crea una actividad personalizada para cualquier evento, con inteligencia artificial que adapta la actividad según la edad, el número de participantes, el lugar y más. Cada actividad se genera especialmente para ti, con solo un clic y en cuestión de segundos.",
     "practiceAboutText": "Un desafío de conocimiento impulsado por IA. Elige cualquier tema que desees y el sistema generará un cuestionario personalizado en segundos. Perfecto para cualquiera que busque una forma sencilla y enfocada de profundizar su conocimiento.",
     "wordsAboutText": "Entrenamiento de vocabulario de forma inteligente y eficiente. Ingresa palabras o elige un tema para obtener una práctica personalizada que te ayudará a aprender, recordar y comprender mejor – en cualquier idioma."
@@ -35,7 +35,7 @@
       "startAction": "Crear Actividad"
     },
     "details": {
-      "title": "Cuéntanos sobre tu grupo",
+      "title": "Sobre tu grupo",
       "youthMovement": "Movimiento Juvenil",
       "grade": "Grado Escolar",
       "numberOfChildren": "Número de Niños",
@@ -207,7 +207,8 @@
       "hu-Practice": "Húngaro",
       "cs-Practice": "Checo",
       "he-Practice": "Hebreo",
-      "ar-Practice": "Árabe"
+      "ar-Practice": "Árabe",
+      "pt-Practice": "Portugués"
     },
     "quiz": {
       "newPractice": "¿Otra vez?",
@@ -334,10 +335,6 @@
           "a": "Sí. Después de iniciar sesión, podrás guardar cualquier actividad que hayas creado y actualizarla en cualquier momento a través de tu área personal de usuario."
         },
         {
-          "q": "¿Qué idiomas son compatibles?",
-          "a": "El sistema es compatible con inglés, español, hebreo y árabe. Se agregarán más idiomas en el futuro."
-        },
-        {
           "q": "Necesito una actividad para mañana y no tengo tiempo—¿alguna solución rápida?",
           "a": "Claro que sí. En ActivityWiz puedes generar una actividad completa con solo un clic: solo define el objetivo, la edad y la duración, y obtendrás un plan listo para usar de inmediato."
         }
@@ -360,10 +357,6 @@
         {
           "q": "¿Se puede compartir la actividad con amigos o participantes?",
           "a": "Por supuesto. Cada actividad se puede compartir con un clic, ya sea mediante un enlace o copiando el texto."
-        },
-        {
-          "q": "¿Qué idiomas se pueden usar en el sitio?",
-          "a": "El sistema es compatible con hebreo, inglés, árabe y español. Se agregarán más idiomas en el futuro."
         }
       ]
     },
@@ -380,10 +373,6 @@
         {
           "q": "¿A quién está dirigido el sitio?",
           "a": "El sitio es adecuado para cualquier persona que quiera practicar temas variados, estudiar de forma independiente o simplemente disfrutar de una trivia inteligente y divertida: niños, adolescentes y adultos."
-        },
-        {
-          "q": "¿Qué idiomas están disponibles?",
-          "a": "El sistema admite inglés, español, hebreo y árabe. Se agregarán más idiomas en el futuro."
         },
         {
           "q": "¿Puedo practicar el mismo tema con preguntas diferentes?",
@@ -404,10 +393,6 @@
         {
           "q": "¿A quién está dirigido el sitio?",
           "a": "El sitio es adecuado para cualquier persona que quiera aprender vocabulario en cualquier idioma: niños, adolescentes y adultos."
-        },
-        {
-          "q": "¿Qué idiomas son compatibles?",
-          "a": "La interfaz del sistema es compatible con inglés, español, hebreo y árabe. Sin embargo, las traducciones de vocabulario están disponibles para cualquier idioma existente."
         }
       ]
     }

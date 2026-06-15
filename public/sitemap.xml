@@ -9,6 +9,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/youth" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/youth" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/youth" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/youth" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/youth" />
       <priority>1.0</priority>
    </url>
@@ -19,6 +20,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/youth" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/youth" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/youth" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/youth" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/youth" />
       <priority>1.0</priority>
    </url>
@@ -30,6 +32,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/youth" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/youth" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/youth" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/youth" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/youth" />
       <priority>1.0</priority>
    </url>
@@ -41,6 +44,18 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/youth" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/youth" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/youth" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/youth" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/youth" />
+      <priority>1.0</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/pt/youth</loc>
+      <xhtml:link rel="alternate" hreflang="he-IL" href="https://activitywiz.com/he/youth" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/youth" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/youth" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/youth" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/youth" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/youth" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/youth" />
       <priority>1.0</priority>
    </url>
@@ -52,6 +67,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/youth/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/youth/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/youth/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/youth/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/youth/faq" />
       <priority>0.8</priority>
    </url>
@@ -62,6 +78,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/youth/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/youth/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/youth/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/youth/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/youth/faq" />
       <priority>0.8</priority>
    </url>
@@ -72,6 +89,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/youth/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/youth/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/youth/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/youth/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/youth/faq" />
       <priority>0.8</priority>
    </url>
@@ -82,6 +100,18 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/youth/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/youth/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/youth/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/youth/faq" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/youth/faq" />
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/pt/youth/faq</loc>
+      <xhtml:link rel="alternate" hreflang="he-IL" href="https://activitywiz.com/he/youth/faq" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/youth/faq" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/youth/faq" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/youth/faq" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/youth/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/youth/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/youth/faq" />
       <priority>0.8</priority>
    </url>
@@ -226,6 +256,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/event" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/event" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/event" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/event" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/event" />
       <priority>1.0</priority>
    </url>
@@ -236,6 +267,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/event" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/event" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/event" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/event" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/event" />
       <priority>1.0</priority>
    </url>
@@ -247,6 +279,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/event" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/event" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/event" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/event" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/event" />
       <priority>1.0</priority>
    </url>
@@ -258,6 +291,18 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/event" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/event" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/event" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/event" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/event" />
+      <priority>1.0</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/pt/event</loc>
+      <xhtml:link rel="alternate" hreflang="he-IL" href="https://activitywiz.com/he/event" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/event" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/event" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/event" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/event" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/event" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/event" />
       <priority>1.0</priority>
    </url>
@@ -269,6 +314,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/event/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/event/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/event/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/event/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/event/faq" />
       <priority>0.8</priority>
    </url>
@@ -279,6 +325,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/event/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/event/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/event/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/event/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/event/faq" />
       <priority>0.8</priority>
    </url>
@@ -289,6 +336,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/event/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/event/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/event/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/event/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/event/faq" />
       <priority>0.8</priority>
    </url>
@@ -299,6 +347,18 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/event/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/event/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/event/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/event/faq" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/event/faq" />
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/pt/event/faq</loc>
+      <xhtml:link rel="alternate" hreflang="he-IL" href="https://activitywiz.com/he/event/faq" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/event/faq" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/event/faq" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/event/faq" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/event/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/event/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/event/faq" />
       <priority>0.8</priority>
    </url>
@@ -311,6 +371,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/practice" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/practice" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/practice" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/practice" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/practice" />
       <priority>1.0</priority>
    </url>
@@ -321,6 +382,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/practice" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/practice" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/practice" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/practice" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/practice" />
       <priority>1.0</priority>
    </url>
@@ -331,6 +393,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/practice" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/practice" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/practice" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/practice" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/practice" />
       <priority>1.0</priority>
    </url>
@@ -341,6 +404,18 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/practice" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/practice" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/practice" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/practice" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/practice" />
+      <priority>1.0</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/pt/practice</loc>
+      <xhtml:link rel="alternate" hreflang="he-IL" href="https://activitywiz.com/he/practice" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/practice" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/practice" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/practice" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/practice" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/practice" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/practice" />
       <priority>1.0</priority>
    </url>
@@ -352,6 +427,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/practice/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/practice/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/practice/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/practice/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/practice/faq" />
       <priority>0.8</priority>
    </url>
@@ -362,6 +438,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/practice/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/practice/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/practice/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/practice/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/practice/faq" />
       <priority>0.8</priority>
    </url>
@@ -373,6 +450,7 @@
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/practice/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/practice/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/practice/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/practice/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/practice/faq" />
       <priority>0.8</priority>
    </url>
@@ -383,6 +461,18 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/practice/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/practice/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/practice/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/practice/faq" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/practice/faq" />
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/pt/practice/faq</loc>
+      <xhtml:link rel="alternate" hreflang="he-IL" href="https://activitywiz.com/he/practice/faq" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/practice/faq" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/practice/faq" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/practice/faq" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/practice/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/practice/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/practice/faq" />
       <priority>0.8</priority>
    </url>
@@ -395,6 +485,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/words" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/words" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/words" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/words" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/words" />
       <priority>1.0</priority>
    </url>
@@ -405,6 +496,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/words" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/words" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/words" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/words" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/words" />
       <priority>1.0</priority>
    </url>
@@ -415,6 +507,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/words" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/words" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/words" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/words" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/words" />
       <priority>1.0</priority>
    </url>
@@ -425,6 +518,18 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/words" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/words" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/words" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/words" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/words" />
+      <priority>1.0</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/pt/words</loc>
+      <xhtml:link rel="alternate" hreflang="he-IL" href="https://activitywiz.com/he/words" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/words" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/words" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/words" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/words" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/words" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/words" />
       <priority>1.0</priority>
    </url>
@@ -436,6 +541,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/words/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/words/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/words/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/words/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/words/faq" />
       <priority>0.8</priority>
    </url>
@@ -446,6 +552,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/words/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/words/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/words/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/words/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/words/faq" />
       <priority>0.8</priority>
    </url>
@@ -456,6 +563,7 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/words/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/words/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/words/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/words/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/words/faq" />
       <priority>0.8</priority>
    </url>
@@ -466,6 +574,18 @@
       <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/words/faq" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/words/faq" />
       <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/words/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/words/faq" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/words/faq" />
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://activitywiz.com/pt/words/faq</loc>
+      <xhtml:link rel="alternate" hreflang="he-IL" href="https://activitywiz.com/he/words/faq" />
+      <xhtml:link rel="alternate" hreflang="en" href="https://activitywiz.com/en/words/faq" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://activitywiz.com/es/words/faq" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://activitywiz.com/fr/words/faq" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://activitywiz.com/ar/words/faq" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://activitywiz.com/pt/words/faq" />
       <xhtml:link rel="alternate" hreflang="x-default" href="https://activitywiz.com/en/words/faq" />
       <priority>0.8</priority>
    </url>

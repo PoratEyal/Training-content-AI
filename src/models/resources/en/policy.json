@@ -1,50 +1,50 @@
 {
     "p0": {
         "label": "",
-        "text": "Using the app constitutes full agreement to the terms of this policy. The user undertakes and is obligated to carefully read all sections of the policy before using the app and will bear full responsibility for any misunderstanding or failure to comply with its terms."
+        "text": "Using the app constitutes full agreement to the terms of this policy. The user undertakes to carefully read all sections of the policy before using the app and will bear full responsibility for any consequences arising from non-compliance with its terms."
     },
     "p1": {
-        "label": "The app is currently in the testing phase, and we aim to improve it continuously. We’d appreciate feedback if you encounter any issues or glitches.",
-        "text": "Use of the app is at your own risk, and we bear no responsibility for any damage that may result from its use."
+        "label": "Testing Phase and Feedback:",
+        "text": "The app is currently in a beta testing phase, and we continuously strive to improve it. We would appreciate your feedback if you encounter any issues or glitches during use."
     },
     "p2": {
-        "label": "Privacy Policy:",
-        "text": "We use cookies and data voluntarily provided by users (such as name, email, and message content) to enhance the app experience and analyze statistical data. We may periodically conduct usability tests to improve the user interface."
+        "label": "Privacy Policy and Data Collection:",
+        "text": "We use cookies and data voluntarily provided by users (such as name, email, and message content) to enhance the app experience, conduct usability tests, and analyze statistical data using Google Analytics."
     },
     "p3": {
         "label": "Advertising Services:",
-        "text": "We use Google’s advertising services, such as Google AdSense, to display ads on the site. Google and its partners may use cookies and additional tracking technologies to collect information about your activity on our site and serve personalized ads. You can manage your preferences for personalized ads through Google’s ad settings."
+        "text": "We use Google’s advertising services, such as Google AdSense, to display ads within the app. Google and its partners may use cookies and additional tracking technologies to collect information about your activity and serve personalized ads. You can manage your preferences through Google’s ad settings."
     },
     "p4": {
-        "label": "Copyright:",
+        "label": "Copyright and Intellectual Property:",
         "text": "All rights to the app, including copyrights, designs, code, and data, belong to us or authorized sources."
     },
     "p5": {
-        "label": "Liability:",
-        "text": "We provide the app as-is and offer no warranties, express or implied, regarding it. We are not liable for any direct, indirect, consequential, or special damages that may arise from using the app."
+        "label": "Limitation of Liability:",
+        "text": "We provide the app on an \"as-is\" (As-Is) basis and offer no warranties, express or implied, regarding it. Use of the app is at your sole and full risk, and we are not liable for any direct, indirect, consequential, or special damages arising from its use or unavailability."
     },
     "p6": {
         "label": "Accessibility:",
-        "text": "The app is usable by people with disabilities through accessibility features built into the operating system."
+        "text": "The app is accessible to people with disabilities through accessibility features built into the operating system and browser."
     },
     "p7": {
-        "label": "Limitation of Liability:",
-        "text": "We use Microsoft Clarity to improve user experience. Site usage data, such as clicks, scrolling, time spent, heatmaps, and recordings of user actions, are stored using cookies. For more information on how Microsoft collects data, visit Microsoft’s privacy statement."
+        "label": "Data Analytics (Microsoft Clarity):",
+        "text": "We use Microsoft Clarity to improve user experience. App usage data, such as clicks, scrolling, time spent, heatmaps, and user interactions, are stored using cookies. For more information on how data is collected, please review Microsoft’s privacy statement."
     },
     "p8": {
         "label": "Jurisdiction and Dispute Resolution:",
-        "text": "Any dispute arising from the app is subject to the exclusive jurisdiction of the competent courts in Israel."
+        "text": "Any dispute arising from the use of this app shall be subject to the exclusive jurisdiction of the competent courts in Israel."
     },
     "p9": {
-        "label": "Changes:",
-        "text": "We may update this policy from time to time by posting a new version on our site. You should check this page periodically to ensure everything is clear."
+        "label": "Policy Changes:",
+        "text": "We may update this policy from time to time by publishing a new version within the app. It is the user's responsibility to review this page periodically to stay informed of updates."
     },
     "p10": {
-        "label": "Email:",
+        "label": "Contact Us:",
         "email": "contact.activitywiz@gmail.com",
         "text1": "We are available to respond",
         "text2": "via email",
-        "text3": "for any questions, comments, or requests.",
+        "text3": "for any questions, comments, or requests",
         "text4": "Contact us"
     }
 }

@@ -513,5 +513,56 @@ export const Movements = {
                 { name: "playTime", title: "Activité ludique" },
             ],
         } as Movement
+    },
+
+    pt: {
+        scouts: {
+            name: "Scouts",
+            title: "Escoteiros",
+            categories: [
+                { name: "content", title: "Atividade de Conteúdo" },
+                { name: "playTime", title: "Hora do Jogo" },
+            ],
+        } as Movement,
+        youthLeadershipPrograms: {
+            name: "YouthLeadershipPrograms",
+            title: "Programas de Liderança Juvenil",
+            categories: [
+                { name: "content", title: "Atividade de Conteúdo" },
+                { name: "playTime", title: "Hora do Jogo" },
+            ],
+        } as Movement,
+        faithBasedYouthGroups: {
+            name: "FaithBasedYouthGroups",
+            title: "Grupos de Jovens Religiosos",
+            categories: [
+                { name: "content", title: "Atividade de Conteúdo" },
+                { name: "playTime", title: "Hora do Jogo" },
+            ],
+        } as Movement,
+        environmentalAndNatureGroups: {
+            name: "EnvironmentalAndNatureGroups",
+            title: "Grupos Ambientais e de Natureza",
+            categories: [
+                { name: "content", title: "Atividade de Conteúdo" },
+                { name: "playTime", title: "Hora do Jogo" },
+            ],
+        } as Movement,
+        netzach: {
+            name: "netzach",
+            title: "Netzah",
+            categories: [
+                { name: "content", title: "Atividade de Conteúdo" },
+                { name: "playTime", title: "Hora do Jogo" },
+            ],
+        } as Movement,
+        other: {
+            name: "other",
+            title: "Outro",
+            categories: [
+                { name: "content", title: "Atividade de Conteúdo" },
+                { name: "playTime", title: "Hora do Jogo" },
+            ],
+        } as Movement
     }
 };

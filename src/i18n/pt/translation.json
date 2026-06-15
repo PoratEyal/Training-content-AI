@@ -7,17 +7,17 @@
     "slogan": "Personalizado, Simples e Rápido 🤟",
     "btnContinue": "Continuar",
     "loadingHead": "Estamos preparando tudo",
-    "loadingText": "Nota: Este conteúdo foi gerado por IA, está em constante aprendizado e pode conter erros.",
+    "loadingText": "Nota: Este conteúdo é gerado por IA e pode conter imprecisões. Revise antes de usar.",
     "FAQtitle": "Perguntas Frequentes",
     "errorMsg": "A ação não foi concluída. Por favor, tente novamente.",
     "errorMsgHighDemand": "O sistema está com alta demanda no momento. Por favor, tente novamente."
   },
   "aboutUs": {
     "title": "Sobre",
-    "youthAboutText": "Crie atividades para jovens – desde uma biblioteca de atividades prontas até personalizadas geradas com IA. Perfeito para monitores que querem enriquecer o engajamento educacional e social.",
-    "eventAboutText": "Crie uma atividade personalizada para qualquer evento – com IA que adapta a atividade à idade, número de participantes, local e muito mais. Cada atividade é gerada especialmente para você, com um clique e em segundos.",
-    "practiceAboutText": "Um desafio de conhecimentos com IA. Escolha qualquer tema que quiser e o sistema gerará um quiz personalizado em segundos. Perfeito para quem busca uma forma simples e focada de aprofundar seu conhecimento.",
-    "wordsAboutText": "Treinamento de vocabulário inteligente e eficiente. Insira palavras ou escolha um tema para obter uma prática personalizada que ajuda você a aprender, memorizar e compreender melhor – em qualquer idioma."
+    "youthAboutText": "Crie atividades personalizadas para jovens geradas com IA. Perfeito para monitores que querem enriquecer o engajamento educacional e social.",
+    "eventAboutText": "Crie atividades personalizadas com IA para qualquer evento. O sistema adapta tudo à idade, tamanho do grupo, local e muito mais – gerado especialmente para você, com um clique e em segundos.",
+    "practiceAboutText": "Um desafio de conhecimentos com IA. Escolha qualquer tema e o sistema gerará um quiz personalizado em segundos. Perfeito para aprofundar seu conhecimento de forma simples e focada.",
+    "wordsAboutText": "Prática de vocabulário inteligente e eficaz. Insira palavras ou escolha um tema para gerar um treino personalizado que ajuda a memorizar e aprender melhor – em qualquer idioma."
   },
   "youthSep": "==============================================================================================================",
   "youth": {
@@ -35,15 +35,15 @@
       "startAction": "Criar"
     },
     "details": {
-      "title": "Conte-nos sobre seu grupo",
+      "title": "Sobre seu grupo",
       "youthMovement": "Movimento Juvenil",
       "grade": "Série Escolar",
-      "numberOfChildren": "Número de Crianças",
-      "gender": "Gênero",
+      "numberOfChildren": "Tamanho do Grupo",
+      "gender": "Público",
       "lampAlt": "Lâmpada amarela"
     },
     "BuildActivity": {
-      "title": "Planeje sua atividade",
+      "title": "Planejar atividade",
       "category": {
         "label": "Categoria"
       },
@@ -112,25 +112,25 @@
       "forActions": "Eventos",
       "withPrefix": "com",
       "ai": "IA",
-      "startAction": "Criar atividade"
+      "startAction": "Começar"
     },
     "Details": {
-      "title": "Conte-nos sobre seu evento",
+      "title": "O evento",
       "eventLable": "Por exemplo: aniversário, festa, atividade em equipe, atividade escolar, piquenique em família e muito mais...",
-      "event": "Tipo de Evento/Atividade",
+      "event": "Tipo de evento/atividade",
       "moreDetails": "Mais detalhes (opcional)",
-      "duration": "Duração da Atividade",
+      "duration": "Duração da atividade",
       "limit": "Para adicionar mais informações, use o campo 'Informações adicionais'.",
       "lampAlt": "Lâmpada"
     },
     "BuildActivity": {
-      "title": "Planeje a atividade",
+      "title": "Planejamento",
       "age": "Idade dos participantes",
       "amount": "Número de participantes",
       "gender": "Gênero",
       "place": "Local",
       "materials": "Materiais",
-      "submit": "Criar atividade",
+      "submit": "Criar",
       "loading": "Criando atividade"
     },
     "Activity": {
@@ -156,9 +156,9 @@
       "startAction": "Vamos lá"
     },
     "topic": {
-      "title": "Vamos escolher um tema",
+      "title": "Escolha um tema",
       "topicPlaceholder": "Digite um tema",
-      "examples": "Por exemplo: Quiz de música, química para o vestibular, trivia geral, Japão no século 18...",
+      "examples": "Por exemplo: quiz de música, química para o vestibular, trivia geral, Japão no século 18...",
       "btnCreate": "Vamos lá",
       "topicError": "Desculpe, não consigo gerar perguntas para o tema selecionado. Por favor, tente um tema diferente."
     },
@@ -272,7 +272,7 @@
       "wordsShareMessage": "Encontrei um ótimo site para prática de vocabulário simples e fácil em qualquer idioma – super recomendado! 🔥",
       "eventAdBannerText": "Clique aqui para criar uma atividade personalizada para qualquer evento 🎯",
       "practiceShareMessageInstructor": "Você pode jogar um trivia rápido aqui baseado na atividade que fizemos – experimente e divirta-se 🎯",
-      "practiceShareBannerText": "Clique aqui para compartilhar o desafio de trivia",
+      "practiceShareBannerText": "Compartilhar o desafio de Trívia",
       "shared2Clipboard": "Texto copiado – compartilhe em qualquer app.",
       "shareError": "Falha ao copiar texto – tente novamente."
     },
@@ -285,7 +285,7 @@
       "removeError": "Falha ao remover atividade, por favor tente novamente"
     },
     "edit": "Editar",
-    "game": "Quiz da Atividade"
+    "game": "Quiz"
   },
   "editor": {
     "save": {

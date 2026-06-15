@@ -29,6 +29,20 @@ export const ActivityTimeOptions = {
         { value: "Two hours", label: "ساعتان" },
         { value: "Three hours", label: "ثلاث ساعات" },
     ] as SelectOption[],
+
+    fr: [
+        { value: "Half hour", label: "Demi-heure" },
+        { value: "One hour", label: "Une heure" },
+        { value: "Two hours", label: "Deux heures" },
+        { value: "Three hours", label: "Trois heures" },
+    ] as SelectOption[],
+
+    pt: [
+        { value: "Half hour", label: "Meia hora" },
+        { value: "One hour", label: "Uma hora" },
+        { value: "Two hours", label: "Duas horas" },
+        { value: "Three hours", label: "Três horas" },
+    ] as SelectOption[],
 };
 
 export const AgeOptions = {
@@ -83,6 +97,30 @@ export const AgeOptions = {
         { value: "Older adults (ages 50–70)", label: "الأعمار: من 50 إلى 70" },
         { value: "Seniors (ages 70 and above)", label: "الأعمار: 70 فما فوق" }
     ] as SelectOption[],
+    fr: [
+        { value: "Kindergarten (ages 3–6)", label: "Jardin d'enfants" },
+        { value: "Children (ages 6–9)", label: "6 à 9 ans" },
+        { value: "Children (ages 10–12)", label: "10 à 12 ans" },
+        { value: "Young teens (ages 13–15)", label: "13 à 15 ans" },
+        { value: "Older teens (ages 16–18)", label: "16 à 18 ans" },
+        { value: "Adult (ages 20 and above)", label: "Adultes" },
+        { value: "Young adults (ages 19–30)", label: "19 à 30 ans" },
+        { value: "Adults (ages 30–50)", label: "30 à 50 ans" },
+        { value: "Older adults (ages 50–70)", label: "50 à 70 ans" },
+        { value: "Seniors (ages 70 and above)", label: "70 ans et plus" }
+    ] as SelectOption[],
+    pt: [
+        { value: "Kindergarten (ages 3–6)", label: "Jardim de infância" },
+        { value: "Children (ages 6–9)", label: "6 a 9 anos" },
+        { value: "Children (ages 10–12)", label: "10 a 12 anos" },
+        { value: "Young teens (ages 13–15)", label: "13 a 15 anos" },
+        { value: "Older teens (ages 16–18)", label: "16 a 18 anos" },
+        { value: "Adult (ages 20 and above)", label: "Adultos" },
+        { value: "Young adults (ages 19–30)", label: "19 a 30 anos" },
+        { value: "Adults (ages 30–50)", label: "30 a 50 anos" },
+        { value: "Older adults (ages 50–70)", label: "50 a 70 anos" },
+        { value: "Seniors (ages 70 and above)", label: "70 anos ou mais" }
+    ] as SelectOption[],
 };
 
 
@@ -119,6 +157,22 @@ export const AmountOptions = {
         { value: "30-50", label: "من 30 إلى 50 مشاركين" },
         { value: "60+", label: "أكثر من 60 مشارك" }
     ] as SelectOption[],
+    fr: [
+        { value: "1-5", label: "1–5 participants" },
+        { value: "5-10", label: "5–10 participants" },
+        { value: "10-20", label: "10–20 participants" },
+        { value: "20-30", label: "20–30 participants" },
+        { value: "30-50", label: "30–50 participants" },
+        { value: "60+", label: "60+ participants" }
+    ] as SelectOption[],
+    pt: [
+        { value: "1-5", label: "1–5 participantes" },
+        { value: "5-10", label: "5–10 participantes" },
+        { value: "10-20", label: "10–20 participantes" },
+        { value: "20-30", label: "20–30 participantes" },
+        { value: "30-50", label: "30–50 participantes" },
+        { value: "60+", label: "60+ participantes" }
+    ] as SelectOption[],
 };
 
 export const PlaceOptions = {
@@ -144,6 +198,16 @@ export const PlaceOptions = {
         { value: "No location preference", label: "أي مكان" },
         { value: "Indoor", label: "داخل" },
         { value: "Outdoor", label: "خارج" },
+    ] as SelectOption[],
+    fr: [
+        { value: "No location preference", label: "N'importe quel" },
+        { value: "Indoor", label: "Intérieur" },
+        { value: "Outdoor", label: "Extérieur" },
+    ] as SelectOption[],
+    pt: [
+        { value: "No location preference", label: "Qualquer" },
+        { value: "Indoor", label: "Ambiente fechado" },
+        { value: "Outdoor", label: "Ao ar livre" },
     ] as SelectOption[],
 };
 
@@ -172,6 +236,16 @@ export const GenderOptions = {
         { value: "woman", label: "إناث" },
         { value: "mixed gender", label: "مجموعة مختلطة" },
     ] as SelectOption[],
+    fr: [
+        { value: "man", label: "Hommes" },
+        { value: "woman", label: "Femmes" },
+        { value: "mixed gender", label: "Groupe mixte" },
+    ] as SelectOption[],
+    pt: [
+        { value: "man", label: "Homens" },
+        { value: "woman", label: "Mulheres" },
+        { value: "mixed gender", label: "Grupo misto" },
+    ] as SelectOption[],
 };
 
 
@@ -191,6 +265,14 @@ export const MaterialsOptions = {
     ar: [
         { value: "any", label: "أيًّا كان" },
         { value: "no materials", label: "بدون مواد" },
+    ] as SelectOption[],
+    fr: [
+        { value: "any", label: "N'importe quel" },
+        { value: "no materials", label: "Sans matériel" },
+    ] as SelectOption[],
+    pt: [
+        { value: "any", label: "Qualquer" },
+        { value: "no materials", label: "Sem materiais" },
     ] as SelectOption[],
 };
 

@@ -99,9 +99,11 @@ function Quiz() {
     he: ['א', 'ב', 'ג', 'ד'],
     ar: ['أ', 'ب', 'ج', 'د'],
     es: ['A', 'B', 'C', 'D'],
-    en: ['A', 'B', 'C', 'D']
+    en: ['A', 'B', 'C', 'D'],
+    pt: ['A', 'B', 'C', 'D'],
+    fr: ['A', 'B', 'C', 'D']
   }
-  const letters = lettersMap[lang] || ['-', '-', '-', '-']
+  const letters = lettersMap[lang] || ['A', 'B', 'C', 'D']
 
   return (
     <PageLayout

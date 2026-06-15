@@ -25,12 +25,13 @@ function assertNotImageModel(model: string) {
 }
 
 const buildPrompt = (topic: string, count: number, lang: Lang): string => {
-  const langDisplayName = {
+  const langDisplayName: string = {
     he: "Hebrew",
     en: "English",
     ar: "Arabic",
     es: "Spanish",
-    fr: "French"
+    fr: "French",
+    pt: "Portuguese"
   }[lang];
 
   return `
