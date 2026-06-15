@@ -1,14 +1,15 @@
-.loading_activity {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 998;
-  width: 100vw;
-  height: 100vh;
-  background: var(--secondary-color);
+.pageContainer {
+  position: relative;
 }
 
-.loading_main{
+.loadingOverlay {
+  z-index: 999;
+  background-color: var(--background-color);
+  border-top-left-radius: 37px;
+  border-top-right-radius: 37px;
+}
+
+.loadingContentWrapper{
   position: absolute;
   top: 40%;
   left: 50%;
@@ -18,10 +19,11 @@
   align-items: center;
 }
 
-.gif {
+.loadingImage {
+  margin-top: 30px;
   animation: fadeIn 0.5s ease-in-out forwards;
   opacity: 0;
-  width: 320px;
+  width: 200px;
 }
 
 @keyframes fadeIn {
@@ -30,16 +32,16 @@
   }
 }
 
-.h2 {
+.loadingTitle {
   margin-top: 25px;
-  font-size: 42px;
+  font-size: 38px;
   font-weight: bold;
   color: var(--text-color);
   text-align: center;
   line-height: 0.95;
 }
 
-.text {
+.loadingSubtitle {
   margin-top: 20px;
   font-size: 16px;
   font-weight: 300;

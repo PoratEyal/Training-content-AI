@@ -5,10 +5,10 @@
   position: absolute;
   top: 45px;
   left: 0;
-  z-index: 1100;
+  z-index: 9999;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  width: 175px;
+  width: 240px;
 }
 
 .nav_container::after {
@@ -33,7 +33,7 @@
   color: var(--text-color);
   text-align: right;
   margin-left: -35px;
-  width: 155px;
+  width: 220px;
   margin-bottom: 16px;
   cursor: pointer;
 }

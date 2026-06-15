@@ -1,7 +1,5 @@
 import { GUEST_BLOCK_MustLogin } from "../models/constants/cookie"
 import { a24hoursPeriodPassed, isValidDateFormat } from "../utils/time"
-import Session from "../utils/sessionStorage"
-import { SessionKey } from "../models/enum/storage"
 
 export function startAsGuestOrUser({
     currentUser,
@@ -25,8 +23,6 @@ export function startAsGuestOrUser({
         navigate(navigateTo)
         return
     }
-
-    // Session.set(SessionKey.NAVIGATE, navigateTo) // this session key is never used anywhere else in the codebase
 
     if (cookieLimit) {
         if (cookieLimit === GUEST_BLOCK_MustLogin) {

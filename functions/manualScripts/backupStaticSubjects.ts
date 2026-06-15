@@ -1,6 +1,6 @@
 // Backup DB table
-// cd C:\Dev\ActivityWiz\functions\manualScripts>
-// run: npx ts-node <script-name>.ts
+// cd .\functions\manualScripts\
+// run: npx ts-node backupStaticSubjects.ts
 import * as admin from "firebase-admin";
 import * as fs from "fs";
 import * as path from "path";
@@ -25,7 +25,6 @@ async function backupStaticSubjects() {
 
     const backupPath = path.join(__dirname, "backupStaticSubjects.json");
     fs.writeFileSync(backupPath, JSON.stringify(data, null, 2));
-    console.log(`✅ staticSubjects backup saved to ${backupPath}`);
   } catch (error) {
     console.error("❌ Error backing up staticSubjects:", error);
   }

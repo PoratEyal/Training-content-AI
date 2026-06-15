@@ -14,6 +14,12 @@ export const getCurrentTime = (lang: Lang = "he") => {
         case "ar":
             timezone = "Asia/Riyadh";
             break;
+        case "fr":
+            timezone = "Europe/Paris";
+            break;
+        case "pt":
+            timezone = "America/Sao_Paulo";
+            break;
         default:
             timezone = "America/New_York";
     }

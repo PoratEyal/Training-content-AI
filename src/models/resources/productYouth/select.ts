@@ -1,0 +1,375 @@
+import { SelectOption } from "../../types/common";
+import { Category } from "../../types/movement";
+import { Movements } from "./movment";
+
+export const MovmentsOptions = {
+    he: [
+        { value: Movements.he.scout.name, label: Movements.he.scout.title },
+        { value: Movements.he.oved.name, label: Movements.he.oved.title },
+        { value: Movements.he.akiva.name, label: Movements.he.akiva.title },
+        { value: Movements.he.maccabi.name, label: Movements.he.maccabi.title },
+        { value: Movements.he.camps.name, label: Movements.he.camps.title },
+        { value: Movements.he.shomer.name, label: Movements.he.shomer.title },
+        { value: Movements.he.bitar.name, label: Movements.he.bitar.title },
+        { value: Movements.he.hadasha.name, label: Movements.he.hadasha.title },
+        { value: Movements.he.netzach.name, label: Movements.he.netzach.title },
+        { value: Movements.he.medtchim.name, label: Movements.he.medtchim.title },
+        { value: Movements.he.meshachim.name, label: Movements.he.meshachim.title },
+        { value: Movements.he.sayarut.name, label: Movements.he.sayarut.title },
+        { value: Movements.he.noam.name, label: Movements.he.noam.title },
+        { value: Movements.he.agricultural.name, label: Movements.he.agricultural.title },
+        { value: Movements.he.shinshin.name, label: Movements.he.shinshin.title },
+        { value: Movements.he.other.name, label: Movements.he.other.title },
+    ] as SelectOption[],
+    en: [
+        { value: Movements.en.youthLeadershipPrograms.name, label: Movements.en.youthLeadershipPrograms.title },
+        { value: Movements.en.scouts.name, label: Movements.en.scouts.title },
+        { value: Movements.en.faithBasedYouthGroups.name, label: Movements.en.faithBasedYouthGroups.title },
+        { value: Movements.en.environmentalAndNatureGroups.name, label: Movements.en.environmentalAndNatureGroups.title },
+        { value: Movements.en.other.name, label: Movements.en.other.title }
+    ] as SelectOption[],
+    es: [
+        { value: Movements.es.youthLeadershipPrograms.name, label: Movements.es.youthLeadershipPrograms.title },
+        { value: Movements.es.scouts.name, label: Movements.es.scouts.title },
+        { value: Movements.es.faithBasedYouthGroups.name, label: Movements.es.faithBasedYouthGroups.title },
+        { value: Movements.es.environmentalAndNatureGroups.name, label: Movements.es.environmentalAndNatureGroups.title },
+        { value: Movements.es.other.name, label: Movements.es.other.title }
+    ] as SelectOption[],
+    ar: [
+        { value: Movements.ar.youthLeadershipPrograms.name, label: Movements.ar.youthLeadershipPrograms.title },
+        { value: Movements.ar.scouts.name, label: Movements.ar.scouts.title },
+        { value: Movements.ar.faithBasedYouthGroups.name, label: Movements.ar.faithBasedYouthGroups.title },
+        { value: Movements.ar.environmentalAndNatureGroups.name, label: Movements.ar.environmentalAndNatureGroups.title },
+        { value: Movements.ar.other.name, label: Movements.ar.other.title }
+    ] as SelectOption[],
+    fr: [
+        { value: Movements.fr.youthLeadershipPrograms.name, label: Movements.fr.youthLeadershipPrograms.title },
+        { value: Movements.fr.scouts.name, label: Movements.fr.scouts.title },
+        { value: Movements.fr.faithBasedYouthGroups.name, label: Movements.fr.faithBasedYouthGroups.title },
+        { value: Movements.fr.environmentalAndNatureGroups.name, label: Movements.fr.environmentalAndNatureGroups.title },
+        { value: Movements.fr.other.name, label: Movements.fr.other.title }
+    ] as SelectOption[],
+    pt: [
+        { value: Movements.pt.youthLeadershipPrograms.name, label: Movements.pt.youthLeadershipPrograms.title },
+        { value: Movements.pt.scouts.name, label: Movements.pt.scouts.title },
+        { value: Movements.pt.faithBasedYouthGroups.name, label: Movements.pt.faithBasedYouthGroups.title },
+        { value: Movements.pt.environmentalAndNatureGroups.name, label: Movements.pt.environmentalAndNatureGroups.title },
+        { value: Movements.pt.netzach.name, label: Movements.pt.netzach.title },
+        { value: Movements.pt.other.name, label: Movements.pt.other.title }
+    ] as SelectOption[],
+};
+
+export const GradeOptions = {
+    he: [
+        { value: "כיתה א", label: "כיתה א" },
+        { value: "כיתה ב", label: "כיתה ב" },
+        { value: "כיתה ג", label: "כיתה ג" },
+        { value: "כיתה ד", label: "כיתה ד" },
+        { value: "כיתה ה", label: "כיתה ה" },
+        { value: "כיתה ו", label: "כיתה ו" },
+        { value: "כיתה ז", label: "כיתה ז" },
+        { value: "כיתה ח", label: "כיתה ח" },
+        { value: "כיתה ט", label: "כיתה ט" },
+        { value: "כיתה י", label: "כיתה י" },
+        { value: "כיתה יא", label: "כיתה יא" },
+        { value: "כיתה יב", label: "כיתה יב" },
+    ] as SelectOption[],
+    en: [
+        { value: "grade 1", label: "Grade 1" },
+        { value: "grade 2", label: "Grade 2" },
+        { value: "grade 3", label: "Grade 3" },
+        { value: "grade 4", label: "Grade 4" },
+        { value: "grade 5", label: "Grade 5" },
+        { value: "grade 6", label: "Grade 6" },
+        { value: "grade 7", label: "Grade 7" },
+        { value: "grade 8", label: "Grade 8" },
+        { value: "grade 9", label: "Grade 9" },
+        { value: "grade 10", label: "Grade 10" },
+        { value: "grade 11", label: "Grade 11" },
+        { value: "grade 12", label: "Grade 12" },
+    ] as SelectOption[],
+    es: [
+        { value: "grado 1", label: "Grado 1" },
+        { value: "grado 2", label: "Grado 2" },
+        { value: "grado 3", label: "Grado 3" },
+        { value: "grado 4", label: "Grado 4" },
+        { value: "grado 5", label: "Grado 5" },
+        { value: "grado 6", label: "Grado 6" },
+        { value: "grado 7", label: "Grado 7" },
+        { value: "grado 8", label: "Grado 8" },
+        { value: "grado 9", label: "Grado 9" },
+        { value: "grado 10", label: "Grado 10" },
+        { value: "grado 11", label: "Grado 11" },
+        { value: "grado 12", label: "Grado 12" },
+    ] as SelectOption[],
+    ar: [
+        { value: "الصف 1", label: "الصف 1" },
+        { value: "الصف 2", label: "الصف 2" },
+        { value: "الصف 3", label: "الصف 3" },
+        { value: "الصف 4", label: "الصف 4" },
+        { value: "الصف 5", label: "الصف 5" },
+        { value: "الصف 6", label: "الصف 6" },
+        { value: "الصف 7", label: "الصف 7" },
+        { value: "الصف 8", label: "الصف 8" },
+        { value: "الصف 9", label: "الصف 9" },
+        { value: "الصف 10", label: "الصف 10" },
+        { value: "الصف 11", label: "الصف 11" },
+        { value: "الصف 12", label: "الصف 12" },
+    ] as SelectOption[],
+    fr: [
+        { value: "1ère année", label: "1ère année" },
+        { value: "2ème année", label: "2ème année" },
+        { value: "3ème année", label: "3ème année" },
+        { value: "4ème année", label: "4ème année" },
+        { value: "5ème année", label: "5ème année" },
+        { value: "6ème année", label: "6ème année" },
+        { value: "7ème année", label: "7ème année" },
+        { value: "8ème année", label: "8ème année" },
+        { value: "9ème année", label: "9ème année" },
+        { value: "10ème année", label: "10ème année" },
+        { value: "11ème année", label: "11ème année" },
+        { value: "12ème année", label: "12ème année" },
+    ] as SelectOption[],
+    pt: [
+        { value: "1º ano", label: "1º ano" },
+        { value: "2º ano", label: "2º ano" },
+        { value: "3º ano", label: "3º ano" },
+        { value: "4º ano", label: "4º ano" },
+        { value: "5º ano", label: "5º ano" },
+        { value: "6º ano", label: "6º ano" },
+        { value: "7º ano", label: "7º ano" },
+        { value: "8º ano", label: "8º ano" },
+        { value: "9º ano", label: "9º ano" },
+        { value: "10º ano", label: "10º ano" },
+        { value: "11º ano", label: "11º ano" },
+        { value: "12º ano", label: "12º ano" },
+    ] as SelectOption[],
+};
+
+
+export const AmountOptions = {
+    he: [
+        { value: "1-5", label: "1-5" },
+        { value: "5-10", label: "5-10" },
+        { value: "10-20", label: "10-20" },
+        { value: "20-30", label: "20-30" },
+        { value: "30-50", label: "30-50" },
+        { value: "60+", label: "60+" },
+    ] as SelectOption[],
+    en: [
+        { value: "1-5", label: "1-5" },
+        { value: "5-10", label: "5-10" },
+        { value: "10-20", label: "10-20" },
+        { value: "20-30", label: "20-30" },
+        { value: "30-50", label: "30-50" },
+        { value: "60+", label: "60+" },
+    ] as SelectOption[],
+    es: [
+        { value: "1-5", label: "1-5" },
+        { value: "5-10", label: "5-10" },
+        { value: "10-20", label: "10-20" },
+        { value: "20-30", label: "20-30" },
+        { value: "30-50", label: "30-50" },
+        { value: "60+", label: "60+" },
+    ] as SelectOption[],
+    ar: [
+        { value: "1-5", label: "1-5" },
+        { value: "5-10", label: "5-10" },
+        { value: "10-20", label: "10-20" },
+        { value: "20-30", label: "20-30" },
+        { value: "30-50", label: "30-50" },
+        { value: "60+", label: "60+" },
+    ] as SelectOption[],
+    fr: [
+        { value: "1-5", label: "1-5" },
+        { value: "5-10", label: "5-10" },
+        { value: "10-20", label: "10-20" },
+        { value: "20-30", label: "20-30" },
+        { value: "30-50", label: "30-50" },
+        { value: "60+", label: "60+" },
+    ] as SelectOption[],
+    pt: [
+        { value: "1-5", label: "1-5" },
+        { value: "5-10", label: "5-10" },
+        { value: "10-20", label: "10-20" },
+        { value: "20-30", label: "20-30" },
+        { value: "30-50", label: "30-50" },
+        { value: "60+", label: "60+" },
+    ] as SelectOption[],
+};
+
+
+export const PlaceOptions = {
+    he: [
+        { value: "לא משנה", label: "לא משנה" },
+        { value: "במקום סגור", label: "במקום סגור" },
+        { value: "במקום פתוח", label: "במקום פתוח" },
+    ] as SelectOption[],
+    en: [
+        { value: "not specified", label: "Any" },
+        { value: "indoor", label: "Indoor" },
+        { value: "outdoor", label: "Outdoor" },
+    ] as SelectOption[],
+    es: [
+        { value: "no especificado", label: "Cualquiera" },
+        { value: "interior", label: "Interior" },
+        { value: "exterior", label: "Exterior" },
+    ] as SelectOption[],
+    ar: [
+        { value: "غير محدد", label: "أي" },
+        { value: "داخلية", label: "داخلية" },
+        { value: "خارجية", label: "خارجية" },
+    ] as SelectOption[],
+    fr: [
+        { value: "non spécifié", label: "N'importe quel" },
+        { value: "intérieur", label: "Intérieur" },
+        { value: "extérieur", label: "Extérieur" },
+    ] as SelectOption[],
+    pt: [
+        { value: "não especificado", label: "Qualquer" },
+        { value: "Ambiente fechado", label: "Ambiente fechado" },
+        { value: "Ao ar livre", label: "Ao ar livre" },
+    ] as SelectOption[],
+};
+
+
+export const GenderOptions = {
+    he: [
+        { value: "חניכים", label: "קבוצת בנים" },
+        { value: "חניכות", label: "קבוצת בנות" },
+        { value: "מעורב", label: "קבוצה מעורבת" },
+    ] as SelectOption[],
+    en: [
+        { value: "boys", label: "Boys" },
+        { value: "girls", label: "Girls" },
+        { value: "mixed", label: "Mixed" },
+    ] as SelectOption[],
+    es: [
+        { value: "niños", label: "Niños" },
+        { value: "niñas", label: "Niñas" },
+        { value: "mixto", label: "Mixto" },
+    ] as SelectOption[],
+    ar: [
+        { value: "أولاد", label: "أولاد" },
+        { value: "بنات", label: "بنات" },
+        { value: "مختلط", label: "مختلط" },
+    ] as SelectOption[],
+    fr: [
+        { value: "hommes", label: "Hommes" },
+        { value: "femmes", label: "Femmes" },
+        { value: "mixte", label: "Mixte" },
+    ] as SelectOption[],
+    pt: [
+        { value: "meninos", label: "Meninos" },
+        { value: "meninas", label: "Meninas" },
+        { value: "misto", label: "Misto" },
+    ] as SelectOption[],
+};
+
+
+export const ActivityTimeOptions = {
+    he: [
+        { value: "חצי שעה", label: "חצי שעה" },
+        { value: "שעה", label: "שעה" },
+        { value: "שעה וחצי", label: "שעה וחצי" },
+    ] as SelectOption[],
+    en: [
+        { value: "half hour", label: "Half hour" },
+        { value: "hour", label: "Hour" },
+        { value: "hour and a half", label: "Hour and a half" },
+    ] as SelectOption[],
+    es: [
+        { value: "media hora", label: "Media hora" },
+        { value: "hora", label: "Hora" },
+        { value: "hora y media", label: "Hora y media" },
+    ] as SelectOption[],
+    ar: [
+        { value: "نصف ساعة", label: "نصف ساعة" },
+        { value: "ساعة", label: "ساعة" },
+        { value: "ساعة ونصف", label: "ساعة ونصف" },
+    ] as SelectOption[],
+    fr: [
+        { value: "30 minutes", label: "30 minutes" },
+        { value: "1 heure", label: "1 heure" },
+        { value: "1h30", label: "1h30" },
+    ] as SelectOption[],
+    pt: [
+        { value: "meia hora", label: "Meia hora" },
+        { value: "uma hora", label: "Uma hora" },
+        { value: "uma hora e meia", label: "Uma hora e meia" },
+    ] as SelectOption[],
+};
+
+export const ContestOptions = {
+    he: [
+        { value: "לא משנה", label: "לא משנה" },
+        { value: "עם חלוקה לקבוצות", label: "עם חלוקה לקבוצות" },
+        { value: "ללא חלוקה לקבוצות", label: "ללא חלוקה לקבוצות" },
+    ] as SelectOption[],
+    en: [
+        { value: "not specified", label: "Any" },
+        { value: "with groups", label: "Teams" },
+        { value: "without groups", label: "No teams" },
+    ] as SelectOption[],
+    es: [
+        { value: "no especificado", label: "Cualquiera" },
+        { value: "con grupos", label: "Equipos" },
+        { value: "sin grupos", label: "Sin equipos" },
+    ] as SelectOption[],
+    ar: [
+        { value: "غير محدد", label: "أي" },
+        { value: "مع مجموعات", label: "فرق" },
+        { value: "بدون مجموعات", label: "بدون فرق" },
+    ] as SelectOption[],
+    fr: [
+        { value: "non spécifié", label: "N'importe quel" },
+        { value: "avec groupes", label: "Équipes" },
+        { value: "sans groupes", label: "Sans équipes" },
+    ] as SelectOption[],
+    pt: [
+        { value: "não especificado", label: "Qualquer" },
+        { value: "com grupos", label: "Equipes" },
+        { value: "sem grupos", label: "Sem equipes" },
+    ] as SelectOption[],
+};
+
+
+export const ToolsOptions = {
+    he: [
+        { value: "לא משנה", label: "לא משנה" },
+        { value: "ללא ציוד", label: "ללא ציוד" },
+    ] as SelectOption[],
+    en: [
+        { value: "not specified", label: "Any" },
+        { value: "without tools", label: "No materials" },
+    ] as SelectOption[],
+    es: [
+        { value: "no especificado", label: "Cualquiera" },
+        { value: "sin herramientas", label: "Sin materiales" },
+    ] as SelectOption[],
+    ar: [
+        { value: "غير محدد", label: "أي" },
+        { value: "بدون مواد", label: "بدون مواد" },
+    ] as SelectOption[],
+    fr: [
+        { value: "non spécifié", label: "N'importe quel" },
+        { value: "sans matériel", label: "Sans matériel" },
+    ] as SelectOption[],
+    pt: [
+        { value: "não especificado", label: "Qualquer" },
+        { value: "sem material", label: "Sem materiais" },
+    ] as SelectOption[],
+};
+
+
+export const ReligionOptions: SelectOption[] = [
+    //שומר שבת
+    { value: "לא משנה", label: "לא משנה" },
+    { value: "מותאם לשומרי שבת", label: "מותאם לשומרי שבת" },
+];
+
+export const CategoryOptions = (options: Category[]): SelectOption[] => {
+    return options.map((option) => {
+        return { value: option.name, label: option.title };
+    });
+};

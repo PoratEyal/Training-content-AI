@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .popupContent {
@@ -18,7 +18,7 @@
   border-radius: 10px;
   max-width: 300px;
   border: 2px solid var(--secondary-color);
-  width:120px;
+  width: 150px;
   direction: ltr;
   padding: 10px;
 }
@@ -57,7 +57,8 @@
   font-size: 18px;
   margin-left: auto;
   margin-right: 0;
-  min-width: 22px; /* שמירה על מקום קבוע גם כשהוי מוחלף בלואודינג */
+  min-width: 22px;
+  /* שמירה על מקום קבוע גם כשהוי מוחלף בלואודינג */
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -91,9 +92,12 @@
 
 .loadingIcon {
   animation: spin 1s linear infinite;
-  font-size: 18px; /* זהה לוי */
+  font-size: 18px;
+  /* זהה לוי */
 }
 
 @keyframes spin {
-  100% { transform: rotate(360deg); }
+  100% {
+    transform: rotate(360deg);
+  }
 }

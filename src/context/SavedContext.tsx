@@ -1,18 +1,17 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { Activity } from "../models/types/activity";
 import { useAuthContext } from "./AuthContext";
-import { useErrorContext } from "./ErrorContext";
+import { useNotificationContext } from "./NotificationContext";
 import { useLanguage } from "../i18n/useLanguage";
 import { RemoveActivityRequest } from "../models/types/api/request";
 import { fetchGetSavedActivities, fetchRemoveActivity } from "../utils/fetch";
 import { logEvent } from "../utils/logEvent";
-import msg from "../models/resources/errorMsg.json";
 
 export type SaveContextType = {
     savedActivity: Activity[];
     isLoading: boolean;
     useFetchSavedData: () => void;
-    getSavedActivities: () => Promise<void>;
+    saveActivity: () => Promise<void>;
     deleteActivity: (activityIdToDelete: string) => Promise<void>;
 };
 
@@ -20,7 +19,7 @@ export const defualtSaveContext: SaveContextType = {
     savedActivity: [],
     isLoading: false,
     useFetchSavedData: () => { },
-    getSavedActivities: async () => { },
+    saveActivity: async () => { },
     deleteActivity: async () => { },
 }
 
@@ -31,12 +30,13 @@ export const useSaveContext = () => useContext(SaveContext);
 export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
 
     const { currentUser } = useAuthContext();
-    const { handleError } = useErrorContext();
+    const { notifyAlert: notifyAlert } = useNotificationContext();
     const [savedActivity, setSavedActivity] = useState<Activity[]>();
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const { lang } = useLanguage();
+    const { t } = useLanguage();
 
-    const getSavedActivities = async () => {
+    const saveActivity = async () => {
+
         if (currentUser && currentUser.id) {
             try {
                 setIsLoading(true);
@@ -50,7 +50,8 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                     setSavedActivity(sortedActivities);
                 }
             } catch (error) {
-                handleError(msg[lang].notSaved.message);
+                notifyAlert(t("editor.save.saveError"));
+                logEvent(`[SavedContext.saveActivity]: ${error}`, currentUser?.email);
             } finally {
                 setIsLoading(false);
             }
@@ -68,8 +69,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                     activityId: activityIdToDelete,
                 } as RemoveActivityRequest);
             } catch (error) {
-                const userEmail = currentUser.email || "guest";
-                logEvent(`[SavedContext]: Failed to delete activity: ${activityIdToDelete}`, userEmail);
+                logEvent(`[SavedContext.deleteActivity]: ${activityIdToDelete}`, currentUser?.email);
             }
         }
     };
@@ -78,7 +78,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
     const useFetchSavedData = () => {
         useEffect(() => {
             if (!savedActivity || savedActivity?.length === 0) {
-                getSavedActivities();
+                saveActivity();
             }
         }, [currentUser]);
     };
@@ -89,7 +89,7 @@ export const SavedProvider = ({ children }: { children: React.ReactNode }) => {
                 savedActivity,
                 isLoading,
                 useFetchSavedData,
-                getSavedActivities,
+                saveActivity,
                 deleteActivity,
             }}
         >

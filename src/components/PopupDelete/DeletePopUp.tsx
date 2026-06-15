@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./DeletePopUp.module.css";
 import { Icons } from "../Icons";
-import { useErrorContext } from "../../context/ErrorContext";
+import { useNotificationContext } from "../../context/NotificationContext";
 import { useLanguage } from "../../i18n/useLanguage";
 
 type DeletePopUpProps = {
@@ -13,7 +13,7 @@ type DeletePopUpProps = {
 
 const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, activityName }) => {
     const { t, dir } = useLanguage();
-    const { handleError } = useErrorContext();
+    const { notifyAlert: notifyAlert } = useNotificationContext();
     const [showPopup, setShowPopup] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
 
@@ -32,7 +32,7 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
             onClose();
             await onDelete();
         } catch (error) {
-            handleError(t("savedActivities.deletePopup.deleteError"));
+            notifyAlert(t("youth.savedActivities.deletePopup.deleteError"));
             setIsDeleting(false);
             onClose();
         }
@@ -51,7 +51,7 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
                     <Icons.cancel />
                 </button>
                 <p className={styles.message}>
-                    {t("savedActivities.deletePopup.message", { activityName })}
+                    {t("youth.savedActivities.deletePopup.message", { activityName })}
                 </p>
                 <button
                     className={styles.deleteButton}
@@ -61,7 +61,7 @@ const DeletePopUp: React.FC<DeletePopUpProps> = ({ isOpen, onClose, onDelete, ac
                     {isDeleting ? (
                         <Icons.loading className={styles.loading} />
                     ) : (
-                        t("savedActivities.deletePopup.deleteButton")
+                        t("youth.savedActivities.deletePopup.deleteButton")
                     )}
                 </button>
             </div>

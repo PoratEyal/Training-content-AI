@@ -40,7 +40,6 @@ const getStaticActivityHttp = functions.https.onCall(
             };
 
         } catch (error) {
-            console.error('Error fetching static activity:', error);
             return {
                 result: "error",
                 message: "Failed to fetch static activity."

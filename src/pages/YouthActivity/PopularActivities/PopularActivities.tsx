@@ -7,9 +7,10 @@ import { useLanguage } from "../../../i18n/useLanguage";
 import { useStaticContentContext } from "../../../context/StaticContentContext";
 import { ProductType } from "../../../context/ProductType";
 import route from "../../../router/route.json";
-import { CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
+import { YOUTH_CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
 import { StaticActivities } from "../../../models/types/activity";
 import { fetchIncrementActivityDisplayCount } from "../../../utils/fetch";
+import { logEvent } from "../../../utils/logEvent";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
 import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
 import styles from "../ContentActivities/ContentActivities.module.css";
@@ -49,7 +50,7 @@ function PopularActivities() {
     try {
       await fetchIncrementActivityDisplayCount(activity);
     } catch (error) {
-      console.error("Error incrementing activity display count:", error);
+      logEvent("[PopularActivities.handleActivityClick]: Error incrementing activity display count: " + String(error), "");
     }
   };
 
@@ -60,7 +61,7 @@ function PopularActivities() {
       hasHeader={{ goBack, hasTitle: "10 הפעולות הפופולריות" }}
       hasNavBar
       hasGreenBackground
-      hasAds={CONTENT_ACTIVITY_AD_SLOT}
+      hasAds={YOUTH_CONTENT_ACTIVITY_AD_SLOT}
     >
       {isLoading ? (
         <section className={styles.content_article}>

@@ -10,12 +10,6 @@ export type GetActivityResponse = {
     message?: string;
 };
 
-export type UpdateActivityLikesResponse = {
-    result: Response;
-    activity?: Activity;
-    message?: string;
-};
-
 export type CreateNewUserResponse = {
     result: Response;
     user?: User;

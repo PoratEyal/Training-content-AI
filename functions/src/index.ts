@@ -3,69 +3,74 @@ import express from "express";
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 
-// Common
-import ping from './callableFunctions/ping';
+// === Init ===
+admin.initializeApp();
+const app = express();
+app.use(cors());
+const db = admin.firestore();
+export { db };
+
+// === Common Functions ===
+import redirectToLang from "./callableFunctions/redirectToLang";
+import noContent410 from "./callableFunctions/noContent410";
 import updateLastLogin from "./callableFunctions/updateLastLogin";
 import sendMsg from "./callableFunctions/sendMsg";
-import getMsg from "./callableFunctions/getMsg";
 import updateIsMsg from "./callableFunctions/updateIsMsg";
-import writeLog from "./callableFunctions/writeLog";
+import writeLogEvent from "./callableFunctions/writeLogEvent";
+import createNewUser from "./callableFunctions/createNewUser";
+import updateUser from "./callableFunctions/updateUser";
 
-// Youth Activities
-import getActivity from "./callableFunctions/getActivity"
-import updateActivityLikes from "./callableFunctions/updateActivityLikes"
-import createNewUser from "./callableFunctions/createNewUser"
-import getUserById from "./callableFunctions/getUserById"
-import updateUser from "./callableFunctions/updateUser"
-
+// === Youth Activities ===
+import getActivity from "./callableFunctions/getActivity";
 import getSavedActivities from "./callableFunctions/getSavedActivities";
 import saveActivity from "./callableFunctions/saveActivity";
 import removeSavedActivity from "./callableFunctions/removeSavedActivity";
-
 import getStaticSubjectsHttp from "./callableFunctions/getStaticSubject";
 import incrementActivityDisplayCount from "./callableFunctions/incrementActivityDisplayCount";
 import getStaticActivityHttp from "./callableFunctions/getStaticActivity";
 import addStaticActivity from "./callableFunctions/addStaticActivity";
 
-// SmartPractice 
-import getQuestions4Practice from "./callableFunctions/getQuestions4Practice";
+// === Event ===
+import getEventActivity from "./callableFunctions/getEventActivity";
 
+// === Practice ===
+import getPracticeQuestions from "./callableFunctions/getPracticeQuestions";
 
+// === Words ===
+import getWordsQuestions from "./callableFunctions/getWordsQuestions";
+import translateText from "./callableFunctions/translateText";
 
-const app = express();
-app.use(cors());
-
-admin.initializeApp();
-const db = admin.firestore();
-export { db };
+// === Export Functions ===
 
 // Common
-exports.ping = ping;
+exports.redirectToLang = redirectToLang;
+exports.noContent410 = noContent410;
 exports.updateLastLogin = updateLastLogin;
 exports.sendMsg = sendMsg;
-exports.getMsg = getMsg;
 exports.updateIsMsg = updateIsMsg;
-export { writeLog };
+exports.createNewUser = createNewUser;
+exports.updateUser = updateUser;
+exports.writeLogEvent = writeLogEvent;
 
 // Youth Activities
 exports.getActivity = getActivity;
-exports.updateLikes = updateActivityLikes;
-
-exports.createNewUser = createNewUser;
-exports.updateUser = updateUser;
-exports.getUserById = getUserById;
-
-exports.getStaticSubjectsHttp = getStaticSubjectsHttp;
-exports.getStaticActivity = getStaticActivityHttp;
-exports.incrementActivityDisplayCount = incrementActivityDisplayCount;
-
 exports.getSavedActivities = getSavedActivities;
 exports.saveActivity = saveActivity;
 exports.removeSavedActivity = removeSavedActivity;
-
+exports.getStaticSubjectsHttp = getStaticSubjectsHttp;
+exports.incrementActivityDisplayCount = incrementActivityDisplayCount;
+exports.getStaticActivity = getStaticActivityHttp;
 exports.addStaticActivity = addStaticActivity;
 
-// SmartPractice 
-exports.getQuestions4Practice = getQuestions4Practice;
+// Event
+exports.getEventActivity = getEventActivity;
 
+// Practice
+exports.getPracticeQuestions = getPracticeQuestions;
+
+// Words
+exports.getWordsQuestions = getWordsQuestions;
+exports.translateText = translateText;
+
+// Express App
 exports.app = functions.https.onRequest(app);

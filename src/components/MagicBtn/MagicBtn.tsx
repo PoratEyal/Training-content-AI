@@ -17,7 +17,7 @@ type MagicBtnProps = {
     left?: number;
 };
 
-function MagicBtn({ setSubject, options, size = 19, bottom = 7, left = 12 }: MagicBtnProps) {
+function MagicBtn({ setSubject, options, size = 20, bottom = 13, left = 12 }: MagicBtnProps) {
     const [loadingMagic, setLoadingMagic] = useState(false);
 
     const generateSubject = async () => {

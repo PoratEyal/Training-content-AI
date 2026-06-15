@@ -20,6 +20,7 @@
     align-items: center;
     justify-content: center;
     flex: 1;
+    white-space: nowrap;
     -webkit-tap-highlight-color: transparent;
 }
 

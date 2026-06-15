@@ -1,7 +1,7 @@
 import React from "react";
 import { Movement } from "./movement";
 
-export type Lng = "he" | "en" | "es" | "ar";
+export type Lng = "he" | "en" | "es" | "ar" | "fr" | "pt";
 
 export type DataType = {
     movement: Movement | undefined;
@@ -49,7 +49,16 @@ export type HelmetPage =
     | "edit"
     | "youthFaq"
     | "contactUs"
+    | "eventHome"
+    | "eventDetails"
+    | "eventBuild"
+    | "eventActivity"
+    | "eventFaq"
     | "practiceHome"
     | "practiceTopic"
     | "practiceQuiz"
-    | "practiceFaq";
+    | "practiceFaq"
+    | "wordsHome"
+    | "wordsTopic"
+    | "wordsQuiz"
+    | "wordsFaq";

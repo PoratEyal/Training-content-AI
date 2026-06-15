@@ -37,7 +37,6 @@ const incrementActivityDisplayCount = functions.https.onCall(
                 result: "success",
             };
         } catch (error) {
-            console.error("Error incrementing display count:", error);
             return {
                 result: "error",
                 message: "Failed to increment display count.",

@@ -6,7 +6,6 @@
 import "../../../components/ActivityOutput/Markdown.css";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import { getAuth } from "firebase/auth";
 import route from "../../../router/route.json";
 import styles from "./ContentActivity.module.css";
 import PageLayout from "../../../components/Layout/PageLayout/PageLayout";
@@ -14,7 +13,7 @@ import PageLoading from "../../../components/Loading/PageLoading/PageLoading";
 import SmallLoading from "../../../components/Loading/SmallLoading/SmallLoading";
 import ActivityArticle from "../../../components/ActivityArticle/ActivityArticle";
 import RichTextEditor from "../../../components/RichTextEditor/RichTextEditor";
-import { CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
+import { YOUTH_CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
 import { StaticActivities } from "../../../models/types/activity";
 import { fetchGetStaticActivity } from "../../../utils/fetch";
 import { useAuthContext } from "../../../context/AuthContext";
@@ -62,10 +61,8 @@ function ContentActivity() {
       const response = await fetchGetStaticActivity({ contentName: contentId });
       setActivity(response.activity);
     } catch (error) {
-      const auth = getAuth();
-      const user = auth.currentUser;
-      const userEmail = user?.email || "guest";
-      logEvent(`[ContentActivity]: Failed to fetch static activity: contentId=${contentId}, activityId=${activityId}, error=${error?.toString?.() || "unknown error"}`, userEmail);
+      const message = error?.message || JSON.stringify(error);
+      logEvent(`[ContentActivity.fetchActivity]: content=${contentId}, activity=${activityId}, error=${message}`, currentUser?.email);
     }
     finally {
       setIsActivityLoading(false);
@@ -99,7 +96,7 @@ function ContentActivity() {
       productType={ProductType.Youth}
       hasGreenBackground
       hasHeader={{ goBack, hasTitle: activity?.title || undefined }}
-      hasAds={CONTENT_ACTIVITY_AD_SLOT}
+      hasAds={YOUTH_CONTENT_ACTIVITY_AD_SLOT}
       hasNavBar
     >
       {isActivityLoading ? (

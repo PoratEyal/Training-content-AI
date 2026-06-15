@@ -2,17 +2,20 @@
 // This file sets up all the website's pages
 // It switches to the right page when someone clicks a link and handles the languages
 //
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from "react-router-dom"
 import { ReactNotifications } from "react-notifications-component"
+import { ProductContext } from "./context/ProductContext"
+import { ProductType } from "./context/ProductType"
 import "react-notifications-component/dist/theme.css"
 import route from "./router/route.json"
 import "./App.css"
 import Providers from "./router/Providers"
 import LanguageRedirect from "./components/LanguageRedirect"
 import FallbackRedirect from "./components/FallbackRedirect"
+import PrivacyPolicy from "./pages/Common/Privacy/Privacy"
 
 // Youth Activities
-import YouthHomePage from "./pages/YouthActivity/HomePage/Youth"
+import YouthHomePage from "./pages/YouthActivity/HomePage/Home"
 import YouthDetails from "./pages/YouthActivity/Details/Details"
 import YouthBuildActivity from "./pages/YouthActivity/BuildActivity/BuildActivity"
 import YouthActivityAI from "./pages/YouthActivity/Activity/Activity"
@@ -23,21 +26,34 @@ import YouthContentActivity from "./pages/YouthActivity/ContentActivity/ContentA
 import YouthMyActivities from "./pages/YouthActivity/MyActivities/MyActivities"
 import YouthMyActivityContent from "./pages/YouthActivity/MyActivityContent/MyActivityContent"
 import YouthFAQ from "./pages/YouthActivity/FAQ/FAQ"
-import YouthPrivacyPolicy from "./pages/YouthActivity/PrivacyPolicy/PrivacyPolicy"
-import YouthAdminPage from "./pages/YouthActivity/AdminPage/AdminPage"
-import YouthContactUsRoute from "./pages/YouthActivity/ContactUs/ContactUs"
+import YouthAddActivity from "./pages/YouthActivity/AdminPage/addActivity"
+
+// Event Activities
+import EventHomePage from "./pages/Event/HomePage/Home"
+import EventDetails from "./pages/Event/Details/Details"
+import EventBuildActivity from "./pages/Event/BuildActivity/BuildActivity"
+import EventActivityAI from "./pages/Event/Activity/Activity"
+import EventFAQ from "./pages/Event/FAQ/FAQ"
+
 
 // Smart Practice
-import PracticeHomePage from "./pages/SmartPractice/HomePage/Practice"
-import PracticeQuiz from "./pages/SmartPractice/Quiz/Quiz"
-import PracticeTopic from "./pages/SmartPractice/Topic/Topic"
-import PracticeFAQ from "./pages/SmartPractice/FAQ/FAQ"
-import PracticePrivacyPolicy from "./pages/SmartPractice/PrivacyPolicy/PrivacyPolicy"
-import PracticeContactUsRoute from "./pages/SmartPractice/ContactUs/ContactUs"
+import PracticeHomePage from "./pages/Practice/HomePage/Home"
+import PracticeTopic from "./pages/Practice/Topic/Topic"
+import PracticeQuiz from "./pages/Practice/Quiz/Quiz"
+import PracticeFAQ from "./pages/Practice/FAQ/FAQ"
+
+// Learn Words Language
+import WordsHomePage from "./pages/Words/HomePage/Home"
+import WordsTopic from "./pages/Words/Topic/Topic"
+import WordsQuiz from "./pages/Words/Quiz/Quiz"
+import WordsFAQ from "./pages/Words/FAQ/FAQ"
 
 import { supportedLangs as langs } from "./i18n/languages"
 
 const allRoutes = [
+  // Common
+  { key: "privacyPolicy", element: <PrivacyPolicy /> },
+
   // Youth
   { key: "youthHomePage", element: <YouthHomePage /> },
   { key: "youthDetails", element: <YouthDetails /> },
@@ -49,49 +65,75 @@ const allRoutes = [
   { key: "youthActivityContent", element: <YouthContentActivity /> },
   { key: "youthMyActivities", element: <YouthMyActivities /> },
   { key: "youthMyActivityContent", element: <YouthMyActivityContent /> },
-  { key: "youthContactUs", element: <YouthContactUsRoute /> },
-  { key: "youthPrivacyPolicy", element: <YouthPrivacyPolicy /> },
   { key: "youthFAQ", element: <YouthFAQ /> },
+  { key: "youthAddActivity", element: <YouthAddActivity /> },
+
+  // Event
+  { key: "eventHomePage", element: <EventHomePage /> },
+  { key: "eventDetails", element: <EventDetails /> },
+  { key: "eventBuild", element: <EventBuildActivity /> },
+  { key: "eventActivityAI", element: <EventActivityAI /> },
+  { key: "eventFAQ", element: <EventFAQ /> },
+
 
   // Practice
   { key: "practiceHomePage", element: <PracticeHomePage /> },
-  { key: "practiceQuiz", element: <PracticeQuiz /> },
   { key: "practiceTopic", element: <PracticeTopic /> },
-  { key: "practiceContactUs", element: <PracticeContactUsRoute /> },
-  { key: "practicePrivacyPolicy", element: <PracticePrivacyPolicy /> },
+  { key: "practiceQuiz", element: <PracticeQuiz /> },
   { key: "practiceFAQ", element: <PracticeFAQ /> },
+
+  // Words
+  { key: "wordsHomePage", element: <WordsHomePage /> },
+  { key: "wordsTopic", element: <WordsTopic /> },
+  { key: "wordsQuiz", element: <WordsQuiz /> },
+  { key: "wordsFAQ", element: <WordsFAQ /> },
+
 ]
+
+const detectProductFromPath = (path: string): ProductType => {
+  if (path.includes("/youth")) return ProductType.Youth
+  if (path.includes("/event")) return ProductType.Event
+  if (path.includes("/practice")) return ProductType.Practice
+  if (path.includes("/words")) return ProductType.Words
+  return ProductType.Youth
+}
+
+function ProductProvider({ children }: { children: React.ReactNode }) {
+  const location = useLocation()
+  const product = detectProductFromPath(location.pathname)
+
+  return (
+    <ProductContext.Provider value={product}>
+      {children}
+    </ProductContext.Provider>
+  )
+}
 
 function App() {
   return (
     <Providers>
       <ReactNotifications className="react-notifications" />
       <Router>
-        <LanguageRedirect />
-        <Routes>
-          {allRoutes.map(({ key, element }) =>
-            langs.map(lang => {                                               // example: lang = "he"
-              const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)    // example: langKey = "He"
-              const basePath = route[`${key}${langKey}`]                      // example: route["youthHomePageHe"]
+        <ProductProvider>
+          <LanguageRedirect />
+          <Routes>
+            {/* Redirect /he, /en, /es, /ar to their respective /youth pages */}
+            {langs.map(lang => (
+              <Route key={`redirect-${lang}`} path={`/${lang}`} element={<Navigate to={`/${lang}/youth`} replace />} />
+            ))}
 
-              // Special case for youthHomePage: support both /he and /he/youth
-              if (key === "youthHomePage") {
-                return [
-                  <Route key={`${key}${lang}-base`} path={`/${lang}`} element={element} />,
-                  <Route key={`${key}${lang}-alt`} path={`/${lang}/youth`} element={element} />
-                ]
-              }
+            {allRoutes.map(({ key, element }) =>
+              langs.map(lang => {                                               // example: lang = "he"
+                const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)    // example: langKey = "He"
+                const basePath = route[`${key}${langKey}`]                      // example: route["youthHomePageHe"]
+                return <Route key={`${key}${lang}`} path={basePath} element={element} />
+              })
+            )}
 
-              return <Route key={`${key}${lang}`} path={basePath} element={element} />
-            })
-          )}
-
-          {/* Admin route – Heb only */}
-          <Route path={route.adminHe} element={<YouthAdminPage />} />
-
-          {/* Fallback for undefined routes */}
-          <Route path="*" element={<FallbackRedirect />} />
-        </Routes>
+            {/* Fallback for undefined routes */}
+            <Route path="*" element={<FallbackRedirect />} />
+          </Routes>
+        </ProductProvider>
       </Router>
     </Providers>
   )

@@ -38,7 +38,6 @@ const addStaticActivity = functions.https.onCall(
                 message: "Successfully updated activity content.",
             };
         } catch (error) {
-            console.error("Error updating activity: ", error);
             return {
                 result: "error",
                 message: "Failed to update activity content.",

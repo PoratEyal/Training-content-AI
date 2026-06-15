@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { useErrorContext } from "./ErrorContext";
-import msg from "../models/resources/errorMsg.json";
+import { useNotificationContext } from "./NotificationContext";
 import { fetchStaticSubjects } from "../utils/fetch";
 import { StaticSubjects } from "../models/types/activity";
 import { useLanguage } from "../i18n/useLanguage";
+import { useAuthContext } from "../context/AuthContext";
+import { logEvent } from "../utils/logEvent";
 
 export type StaticContentContextType = {
     useFetchSubjectsData: () => void;
@@ -12,7 +13,7 @@ export type StaticContentContextType = {
 };
 
 export const defualtStaticContentContext: StaticContentContextType = {
-    useFetchSubjectsData: () => {},
+    useFetchSubjectsData: () => { },
     subjects: [],
     isLoading: true,
 };
@@ -22,21 +23,30 @@ const StaticContentContext = createContext<StaticContentContextType>(defualtStat
 export const useStaticContentContext = () => useContext(StaticContentContext);
 
 export const StaticContentProvider = ({ children }: { children: React.ReactNode }) => {
-    const { handleError } = useErrorContext();
+
+    const { notifyAlert: notifyAlert } = useNotificationContext();
     const [subjects, setSubjects] = useState<StaticSubjects[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const { lang } = useLanguage();
+    const { t } = useLanguage();
+    const { currentUser } = useAuthContext();
 
     const fetchSubjectsData = async () => {
         setIsLoading(true);
         try {
-            const response = await fetchStaticSubjects();
+            const response = await fetchStaticSubjects();   // Happens once in the HomePage Youth
             if (response.result === "success" && response.subjects) {
                 const sortedSubjects = response.subjects.sort((a, b) => a.orderId - b.orderId);
                 setSubjects(sortedSubjects);
+            } else {
+                notifyAlert(t("common.errorMsg"));
+                logEvent(`[StaticContentContext.else]`, currentUser?.email);
             }
         } catch (error: any) {
-            handleError(msg[lang].error.message);
+            let message = error?.message || "internal";
+            if (error?.result === "error" && error?.message) {
+                message = error.message;
+            }
+            logEvent(`[StaticContentContext.catch]: ${message}`, currentUser?.email);
         } finally {
             setIsLoading(false);
         }

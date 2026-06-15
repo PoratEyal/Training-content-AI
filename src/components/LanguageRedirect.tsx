@@ -10,7 +10,7 @@ const LanguageRedirect = () => {
   useEffect(() => {
     const path = location.pathname;
     const currentLangPrefix = path.split("/")[1];
-    const supportedLangs = ["en", "he", "es", "ar"];
+    const supportedLangs = ["en", "es", "fr", "pt", "ar", "he"];
 
     // If the URL already has a language prefix
     if (supportedLangs.includes(currentLangPrefix)) {

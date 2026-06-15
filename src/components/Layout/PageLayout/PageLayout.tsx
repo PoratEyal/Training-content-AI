@@ -1,19 +1,24 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
-import { getAuth } from "firebase/auth";
+import { StorageKey } from "../../../models/enum/storage";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { getContent, getTitle } from "../../../models/resources/helmet";
 import { WEBSITE_URL } from "../../../models/constants";
 import { HelmetPage } from "../../../models/types/common";
 import { ProductType } from "../../../context/ProductType";
-import { logEvent } from "../../../utils/logEvent";
+import { useAuthContext } from "../../../context/AuthContext";
+import { useShareTextOrLink } from "../../../utils/share"
 import Header from "../Header/Header";
-import PracticeNavigationBar from "../NavigationBar/PracticeNavigationBar";
 import YouthNavigationBar from "../NavigationBar/YouthNavigationBar";
+import EventNavigationBar from "../NavigationBar/EventNavigationBar";
+import PracticeNavigationBar from "../NavigationBar/PracticeNavigationBar";
+import WordsNavigationBar from "../NavigationBar/WordsNavigationBar";
 import AdsSmall from "../../ads/AdsSmall/AdsSmall";
 import AdsBig from "../../ads/AdsBig/AdsBig";
+import { Adsense } from "@ctrl/react-adsense";
 import styles from "./PageLayout.module.css";
+import { Icons } from "../../Icons";
 
 type PageLayoutProps = {
   id: HelmetPage;
@@ -31,6 +36,7 @@ type PageLayoutProps = {
   index?: boolean;
   children: React.ReactNode;
   title?: string;
+  navDisabled?: boolean;
 };
 
 function PageLayout({
@@ -43,18 +49,22 @@ function PageLayout({
   hasNavBar = false,
   index = true,
   title = "",
+  navDisabled = false,
 }: PageLayoutProps) {
-  const { lang, dir } = useLanguage();
+  const { t, lang, dir } = useLanguage();
+  const { currentUser } = useAuthContext();
   const location = useLocation();
+  const share = useShareTextOrLink()
+  const isLoggedIn = !!currentUser?.email;
 
   // Force canonical to /[lang]/youth for language root pages (/en, /he, etc.) to avoid duplication
   // in the future if we will have a general homepage we will be able to remove it and just leave:
   // const canonicalUrl = `${WEBSITE_URL}${location.pathname}`;
-  const isLangRoot = /^\/(he|en|es|ar)\/?$/.test(location.pathname)
-  const isLangYouth = /^\/(he|en|es|ar)\/youth\/?$/.test(location.pathname)
+  const isLangRoot = /^\/(he|en|es|ar|fr|pt)\/?$/.test(location.pathname)
+  const isLangYouth = /^\/(he|en|es|ar|fr|pt)\/youth\/?$/.test(location.pathname)
   const canonicalUrl =
     isLangRoot || isLangYouth
-      ? `${WEBSITE_URL}${location.pathname.replace(/\/(he|en|es|ar)\/?$/, "/$1/youth")}`
+      ? `${WEBSITE_URL}${location.pathname.replace(/\/(he|en|es|ar|fr|pt)\/?$/, "/$1/youth")}`
       : `${WEBSITE_URL}${location.pathname}`
 
   // Set <html lang> and <html dir> directly
@@ -63,21 +73,43 @@ function PageLayout({
     document.documentElement.dir = dir;
   }, [lang, dir]);
 
-  const restOfPath = location.pathname.replace(/^\/(he|en|es|ar)/, "") || "/";
+  const restOfPath = location.pathname.replace(/^\/(he|en|es|ar|fr|pt)/, "") || "/";
 
   const alternateHe = `${WEBSITE_URL}/he${restOfPath}`;
   const alternateEn = `${WEBSITE_URL}/en${restOfPath}`;
   const alternateEs = `${WEBSITE_URL}/es${restOfPath}`;
+  const alternateFr = `${WEBSITE_URL}/fr${restOfPath}`;
   const alternateAr = `${WEBSITE_URL}/ar${restOfPath}`;
+  const alternatePt = `${WEBSITE_URL}/pt${restOfPath}`;
 
   const pageTitle = getTitle(id, lang, title);
   const pageDescription = getContent(id, lang, title);
 
+  const path = location.pathname;
+  const isYouthContent = /^\/(he|en|es|ar|fr|pt)\/youth\/content(?:\/|$)/.test(path);
+
+  //* Canonical and hreflang
+  const linksForHelmet = isYouthContent
+    ? [
+      { rel: "canonical", href: canonicalUrl }, // content only in hebrew
+      { rel: "alternate", href: alternateHe, hrefLang: "he" },
+    ]
+    : [
+      { rel: "canonical", href: canonicalUrl },
+      { rel: "alternate", href: alternateHe, hrefLang: "he" },
+      { rel: "alternate", href: alternateEn, hrefLang: "en" },
+      { rel: "alternate", href: alternateEs, hrefLang: "es" },
+      { rel: "alternate", href: alternateFr, hrefLang: "fr" },
+      { rel: "alternate", href: alternateAr, hrefLang: "ar" },
+      { rel: "alternate", href: alternatePt, hrefLang: "pt-BR" },
+    ];
+
   return (
     <>
-      <Helmet>
+      <Helmet prioritizeSeoTags link={linksForHelmet}>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
+        <meta name="language" content={lang} />
 
         {/* Open Graph metadata */}
         <meta property="og:title" content={pageTitle} />
@@ -91,14 +123,6 @@ function PageLayout({
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={`${WEBSITE_URL}/logo512.png`} />
 
-        {/* Canonical and hreflang */}
-        <link rel="canonical" href={canonicalUrl} />
-        <link rel="alternate" href={alternateHe} hrefLang="he" />
-        <link rel="alternate" href={alternateEn} hrefLang="en" />
-        <link rel="alternate" href={alternateEs} hrefLang="es" />
-        <link rel="alternate" href={alternateAr} hrefLang="ar" />
-        <link rel="alternate" href={alternateEn} hrefLang="x-default" />
-
         {/* Robots */}
         <meta
           key="robots"
@@ -107,71 +131,117 @@ function PageLayout({
         />
       </Helmet>
 
-      <section
-        className={styles.pageContainer}
-        style={{
-          backgroundColor: hasGreenBackground
-            ? productType === ProductType.Youth
-              ? "var(--primary-color)"
-              : "var(--practice-primary-color)"
-            : "var(--background-color)",
-          direction: dir,
-        }}
-      >
-
-        {hasHeader ? (
-          <Header
-            goBack={hasHeader.goBack}
-            isBlur={hasHeader.isBlur}
-            hasTitle={hasHeader.hasTitle}
-          />
-        ) : null}
-
-        {children}
-
-        {hasAds !== "" ? (() => {
-
-          const path = location.pathname;
-          const showAd = path.includes("/he/youth/activity");
-          const auth = getAuth();
-          const user = auth.currentUser;
-          const userEmail = user?.email || "";
-
-          if (productType === ProductType.Youth && showAd) {
-            const banners = ["/practiceBanner1.png", "/practiceBanner2.png", "/practiceBanner3.png", "/practiceBanner4.png"];
-            const randomIndex = Math.floor(Math.random() * banners.length);
-            const bannerImage = banners[randomIndex];
-
-            const handleBannerClick = () => {
-              logEvent(bannerImage, userEmail);
-            };
-
-            return (
-              <div className={styles.customAdSlot}>
-                <a
-                  href="https://activitywiz.com/practice"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={handleBannerClick}
-                >
-                  <img src={bannerImage} alt="ActivityWiz Practice" className={styles.customAdImage} />
-                </a>
-              </div>
-            );
-          }
-
-          return <AdsSmall slot={hasAds} />;  // Google Ad
-        })() : null}
-
-
-        {hasNavBar ? (
-          productType === ProductType.Practice ? (
-            <PracticeNavigationBar />
+      <div className={styles.layoutWrapper}>
+        <div className={`${styles.sidebarAd} ${styles.leftAd}`}>
+          {window.location.href.includes("localhost:3000") ? (
+            <div style={{ width: "300px", height: "600px", backgroundColor: "#FFF1D8", border: "1px dashed #e7d8ba", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", color: "#8b8b8b" }}>
+              מודעת צד (300x600)
+            </div>
           ) : (
-            <YouthNavigationBar />
-          )
-        ) : null}
-      </section>
+            <Adsense
+              className="ads-sidebar-slot"
+              client="ca-pub-9858822058074702"
+              slot="6260212628"
+              style={{ display: "inline-block", width: "300px", height: "600px" }}
+            />
+          )}
+        </div>
+
+        <section
+          className={styles.pageContainer}
+          style={{
+            backgroundColor: (() => {
+              if (!hasGreenBackground) return "var(--background-color)";
+              if (productType === ProductType.Youth) return "var(--youth-primary-color)";
+              if (productType === ProductType.Event) return "var(--event-primary-color)";
+              if (productType === ProductType.Practice) return "var(--practice-primary-color)";
+              if (productType === ProductType.Words) return "var(--words-primary-color)";
+              return "var(--background-color)";
+            })(),
+            direction: dir,
+          }}
+        >
+
+          {/* Header Area */}
+          {hasHeader ? (
+            <Header
+              goBack={hasHeader.goBack}
+              isBlur={hasHeader.isBlur}
+              hasTitle={hasHeader.hasTitle}
+            />
+          ) : null}
+
+          {/* Main Page */}
+          {children}
+
+          {/* Ads Area */}
+          {hasAds !== "" ? (() => {
+
+            // My Banner (Share Practice Product) in Practice Product
+            if (path.includes("/practice/quiz")) {
+
+              const topic = localStorage.getItem(StorageKey.PRACTICE_TOPIC); // if exist
+
+              const handleBannerClick = () => {
+                const encodedTopic = encodeURIComponent(topic || "");
+                const shareTitle = t("common.practiceAppName")
+                const shareUrl = `https://activitywiz.com/${lang}/practice?topic=${encodedTopic}`;
+                const shareText = `${t("articleOptions.share.practiceShareMessageInstructor")}\n\n${topic}\n${shareUrl}`;
+                share(t, shareTitle, shareText)
+              };
+
+              return (
+                <div className={styles.customAdSlot} onClick={handleBannerClick} style={{ cursor: "pointer" }}>
+                  <div className={styles.bannerWithIcon}>
+                    <Icons.Share size={22} />
+                    <span>{t("articleOptions.share.practiceShareBannerText")}</span>
+                  </div>
+                </div>
+              );
+              return null;
+            }
+
+            else
+              // Google Ads
+              if (window.location.href.includes("localhost:3000")) {
+                return <div className="ads-small-slot" style={{ backgroundColor: "#FFF1D8" }} />;
+              }
+            return <AdsSmall slot={hasAds} />;
+
+          })() : null}
+
+
+          {/* Navigation Area */}
+          {hasNavBar ? (
+            <div style={{ pointerEvents: navDisabled ? "none" : "auto" }}>
+              {productType === ProductType.Youth ? (
+                <YouthNavigationBar />
+              ) : productType === ProductType.Event ? (
+                <EventNavigationBar />
+              ) : productType === ProductType.Practice ? (
+                <PracticeNavigationBar />
+              ) : productType === ProductType.Words ? (
+                <WordsNavigationBar />
+              ) : null}
+            </div>
+          ) : null}
+        </section >
+
+        <div className={`${styles.sidebarAd} ${styles.rightAd}`}>
+          {window.location.href.includes("localhost:3000") ? (
+            <div style={{ width: "300px", height: "600px", backgroundColor: "#FFF1D8", border: "1px dashed #e7d8ba", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", color: "#8b8b8b" }}>
+              מודעת צד (300x600)
+            </div>
+          ) : (
+            <Adsense
+              className="ads-sidebar-slot"
+              client="ca-pub-9858822058074702"
+              slot="6260212628"
+              style={{ display: "inline-block", width: "300px", height: "600px" }}
+            />
+          )}
+        </div>
+      </div>
     </>
   );
 }

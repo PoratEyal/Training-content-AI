@@ -20,9 +20,19 @@ function DropOptLang({ handleClose }: DropdownOption) {
 
   const langKey = lang.charAt(0).toUpperCase() + lang.slice(1)
 
-  const faqPath = product === ProductType.Practice
-    ? route[`practiceFAQ${langKey}`] || route.practiceFAQEn
-    : route[`youthFAQ${langKey}`] || route.youthFAQEn
+  let faqKey = ""
+  if (product === ProductType.Youth) {
+    faqKey = "youthFAQ"
+  } else if (product === ProductType.Event) {
+    faqKey = "eventFAQ"
+  } else if (product === ProductType.Practice) {
+    faqKey = "practiceFAQ"
+  } else if (product === ProductType.Words) {
+    faqKey = "wordsFAQ"
+  } else {
+    faqKey = "eventFAQ"
+  }
+  const faqPath = route[`${faqKey}${langKey}`] || route[`${faqKey}En`]
 
   const handleClick = () => {
     navigate(faqPath)

@@ -1,8 +1,3 @@
-//
-// This is a navigation option button for the Home page in the app’s bottom navbar.
-// It highlights itself when the current path matches the language-specific home page path.
-// The page adapts its routing dynamically based on the active language.
-//
 import route from "../../../../router/route.json";
 import styles from "../navbar.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -29,7 +24,7 @@ const NavOptHome = () => {
       className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
     >
       <Icons.home className={styles.icon} />
-      <span className={styles.text}>{t("navbar.home")}</span>
+      <span className={styles.text}>{t("youth.Navbar.home")}</span>
     </div>
   );
 };

@@ -20,48 +20,575 @@
         "**/.*",
         "**/node_modules/**"
       ],
+      "redirects": [
+        {
+          "source": "/he",
+          "destination": "/he/youth",
+          "type": 301
+        },
+        {
+          "source": "/en",
+          "destination": "/en/youth",
+          "type": 301
+        },
+        {
+          "source": "/es",
+          "destination": "/es/youth",
+          "type": 301
+        },
+        {
+          "source": "/ar",
+          "destination": "/ar/youth",
+          "type": 301
+        },
+        {
+          "source": "/fr",
+          "destination": "/fr/youth",
+          "type": 301
+        },
+        {
+          "source": "/pt",
+          "destination": "/pt/youth",
+          "type": 301
+        }
+      ],
       "rewrites": [
-        { "source": "/BingSiteAuth.xml", "destination": "/index.html" },
-        { "source": "/practice", "destination": "/index.html" },
-        { "source": "/practice/**", "destination": "/index.html" },
-        { "source": "/he", "destination": "/index.html" },
-        { "source": "/he/**", "destination": "/index.html" },
-        { "source": "/en", "destination": "/index.html" },
-        { "source": "/en/**", "destination": "/index.html" },
-        { "source": "/es", "destination": "/index.html" },
-        { "source": "/es/**", "destination": "/index.html" },
-        { "source": "/ar", "destination": "/index.html" },
-        { "source": "/ar/**", "destination": "/index.html" },
+        {
+          "source": "/content/**",
+          "function": {
+            "functionId": "noContent410",
+            "region": "us-central1"
+          }
+        },
+        {
+          "source": "/he/content/**",
+          "function": {
+            "functionId": "noContent410",
+            "region": "us-central1"
+          }
+        },
+        {
+          "source": "/",
+          "function": {
+            "functionId": "redirectToLang",
+            "region": "us-central1"
+          }
+        },
+        {
+          "source": "/youth",
+          "function": {
+            "functionId": "redirectToLang",
+            "region": "us-central1"
+          }
+        },
+        {
+          "source": "/event",
+          "function": {
+            "functionId": "redirectToLang",
+            "region": "us-central1"
+          }
+        },
 
-        { "source": "/youth", "destination": "/index.html" },
-        
-        { "source": "/he/youth", "destination": "/index.html" },
-        { "source": "/en/youth", "destination": "/index.html" },
-        { "source": "/es/youth", "destination": "/index.html" },
-        { "source": "/ar/youth", "destination": "/index.html" },
+        {
+          "source": "/practice",
+          "function": {
+            "functionId": "redirectToLang",
+            "region": "us-central1"
+          }
+        },
+        {
+          "source": "/words",
+          "function": {
+            "functionId": "redirectToLang",
+            "region": "us-central1"
+          }
+        },
+        {
+          "source": "/static/**",
+          "destination": "/static"
+        },
+        {
+          "source": "/logo192.png",
+          "destination": "/logo192.png"
+        },
+        {
+          "source": "/logo512.png",
+          "destination": "/logo512.png"
+        },
+        {
+          "source": "/manifest.json",
+          "destination": "/manifest.json"
+        },
+        {
+          "source": "/BingSiteAuth.xml",
+          "destination": "/BingSiteAuth.xml"
+        },
+        {
+          "source": "/he/youth",
+          "destination": "/index.youth.he.html"
+        },
+        {
+          "source": "/he/youth/content",
+          "destination": "/index.youth.content.he.html"
+        },
+        {
+          "source": "/he/youth/content/friendship",
+          "destination": "/index.youth.content.friendship.he.html"
+        },
+        {
+          "source": "/he/youth/content/friendship/**",
+          "destination": "/index.youth.content.friendship.he.html"
+        },
+        {
+          "source": "/he/youth/content/games",
+          "destination": "/index.youth.content.games.he.html"
+        },
+        {
+          "source": "/he/youth/content/games/**",
+          "destination": "/index.youth.content.games.he.html"
+        },
+        {
+          "source": "/he/youth/content/holidays",
+          "destination": "/index.youth.content.holidays.he.html"
+        },
+        {
+          "source": "/he/youth/content/holidays/**",
+          "destination": "/index.youth.content.holidays.he.html"
+        },
+        {
+          "source": "/he/youth/content/intro",
+          "destination": "/index.youth.content.intro.he.html"
+        },
+        {
+          "source": "/he/youth/content/intro/**",
+          "destination": "/index.youth.content.intro.he.html"
+        },
+        {
+          "source": "/he/youth/content/**",
+          "destination": "/index.youth.content.he.html"
+        },
+        {
+          "source": "/he/youth/faq",
+          "destination": "/index.youth.faq.he.html"
+        },
+        {
+          "source": "/he/youth/**",
+          "destination": "/index.youth.he.html"
+        },
+        {
+          "source": "/en/youth",
+          "destination": "/index.youth.en.html"
+        },
+        {
+          "source": "/en/youth/faq",
+          "destination": "/index.youth.faq.en.html"
+        },
+        {
+          "source": "/en/youth/**",
+          "destination": "/index.youth.en.html"
+        },
+        {
+          "source": "/es/youth",
+          "destination": "/index.youth.es.html"
+        },
+        {
+          "source": "/es/youth/faq",
+          "destination": "/index.youth.faq.es.html"
+        },
+        {
+          "source": "/es/youth/**",
+          "destination": "/index.youth.es.html"
+        },
+        {
+          "source": "/ar/youth",
+          "destination": "/index.youth.ar.html"
+        },
+        {
+          "source": "/ar/youth/faq",
+          "destination": "/index.youth.faq.ar.html"
+        },
+        {
+          "source": "/ar/youth/**",
+          "destination": "/index.youth.ar.html"
+        },
+        {
+          "source": "/fr/youth",
+          "destination": "/index.youth.fr.html"
+        },
+        {
+          "source": "/fr/youth/faq",
+          "destination": "/index.youth.faq.fr.html"
+        },
+        {
+          "source": "/fr/youth/**",
+          "destination": "/index.youth.fr.html"
+        },
+        {
+          "source": "/pt/youth",
+          "destination": "/index.youth.pt.html"
+        },
+        {
+          "source": "/pt/youth/faq",
+          "destination": "/index.youth.faq.pt.html"
+        },
+        {
+          "source": "/pt/youth/**",
+          "destination": "/index.youth.pt.html"
+        },
+        {
+          "source": "/he/event",
+          "destination": "/index.event.he.html"
+        },
+        {
+          "source": "/he/event/faq",
+          "destination": "/index.event.faq.he.html"
+        },
+        {
+          "source": "/he/event/**",
+          "destination": "/index.event.he.html"
+        },
+        {
+          "source": "/en/event",
+          "destination": "/index.event.en.html"
+        },
+        {
+          "source": "/en/event/faq",
+          "destination": "/index.event.faq.en.html"
+        },
+        {
+          "source": "/en/event/**",
+          "destination": "/index.event.en.html"
+        },
+        {
+          "source": "/es/event",
+          "destination": "/index.event.es.html"
+        },
+        {
+          "source": "/es/event/faq",
+          "destination": "/index.event.faq.es.html"
+        },
+        {
+          "source": "/es/event/**",
+          "destination": "/index.event.es.html"
+        },
+        {
+          "source": "/ar/event",
+          "destination": "/index.event.ar.html"
+        },
+        {
+          "source": "/ar/event/faq",
+          "destination": "/index.event.faq.ar.html"
+        },
+        {
+          "source": "/ar/event/**",
+          "destination": "/index.event.ar.html"
+        },
+        {
+          "source": "/fr/event",
+          "destination": "/index.event.fr.html"
+        },
+        {
+          "source": "/fr/event/faq",
+          "destination": "/index.event.faq.fr.html"
+        },
+        {
+          "source": "/fr/event/**",
+          "destination": "/index.event.fr.html"
+        },
+        {
+          "source": "/pt/event",
+          "destination": "/index.event.pt.html"
+        },
+        {
+          "source": "/pt/event/faq",
+          "destination": "/index.event.faq.pt.html"
+        },
+        {
+          "source": "/pt/event/**",
+          "destination": "/index.event.pt.html"
+        },
 
-        { "source": "**", "destination": "/index.html" }
+        {
+          "source": "/he/practice",
+          "destination": "/index.practice.he.html"
+        },
+        {
+          "source": "/he/practice/faq",
+          "destination": "/index.practice.faq.he.html"
+        },
+        {
+          "source": "/he/practice/**",
+          "destination": "/index.practice.he.html"
+        },
+        {
+          "source": "/en/practice",
+          "destination": "/index.practice.en.html"
+        },
+        {
+          "source": "/en/practice/faq",
+          "destination": "/index.practice.faq.en.html"
+        },
+        {
+          "source": "/en/practice/**",
+          "destination": "/index.practice.en.html"
+        },
+        {
+          "source": "/es/practice",
+          "destination": "/index.practice.es.html"
+        },
+        {
+          "source": "/es/practice/faq",
+          "destination": "/index.practice.faq.es.html"
+        },
+        {
+          "source": "/es/practice/**",
+          "destination": "/index.practice.es.html"
+        },
+        {
+          "source": "/ar/practice",
+          "destination": "/index.practice.ar.html"
+        },
+        {
+          "source": "/ar/practice/faq",
+          "destination": "/index.practice.faq.ar.html"
+        },
+        {
+          "source": "/ar/practice/**",
+          "destination": "/index.practice.ar.html"
+        },
+        {
+          "source": "/fr/practice",
+          "destination": "/index.practice.fr.html"
+        },
+        {
+          "source": "/fr/practice/faq",
+          "destination": "/index.practice.faq.fr.html"
+        },
+        {
+          "source": "/fr/practice/**",
+          "destination": "/index.practice.fr.html"
+        },
+        {
+          "source": "/pt/practice",
+          "destination": "/index.practice.pt.html"
+        },
+        {
+          "source": "/pt/practice/faq",
+          "destination": "/index.practice.faq.pt.html"
+        },
+        {
+          "source": "/pt/practice/**",
+          "destination": "/index.practice.pt.html"
+        },
+        {
+          "source": "/he/words",
+          "destination": "/index.words.he.html"
+        },
+        {
+          "source": "/he/words/faq",
+          "destination": "/index.words.faq.he.html"
+        },
+        {
+          "source": "/he/words/**",
+          "destination": "/index.words.he.html"
+        },
+        {
+          "source": "/en/words",
+          "destination": "/index.words.en.html"
+        },
+        {
+          "source": "/en/words/faq",
+          "destination": "/index.words.faq.en.html"
+        },
+        {
+          "source": "/en/words/**",
+          "destination": "/index.words.en.html"
+        },
+        {
+          "source": "/es/words",
+          "destination": "/index.words.es.html"
+        },
+        {
+          "source": "/es/words/faq",
+          "destination": "/index.words.faq.es.html"
+        },
+        {
+          "source": "/es/words/**",
+          "destination": "/index.words.es.html"
+        },
+        {
+          "source": "/ar/words",
+          "destination": "/index.words.ar.html"
+        },
+        {
+          "source": "/ar/words/faq",
+          "destination": "/index.words.faq.ar.html"
+        },
+        {
+          "source": "/ar/words/**",
+          "destination": "/index.words.ar.html"
+        },
+        {
+          "source": "/fr/words",
+          "destination": "/index.words.fr.html"
+        },
+        {
+          "source": "/fr/words/faq",
+          "destination": "/index.words.faq.fr.html"
+        },
+        {
+          "source": "/fr/words/**",
+          "destination": "/index.words.fr.html"
+        },
+        {
+          "source": "/pt/words",
+          "destination": "/index.words.pt.html"
+        },
+        {
+          "source": "/pt/words/faq",
+          "destination": "/index.words.faq.pt.html"
+        },
+        {
+          "source": "/pt/words/**",
+          "destination": "/index.words.pt.html"
+        },
+
+        {
+          "source": "/he/privacy",
+          "destination": "/index.privacy.he.html"
+        },
+        {
+          "source": "/en/privacy",
+          "destination": "/index.privacy.en.html"
+        },
+        {
+          "source": "/es/privacy",
+          "destination": "/index.privacy.es.html"
+        },
+        {
+          "source": "/ar/privacy",
+          "destination": "/index.privacy.ar.html"
+        },
+        {
+          "source": "/fr/privacy",
+          "destination": "/index.privacy.fr.html"
+        },
+        {
+          "source": "/pt/privacy",
+          "destination": "/index.privacy.pt.html"
+        },
+        {
+          "source": "/privacy",
+          "destination": "/index.privacy.en.html"
+        },
+
+        {
+          "source": "/he/**",
+          "destination": "/index.youth.he.html"
+        },
+        {
+          "source": "/en/**",
+          "destination": "/index.youth.en.html"
+        },
+        {
+          "source": "/es/**",
+          "destination": "/index.youth.es.html"
+        },
+        {
+          "source": "/ar/**",
+          "destination": "/index.youth.ar.html"
+        },
+        {
+          "source": "/fr/**",
+          "destination": "/index.youth.fr.html"
+        },
+        {
+          "source": "/pt/**",
+          "destination": "/index.youth.pt.html"
+        },
+        {
+          "source": "**",
+          "destination": "/index.youth.en.html"
+        }
       ],
       "headers": [
         {
           "source": "/he/**",
-          "headers": [{ "key": "Content-Language", "value": "he" }]
+          "headers": [
+            {
+              "key": "Content-Language",
+              "value": "he-IL"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, must-revalidate"
+            }
+          ]
         },
         {
           "source": "/en/**",
-          "headers": [{ "key": "Content-Language", "value": "en" }]
+          "headers": [
+            {
+              "key": "Content-Language",
+              "value": "en"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, must-revalidate"
+            }
+          ]
         },
         {
           "source": "/es/**",
-          "headers": [{ "key": "Content-Language", "value": "es" }]
-        },
-        {
-          "source": "/fr/**",
-          "headers": [{ "key": "Content-Language", "value": "fr" }]
+          "headers": [
+            {
+              "key": "Content-Language",
+              "value": "es"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, must-revalidate"
+            }
+          ]
         },
         {
           "source": "/ar/**",
-          "headers": [{ "key": "Content-Language", "value": "ar" }]
+          "headers": [
+            {
+              "key": "Content-Language",
+              "value": "ar"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, must-revalidate"
+            }
+          ]
+        },
+        {
+          "source": "/fr/**",
+          "headers": [
+            {
+              "key": "Content-Language",
+              "value": "fr"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, must-revalidate"
+            }
+          ]
+        },
+        {
+          "source": "/pt/**",
+          "headers": [
+            {
+              "key": "Content-Language",
+              "value": "pt-BR"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, no-store, must-revalidate"
+            }
+          ]
         }
       ]
     }

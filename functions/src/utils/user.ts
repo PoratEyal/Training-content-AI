@@ -25,38 +25,44 @@ export const initUserToDB = (user: RawUser) => {
 export const initUserFromDB = (id: string, data: DocumentData) => {
     try {
         let movement: UserMovementDetails | null = null;
-        const { movement: m, grade, gender, amount } = data;
 
-        if (m !== null && grade !== null && gender !== null && amount !== null) {
+        const m = typeof data === "object" ? data.movement : null;
+        const grade = typeof data === "object" ? data.grade : null;
+        const gender = typeof data === "object" ? data.gender : null;
+        const amount = typeof data === "object" ? data.amount : null;
+
+        if (m != null && grade != null && gender != null && amount != null) {
             movement = { movement: m, grade, gender, amount };
         }
+
         return {
             id,
-            name: data.name || "",
-            email: data.email || "",
-            image: data.image || "",
-            limit: data.limit || 0,
-            movement: movement,
-            lastUpdate: data.lastUpdate || "",
-            createDate: data.createDate || "",
-            isAcceptTerms: data.isAcceptTerms || false,
-            isSendMsg: data.isSendMsg || false,
+            name: typeof data === "object" && data.name ? data.name : "",
+            email: typeof data === "object" && data.email ? data.email : "",
+            image: typeof data === "object" && data.image ? data.image : "",
+            limit: typeof data === "object" && typeof data.limit === "number" ? data.limit : 0,
+            movement,
+            lastUpdate: typeof data === "object" && data.lastUpdate ? data.lastUpdate : "",
+            createDate: typeof data === "object" && data.createDate ? data.createDate : "",
+            isAcceptTerms: !!(typeof data === "object" && data.isAcceptTerms),
+            isSendMsg: !!(typeof data === "object" && data.isSendMsg),
         } as User;
     } catch (error) {
         return {
             id,
-            name: data.name || "",
-            email: data.email || "",
-            image: data.image || "",
-            limit: data.limit || 0,
+            name: typeof data?.name === "string" ? data.name : "",
+            email: typeof data?.email === "string" ? data.email : "",
+            image: typeof data?.image === "string" ? data.image : "",
+            limit: typeof data?.limit === "number" ? data.limit : 0,
             movement: null,
-            lastUpdate: data.lastUpdate || "",
-            createDate: data.createDate || "",
-            isAcceptTerms: data.isAcceptTerms || false,
-            isSendMsg: data.isSendMsg || false,
+            lastUpdate: typeof data?.lastUpdate === "string" ? data.lastUpdate : "",
+            createDate: typeof data?.createDate === "string" ? data.createDate : "",
+            isAcceptTerms: !!(typeof data === "object" && data.isAcceptTerms),
+            isSendMsg: !!(typeof data === "object" && data.isSendMsg),
         } as User;
     }
 };
+
 
 export const initUserFromReq = (id: string, data: DbUser) => {
     let movement: UserMovementDetails | null = null;

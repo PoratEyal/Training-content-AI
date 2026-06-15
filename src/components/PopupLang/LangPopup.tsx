@@ -16,6 +16,7 @@ import { ProductType } from "../../context/ProductType"
 import { fetchUpdateUser } from "../../utils/fetch"
 import route from "../../router/route.json"
 import styles from "./LangPopup.module.css"
+import { StorageKey } from "../../models/enum/storage";
 
 type LangPopupProps = {
   handleClose: () => void
@@ -28,17 +29,24 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
   const { clearAll } = useContentContext()
   const navigate = useNavigate()
   const product = useProduct()
-  const isPractice = product === ProductType.Practice
 
   const [isLoading, setIsLoading] = useState(false)
   const [loadingLang, setLoadingLang] = useState<string | null>(null)
 
-  // Dynamically determine the home page path for the new language
   const homePagePath = (newLang: string) => {
     const capitalizedLang = newLang.charAt(0).toUpperCase() + newLang.slice(1)
-    return isPractice
-      ? route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn
-      : route[`youthHomePage${capitalizedLang}`] || route.youthHomePageEn
+    switch (product) {
+      case ProductType.Youth:
+        return route[`youthHomePage${capitalizedLang}`] || route.youthHomePageEn
+      case ProductType.Event:
+        return route[`eventHomePage${capitalizedLang}`] || route.eventHomePageEn
+      case ProductType.Practice:
+        return route[`practiceHomePage${capitalizedLang}`] || route.practiceHomePageEn
+      case ProductType.Words:
+        return route[`wordsHomePage${capitalizedLang}`] || route.wordsHomePageEn
+      default:
+        return "/"
+    }
   }
 
   const closePopup = (callback?: () => void) => {
@@ -47,26 +55,19 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
   }
 
   const changeLanguage = async (newLang: string) => {
+
     setLoadingLang(newLang)
     setIsLoading(true)
 
-    localStorage.setItem("i18nextLng", newLang)
+    localStorage.setItem(StorageKey.SITE_LANG, newLang)
 
-    if (currentUser) {
-      const updatedUser = {
-        ...currentUser,
-        movement: {
-          movement: null,
-          grade: null,
-          gender: null,
-          amount: null,
-        },
-      }
-
+    if (currentUser) {  // Clean user data from DB
+      const updatedUser = { ...currentUser, movement: { movement: null, grade: null, gender: null, amount: null, }, }
       await fetchUpdateUser({ user: updatedUser })
       setCurrentUser(updatedUser)
-      clearAll()  // Clean all data from Session Storage, MUST BE AT THE END OF THE FUNCTION !!!
     }
+
+    clearAll()  // Cleans all session storage relevant keys and clean the Data element. MUST BE AT THE END OF THE FUNCTION !!!
 
     changeLang(newLang)
     closePopup(() => {
@@ -90,21 +91,22 @@ const LangPopup: React.FC<LangPopupProps> = ({ handleClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className={styles.buttonContainer}>
-          {["he", "en", "es", "ar"].map((lng) => (
+          {["en", "es", "fr", "pt", "ar", "he"].map((lng) => (
             <button
               key={lng}
               onClick={() => changeLanguage(lng)}
-              className={`${styles.languageButton} ${
-                lang === lng ? styles.selected : ""
-              }`}
+              className={`${styles.languageButton} ${lang === lng ? styles.selected : ""
+                }`}
               disabled={lang === lng}
               lang={lng === "ar" ? "ar" : undefined}
             >
               {{
-                he: "עברית",
                 en: "English",
                 es: "Español",
+                he: "עברית",
                 ar: "العربية",
+                fr: "Français",
+                pt: "Português",
               }[lng]}
               {loadingLang === lng ? (
                 <span className={styles.checkmark}>

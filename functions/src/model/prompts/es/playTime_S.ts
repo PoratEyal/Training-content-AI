@@ -12,7 +12,7 @@ Pautas:
 - Asegúrate de seguir la estructura y no modificarla.
 - Apropiado para la edad y las habilidades
 - El juego puede ser una actividad, un juego, un cuestionario o una manualidad.
-- Si hay cuestionarios, preguntas o listas, incluye 5 ejemplos.
+- Si hay cuestionarios, preguntas o listas, incluye 3 ejemplos.
 {9}
 - Incluye toda la información necesaria para el instructor con explicaciones detalladas para que no necesite buscar información adicional en otras fuentes
 Formato de respuesta: markdown en español, revisa que no haya errores ortográficos ni palabras en otros idiomas.`;

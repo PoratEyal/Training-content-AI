@@ -24,24 +24,24 @@ export const getPromptAndDetailsForSpecialKids = (
     const { category, grade, time, subject, amount, gender, place } = activityDetials;
     const { religion, contest, tools: activityTools, info } = activityDetials;
 
-    let moreInfo, tools, section, safty, promptOptions, prompt;
+    let moreInfo, tools, section, safety, promptOptions, prompt;
     if (lang === "he") {
         moreInfo = getMoreInfo_he(info);
         tools = getTools_he(category, activityTools, religion);
-        section = getSection_he(category, time, place);
-        safty = getSafty_he(category, contest);
+        section = getSection_he(category, time);
+        safety = getSafty_he(category, contest);
         promptOptions = getSpecialPromptOptions_he(category);
         prompt = promptPerGrade_he(grade, promptOptions);
     } else {
         moreInfo = getMoreInfo_en(info);
         tools = getTools_en(category, activityTools, religion);
-        section = getSection_en(category, time, place);
-        safty = getSafty_en(category, contest);
+        section = getSection_en(category, time);
+        safety = getSafty_en(category, contest);
         promptOptions = getSpecialPromptOptions_en(category);
         prompt = promptPerGrade_en(grade, promptOptions);
     }
 
-    const details = [time, subject, amount, grade, gender, place, moreInfo, tools, section, safty];
+    const details = [time, subject, amount, grade, gender, place, moreInfo, tools, section, safety];
     return [prompt, details];
 };
 

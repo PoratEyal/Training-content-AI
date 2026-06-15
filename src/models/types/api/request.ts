@@ -19,11 +19,6 @@ export type GetActivityRequest = {
     info?: string;
 };
 
-export type UpdateActivityLikesRequest = {
-    activity: Activity;
-    likesAmount: number;
-};
-
 export type CreateNewUserRequest = {
     rawUser: RawUser
 };

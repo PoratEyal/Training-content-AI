@@ -10,16 +10,8 @@ function TellUsAboutYourGroup() {
             style={{ direction: dir }}
         >
             <h1>
-                {t("details.title")}
+                {t("youth.details.title")}
             </h1>
-            <img
-                title={t("details.yellowLineAlt", "Yellow line image")}
-                alt={t("details.yellowLineAlt", "Yellow line image")}
-                src={"/detailsLine.svg"}
-                loading="lazy"
-                width={90}
-                height={5}
-            />
         </div>
     );
 }

@@ -45,7 +45,7 @@ const NavOptTopic = () => {
       className={isSelected ? styles.navbar_icon_selected : styles.navbar_icon}
     >
       <Icons.magic className={styles.icon} />
-      <span className={styles.text}>{t("navbar.practiceBuild")}</span>
+      <span className={styles.text}>{t("practice.Navbar.build")}</span>
     </div>
   );
 };

@@ -9,49 +9,71 @@ import ReactDOM from "react-dom/client"
 import App from "./App"
 import "./index.css"
 import { initI18n } from "./i18n/i18n"
-
+import { Lng } from "./models/types/common"
 import { ProductContext } from "./context/ProductContext"
 import { ProductType } from "./context/ProductType"
+import { StorageKey } from "./models/enum/storage";
 
 // Detect current product from URL path
 const detectProductFromPath = (path: string): ProductType => {
-  if (path.includes("/practice")) return ProductType.Practice
   if (path.includes("/youth")) return ProductType.Youth
+  if (path.includes("/event")) return ProductType.Event
+  if (path.includes("/practice")) return ProductType.Practice
+  if (path.includes("/words")) return ProductType.Words
   return ProductType.Youth
 }
 
 const detectCountryAndInit = async () => {
-  let detectedLang
 
-  // detect language
-  const langFromLocalStorage = localStorage.getItem("i18nextLng")
-  if (langFromLocalStorage) {
-    detectedLang = langFromLocalStorage
-  } else {
+  let detectedLang: Lng | undefined
+  const langFromPath = window.location.pathname.split("/")[1] as Lng
+  const userLang = localStorage.getItem(StorageKey.SITE_LANG) as Lng | null
+
+  // Check browser language preferences if no manual choice has been saved
+  const getBrowserLang = (): Lng | null => {
+    if (typeof navigator === "undefined") return null
+    const preferredLanguages = navigator.languages || [navigator.language]
+    const normalizedLangs = preferredLanguages.map(lang => lang.split("-")[0].toLowerCase())
+
+    if (normalizedLangs.includes("he")) return "he"
+
+    const otherLangs = ["es", "ar", "fr", "pt"]
+    for (const lang of normalizedLangs) {
+      if (otherLangs.includes(lang)) return lang as Lng
+    }
+    return null
+  }
+
+  const browserLang = getBrowserLang()
+
+  if (userLang && ["he", "en", "es", "ar", "fr", "pt"].includes(userLang))  // Check user saved lang
+    detectedLang = userLang
+  else if (langFromPath === "en" && browserLang)                             // User prefers another language but landed on English URL
+    detectedLang = browserLang
+  else if (["he", "en", "es", "ar", "fr", "pt"].includes(langFromPath))     // Check URL lang
+    detectedLang = langFromPath
+  else if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+    console.log("[index.tsx client]: Only for localhost debug")
     try {
       const response = await fetch("https://ipapi.co/json/")
       const data = await response.json()
       const countryCode = data.country_code
-      const spanishSpeakingCountries = [
-        "AR", "BO", "CL", "CO", "CR", "CU", "DO", "EC",
-        "SV", "GQ", "GT", "HN", "MX", "NI", "PA", "PY",
-        "PE", "PR", "ES", "UY", "VE"
-      ]
-      const arabicSpeakingCountries = [
-        "DZ", "BH", "EG", "IQ", "JO", "KW", "LB", "LY",
-        "MA", "OM", "QA", "SA", "SD", "SY", "TN", "AE",
-        "YE"
-      ]
+      const spanishSpeakingCountries = ["AR", "BO", "CL", "CO", "CR", "CU", "DO", "EC", "SV", "GQ", "GT", "HN", "MX", "NI", "PA", "PY", "PE", "PR", "ES", "UY", "VE"]
+      const arabicSpeakingCountries = ["DZ", "BH", "EG", "IQ", "JO", "KW", "LB", "LY", "MA", "OM", "QA", "SA", "SD", "SY", "TN", "AE", "YE"]
+      const portugueseSpeakingCountries = ["BR", "PT", "AO", "MZ", "CV", "GW", "ST", "TL"]
 
       if (countryCode === "IL") detectedLang = "he"
       else if (spanishSpeakingCountries.includes(countryCode)) detectedLang = "es"
       else if (arabicSpeakingCountries.includes(countryCode)) detectedLang = "ar"
+      else if (portugueseSpeakingCountries.includes(countryCode)) detectedLang = "pt"
       else detectedLang = "en"
     } catch {
       detectedLang = "en"
     }
   }
-
+  else {                                                        // Fallback to mostly used country
+    detectedLang = "en"
+  }
   await initI18n(detectedLang)
 
   const rootEl = document.getElementById("root")
