@@ -1,0 +1,400 @@
+{
+  "common": {
+    "youthAppName": "Atividades para Movimentos Juvenis",
+    "eventAppName": "EventWiz",
+    "practiceAppName": "Desafio do Conhecimento",
+    "wordsAppName": "Vocabulário Inteligente",
+    "slogan": "Personalizado, Simples e Rápido 🤟",
+    "btnContinue": "Continuar",
+    "loadingHead": "Estamos preparando tudo",
+    "loadingText": "Nota: Este conteúdo foi gerado por IA, está em constante aprendizado e pode conter erros.",
+    "FAQtitle": "Perguntas Frequentes",
+    "errorMsg": "A ação não foi concluída. Por favor, tente novamente.",
+    "errorMsgHighDemand": "O sistema está com alta demanda no momento. Por favor, tente novamente."
+  },
+  "aboutUs": {
+    "title": "Sobre",
+    "youthAboutText": "Crie atividades para jovens – desde uma biblioteca de atividades prontas até personalizadas geradas com IA. Perfeito para monitores que querem enriquecer o engajamento educacional e social.",
+    "eventAboutText": "Crie uma atividade personalizada para qualquer evento – com IA que adapta a atividade à idade, número de participantes, local e muito mais. Cada atividade é gerada especialmente para você, com um clique e em segundos.",
+    "practiceAboutText": "Um desafio de conhecimentos com IA. Escolha qualquer tema que quiser e o sistema gerará um quiz personalizado em segundos. Perfeito para quem busca uma forma simples e focada de aprofundar seu conhecimento.",
+    "wordsAboutText": "Treinamento de vocabulário inteligente e eficiente. Insira palavras ou escolha um tema para obter uma prática personalizada que ajuda você a aprender, memorizar e compreender melhor – em qualquer idioma."
+  },
+  "youthSep": "==============================================================================================================",
+  "youth": {
+    "Navbar": {
+      "home": "Início",
+      "build": "Criar Atividades",
+      "content": "Atividades Prontas",
+      "myActivities": "Minhas Atividades"
+    },
+    "home": {
+      "advanced": "Criar",
+      "forActions": "Atividades",
+      "withPrefix": "com",
+      "ai": "IA",
+      "startAction": "Criar"
+    },
+    "details": {
+      "title": "Conte-nos sobre seu grupo",
+      "youthMovement": "Movimento Juvenil",
+      "grade": "Série Escolar",
+      "numberOfChildren": "Número de Crianças",
+      "gender": "Gênero",
+      "lampAlt": "Lâmpada amarela"
+    },
+    "BuildActivity": {
+      "title": "Planeje sua atividade",
+      "category": {
+        "label": "Categoria"
+      },
+      "subject": {
+        "label": "Tema",
+        "limit": "Clique em \"Mais opções\" para adicionar detalhes extras sobre a atividade."
+      },
+      "place": {
+        "label": "Local"
+      },
+      "time": {
+        "label": "Duração"
+      },
+      "religion": {
+        "label": "Religioso"
+      },
+      "contest": {
+        "label": "Equipes e Competição"
+      },
+      "tools": {
+        "label": "Materiais"
+      },
+      "moreDetails": {
+        "label": "Detalhes Adicionais"
+      },
+      "moreOptions": {
+        "title": "Mais Opções"
+      },
+      "submit": "Criar atividade",
+      "loading": "Criando sua atividade..."
+    },
+    "contentPage": {
+      "popularActivities": "10 Atividades Mais Populares",
+      "noSubjectSelected": "Nenhum tema selecionado",
+      "readyContentTitle": "Atividades Pré-prontas"
+    },
+    "contentActivities": {
+      "noSuitableActivities": "Nenhuma atividade adequada encontrada.",
+      "noSubjectData": "Nenhum dado encontrado para o tema solicitado.",
+      "loading": "Carregando...",
+      "many": "Atividades sobre"
+    },
+    "savedActivities": {
+      "title": "Minhas Atividades",
+      "update": "Atualizado em",
+      "dontHaveActivity": {
+        "title": "Você ainda não salvou nenhuma atividade.",
+        "mainTextLine1": "Quando criar uma nova atividade, use o botão salvar para guardá-la aqui e acessá-la facilmente depois"
+      },
+      "deletePopup": {
+        "title": "Excluir Atividade",
+        "message": "Tem certeza que deseja excluir a atividade {{activityName}}?",
+        "deleteButton": "Excluir",
+        "deleteError": "A atividade não foi excluída, por favor tente novamente mais tarde"
+      }
+    }
+  },
+  "eventsSep": "==============================================================================================================",
+  "event": {
+    "Navbar": {
+      "home": "Início",
+      "build": "Criar atividades"
+    },
+    "home": {
+      "advanced": "Criar",
+      "forActions": "Eventos",
+      "withPrefix": "com",
+      "ai": "IA",
+      "startAction": "Criar atividade"
+    },
+    "Details": {
+      "title": "Conte-nos sobre seu evento",
+      "eventLable": "Por exemplo: aniversário, festa, atividade em equipe, atividade escolar, piquenique em família e muito mais...",
+      "event": "Tipo de Evento/Atividade",
+      "moreDetails": "Mais detalhes (opcional)",
+      "duration": "Duração da Atividade",
+      "limit": "Para adicionar mais informações, use o campo 'Informações adicionais'.",
+      "lampAlt": "Lâmpada"
+    },
+    "BuildActivity": {
+      "title": "Planeje a atividade",
+      "age": "Idade dos participantes",
+      "amount": "Número de participantes",
+      "gender": "Gênero",
+      "place": "Local",
+      "materials": "Materiais",
+      "submit": "Criar atividade",
+      "loading": "Criando atividade"
+    },
+    "Activity": {
+      "json": {
+        "summary": "Resumo da Atividade",
+        "materials": "Materiais Necessários",
+        "flow": "Fluxo da Atividade",
+        "tips": "Dicas para o Facilitador"
+      }
+    }
+  },
+  "practiceSep": "==============================================================================================================",
+  "practice": {
+    "Navbar": {
+      "home": "Início",
+      "build": "Criar quiz"
+    },
+    "home": {
+      "advanced": "Criar um",
+      "forActions": "Desafio",
+      "withPrefix": "com",
+      "ai": "IA",
+      "startAction": "Vamos lá"
+    },
+    "topic": {
+      "title": "Vamos escolher um tema",
+      "topicPlaceholder": "Digite um tema",
+      "examples": "Por exemplo: Quiz de música, química para o vestibular, trivia geral, Japão no século 18...",
+      "btnCreate": "Vamos lá",
+      "topicError": "Desculpe, não consigo gerar perguntas para o tema selecionado. Por favor, tente um tema diferente."
+    },
+    "quiz": {
+      "FailMsg": "Falha ao gerar a prática. Se o problema persistir, entre em contato conosco pelo menu 'Fale Conosco'.",
+      "score": "Pontuação:",
+      "newPractice": "Tentar novamente?",
+      "check": "Verificar",
+      "LinkinClipboard": "Link copiado – compartilhe com seus amigos"
+    }
+  },
+  "wordsSep": "==============================================================================================================",
+  "words": {
+    "Navbar": {
+      "home": "Início",
+      "build": "Praticar"
+    },
+    "home": {
+      "advanced": "Evolua seu",
+      "forActions": "Vocabulário",
+      "withPrefix": "com",
+      "ai": "IA",
+      "startAction": "Vamos lá"
+    },
+    "topic": {
+      "pageTitle": "O que vamos praticar?",
+      "selectLangLabel": "Quero aprender",
+      "selectLang": "Escolha um idioma",
+      "subjectLabel": "Tema (opcional)",
+      "subjectExample": "Por exemplo: palavras úteis para turistas",
+      "radioLabel": "Devo criar uma prática para você?",
+      "typeAutomatic": "Automático com IA",
+      "typeManual": "Vou inserir as palavras manualmente"
+    },
+    "predefined": {
+      "en-Practice": "Inglês",
+      "es-Practice": "Espanhol",
+      "fr-Practice": "Francês",
+      "it-Practice": "Italiano",
+      "de-Practice": "Alemão",
+      "zh-Practice": "Chinês",
+      "ro-Practice": "Romeno",
+      "el-Practice": "Grego",
+      "th-Practice": "Tailandês",
+      "nl-Practice": "Holandês",
+      "hu-Practice": "Húngaro",
+      "cs-Practice": "Tcheco",
+      "he-Practice": "Hebraico",
+      "ar-Practice": "Árabe",
+      "pt-Practice": "Português"
+    },
+    "quiz": {
+      "newPractice": "Tentar novamente?",
+      "donePractice": "Por enquanto é isso",
+      "speak": "Pronunciar",
+      "btnContinue": "Próximo",
+      "feedback1": "🎉 Incrível! Você arrasou",
+      "feedback2": "🎉 Muito bem!",
+      "feedback3": "🎉 Ótimo! Você acertou tudo",
+      "feedback4": "🎉 Excelente trabalho!"
+    }
+  },
+  "miscSep": "==============================================================================================================",
+  "profile": {
+    "dropOptInviteFriends": {
+      "invite": "Compartilhar com amigos"
+    },
+    "dropOptContactUs": {
+      "contact": "Fale Conosco"
+    },
+    "dropOptLogout": {
+      "logout": "Sair"
+    },
+    "dropOptFAQ": {
+      "faq": "Perguntas Frequentes"
+    },
+    "dropOptPrivacy": {
+      "policy": "Política de Privacidade"
+    },
+    "dropOptSignIn": {
+      "signIn": "Entrar"
+    },
+    "dropOptLang": {
+      "lang": "Idioma"
+    },
+    "dropOptPractice": {
+      "practice": "Quiz de Desafio"
+    },
+    "dropOptEvent": {
+      "event": "Criar Evento"
+    }
+  },
+  "reviewPopup": {
+    "title": "O que há de novo?!",
+    "shareIdea": "Quer sugerir uma melhoria? Ou apenas compartilhar seus pensamentos?",
+    "placeholder": "Escreva para nós aqui",
+    "submit": "Enviar"
+  },
+  "articleOptions": {
+    "copy": {
+      "button": "Copiar",
+      "success": "Atividade copiada com sucesso 🎉",
+      "error": "Falha ao copiar texto."
+    },
+    "share": {
+      "title": "Compartilhar",
+      "createdBy": "Criado com:",
+      "youthShareMessage": "Encontrei um site que cria atividades com IA – vale a pena experimentar! 🔥",
+      "eventShareMessage": "Encontrei um site que cria atividades para qualquer evento usando IA – vale a pena experimentar! 🔥",
+      "practiceShareMessage": "Encontrei um site que cria exercícios de prática ou trivia em qualquer tema em segundos usando IA – vale a pena experimentar! 🔥",
+      "wordsShareMessage": "Encontrei um ótimo site para prática de vocabulário simples e fácil em qualquer idioma – super recomendado! 🔥",
+      "eventAdBannerText": "Clique aqui para criar uma atividade personalizada para qualquer evento 🎯",
+      "practiceShareMessageInstructor": "Você pode jogar um trivia rápido aqui baseado na atividade que fizemos – experimente e divirta-se 🎯",
+      "practiceShareBannerText": "Clique aqui para compartilhar o desafio de trivia",
+      "shared2Clipboard": "Texto copiado – compartilhe em qualquer app.",
+      "shareError": "Falha ao copiar texto – tente novamente."
+    },
+    "save": {
+      "button": "Salvar",
+      "saved": "Salvo",
+      "saveSuccess": "Atividade salva com sucesso! Você pode encontrá-la em Minhas Atividades",
+      "saveError": "Atividade não foi salva, por favor tente novamente",
+      "removeSuccess": "Atividade removida de Minhas Atividades",
+      "removeError": "Falha ao remover atividade, por favor tente novamente"
+    },
+    "edit": "Editar",
+    "game": "Quiz da Atividade"
+  },
+  "editor": {
+    "save": {
+      "saveToMyActivities": "Salvar em Minhas Atividades",
+      "savedToMyActivities": "Salvo em Minhas Atividades",
+      "saveSuccess": "Atividade salva com sucesso! Você pode encontrá-la na seção Minhas Atividades",
+      "saveError": "Falha ao salvar atividade, por favor tente novamente"
+    },
+    "charLimitWarning": "Limite de caracteres atingido"
+  },
+  "contactUs": {
+    "header": {
+      "title": "O que você gostaria de nos dizer?",
+      "subtitle": "Qualquer sugestão, pedido ou problema – adoraríamos ouvir de você!"
+    },
+    "form": {
+      "emailPlaceholder": "E-mail",
+      "namePlaceholder": "Nome",
+      "messagePlaceholder": "O que você gostaria de nos dizer?",
+      "submitButton": "Enviar",
+      "loadingButton": "Processando",
+      "successMessage": "Sua mensagem foi enviada com sucesso!"
+    }
+  },
+  "privacyPolicy": {
+    "title": "Termos de Serviço e Política de Privacidade",
+    "acceptButton": "Aceitar"
+  },
+  "faqSep": "==============================================================================================================",
+  "faq": {
+    "youth": {
+      "questions": [
+        {
+          "q": "O que é o ActivityWiz para movimentos juvenis?",
+          "a": "ActivityWiz é uma plataforma inteligente para criar atividades personalizadas para monitores e educadores. Você pode acessar atividades prontas ou gerar novas usando inteligência artificial."
+        },
+        {
+          "q": "O site é gratuito?",
+          "a": "Sim, o uso do site é gratuito e aberto a todos."
+        },
+        {
+          "q": "Para quem é o site?",
+          "a": "Para qualquer pessoa que lidera grupos: monitores de movimentos juvenis, professores, educadores, pais, conselheiros adolescentes, comandantes militares e muito mais."
+        },
+        {
+          "q": "Posso salvar e editar as atividades que criei para uso posterior?",
+          "a": "Sim. Após fazer login, você pode salvar qualquer atividade que criou e atualizá-la a qualquer momento pela sua área pessoal de usuário."
+        },
+        {
+          "q": "Preciso de uma atividade para amanhã e não tenho tempo – existe alguma solução rápida?",
+          "a": "Com certeza. No ActivityWiz, você pode gerar uma atividade completa com um clique – basta inserir o objetivo, a idade e a duração, e você terá um plano completo para uso imediato."
+        }
+      ]
+    },
+    "event": {
+      "questions": [
+        {
+          "q": "O que é o ActivityWiz para criar atividades e jogos para eventos?",
+          "a": "ActivityWiz é uma plataforma inteligente que permite criar atividades e jogos personalizados – para qualquer evento, grupo ou reunião – com um clique, usando IA."
+        },
+        {
+          "q": "O serviço é gratuito?",
+          "a": "Sim, o uso do site é gratuito e aberto a todos."
+        },
+        {
+          "q": "Para quais tipos de eventos é adequado?",
+          "a": "Para qualquer evento social ou familiar – aniversários, festas, team building, atividades em grupo e muito mais."
+        },
+        {
+          "q": "Posso compartilhar a atividade com amigos ou participantes?",
+          "a": "Com certeza. Cada atividade pode ser compartilhada com um clique – via link ou copiando o texto."
+        }
+      ]
+    },
+    "practice": {
+      "questions": [
+        {
+          "q": "O que é o ActivityWiz para prática?",
+          "a": "ActivityWiz para prática é uma ferramenta que ajuda você a praticar temas de forma inteligente. Você insere um tema de seu interesse e o sistema cria um quiz com perguntas de múltipla escolha, para que você possa testar seu conhecimento de forma fácil e divertida."
+        },
+        {
+          "q": "O site é gratuito?",
+          "a": "Sim, o uso do site é gratuito e aberto a todos."
+        },
+        {
+          "q": "Para quem é o site?",
+          "a": "O site é adequado para qualquer pessoa que queira praticar diferentes temas, aprender de forma independente ou simplesmente se divertir com trivia inteligente – crianças, adolescentes e adultos."
+        },
+        {
+          "q": "Posso praticar o mesmo tema novamente com perguntas diferentes?",
+          "a": "Com certeza"
+        }
+      ]
+    },
+    "words": {
+      "questions": [
+        {
+          "q": "O que é o ActivityWiz para vocabulário?",
+          "a": "ActivityWiz para vocabulário é uma ferramenta com IA para aprender e expandir seu vocabulário em qualquer idioma. Basta escolher um tema de seu interesse – e o sistema criará uma prática personalizada com perguntas de múltipla escolha, incluindo tradução, pronúncia e áudio, ajudando você a aprender de forma rápida e eficaz."
+        },
+        {
+          "q": "O site é gratuito?",
+          "a": "Sim, o uso do site é gratuito e aberto a todos."
+        },
+        {
+          "q": "Para quem é o site?",
+          "a": "O site é adequado para qualquer pessoa que queira aprender vocabulário em qualquer idioma – crianças, adolescentes e adultos."
+        }
+      ]
+    }
+  }
+}
