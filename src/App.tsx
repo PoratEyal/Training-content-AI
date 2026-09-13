@@ -26,7 +26,6 @@ import YouthFAQ from "./pages/YouthActivity/FAQ/FAQ"
 import YouthPrivacyPolicy from "./pages/YouthActivity/PrivacyPolicy/PrivacyPolicy"
 import YouthAdminPage from "./pages/YouthActivity/AdminPage/AdminPage"
 import YouthContactUsRoute from "./pages/YouthActivity/ContactUs/ContactUs"
-import Status from "./pages/Common/AdminStatus/Status"
 
 // Smart Practice
 import PracticeHomePage from "./pages/SmartPractice/HomePage/Practice"
@@ -87,8 +86,7 @@ function App() {
             })
           )}
 
-          {/* Admin routes – language-less */}
-          <Route path={route.statusHe} element={<Status />} />
+          {/* Admin route – Heb only */}
           <Route path={route.adminHe} element={<YouthAdminPage />} />
 
           {/* Fallback for undefined routes */}
