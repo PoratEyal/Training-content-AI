@@ -9,7 +9,7 @@ import NavMyActivities from "../../options/NavigationBar/Youth/NavMyActivities";
 import { useAuthContext } from "../../../context/AuthContext";
 import { useLanguage } from "../../../i18n/useLanguage";
 
-const YouthFooter = () => {
+const YouthNavigationBar = () => {
     const { isHebrew } = useLanguage();      // We keep this only because Static Content exist only for Hebrew site
     const { isLoggedIn } = useAuthContext();
 
@@ -23,4 +23,4 @@ const YouthFooter = () => {
     );
 };
 
-export default YouthFooter;
+export default YouthNavigationBar;

@@ -1,6 +1,6 @@
 // Backup DB table
-// cd C:\Dev\ActivityWiz\functions\manualScripts>
-// run: npx ts-node <script-name>.ts
+// cd .\functions\manualScripts\
+// run: npx ts-node backupActivity.ts
 
 import * as admin from "firebase-admin";
 import * as fs from "fs";
@@ -26,7 +26,6 @@ async function backupActivity() {
 
     const backupPath = path.join(__dirname, "backupActivity.json");
     fs.writeFileSync(backupPath, JSON.stringify(data, null, 2));
-    console.log(`✅ activity backup saved to ${backupPath}`);
   } catch (error) {
     console.error("❌ Error backing up activity:", error);
   }

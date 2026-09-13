@@ -1,3 +1,6 @@
+//
+//  Currently Unused
+//
 import * as functions from "firebase-functions";
 import { CollectionDB } from "../model/enum/DB";
 import { db } from "../index";
@@ -30,7 +33,6 @@ const getMsg = functions.https.onCall(
                 msg,
             };
         } catch (error) {
-            console.error("Error getting message: ", error);
             return {
                 result: "error",
                 message: "Failed to get message.",

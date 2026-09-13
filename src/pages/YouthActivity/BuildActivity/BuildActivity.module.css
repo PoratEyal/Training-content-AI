@@ -1,4 +1,4 @@
-.build_form_container {
+.form_container {
     background-color: var(--background-color);
     display: flex;
     flex-direction: column;
@@ -9,77 +9,63 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    top: 100px;
-    width: 100vw;
+    top: 65px;
+    width: 100%;
 }
 
 .path_img {
-    z-index: 300;
+    z-index: 9000;
     position: absolute;
-    top: -90px;
-    left: 58px;
+    top: -60px;
+    left: 65px;
+    width: 65px;
+    height: auto;
 }
 
-.ltr_path {
+.path_img_ltr {
     left: auto;
-    right: 65px;
+    right: 57px;
+    width: 55px;
+    height: auto;
 }
 
-
-.selects_btn {
-    margin-top: 35px;
+.scroll_area {
     position: absolute;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    min-height: 355px;
-    height: calc(100% - 100px - var(--ads-height));
+    margin-top: 35px;
+    min-height: calc(100% - 35px - 45px - var(--ads-height));
+    height: calc(100% - 35px - 45px - var(--ads-height));
     width: 100%;
     overflow-y: scroll;
+    z-index: 999;
 }
 
-.loading_mock_selection_container {
-    position: relative;
-    min-height: 350px;
-    height: 300px;
-    min-width: 70vw;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.build_container {
-    /* height: 300px; */
+.input_area_align {
     height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.build_content {
+.input_area_gap {
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
     width: unset;
     padding-bottom: unset;
 }
 
-
-.btn_div {
+.submit_btn {
     position: relative;
     box-sizing: border-box;
     direction: rtl;
     display: flex;
     width: 100%;
     -webkit-tap-highlight-color: transparent;
-    margin-bottom: 8vh;
+    margin-bottom: 4vh;
 }
 
-.rtl_btn {
+.submit_btn_rtl {
     direction: ltr;
 }
 
@@ -93,20 +79,27 @@
 }
 
 @media (min-width: 550px) {
-    .build_form_container {
+    .form_container {
         width: 100%;
         scrollbar-width: none;
         -ms-overflow-style: none;
         margin-bottom: 10px;
     }
 
-    .build_form_container::-webkit-scrollbar {
+    .form_container::-webkit-scrollbar {
         display: none;
     }
 
-    .build_content {
+    .input_area_gap {
         width: 70%;
-        gap: 17px;
         padding-bottom: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    .scroll_area {
+        min-height: calc(100% - 35px - 45px);
+        height: calc(100% - 35px - 45px);
+        overflow-y: auto;
     }
 }

@@ -5,10 +5,11 @@ import { SAVE_COOLDOWN } from "../../../../models/constants/time";
 import { convertHTMLToContent } from "../../../../utils/format";
 import { updateActivityWithContent } from "../../../../utils/activity";
 import { fetchSaveActivity } from "../../../../utils/fetch";
-import { useErrorContext } from "../../../../context/ErrorContext";
+import { useNotificationContext } from "../../../../context/NotificationContext";
 import { useContentContext } from "../../../../context/ContentContext";
 import { useSaveContext } from "../../../../context/SavedContext";
 import { useLanguage } from "../../../../i18n/useLanguage";
+import { logEvent } from "../../../../utils/logEvent";
 
 type EditorOptSaveProps = {
     activity: Activity;
@@ -18,8 +19,8 @@ type EditorOptSaveProps = {
 const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) => {
     const { t, dir, lang } = useLanguage();
     const { updateMainActivity } = useContentContext();
-    const { handleSuccess, handleError } = useErrorContext();
-    const { getSavedActivities } = useSaveContext();
+    const { notifySuccess: notifySuccess, notifyAlert: notifyAlert } = useNotificationContext();
+    const { saveActivity } = useSaveContext();
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
     const [saved, setSaved] = useState<boolean>(false);
 
@@ -27,23 +28,19 @@ const EditorOptSave: React.FC<EditorOptSaveProps> = ({ activity, htmlContent }) 
         if (htmlContent && !isDisabled) {
             try {
                 setIsDisabled(true);
-                setTimeout(() => {
-                    // prevent DDoS attacks
-                    setIsDisabled(false);
-                }, SAVE_COOLDOWN);
-                handleSuccess(t("editor.save.saveSuccess"));
+                notifySuccess(t("editor.save.saveSuccess"));
+                setTimeout(() => { setIsDisabled(false); }, SAVE_COOLDOWN); // prevent DDoS attacks
                 setSaved(true);
                 const convertedContent = convertHTMLToContent(htmlContent);
                 const newUpdatedActivity = updateActivityWithContent(activity, convertedContent);
                 const res = await fetchSaveActivity(newUpdatedActivity, lang);
                 updateMainActivity({ ...newUpdatedActivity, id: res.activity.id } as Activity);
-                await getSavedActivities();
-                setTimeout(() => {
-                    setSaved(false);
-                }, 1000);
+                await saveActivity();
+                setTimeout(() => { setSaved(false); }, 1000);
             } catch (error) {
-                handleError(t("editor.save.saveError"));
                 setSaved(false);
+                notifyAlert(t("editor.save.saveError"));
+                logEvent(`[EditorOptSave.handleSave]`, "");
             }
         }
     };

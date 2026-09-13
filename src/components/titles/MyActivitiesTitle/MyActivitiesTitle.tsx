@@ -11,15 +11,7 @@ function MyActivitiesTitle() {
         <div
             className={`${styles.tell_us_title} ${isRTL ? styles.rtl_title : styles.ltr_title} ${styles[lang]}`}
         >
-            <h1>{t("savedActivities.myActivities.title")}</h1>
-            <img
-                title="Yellow line image"
-                alt="Yellow line image"
-                src="/detailsLine.svg"
-                loading="lazy"
-                width={50}
-                height={5}
-            />
+            <h1>{t("youth.savedActivities.title")}</h1>
         </div>
     );
 }

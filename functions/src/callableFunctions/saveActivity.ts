@@ -2,7 +2,6 @@ import * as functions from "firebase-functions";
 import { SaveActivityRequest } from "../model/types/request";
 import { db } from "../index";
 import { SaveActivityResponse } from "../model/types/response";
-import * as admin from "firebase-admin";
 import { CollectionDB } from "../model/enum/DB";
 import { updateActivityWithId } from "../utils/activity";
 import { getCurrentTime } from "../utils/time";
@@ -17,8 +16,6 @@ const saveActivity = functions.https.onCall(
     if (!context.auth) {
       return { result: "error", message: "User is not authenticated." };
     }
-    await admin.auth().setCustomUserClaims(context.auth.uid, { canEditUsers: true });
-
     try {
       const { id, ...restActivity } = activity;
       const now = getCurrentTime(lang);         
@@ -45,7 +42,6 @@ const saveActivity = functions.https.onCall(
 
       return { result: "success", activity: updateActivity };
     } catch (error) {
-      console.error("Failed to retrieve activity.", error);
       return { result: "error", message: "Failed to retrieve activity." };
     }
   }

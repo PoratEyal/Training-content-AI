@@ -10,7 +10,7 @@ function Maintenance() {
         <div className={styles.container}>
             <img
                 className={styles.img}
-                alt="Man fixing laptop with tools and gears."
+                alt="maintenance"
                 src="maintenance.png"
             />
             <div className={styles.div}>We are temporarily taking the site offline for upgrades and improvements.</div>

@@ -38,6 +38,7 @@ import { FaRibbon } from "react-icons/fa";
 import { MdEmojiPeople } from "react-icons/md";
 import { GiPodium } from "react-icons/gi";
 import { GoQuestion } from "react-icons/go";
+import { BiBarChartAlt2 } from "react-icons/bi";
 
 export const Icons = {
     loading: VscLoading,
@@ -79,4 +80,5 @@ export const Icons = {
     MdEmojiPeople: MdEmojiPeople,
     GiPodium: GiPodium,
     faq: GoQuestion,
+    chart: BiBarChartAlt2,
 };

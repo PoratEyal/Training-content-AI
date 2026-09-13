@@ -1,50 +1,50 @@
 {
     "p0": {
         "label": "",
-        "text": "El uso de la aplicación implica la plena aceptación de los términos de esta política. El usuario se compromete y está obligado a leer cuidadosamente todas las secciones de la política antes de utilizar la aplicación y asumirá toda la responsabilidad por cualquier malentendido o incumplimiento de sus términos."
+        "text": "El uso de la aplicación implica la plena aceptación de los términos de esta política. El usuario se compromete a leer cuidadosamente todas las secciones de la política antes de utilizar la aplicación y asumirá toda la responsabilidad por cualquier consecuencia derivada del incumplimiento de sus términos."
     },
     "p1": {
-        "label": "La aplicación está actualmente en fase de prueba y nuestro objetivo es mejorarla continuamente. Agradecemos sus comentarios si encuentra algún problema o error.",
-        "text": "El uso de la aplicación es bajo su propio riesgo y no asumimos ninguna responsabilidad por los daños que puedan resultar de su uso."
+        "label": "Fase de prueba y comentarios:",
+        "text": "La aplicación se encuentra actualmente en fase de prueba beta y nos esforzamos por mejorarla continuamente. Agradecemos sus comentarios si encuentra algún problema o error durante su uso."
     },
     "p2": {
-        "label": "Política de privacidad:",
-        "text": "Usamos cookies y datos proporcionados voluntariamente por los usuarios (como nombre, correo electrónico y contenido de los mensajes) para mejorar la experiencia en la aplicación y analizar datos estadísticos. Podemos realizar pruebas de usabilidad periódicas para mejorar la interfaz de usuario."
+        "label": "Política de privacidad y recopilación de datos:",
+        "text": "Utilizamos cookies y datos proporcionados voluntariamente por los usuarios (como nombre, correo electrónico y contenido de los mensajes) para mejorar la experiencia en la aplicación, realizar pruebas de usabilidad y analizar datos estadísticos mediante Google Analytics."
     },
     "p3": {
         "label": "Servicios publicitarios:",
-        "text": "Utilizamos los servicios publicitarios de Google, como Google AdSense, para mostrar anuncios en el sitio. Google y sus socios pueden usar cookies y otras tecnologías de seguimiento para recopilar información sobre su actividad en nuestro sitio y mostrarle anuncios personalizados. Puede administrar sus preferencias de anuncios personalizados a través de la configuración de anuncios de Google."
+        "text": "Utilizamos los servicios publicitarios de Google, como Google AdSense, para mostrar anuncios en la aplicación. Google y sus socios pueden usar cookies y otras tecnologías de seguimiento para recopilar información sobre su actividad y mostrarle anuncios personalizados. Puede administrar sus preferencias a través de la configuración de anuncios de Google."
     },
     "p4": {
-        "label": "Derechos de autor:",
+        "label": "Derechos de autor y propiedad intelectual:",
         "text": "Todos los derechos de la aplicación, incluidos los derechos de autor, diseños, código y datos, nos pertenecen o pertenecen a fuentes autorizadas."
     },
     "p5": {
-        "label": "Responsabilidad:",
-        "text": "Ofrecemos la aplicación tal como está y no ofrecemos garantías, expresas o implícitas, sobre ella. No somos responsables de ningún daño directo, indirecto, consecuente o especial que pueda derivarse del uso de la aplicación."
+        "label": "Limitación de responsabilidad:",
+        "text": "Ofrecemos la aplicación tal como está (As-Is) y no ofrecemos garantías, expresas o implícitas, sobre ella. El uso de la aplicación se realiza bajo su propio y exclusivo riesgo, y no somos responsables de ningún daño directo, indirecto, consecuente o especial que pueda derivarse de su uso o indisponibilidad."
     },
     "p6": {
         "label": "Accesibilidad:",
-        "text": "La aplicación puede ser utilizada por personas con discapacidades mediante las funciones de accesibilidad integradas en el sistema operativo."
+        "text": "La aplicación es accesible para personas con discapacidades mediante las funciones de accesibilidad integradas en el sistema operativo y el navegador."
     },
     "p7": {
-        "label": "Limitación de responsabilidad:",
-        "text": "Usamos Microsoft Clarity para mejorar la experiencia del usuario. Los datos de uso del sitio, como clics, desplazamientos, tiempo de permanencia, mapas de calor y grabaciones de las acciones de los usuarios, se almacenan mediante cookies. Para más información sobre cómo Microsoft recopila datos, visite la declaración de privacidad de Microsoft."
+        "label": "Análisis de datos (Microsoft Clarity):",
+        "text": "Utilizamos Microsoft Clarity para mejorar la experiencia del usuario. Los datos de uso de la aplicación, como clics, desplazamientos, tiempo de permanencia, mapas de calor e interacciones del usuario, se almacenan mediante cookies. Para más información sobre cómo se recopilan los datos, visite la declaración de privacidad de Microsoft."
     },
     "p8": {
         "label": "Jurisdicción y resolución de disputas:",
-        "text": "Cualquier disputa que surja del uso de la aplicación estará sujeta a la jurisdicción exclusiva de los tribunales competentes en Israel."
+        "text": "Cualquier disputa que surja del uso de esta aplicación estará sujeta a la jurisdicción exclusiva de los tribunales competentes en Israel."
     },
     "p9": {
-        "label": "Cambios:",
-        "text": "Podemos actualizar esta política de vez en cuando publicando una nueva versión en nuestro sitio. Debe consultar esta página periódicamente para asegurarse de que todo esté claro."
+        "label": "Cambios en la política:",
+        "text": "Podemos actualizar esta política de vez en cuando publicando una nueva versión dentro de la aplicación. Es responsabilidad del usuario consultar esta página periódicamente para mantenerse informado sobre las actualizaciones."
     },
     "p10": {
-        "label": "Correo electrónico:",
+        "label": "Contacto:",
         "email": "contact.activitywiz@gmail.com",
         "text1": "Estamos disponibles para responder",
         "text2": "por correo electrónico",
-        "text3": "cualquier pregunta, comentario o solicitud.",
+        "text3": "cualquier pregunta, comentario o solicitud",
         "text4": "Contáctenos"
     }
 }

@@ -41,7 +41,7 @@
   }
   
   .svgIcon path {
-    stroke: var(--primary-color);
+    stroke: var(--youth-primary-color);
     stroke-width: 4;
     fill: transparent;
   }

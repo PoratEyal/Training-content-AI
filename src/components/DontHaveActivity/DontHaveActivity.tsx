@@ -6,9 +6,9 @@ function DontHaveActivity() {
 
     return (
         <div className={styles.container} dir={dir}>
-            <h3 className={styles.title}>{t("savedActivities.dontHaveActivity.title")}</h3>
+            <h3 className={styles.title}>{t("youth.savedActivities.dontHaveActivity.title")}</h3>
             <div className={styles.mainText}>
-                <div>{t("savedActivities.dontHaveActivity.mainTextLine1")}</div>
+                <div>{t("youth.savedActivities.dontHaveActivity.mainTextLine1")}</div>
             </div>
             <div className={styles.iconWrapper}>
                 <svg

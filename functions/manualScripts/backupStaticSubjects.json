@@ -120,8 +120,8 @@
       "/staticActivities/ccScxMjKKmcYImAXgCNi",
       "/staticActivities/Y5vlbYfnEnJTIcZjnV9m"
     ],
-    "orderId": 160,
-    "icon": "TbConfetti"
+    "icon": "TbConfetti",
+    "orderId": 5
   },
   "e1n1MQMIjWphKEYXirFj": {
     "icon": "FaStarOfDavid",
@@ -168,7 +168,6 @@
     "metaTitle": "חגים ומועדים",
     "name": "holidays",
     "metaDescription": "פעולות ומשחקים לתנועות נוער, רעיונות לפעילויות יצירתיות, חגי ישראל, חגים, מועדים",
-    "orderId": 90,
     "activities": [
       "/staticActivities/74XVTeqJGPNYc0FTc9VO",
       "/staticActivities/cwUv39l89MAZxbkTxHM6",
@@ -190,7 +189,8 @@
       "/staticActivities/Wg2nIahYLtPZBPzUvG31",
       "/staticActivities/TrG9a37RNIagyouZlxlv",
       "/staticActivities/ZDrKB63vFHMpuqIrMmMz"
-    ]
+    ],
+    "orderId": 8
   },
   "r0EQUxfS5MSOXUXcXaVy": {
     "icon": "BiSolidCameraMovie",
@@ -237,7 +237,6 @@
   "uBHbP8gnuK2k6mj0S1ST": {
     "icon": "FaRibbon",
     "metaDescription": "פעולות לתנועות נוער, רעיונות לפעילויות יצירתיות, שבעה באוקטובר, 7 באוקטובר, מלחמה, לבנון, מלחמת עזה, איראן, חרבות ברזל",
-    "metaTitle": "שבעה באוקטובר",
     "name": "sevenOct",
     "activities": [
       "/staticActivities/Zy0EZqET3m9JXrGztVVN",
@@ -245,6 +244,7 @@
       "/staticActivities/XdqOjSokJ3aB1Mv32iMw",
       "/staticActivities/nIX58X7A3Xpa9gN9pIKI"
     ],
-    "orderId": 150
+    "orderId": 150,
+    "metaTitle": "מלחמת 7 באוקטובר"
   }
 }

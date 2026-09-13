@@ -27,7 +27,7 @@ function DropOptInviteFriends() {
 
     let shareTitle = ""
     let shareText = ""
-    let shareUrl = `${WEBSITE_URL}/${lang}`
+    let shareUrl = `${WEBSITE_URL}`
 
     if (product === ProductType.Youth) {
       const youthActivityAIPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn
@@ -39,10 +39,26 @@ function DropOptInviteFriends() {
 
       shareTitle = t("common.youthAppName")
       shareUrl += "/youth"
-    } else {
+
+    } else if (product === ProductType.Event) {
+      shareText = t("articleOptions.share.eventShareMessage")
+      shareTitle = t("common.practiceAppName")
+      shareUrl += "/event"
+
+    } else if (product === ProductType.Practice) {
       shareText = t("articleOptions.share.practiceShareMessage")
       shareTitle = t("common.practiceAppName")
       shareUrl += "/practice"
+
+    } else if (product === ProductType.Words) {
+      shareText = t("articleOptions.share.wordsShareMessage")
+      shareTitle = t("common.wordsAppName")
+      shareUrl += "/words"
+
+    } else {
+      shareText = ""
+      shareTitle = ""
+      shareUrl += "/"
     }
 
     share(t, shareTitle, shareText, shareUrl)

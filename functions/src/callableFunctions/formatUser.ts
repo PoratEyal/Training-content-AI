@@ -27,7 +27,6 @@ const formatUser = functions.https.onCall(
                 result: "success",
             };
         } catch (error) {
-            console.error("Error updating user: ", error);
             return {
                 result: "error",
                 message: "Failed to update user.",

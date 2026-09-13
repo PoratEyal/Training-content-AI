@@ -5,14 +5,19 @@
     display: block;
     height: var(--ads-height);
     width: 100vw;
-    z-index: 997;
+    z-index: 9999;
     background-color: var(--background-color);
-    /* border: 1px solid black;    /* 4 Debug */
 }
 
 @media (min-width: 550px) {
     .ads-small-slot {
         position: absolute;
         width: 400px;
+    }
+}
+
+@media (min-width: 768px) {
+    .ads-small-slot {
+        display: none !important;
     }
 }

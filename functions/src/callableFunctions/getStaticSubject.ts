@@ -2,7 +2,9 @@ import * as functions from "firebase-functions";
 import { db } from "../index";
 import { GetStaticSubjectsResponse } from "../model/types/response";
 
-const getStaticSubjectsHttp = functions.https.onCall(
+const getStaticSubjectsHttp = functions.runWith({
+    timeoutSeconds: 90,
+}).https.onCall(
     async (
         data: void,
         context: functions.https.CallableContext
@@ -49,10 +51,10 @@ const getStaticSubjectsHttp = functions.https.onCall(
             };
 
         } catch (error) {
-            console.error('Error fetching static subjects:', error);
+            const message = (error as Error)?.message || "unknown";
             return {
                 result: "error",
-                message: "Failed to fetch static subjects."
+                message: `Failed to fetch static subjects. (${message})`
             };
         }
     }

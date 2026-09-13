@@ -4,7 +4,6 @@ Activity details: Time: {0} Topic: {1} Target audience: {2} children, ages {3}, 
 Mandatory structure:
 **Activity Topic:** [name]
 **Activity Duration:** [X minutes]
-**Activity Duration:** [X minutes]
 **Goals:** (mandatory two goals only, related to the topic and educational)
 * [Goal 1]
 * [Goal 2]

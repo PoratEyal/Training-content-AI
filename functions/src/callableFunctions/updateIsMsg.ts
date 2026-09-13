@@ -1,3 +1,6 @@
+//
+//  Currently Unused
+//
 import * as functions from "firebase-functions";
 import { CollectionDB } from "../model/enum/DB";
 import { db } from "../index";
@@ -26,7 +29,6 @@ const updateIsMsg = functions.https.onCall(
                 message: "Successfully updated user's isSendMsg status.",
             };
         } catch (error) {
-            console.error("Error updating user's isSendMsg status: ", error);
             return {
                 result: "error",
                 message: "Failed to update user's isSendMsg status.",

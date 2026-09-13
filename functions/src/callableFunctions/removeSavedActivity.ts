@@ -1,5 +1,4 @@
 import * as functions from "firebase-functions";
-import * as admin from "firebase-admin";
 import { CollectionDB } from "../model/enum/DB";
 import { db } from "../index";
 import { RemoveSavedActivityResponse } from "../model/types/response";
@@ -13,8 +12,6 @@ const removeSavedActivity = functions.https.onCall(
         if (!context.auth) {
             return { result: "error", message: "User is not authenticated." };
         }
-        await admin.auth().setCustomUserClaims(context.auth.uid, { canEditUsers: true });
-
         try {
             const { activityId, userId } = data;
             const activityRef = db.collection(CollectionDB.ACTIVITY).doc(activityId);
@@ -34,7 +31,6 @@ const removeSavedActivity = functions.https.onCall(
                 message: "Activity successfully removed.",
             };
         } catch (error) {
-            console.error("Error removing activity:", error);
             return {
                 result: "error",
                 message: "Failed to remove activity.",

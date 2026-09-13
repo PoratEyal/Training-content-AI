@@ -1,0 +1,50 @@
+{
+    "p0": {
+        "label": "",
+        "text": "O uso do aplicativo constitui aceitação integral dos termos desta política. O usuário compromete-se a ler atentamente todas as seções da política antes de usar o aplicativo e assumirá total responsabilidade por qualquer consequência derivada do descumprimento de seus termos."
+    },
+    "p1": {
+        "label": "Fase de testes e feedback:",
+        "text": "O aplicativo está atualmente em fase de testes beta e buscamos aprimorá-lo continuamente. Agradecemos o seu feedback caso encontre algum problema ou falha durante o uso."
+    },
+    "p2": {
+        "label": "Política de privacidade e coleta de dados:",
+        "text": "Utilizamos cookies e dados fornecidos voluntariamente pelos usuários (como nome, e-mail e conteúdo de mensagens) para melhorar a experiência do aplicativo, realizar testes de usabilidade e analisar dados estatísticos por meio do Google Analytics."
+    },
+    "p3": {
+        "label": "Serviços de publicidade:",
+        "text": "Utilizamos os serviços de publicidade do Google, como o Google AdSense, para exibir anúncios no aplicativo. O Google e seus parceiros podem usar cookies e tecnologias de rastreamento adicionais para coletar informações sobre sua atividade e exibir anúncios personalizados. Você pode gerenciar suas preferências por meio das configurações de anúncios do Google."
+    },
+    "p4": {
+        "label": "Direitos autorais e propriedade intelectual:",
+        "text": "Todos os direitos do aplicativo, incluindo direitos autorais, designs, código e dados, pertencem a nós ou a fontes autorizadas."
+    },
+    "p5": {
+        "label": "Limitação de responsabilidade:",
+        "text": "Disponibilizamos o aplicativo no estado em que se encontra (As-Is) e não oferecemos garantias, expressas ou implícitas, a seu respeito. O uso do aplicativo é por sua conta e risco exclusivos, e não nos responsabilizamos por quaisquer danos diretos, indiretos, consequentes ou especiais surgidos do uso ou da indisponibilidade do aplicativo."
+    },
+    "p6": {
+        "label": "Acessibilidade:",
+        "text": "O aplicativo é acessível para pessoas com deficiência por meio de recursos de acessibilidade integrados ao sistema operacional e ao navegador."
+    },
+    "p7": {
+        "label": "Análise de dados (Microsoft Clarity):",
+        "text": "Utilizamos o Microsoft Clarity para melhorar a experiência do usuário. Os dados de uso do aplicativo, como cliques, rolagem de página, tempo de permanência, mapas de calor e interações do usuário, são armazenados por meio de cookies. Para mais informações sobre como os dados são coletados, visite a declaração de privacidade da Microsoft."
+    },
+    "p8": {
+        "label": "Jurisdição e resolução de conflitos:",
+        "text": "Qualquer controvérsia decorrente do uso deste aplicativo estará sujeita à jurisdição exclusiva dos tribunais competentes em Israel."
+    },
+    "p9": {
+        "label": "Alterações na política:",
+        "text": "Podemos atualizar esta política periodicamente, publicando uma nova versão dentro do aplicativo. É de responsabilidade do usuário verificar esta página de tempos em tempos para se manter informado sobre as atualizações."
+    },
+    "p10": {
+        "label": "Contato:",
+        "email": "contact.activitywiz@gmail.com",
+        "text1": "Estamos disponíveis para responder",
+        "text2": "via e-mail",
+        "text3": "para qualquer dúvida, comentário ou solicitação",
+        "text4": "Contate-nos"
+    }
+}

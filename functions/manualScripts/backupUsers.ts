@@ -1,6 +1,6 @@
 // Backup DB table
-// cd C:\Dev\ActivityWiz\functions\manualScripts>
-// run: npx ts-node <script-name>.ts
+// cd .\functions\manualScripts\
+// run: npx ts-node backupUsers.ts
 import * as admin from "firebase-admin";
 import * as fs from "fs";
 import * as path from "path";
@@ -25,7 +25,6 @@ async function backupCollection(collectionName: string) {
 
     const backupPath = path.join(__dirname, `backupUsers.json`);
     fs.writeFileSync(backupPath, JSON.stringify(data, null, 2));
-    console.log(`✅ ${collectionName} backup saved to ${backupPath}`);
   } catch (error) {
     console.error(`❌ Error backing up ${collectionName}:`, error);
   }

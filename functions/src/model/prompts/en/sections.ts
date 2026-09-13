@@ -1,38 +1,20 @@
 
-export const CONTANT_SECTION_30_IN = `**Activity Flow:**
+export const CONTENT_SECTION_30 = `**Activity Flow:**
 **Opening:** (plan for 5 minutes, do not mention times)
 **Main Part:** (plan for 20 minutes, do not mention times)
 **Summary:** (plan for 5 minutes, do not mention times)`;
 
-export const CONTANT_SECTION_60_IN = `**Activity Flow:** 
+export const CONTENT_SECTION_60 = `**Activity Flow:** 
 **Opening:** (plan for 10 minutes, do not mention times)
 **First Part:** (plan for 20 minutes, do not mention times)
 **Second Part:** (plan for 20 minutes, do not mention times)
 **Summary:** (plan for 10 minutes, do not mention times)`;
 
-export const CONTANT_SECTION_90_IN = `**Activity Flow:** 
+export const CONTENT_SECTION_90 = `**Activity Flow:** 
 **Opening:** (plan for 15 minutes, do not mention times)
 **First Part:** (plan for 30 minutes, do not mention times)
 **Second Part:** (plan for 30 minutes, do not mention times)
 **Summary:** (plan for 15 minutes, do not mention times)`;
-
-//-----------------------//
-
-export const CONTANT_SECTION_30_OUT = `**Activity Flow:** 
-**Opening:** (plan for 5 minutes, do not mention times)
-**Main Part:** (plan for 15 minutes, do not mention times)
-**Summary:** (plan for 10 minutes, do not mention times)`;
-
-export const CONTANT_SECTION_60_OUT = `**Activity Flow:** 
-**Opening:** (plan for 10 minutes, do not mention times)
-**Main Part:** (plan for 40 minutes, do not mention times)
-**Summary:** (plan for 10 minutes, do not mention times)`;
-
-export const CONTANT_SECTION_90_OUT = `**Activity Flow:** 
-**Opening:** (plan for 10 minutes, do not mention times)
-**First Part:** (plan for 35 minutes, do not mention times)
-**Second Part:** (plan for 35 minutes, do not mention times)
-**Summary:** (plan for 10 minutes, do not mention times)`;
 
 //-----------------------//
 

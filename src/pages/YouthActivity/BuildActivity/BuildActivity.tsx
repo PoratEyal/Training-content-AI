@@ -15,27 +15,27 @@ import CreateYourActivity from "../../../components/titles/CreateYourActivity/Cr
 import { useAuthContext } from "../../../context/AuthContext";
 import { useContentContext } from "../../../context/ContentContext";
 import { ProductType } from "../../../context/ProductType";
-import { useErrorContext } from "../../../context/ErrorContext";
+import { useNotificationContext } from "../../../context/NotificationContext";
 import { useLanguage } from "../../../i18n/useLanguage";
-import { BUILD_AD_SLOT } from "../../../models/constants/adsSlot";
-import msg from "../../../models/resources/errorMsg.json";
-import { ActivityTimeOptions, CategoryOptions, ContestOptions, PlaceOptions, ReligionOptions, ToolsOptions } from "../../../models/resources/select";
+import { YOUTH_BUILD_AD_SLOT } from "../../../models/constants/adsSlot";
+import { ActivityTimeOptions, CategoryOptions, ContestOptions, PlaceOptions, ReligionOptions, ToolsOptions } from "../../../models/resources/productYouth/select";
 import { Activity } from "../../../models/types/activity";
 import { CategoryName } from "../../../models/types/movement";
-import { SessionKey } from "../../../models/enum/storage";
+import { StorageKey } from "../../../models/enum/storage";
 import Session from "../../../utils/sessionStorage";
 import { fetchGetActivity, fetchUpdateUser } from "../../../utils/fetch";
 import route from "../../../router/route.json";
 import { isYouthDetailsChanged, updateUserMovement } from "../../../utils/user";
 import { ProductPages } from "../../../models/enum/pages";
 import { enforcePageAccess } from "../../../utils/navigation";
+import { logEvent } from "../../../utils/logEvent";
 import styles from "./BuildActivity.module.css"
 
 
 function BuildActivity() {
 
   const { t, isRTL, lang } = useLanguage();
-  const { handleError } = useErrorContext();
+  const { notifyAlert } = useNotificationContext();
   const { data, updateMainActivity, currentPage, setCurrentPage } = useContentContext();
   const { isLoggedIn, currentUser, setCurrentUser } = useAuthContext();
 
@@ -48,7 +48,7 @@ function BuildActivity() {
   const [tools, setTools] = useState<string>("");
   const [info, setInfo] = useState<string>("");
 
-  const [clicked, setClicked] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const navigate = useNavigate();
   const lockRef = useRef(true);
@@ -56,7 +56,7 @@ function BuildActivity() {
   const [hasAlert, setHasAlert] = useState(false);
 
   const youthHomePagePath = route[`youthHomePage${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthHomePageEn;
-  const youtActivityAIPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn;
+  const youthActivityAIPath = route[`youthActivityAI${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthActivityAIEn;
 
   const goBack = () => {
     const youthDetailsPath = route[`youthDetails${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || route.youthDetailsEn;
@@ -64,7 +64,7 @@ function BuildActivity() {
   };
 
   useEffect(() => { // Prevent direct access via URL
-    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_Build, navigate, youthHomePagePath);
+    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_YouthBuild, navigate, youthHomePagePath);
   }, []);
 
   useEffect(() => { // Initialize form: validate data, set defaults, update user if needed, load session activity
@@ -85,7 +85,7 @@ function BuildActivity() {
     const setStateFromSession = () => {
       try {
         if (!subject || subject === "") {
-          const sessionActivity: Activity | undefined = Session.get(SessionKey.ACTIVITY);
+          const sessionActivity: Activity | undefined = Session.get(StorageKey.YOUTH_ACTIVITY);
           if (sessionActivity) {
             setCategory(sessionActivity.category);
             setSubject(sessionActivity.subject);
@@ -120,31 +120,28 @@ function BuildActivity() {
   }, [subject, place, time]);
 
   const submitHandler = async () => {
-    setClicked(true);
+
+    setLoading(true);
     const { movement, ...detailsData } = data;
+    //logEvent(`Youth - subject: ${String(subject)} | info: ${String(info)}`, currentUser?.email);
     try {
-      const response = await fetchGetActivity({
-        category: category as CategoryName,
-        movement: movement.name,
-        ...detailsData,
-        subject,
-        time,
-        place,
-        religion,
-        contest,
-        tools,
-        info,
-        lang,
-      });
-      if (
-        (response.result === "success" || response.result === "safety") && response.activity
-      ) {
+      const response = await fetchGetActivity({ category: category as CategoryName, movement: movement.name, ...detailsData, subject, time, place, religion, contest, tools, info, lang, });
+      if (response.result === "success" && response.activity) {
         updateMainActivity({ ...response.activity });
-        navigate(youtActivityAIPath);
+        navigate(youthActivityAIPath);
+      } else {
+        const is503 = typeof response.message === "string" && (response.message.includes("503") || response.message.toLowerCase().includes("service unavailable") || response.message.toLowerCase().includes("high demand"));
+        notifyAlert(t(is503 ? "common.errorMsgHighDemand" : "common.errorMsg"));
+        //logEvent(`[BuildActivity.else]: serverMessage: ${String(response.message)}`, currentUser?.email); // after seeing it works we can remove the log
       }
     } catch (error) {
-      handleError(msg[lang].error.message);
-      setClicked(false);
+      const errorMessage = error instanceof Error && typeof error.message === "string" ? error.message : "Unknown error";
+      const is503 = errorMessage.includes("503") || errorMessage.toLowerCase().includes("service unavailable") || errorMessage.toLowerCase().includes("high demand");
+      notifyAlert(t(is503 ? "common.errorMsgHighDemand" : "common.errorMsg"));
+      const logMessage = `[BuildActivity.catch]: Error: ${errorMessage} | subject: ${String(subject)} | category: ${String(category)} | place: ${String(place)} | time: ${String(time)} | religion: ${String(religion)} | contest: ${String(contest)} | tools: ${String(tools)} | info: ${String(info)}`;
+      logEvent(logMessage, currentUser?.email); // after seeing it works we can remove the log
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -154,101 +151,105 @@ function BuildActivity() {
       productType={ProductType.Youth}
       hasGreenBackground
       hasHeader={{ goBack }}
-      hasAds={BUILD_AD_SLOT}
+      hasAds={YOUTH_BUILD_AD_SLOT}
       index={false}
       hasNavBar
+      navDisabled={loading}
     >
       <CreateYourActivity />
 
-      <div className={styles.build_form_container}>
+      <div className={styles.form_container}>
         <img
-          className={isRTL ? styles.path_img : `${styles.path_img} ${styles.ltr_path}`}
+          className={isRTL ? styles.path_img : `${styles.path_img} ${styles.path_img_ltr}`}
           title="Yellow sign with heart"
           alt="Yellow sign with heart"
-          src={"/path.svg"}
-          width={90}
+          src={"/Youth/path.svg"}
+          width={80}
           height={110}
         />
 
-        <div className={styles.selects_btn}>
-          <section className={styles.build_container}>
-            <section className={styles.build_content}>
+        <div className={styles.scroll_area}>
+          <section className={styles.input_area_align}>
+            <section className={styles.input_area_gap}>
               <SelectDetails
-                placeholder={t("buildActivity.category.label")}
+                placeholder={t("youth.BuildActivity.category.label")}
                 obj={category}
                 setObj={setCategory}
                 data={CategoryOptions(data?.movement?.categories || [])}
               />
-
+              <div style={{ height: "20px" }}></div>
               <SubjectInput
-                placeholder={t("buildActivity.subject.label")}
+                placeholder={t("youth.BuildActivity.subject.label")}
                 setSubject={setSubject}
                 subject={subject}
                 category={category as CategoryName}
                 setHasAlert={setHasAlert}
               />
-
+              <div style={{ height: "20px" }}></div>
               <SelectDetails
-                placeholder={t("buildActivity.place.label")}
+                placeholder={t("youth.BuildActivity.place.label")}
                 obj={place}
                 setObj={setPlace}
                 data={PlaceOptions[lang]}
               />
-
+              <div style={{ height: "20px" }}></div>
               <SelectDetails
-                placeholder={t("buildActivity.time.label")}
+                placeholder={t("youth.BuildActivity.time.label")}
                 obj={time}
                 setObj={setTime}
                 data={ActivityTimeOptions[lang]}
               />
+              <div style={{ height: "20px" }}></div>
 
-              <MoreOptionsCollapse text={t("buildActivity.moreOptions.title")}>
+              <MoreOptionsCollapse text={t("youth.BuildActivity.moreOptions.title")}>
+
+                <div style={{ height: "20px" }}></div>
                 <SelectDetails
-                  placeholder={t("buildActivity.tools.label")}
+                  placeholder={t("youth.BuildActivity.tools.label")}
                   obj={tools}
                   setObj={setTools}
                   data={ToolsOptions[lang]}
                 />
-
+                <div style={{ height: "20px" }}></div>
                 <SelectDetails
-                  placeholder={t("buildActivity.contest.label")}
+                  placeholder={t("youth.BuildActivity.contest.label")}
                   obj={contest}
                   setObj={setContest}
                   data={ContestOptions[lang]}
                 />
-
                 {lang === "he" && (
-                  <SelectDetails
-                    placeholder={t("buildActivity.religion.label")}
-                    obj={religion}
-                    setObj={setReligion}
-                    data={ReligionOptions}
-                  />
+                  <>
+                    <div style={{ height: 20 }}></div>
+                    <SelectDetails
+                      placeholder={t("youth.BuildActivity.religion.label")}
+                      obj={religion}
+                      setObj={setReligion}
+                      data={ReligionOptions}
+                    />
+                  </>
                 )}
 
+                <div style={{ height: "20px" }}></div>
                 <MoreDetailsInput
-                  placeholder={t("buildActivity.moreDetails.label")}
+                  placeholder={t("youth.BuildActivity.moreDetails.label")}
                   text={info}
                   setText={setInfo}
                 />
               </MoreOptionsCollapse>
 
+              <div style={{ height: "20px" }}></div>
               <div
-                className={
-                  isRTL
-                    ? `${styles.btn_div} ${styles.rtl_btn}`
-                    : styles.btn_div
-                }
+                className={isRTL ? `${styles.submit_btn} ${styles.submit_btn_rtl}` : styles.submit_btn}
               >
                 <MainBtn
                   isDisabled={isDisabled}
                   height={42}
-                  text={t("buildActivity.submit")}
+                  text={t("youth.BuildActivity.submit")}
                   func={submitHandler}
                 />
                 {hasAlert && (
                   <div className={styles.input_alert}>
-                    {t("buildActivity.alert")}
+                    {t("youth.BuildActivity.alert")}
                   </div>
                 )}
               </div>
@@ -256,7 +257,7 @@ function BuildActivity() {
           </section>
         </div>
       </div>
-      {clicked && <LoadingActivity />}
+      {loading && <LoadingActivity />}
     </PageLayout>
   );
 }

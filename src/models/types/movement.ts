@@ -20,6 +20,7 @@ export type MovementName =
     | "shomer"
     | "bitar"
     | "hadasha"
+    | "netzach"
     | "medtchim"
     | "krembo"
     | "meshachim"
@@ -41,7 +42,7 @@ export type Movement = {
     categories: Category[];
 };
 
-export type CategoryName = "contant" | "pointOfView" | "survival" | "playTime";
+export type CategoryName = "content" | "pointOfView" | "survival" | "playTime";
 
 export type Category = {
     name: CategoryName;

@@ -12,8 +12,8 @@ import { useAuthContext } from "../../../context/AuthContext"
 import { useContentContext } from "../../../context/ContentContext"
 import { ProductType } from "../../../context/ProductType"
 import { useLanguage } from "../../../i18n/useLanguage"
-import { DETAILS_AD_SLOT } from "../../../models/constants/adsSlot"
-import { MovmentsOptions, GradeOptions, AmountOptions, GenderOptions } from "../../../models/resources/select"
+import { YOUTH_DETAILS_AD_SLOT } from "../../../models/constants/adsSlot"
+import { MovmentsOptions, GradeOptions, AmountOptions, GenderOptions } from "../../../models/resources/productYouth/select"
 import route from "../../../router/route.json"
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
@@ -40,7 +40,7 @@ function Details() {
   const goBack = () => { navigate(youthHomePagePath); };
 
   useEffect(() => { // Prevent direct access via URL
-    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_Details, navigate, youthHomePagePath);
+    enforcePageAccess(currentPage, setCurrentPage, ProductPages.PAGE_YouthDetails, navigate, youthHomePagePath);
   }, []);
 
   useEffect(() => { // Set default values from session data or current user
@@ -66,7 +66,7 @@ function Details() {
       productType={ProductType.Youth}
       hasGreenBackground
       hasHeader={{ goBack }}
-      hasAds={DETAILS_AD_SLOT}
+      hasAds={YOUTH_DETAILS_AD_SLOT}
       hasNavBar
       index={false}
     >
@@ -74,54 +74,60 @@ function Details() {
 
       <form
         onSubmit={handleSubmit}
-        className={styles.details_form_container}
+        className={styles.form_container}
         style={{ direction: dir }}
       >
         <img
           className={`${styles.lamp_img} ${isRTL ? styles.lamp_img_rtl : styles.lamp_img_ltr}`}
-          title={t("details.lampAlt")}
-          alt={t("details.lampAlt")}
-          src="/lamp.svg"
+          title={t("youth.details.lampAlt")}
+          alt={t("youth.details.lampAlt")}
+          src="/Youth/lamp.svg"
           loading="lazy"
-          width={105}
+          width={95}
           height={109}
         />
 
-        <div className={styles.selects_btn}>
-          <div className={styles.details_content}>
-            <SelectDetails
-              data={MovmentsOptions[lang]}
-              placeholder={t("details.youthMovement")}
-              obj={movement}
-              setObj={setMovement}
-            />
-            <SelectDetails
-              data={GradeOptions[lang]}
-              placeholder={t("details.grade")}
-              obj={classLevel}
-              setObj={setClassLevel}
-            />
-            <SelectDetails
-              data={AmountOptions[lang]}
-              placeholder={t("details.numberOfChildren")}
-              obj={numberOfChildren}
-              setObj={setNumberOfChildren}
-            />
-            <SelectDetails
-              data={GenderOptions[lang]}
-              placeholder={t("details.gender")}
-              obj={gender}
-              setObj={setGender}
-            />
-          </div>
-          <div className={isRTL ? styles.RTLDir : styles.LTRDir}>
-            <MainBtn
-              text={t("details.submit")}
-              isDisabled={isDisabled}
-              type="submit"
-              func={handleSubmit}
-              height={42}
-            />
+        <div className={styles.scroll_area}>
+          <div className={styles.input_area_align}>
+            <div className={styles.input_area_gap}>
+              <SelectDetails
+                data={MovmentsOptions[lang]}
+                placeholder={t("youth.details.youthMovement")}
+                obj={movement}
+                setObj={setMovement}
+              />
+              <div style={{ height: "20px" }}></div>
+              <SelectDetails
+                data={GradeOptions[lang]}
+                placeholder={t("youth.details.grade")}
+                obj={classLevel}
+                setObj={setClassLevel}
+              />
+              <div style={{ height: "20px" }}></div>
+              <SelectDetails
+                data={AmountOptions[lang]}
+                placeholder={t("youth.details.numberOfChildren")}
+                obj={numberOfChildren}
+                setObj={setNumberOfChildren}
+              />
+              <div style={{ height: "20px" }}></div>
+              <SelectDetails
+                data={GenderOptions[lang]}
+                placeholder={t("youth.details.gender")}
+                obj={gender}
+                setObj={setGender}
+              />
+              <div style={{ height: "20px" }}></div>
+              <div className={isRTL ? `${styles.submit_btn} ${styles.submit_btn_rtl}` : styles.submit_btn}>
+                <MainBtn
+                  text={t("common.btnContinue")}
+                  isDisabled={isDisabled}
+                  type="submit"
+                  func={handleSubmit}
+                  height={42}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </form>

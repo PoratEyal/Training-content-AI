@@ -31,12 +31,6 @@ function StartBtn({ onClick, text, isDisabled, isLoading = false }: StartBtnProp
             ) : (
                 <div className={styles.btn} style={{ direction: dir }}>
                     <span style={{ opacity: isDisabled ? 0.5 : 1 }}>{text}</span>
-                    <div className={styles.btn_icon} style={{ opacity: isDisabled ? 0.5 : 1 }}>
-                        <Icons.chevronsLeft
-                            className={styles.icon}
-                            style={{ transform: isRTL ? "none" : "rotate(180deg)" }} // fixed!
-                        />
-                    </div>
                 </div>
             )}
         </button>

@@ -24,11 +24,6 @@ export type SaveActivityRequest = {
     lang: Lang;         
 };
 
-export type UpdateActivityLikesRequest = {
-    activity: Activity;
-    likesAmount: number;
-};
-
 export type AddMovmentRequest = {
     name: string;
     title: string;

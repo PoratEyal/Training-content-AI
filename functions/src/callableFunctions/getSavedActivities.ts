@@ -1,6 +1,5 @@
 import * as functions from "firebase-functions";
 import { GetSavedActivitiesReqeust } from "../model/types/request";
-import * as admin from "firebase-admin";
 import { CollectionDB } from "../model/enum/DB";
 import { GetSavedActivitiesResponse } from "../model/types/response";
 import { db } from "../index";
@@ -15,8 +14,6 @@ const getSavedActivities = functions.https.onCall(
         if (!context.auth) {
             return { result: "error", message: "User is not authenticated." };
         }
-        await admin.auth().setCustomUserClaims(context.auth.uid, { canEditUsers: true });
-
         try {
             const { userId } = data;
             const snapshot = await db
@@ -33,7 +30,7 @@ const getSavedActivities = functions.https.onCall(
             }
             return { result: "success", message: "No activities." };
         } catch (error) {
-            return { result: "error", message: "Something want wrong." };
+            return { result: "error", message: "error in getSavedActivities" };
         }
     },
 );

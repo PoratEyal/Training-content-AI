@@ -15,6 +15,7 @@ function FallbackRedirect() {
     for (const lang of supportedLangs) {
       const youthPrefix = `/${lang}/youth`
       const practicePrefix = `/${lang}/practice`
+      const wordsPrefix = `/${lang}/words`
 
       if (pathname.startsWith(`${youthPrefix}/`)) {
         setRedirectTo(youthPrefix)
@@ -25,6 +26,11 @@ function FallbackRedirect() {
         setRedirectTo(practicePrefix)
         return
       }
+
+      if (pathname.startsWith(`${wordsPrefix}/`)) {
+        setRedirectTo(wordsPrefix)
+        return
+      }
     }
 
     const hasValidPrefix = supportedLangs.some((lang) => {
@@ -32,17 +38,30 @@ function FallbackRedirect() {
         pathname === `/${lang}` ||
         pathname === `/${lang}/youth` ||
         pathname === `/${lang}/practice` ||
+        pathname === `/${lang}/words` ||
         pathname.startsWith(`/${lang}/youth/`) ||
-        pathname.startsWith(`/${lang}/practice/`)
+        pathname.startsWith(`/${lang}/practice/`) ||
+        pathname.startsWith(`/${lang}/words/`)
       )
     })
 
     if (hasValidPrefix) return
 
+    const isAdminPath = pathname === "/status" || pathname.startsWith("/admin")
+    if (isAdminPath) return
+
+    for (const lang of supportedLangs) {
+      if (pathname === `/${lang}/status` || pathname.startsWith(`/${lang}/admin`)) {
+        setRedirectTo(pathname.replace(`/${lang}`, "") || "/status")
+        return
+      }
+    }
+
     const isStaticPath =
       pathname === "/" ||
       pathname.startsWith("/practice") ||
-      pathname.startsWith("/youth")
+      pathname.startsWith("/youth") ||
+      pathname.startsWith("/words")
 
     if (isStaticPath) return
 
@@ -69,3 +88,4 @@ function FallbackRedirect() {
 }
 
 export default FallbackRedirect
+

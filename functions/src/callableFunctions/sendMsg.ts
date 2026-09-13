@@ -35,7 +35,6 @@ const sendMsg = functions.https.onCall(
                 message: "Successfully updated all users.",
             };
         } catch (error) {
-            console.error("Error updating users: ", error);
             return {
                 result: "error",
                 message: "Failed to update users.",

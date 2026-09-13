@@ -1,4 +1,4 @@
-export const PLAY_PROMPT_M = `Description: Creating an educational game for a youth movement
+﻿export const PLAY_PROMPT_M = `Description: Creating an educational game for a youth movement
 Game details: Time: {0} Topic: {1} Target audience: {2} children ages: {3} Children's gender: {4} Location: {5} Additional notes: {6}
 !!! MOST IMPORTANT: All activity details must be addressed. Use ONLY the following headings in this exact order !!!
 Mandatory structure:
@@ -12,7 +12,7 @@ Guidelines:
 - Make sure you follow the structure and don't change it.
 - Appropriate for age and abilities
 - The game can be an activity, game, quiz or craft.
-- If there are quizzes, questions or lists include 5 examples.
+- If there are quizzes, questions or lists include 3 examples.
 {9}
 - Include all necessary information for the instructor with detailed explanations so the instructor won't need to search for additional information from other sources
 Response format: markdown in English, double-check that there are no spelling errors or words in other languages.`;

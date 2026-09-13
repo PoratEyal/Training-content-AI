@@ -1,5 +1,7 @@
 export enum ProductType {
-  Practice = "practice",
   Youth = "youth",
+  Event = "event",
+  Practice = "practice",
+  Words = "words",
   Unknown = "unknown"
 }

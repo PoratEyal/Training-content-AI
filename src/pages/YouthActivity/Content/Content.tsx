@@ -15,16 +15,17 @@ import { useStaticContentContext } from "../../../context/StaticContentContext";
 import { useContentContext } from "../../../context/ContentContext";
 import { useLanguage } from "../../../i18n/useLanguage";
 import { ProductType } from "../../../context/ProductType";
-import { CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
+import { YOUTH_CONTENT_ACTIVITY_AD_SLOT } from "../../../models/constants/adsSlot";
 import { buildContentSchema } from "../../../models/schemaOrg";
 import route from "../../../router/route.json";
 import { ProductPages } from "../../../models/enum/pages";
 import styles from "./Content.module.css";
+import { StorageKey } from "../../../models/enum/storage";
 
 
 function Content() {
 
-  const { lang } = useLanguage();
+  const { t, lang } = useLanguage();
   const { subjects, isLoading, useFetchSubjectsData } = useStaticContentContext();
   const navigate = useNavigate();
   const { setCurrentPage } = useContentContext()
@@ -37,8 +38,8 @@ function Content() {
   const goBack = () => { navigate(youthHomePagePath); };
 
   useEffect(() => {
-    setCurrentPage(ProductPages.PAGE_StaticContent);
-    sessionStorage.setItem("lastVisitedPage", ProductPages.PAGE_StaticContent);
+    setCurrentPage(ProductPages.PAGE_YouthStaticContent);
+    sessionStorage.setItem(StorageKey.LAST_PAGE, ProductPages.PAGE_YouthStaticContent);
   }, []);
 
   const contentSchema = useMemo(
@@ -52,7 +53,7 @@ function Content() {
       productType={ProductType.Youth}
       hasHeader={{ goBack }}
       hasNavBar
-      hasAds={CONTENT_ACTIVITY_AD_SLOT}
+      hasAds={YOUTH_CONTENT_ACTIVITY_AD_SLOT}
       index={true}
       hasGreenBackground
     >
@@ -89,7 +90,7 @@ function Content() {
             ))}
           </section>
         ) : (
-          <div>לא נבחר נושא פעולה</div>
+          <div>{t("youth.contentPage.noSubjectSelected")}</div>
         )}
       </article>
     </PageLayout>

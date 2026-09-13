@@ -1,5 +1,4 @@
 import * as functions from "firebase-functions";
-import * as admin from "firebase-admin";
 import { UpdateUserRequest } from "../model/types/request";
 import { CollectionDB } from "../model/enum/DB";
 import { UpdateUserResponse } from "../model/types/response";
@@ -15,8 +14,6 @@ const updateUser = functions.https.onCall(
         if (!context.auth) {
             return { result: "error", message: "User is not authenticated." };
         }
-        await admin.auth().setCustomUserClaims(context.auth.uid, { canEditUsers: true });
-
         try {
             const updates = {
                 movement: user.movement?.movement || null,
@@ -31,7 +28,6 @@ const updateUser = functions.https.onCall(
                 user: { ...user, movement: user.movement },
             };
         } catch (error) {
-            console.error("Error updating user: ", error);
             return {
                 result: "error",
                 message: "Failed to update user.",

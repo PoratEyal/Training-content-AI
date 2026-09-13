@@ -8,7 +8,7 @@ import { useLanguage } from "../../../i18n/useLanguage";
 
 type DropdownProps = {
     handleClose: () => void;
-    children?: React.ReactNode[];
+    children?: React.ReactNode;
 };
 
 function Dropdown({ handleClose, children }: DropdownProps) {
@@ -16,6 +16,8 @@ function Dropdown({ handleClose, children }: DropdownProps) {
 
     const modalRef = useRef<any>(null);
     useClickOutside(modalRef, () => handleClose());
+
+    const activeChildren = React.Children.toArray(children);
 
     return (
         <nav
@@ -25,7 +27,7 @@ function Dropdown({ handleClose, children }: DropdownProps) {
             }
         >
             <ul className={styles.ul}>
-                {children.map((option, i) => (
+                {activeChildren.map((option, i) => (
                     <li
                         key={i}
                         className={

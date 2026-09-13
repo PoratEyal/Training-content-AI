@@ -13,7 +13,7 @@ Guidelines:
 - Make sure you follow the structure and don't change it.
 - Adapt the discussion questions for young children
 - Preference for games, quizzes and creating dialogue rather than the instructor talking
-- If there are quizzes, questions or lists include 6 examples.
+- If there are quizzes, questions or lists include 4 examples.
 - Avoid violent, offensive or topics that may cause discomfort.
 - Include all necessary information for the instructor with detailed explanations so the instructor won't need to search for additional information from other sources
 Response format: markdown in English, double-check that there are no spelling errors or words in other languages.`;

@@ -1,28 +1,18 @@
-import { CONTANT_PROMPT_B } from "../../model/prompts/ar/contant_B";
-import { CONTANT_PROMPT_M } from "../../model/prompts/ar/contant_M";
-import { CONTANT_PROMPT_S } from "../../model/prompts/ar/contant_S";
+import { CONTENT_PROMPT_M } from "../../model/prompts/ar/content_M";
+import { CONTENT_PROMPT_S } from "../../model/prompts/ar/content_S";
 import { PLAY_PROMPT_M } from "../../model/prompts/ar/playTime_M";
 import { PLAY_PROMPT_S } from "../../model/prompts/ar/playTime_S";
 import { VIEW_PROMPT_M } from "../../model/prompts/ar/pointOfView_M";
 import { VIEW_PROMPT_S } from "../../model/prompts/ar/pointOfView_S";
-import { CONTANT_SPECIAL_PROMPT_M } from "../../model/prompts/ar/contant_special_M";
-import { CONTANT_SPECIAL_PROMPT_S } from "../../model/prompts/ar/contant_special_S";
+import { CONTENT_SPECIAL_PROMPT_M } from "../../model/prompts/ar/content_special_M";
+import { CONTENT_SPECIAL_PROMPT_S } from "../../model/prompts/ar/content_special_S";
 import { PLAY_SPECIAL_PROMPT_M } from "../../model/prompts/ar/playTime_special_M";
 import { PLAY_SPECIAL_PROMPT_S } from "../../model/prompts/ar/playTime_special_S";
 import {
-    CONTANT_SECTION_30_IN,
-    CONTANT_SECTION_30_OUT,
-    CONTANT_SECTION_60_IN,
-    CONTANT_SECTION_60_OUT,
-    CONTANT_SECTION_90_IN,
-    CONTANT_SECTION_90_OUT,
+    CONTENT_SECTION_30, CONTENT_SECTION_60, CONTENT_SECTION_90,
     PLAY_SECTION,
-    POINT_SECTION_30,
-    POINT_SECTION_60,
-    POINT_SECTION_90,
-    SURVIVAL_SECTION_30,
-    SURVIVAL_SECTION_60,
-    SURVIVAL_SECTION_90,
+    POINT_SECTION_30, POINT_SECTION_60, POINT_SECTION_90,
+    SURVIVAL_SECTION_30, SURVIVAL_SECTION_60, SURVIVAL_SECTION_90,
 } from "../../model/prompts/ar/sections";
 import { SURVIVAL_PROMPT_M } from "../../model/prompts/ar/survival_M";
 import { SURVIVAL_PROMPT_S } from "../../model/prompts/ar/survival_S";
@@ -41,24 +31,6 @@ const sectionPerTime = (time: string, section: string[]): string => {
     }
 };
 
-const sectionPerPlace = (place: string): string[] => {
-    switch (place) {
-        case "خارجية":
-            return [
-                CONTANT_SECTION_30_OUT,
-                CONTANT_SECTION_60_OUT,
-                CONTANT_SECTION_90_OUT,
-            ];
-
-        default:
-            return [
-                CONTANT_SECTION_30_IN,
-                CONTANT_SECTION_60_IN,
-                CONTANT_SECTION_90_IN,
-            ];
-    }
-};
-
 const setOptionsForPointOfView = (): [string, string, string] => [
     VIEW_PROMPT_S,
     VIEW_PROMPT_M,
@@ -74,16 +46,16 @@ const setOptionsForPlayTime = (): [string, string, string] => [
     PLAY_PROMPT_M,
     PLAY_PROMPT_M,
 ];
-const setOptionsForContant = (): [string, string, string] => [
-    CONTANT_PROMPT_S,
-    CONTANT_PROMPT_M,
-    CONTANT_PROMPT_B,
+const setOptionsForContent = (): [string, string, string] => [
+    CONTENT_PROMPT_S,
+    CONTENT_PROMPT_M,
+    CONTENT_PROMPT_M,
 ];
 
-const setOptionsForSpecialKidsContant = (): [string, string, string] => [
-    CONTANT_SPECIAL_PROMPT_S,
-    CONTANT_SPECIAL_PROMPT_M,
-    CONTANT_SPECIAL_PROMPT_M,
+const setOptionsForSpecialKidsContent = (): [string, string, string] => [
+    CONTENT_SPECIAL_PROMPT_S,
+    CONTENT_SPECIAL_PROMPT_M,
+    CONTENT_SPECIAL_PROMPT_M,
 ];
 
 const setOptionsForSpecialKidsPlay = (): [string, string, string] => [
@@ -93,28 +65,21 @@ const setOptionsForSpecialKidsPlay = (): [string, string, string] => [
 ];
 
 const setSectionForPointOfView = (time: string): string =>
-    sectionPerTime(time, [
-        POINT_SECTION_30,
-        POINT_SECTION_60,
-        POINT_SECTION_90,
-    ]);
+    sectionPerTime(time, [POINT_SECTION_30, POINT_SECTION_60, POINT_SECTION_90,]);
+
 const setSectionForSurvival = (time: string): string =>
-    sectionPerTime(time, [
-        SURVIVAL_SECTION_30,
-        SURVIVAL_SECTION_60,
-        SURVIVAL_SECTION_90,
-    ]);
+    sectionPerTime(time, [SURVIVAL_SECTION_30, SURVIVAL_SECTION_60, SURVIVAL_SECTION_90,]);
 
 const setSectionForPlayTime = (time: string): string =>
-    sectionPerTime(time, [PLAY_SECTION, PLAY_SECTION, PLAY_SECTION, PLAY_SECTION, PLAY_SECTION]);
+    sectionPerTime(time, [PLAY_SECTION, PLAY_SECTION, PLAY_SECTION]);
 
-const setSectionForContant = (time: string, place: string): string =>
-    sectionPerTime(time, sectionPerPlace(place));
+const setSectionForContent = (time: string): string =>
+    sectionPerTime(time, [CONTENT_SECTION_30, CONTENT_SECTION_60, CONTENT_SECTION_90]);
 
 export const promptPerGrade = (grade: string, prompts: [string, string, string]): string => {
     switch (grade) {
-        case  "الصف 1":
-        case  "الصف 2":
+        case "الصف 1":
+        case "الصف 2":
         case "الصف 3":
         case "الصف 4":
             return prompts[0];
@@ -141,8 +106,8 @@ export const getPromptOptions = (category: CategoryName): [string, string, strin
             return setOptionsForSurvival();
         case "playTime":
             return setOptionsForPlayTime();
-        case "contant":
-            return setOptionsForContant();
+        case "content":
+            return setOptionsForContent();
         default:
             return ["", "", ""];
     }
@@ -150,8 +115,8 @@ export const getPromptOptions = (category: CategoryName): [string, string, strin
 
 export const getSpecialPromptOptions = (category: CategoryName): [string, string, string] => {
     switch (category) {
-        case "contant":
-            return setOptionsForSpecialKidsContant();
+        case "content":
+            return setOptionsForSpecialKidsContent();
         case "playTime":
             return setOptionsForSpecialKidsPlay();
         default:
@@ -159,7 +124,7 @@ export const getSpecialPromptOptions = (category: CategoryName): [string, string
     }
 };
 
-export const getSection = (category: CategoryName, time: string, place: string): string => {
+export const getSection = (category: CategoryName, time: string): string => {
     switch (category) {
         case "pointOfView":
             return setSectionForPointOfView(time);
@@ -167,8 +132,8 @@ export const getSection = (category: CategoryName, time: string, place: string):
             return setSectionForSurvival(time);
         case "playTime":
             return setSectionForPlayTime(time);
-        case "contant":
-            return setSectionForContant(time, place);
+        case "content":
+            return setSectionForContent(time);
         default:
             return "";
     }
@@ -189,7 +154,7 @@ export const getTools = (category: CategoryName, tools: string | undefined, reli
                 return "**المواد المطلوبة:** (إذا وجدت، عدم استخدام مواد باهظة الثمن، بروجكتور، فيديو - لاستخدامك، مواد بناء، مواد أرضية، أدوات عمل)";
             case "playTime":
                 return "**المواد المطلوبة:** (إذا وجدت، عدم استخدام مواد باهظة الثمن، بروجكتور، فيديو)";
-            case "contant":
+            case "content":
                 return "**المواد المطلوبة:** (إذا وجدت، عدم استخدام مواد باهظة الثمن، بروجكتور، فيديو)";
             default:
                 return "**المواد المطلوبة:** عدم استخدام مواد!";
@@ -202,7 +167,7 @@ export const getSafty = (
     contest: string | undefined,
 ) => {
     if (category === "pointOfView") return "";
-    let safty: string = "- يجب أن يكون النشاط: بدون عنف، بدون خطر";
-    if (contest === "بدون مجموعات") safty += "، بدون منافسات وبدون تقسيم لمجموعات.";
-    return safty;
+    let safety: string = "- يجب أن يكون النشاط: بدون عنف، بدون خطر";
+    if (contest === "بدون مجموعات") safety += "، بدون منافسات وبدون تقسيم لمجموعات.";
+    return safety;
 };

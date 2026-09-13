@@ -1,5 +1,7 @@
+//
+//  Currently Unused
+//
 import * as functions from "firebase-functions";
-import * as admin from "firebase-admin";
 import { CollectionDB } from "../model/enum/DB";
 import { GetUserByIdRequest } from "../model/types/request";
 import { GetUserByIdResponse } from "../model/types/response";
@@ -15,8 +17,6 @@ const getUserById = functions.https.onCall(
             if (!context.auth) {
                 return { result: "error", message: "User is not authenticated." };
             }
-            await admin.auth().setCustomUserClaims(context.auth.uid, { canEditUsers: true });
-
             const { id } = data;
             const userDoc = await db.collection(CollectionDB.USERS).doc(id).get();
 
@@ -27,7 +27,6 @@ const getUserById = functions.https.onCall(
             }
             return { result: "success", user: undefined, message: "User not found." };
         } catch (error) {
-            console.error("Failed to get user -- ", error);
             return { result: "error", message: "Failed to get user." };
         }
     },

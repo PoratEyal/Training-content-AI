@@ -14,7 +14,7 @@ export const convertActivityType = (
         createdAt: getCurrentTime(lang),
         savedAt: getCurrentTime(lang),
         likes: 0,
-        category: "contant",
+        category: "content",
         grade: "",
         amount: "",
         place: "",
