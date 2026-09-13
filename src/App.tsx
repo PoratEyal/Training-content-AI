@@ -13,6 +13,7 @@ import Providers from "./router/Providers"
 import LanguageRedirect from "./components/LanguageRedirect"
 import FallbackRedirect from "./components/FallbackRedirect"
 import PrivacyPolicy from "./pages/Common/Privacy/Privacy"
+import Status from "./pages/Common/AdminStatus/Status"
 
 // Youth Activities
 import YouthHomePage from "./pages/YouthActivity/HomePage/Home"
@@ -129,6 +130,9 @@ function App() {
                 return <Route key={`${key}${lang}`} path={basePath} element={element} />
               })
             )}
+
+            {/* Admin routes – language-less */}
+            <Route path={route.status} element={<Status />} />
 
             {/* Fallback for undefined routes */}
             <Route path="*" element={<FallbackRedirect />} />
